@@ -1,6 +1,79 @@
-{
-  "ccode": "4444",
-  "url": "localhost",
-  "port": 5000,
-  "filePath": "C:/Users/newFace/.node-red/flows.json"
-}
+[
+  {
+    "id": "86d6929849e32c37",
+    "type": "tab",
+    "label": "플로우 1",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "2bcd168767ea6d09",
+    "type": "inject",
+    "z": "86d6929849e32c37",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 580,
+    "y": 140,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "86332d124b0bd237",
+    "type": "inject",
+    "z": "86d6929849e32c37",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 280,
+    "y": 280,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "e25001b7ac6d6457",
+    "type": "modbus-flex-connector",
+    "z": "86d6929849e32c37",
+    "name": "",
+    "maxReconnectsPerMinute": 4,
+    "emptyQueue": false,
+    "showStatusActivities": false,
+    "showErrors": false,
+    "x": 190,
+    "y": 140,
+    "wires": [
+      []
+    ]
+  }
+]
