@@ -33,20 +33,5 @@
     "wires": [
       []
     ]
-  },
-  {
-    "id": "e25001b7ac6d6457",
-    "type": "modbus-flex-connector",
-    "z": "86d6929849e32c37",
-    "name": "",
-    "maxReconnectsPerMinute": 4,
-    "emptyQueue": false,
-    "showStatusActivities": false,
-    "showErrors": false,
-    "x": 250,
-    "y": 180,
-    "wires": [
-      []
-    ]
   }
 ]
