@@ -1,0 +1,153 @@
+[
+  {
+    "id": "a42e116ce6033e0e",
+    "type": "tab",
+    "label": "플로우 1",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "94d2e73459c0f4bc",
+    "type": "MySQLdatabase",
+    "name": "",
+    "host": "127.0.0.1",
+    "port": "28365",
+    "db": "sysnet",
+    "tz": "",
+    "charset": "UTF8"
+  },
+  {
+    "id": "765ed7ee60cfcfb9",
+    "type": "inject",
+    "z": "a42e116ce6033e0e",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "60",
+    "crontab": "",
+    "once": true,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 140,
+    "wires": [
+      [
+        "a6cffd16e7d8dbd3"
+      ]
+    ]
+  },
+  {
+    "id": "a6cffd16e7d8dbd3",
+    "type": "function",
+    "z": "a42e116ce6033e0e",
+    "name": "Select query",
+    "func": "async function delay(timeMs) {\n    await new Promise(resolve => setTimeout(resolve, timeMs));\n}\n\nfor (let i=1; i<5; i++) {\n    let now = new Date();\n    //let nowDateTime = now.toISOString().replace(/[-T:]/g, '').split('.')[0];\n    let nowDateTime = now.toLocaleString\n    let tenMinutesAgo = new Date(now.getTime() - 10 * 60 * 1000);\n    var calDate = tenMinutesAgo.toISOString().replace(/[-T:]/g, '').split('.')[0];\n\n    msg.topic = \"SELECT FLD_DATE, FLD_CONTROLLER_ID, FLD_AVG FROM sysnet.tbl_status_value_log WHERE FLD_DATE between '\"+calDate+\"' and '\"+nowDateTime+\"' AND FLD_CONTROLLER_ID = '\"+ i.toString() +\"' ORDER By FLD_DATE DESC LIMIT 1\"\n\n    node.send(msg);\n\n    await delay(500);\n}\n",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 290,
+    "y": 140,
+    "wires": [
+      [
+        "3caa1d39a3eb6d63"
+      ]
+    ]
+  },
+  {
+    "id": "3caa1d39a3eb6d63",
+    "type": "mysql",
+    "z": "a42e116ce6033e0e",
+    "mydb": "94d2e73459c0f4bc",
+    "name": "",
+    "x": 450,
+    "y": 140,
+    "wires": [
+      [
+        "3b1e2eb6d9bf0614"
+      ]
+    ]
+  },
+  {
+    "id": "3b1e2eb6d9bf0614",
+    "type": "function",
+    "z": "a42e116ce6033e0e",
+    "name": "parse Data",
+    "func": "let device_id = msg.payload[0].FLD_CONTROLLER_ID;\nlet device_temp = msg.payload[0].FLD_AVG;\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0030\",\n    \"kind\": 3,\n    \"deviceId\" : device_id,\n    \"temperature\" : device_temp\n}\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 610,
+    "y": 140,
+    "wires": [
+      [
+        "cc7e418a0a63662c"
+      ]
+    ]
+  },
+  {
+    "id": "d61933e973da5727",
+    "type": "debug",
+    "z": "a42e116ce6033e0e",
+    "name": "debug 2",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 940,
+    "y": 140,
+    "wires": []
+  },
+  {
+    "id": "cc7e418a0a63662c",
+    "type": "http request",
+    "z": "a42e116ce6033e0e",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0030/get_temperature",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 790,
+    "y": 140,
+    "wires": [
+      [
+        "d61933e973da5727"
+      ]
+    ]
+  },
+  {
+    "id": "460d8cbb5d02d467",
+    "type": "comment",
+    "z": "a42e116ce6033e0e",
+    "name": "온도 데이터",
+    "info": "1. 냉장실1번문 온도\n2. 냉장실3번문 온도\n3. 작업장\n4. 포장실",
+    "x": 120,
+    "y": 100,
+    "wires": []
+  }
+]
