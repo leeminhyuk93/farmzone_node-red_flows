@@ -1,0 +1,1873 @@
+[
+  {
+    "id": "3ee54d5d4a57e4c6",
+    "type": "tab",
+    "label": "OnlyDebugging, Not Store DB",
+    "disabled": true,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "b59fbc26920ed8b2",
+    "type": "tab",
+    "label": "DB 저장, Send API",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "3eba0121c064a50f",
+    "type": "tab",
+    "label": "Delete DB",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "62c9ab973225a3ec",
+    "type": "MySQLdatabase",
+    "name": "",
+    "host": "127.0.0.1",
+    "port": "3306",
+    "db": "shm",
+    "tz": "",
+    "charset": "UTF8"
+  },
+  {
+    "id": "dd322a399e2d7b96",
+    "type": "serial-port",
+    "serialport": "COM7",
+    "serialbaud": "9600",
+    "databits": "8",
+    "parity": "none",
+    "stopbits": "1",
+    "waitfor": "",
+    "dtr": "none",
+    "rts": "none",
+    "cts": "none",
+    "dsr": "none",
+    "newline": "200",
+    "bin": "bin",
+    "out": "time",
+    "addchar": "",
+    "responsetimeout": "10000"
+  },
+  {
+    "id": "94a14201aaed6642",
+    "type": "serial-port",
+    "serialport": "COM8",
+    "serialbaud": "9600",
+    "databits": "8",
+    "parity": "none",
+    "stopbits": "1",
+    "waitfor": "",
+    "dtr": "none",
+    "rts": "none",
+    "cts": "none",
+    "dsr": "none",
+    "newline": "200",
+    "bin": "bin",
+    "out": "time",
+    "addchar": "",
+    "responsetimeout": "10000"
+  },
+  {
+    "id": "62492f1e3711e47e",
+    "type": "MySQLdatabase",
+    "name": "",
+    "host": "127.0.0.1",
+    "port": "3306",
+    "db": "fz_shm",
+    "tz": "",
+    "charset": "UTF8"
+  },
+  {
+    "id": "c1297a980585ee92",
+    "type": "inject",
+    "z": "3ee54d5d4a57e4c6",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": "10",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 100,
+    "y": 60,
+    "wires": [
+      [
+        "64c1733e278a75e2"
+      ]
+    ]
+  },
+  {
+    "id": "64c1733e278a75e2",
+    "type": "function",
+    "z": "3ee54d5d4a57e4c6",
+    "name": "temp1",
+    "func": "msg.payload = Buffer.from([2, 48, 49, 82, 88, 84, 80, 48, 3, 62]);\n// hex : 0x02,0x30,0x31,0x52,0x58,0x54,0x50,0x30,0x03,0x3e\nnode.send(msg);",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 250,
+    "y": 60,
+    "wires": [
+      [
+        "c7f99d36d5547545",
+        "266502c4afec5cdb"
+      ]
+    ]
+  },
+  {
+    "id": "1badce35f427e005",
+    "type": "debug",
+    "z": "3ee54d5d4a57e4c6",
+    "name": "debug 1",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 520,
+    "y": 360,
+    "wires": []
+  },
+  {
+    "id": "56a17e61111fbad6",
+    "type": "inject",
+    "z": "3ee54d5d4a57e4c6",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": "10",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 100,
+    "y": 120,
+    "wires": [
+      [
+        "266502c4afec5cdb"
+      ]
+    ]
+  },
+  {
+    "id": "266502c4afec5cdb",
+    "type": "function",
+    "z": "3ee54d5d4a57e4c6",
+    "name": "temp2",
+    "func": "\nmsg.payload = Buffer.from([2, 48, 50, 82, 88, 84, 80, 48, 3, 61]);\n// hex : 0x02,0x30,0x32,0x52,0x58,0x54,0x50,0x30,0x03,0x3d\nnode.send(msg);",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 230,
+    "y": 120,
+    "wires": [
+      [
+        "c7f99d36d5547545",
+        "6bc9459fe3c155c2"
+      ]
+    ]
+  },
+  {
+    "id": "6bc9459fe3c155c2",
+    "type": "function",
+    "z": "3ee54d5d4a57e4c6",
+    "name": "temp3",
+    "func": "msg.payload = Buffer.from([2, 48, 51, 82, 88, 84, 80, 48, 3, 60]);\n// hex : 0x02,0x30,0x33,0x52,0x58,0x54,0x50,0x30,0x03,0x3c\nnode.send(msg);",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 230,
+    "y": 180,
+    "wires": [
+      [
+        "c7f99d36d5547545",
+        "bcd89d56001e1c3e"
+      ]
+    ]
+  },
+  {
+    "id": "bcd89d56001e1c3e",
+    "type": "function",
+    "z": "3ee54d5d4a57e4c6",
+    "name": "temp4",
+    "func": "msg.payload = Buffer.from([2, 48, 52, 82, 88, 84, 80, 48, 3, 59]);\n// hex : 0x02,0x30,0x34,0x52,0x58,0x54,0x50,0x30,0x03,0x3b\nnode.send(msg);",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 230,
+    "y": 240,
+    "wires": [
+      [
+        "c7f99d36d5547545",
+        "563359054fb03bed"
+      ]
+    ]
+  },
+  {
+    "id": "563359054fb03bed",
+    "type": "function",
+    "z": "3ee54d5d4a57e4c6",
+    "name": "temp5",
+    "func": "msg.payload = Buffer.from([2, 48, 53, 82, 88, 84, 80, 48, 3, 58]);\n// hex : 0x02,0x30,0x35,0x52,0x58,0x54,0x50,0x30,0x03,0x3a\nnode.send(msg);\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 230,
+    "y": 300,
+    "wires": [
+      [
+        "bbd8c10450361bd6",
+        "7d5014093499186e"
+      ]
+    ]
+  },
+  {
+    "id": "83e8373d708eb0e6",
+    "type": "inject",
+    "z": "3ee54d5d4a57e4c6",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": "10",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 100,
+    "y": 180,
+    "wires": [
+      [
+        "6bc9459fe3c155c2"
+      ]
+    ]
+  },
+  {
+    "id": "17a3ec27b71df4da",
+    "type": "inject",
+    "z": "3ee54d5d4a57e4c6",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": "10",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 100,
+    "y": 240,
+    "wires": [
+      [
+        "bcd89d56001e1c3e"
+      ]
+    ]
+  },
+  {
+    "id": "6ade3f6d92738837",
+    "type": "inject",
+    "z": "3ee54d5d4a57e4c6",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": "10",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 100,
+    "y": 300,
+    "wires": [
+      [
+        "563359054fb03bed"
+      ]
+    ]
+  },
+  {
+    "id": "cd778124706e7801",
+    "type": "function",
+    "z": "3ee54d5d4a57e4c6",
+    "name": "parsing",
+    "func": "msg.payload[1] = Buffer.from(msg.payload[1], \"hex\");\n\nvar temp = msg.payload[1].readInt16BE(0);\nvar realtemp = parseFloat(temp) / 10;\n\nvar adr = parseInt(msg.payload[0]);\n\n//msg.topic = \" INSERT INTO smarthaccpman.nodered_temperature(address, temperature, wdate) VALUES ('\" + adr + \"', '\" + realtemp + \"', NOW()) \";\nmsg.payload[0] = adr;\nmsg.payload[1] = realtemp;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 540,
+    "y": 260,
+    "wires": [
+      [
+        "1badce35f427e005"
+      ]
+    ]
+  },
+  {
+    "id": "7d5014093499186e",
+    "type": "function",
+    "z": "3ee54d5d4a57e4c6",
+    "name": "temp6",
+    "func": "msg.payload = Buffer.from([2, 48, 54, 82, 88, 84, 80, 48, 3, 57]);\n// hex : 0x02,0x30,0x35,0x52,0x58,0x54,0x50,0x30,0x03,0x3a\nnode.send(msg);\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 230,
+    "y": 360,
+    "wires": [
+      [
+        "bbd8c10450361bd6",
+        "10ceb7dedce0d118"
+      ]
+    ]
+  },
+  {
+    "id": "9b345d98dcfbe273",
+    "type": "inject",
+    "z": "3ee54d5d4a57e4c6",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 100,
+    "y": 360,
+    "wires": [
+      [
+        "7d5014093499186e"
+      ]
+    ]
+  },
+  {
+    "id": "d10a6df20eb2fbf7",
+    "type": "comment",
+    "z": "3ee54d5d4a57e4c6",
+    "name": "justDebbuging",
+    "info": "This flow is just for testing devices.\n\nI seperated each node that connects current device address\nto trace error when the problme is encounterd.\n\nTo store DB, I suggetst that a node or some nodes should be combined with\ncurrent COM. \n\n\nThx",
+    "x": 90,
+    "y": 20,
+    "wires": []
+  },
+  {
+    "id": "10ceb7dedce0d118",
+    "type": "delay",
+    "z": "3ee54d5d4a57e4c6",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "10",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "outputs": 1,
+    "x": 240,
+    "y": 420,
+    "wires": [
+      [
+        "64c1733e278a75e2"
+      ]
+    ]
+  },
+  {
+    "id": "047cc7b7f8bebf76",
+    "type": "buffer-parser",
+    "z": "3ee54d5d4a57e4c6",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "ascii",
+        "name": "adr",
+        "offset": 3,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "ascii",
+        "name": "value",
+        "offset": 9,
+        "length": 4,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 530,
+    "y": 140,
+    "wires": [
+      [
+        "cd778124706e7801"
+      ]
+    ]
+  },
+  {
+    "id": "bbd8c10450361bd6",
+    "type": "serial request",
+    "z": "3ee54d5d4a57e4c6",
+    "name": "",
+    "serial": "94a14201aaed6642",
+    "x": 370,
+    "y": 300,
+    "wires": [
+      [
+        "047cc7b7f8bebf76"
+      ]
+    ]
+  },
+  {
+    "id": "c7f99d36d5547545",
+    "type": "serial request",
+    "z": "3ee54d5d4a57e4c6",
+    "name": "",
+    "serial": "dd322a399e2d7b96",
+    "x": 370,
+    "y": 140,
+    "wires": [
+      [
+        "047cc7b7f8bebf76"
+      ]
+    ]
+  },
+  {
+    "id": "5ededbef94d555c0",
+    "type": "inject",
+    "z": "3ee54d5d4a57e4c6",
+    "d": true,
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": false,
+    "onceDelay": "10",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 110,
+    "y": 540,
+    "wires": [
+      [
+        "5215ec081c2b4bff"
+      ]
+    ]
+  },
+  {
+    "id": "5215ec081c2b4bff",
+    "type": "function",
+    "z": "3ee54d5d4a57e4c6",
+    "name": "temp1~6",
+    "func": "//device id 1~6\nmsg.payload = Buffer.from([2, 48, 49, 82, 88, 84, 80, 48, 3, 62]);\nnode.send(msg);\n\nmsg.payload = Buffer.from([2, 48, 50, 82, 88, 84, 80, 48, 3, 61]);\nnode.send(msg);\n\nmsg.payload = Buffer.from([2, 48, 51, 82, 88, 84, 80, 48, 3, 60]);\nnode.send(msg);\n\nmsg.payload = Buffer.from([2, 48, 52, 82, 88, 84, 80, 48, 3, 59]);\nnode.send(msg);\n\nmsg.payload = Buffer.from([2, 48, 53, 82, 88, 84, 80, 48, 3, 58]);\nnode.send(msg);\n\nmsg.payload = Buffer.from([2, 48, 54, 82, 88, 84, 80, 48, 3, 57]);\nnode.send(msg);",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 280,
+    "y": 540,
+    "wires": [
+      [
+        "e35ad35e34471138"
+      ]
+    ]
+  },
+  {
+    "id": "0cf48156e578fa7e",
+    "type": "function",
+    "z": "3ee54d5d4a57e4c6",
+    "name": "parsing",
+    "func": "msg.payload[1] = Buffer.from(msg.payload[1], \"hex\");\n\nvar temp = msg.payload[1].readInt16BE(0);\nvar realtemp = parseFloat(temp) / 10;\n\nvar adr = parseInt(msg.payload[0]);\n\nmsg.topic = \" INSERT INTO shm.temperature(wdate, address, temperature) VALUES ( NOW(), '\" + adr + \"', '\" + realtemp + \"');\";\nmsg.payload[0] = adr;\nmsg.payload[1] = realtemp;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 240,
+    "y": 660,
+    "wires": [
+      [
+        "2837d6ecc7fd231e",
+        "7fcaddc4e82ed95d"
+      ]
+    ]
+  },
+  {
+    "id": "e35ad35e34471138",
+    "type": "switch",
+    "z": "3ee54d5d4a57e4c6",
+    "name": "",
+    "property": "payload[2]",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "lt",
+        "v": "53",
+        "vt": "str"
+      },
+      {
+        "t": "gte",
+        "v": "53",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 430,
+    "y": 540,
+    "wires": [
+      [
+        "65dde1746e6fa48a"
+      ],
+      [
+        "e3989d2938d2020f"
+      ]
+    ]
+  },
+  {
+    "id": "7fcaddc4e82ed95d",
+    "type": "debug",
+    "z": "3ee54d5d4a57e4c6",
+    "name": "debug 10",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 400,
+    "y": 680,
+    "wires": []
+  },
+  {
+    "id": "63f0d21b5d836bc0",
+    "type": "buffer-parser",
+    "z": "3ee54d5d4a57e4c6",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "ascii",
+        "name": "adr",
+        "offset": 3,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "ascii",
+        "name": "value",
+        "offset": 9,
+        "length": 4,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 730,
+    "y": 540,
+    "wires": [
+      [
+        "0cf48156e578fa7e"
+      ]
+    ]
+  },
+  {
+    "id": "2837d6ecc7fd231e",
+    "type": "mysql",
+    "z": "3ee54d5d4a57e4c6",
+    "d": true,
+    "mydb": "62c9ab973225a3ec",
+    "name": "",
+    "x": 390,
+    "y": 640,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "65dde1746e6fa48a",
+    "type": "serial request",
+    "z": "3ee54d5d4a57e4c6",
+    "d": true,
+    "name": "",
+    "serial": "dd322a399e2d7b96",
+    "x": 570,
+    "y": 520,
+    "wires": [
+      [
+        "63f0d21b5d836bc0"
+      ]
+    ]
+  },
+  {
+    "id": "e3989d2938d2020f",
+    "type": "serial request",
+    "z": "3ee54d5d4a57e4c6",
+    "d": true,
+    "name": "",
+    "serial": "94a14201aaed6642",
+    "x": 570,
+    "y": 560,
+    "wires": [
+      [
+        "63f0d21b5d836bc0"
+      ]
+    ]
+  },
+  {
+    "id": "04dd8dfc88c0fcfc",
+    "type": "comment",
+    "z": "3ee54d5d4a57e4c6",
+    "name": "온도 데이터 수집 _ 백업",
+    "info": "",
+    "x": 120,
+    "y": 500,
+    "wires": []
+  },
+  {
+    "id": "2d3b3f342e28dc7b",
+    "type": "inject",
+    "z": "b59fbc26920ed8b2",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "60",
+    "crontab": "",
+    "once": false,
+    "onceDelay": "10",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 120,
+    "wires": [
+      [
+        "075c6f90767a5213"
+      ]
+    ]
+  },
+  {
+    "id": "075c6f90767a5213",
+    "type": "function",
+    "z": "b59fbc26920ed8b2",
+    "name": "temp1~6",
+    "func": "async function delay(timeMs) {\n    await new Promise(resolve => setTimeout(resolve, timeMs));\n}\n\n//device id 1~6\nmsg.payload = Buffer.from([2, 48, 49, 82, 88, 84, 80, 48, 3, 62]);\nnode.send(msg);\n\nawait delay(500);\n\nmsg.payload = Buffer.from([2, 48, 50, 82, 88, 84, 80, 48, 3, 61]);\nnode.send(msg);\n\nawait delay(500);\n\nmsg.payload = Buffer.from([2, 48, 51, 82, 88, 84, 80, 48, 3, 60]);\nnode.send(msg);\n\nawait delay(500);\n\nmsg.payload = Buffer.from([2, 48, 52, 82, 88, 84, 80, 48, 3, 59]);\nnode.send(msg);\n\nawait delay(500);\n\nmsg.payload = Buffer.from([2, 48, 53, 82, 88, 84, 80, 48, 3, 58]);\nnode.send(msg);\n\nawait delay(500);\n\nmsg.payload = Buffer.from([2, 48, 54, 82, 88, 84, 80, 48, 3, 57]);\nnode.send(msg);",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 120,
+    "wires": [
+      [
+        "e3b5efbcb5508845"
+      ]
+    ]
+  },
+  {
+    "id": "769ef7289d67c9c3",
+    "type": "function",
+    "z": "b59fbc26920ed8b2",
+    "name": "parsing",
+    "func": "msg.payload[1] = Buffer.from(msg.payload[1], \"hex\");\n\nvar temp = msg.payload[1].readInt16BE(0);\nvar realtemp = parseFloat(temp) / 10;\n\nvar adr = parseInt(msg.payload[0]);\n\n//msg.topic = \" INSERT INTO fz_shm.tempadr(wdate, address, temperature) VALUES ( NOW(), '\" + adr + \"', '\" + realtemp + \"');\";\nmsg.payload[0] = adr;\nmsg.payload[1] = realtemp;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 220,
+    "y": 240,
+    "wires": [
+      [
+        "0fae28e766edfadb"
+      ]
+    ]
+  },
+  {
+    "id": "e3b5efbcb5508845",
+    "type": "switch",
+    "z": "b59fbc26920ed8b2",
+    "name": "",
+    "property": "payload[2]",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "lt",
+        "v": "53",
+        "vt": "str"
+      },
+      {
+        "t": "gte",
+        "v": "53",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 450,
+    "y": 120,
+    "wires": [
+      [
+        "fd6a4e57cffb0818"
+      ],
+      [
+        "92c75efa2884207b"
+      ]
+    ]
+  },
+  {
+    "id": "16df5591dbf9431d",
+    "type": "debug",
+    "z": "b59fbc26920ed8b2",
+    "name": "debug 2",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 660,
+    "y": 260,
+    "wires": []
+  },
+  {
+    "id": "fb85b26a297db58e",
+    "type": "tcp in",
+    "z": "b59fbc26920ed8b2",
+    "name": "나우 금속검출기",
+    "server": "server",
+    "host": "192.168.222.207",
+    "port": "7000",
+    "datamode": "stream",
+    "datatype": "buffer",
+    "newline": "",
+    "topic": "",
+    "trim": false,
+    "base64": false,
+    "tls": "",
+    "x": 120,
+    "y": 900,
+    "wires": [
+      [
+        "f9284b7097c91722",
+        "77ca467e3dabbb90"
+      ]
+    ]
+  },
+  {
+    "id": "8a87e46f445bdb21",
+    "type": "buffer-parser",
+    "z": "b59fbc26920ed8b2",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "ascii",
+        "name": "adr",
+        "offset": 3,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "ascii",
+        "name": "value",
+        "offset": 9,
+        "length": 4,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 750,
+    "y": 120,
+    "wires": [
+      [
+        "769ef7289d67c9c3"
+      ]
+    ]
+  },
+  {
+    "id": "73e77960eb66404d",
+    "type": "mysql",
+    "z": "b59fbc26920ed8b2",
+    "mydb": "62492f1e3711e47e",
+    "name": "",
+    "x": 660,
+    "y": 220,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "fd6a4e57cffb0818",
+    "type": "serial request",
+    "z": "b59fbc26920ed8b2",
+    "name": "",
+    "serial": "dd322a399e2d7b96",
+    "x": 590,
+    "y": 100,
+    "wires": [
+      [
+        "8a87e46f445bdb21"
+      ]
+    ]
+  },
+  {
+    "id": "92c75efa2884207b",
+    "type": "serial request",
+    "z": "b59fbc26920ed8b2",
+    "name": "",
+    "serial": "94a14201aaed6642",
+    "x": 590,
+    "y": 140,
+    "wires": [
+      [
+        "8a87e46f445bdb21"
+      ]
+    ]
+  },
+  {
+    "id": "460c9e77506e129b",
+    "type": "function",
+    "z": "b59fbc26920ed8b2",
+    "name": "기존 금속검출기 api",
+    "func": "var ccode = \"0038\";\nvar scode = \"91\";\nvar type = \"1\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nvar detected = false;\n\nif (type == \"1\" && (res.length % 34) == 0) {\n    // 나우시스템즈\n    if (paseData[0] == ' ' && paseData[32] == '\\r' && paseData[33] == '\\n') {\n        if ((paseData[1] + paseData[2]) == \"80\" || (paseData[1] + paseData[2]) == \"81\") {\n            detected = true;\n        }\n    }\n\n} else if (type == \"1\" && ((res.length % 23) == 0 || (res.length % 24) == 0)) {\n    if (paseData[0] == 'R' && paseData[1] == 'E' && paseData[2] == 'J') {\n        detected = true;\n    }\n\n} else if (type == \"2\" && (res.length % 6) == 0) {\n    if (paseData[0] == '\\u0002' && paseData[5] == '\\u0003') {\n        if (paseData[3] == \"1\") {\n            detected = true;\n        }\n    }\n\n} else if (type == \"3\" && (res.length % 11) == 0) {\n    for (var i = 1; i <= (res.length / 11); i++) {\n        if (paseData[(i * 11 - 1)] == \"\\u0001\") {\n            detected = true;\n        }\n    }\n\n}\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode\n    };\n\n    return msg;\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 320,
+    "y": 940,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "aa36f8f3568e19a6",
+    "type": "http request",
+    "z": "b59fbc26920ed8b2",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0038/get_detection",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 490,
+    "y": 900,
+    "wires": [
+      [
+        "5a9b7dc97e033cb3"
+      ]
+    ]
+  },
+  {
+    "id": "5a9b7dc97e033cb3",
+    "type": "debug",
+    "z": "b59fbc26920ed8b2",
+    "name": "debug 8",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 660,
+    "y": 900,
+    "wires": []
+  },
+  {
+    "id": "f9284b7097c91722",
+    "type": "debug",
+    "z": "b59fbc26920ed8b2",
+    "name": "debug 9",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 340,
+    "y": 860,
+    "wires": []
+  },
+  {
+    "id": "77ca467e3dabbb90",
+    "type": "function",
+    "z": "b59fbc26920ed8b2",
+    "name": "32, 34 검출",
+    "func": "var ccode = \"0038\";\nvar scode = \"91\";\nvar type = \"1\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nvar detected = false;\n\nif (type == \"1\" && (res.length % 34) == 0) {\n    // 나우시스템즈\n    if (paseData[0] == ' ' && paseData[32] == '\\r' && paseData[33] == '\\n') {\n        if ((paseData[1] + paseData[2]) == \"80\" || (paseData[1] + paseData[2]) == \"81\") {\n            detected = true;\n        }\n    }\n\n} else if (type == \"1\" && ((res.length % 32) == 0)) {\n    detected = true;\n}\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode\n    };\n\n    return msg;\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 310,
+    "y": 900,
+    "wires": [
+      [
+        "aa36f8f3568e19a6"
+      ]
+    ]
+  },
+  {
+    "id": "12ceea829c491494",
+    "type": "comment",
+    "z": "b59fbc26920ed8b2",
+    "name": "온도 데이터_6대 정보",
+    "info": "[※1층 작업장 온도]\n-온도컨트롤러 설치 위치 : 1층 해동실\n-온도 센서 설치 위치 : 1층 작업장\n-제조사 : 코노텍\n-모델명 : FOX-2001CC\n-장치 국번 : 1\n-수집 데이터 : 온도\n-데이터 수집 방식 : RS485 TO USB (PC포트 : COM7)\n\n\n[※1층 해동실 온도]\n-온도컨트롤러 설치 위치 : 1층 해동실\n-온도 센서 설치 위치 : 1층 해동실\n-제조사 : 코노텍\n-모델명 : FOX-2001CC\n-장치 국번 : 2\n-수집 데이터 : 온도\n-데이터 수집 방식 : RS485 TO USB (PC포트 : COM7)\n\n\n[※1층 급속냉장창고 온도]\n-온도컨트롤러 설치 위치 : 1층 해동실\n-온도 센서 설치 위치 : 1층 급속냉장창고\n-제조사 : 코노텍\n-모델명 : FOX-2001CC\n-장치 국번 : 3\n-수집 데이터 : 온도\n-데이터 수집 방식 : RS485 TO USB (PC포트 : COM7)\n\n\n[※1층 완제품냉동창고1 온도]\n-온도컨트롤러 설치 위치 : 1층 완제품냉동창고1 앞\n-온도 센서 설치 위치 : 1층 완제품냉동창고1\n-제조사 : 코노텍\n-모델명 : FOX-2001CC\n-장치 국번 : 4                \n-수집 데이터 : 온도\n-데이터 수집 방식 : RS485 TO USB (PC포트 : COM7)\n\n\n[※1층 완제품냉동창고2 온도]\n-온도컨트롤러 설치 위치 : 1층 완제품냉동창고2 앞\n-온도 센서 설치 위치 : 1층 완제품냉동창고2\n-제조사 : 코노텍\n-모델명 : FOX-2001CC\n-장치 국번 : 5\n-수집 데이터 : 온도\n-데이터 수집 방식 : RS485 TO USB (PC포트 : COM8)\n\n\n[※1층 원료냉동창고 온도]\n-온도컨트롤러 설치 위치 : 1층 원료냉동창고 앞\n-온도 센서 설치 위치 : 1층 원료냉동창고\n-제조사 : 코노텍\n-모델명 : FOX-2001CC\n-장치 국번 : 6\n-수집 데이터 : 온도\n-데이터 수집 방식 : RS485 TO USB (PC포트 : COM8)",
+    "x": 160,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "e62d4b568457fcc9",
+    "type": "comment",
+    "z": "b59fbc26920ed8b2",
+    "name": "1층 내포장실_금속검출기",
+    "info": "[※1층 내포장실 금속검출기]\n-설치 위치 : 1층 내포장실\n-제조사 : 나우시스템즈\n-모델명 : NMD530T (NMD580)\n-연결된 wifi SSID : shm-0038\n-컨버터 정보 : 제조사(솔내시스템), 모델명(CSW-H85K2)\n            IP주소 : 192.168.222.207\n            통신모드 : COD - TCP 클라이언트\n            통신할 주소 : 192.168.222.205 (포스기IP)\n            통신할 포트 : 7000",
+    "x": 150,
+    "y": 860,
+    "wires": []
+  },
+  {
+    "id": "0fae28e766edfadb",
+    "type": "join",
+    "z": "b59fbc26920ed8b2",
+    "name": "",
+    "mode": "custom",
+    "build": "array",
+    "property": "payload",
+    "propertyType": "msg",
+    "key": "topic",
+    "joiner": "\\n",
+    "joinerType": "str",
+    "accumulate": false,
+    "timeout": "",
+    "count": "6",
+    "reduceRight": false,
+    "reduceExp": "",
+    "reduceInit": "",
+    "reduceInitType": "",
+    "reduceFixup": "",
+    "x": 370,
+    "y": 240,
+    "wires": [
+      [
+        "57a86e4e6bae397e"
+      ]
+    ]
+  },
+  {
+    "id": "57a86e4e6bae397e",
+    "type": "function",
+    "z": "b59fbc26920ed8b2",
+    "name": "insert DB",
+    "func": "let date = msg.payload;  // 1~6번 장치 데이터\n\n// 국번\nlet device1_adr = date[0][0];\nlet device2_adr = date[1][0];\nlet device3_adr = date[2][0];\nlet device4_adr = date[3][0];\nlet device5_adr = date[4][0];\nlet device6_adr = date[5][0];\n\n// 온도\nlet device1_temp = date[0][1];\nlet device2_temp = date[1][1];\nlet device3_temp = date[2][1];\nlet device4_temp = date[3][1];\nlet device5_temp = date[4][1];\nlet device6_temp = date[5][1];\n\n\nmsg.payload = {\n    \"장치1번\": `국번 : ${device1_adr}, 온도 : ${device1_temp}`,\n    \"장치2번\": `국번 : ${device2_adr}, 온도 : ${device2_temp}`,\n    \"장치3번\": `국번 : ${device3_adr}, 온도 : ${device3_temp}`,\n    \"장치4번\": `국번 : ${device4_adr}, 온도 : ${device4_temp}`,\n    \"장치5번\": `국번 : ${device5_adr}, 온도 : ${device5_temp}`,\n    \"장치6번\": `국번 : ${device6_adr}, 온도 : ${device6_temp}`\n}\n\n\nmsg.topic = \"INSERT INTO fz_shm.tempadr (temp1, temp2, temp3, temp4, temp5, temp6) VALUES ('\" + device1_temp + \"', '\" + device2_temp + \"', '\" + device3_temp + \"', '\" + device4_temp + \"', '\" + device5_temp + \"', '\" + device6_temp + \"')\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 500,
+    "y": 240,
+    "wires": [
+      [
+        "16df5591dbf9431d",
+        "73e77960eb66404d"
+      ]
+    ]
+  },
+  {
+    "id": "5e5e4fbfd325c00e",
+    "type": "comment",
+    "z": "b59fbc26920ed8b2",
+    "name": "온도데이터 DB 저장",
+    "info": "",
+    "x": 230,
+    "y": 80,
+    "wires": []
+  },
+  {
+    "id": "e7eb43c07626c845",
+    "type": "comment",
+    "z": "b59fbc26920ed8b2",
+    "name": "온도데이터 API 전송",
+    "info": "",
+    "x": 130,
+    "y": 500,
+    "wires": []
+  },
+  {
+    "id": "bb22a7a074576ce4",
+    "type": "inject",
+    "z": "b59fbc26920ed8b2",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "540",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 580,
+    "wires": [
+      [
+        "f97150e324012aec"
+      ]
+    ]
+  },
+  {
+    "id": "f97150e324012aec",
+    "type": "function",
+    "z": "b59fbc26920ed8b2",
+    "name": "Select Query",
+    "func": "msg.topic = 'SELECT * FROM tempadr WHERE (wdate BETWEEN date_add(now(), interval -60 second) AND now()) ORDER BY wdate DESC LIMIT 1';\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 290,
+    "y": 580,
+    "wires": [
+      [
+        "f7354d218fcb9163"
+      ]
+    ]
+  },
+  {
+    "id": "f7354d218fcb9163",
+    "type": "mysql",
+    "z": "b59fbc26920ed8b2",
+    "mydb": "62492f1e3711e47e",
+    "name": "",
+    "x": 440,
+    "y": 580,
+    "wires": [
+      [
+        "04406f41870f594a",
+        "867ff7414675ce39",
+        "9bbea43be148f490",
+        "fd0123e825cf610f",
+        "20422a20f5e49a22",
+        "d0c790c3e9f939ef"
+      ]
+    ]
+  },
+  {
+    "id": "0ce30dba7bd9e947",
+    "type": "debug",
+    "z": "b59fbc26920ed8b2",
+    "name": "debug 11",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 780,
+    "y": 360,
+    "wires": []
+  },
+  {
+    "id": "fe880ed393f2a620",
+    "type": "function",
+    "z": "b59fbc26920ed8b2",
+    "name": "국번 1번 온도",
+    "func": "let db_date = msg.payload;\n\nlet adr = \"1\";  // 장치 번호\nlet device1_temp = db_date[0].temp1;  // 온도 데이터\n\nlet dateTime_v = updateDateTime();\n\nfunction updateDateTime() {\n    // 현재 날짜와 시간 가져오기\n    var now = new Date();\n\n    // 측정 시간을 10분 단위로 조정\n    var nowMin = now.getMinutes();\n    nowMin = nowMin - (nowMin % 10);\n    nowMin = (nowMin < 10 ? '0' : '') + nowMin;\n\n    // 시간 설정\n    var nowTime = now.getHours() + \":\" + nowMin;\n    var nowDateTime = now.getFullYear() + '-' + ((now.getMonth() + 1) < 10 ? '0' : '') + (now.getMonth() + 1) + '-' + (now.getDate() < 10 ? '0' : '') + now.getDate() + ' ' + nowTime;\n    var dateTime = [nowTime, nowDateTime];\n\n    return dateTime;\n}\n\n// 1초마다 updateDateTime ��수 호출\nsetInterval(updateDateTime, 1000);\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0038\",\n    \"kind\": 4,\n    \"deviceId\": adr,\n    \"mtime\": dateTime_v[0],\n    \"temperature\": device1_temp,\n    \"regdate\": dateTime_v[1],\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 420,
+    "y": 300,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "04406f41870f594a",
+    "type": "function",
+    "z": "b59fbc26920ed8b2",
+    "name": "국번 2번 온도",
+    "func": "let db_date = msg.payload;\n\nlet adr = \"2\";  // 장치 번호\nlet device2_temp = db_date[0].temp2;  // 온도 데이터\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0038\",\n    \"kind\": 4,\n    \"deviceId\": adr,\n    \"temperature\": device2_temp\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 620,
+    "y": 460,
+    "wires": [
+      [
+        "836c8133337b14f8",
+        "a2a85a2ebccc88e7"
+      ]
+    ]
+  },
+  {
+    "id": "867ff7414675ce39",
+    "type": "function",
+    "z": "b59fbc26920ed8b2",
+    "name": "국번 3번 온도",
+    "func": "let db_date = msg.payload;\n\nlet adr = \"3\";  // 장치 번호\nlet device3_temp = db_date[0].temp3;  // 온도 데이터\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0038\",\n    \"kind\": 4,\n    \"deviceId\": adr,\n    \"temperature\": device3_temp\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 620,
+    "y": 540,
+    "wires": [
+      [
+        "9384373f1ab8db05",
+        "94ec031721f5bd96"
+      ]
+    ]
+  },
+  {
+    "id": "9bbea43be148f490",
+    "type": "function",
+    "z": "b59fbc26920ed8b2",
+    "name": "국번 4번 온도",
+    "func": "let db_date = msg.payload;\n\nlet adr = \"4\";  // 장치 번호\nlet device4_temp = db_date[0].temp4;  // 온도 데이터\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0038\",\n    \"kind\": 4,\n    \"deviceId\": adr,\n    \"temperature\": device4_temp\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 620,
+    "y": 620,
+    "wires": [
+      [
+        "671f948002212e4e",
+        "694690dbe01a7d5e"
+      ]
+    ]
+  },
+  {
+    "id": "fd0123e825cf610f",
+    "type": "function",
+    "z": "b59fbc26920ed8b2",
+    "name": "국번 5번 온도",
+    "func": "let db_date = msg.payload;\n\nlet adr = \"5\";  // 장치 번호\nlet device5_temp = db_date[0].temp5;  // 온도 데이터\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0038\",\n    \"kind\": 4,\n    \"deviceId\": adr,\n    \"temperature\": device5_temp\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 620,
+    "y": 700,
+    "wires": [
+      [
+        "9989cd673d0cd8bb",
+        "9ad9ce1ca4cb612e"
+      ]
+    ]
+  },
+  {
+    "id": "20422a20f5e49a22",
+    "type": "function",
+    "z": "b59fbc26920ed8b2",
+    "name": "국번 6번 온도",
+    "func": "let db_date = msg.payload;\n\nlet adr = \"6\";  // 장치 번호\nlet device6_temp = db_date[0].temp6;  // 온도 데이터\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0038\",\n    \"kind\": 4,\n    \"deviceId\": adr,\n    \"temperature\": device6_temp\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 620,
+    "y": 780,
+    "wires": [
+      [
+        "faa9a3eb78154bd0",
+        "acbac648a5a5e33a"
+      ]
+    ]
+  },
+  {
+    "id": "836c8133337b14f8",
+    "type": "debug",
+    "z": "b59fbc26920ed8b2",
+    "name": "debug 12",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 780,
+    "y": 440,
+    "wires": []
+  },
+  {
+    "id": "9384373f1ab8db05",
+    "type": "debug",
+    "z": "b59fbc26920ed8b2",
+    "name": "debug 13",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 780,
+    "y": 520,
+    "wires": []
+  },
+  {
+    "id": "671f948002212e4e",
+    "type": "debug",
+    "z": "b59fbc26920ed8b2",
+    "name": "debug 14",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 780,
+    "y": 600,
+    "wires": []
+  },
+  {
+    "id": "9989cd673d0cd8bb",
+    "type": "debug",
+    "z": "b59fbc26920ed8b2",
+    "name": "debug 15",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 780,
+    "y": 680,
+    "wires": []
+  },
+  {
+    "id": "faa9a3eb78154bd0",
+    "type": "debug",
+    "z": "b59fbc26920ed8b2",
+    "name": "debug 16",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 780,
+    "y": 760,
+    "wires": []
+  },
+  {
+    "id": "b3470607a4391ce1",
+    "type": "http request",
+    "z": "b59fbc26920ed8b2",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0038/get_temperature",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 790,
+    "y": 400,
+    "wires": [
+      [
+        "60f68ed627a09c37"
+      ]
+    ]
+  },
+  {
+    "id": "a2a85a2ebccc88e7",
+    "type": "http request",
+    "z": "b59fbc26920ed8b2",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0038/get_temperature",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 790,
+    "y": 480,
+    "wires": [
+      [
+        "2974f93cf10bc917"
+      ]
+    ]
+  },
+  {
+    "id": "94ec031721f5bd96",
+    "type": "http request",
+    "z": "b59fbc26920ed8b2",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0038/get_temperature",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 790,
+    "y": 560,
+    "wires": [
+      [
+        "2e264def5c0ccfb8"
+      ]
+    ]
+  },
+  {
+    "id": "694690dbe01a7d5e",
+    "type": "http request",
+    "z": "b59fbc26920ed8b2",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0038/get_temperature",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 790,
+    "y": 640,
+    "wires": [
+      [
+        "d948d2a60f2ab7d5"
+      ]
+    ]
+  },
+  {
+    "id": "9ad9ce1ca4cb612e",
+    "type": "http request",
+    "z": "b59fbc26920ed8b2",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0038/get_temperature",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 793.6666259765625,
+    "y": 718.3333129882812,
+    "wires": [
+      [
+        "773ba2d6c6d6e54e"
+      ]
+    ]
+  },
+  {
+    "id": "acbac648a5a5e33a",
+    "type": "http request",
+    "z": "b59fbc26920ed8b2",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0038/get_temperature",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 790,
+    "y": 800,
+    "wires": [
+      [
+        "9ba67772dc38e9c3"
+      ]
+    ]
+  },
+  {
+    "id": "60f68ed627a09c37",
+    "type": "debug",
+    "z": "b59fbc26920ed8b2",
+    "name": "debug 18",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 940,
+    "y": 400,
+    "wires": []
+  },
+  {
+    "id": "2974f93cf10bc917",
+    "type": "debug",
+    "z": "b59fbc26920ed8b2",
+    "name": "debug 19",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 940,
+    "y": 480,
+    "wires": []
+  },
+  {
+    "id": "2e264def5c0ccfb8",
+    "type": "debug",
+    "z": "b59fbc26920ed8b2",
+    "name": "debug 20",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 940,
+    "y": 560,
+    "wires": []
+  },
+  {
+    "id": "d948d2a60f2ab7d5",
+    "type": "debug",
+    "z": "b59fbc26920ed8b2",
+    "name": "debug 21",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 940,
+    "y": 640,
+    "wires": []
+  },
+  {
+    "id": "773ba2d6c6d6e54e",
+    "type": "debug",
+    "z": "b59fbc26920ed8b2",
+    "name": "debug 22",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 940,
+    "y": 720,
+    "wires": []
+  },
+  {
+    "id": "9ba67772dc38e9c3",
+    "type": "debug",
+    "z": "b59fbc26920ed8b2",
+    "name": "debug 23",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 940,
+    "y": 800,
+    "wires": []
+  },
+  {
+    "id": "d0c790c3e9f939ef",
+    "type": "function",
+    "z": "b59fbc26920ed8b2",
+    "name": "국번 1번 온도",
+    "func": "let db_date = msg.payload;\n\nlet adr = \"1\";  // 장치 번호\nlet device1_temp = db_date[0].temp1;  // 온도 데이터\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0038\",\n    \"kind\": 4,\n    \"deviceId\": adr,\n    \"temperature\": device1_temp\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 620,
+    "y": 380,
+    "wires": [
+      [
+        "0ce30dba7bd9e947",
+        "b3470607a4391ce1"
+      ]
+    ]
+  },
+  {
+    "id": "91fd19a7b8377b5b",
+    "type": "function",
+    "z": "b59fbc26920ed8b2",
+    "name": "국번 2번 온도",
+    "func": "let db_date = msg.payload;\n\nlet adr = \"2\";  // 장치 번호\nlet device2_temp = db_date[0].temp2;  // 온도 데이터\n\nlet dateTime_v = updateDateTime();\n\nfunction updateDateTime() {\n    // 현재 날짜와 시간 가져오기\n    var now = new Date();\n\n    // 측정 시간을 10분 단위로 조정\n    var nowMin = now.getMinutes();\n    nowMin = nowMin - (nowMin % 10);\n    nowMin = (nowMin < 10 ? '0' : '') + nowMin;\n\n    // 시간 설정\n    var nowTime = now.getHours() + \":\" + nowMin;\n    var nowDateTime = now.getFullYear() + '-' + ((now.getMonth() + 1) < 10 ? '0' : '') + (now.getMonth() + 1) + '-' + (now.getDate() < 10 ? '0' : '') + now.getDate() + ' ' + nowTime;\n    var dateTime = [nowTime, nowDateTime];\n\n    return dateTime;\n}\n\n// 1초마다 updateDateTime 함수 호출\nsetInterval(updateDateTime, 1000);\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0038\",\n    \"kind\": 4,\n    \"deviceId\": adr,\n    \"mtime\": dateTime_v[0],\n    \"temperature\": device2_temp,\n    \"regdate\": dateTime_v[1],\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 420,
+    "y": 340,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "59121a2c525ece6a",
+    "type": "function",
+    "z": "b59fbc26920ed8b2",
+    "name": "국번 3번 온도",
+    "func": "let db_date = msg.payload;\n\nlet adr = \"3\";  // 장치 번호\nlet device3_temp = db_date[0].temp3;  // 온도 데이터\n\nlet dateTime_v = updateDateTime();\n\nfunction updateDateTime() {\n    // 현재 날짜와 시간 가져오기\n    var now = new Date();\n\n    // 측정 시간을 10분 단위로 조정\n    var nowMin = now.getMinutes();\n    nowMin = nowMin - (nowMin % 10);\n    nowMin = (nowMin < 10 ? '0' : '') + nowMin;\n\n    // 시간 설정\n    var nowTime = now.getHours() + \":\" + nowMin;\n    var nowDateTime = now.getFullYear() + '-' + ((now.getMonth() + 1) < 10 ? '0' : '') + (now.getMonth() + 1) + '-' + (now.getDate() < 10 ? '0' : '') + now.getDate() + ' ' + nowTime;\n    var dateTime = [nowTime, nowDateTime];\n\n    return dateTime;\n}\n\n// 1초마다 updateDateTime 함수 호출\nsetInterval(updateDateTime, 1000);\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0038\",\n    \"kind\": 4,\n    \"deviceId\": adr,\n    \"mtime\": dateTime_v[0],\n    \"temperature\": device3_temp,\n    \"regdate\": dateTime_v[1],\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 420,
+    "y": 380,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "54b06ffc79a48019",
+    "type": "function",
+    "z": "b59fbc26920ed8b2",
+    "name": "국번 4번 온도",
+    "func": "let db_date = msg.payload;\n\nlet adr = \"4\";  // 장치 번호\nlet device4_temp = db_date[0].temp4;  // 온도 데이터\n\nlet dateTime_v = updateDateTime();\n\nfunction updateDateTime() {\n    // 현재 날짜와 시간 가져오기\n    var now = new Date();\n\n    // 측정 시간을 10분 단위로 조정\n    var nowMin = now.getMinutes();\n    nowMin = nowMin - (nowMin % 10);\n    nowMin = (nowMin < 10 ? '0' : '') + nowMin;\n\n    // 시간 설정\n    var nowTime = now.getHours() + \":\" + nowMin;\n    var nowDateTime = now.getFullYear() + '-' + ((now.getMonth() + 1) < 10 ? '0' : '') + (now.getMonth() + 1) + '-' + (now.getDate() < 10 ? '0' : '') + now.getDate() + ' ' + nowTime;\n    var dateTime = [nowTime, nowDateTime];\n\n    return dateTime;\n}\n\n// 1초마다 updateDateTime 함수 호출\nsetInterval(updateDateTime, 1000);\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0038\",\n    \"kind\": 4,\n    \"deviceId\": adr,\n    \"mtime\": dateTime_v[0],\n    \"temperature\": device4_temp,\n    \"regdate\": dateTime_v[1],\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 420,
+    "y": 420,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "b4379d218fcf4678",
+    "type": "function",
+    "z": "b59fbc26920ed8b2",
+    "name": "국번 5번 온도",
+    "func": "let db_date = msg.payload;\n\nlet adr = \"5\";  // 장치 번호\nlet device5_temp = db_date[0].temp5;  // 온도 데이터\n\nlet dateTime_v = updateDateTime();\n\nfunction updateDateTime() {\n    // 현재 날짜와 시간 가져오기\n    var now = new Date();\n\n    // 측정 시간을 10분 단위로 조정\n    var nowMin = now.getMinutes();\n    nowMin = nowMin - (nowMin % 10);\n    nowMin = (nowMin < 10 ? '0' : '') + nowMin;\n\n    // 시간 설정\n    var nowTime = now.getHours() + \":\" + nowMin;\n    var nowDateTime = now.getFullYear() + '-' + ((now.getMonth() + 1) < 10 ? '0' : '') + (now.getMonth() + 1) + '-' + (now.getDate() < 10 ? '0' : '') + now.getDate() + ' ' + nowTime;\n    var dateTime = [nowTime, nowDateTime];\n\n    return dateTime;\n}\n\n// 1초마다 updateDateTime 함수 호출\nsetInterval(updateDateTime, 1000);\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0038\",\n    \"kind\": 4,\n    \"deviceId\": adr,\n    \"mtime\": dateTime_v[0],\n    \"temperature\": device5_temp,\n    \"regdate\": dateTime_v[1],\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 420,
+    "y": 460,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "f8d35d2cec6d97ce",
+    "type": "function",
+    "z": "b59fbc26920ed8b2",
+    "name": "국번 6번 온도",
+    "func": "let db_date = msg.payload;\n\nlet adr = \"6\";  // 장치 번호\nlet device6_temp = db_date[0].temp6;  // 온도 데이터\n\nlet dateTime_v = updateDateTime();\n\nfunction updateDateTime() {\n    // 현재 날짜와 시간 가져오기\n    var now = new Date();\n\n    // 측정 시간을 10분 단위로 조정\n    var nowMin = now.getMinutes();\n    nowMin = nowMin - (nowMin % 10);\n    nowMin = (nowMin < 10 ? '0' : '') + nowMin;\n\n    // 시간 설정\n    var nowTime = now.getHours() + \":\" + nowMin;\n    var nowDateTime = now.getFullYear() + '-' + ((now.getMonth() + 1) < 10 ? '0' : '') + (now.getMonth() + 1) + '-' + (now.getDate() < 10 ? '0' : '') + now.getDate() + ' ' + nowTime;\n    var dateTime = [nowTime, nowDateTime];\n\n    return dateTime;\n}\n\n// 1초마다 updateDateTime 함수 호출\nsetInterval(updateDateTime, 1000);\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0038\",\n    \"kind\": 4,\n    \"deviceId\": adr,\n    \"mtime\": dateTime_v[0],\n    \"temperature\": device6_temp,\n    \"regdate\": dateTime_v[1],\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 420,
+    "y": 500,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "923bd216520dd126",
+    "type": "inject",
+    "z": "3eba0121c064a50f",
+    "name": "7day",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "00 01 * * 0",
+    "once": false,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 110,
+    "y": 100,
+    "wires": [
+      [
+        "a489854b31c3d245"
+      ]
+    ]
+  },
+  {
+    "id": "a489854b31c3d245",
+    "type": "function",
+    "z": "3eba0121c064a50f",
+    "name": "nodered_temperature_truncate",
+    "func": "msg.topic = \"truncate table fz_shm.tempadr\";\n\nreturn msg;\n\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 330,
+    "y": 100,
+    "wires": [
+      [
+        "45b7f25ce66ac9d8"
+      ]
+    ]
+  },
+  {
+    "id": "45b7f25ce66ac9d8",
+    "type": "mysql",
+    "z": "3eba0121c064a50f",
+    "mydb": "62492f1e3711e47e",
+    "name": "",
+    "x": 560,
+    "y": 100,
+    "wires": [
+      [
+        "03295c2667649246"
+      ]
+    ]
+  },
+  {
+    "id": "15da8fadea679494",
+    "type": "comment",
+    "z": "3eba0121c064a50f",
+    "name": "Delete DB",
+    "info": "",
+    "x": 100,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "03295c2667649246",
+    "type": "debug",
+    "z": "3eba0121c064a50f",
+    "name": "debug 17",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 720,
+    "y": 100,
+    "wires": []
+  }
+]
