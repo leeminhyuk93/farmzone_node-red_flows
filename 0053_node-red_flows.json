@@ -1,0 +1,7017 @@
+[
+  {
+    "id": "4341e86ae8c8b101",
+    "type": "tab",
+    "label": "플로우 1",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "f3f03053355eebdf",
+    "type": "tab",
+    "label": "Modbus Read",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "e304b3f3c01ea83d",
+    "type": "tab",
+    "label": "나우금속검출기",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "f6262b236a582495",
+    "type": "tab",
+    "label": "RS232 to WIFI Protocol",
+    "disabled": true,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "7abce49813f3d72f",
+    "type": "tab",
+    "label": "DataBase",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "178ae6b97d25ae48",
+    "type": "tab",
+    "label": "Database_Table",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "260335fa2bb4c2e5",
+    "type": "tab",
+    "label": "플로우 2",
+    "disabled": true,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "e106d1f1c37712be",
+    "type": "tab",
+    "label": "MAIN DashBord",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "3737abcb0c7a7b25",
+    "type": "ui_base",
+    "theme": {
+      "name": "theme-dark",
+      "lightTheme": {
+        "default": "#0094CE",
+        "baseColor": "#0094CE",
+        "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+        "edited": true,
+        "reset": false
+      },
+      "darkTheme": {
+        "default": "#097479",
+        "baseColor": "#2640ab",
+        "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+        "edited": true,
+        "reset": false
+      },
+      "customTheme": {
+        "name": "Untitled Theme 1",
+        "default": "#4B7930",
+        "baseColor": "#4B7930",
+        "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+      },
+      "themeState": {
+        "base-color": {
+          "default": "#097479",
+          "value": "#2640ab",
+          "edited": true
+        },
+        "page-titlebar-backgroundColor": {
+          "value": "#2640ab",
+          "edited": false
+        },
+        "page-backgroundColor": {
+          "value": "#111111",
+          "edited": false
+        },
+        "page-sidebar-backgroundColor": {
+          "value": "#333333",
+          "edited": false
+        },
+        "group-textColor": {
+          "value": "#4763d6",
+          "edited": false
+        },
+        "group-borderColor": {
+          "value": "#555555",
+          "edited": false
+        },
+        "group-backgroundColor": {
+          "value": "#333333",
+          "edited": false
+        },
+        "widget-textColor": {
+          "value": "#eeeeee",
+          "edited": false
+        },
+        "widget-backgroundColor": {
+          "value": "#2640ab",
+          "edited": false
+        },
+        "widget-borderColor": {
+          "value": "#333333",
+          "edited": false
+        },
+        "base-font": {
+          "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+        }
+      },
+      "angularTheme": {
+        "primary": "indigo",
+        "accents": "blue",
+        "warn": "red",
+        "background": "grey",
+        "palette": "light"
+      }
+    },
+    "site": {
+      "name": "Node-RED Dashboard",
+      "hideToolbar": "false",
+      "allowSwipe": "false",
+      "lockMenu": "false",
+      "allowTempTheme": "true",
+      "dateFormat": "DD/MM/YYYY",
+      "sizes": {
+        "sx": 48,
+        "sy": 48,
+        "gx": 6,
+        "gy": 6,
+        "cx": 6,
+        "cy": 6,
+        "px": 0,
+        "py": 0
+      }
+    }
+  },
+  {
+    "id": "8b88fe9a19eda841",
+    "type": "MySQLdatabase",
+    "name": "",
+    "host": "127.0.0.1",
+    "port": "3306",
+    "db": "fz_shm",
+    "tz": "",
+    "charset": "UTF8"
+  },
+  {
+    "id": "f32ea2b.548ff6",
+    "type": "Stackhero-MySQL-Server",
+    "name": "",
+    "host": "127.0.0.1",
+    "port": "3306",
+    "tls": false,
+    "database": "fz_shm"
+  },
+  {
+    "id": "1b6d45ce65e28311",
+    "type": "modbus-client",
+    "name": "PLC",
+    "clienttype": "tcp",
+    "bufferCommands": true,
+    "stateLogEnabled": true,
+    "queueLogEnabled": false,
+    "failureLogEnabled": true,
+    "tcpHost": "192.168.1.250",
+    "tcpPort": "502",
+    "tcpType": "DEFAULT",
+    "serialPort": "/dev/ttyUSB",
+    "serialType": "RTU-BUFFERD",
+    "serialBaudrate": "9600",
+    "serialDatabits": "8",
+    "serialStopbits": "1",
+    "serialParity": "none",
+    "serialConnectionDelay": "100",
+    "serialAsciiResponseStartDelimiter": "0x3A",
+    "unit_id": 1,
+    "commandDelay": 10,
+    "clientTimeout": 5000,
+    "reconnectOnTimeout": true,
+    "reconnectTimeout": 1000,
+    "parallelUnitIdsAllowed": true
+  },
+  {
+    "id": "f450a594a7c1ebad",
+    "type": "modbus-client",
+    "name": "Flex Write",
+    "clienttype": "tcp",
+    "bufferCommands": false,
+    "stateLogEnabled": true,
+    "queueLogEnabled": false,
+    "failureLogEnabled": false,
+    "tcpHost": "192.168.1.250",
+    "tcpPort": "502",
+    "tcpType": "DEFAULT",
+    "serialPort": "USB\\ROOT_HUB30\\4&2a1bd118&0&0",
+    "serialType": "RTU-BUFFERD",
+    "serialBaudrate": "9600",
+    "serialDatabits": "8",
+    "serialStopbits": "1",
+    "serialParity": "none",
+    "serialConnectionDelay": "100",
+    "serialAsciiResponseStartDelimiter": "",
+    "unit_id": 1,
+    "commandDelay": 0,
+    "clientTimeout": 1000,
+    "reconnectOnTimeout": true,
+    "reconnectTimeout": 500,
+    "parallelUnitIdsAllowed": true
+  },
+  {
+    "id": "c27e7d69ad3d09e8",
+    "type": "ui_tab",
+    "name": "(주)팜존에스엔씨 Main DashBord",
+    "icon": "network_check",
+    "order": 1,
+    "disabled": false,
+    "hidden": false
+  },
+  {
+    "id": "aa2c2977724dc955",
+    "type": "MySQLdatabase",
+    "name": "",
+    "host": "127.0.0.1",
+    "port": "3306",
+    "db": "fz_shm",
+    "tz": "",
+    "charset": ""
+  },
+  {
+    "id": "703d9f7865582c7a",
+    "type": "ui_group",
+    "name": "PLC 동작 상황 DB REPORT",
+    "tab": "16596b65429be009",
+    "order": 2,
+    "disp": true,
+    "width": "24",
+    "collapse": false,
+    "className": ""
+  },
+  {
+    "id": "bd30d6509247d4e4",
+    "type": "ui_tab",
+    "name": "MySQL Table2",
+    "icon": "dashboard",
+    "order": 4,
+    "disabled": false,
+    "hidden": false
+  },
+  {
+    "id": "16596b65429be009",
+    "type": "ui_tab",
+    "name": "MySQL Table1",
+    "icon": "dashboard",
+    "order": 3,
+    "disabled": false,
+    "hidden": false
+  },
+  {
+    "id": "6ee4fa36a88174b1",
+    "type": "ui_group",
+    "name": "장치 동작 상황 DB REPORT",
+    "tab": "bd30d6509247d4e4",
+    "order": 1,
+    "disp": true,
+    "width": "24",
+    "collapse": false,
+    "className": ""
+  },
+  {
+    "id": "3f0fcb5648887ceb",
+    "type": "ui_tab",
+    "name": "MySQL Table",
+    "icon": "dashboard",
+    "order": 2,
+    "disabled": false,
+    "hidden": false
+  },
+  {
+    "id": "81f690b4715c4022",
+    "type": "ui_group",
+    "name": "센서 동작 상황 DB REPORT",
+    "tab": "3f0fcb5648887ceb",
+    "order": 1,
+    "disp": true,
+    "width": 24,
+    "collapse": false,
+    "className": ""
+  },
+  {
+    "id": "98adfafad732e21d",
+    "type": "ui_group",
+    "name": "INFORMATION",
+    "tab": "c27e7d69ad3d09e8",
+    "order": 1,
+    "disp": true,
+    "width": "8",
+    "collapse": false,
+    "className": ""
+  },
+  {
+    "id": "6429816bbf8dd472",
+    "type": "ui_group",
+    "name": "유량계/압력계",
+    "tab": "c27e7d69ad3d09e8",
+    "order": 2,
+    "disp": true,
+    "width": "8",
+    "collapse": false,
+    "className": ""
+  },
+  {
+    "id": "dffd2b569dffa97d",
+    "type": "ui_group",
+    "name": "온도계",
+    "tab": "c27e7d69ad3d09e8",
+    "order": 3,
+    "disp": true,
+    "width": "8",
+    "collapse": false,
+    "className": ""
+  },
+  {
+    "id": "12c8b43d13ea237c",
+    "type": "ui_group",
+    "name": "온도그래프",
+    "tab": "c27e7d69ad3d09e8",
+    "order": 4,
+    "disp": true,
+    "width": "8",
+    "collapse": false,
+    "className": ""
+  },
+  {
+    "id": "ee7ef0af7b91dbe4",
+    "type": "ui_group",
+    "name": "GIMAC1000 냉동기",
+    "tab": "c27e7d69ad3d09e8",
+    "order": 5,
+    "disp": true,
+    "width": "8",
+    "collapse": false,
+    "className": ""
+  },
+  {
+    "id": "c343f934b668208d",
+    "type": "ui_group",
+    "name": "GIMAC1000 저온창고",
+    "tab": "c27e7d69ad3d09e8",
+    "order": 6,
+    "disp": true,
+    "width": "8",
+    "collapse": false,
+    "className": ""
+  },
+  {
+    "id": "51900ea7f3bb41c3",
+    "type": "ui_tab",
+    "name": "Project Diagram",
+    "icon": "dashboard",
+    "order": 3,
+    "disabled": false,
+    "hidden": false
+  },
+  {
+    "id": "b595eb0f0499a55c",
+    "type": "ui_tab",
+    "name": "MySQL Table3",
+    "icon": "dashboard",
+    "order": 6,
+    "disabled": false,
+    "hidden": false
+  },
+  {
+    "id": "d97475d051f5686e",
+    "type": "ui_group",
+    "name": "전력량계 DB REPORT",
+    "tab": "b595eb0f0499a55c",
+    "order": 1,
+    "disp": true,
+    "width": "24",
+    "collapse": false,
+    "className": ""
+  },
+  {
+    "id": "cf2b304b8f2778a9",
+    "type": "ui_spacer",
+    "z": "e106d1f1c37712be",
+    "name": "spacer",
+    "group": "81f690b4715c4022",
+    "order": 4,
+    "width": 14,
+    "height": 1
+  },
+  {
+    "id": "4c7cb1cd2aa85da2",
+    "type": "ui_spacer",
+    "z": "e106d1f1c37712be",
+    "name": "spacer",
+    "group": "98adfafad732e21d",
+    "order": 10,
+    "width": 8,
+    "height": 1
+  },
+  {
+    "id": "4e232d7bdde7ebb7",
+    "type": "ui_spacer",
+    "z": "e106d1f1c37712be",
+    "name": "spacer",
+    "group": "6429816bbf8dd472",
+    "order": 1,
+    "width": 8,
+    "height": 1
+  },
+  {
+    "id": "308a6c31dc7c7f3a",
+    "type": "ui_spacer",
+    "z": "e106d1f1c37712be",
+    "name": "spacer",
+    "group": "6429816bbf8dd472",
+    "order": 4,
+    "width": 8,
+    "height": 1
+  },
+  {
+    "id": "e0e5de991a20abf8",
+    "type": "ui_spacer",
+    "z": "e106d1f1c37712be",
+    "name": "spacer",
+    "group": "6429816bbf8dd472",
+    "order": 5,
+    "width": 8,
+    "height": 1
+  },
+  {
+    "id": "87a60143f0fa5898",
+    "type": "ui_spacer",
+    "z": "e106d1f1c37712be",
+    "name": "spacer",
+    "group": "dffd2b569dffa97d",
+    "order": 1,
+    "width": 8,
+    "height": 1
+  },
+  {
+    "id": "325292bbd1570a4a",
+    "type": "ui_spacer",
+    "z": "e106d1f1c37712be",
+    "name": "spacer",
+    "group": "dffd2b569dffa97d",
+    "order": 4,
+    "width": 8,
+    "height": 1
+  },
+  {
+    "id": "612ab61f5ab55ca6",
+    "type": "ui_spacer",
+    "z": "e106d1f1c37712be",
+    "name": "spacer",
+    "group": "dffd2b569dffa97d",
+    "order": 5,
+    "width": 8,
+    "height": 1
+  },
+  {
+    "id": "22a51579d1226228",
+    "type": "ui_spacer",
+    "z": "e106d1f1c37712be",
+    "name": "spacer",
+    "group": "12c8b43d13ea237c",
+    "order": 2,
+    "width": 8,
+    "height": 1
+  },
+  {
+    "id": "4fef095312075b2f",
+    "type": "ui_spacer",
+    "z": "e106d1f1c37712be",
+    "name": "spacer",
+    "group": "12c8b43d13ea237c",
+    "order": 3,
+    "width": 8,
+    "height": 1
+  },
+  {
+    "id": "f74e0d182803996d",
+    "type": "ui_spacer",
+    "z": "e106d1f1c37712be",
+    "name": "spacer",
+    "group": "12c8b43d13ea237c",
+    "order": 4,
+    "width": 8,
+    "height": 1
+  },
+  {
+    "id": "1a5dc05d62d70949",
+    "type": "ui_spacer",
+    "z": "e106d1f1c37712be",
+    "name": "spacer",
+    "group": "ee7ef0af7b91dbe4",
+    "order": 5,
+    "width": 8,
+    "height": 1
+  },
+  {
+    "id": "714d47eb147d2009",
+    "type": "ui_spacer",
+    "z": "e106d1f1c37712be",
+    "name": "spacer",
+    "group": "ee7ef0af7b91dbe4",
+    "order": 7,
+    "width": 4,
+    "height": 1
+  },
+  {
+    "id": "1fc4de6b7102156f",
+    "type": "ui_spacer",
+    "z": "e106d1f1c37712be",
+    "name": "spacer",
+    "group": "ee7ef0af7b91dbe4",
+    "order": 8,
+    "width": 4,
+    "height": 1
+  },
+  {
+    "id": "c1414f165a2a62d2",
+    "type": "ui_spacer",
+    "z": "e106d1f1c37712be",
+    "name": "spacer",
+    "group": "ee7ef0af7b91dbe4",
+    "order": 9,
+    "width": 4,
+    "height": 1
+  },
+  {
+    "id": "fd84051f2e3355d1",
+    "type": "ui_spacer",
+    "z": "e106d1f1c37712be",
+    "name": "spacer",
+    "group": "ee7ef0af7b91dbe4",
+    "order": 10,
+    "width": 4,
+    "height": 1
+  },
+  {
+    "id": "c600e3a5289afaf6",
+    "type": "ui_spacer",
+    "z": "e106d1f1c37712be",
+    "name": "spacer",
+    "group": "ee7ef0af7b91dbe4",
+    "order": 11,
+    "width": 4,
+    "height": 1
+  },
+  {
+    "id": "53b5932a805c10c5",
+    "type": "ui_spacer",
+    "z": "e106d1f1c37712be",
+    "name": "spacer",
+    "group": "ee7ef0af7b91dbe4",
+    "order": 13,
+    "width": 4,
+    "height": 1
+  },
+  {
+    "id": "996801b37226adf2",
+    "type": "ui_spacer",
+    "z": "e106d1f1c37712be",
+    "name": "spacer",
+    "group": "c343f934b668208d",
+    "order": 5,
+    "width": 8,
+    "height": 1
+  },
+  {
+    "id": "5767210d67578f8f",
+    "type": "ui_spacer",
+    "z": "e106d1f1c37712be",
+    "name": "spacer",
+    "group": "c343f934b668208d",
+    "order": 7,
+    "width": 4,
+    "height": 1
+  },
+  {
+    "id": "6cf15accb975e933",
+    "type": "ui_spacer",
+    "z": "e106d1f1c37712be",
+    "name": "spacer",
+    "group": "c343f934b668208d",
+    "order": 8,
+    "width": 4,
+    "height": 1
+  },
+  {
+    "id": "53d7fcf3576ffca0",
+    "type": "ui_spacer",
+    "z": "e106d1f1c37712be",
+    "name": "spacer",
+    "group": "c343f934b668208d",
+    "order": 9,
+    "width": 4,
+    "height": 1
+  },
+  {
+    "id": "0e45f05802487eb1",
+    "type": "ui_spacer",
+    "z": "e106d1f1c37712be",
+    "name": "spacer",
+    "group": "c343f934b668208d",
+    "order": 10,
+    "width": 4,
+    "height": 1
+  },
+  {
+    "id": "daa001a4da322214",
+    "type": "ui_spacer",
+    "z": "e106d1f1c37712be",
+    "name": "spacer",
+    "group": "c343f934b668208d",
+    "order": 11,
+    "width": 4,
+    "height": 1
+  },
+  {
+    "id": "45414a2be3106989",
+    "type": "ui_spacer",
+    "z": "e106d1f1c37712be",
+    "name": "spacer",
+    "group": "c343f934b668208d",
+    "order": 13,
+    "width": 4,
+    "height": 1
+  },
+  {
+    "id": "68ccc90bdeccf2db",
+    "type": "buffer-parser",
+    "z": "4341e86ae8c8b101",
+    "name": "Modbus Holding Register Funtion1",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "int16be",
+        "name": "Unit3Pressure1",
+        "offset": 20,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 520,
+    "y": 300,
+    "wires": [
+      [
+        "edb20678acb8d2ed",
+        "340fd9bb9485851d"
+      ]
+    ]
+  },
+  {
+    "id": "9431b47b06c3c8e6",
+    "type": "inject",
+    "z": "4341e86ae8c8b101",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "2",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 150,
+    "y": 300,
+    "wires": [
+      [
+        "b548fffe2800aac2",
+        "2328f8fa65205649"
+      ]
+    ]
+  },
+  {
+    "id": "b6b0fb1c34314371",
+    "type": "buffer-parser",
+    "z": "4341e86ae8c8b101",
+    "name": "Modbus Holding Register Funtion2",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "int16be",
+        "name": "Unit3Power",
+        "offset": 8,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 520,
+    "y": 360,
+    "wires": [
+      [
+        "c7dc4d62ec013668"
+      ]
+    ]
+  },
+  {
+    "id": "b548fffe2800aac2",
+    "type": "modbus-getter",
+    "z": "4341e86ae8c8b101",
+    "name": "Press",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "logIOActivities": false,
+    "unitid": "1",
+    "dataType": "InputRegister",
+    "adr": "0",
+    "quantity": "100",
+    "server": "1b6d45ce65e28311",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "x": 290,
+    "y": 300,
+    "wires": [
+      [
+        "68ccc90bdeccf2db"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "2328f8fa65205649",
+    "type": "modbus-getter",
+    "z": "4341e86ae8c8b101",
+    "name": "Power",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "logIOActivities": false,
+    "unitid": "1",
+    "dataType": "InputRegister",
+    "adr": "20",
+    "quantity": "20",
+    "server": "f450a594a7c1ebad",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "x": 290,
+    "y": 360,
+    "wires": [
+      [
+        "b6b0fb1c34314371"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "5abc31975d85f7d9",
+    "type": "debug",
+    "z": "4341e86ae8c8b101",
+    "name": "debug 35",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 860,
+    "y": 560,
+    "wires": []
+  },
+  {
+    "id": "a7915073a747b02d",
+    "type": "join",
+    "z": "4341e86ae8c8b101",
+    "name": "",
+    "mode": "custom",
+    "build": "array",
+    "property": "payload",
+    "propertyType": "msg",
+    "key": "payload",
+    "joiner": "\\n",
+    "joinerType": "str",
+    "accumulate": false,
+    "timeout": "",
+    "count": "2",
+    "reduceRight": false,
+    "reduceExp": "",
+    "reduceInit": "",
+    "reduceInitType": "",
+    "reduceFixup": "",
+    "x": 1010,
+    "y": 320,
+    "wires": [
+      [
+        "4d8dd56e50abd921",
+        "2efa09b54d63b757"
+      ]
+    ]
+  },
+  {
+    "id": "edb20678acb8d2ed",
+    "type": "function",
+    "z": "4341e86ae8c8b101",
+    "name": "function 1",
+    "func": "// (msg && msg.payload[0] && msg.payload[0] != \"\") ? global.set('pre_press', msg.payload[0]) : \"\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 760,
+    "y": 300,
+    "wires": [
+      [
+        "a7915073a747b02d"
+      ]
+    ]
+  },
+  {
+    "id": "c7dc4d62ec013668",
+    "type": "function",
+    "z": "4341e86ae8c8b101",
+    "name": "function 2",
+    "func": "\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 760,
+    "y": 360,
+    "wires": [
+      [
+        "a7915073a747b02d"
+      ]
+    ]
+  },
+  {
+    "id": "59a9bf45ba5a6b3e",
+    "type": "http request",
+    "z": "4341e86ae8c8b101",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://localhost/smh-api/c0053/get_bottle_sync",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 690,
+    "y": 560,
+    "wires": [
+      [
+        "5abc31975d85f7d9"
+      ]
+    ]
+  },
+  {
+    "id": "4d8dd56e50abd921",
+    "type": "debug",
+    "z": "4341e86ae8c8b101",
+    "name": "debug 37",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 920,
+    "y": 460,
+    "wires": []
+  },
+  {
+    "id": "2efa09b54d63b757",
+    "type": "function",
+    "z": "4341e86ae8c8b101",
+    "name": "function 4",
+    "func": "var pre_press = global.get(\"pre_press\")\nvar press = parseFloat(msg.payload[1][0])\nvar power = msg.payload[0][0]\nvar ccode = '0053'\nvar scode = '72'\nvar count = 0\n\nvar now = new Date();\nvar nowDateTime = now.toISOString().replace(/T/, ' ').replace(/\\..+/, '');\nvar pre_datetime = global.get(\"pre_datetime\");\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\nif(pre_datetime != nowDateTime) {\n\n    if ((parseFloat(pre_press) * 1000) >= (((press) * 1000) + 300)) {\n        count = 1\n\n        msg.payload = {\n            \"ccode\": ccode,\n            \"scode\": scode,\n            \"power\": power,\n            \"press\": press,\n            \"count\": count\n        };\n\n        console.log(msg.payload);\n\n    } else {\n        msg.payload = {};\n    }\n\n} else {\n    msg.payload = {};\n}\n\nglobal.set('pre_datetime', nowDateTime);\nglobal.set('pre_press', press);\n\nreturn msg;\n\n\n\n\n\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 460,
+    "y": 540,
+    "wires": [
+      [
+        "55b9edf733a89766",
+        "59a9bf45ba5a6b3e"
+      ]
+    ]
+  },
+  {
+    "id": "55b9edf733a89766",
+    "type": "debug",
+    "z": "4341e86ae8c8b101",
+    "name": "debug 38",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 560,
+    "y": 680,
+    "wires": []
+  },
+  {
+    "id": "340fd9bb9485851d",
+    "type": "debug",
+    "z": "4341e86ae8c8b101",
+    "name": "debug 39",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 740,
+    "y": 220,
+    "wires": []
+  },
+  {
+    "id": "91427c0c021ab4cb",
+    "type": "ui_gauge",
+    "z": "f3f03053355eebdf",
+    "name": "",
+    "group": "dffd2b569dffa97d",
+    "order": 2,
+    "width": 4,
+    "height": 5,
+    "gtype": "gage",
+    "title": "살균기온도",
+    "label": "℃",
+    "format": "{{value}}",
+    "min": "-100",
+    "max": "150",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "0",
+    "seg2": "100",
+    "className": "",
+    "x": 1490,
+    "y": 260,
+    "wires": []
+  },
+  {
+    "id": "e7639c3b6e980e61",
+    "type": "ui_chart",
+    "z": "f3f03053355eebdf",
+    "name": "Unit1Temp/Unit2Temp",
+    "group": "12c8b43d13ea237c",
+    "order": 1,
+    "width": 8,
+    "height": 5,
+    "label": "살균기/후살균기온도",
+    "chartType": "line",
+    "legend": "true",
+    "xformat": "HH:mm:ss",
+    "interpolate": "linear",
+    "nodata": "",
+    "dot": false,
+    "ymin": "-100",
+    "ymax": "150",
+    "removeOlder": 1,
+    "removeOlderPoints": "",
+    "removeOlderUnit": "3600",
+    "cutout": 0,
+    "useOneColor": false,
+    "useUTC": false,
+    "colors": [
+      "#1f77b4",
+      "#aec7e8",
+      "#ff7f0e",
+      "#2ca02c",
+      "#98df8a",
+      "#d62728",
+      "#ff9896",
+      "#9467bd",
+      "#c5b0d5"
+    ],
+    "outputs": 1,
+    "useDifferentColor": false,
+    "className": "",
+    "x": 1820,
+    "y": 300,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "982b5e477bc5a49a",
+    "type": "ui_gauge",
+    "z": "f3f03053355eebdf",
+    "name": "키엔스유량계",
+    "group": "6429816bbf8dd472",
+    "order": 2,
+    "width": 4,
+    "height": 5,
+    "gtype": "compass",
+    "title": "키엔스유량계",
+    "label": "",
+    "format": "{{value}} L/min",
+    "min": 0,
+    "max": "100",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "",
+    "seg2": "",
+    "className": "",
+    "x": 1490,
+    "y": 580,
+    "wires": []
+  },
+  {
+    "id": "670577fa881d9773",
+    "type": "function",
+    "z": "f3f03053355eebdf",
+    "name": "Modbus Coil Funtion",
+    "func": "// @ts-nocheck\nvar x = [0,0,0,0,0,0,0,0];\nvar msg_o = [msg,msg,msg,msg,msg,msg,msg,msg,];\nfor(i = 0; i < 8; i++){\n    x[i] = msg.payload[i];\n    if (x[i] == true){\n        msg_o[i] = { payload: 1};\n    }else{\n        msg_o[i] = { payload: 0 };\n    }        \n}\nreturn msg_o;",
+    "outputs": 8,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 960,
+    "y": 1520,
+    "wires": [
+      [
+        "64c55ff0fab2a3c7"
+      ],
+      [
+        "5cba53aff38fea56"
+      ],
+      [
+        "8e52a1cdf6b24726"
+      ],
+      [
+        "679cd4eda45dd49f"
+      ],
+      [],
+      [
+        "76df51916afc08ea"
+      ],
+      [
+        "408b9295eebb8cd4"
+      ],
+      [
+        "f458cb3846f7cbe1"
+      ]
+    ]
+  },
+  {
+    "id": "03231861949e09f9",
+    "type": "function",
+    "z": "f3f03053355eebdf",
+    "name": "FC5: Coil Write_M100",
+    "func": "msg.payload = { \n    \n    'value': msg.payload,\n    'fc': 5,\n    'unitid': 1,\n    'address': 1 ,\n    'quantity': 1\n    \n} \nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 940,
+    "y": 1740,
+    "wires": [
+      [
+        "fcaee79a8fd4adb5"
+      ]
+    ]
+  },
+  {
+    "id": "159c535f0d925bad",
+    "type": "ui_button",
+    "z": "f3f03053355eebdf",
+    "name": "",
+    "group": "98adfafad732e21d",
+    "order": 13,
+    "width": 0,
+    "height": 0,
+    "passthru": false,
+    "label": "적산계리셋",
+    "tooltip": "",
+    "color": "",
+    "bgcolor": "",
+    "className": "",
+    "icon": "",
+    "payload": "true",
+    "payloadType": "bool",
+    "topic": "topic",
+    "topicType": "msg",
+    "x": 150,
+    "y": 1740,
+    "wires": [
+      [
+        "03231861949e09f9"
+      ]
+    ]
+  },
+  {
+    "id": "ac5a65198acf024b",
+    "type": "function",
+    "z": "f3f03053355eebdf",
+    "name": "SQL쿼리",
+    "func": "msg.payload = [\n    //msg.payload.Version,\n    msg.payload.Unit1Temp = msg.payload.Unit1Temp / 10,\n    msg.payload.Unit2Temp,\n    msg.payload.TC_Temp1 = msg.payload.TC_Temp1 / 10,\n    msg.payload.TC_Temp2 = msg.payload.TC_Temp2 / 10,\n    msg.payload.Flowmeter_L / 10,\n    msg.payload.Flowmeter_TON,\n    msg.payload.Unit4Pressure1,\n    msg.payload.Unit4Pressure2,\n    msg.payload.Unit3Pressure1,\n    msg.payload.Unit5NG\n]\n\n//var date = new Date();\nmsg.topic = \"insert into fztable(Unit1Temp,Unit2Temp,TC_Temp1,TC_Temp2,Flowmeter_L,Flowmeter_TON,Unit4Pressure1,Unit4Pressure2,Unit3Pressure1,Unit5NG,date) values(?,?,?,?,?,?,?,?,?,?,current_timestamp());\";\n//msg.topic = \"insert into fztable(Temp1,Temp2,Weight,Flowmeter,date) values(?,?,?,?,'\"+date+\"');\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 900,
+    "y": 1140,
+    "wires": [
+      [
+        "eb6e8949ec25a57d"
+      ]
+    ]
+  },
+  {
+    "id": "eb6e8949ec25a57d",
+    "type": "mysql",
+    "z": "f3f03053355eebdf",
+    "mydb": "8b88fe9a19eda841",
+    "name": "fztable Item",
+    "x": 1435,
+    "y": 1140,
+    "wires": [
+      [
+        "e6940ff2096b485b"
+      ]
+    ],
+    "l": false
+  },
+  {
+    "id": "e6940ff2096b485b",
+    "type": "debug",
+    "z": "f3f03053355eebdf",
+    "name": "debug 19",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 1680,
+    "y": 1140,
+    "wires": []
+  },
+  {
+    "id": "e95e55f6fe634ae6",
+    "type": "comment",
+    "z": "f3f03053355eebdf",
+    "name": "Modbus Holding Register Funtion3",
+    "info": "Read Data->PLC Modbus 변환 후 송신\n29Byte",
+    "x": 220,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "be0978c710d72d9b",
+    "type": "comment",
+    "z": "f3f03053355eebdf",
+    "name": "Modbus Coil Funtion1 Read",
+    "info": "",
+    "x": 200,
+    "y": 1480,
+    "wires": []
+  },
+  {
+    "id": "0d5efde54659d0c9",
+    "type": "comment",
+    "z": "f3f03053355eebdf",
+    "name": "Modbus Coil Funtion1 Write",
+    "info": "",
+    "x": 200,
+    "y": 1680,
+    "wires": []
+  },
+  {
+    "id": "37092e58d666ea68",
+    "type": "ui_text",
+    "z": "f3f03053355eebdf",
+    "group": "98adfafad732e21d",
+    "order": 12,
+    "width": 0,
+    "height": 0,
+    "name": "",
+    "label": "Total 적산값(TON)",
+    "format": "{{msg.payload}} TON",
+    "layout": "row-spread",
+    "className": "",
+    "x": 1510,
+    "y": 660,
+    "wires": []
+  },
+  {
+    "id": "8500ab7bf528c9c5",
+    "type": "ui_text",
+    "z": "f3f03053355eebdf",
+    "group": "98adfafad732e21d",
+    "order": 11,
+    "width": 0,
+    "height": 0,
+    "name": "",
+    "label": "Total 적산값(L)",
+    "format": "{{msg.payload}} L",
+    "layout": "row-spread",
+    "className": "",
+    "x": 1500,
+    "y": 620,
+    "wires": []
+  },
+  {
+    "id": "eebc650ead257f42",
+    "type": "ui_text",
+    "z": "f3f03053355eebdf",
+    "group": "98adfafad732e21d",
+    "order": 2,
+    "width": 0,
+    "height": 0,
+    "name": "",
+    "label": "PLC Version",
+    "format": "V{{msg.payload}} ",
+    "layout": "row-spread",
+    "className": "",
+    "x": 1490,
+    "y": 180,
+    "wires": []
+  },
+  {
+    "id": "190ac928f0857ebe",
+    "type": "function",
+    "z": "f3f03053355eebdf",
+    "name": "FC6: Register Write_D100",
+    "func": "msg.payload = { \n    \n    'value': msg.payload,\n    'fc': 6,\n    'unitid': 1,\n    'address': 0 ,\n    'quantity': 1\n    \n} \nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 960,
+    "y": 1800,
+    "wires": [
+      [
+        "fcaee79a8fd4adb5"
+      ]
+    ]
+  },
+  {
+    "id": "8438ee93be84ef17",
+    "type": "inject",
+    "z": "f3f03053355eebdf",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "9",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "1",
+    "payloadType": "num",
+    "x": 150,
+    "y": 1800,
+    "wires": [
+      [
+        "190ac928f0857ebe"
+      ]
+    ]
+  },
+  {
+    "id": "8587d5cad2c9cdc8",
+    "type": "catch",
+    "z": "f3f03053355eebdf",
+    "name": "",
+    "scope": [
+      "fcaee79a8fd4adb5"
+    ],
+    "uncaught": false,
+    "x": 130,
+    "y": 1960,
+    "wires": [
+      [
+        "d34b252c2ebe6b06"
+      ]
+    ]
+  },
+  {
+    "id": "d34b252c2ebe6b06",
+    "type": "function",
+    "z": "f3f03053355eebdf",
+    "name": "PLC status",
+    "func": "// check to see if status should be cleared\nif (msg.topic == \"clear\") {\n    // YES so clear status and exit without sending a msg.\n    node.status({});\n    msg.payload = 0;\n    return;\n} else {\n    // NO, set status, msg.topis and return msg\n    node.status({fill:\"red\",shape:\"dot\",text:\"ERROR\"});\n    msg.topic = \"Logging flow\";\n    msg.payload = 1;    \n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 910,
+    "y": 1960,
+    "wires": [
+      [
+        "8246ac0594e505b9"
+      ]
+    ]
+  },
+  {
+    "id": "bcec5ae1566ba108",
+    "type": "inject",
+    "z": "f3f03053355eebdf",
+    "name": "Clear",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "clear",
+    "payload": "",
+    "payloadType": "date",
+    "x": 150,
+    "y": 2020,
+    "wires": [
+      [
+        "d34b252c2ebe6b06"
+      ]
+    ]
+  },
+  {
+    "id": "8246ac0594e505b9",
+    "type": "trigger",
+    "z": "f3f03053355eebdf",
+    "name": "",
+    "op1": "1",
+    "op2": "1",
+    "op1type": "str",
+    "op2type": "str",
+    "duration": "100",
+    "extend": false,
+    "overrideDelay": false,
+    "units": "ms",
+    "reset": "",
+    "bytopic": "all",
+    "topic": "topic",
+    "outputs": 1,
+    "x": 1100,
+    "y": 1960,
+    "wires": [
+      [
+        "043e787601cb8aa9"
+      ]
+    ]
+  },
+  {
+    "id": "043e787601cb8aa9",
+    "type": "function",
+    "z": "f3f03053355eebdf",
+    "name": "PLC Alive SQL쿼리",
+    "func": "msg.payload = [\n    //msg.payload.Version,\n    msg.payload.plcalive = msg.payload,\n]\n\n//var date = new Date();\nmsg.topic = \"insert into fztable1(plcalive, date) values(?,current_timestamp());\";\n//msg.topic = \"insert into fztable(Temp1,Temp2,Weight,Flowmeter,date) values(?,?,?,?,'\"+date+\"');\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1310,
+    "y": 1960,
+    "wires": [
+      [
+        "376af1abff311d96",
+        "f90f2cffb89cb685"
+      ]
+    ]
+  },
+  {
+    "id": "376af1abff311d96",
+    "type": "mysql",
+    "z": "f3f03053355eebdf",
+    "mydb": "8b88fe9a19eda841",
+    "name": "",
+    "x": 1515,
+    "y": 1960,
+    "wires": [
+      []
+    ],
+    "l": false
+  },
+  {
+    "id": "df6d821a6399ff2e",
+    "type": "comment",
+    "z": "f3f03053355eebdf",
+    "name": "PLC Alive Check",
+    "info": "",
+    "x": 160,
+    "y": 1880,
+    "wires": []
+  },
+  {
+    "id": "24815c6d309d5e69",
+    "type": "modbus-read",
+    "z": "f3f03053355eebdf",
+    "name": "PLC_4",
+    "topic": "",
+    "showStatusActivities": false,
+    "logIOActivities": false,
+    "showErrors": true,
+    "unitid": "1",
+    "dataType": "InputRegister",
+    "adr": "0",
+    "quantity": "16",
+    "rate": "1",
+    "rateUnit": "s",
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "server": "1b6d45ce65e28311",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "x": 150,
+    "y": 580,
+    "wires": [
+      [
+        "4967f4b28308d11d"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "fb324fba9368b8c1",
+    "type": "modbus-read",
+    "z": "f3f03053355eebdf",
+    "name": "PLC_1",
+    "topic": "",
+    "showStatusActivities": false,
+    "logIOActivities": false,
+    "showErrors": true,
+    "unitid": "1",
+    "dataType": "Input",
+    "adr": "0",
+    "quantity": "10",
+    "rate": "1",
+    "rateUnit": "s",
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "server": "1b6d45ce65e28311",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "x": 150,
+    "y": 1520,
+    "wires": [
+      [
+        "670577fa881d9773"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "9063e1ee4c53940d",
+    "type": "modbus-read",
+    "z": "f3f03053355eebdf",
+    "name": "PLC_4",
+    "topic": "",
+    "showStatusActivities": false,
+    "logIOActivities": false,
+    "showErrors": true,
+    "unitid": "1",
+    "dataType": "InputRegister",
+    "adr": "0",
+    "quantity": "100",
+    "rate": "10",
+    "rateUnit": "s",
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "server": "1b6d45ce65e28311",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "x": 150,
+    "y": 1140,
+    "wires": [
+      [
+        "3d91f43e97726107"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "fcaee79a8fd4adb5",
+    "type": "modbus-flex-write",
+    "z": "f3f03053355eebdf",
+    "name": "",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "server": "1b6d45ce65e28311",
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": true,
+    "x": 1330,
+    "y": 1740,
+    "wires": [
+      [],
+      []
+    ]
+  },
+  {
+    "id": "64c55ff0fab2a3c7",
+    "type": "ui_led",
+    "z": "f3f03053355eebdf",
+    "order": 1,
+    "group": "98adfafad732e21d",
+    "width": 0,
+    "height": 0,
+    "label": "PLC Status",
+    "labelPlacement": "left",
+    "labelAlignment": "left",
+    "colorForValue": [
+      {
+        "color": "#445a4a",
+        "value": "0",
+        "valueType": "num"
+      },
+      {
+        "color": "#06f906",
+        "value": "1",
+        "valueType": "num"
+      }
+    ],
+    "allowColorForValueInMessage": false,
+    "shape": "circle",
+    "showGlow": true,
+    "name": "",
+    "x": 1350,
+    "y": 1380,
+    "wires": []
+  },
+  {
+    "id": "4967f4b28308d11d",
+    "type": "buffer-parser",
+    "z": "f3f03053355eebdf",
+    "name": "Modbus Holding Register Funtion",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "int16be",
+        "name": "Version",
+        "offset": 0,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "Unit1Temp",
+        "offset": 2,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "Unit2Temp",
+        "offset": 4,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "TC_Temp1",
+        "offset": 6,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "TC_Temp2",
+        "offset": 8,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "Flowmeter_L",
+        "offset": 10,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int32be",
+        "name": "Flowmeter_TON",
+        "offset": 12,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "Unit4Pressure1",
+        "offset": 16,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "Unit4Pressure2",
+        "offset": 18,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "Unit3Pressure1",
+        "offset": 20,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "Unit5NG",
+        "offset": 22,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": true,
+    "fanOutMultipleResult": true,
+    "setTopic": true,
+    "outputs": 11,
+    "x": 420,
+    "y": 580,
+    "wires": [
+      [
+        "30c4ce7b6b2f19b8"
+      ],
+      [
+        "8aaea5affec77d10"
+      ],
+      [
+        "f8ef9f75bb001fdc"
+      ],
+      [
+        "40e10e4d3acbb307"
+      ],
+      [
+        "9fcbf94af791f6b5"
+      ],
+      [
+        "3d3283575da6f4b3"
+      ],
+      [
+        "311ed5fab1c4c2bb"
+      ],
+      [
+        "b8734e2323e97e51"
+      ],
+      [
+        "343b47f54db9fb44"
+      ],
+      [
+        "30e9ee0a2adc3ae4"
+      ],
+      [
+        "16c37cae32c7fba8"
+      ]
+    ]
+  },
+  {
+    "id": "30c4ce7b6b2f19b8",
+    "type": "function",
+    "z": "f3f03053355eebdf",
+    "name": "Version Data Format Chage",
+    "func": "msg.payload = parseFloat(msg.payload / 100);\nglobal.set(\"test\", msg.payload);\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 960,
+    "y": 180,
+    "wires": [
+      [
+        "eebc650ead257f42"
+      ]
+    ]
+  },
+  {
+    "id": "8aaea5affec77d10",
+    "type": "function",
+    "z": "f3f03053355eebdf",
+    "name": "Unit1Temp Data Format Chage",
+    "func": "msg.payload = msg.payload / 10;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 970,
+    "y": 260,
+    "wires": [
+      [
+        "91427c0c021ab4cb",
+        "e7639c3b6e980e61"
+      ]
+    ]
+  },
+  {
+    "id": "f8ef9f75bb001fdc",
+    "type": "function",
+    "z": "f3f03053355eebdf",
+    "name": "Unit2Temp Data Format Chage",
+    "func": "msg.payload = msg.payload;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 970,
+    "y": 340,
+    "wires": [
+      [
+        "19b1b88fb3c8e5f9",
+        "e7639c3b6e980e61"
+      ]
+    ]
+  },
+  {
+    "id": "40e10e4d3acbb307",
+    "type": "function",
+    "z": "f3f03053355eebdf",
+    "name": "TCTemp1 Data Format Chage",
+    "func": "msg.payload = msg.payload / 10;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 970,
+    "y": 420,
+    "wires": [
+      [
+        "70572e006d15d853",
+        "6c2253cd392f69c5"
+      ]
+    ]
+  },
+  {
+    "id": "9fcbf94af791f6b5",
+    "type": "function",
+    "z": "f3f03053355eebdf",
+    "name": "TCTemp2 Data Format Chage",
+    "func": "msg.payload = msg.payload / 10;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 970,
+    "y": 500,
+    "wires": [
+      [
+        "70572e006d15d853",
+        "7defcf8e11c8cbef"
+      ]
+    ]
+  },
+  {
+    "id": "3d3283575da6f4b3",
+    "type": "function",
+    "z": "f3f03053355eebdf",
+    "name": "Flowmeter_L Data Format Change",
+    "func": "msg.payload = (Math.round(msg.payload * 10)) / 100;\n//msg.payload = msg.payload*0.1;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 980,
+    "y": 580,
+    "wires": [
+      [
+        "982b5e477bc5a49a",
+        "8500ab7bf528c9c5"
+      ]
+    ]
+  },
+  {
+    "id": "311ed5fab1c4c2bb",
+    "type": "function",
+    "z": "f3f03053355eebdf",
+    "name": "Flowmeter_TON Data Format Change",
+    "func": "msg.payload = msg.payload;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 990,
+    "y": 660,
+    "wires": [
+      [
+        "37092e58d666ea68"
+      ]
+    ]
+  },
+  {
+    "id": "b8734e2323e97e51",
+    "type": "function",
+    "z": "f3f03053355eebdf",
+    "name": "UNIT4Pressure1 Data Format Change",
+    "func": "msg.payload = msg.payload;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 990,
+    "y": 740,
+    "wires": [
+      [
+        "07bfa7658601059f"
+      ]
+    ]
+  },
+  {
+    "id": "343b47f54db9fb44",
+    "type": "function",
+    "z": "f3f03053355eebdf",
+    "name": "UNIT4Pressure2 Data Format Change",
+    "func": "msg.payload = msg.payload;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 990,
+    "y": 820,
+    "wires": [
+      [
+        "08082ae844d7bc7c"
+      ]
+    ]
+  },
+  {
+    "id": "30e9ee0a2adc3ae4",
+    "type": "function",
+    "z": "f3f03053355eebdf",
+    "name": "UNIT3Pressure1 Data Format Change",
+    "func": "msg.payload = msg.payload;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 990,
+    "y": 900,
+    "wires": [
+      [
+        "6149fcedcc261bae"
+      ]
+    ]
+  },
+  {
+    "id": "16c37cae32c7fba8",
+    "type": "function",
+    "z": "f3f03053355eebdf",
+    "name": "UNIT5NG Data Format Change",
+    "func": "msg.payload = msg.payload;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 970,
+    "y": 980,
+    "wires": [
+      [
+        "5bef6cba29f71db5",
+        "590e215ce156556e"
+      ]
+    ]
+  },
+  {
+    "id": "19b1b88fb3c8e5f9",
+    "type": "ui_gauge",
+    "z": "f3f03053355eebdf",
+    "name": "",
+    "group": "dffd2b569dffa97d",
+    "order": 3,
+    "width": 4,
+    "height": 5,
+    "gtype": "gage",
+    "title": "후살균기온도",
+    "label": "℃",
+    "format": "{{value}}",
+    "min": "-100",
+    "max": "100",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "30",
+    "seg2": "60",
+    "className": "",
+    "x": 1500,
+    "y": 340,
+    "wires": []
+  },
+  {
+    "id": "6c2253cd392f69c5",
+    "type": "ui_gauge",
+    "z": "f3f03053355eebdf",
+    "name": "",
+    "group": "dffd2b569dffa97d",
+    "order": 6,
+    "width": 4,
+    "height": 5,
+    "gtype": "gage",
+    "title": "TCTemp1",
+    "label": "℃",
+    "format": "{{value}}",
+    "min": "-100",
+    "max": "100",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "30",
+    "seg2": "60",
+    "className": "",
+    "x": 1480,
+    "y": 420,
+    "wires": []
+  },
+  {
+    "id": "7defcf8e11c8cbef",
+    "type": "ui_gauge",
+    "z": "f3f03053355eebdf",
+    "name": "",
+    "group": "dffd2b569dffa97d",
+    "order": 7,
+    "width": 4,
+    "height": 5,
+    "gtype": "gage",
+    "title": "TCTemp2",
+    "label": "℃",
+    "format": "{{value}}",
+    "min": "-100",
+    "max": "100",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "30",
+    "seg2": "60",
+    "className": "",
+    "x": 1480,
+    "y": 500,
+    "wires": []
+  },
+  {
+    "id": "07bfa7658601059f",
+    "type": "ui_gauge",
+    "z": "f3f03053355eebdf",
+    "name": "여과기압력계1",
+    "group": "6429816bbf8dd472",
+    "order": 3,
+    "width": 4,
+    "height": 5,
+    "gtype": "compass",
+    "title": "여과기압력계1",
+    "label": "",
+    "format": "{{value}} Kpa",
+    "min": 0,
+    "max": "1000",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "",
+    "seg2": "",
+    "className": "",
+    "x": 1500,
+    "y": 740,
+    "wires": []
+  },
+  {
+    "id": "08082ae844d7bc7c",
+    "type": "ui_gauge",
+    "z": "f3f03053355eebdf",
+    "name": "여과기압력계2",
+    "group": "6429816bbf8dd472",
+    "order": 6,
+    "width": 4,
+    "height": 5,
+    "gtype": "compass",
+    "title": "여과기압력계2",
+    "label": "",
+    "format": "{{value}} Kpa",
+    "min": 0,
+    "max": "1000",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "",
+    "seg2": "",
+    "className": "",
+    "x": 1500,
+    "y": 820,
+    "wires": []
+  },
+  {
+    "id": "6149fcedcc261bae",
+    "type": "ui_gauge",
+    "z": "f3f03053355eebdf",
+    "name": "에어세병기압력계",
+    "group": "6429816bbf8dd472",
+    "order": 7,
+    "width": 4,
+    "height": 5,
+    "gtype": "compass",
+    "title": "에어세병기압력계",
+    "label": "",
+    "format": "{{value}} Kpa",
+    "min": 0,
+    "max": "1000",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "30",
+    "seg2": "60",
+    "className": "",
+    "x": 1500,
+    "y": 900,
+    "wires": []
+  },
+  {
+    "id": "5bef6cba29f71db5",
+    "type": "ui_text",
+    "z": "f3f03053355eebdf",
+    "group": "98adfafad732e21d",
+    "order": 9,
+    "width": 0,
+    "height": 0,
+    "name": "금속검출기 NG",
+    "label": "금속검출기Status",
+    "format": "{{msg.payload}} ",
+    "layout": "row-spread",
+    "className": "",
+    "x": 1500,
+    "y": 980,
+    "wires": []
+  },
+  {
+    "id": "70572e006d15d853",
+    "type": "ui_chart",
+    "z": "f3f03053355eebdf",
+    "name": "TCTemp1/TCTemp2",
+    "group": "12c8b43d13ea237c",
+    "order": 5,
+    "width": 8,
+    "height": 5,
+    "label": "TCTemp1/TCTemp2",
+    "chartType": "line",
+    "legend": "true",
+    "xformat": "HH:mm:ss",
+    "interpolate": "linear",
+    "nodata": "",
+    "dot": false,
+    "ymin": "-100",
+    "ymax": "100",
+    "removeOlder": 1,
+    "removeOlderPoints": "",
+    "removeOlderUnit": "3600",
+    "cutout": 0,
+    "useOneColor": false,
+    "useUTC": false,
+    "colors": [
+      "#1f77b4",
+      "#aec7e8",
+      "#ff7f0e",
+      "#2ca02c",
+      "#98df8a",
+      "#d62728",
+      "#ff9896",
+      "#9467bd",
+      "#c5b0d5"
+    ],
+    "outputs": 1,
+    "useDifferentColor": false,
+    "className": "",
+    "x": 1820,
+    "y": 460,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "3d91f43e97726107",
+    "type": "buffer-parser",
+    "z": "f3f03053355eebdf",
+    "name": "Modbus Holding Register Funtion1",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "int16be",
+        "name": "Version",
+        "offset": 0,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "Unit1Temp",
+        "offset": 2,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "Unit2Temp",
+        "offset": 4,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "TC_Temp1",
+        "offset": 6,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "TC_Temp2",
+        "offset": 8,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "Flowmeter_L",
+        "offset": 10,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int32be",
+        "name": "Flowmeter_TON",
+        "offset": 12,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "Unit4Pressure1",
+        "offset": 16,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "Unit4Pressure2",
+        "offset": 18,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "Unit3Pressure1",
+        "offset": 20,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "Unit5NG",
+        "offset": 22,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "keyvalue",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 540,
+    "y": 1140,
+    "wires": [
+      [
+        "ac5a65198acf024b"
+      ]
+    ]
+  },
+  {
+    "id": "d3f0943814405324",
+    "type": "comment",
+    "z": "f3f03053355eebdf",
+    "name": "Maria DB(MySQL) ",
+    "info": "",
+    "x": 170,
+    "y": 1060,
+    "wires": []
+  },
+  {
+    "id": "f90f2cffb89cb685",
+    "type": "debug",
+    "z": "f3f03053355eebdf",
+    "name": "debug 20",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1500,
+    "y": 2020,
+    "wires": []
+  },
+  {
+    "id": "5cba53aff38fea56",
+    "type": "ui_led",
+    "z": "f3f03053355eebdf",
+    "order": 3,
+    "group": "98adfafad732e21d",
+    "width": 0,
+    "height": 0,
+    "label": "살균기 전원",
+    "labelPlacement": "left",
+    "labelAlignment": "left",
+    "colorForValue": [
+      {
+        "color": "#445a4a",
+        "value": "0",
+        "valueType": "num"
+      },
+      {
+        "color": "#06f906",
+        "value": "1",
+        "valueType": "num"
+      }
+    ],
+    "allowColorForValueInMessage": false,
+    "shape": "circle",
+    "showGlow": true,
+    "name": "",
+    "x": 1350,
+    "y": 1420,
+    "wires": []
+  },
+  {
+    "id": "f458cb3846f7cbe1",
+    "type": "ui_led",
+    "z": "f3f03053355eebdf",
+    "order": 8,
+    "group": "98adfafad732e21d",
+    "width": 0,
+    "height": 0,
+    "label": "Door Status2",
+    "labelPlacement": "left",
+    "labelAlignment": "left",
+    "colorForValue": [
+      {
+        "color": "#445a4a",
+        "value": "0",
+        "valueType": "num"
+      },
+      {
+        "color": "#06f906",
+        "value": "1",
+        "valueType": "num"
+      }
+    ],
+    "allowColorForValueInMessage": false,
+    "shape": "circle",
+    "showGlow": true,
+    "name": "",
+    "x": 1350,
+    "y": 1660,
+    "wires": []
+  },
+  {
+    "id": "8e52a1cdf6b24726",
+    "type": "ui_led",
+    "z": "f3f03053355eebdf",
+    "order": 4,
+    "group": "98adfafad732e21d",
+    "width": 0,
+    "height": 0,
+    "label": "살균기 가열",
+    "labelPlacement": "left",
+    "labelAlignment": "left",
+    "colorForValue": [
+      {
+        "color": "#445a4a",
+        "value": "0",
+        "valueType": "num"
+      },
+      {
+        "color": "#06f906",
+        "value": "1",
+        "valueType": "num"
+      }
+    ],
+    "allowColorForValueInMessage": false,
+    "shape": "circle",
+    "showGlow": true,
+    "name": "",
+    "x": 1350,
+    "y": 1460,
+    "wires": []
+  },
+  {
+    "id": "679cd4eda45dd49f",
+    "type": "ui_led",
+    "z": "f3f03053355eebdf",
+    "order": 5,
+    "group": "98adfafad732e21d",
+    "width": 0,
+    "height": 0,
+    "label": "후살균기 전원",
+    "labelPlacement": "left",
+    "labelAlignment": "left",
+    "colorForValue": [
+      {
+        "color": "#445a4a",
+        "value": "0",
+        "valueType": "num"
+      },
+      {
+        "color": "#06f906",
+        "value": "1",
+        "valueType": "num"
+      }
+    ],
+    "allowColorForValueInMessage": false,
+    "shape": "circle",
+    "showGlow": true,
+    "name": "",
+    "x": 1350,
+    "y": 1500,
+    "wires": []
+  },
+  {
+    "id": "76df51916afc08ea",
+    "type": "ui_led",
+    "z": "f3f03053355eebdf",
+    "order": 6,
+    "group": "98adfafad732e21d",
+    "width": 0,
+    "height": 0,
+    "label": "에어세병전원",
+    "labelPlacement": "left",
+    "labelAlignment": "left",
+    "colorForValue": [
+      {
+        "color": "#445a4a",
+        "value": "0",
+        "valueType": "num"
+      },
+      {
+        "color": "#06f906",
+        "value": "1",
+        "valueType": "num"
+      }
+    ],
+    "allowColorForValueInMessage": false,
+    "shape": "circle",
+    "showGlow": true,
+    "name": "",
+    "x": 1350,
+    "y": 1580,
+    "wires": []
+  },
+  {
+    "id": "408b9295eebb8cd4",
+    "type": "ui_led",
+    "z": "f3f03053355eebdf",
+    "order": 7,
+    "group": "98adfafad732e21d",
+    "width": 0,
+    "height": 0,
+    "label": "Door Status1",
+    "labelPlacement": "left",
+    "labelAlignment": "left",
+    "colorForValue": [
+      {
+        "color": "#445a4a",
+        "value": "0",
+        "valueType": "num"
+      },
+      {
+        "color": "#06f906",
+        "value": "1",
+        "valueType": "num"
+      }
+    ],
+    "allowColorForValueInMessage": false,
+    "shape": "circle",
+    "showGlow": true,
+    "name": "",
+    "x": 1350,
+    "y": 1620,
+    "wires": []
+  },
+  {
+    "id": "2496b9a7cb7ed873",
+    "type": "modbus-flex-getter",
+    "z": "f3f03053355eebdf",
+    "name": "",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "logIOActivities": false,
+    "server": "f450a594a7c1ebad",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "x": 770,
+    "y": 1220,
+    "wires": [
+      [
+        "97e52401d5013f52",
+        "6ff502da6b7484f6"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "22fc7393069e2fd3",
+    "type": "function",
+    "z": "f3f03053355eebdf",
+    "name": "FC4: Read Input Register",
+    "func": "msg.payload = { \n    \n    'value': msg.payload,\n    'fc': 4,\n    'unitid': 1,\n    'address': 20 ,\n    'quantity': 20,\n    \n} \nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 510,
+    "y": 1220,
+    "wires": [
+      [
+        "2496b9a7cb7ed873"
+      ]
+    ]
+  },
+  {
+    "id": "97e52401d5013f52",
+    "type": "debug",
+    "z": "f3f03053355eebdf",
+    "name": "debug 21",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 980,
+    "y": 1280,
+    "wires": []
+  },
+  {
+    "id": "ecb8de3870ec9e73",
+    "type": "inject",
+    "z": "f3f03053355eebdf",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "2",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 150,
+    "y": 1220,
+    "wires": [
+      [
+        "22fc7393069e2fd3"
+      ]
+    ]
+  },
+  {
+    "id": "6ff502da6b7484f6",
+    "type": "buffer-parser",
+    "z": "f3f03053355eebdf",
+    "name": "Modbus Holding Register Funtion2",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "int16be",
+        "name": "Unit1Power",
+        "offset": 0,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "Unit1Heating",
+        "offset": 2,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "Unit2Power",
+        "offset": 4,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "Unit2Heating",
+        "offset": 6,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "Unit3Power",
+        "offset": 8,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "Door1",
+        "offset": 10,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "Door2",
+        "offset": 12,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "Unit5NG",
+        "offset": 14,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "keyvalue",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 1060,
+    "y": 1220,
+    "wires": [
+      [
+        "c1370ecc9985631d"
+      ]
+    ]
+  },
+  {
+    "id": "c1370ecc9985631d",
+    "type": "function",
+    "z": "f3f03053355eebdf",
+    "name": "SQL쿼리",
+    "func": "msg.payload = [\n    //msg.payload.Version,\n    msg.payload.Unit1Power,\n    msg.payload.Unit1Heating,\n    msg.payload.Unit2Power,\n    //msg.payload.Unit2Heating,\n    msg.payload.Unit3Power,\n    msg.payload.Door1,\n    msg.payload.Door2,\n    msg.payload.Unit5NG\n]\n\n//var date = new Date();\nmsg.topic = \"insert into fztable2(Unit1Power,Unit1Heating,Unit2Power,Unit3Power,Door1,Door2,Unit5NG,date) values(?,?,?,?,?,?,?,current_timestamp());\";\n//msg.topic = \"insert into fztable(Temp1,Temp2,Weight,Flowmeter,date) values(?,?,?,?,'\"+date+\"');\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1300,
+    "y": 1220,
+    "wires": [
+      [
+        "eb6e8949ec25a57d"
+      ]
+    ]
+  },
+  {
+    "id": "590e215ce156556e",
+    "type": "debug",
+    "z": "f3f03053355eebdf",
+    "name": "debug 29",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1480,
+    "y": 1040,
+    "wires": []
+  },
+  {
+    "id": "39f56212cfa948e0",
+    "type": "modbus-flex-write",
+    "z": "e304b3f3c01ea83d",
+    "name": "",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "server": "f450a594a7c1ebad",
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "x": 1630,
+    "y": 220,
+    "wires": [
+      [],
+      []
+    ]
+  },
+  {
+    "id": "7196a7c6283b944b",
+    "type": "debug",
+    "z": "e304b3f3c01ea83d",
+    "name": "debug 28",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "topic",
+    "statusType": "auto",
+    "x": 1600,
+    "y": 280,
+    "wires": []
+  },
+  {
+    "id": "6aa6f9967fea878a",
+    "type": "function",
+    "z": "e304b3f3c01ea83d",
+    "name": "FC 6: Preset Single Register_D50",
+    "func": "msg.payload = { \n    \n    'value': msg.payload,\n    'fc': 16,\n    'unitid': 1,\n    'address': 50, \n    'quantity': 6\n} \nreturn msg;\n\n/*\n- 통신속도 : 19200BPS\n- Data : 8Bit\n- StopBits : 1Bit\n- Parity : None\n- Flow Control : None\n- TCP-IP 통신 (솔내시스템 컨버터 사용)\n송신 데이터\nSTX (1Byte)\n제품번호 (2Byte)\n금속검출상태 (1: 검출 0: 정상) (1Byte)\nXOR (1Byte)\nETX (1Byte)\n*/",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1120,
+    "y": 220,
+    "wires": [
+      [
+        "7196a7c6283b944b",
+        "39f56212cfa948e0"
+      ]
+    ]
+  },
+  {
+    "id": "2b6165c952001af2",
+    "type": "tcp request",
+    "z": "e304b3f3c01ea83d",
+    "name": "",
+    "server": "192.168.1.251",
+    "port": "1470",
+    "out": "time",
+    "ret": "string",
+    "splitc": "200",
+    "newline": "",
+    "trim": false,
+    "tls": "",
+    "x": 610,
+    "y": 220,
+    "wires": [
+      [
+        "6aa6f9967fea878a"
+      ]
+    ]
+  },
+  {
+    "id": "1c1d3056e70f1bea",
+    "type": "inject",
+    "z": "e304b3f3c01ea83d",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "3",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 150,
+    "y": 220,
+    "wires": [
+      [
+        "2b6165c952001af2"
+      ]
+    ]
+  },
+  {
+    "id": "33283293f2ff7b47",
+    "type": "comment",
+    "z": "e304b3f3c01ea83d",
+    "name": "모든다해 금속검출 Protocol",
+    "info": "Read Data->PLC Modbus 변환 후 송신\n6Byte",
+    "x": 200,
+    "y": 100,
+    "wires": []
+  },
+  {
+    "id": "ae31d4e6dc034439",
+    "type": "debug",
+    "z": "f6262b236a582495",
+    "name": "debug 3",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "topic",
+    "statusType": "auto",
+    "x": 1000,
+    "y": 140,
+    "wires": []
+  },
+  {
+    "id": "1a17b0783d1e64ba",
+    "type": "tcp request",
+    "z": "f6262b236a582495",
+    "name": "",
+    "server": "192.168.1.251",
+    "port": "5001",
+    "out": "time",
+    "ret": "string",
+    "splitc": "200",
+    "newline": "",
+    "trim": false,
+    "tls": "",
+    "x": 730,
+    "y": 140,
+    "wires": [
+      [
+        "ae31d4e6dc034439",
+        "3a3c926312e5b86a"
+      ]
+    ]
+  },
+  {
+    "id": "d4eb92382aef476b",
+    "type": "function",
+    "z": "f6262b236a582495",
+    "name": "데이터Read",
+    "func": "var outputMsgs = [];\nvar words = msg.payload.split(\" \");\nmsg.payload = outputMsgs;\n\nfor (var w in words) {\n    outputMsgs.push({ payload: words[w]});\n}\nreturn [outputMsgs];\n\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1010,
+    "y": 340,
+    "wires": [
+      [
+        "74fcb048723af7d3"
+      ]
+    ]
+  },
+  {
+    "id": "88ec812de919e983",
+    "type": "debug",
+    "z": "f6262b236a582495",
+    "name": "debug 6",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "topic",
+    "statusType": "auto",
+    "x": 1580,
+    "y": 340,
+    "wires": []
+  },
+  {
+    "id": "74fcb048723af7d3",
+    "type": "buffer-maker",
+    "z": "f6262b236a582495",
+    "name": "데이터분할",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "name": "item1",
+        "type": "string",
+        "length": 6,
+        "dataType": "msg",
+        "data": "payload"
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "x": 1190,
+    "y": 340,
+    "wires": [
+      [
+        "403125ca85d36fc1",
+        "1d27292b8e1e457e"
+      ]
+    ]
+  },
+  {
+    "id": "403125ca85d36fc1",
+    "type": "function",
+    "z": "f6262b236a582495",
+    "name": "데이터변환",
+    "func": "var float1 = msg.payload;\nvar len = float1.length;\n \nmsg.payload = parseFloat(float1);\n\nreturn msg;\n\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1370,
+    "y": 340,
+    "wires": [
+      [
+        "88ec812de919e983"
+      ]
+    ]
+  },
+  {
+    "id": "43abb7a4708d3374",
+    "type": "function",
+    "z": "f6262b236a582495",
+    "name": "CAS Ready Funtion",
+    "func": "msg.payload = Buffer.from(\"05\", \"hex\");\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 480,
+    "y": 140,
+    "wires": [
+      [
+        "1a17b0783d1e64ba"
+      ]
+    ]
+  },
+  {
+    "id": "3a3c926312e5b86a",
+    "type": "function",
+    "z": "f6262b236a582495",
+    "name": "CAS Read Funtion",
+    "func": "msg.payload = Buffer.from(\"11\", \"hex\");\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 470,
+    "y": 200,
+    "wires": [
+      [
+        "be0a20b4b42b6cc0"
+      ]
+    ]
+  },
+  {
+    "id": "27e8e0f610e0bf34",
+    "type": "inject",
+    "z": "f6262b236a582495",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "3",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 110,
+    "y": 140,
+    "wires": [
+      [
+        "43abb7a4708d3374"
+      ]
+    ]
+  },
+  {
+    "id": "1d27292b8e1e457e",
+    "type": "function",
+    "z": "f6262b236a582495",
+    "name": "데이터변환",
+    "func": "var float1 = msg.payload;\nvar lnt1;\n \nlnt1 = parseFloat(float1)*100;\nmsg.payload = parseInt(lnt1);\n\nreturn msg;\n\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1370,
+    "y": 400,
+    "wires": [
+      [
+        "60120d77cf3ccd25"
+      ]
+    ]
+  },
+  {
+    "id": "4667623d48e6ac24",
+    "type": "function",
+    "z": "f6262b236a582495",
+    "name": "FC 6: Preset Single Register_D50",
+    "func": "msg.payload = { \n    \n    'value': msg.payload,\n    'fc': 16,\n    'unitid': 1,\n    'address': 50,\n    'quantity': 29\n} \nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1080,
+    "y": 220,
+    "wires": [
+      [
+        "137e1005a0361f3f",
+        "342e23b10c9ea1e4"
+      ]
+    ]
+  },
+  {
+    "id": "137e1005a0361f3f",
+    "type": "debug",
+    "z": "f6262b236a582495",
+    "name": "debug 17",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "topic",
+    "statusType": "auto",
+    "x": 1340,
+    "y": 160,
+    "wires": []
+  },
+  {
+    "id": "60120d77cf3ccd25",
+    "type": "debug",
+    "z": "f6262b236a582495",
+    "name": "debug 18",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "topic",
+    "statusType": "auto",
+    "x": 1580,
+    "y": 400,
+    "wires": []
+  },
+  {
+    "id": "4da598afea71bbe6",
+    "type": "comment",
+    "z": "f6262b236a582495",
+    "name": "카스전자저울 Protocol",
+    "info": "Read Data->PLC Modbus 변환 후 송신\n29Byte",
+    "x": 140,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "be0a20b4b42b6cc0",
+    "type": "tcp request",
+    "z": "f6262b236a582495",
+    "name": "",
+    "server": "192.168.1.251",
+    "port": "5001",
+    "out": "time",
+    "ret": "string",
+    "splitc": "200",
+    "newline": "",
+    "trim": false,
+    "tls": "",
+    "x": 730,
+    "y": 200,
+    "wires": [
+      [
+        "d4eb92382aef476b",
+        "4667623d48e6ac24"
+      ]
+    ]
+  },
+  {
+    "id": "342e23b10c9ea1e4",
+    "type": "modbus-flex-write",
+    "z": "f6262b236a582495",
+    "name": "",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "server": "f450a594a7c1ebad",
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "x": 1590,
+    "y": 220,
+    "wires": [
+      [],
+      []
+    ]
+  },
+  {
+    "id": "920f3d4e12cbc7b7",
+    "type": "inject",
+    "z": "f6262b236a582495",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "3",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 110,
+    "y": 580,
+    "wires": [
+      [
+        "7519f84047f93596"
+      ]
+    ]
+  },
+  {
+    "id": "d4f359cdb82e4fdc",
+    "type": "function",
+    "z": "f6262b236a582495",
+    "name": "FC 6: Preset Single Register_D50",
+    "func": "msg.payload = { \n    \n    'value': msg.payload,\n    'fc': 16,\n    'unitid': 1,\n    'address': 50, //PLC M150\n    'quantity': 34\n} \nreturn msg;\n\n/*1. Printer-NMD530(=MD)간 통신 프로토콜\n1.1 접속사양\n-. 통신접속: RS-232C\n-. 설정: Baud Rate = 9600, Bit Length = 8 bits, Parity = None, Stop Bits = 1 Stop\n*** 장비의 프린터 설정은 사용자매뉴얼 참조.\n\n1.\t공백: 0x20\n2.\t검출코드:  “80” ~ “83” (ASCII Code)\n3.\t품번:        “  1” ~ “100” (ASCII Code)\n4.\t시분초(24시간형식): HH:MM:SS (ASCII Code) – 예) 5시 15분 30초  “05:15:30”\n5.\t검출수량: 예) 검출수량 200이면  “   200” (= 0x20 0x20 0x20 0x32 0x30 0x30)\n6.\t생산수량: 예) 총수향 12345이면  “  12345” (= 0x20 0x20 0x31 0x32 0x33 0x34 0x35)\n7.\tCR/LF: 0xd 0xa\n\nEx) 공백은 ‘~‘로 표시했음.   “~80~~100~09:24:30~~~~~21~~~12345”\n*/",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1080,
+    "y": 580,
+    "wires": [
+      [
+        "19d14799bbb4952f",
+        "e5dabbdf5fac980a"
+      ]
+    ]
+  },
+  {
+    "id": "19d14799bbb4952f",
+    "type": "debug",
+    "z": "f6262b236a582495",
+    "name": "debug 25",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "topic",
+    "statusType": "auto",
+    "x": 1560,
+    "y": 640,
+    "wires": []
+  },
+  {
+    "id": "7519f84047f93596",
+    "type": "tcp request",
+    "z": "f6262b236a582495",
+    "name": "",
+    "server": "192.168.1.251",
+    "port": "5001",
+    "out": "time",
+    "ret": "string",
+    "splitc": "200",
+    "newline": "",
+    "trim": false,
+    "tls": "",
+    "x": 730,
+    "y": 580,
+    "wires": [
+      [
+        "d4f359cdb82e4fdc"
+      ]
+    ]
+  },
+  {
+    "id": "e5dabbdf5fac980a",
+    "type": "modbus-flex-write",
+    "z": "f6262b236a582495",
+    "name": "",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "server": "f450a594a7c1ebad",
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "x": 1590,
+    "y": 580,
+    "wires": [
+      [],
+      []
+    ]
+  },
+  {
+    "id": "35ebfd5837e06a69",
+    "type": "comment",
+    "z": "f6262b236a582495",
+    "name": "나우시스템 금속검출 Protocol",
+    "info": "Read Data->PLC Modbus 변환 후 송신\n34Byte",
+    "x": 160,
+    "y": 440,
+    "wires": []
+  },
+  {
+    "id": "5eb4f49c182c11bb",
+    "type": "inject",
+    "z": "f6262b236a582495",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "3",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 110,
+    "y": 820,
+    "wires": [
+      [
+        "959d27d0d6b7464f"
+      ]
+    ]
+  },
+  {
+    "id": "6ac9217994b30655",
+    "type": "function",
+    "z": "f6262b236a582495",
+    "name": "FC 6: Preset Single Register_D50",
+    "func": "msg.payload = { \n    \n    'value': msg.payload,\n    'fc': 16,\n    'unitid': 1,\n    'address': 50, \n    'quantity': 6\n} \nreturn msg;\n\n/*\n- 통신속도 : 19200BPS\n- Data : 8Bit\n- StopBits : 1Bit\n- Parity : None\n- Flow Control : None\n- TCP-IP 통신 (솔내시스템 컨버터 사용)\n송신 데이터\nSTX (1Byte)\n제품번호 (2Byte)\n금속검출상태 (1: 검출 0: 정상) (1Byte)\nXOR (1Byte)\nETX (1Byte)\n*/",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1080,
+    "y": 820,
+    "wires": [
+      [
+        "2060679212d18c30",
+        "da4630afcadec88f"
+      ]
+    ]
+  },
+  {
+    "id": "2060679212d18c30",
+    "type": "debug",
+    "z": "f6262b236a582495",
+    "name": "debug 26",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "topic",
+    "statusType": "auto",
+    "x": 1560,
+    "y": 880,
+    "wires": []
+  },
+  {
+    "id": "959d27d0d6b7464f",
+    "type": "tcp request",
+    "z": "f6262b236a582495",
+    "name": "",
+    "server": "192.168.1.251",
+    "port": "5001",
+    "out": "time",
+    "ret": "string",
+    "splitc": "200",
+    "newline": "",
+    "trim": false,
+    "tls": "",
+    "x": 730,
+    "y": 820,
+    "wires": [
+      [
+        "6ac9217994b30655"
+      ]
+    ]
+  },
+  {
+    "id": "da4630afcadec88f",
+    "type": "modbus-flex-write",
+    "z": "f6262b236a582495",
+    "name": "",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "server": "f450a594a7c1ebad",
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "x": 1590,
+    "y": 820,
+    "wires": [
+      [],
+      []
+    ]
+  },
+  {
+    "id": "55e2437504df5dcb",
+    "type": "comment",
+    "z": "f6262b236a582495",
+    "name": "모든다해 금속검출 Protocol",
+    "info": "Read Data->PLC Modbus 변환 후 송신\n6Byte",
+    "x": 160,
+    "y": 700,
+    "wires": []
+  },
+  {
+    "id": "cbb861350be26f11",
+    "type": "comment",
+    "z": "f6262b236a582495",
+    "name": "모든다해 알루스캔 Protocol",
+    "info": "Read Data->PLC Modbus 변환 후 송신\n32Byte",
+    "x": 160,
+    "y": 940,
+    "wires": []
+  },
+  {
+    "id": "07732378a786408c",
+    "type": "inject",
+    "z": "f6262b236a582495",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "3",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 110,
+    "y": 1060,
+    "wires": [
+      [
+        "6db1d4c24d507f8e"
+      ]
+    ]
+  },
+  {
+    "id": "6db1d4c24d507f8e",
+    "type": "tcp request",
+    "z": "f6262b236a582495",
+    "name": "",
+    "server": "192.168.1.251",
+    "port": "5001",
+    "out": "time",
+    "ret": "string",
+    "splitc": "200",
+    "newline": "",
+    "trim": false,
+    "tls": "",
+    "x": 730,
+    "y": 1060,
+    "wires": [
+      [
+        "47f16065be38971c"
+      ]
+    ]
+  },
+  {
+    "id": "47f16065be38971c",
+    "type": "function",
+    "z": "f6262b236a582495",
+    "name": "FC 6: Preset Single Register_D50",
+    "func": "msg.payload = { \n    \n    'value': msg.payload,\n    'fc': 16,\n    'unitid': 1,\n    'address': 50, \n    'quantity': 32\n    // 32 RS232\n    //'quantity': 37 TCP\n} \nreturn msg;\n\n/*\n- 통신속도 : 19200BPS\n- Data : 8Bit\n- StopBits : 1Bit\n- Parity : None\n- Flow Control : None\n\n- TCP-IP 통신 (솔내시스템 컨버터 사용)\n프로토콜\nString.Format(\"@{0,2:00} @{1,7:0000000} @{2,10} @{3,8} @{4,2:00}\n@{5,1:0} @{6,7:0000000}\", CommonFunction.ipmacid,\nCommonFunction.normalCount + CommonFunction.badCount,\nyyyymmdd, hhmmsec, prodNo, status, CommonFunction.badCount);\n@+2자리 : 장비번호\n@+7자리: 정상수량 + 불량수량 (총 수량) ------ 포토센서가 없는 모델에\n서는 불량카운트로 정의됨. (우리식품의 경우)\n@+10자리 : 년도(2019-11-25)\n@+8자리: 시간(12:15:50)\n@+2자리: 제품번호\n@+1자리: 0:정상 1:불량\n@+7자리: 불량수량\n*/\n/*\nRS232\n<통신 프로토콜> 총 32 BYTE : STX+SIZE(32(P))+ DATA + checkSum + ETX\n    STX\n    SIZE (1BYTE) (0x30+4+ data size )\n    양산수량 (7Byte)\n    날짜 (10Byte ,yyyy-MM-dd)\n    시간 (8Byte, HH:mm:ss)\n    제품번호(2Byte,01)\n    검출상태(1BYTE) 0:정상 1:불량\n    checkSum(XOR) (1BYTE) : checkSum은 STX 부터 시작해서 검출상태(1BYTE)까지로 한다.\n    ETX\n*/",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1080,
+    "y": 1060,
+    "wires": [
+      [
+        "5b1009ec98513e73",
+        "f3fb26226feba426"
+      ]
+    ]
+  },
+  {
+    "id": "f3fb26226feba426",
+    "type": "modbus-flex-write",
+    "z": "f6262b236a582495",
+    "name": "",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "server": "f450a594a7c1ebad",
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "x": 1590,
+    "y": 1060,
+    "wires": [
+      [],
+      []
+    ]
+  },
+  {
+    "id": "5b1009ec98513e73",
+    "type": "debug",
+    "z": "f6262b236a582495",
+    "name": "debug 27",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "topic",
+    "statusType": "auto",
+    "x": 1560,
+    "y": 1120,
+    "wires": []
+  },
+  {
+    "id": "aa25eb45064191a6",
+    "type": "inject",
+    "z": "7abce49813f3d72f",
+    "name": "CREATE",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 300,
+    "wires": [
+      [
+        "c0a2b2da3df0d58a"
+      ]
+    ]
+  },
+  {
+    "id": "1aca80ade17324c1",
+    "type": "debug",
+    "z": "7abce49813f3d72f",
+    "name": "",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 650,
+    "y": 300,
+    "wires": []
+  },
+  {
+    "id": "e6b2907b3eabe352",
+    "type": "inject",
+    "z": "7abce49813f3d72f",
+    "name": "INSERT",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 660,
+    "wires": [
+      [
+        "a44864699c95356e"
+      ]
+    ]
+  },
+  {
+    "id": "a44864699c95356e",
+    "type": "function",
+    "z": "7abce49813f3d72f",
+    "name": "INSERT",
+    "func": "// @ts-nocheck\n/*\nif (Math.random() < 0.5) { room = 503;}else{ room = 602; }\nif (Math.random() < 0.5) { id = 9909;}else{ id = 1893; }\n\ntopic = \"INSERT INTO `fz_shm`.`access` (`room`, `id`) VALUES ('\";\ntopic = topic + room +\"', '\";\ntopic = topic + id + \"');\";\n\nmsg.topic = topic;\nreturn msg;\n*/\n\nif (Math.random() < 0.5) { Unit1Temp = 23.4; } else { Unit1Temp = 31.2; }\nif (Math.random() < 0.5) { Unit2Temp = 22.1; } else { Unit2Temp = 30.1; }\nif (Math.random() < 0.5) { TC_Temp1 = 20.4; } else { TC_Temp1 = 29.2; }\nif (Math.random() < 0.5) { TC_Temp2 = 23.4; } else { TC_Temp2 = 28.2; }\nif (Math.random() < 0.5) { Flowmeter_L = 1; } else { Flowmeter_L = 10; }\nif (Math.random() < 0.5) { Flowmeter_TON = 199; } else { Flowmeter_TON = 1234567; }\nif (Math.random() < 0.5) { Unit4Pressure1 = 50; } else { Unit4Pressure1 = 100; }\nif (Math.random() < 0.5) { Unit4Pressure2 = 40; } else { Unit4Pressure2 = 90; }\nif (Math.random() < 0.5) { Unit3Pressure1 = 30; } else { Unit3Pressure1 = 70; }\nif (Math.random() < 0.5) { Unit5NG = 1; } else { Unit5NG = 0; }\n\n//msg.topic = \"insert into fztable(`Unit1Temp`,`Unit2Temp`,`TC_Temp1`,`TC_Temp2`,`Flowmeter_L`,`Flowmeter_TON`,`Unit4Pressure1`,`Unit4Pressure2`,`Unit3Pressure1`,`date`) values(?,?,?,?,?,?,?,?,?,?,current_timestamp());\";\n\ntopic = \"INSERT INTO `fz_shm`.`fztable` (`Unit1Temp`,`Unit2Temp`,`TC_Temp1`,`TC_Temp2`,`Flowmeter_L`,`Flowmeter_TON`,`Unit4Pressure1`,`Unit4Pressure2`,`Unit3Pressure1`,`Unit5NG`,`date`) VALUES ('\";\ntopic = topic + Unit1Temp + \"', '\";\ntopic = topic + Unit2Temp + \"', '\";\ntopic = topic + TC_Temp1 + \"', '\";\ntopic = topic + TC_Temp2 + \"', '\";\ntopic = topic + Flowmeter_L + \"', '\";\ntopic = topic + Flowmeter_TON + \"', '\";\ntopic = topic + Unit4Pressure1 + \"', '\";\ntopic = topic + Unit4Pressure2 + \"', '\";\ntopic = topic + Unit3Pressure1 + \"', '\";\ntopic = topic + Unit5NG + \"', '\";\ntopic = topic + 20221126 + \"');\";\n\nmsg.topic = topic;\nreturn msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 660,
+    "wires": [
+      [
+        "706344d8d4b715d9"
+      ]
+    ]
+  },
+  {
+    "id": "cd9271fac5a1ce3b",
+    "type": "debug",
+    "z": "7abce49813f3d72f",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 650,
+    "y": 660,
+    "wires": []
+  },
+  {
+    "id": "7b23324410fea91d",
+    "type": "inject",
+    "z": "7abce49813f3d72f",
+    "name": "DELETE ",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 840,
+    "wires": [
+      [
+        "b1d1921ef337d2a0"
+      ]
+    ]
+  },
+  {
+    "id": "2a2d9f5840cef030",
+    "type": "debug",
+    "z": "7abce49813f3d72f",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 650,
+    "y": 840,
+    "wires": []
+  },
+  {
+    "id": "731c5bd2a8ddbb73",
+    "type": "comment",
+    "z": "7abce49813f3d72f",
+    "name": "MariaDB",
+    "info": "https://mariadb.org/\n\n//SELECT COUNT(*) FROM RANDOMNUM\n//SELECT COUNT(*) FROM `test`\n// UPDATE RANDOMNUM SET BOOL = 1 WHERE VALUE > 20 AND BOOL = 0\n\n//UPDATE `test`.`access` SET `room`='602' LIMIT 1;\n\n//DELETE FROM RANDOMNUM WHERE TIMESTAMP <= strftime('%s','now', '-30 seconds')*1000\n\n//DELETE FROM `test`.`access` WHERE  `no`=3 AND `time`='2021-06-07 17:37:03' AND `room`=503 AND `id`=1893 LIMIT 1;\n",
+    "x": 100,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "c0a2b2da3df0d58a",
+    "type": "function",
+    "z": "7abce49813f3d72f",
+    "name": "fztable",
+    "func": "// @ts-nocheck\ntopic = \"CREATE TABLE `fztable` ( \";\ntopic = topic + \"`fz_idx` INT NULL AUTO_INCREMENT,\";\ntopic = topic + \"`Unit1Temp` FLOAT NULL,\";\ntopic = topic + \"`Unit2Temp` FLOAT NULL,\";\ntopic = topic + \"`TC_Temp1` FLOAT NULL,\";\ntopic = topic + \"`TC_Temp2` FLOAT NULL,\";\ntopic = topic + \"`Flowmeter_L` INT NULL,\";\ntopic = topic + \"`Flowmeter_TON` DOUBLE NULL,\";\ntopic = topic + \"`Unit4Pressure1` INT NULL,\";\ntopic = topic + \"`Unit4Pressure2` INT NULL,\";\ntopic = topic + \"`Unit3Pressure1` INT NULL,\";\ntopic = topic + \"`Unit5NG` INT NULL,\";\ntopic = topic + \"`date` VARCHAR(45) NULL,\";\n//topic = topic + \"`room` FLOAT NULL,\";\n//topic = topic + \"`id` INT NULL,\";\ntopic = topic + \"PRIMARY KEY `fz_idx` (`fz_idx`)) COLLATE='utf8mb4_general_ci';\";\nmsg.topic = topic;\n\nreturn msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 290,
+    "y": 300,
+    "wires": [
+      [
+        "8a4c3efe9aa2d68c"
+      ]
+    ]
+  },
+  {
+    "id": "f3b0e5e8ed6d6f56",
+    "type": "inject",
+    "z": "7abce49813f3d72f",
+    "name": "CREATE",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 180,
+    "wires": [
+      [
+        "45957d08ce47bb19"
+      ]
+    ]
+  },
+  {
+    "id": "8c09ccf5beaceb8f",
+    "type": "debug",
+    "z": "7abce49813f3d72f",
+    "name": "",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 650,
+    "y": 180,
+    "wires": []
+  },
+  {
+    "id": "45957d08ce47bb19",
+    "type": "function",
+    "z": "7abce49813f3d72f",
+    "name": "DATABASE",
+    "func": "var newMsg = {\n\"topic\" : \"CREATE DATABASE `fz_shm`;\"\n}\nreturn newMsg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 310,
+    "y": 180,
+    "wires": [
+      [
+        "d34086a2ae8d8ada"
+      ]
+    ]
+  },
+  {
+    "id": "b1d1921ef337d2a0",
+    "type": "function",
+    "z": "7abce49813f3d72f",
+    "name": "fztable_all",
+    "func": "var newMsg = {\n\"topic\" : \"DELETE FROM `fz_shm`.`fztable`\"\n}\nreturn newMsg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 840,
+    "wires": [
+      [
+        "b3600d6aa5f50032"
+      ]
+    ]
+  },
+  {
+    "id": "706344d8d4b715d9",
+    "type": "mysql",
+    "z": "7abce49813f3d72f",
+    "mydb": "aa2c2977724dc955",
+    "name": "",
+    "x": 480,
+    "y": 660,
+    "wires": [
+      [
+        "cd9271fac5a1ce3b"
+      ]
+    ]
+  },
+  {
+    "id": "8a4c3efe9aa2d68c",
+    "type": "mysql",
+    "z": "7abce49813f3d72f",
+    "mydb": "aa2c2977724dc955",
+    "name": "",
+    "x": 480,
+    "y": 300,
+    "wires": [
+      [
+        "1aca80ade17324c1"
+      ]
+    ]
+  },
+  {
+    "id": "d34086a2ae8d8ada",
+    "type": "mysql",
+    "z": "7abce49813f3d72f",
+    "mydb": "aa2c2977724dc955",
+    "name": "",
+    "x": 480,
+    "y": 180,
+    "wires": [
+      [
+        "8c09ccf5beaceb8f"
+      ]
+    ]
+  },
+  {
+    "id": "b3600d6aa5f50032",
+    "type": "mysql",
+    "z": "7abce49813f3d72f",
+    "mydb": "aa2c2977724dc955",
+    "name": "",
+    "x": 480,
+    "y": 840,
+    "wires": [
+      [
+        "2a2d9f5840cef030"
+      ]
+    ]
+  },
+  {
+    "id": "c4a69a4399ebe3b9",
+    "type": "inject",
+    "z": "7abce49813f3d72f",
+    "name": "CREATE",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 360,
+    "wires": [
+      [
+        "e1c3d32ccba33ae2"
+      ]
+    ]
+  },
+  {
+    "id": "58914a3f6bfa5ecc",
+    "type": "debug",
+    "z": "7abce49813f3d72f",
+    "name": "",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 650,
+    "y": 360,
+    "wires": []
+  },
+  {
+    "id": "e1c3d32ccba33ae2",
+    "type": "function",
+    "z": "7abce49813f3d72f",
+    "name": "fztable1",
+    "func": "// @ts-nocheck\ntopic = \"CREATE TABLE `fztable1` ( \";\ntopic = topic + \"`fz_idx` INT NULL AUTO_INCREMENT,\";\n//topic = topic + \"`Unit1Temp` FLOAT NULL,\";\n//topic = topic + \"`Unit2Temp` FLOAT NULL,\";\n//topic = topic + \"`TC_Temp1` FLOAT NULL,\";\n//topic = topic + \"`TC_Temp2` FLOAT NULL,\";\n//topic = topic + \"`Flowmeter_L` INT NULL,\";\n//topic = topic + \"`Flowmeter_TON` DOUBLE NULL,\";\n//topic = topic + \"`Unit4Pressure1` INT NULL,\";\n//topic = topic + \"`Unit4Pressure2` INT NULL,\";\n//topic = topic + \"`Unit3Pressure1` INT NULL,\";\n//topic = topic + \"`Unit5NG` INT NULL,\";\ntopic = topic + \"`plcalive` INT NULL,\";\ntopic = topic + \"`date` VARCHAR(45) NULL,\";\ntopic = topic + \"PRIMARY KEY `fz_idx` (`fz_idx`)) COLLATE='utf8mb4_general_ci';\";\nmsg.topic = topic;\n\nreturn msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 360,
+    "wires": [
+      [
+        "60ee0994cee6eb9f"
+      ]
+    ]
+  },
+  {
+    "id": "60ee0994cee6eb9f",
+    "type": "mysql",
+    "z": "7abce49813f3d72f",
+    "mydb": "aa2c2977724dc955",
+    "name": "",
+    "x": 480,
+    "y": 360,
+    "wires": [
+      [
+        "58914a3f6bfa5ecc"
+      ]
+    ]
+  },
+  {
+    "id": "6a9935d4ff8c0a0b",
+    "type": "inject",
+    "z": "7abce49813f3d72f",
+    "name": "CREATE",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 420,
+    "wires": [
+      [
+        "c967e4caa2548e0e"
+      ]
+    ]
+  },
+  {
+    "id": "3358989e965f8c9f",
+    "type": "debug",
+    "z": "7abce49813f3d72f",
+    "name": "",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 650,
+    "y": 420,
+    "wires": []
+  },
+  {
+    "id": "c967e4caa2548e0e",
+    "type": "function",
+    "z": "7abce49813f3d72f",
+    "name": "fztable2",
+    "func": "// @ts-nocheck\ntopic = \"CREATE TABLE `fztable2` ( \";\ntopic = topic + \"`fz_idx` INT NULL AUTO_INCREMENT,\";\n//topic = topic + \"`Unit1Temp` FLOAT NULL,\";\n//topic = topic + \"`Unit2Temp` FLOAT NULL,\";\n//topic = topic + \"`TC_Temp1` FLOAT NULL,\";\n//topic = topic + \"`TC_Temp2` FLOAT NULL,\";\n//topic = topic + \"`Flowmeter_L` INT NULL,\";\n//topic = topic + \"`Flowmeter_TON` DOUBLE NULL,\";\n//topic = topic + \"`Unit4Pressure1` INT NULL,\";\n//topic = topic + \"`Unit4Pressure2` INT NULL,\";\n//topic = topic + \"`Unit3Pressure1` INT NULL,\";\n//topic = topic + \"`Unit5NG` INT NULL,\";\n//topic = topic + \"`plcalive` INT NULL,\";\n//topic = topic + \"`date` VARCHAR(45) NULL,\";\ntopic = topic + \"`Unit1Power` INT NULL,\";\ntopic = topic + \"`Unit1Heating` INT NULL,\";\ntopic = topic + \"`Unit2Power` INT NULL,\";\n//topic = topic + \"`Unit2Heating` INT NULL,\";\ntopic = topic + \"`Unit3Power` INT NULL,\";\ntopic = topic + \"`Door1` INT NULL,\";\ntopic = topic + \"`Door2` INT NULL,\";\ntopic = topic + \"`Unit5NG` INT NULL,\";\ntopic = topic + \"`date` VARCHAR(45) NULL,\";\ntopic = topic + \"PRIMARY KEY `fz_idx` (`fz_idx`)) COLLATE='utf8mb4_general_ci';\";\nmsg.topic = topic;\n\nreturn msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 420,
+    "wires": [
+      [
+        "0e6b8c5b9f1ec2f4"
+      ]
+    ]
+  },
+  {
+    "id": "0e6b8c5b9f1ec2f4",
+    "type": "mysql",
+    "z": "7abce49813f3d72f",
+    "mydb": "aa2c2977724dc955",
+    "name": "",
+    "x": 480,
+    "y": 420,
+    "wires": [
+      [
+        "3358989e965f8c9f"
+      ]
+    ]
+  },
+  {
+    "id": "561e78f05c123cc8",
+    "type": "comment",
+    "z": "7abce49813f3d72f",
+    "name": "DB CREATE(fz_shm)",
+    "info": "DB CREATE(fz_shm)",
+    "x": 140,
+    "y": 120,
+    "wires": []
+  },
+  {
+    "id": "b58c794f1b7fb874",
+    "type": "comment",
+    "z": "7abce49813f3d72f",
+    "name": "TABLE CREATE(fztable)",
+    "info": "TABLE CREATE(fztable)",
+    "x": 150,
+    "y": 240,
+    "wires": []
+  },
+  {
+    "id": "3b8f585179295873",
+    "type": "comment",
+    "z": "7abce49813f3d72f",
+    "name": "TABLE CREATE(fztable)",
+    "info": "TABLE INSERT(fztable)",
+    "x": 150,
+    "y": 600,
+    "wires": []
+  },
+  {
+    "id": "8888e5e9b4d76491",
+    "type": "comment",
+    "z": "7abce49813f3d72f",
+    "name": "TABLE DELETE_ALL(fztable)",
+    "info": "TABLE DELETE_ALL(fztable)",
+    "x": 160,
+    "y": 780,
+    "wires": []
+  },
+  {
+    "id": "9456ec13a98a92a9",
+    "type": "inject",
+    "z": "7abce49813f3d72f",
+    "name": "DELETE ",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 1200,
+    "wires": [
+      [
+        "21b40cb40500719f"
+      ]
+    ]
+  },
+  {
+    "id": "d46b6f32f37a1c73",
+    "type": "debug",
+    "z": "7abce49813f3d72f",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 650,
+    "y": 1200,
+    "wires": []
+  },
+  {
+    "id": "21b40cb40500719f",
+    "type": "function",
+    "z": "7abce49813f3d72f",
+    "name": "fztable_1ITEM",
+    "func": "var newMsg = {\n\"topic\" : \"DELETE FROM `fz_shm`.`fztable` ORDER BY fz_idx DESC LIMIT 1\"\n}\nreturn newMsg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 320,
+    "y": 1200,
+    "wires": [
+      [
+        "681244a839da8837"
+      ]
+    ]
+  },
+  {
+    "id": "681244a839da8837",
+    "type": "mysql",
+    "z": "7abce49813f3d72f",
+    "mydb": "aa2c2977724dc955",
+    "name": "",
+    "x": 480,
+    "y": 1200,
+    "wires": [
+      [
+        "d46b6f32f37a1c73"
+      ]
+    ]
+  },
+  {
+    "id": "945f615b971cacce",
+    "type": "inject",
+    "z": "7abce49813f3d72f",
+    "name": "DELETE ",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 900,
+    "wires": [
+      [
+        "4e8c6c821d662af0"
+      ]
+    ]
+  },
+  {
+    "id": "feabe93a746c8c3a",
+    "type": "debug",
+    "z": "7abce49813f3d72f",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 650,
+    "y": 900,
+    "wires": []
+  },
+  {
+    "id": "4e8c6c821d662af0",
+    "type": "function",
+    "z": "7abce49813f3d72f",
+    "name": "fztable1_all",
+    "func": "var newMsg = {\n\"topic\" : \"DELETE FROM `fz_shm`.`fztable1`\"\n}\nreturn newMsg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 310,
+    "y": 900,
+    "wires": [
+      [
+        "3aef9deaac139141"
+      ]
+    ]
+  },
+  {
+    "id": "3aef9deaac139141",
+    "type": "mysql",
+    "z": "7abce49813f3d72f",
+    "mydb": "aa2c2977724dc955",
+    "name": "",
+    "x": 480,
+    "y": 900,
+    "wires": [
+      [
+        "feabe93a746c8c3a"
+      ]
+    ]
+  },
+  {
+    "id": "258fc2acf7b9add2",
+    "type": "inject",
+    "z": "7abce49813f3d72f",
+    "name": "DELETE ",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 960,
+    "wires": [
+      [
+        "6f53ad5f67e3676d"
+      ]
+    ]
+  },
+  {
+    "id": "c572a7dc2a363fc7",
+    "type": "debug",
+    "z": "7abce49813f3d72f",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 650,
+    "y": 960,
+    "wires": []
+  },
+  {
+    "id": "6f53ad5f67e3676d",
+    "type": "function",
+    "z": "7abce49813f3d72f",
+    "name": "fztable2_all",
+    "func": "var newMsg = {\n\"topic\" : \"DELETE FROM `fz_shm`.`fztable2`\"\n}\nreturn newMsg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 310,
+    "y": 960,
+    "wires": [
+      [
+        "751f4efd7d65f4d8"
+      ]
+    ]
+  },
+  {
+    "id": "751f4efd7d65f4d8",
+    "type": "mysql",
+    "z": "7abce49813f3d72f",
+    "mydb": "aa2c2977724dc955",
+    "name": "",
+    "x": 480,
+    "y": 960,
+    "wires": [
+      [
+        "c572a7dc2a363fc7"
+      ]
+    ]
+  },
+  {
+    "id": "b1ae8b29447c09d9",
+    "type": "comment",
+    "z": "7abce49813f3d72f",
+    "name": "TABLE DELETE_1ITEM(fztable)",
+    "info": "TABLE DELETE_1ITEM(fztable)",
+    "x": 170,
+    "y": 1140,
+    "wires": []
+  },
+  {
+    "id": "0fefa32fdeb619b6",
+    "type": "inject",
+    "z": "7abce49813f3d72f",
+    "name": "DELETE ",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 1260,
+    "wires": [
+      [
+        "cdca32fb4058d6b6"
+      ]
+    ]
+  },
+  {
+    "id": "185cbe21a48bf8e9",
+    "type": "debug",
+    "z": "7abce49813f3d72f",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 650,
+    "y": 1260,
+    "wires": []
+  },
+  {
+    "id": "cdca32fb4058d6b6",
+    "type": "function",
+    "z": "7abce49813f3d72f",
+    "name": "fztable1_1ITEM",
+    "func": "var newMsg = {\n\"topic\" : \"DELETE FROM `fz_shm`.`fztable1` ORDER BY fz_idx DESC LIMIT 1\"\n}\nreturn newMsg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 320,
+    "y": 1260,
+    "wires": [
+      [
+        "d6c1e9940ca1f964"
+      ]
+    ]
+  },
+  {
+    "id": "d6c1e9940ca1f964",
+    "type": "mysql",
+    "z": "7abce49813f3d72f",
+    "mydb": "aa2c2977724dc955",
+    "name": "",
+    "x": 480,
+    "y": 1260,
+    "wires": [
+      [
+        "185cbe21a48bf8e9"
+      ]
+    ]
+  },
+  {
+    "id": "ccffd75ceb5c0e57",
+    "type": "inject",
+    "z": "7abce49813f3d72f",
+    "name": "DELETE ",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 1320,
+    "wires": [
+      [
+        "cd98f26a9c1fc232"
+      ]
+    ]
+  },
+  {
+    "id": "07f1f2bc7bd9eb18",
+    "type": "debug",
+    "z": "7abce49813f3d72f",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 650,
+    "y": 1320,
+    "wires": []
+  },
+  {
+    "id": "cd98f26a9c1fc232",
+    "type": "function",
+    "z": "7abce49813f3d72f",
+    "name": "fztable2_1ITEM",
+    "func": "var newMsg = {\n\"topic\" : \"DELETE FROM `fz_shm`.`fztable2` ORDER BY fz_idx DESC LIMIT 1\"\n}\nreturn newMsg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 320,
+    "y": 1320,
+    "wires": [
+      [
+        "cc8586ba63f26508"
+      ]
+    ]
+  },
+  {
+    "id": "cc8586ba63f26508",
+    "type": "mysql",
+    "z": "7abce49813f3d72f",
+    "mydb": "aa2c2977724dc955",
+    "name": "",
+    "x": 480,
+    "y": 1320,
+    "wires": [
+      [
+        "07f1f2bc7bd9eb18"
+      ]
+    ]
+  },
+  {
+    "id": "5876cd87a56f132a",
+    "type": "inject",
+    "z": "7abce49813f3d72f",
+    "name": "INSERT",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 720,
+    "wires": [
+      [
+        "88e55f48ff2e6605"
+      ]
+    ]
+  },
+  {
+    "id": "88e55f48ff2e6605",
+    "type": "function",
+    "z": "7abce49813f3d72f",
+    "name": "INSERT",
+    "func": "// @ts-nocheck\n/*\nif (Math.random() < 0.5) { room = 503;}else{ room = 602; }\nif (Math.random() < 0.5) { id = 9909;}else{ id = 1893; }\n\ntopic = \"INSERT INTO `fz_shm`.`access` (`room`, `id`) VALUES ('\";\ntopic = topic + room +\"', '\";\ntopic = topic + id + \"');\";\n\nmsg.topic = topic;\nreturn msg;\n*/\n\nif (Math.random() < 0.5) { Unit1Power = 0; } else { Unit1Power = 1; }\nif (Math.random() < 0.5) { Unit1Heating = 0; } else { Unit1Heating = 1; }\nif (Math.random() < 0.5) { Unit2Power = 0; } else { Unit2Power = 1; }\n//if (Math.random() < 0.5) { Unit2Heating = 0; } else { Unit2Heating = 1; }\nif (Math.random() < 0.5) { Door1 = 0; } else { Door1 = 1; }\nif (Math.random() < 0.5) { Door2 = 0; } else { Door2 = 1; }\n\n\n//msg.topic = \"insert into fztable(`Unit1Temp`,`Unit2Temp`,`TC_Temp1`,`TC_Temp2`,`Flowmeter_L`,`Flowmeter_TON`,`Unit4Pressure1`,`Unit4Pressure2`,`Unit3Pressure1`,`date`) values(?,?,?,?,?,?,?,?,?,?,current_timestamp());\";\n\ntopic = \"INSERT INTO `fz_shm`.`fztable2` (`Unit1Power`,`Unit1Heating`,`Unit2Power`,`Unit2Heating`,`Door1`,`Door2`,`date`) VALUES ('\";\ntopic = topic + Unit1Power + \"', '\";\ntopic = topic + Unit1Heating+ \"', '\";\ntopic = topic + Unit2Power + \"', '\";\n//topic = topic + Unit2Heating + \"', '\";\ntopic = topic + Unit3Power + \"', '\";\ntopic = topic + Door1 + \"', '\";\ntopic = topic + Door2 + \"', '\";\ntopic = topic + Unit5NG + \"', '\";\ntopic = topic + 20221126 + \"');\";\n\nmsg.topic = topic;\nreturn msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 720,
+    "wires": [
+      [
+        "e66ca6b23d1add6a"
+      ]
+    ]
+  },
+  {
+    "id": "d50c2af4f26ea8ce",
+    "type": "debug",
+    "z": "7abce49813f3d72f",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 650,
+    "y": 720,
+    "wires": []
+  },
+  {
+    "id": "e66ca6b23d1add6a",
+    "type": "mysql",
+    "z": "7abce49813f3d72f",
+    "mydb": "aa2c2977724dc955",
+    "name": "",
+    "x": 480,
+    "y": 720,
+    "wires": [
+      [
+        "d50c2af4f26ea8ce"
+      ]
+    ]
+  },
+  {
+    "id": "b08135951ef02df3",
+    "type": "inject",
+    "z": "7abce49813f3d72f",
+    "name": "CREATE",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 480,
+    "wires": [
+      [
+        "bc3dd2272425b5e1"
+      ]
+    ]
+  },
+  {
+    "id": "011e421f0d24a979",
+    "type": "debug",
+    "z": "7abce49813f3d72f",
+    "name": "",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 650,
+    "y": 480,
+    "wires": []
+  },
+  {
+    "id": "bc3dd2272425b5e1",
+    "type": "function",
+    "z": "7abce49813f3d72f",
+    "name": "fztable3",
+    "func": "// @ts-nocheck\ntopic = \"CREATE TABLE `fztable3` ( \";\ntopic = topic + \"`fz_idx` INT AUTO_INCREMENT,\";\ntopic = topic + \"`volt1` FLOAT NULL,\";\ntopic = topic + \"`amp1` FLOAT NULL,\";\ntopic = topic + \"`power1` FLOAT NULL,\";\ntopic = topic + \"`volt2` FLOAT NULL,\";\ntopic = topic + \"`amp2` FLOAT NULL,\";\ntopic = topic + \"`power2` FLOAT NULL,\";\ntopic = topic + \"`date` VARCHAR(45) NULL,\";\ntopic = topic + \"PRIMARY KEY `fz_idx` (`fz_idx`)) COLLATE='utf8mb4_general_ci';\";\nmsg.topic = topic;\n\nreturn msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 480,
+    "wires": [
+      [
+        "65a2c564fa5f511c"
+      ]
+    ]
+  },
+  {
+    "id": "65a2c564fa5f511c",
+    "type": "mysql",
+    "z": "7abce49813f3d72f",
+    "mydb": "aa2c2977724dc955",
+    "name": "",
+    "x": 480,
+    "y": 480,
+    "wires": [
+      [
+        "011e421f0d24a979"
+      ]
+    ]
+  },
+  {
+    "id": "1c263b9d5d4f06cb",
+    "type": "inject",
+    "z": "7abce49813f3d72f",
+    "name": "DELETE ",
+    "props": [
+      {
+        "p": "payload",
+        "v": "",
+        "vt": "date"
+      },
+      {
+        "p": "topic",
+        "v": "",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 1020,
+    "wires": [
+      [
+        "a3d8917094d35c26"
+      ]
+    ]
+  },
+  {
+    "id": "cb1f5816b50c06a0",
+    "type": "debug",
+    "z": "7abce49813f3d72f",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 650,
+    "y": 1020,
+    "wires": []
+  },
+  {
+    "id": "a3d8917094d35c26",
+    "type": "function",
+    "z": "7abce49813f3d72f",
+    "name": "fztable3_all",
+    "func": "var newMsg = {\n\"topic\" : \"DELETE FROM `fz_shm`.`fztable3`\"\n}\nreturn newMsg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 310,
+    "y": 1020,
+    "wires": [
+      [
+        "aa0da306ba1d3742"
+      ]
+    ]
+  },
+  {
+    "id": "aa0da306ba1d3742",
+    "type": "mysql",
+    "z": "7abce49813f3d72f",
+    "mydb": "aa2c2977724dc955",
+    "name": "",
+    "x": 480,
+    "y": 1020,
+    "wires": [
+      [
+        "cb1f5816b50c06a0"
+      ]
+    ]
+  },
+  {
+    "id": "1f5d9d88faa6777d",
+    "type": "inject",
+    "z": "178ae6b97d25ae48",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "str",
+    "x": 110,
+    "y": 120,
+    "wires": [
+      [
+        "86ada43161ca1a1d"
+      ]
+    ]
+  },
+  {
+    "id": "86ada43161ca1a1d",
+    "type": "function",
+    "z": "178ae6b97d25ae48",
+    "name": "select an item from DB",
+    "func": "msg.topic = \"SELECT * FROM fztable WHERE DATE(date) BETWEEN :sdate AND :edate order by fz_idx desc limit 100;\";\n\nvar vs = global.get('start_date');\nvar ve = global.get('end_date');\n\nvar vsdate = new Date(vs);\nvar vedate = new Date(ve);\n\nvar vsdd = vsdate.getDate();\nif(vsdd < 10) vsdd = '0' + vsdd;\nvar vsmm = vsdate.getMonth()+1;\nvar vsyy = vsdate.getFullYear();\n\nvar vedd = vedate.getDate();\nif(vedd < 10) vedd = '0' + vedd;\nvar vemm = vedate.getMonth()+1;\nvar veyy = vedate.getFullYear();\n\nvar vsday = vsyy + '-' + vsmm + '-' + vsdd;\nvar veday = veyy + '-' + vemm + '-' + vedd;\n\n\n// msg.payload = { sdate: '2021-01-15', edate: '2021-01-15' };\nmsg.payload = { sdate: vsday, edate: veday };\nreturn msg;\n\n\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 340,
+    "y": 120,
+    "wires": [
+      [
+        "3e1a69a18fb2cfd5"
+      ]
+    ]
+  },
+  {
+    "id": "8140d5acc22516f0",
+    "type": "function",
+    "z": "178ae6b97d25ae48",
+    "name": "data parse",
+    "func": "var aJsonArray = new Array();\n\nvar j = 0; \nfor(var i = 0; i < msg.payload.length; i++)\n{\n    msg.payload[i].date = msg.payload[i].date.toLocaleString(\"en-US\", {timeZone: \"Asia/Seoul\"});\n    aJsonArray.push(msg.payload[i]);\n    j += 1;\n    if(j == 100) break;\n    \n}\n\nvar text = JSON.stringify(aJsonArray);\nvar obj = JSON.parse(text);\nmsg.payload = obj;\n\nreturn msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 730,
+    "y": 120,
+    "wires": [
+      [
+        "c450eb0824cfd47b",
+        "dc22cfceef37cfeb"
+      ]
+    ]
+  },
+  {
+    "id": "29abe5f2566bdfc9",
+    "type": "ui_date_picker",
+    "z": "178ae6b97d25ae48",
+    "name": "",
+    "label": "From",
+    "group": "81f690b4715c4022",
+    "order": 2,
+    "width": 4,
+    "height": 1,
+    "passthru": true,
+    "topic": "",
+    "topicType": "str",
+    "className": "",
+    "x": 270,
+    "y": 220,
+    "wires": [
+      [
+        "45f7701c22804db5"
+      ]
+    ]
+  },
+  {
+    "id": "8d3f16205be92b8c",
+    "type": "ui_date_picker",
+    "z": "178ae6b97d25ae48",
+    "name": "",
+    "label": "To",
+    "group": "81f690b4715c4022",
+    "order": 3,
+    "width": 4,
+    "height": 1,
+    "passthru": true,
+    "topic": "",
+    "topicType": "str",
+    "className": "",
+    "x": 270,
+    "y": 280,
+    "wires": [
+      [
+        "0413abe71cc7ef7d"
+      ]
+    ]
+  },
+  {
+    "id": "45f7701c22804db5",
+    "type": "function",
+    "z": "178ae6b97d25ae48",
+    "name": "store start_date",
+    "func": "global.set('start_date', msg.payload);\n\nmsg.payload = new Date(msg.payload);\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 430,
+    "y": 220,
+    "wires": [
+      [
+        "86ada43161ca1a1d"
+      ]
+    ]
+  },
+  {
+    "id": "0413abe71cc7ef7d",
+    "type": "function",
+    "z": "178ae6b97d25ae48",
+    "name": "store end_date",
+    "func": "global.set('end_date', msg.payload);\n\nmsg.payload = new Date(msg.payload);\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 430,
+    "y": 280,
+    "wires": [
+      [
+        "86ada43161ca1a1d"
+      ]
+    ]
+  },
+  {
+    "id": "b0c1c81132cf066d",
+    "type": "ui_button",
+    "z": "178ae6b97d25ae48",
+    "name": "",
+    "group": "81f690b4715c4022",
+    "order": 1,
+    "width": 2,
+    "height": 1,
+    "passthru": false,
+    "label": "Today",
+    "tooltip": "",
+    "color": "",
+    "bgcolor": "",
+    "className": "",
+    "icon": "",
+    "payload": "",
+    "payloadType": "date",
+    "topic": "",
+    "topicType": "str",
+    "x": 100,
+    "y": 220,
+    "wires": [
+      [
+        "29abe5f2566bdfc9",
+        "8d3f16205be92b8c"
+      ]
+    ]
+  },
+  {
+    "id": "3e1a69a18fb2cfd5",
+    "type": "Stackhero-MySQL",
+    "z": "178ae6b97d25ae48",
+    "server": "f32ea2b.548ff6",
+    "name": "",
+    "x": 550,
+    "y": 120,
+    "wires": [
+      [
+        "8140d5acc22516f0"
+      ]
+    ]
+  },
+  {
+    "id": "c450eb0824cfd47b",
+    "type": "ui_table",
+    "z": "178ae6b97d25ae48",
+    "group": "81f690b4715c4022",
+    "name": "",
+    "order": 5,
+    "width": 24,
+    "height": 8,
+    "columns": [
+      {
+        "field": "Unit1Temp",
+        "title": "살균기온도",
+        "width": "10px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "Unit2Temp",
+        "title": "후살균기온도",
+        "width": "10px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "TC_Temp1",
+        "title": "TC_온도1",
+        "width": "10px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "TC_Temp2",
+        "title": "TC_온도2",
+        "width": "10px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "Flowmeter_L",
+        "title": "순시유량_L",
+        "width": "10px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "Flowmeter_TON",
+        "title": "적산유량_TON",
+        "width": "10px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "Unit4Pressure1",
+        "title": "여과기압력계1",
+        "width": "10px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "Unit4Pressure2",
+        "title": "여과기압력계2",
+        "width": "10px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "Unit3Pressure1",
+        "title": "에어세병기압력계",
+        "width": "10px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "Unit5NG",
+        "title": "금속검출기NG",
+        "width": "10px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "date",
+        "title": "DATE",
+        "width": "15px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      }
+    ],
+    "outputs": 1,
+    "cts": true,
+    "x": 930,
+    "y": 120,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "ddc1226e1181e744",
+    "type": "comment",
+    "z": "178ae6b97d25ae48",
+    "name": "Maria DB fztable",
+    "info": "",
+    "x": 120,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "82ecd5605533f486",
+    "type": "comment",
+    "z": "178ae6b97d25ae48",
+    "name": "Maria DB fztable1",
+    "info": "",
+    "x": 130,
+    "y": 360,
+    "wires": []
+  },
+  {
+    "id": "7aba5360e41db34e",
+    "type": "inject",
+    "z": "178ae6b97d25ae48",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "str",
+    "x": 110,
+    "y": 460,
+    "wires": [
+      [
+        "8ffa9179b59c9d1b"
+      ]
+    ]
+  },
+  {
+    "id": "8ffa9179b59c9d1b",
+    "type": "function",
+    "z": "178ae6b97d25ae48",
+    "name": "select an item from DB",
+    "func": "msg.topic = \"SELECT * FROM fztable2 WHERE DATE(date) BETWEEN :sdate AND :edate order by fz_idx desc limit 100;\";\n\nvar vs = global.get('start_date');\nvar ve = global.get('end_date');\n\nvar vsdate = new Date(vs);\nvar vedate = new Date(ve);\n\nvar vsdd = vsdate.getDate();\nif(vsdd < 10) vsdd = '0' + vsdd;\nvar vsmm = vsdate.getMonth()+1;\nvar vsyy = vsdate.getFullYear();\n\nvar vedd = vedate.getDate();\nif(vedd < 10) vedd = '0' + vedd;\nvar vemm = vedate.getMonth()+1;\nvar veyy = vedate.getFullYear();\n\nvar vsday = vsyy + '-' + vsmm + '-' + vsdd;\nvar veday = veyy + '-' + vemm + '-' + vedd;\n\n\n// msg.payload = { sdate: '2021-01-15', edate: '2021-01-15' };\nmsg.payload = { sdate: vsday, edate: veday };\nreturn msg;\n\n\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 340,
+    "y": 460,
+    "wires": [
+      [
+        "dbd7b61fb8a2e9c0"
+      ]
+    ]
+  },
+  {
+    "id": "4315487b3285deb6",
+    "type": "function",
+    "z": "178ae6b97d25ae48",
+    "name": "data parse",
+    "func": "var aJsonArray = new Array();\n\nvar j = 0; \nfor(var i = 0; i < msg.payload.length; i++)\n{\n    msg.payload[i].date = msg.payload[i].date.toLocaleString(\"en-US\", {timeZone: \"Asia/Seoul\"});\n    aJsonArray.push(msg.payload[i]);\n    j += 1;\n    if(j == 100) break;\n    \n}\n\nvar text = JSON.stringify(aJsonArray);\nvar obj = JSON.parse(text);\nmsg.payload = obj;\n\nreturn msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 730,
+    "y": 460,
+    "wires": [
+      [
+        "5daddd473925791e"
+      ]
+    ]
+  },
+  {
+    "id": "f740f78814ecf752",
+    "type": "ui_date_picker",
+    "z": "178ae6b97d25ae48",
+    "name": "",
+    "label": "From",
+    "group": "6ee4fa36a88174b1",
+    "order": 2,
+    "width": 4,
+    "height": 1,
+    "passthru": true,
+    "topic": "",
+    "topicType": "str",
+    "className": "",
+    "x": 270,
+    "y": 600,
+    "wires": [
+      [
+        "62dd2d3f9a0261de"
+      ]
+    ]
+  },
+  {
+    "id": "14a4ea70bd07d440",
+    "type": "ui_date_picker",
+    "z": "178ae6b97d25ae48",
+    "name": "",
+    "label": "To",
+    "group": "6ee4fa36a88174b1",
+    "order": 3,
+    "width": 4,
+    "height": 1,
+    "passthru": true,
+    "topic": "",
+    "topicType": "str",
+    "className": "",
+    "x": 270,
+    "y": 660,
+    "wires": [
+      [
+        "a176bac816ecf8c9"
+      ]
+    ]
+  },
+  {
+    "id": "62dd2d3f9a0261de",
+    "type": "function",
+    "z": "178ae6b97d25ae48",
+    "name": "store start_date",
+    "func": "global.set('start_date', msg.payload);\n\nmsg.payload = new Date(msg.payload);\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 430,
+    "y": 600,
+    "wires": [
+      [
+        "8ffa9179b59c9d1b"
+      ]
+    ]
+  },
+  {
+    "id": "a176bac816ecf8c9",
+    "type": "function",
+    "z": "178ae6b97d25ae48",
+    "name": "store end_date",
+    "func": "global.set('end_date', msg.payload);\n\nmsg.payload = new Date(msg.payload);\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 430,
+    "y": 660,
+    "wires": [
+      [
+        "8ffa9179b59c9d1b"
+      ]
+    ]
+  },
+  {
+    "id": "67f5c6ee51db915c",
+    "type": "ui_button",
+    "z": "178ae6b97d25ae48",
+    "name": "",
+    "group": "6ee4fa36a88174b1",
+    "order": 1,
+    "width": 2,
+    "height": 1,
+    "passthru": false,
+    "label": "Today",
+    "tooltip": "",
+    "color": "",
+    "bgcolor": "",
+    "className": "",
+    "icon": "",
+    "payload": "",
+    "payloadType": "date",
+    "topic": "",
+    "topicType": "str",
+    "x": 100,
+    "y": 600,
+    "wires": [
+      [
+        "f740f78814ecf752",
+        "14a4ea70bd07d440"
+      ]
+    ]
+  },
+  {
+    "id": "dbd7b61fb8a2e9c0",
+    "type": "Stackhero-MySQL",
+    "z": "178ae6b97d25ae48",
+    "server": "f32ea2b.548ff6",
+    "name": "",
+    "x": 550,
+    "y": 460,
+    "wires": [
+      [
+        "4315487b3285deb6"
+      ]
+    ]
+  },
+  {
+    "id": "5daddd473925791e",
+    "type": "ui_table",
+    "z": "178ae6b97d25ae48",
+    "group": "6ee4fa36a88174b1",
+    "name": "",
+    "order": 5,
+    "width": 24,
+    "height": 8,
+    "columns": [
+      {
+        "field": "Unit1Power",
+        "title": "살균기전원",
+        "width": "10px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "Unit1Heating",
+        "title": "살균기가열",
+        "width": "10px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "Unit2Power",
+        "title": "후살균기전원",
+        "width": "10px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "Unit3Power",
+        "title": "에어세병전원",
+        "width": "10px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "Door1",
+        "title": "도어1오픈",
+        "width": "10px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "Door2",
+        "title": "도어2오픈",
+        "width": "10px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "Unit5NG",
+        "title": "금속검출기NG",
+        "width": "10px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "date",
+        "title": "DATE",
+        "width": "15px",
+        "align": "left",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      }
+    ],
+    "outputs": 1,
+    "cts": true,
+    "x": 930,
+    "y": 460,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "72ba3e35d442560e",
+    "type": "comment",
+    "z": "178ae6b97d25ae48",
+    "name": "Maria DB fztable2",
+    "info": "",
+    "x": 130,
+    "y": 740,
+    "wires": []
+  },
+  {
+    "id": "95b45cade00358d9",
+    "type": "inject",
+    "z": "178ae6b97d25ae48",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "str",
+    "x": 110,
+    "y": 840,
+    "wires": [
+      [
+        "81ac8512d429722c"
+      ]
+    ]
+  },
+  {
+    "id": "81ac8512d429722c",
+    "type": "function",
+    "z": "178ae6b97d25ae48",
+    "name": "select an item from DB",
+    "func": "msg.topic = \"SELECT * FROM fztable1 WHERE DATE(date) BETWEEN :sdate AND :edate order by fz_idx desc limit 100;\";\n\nvar vs = global.get('start_date');\nvar ve = global.get('end_date');\n\nvar vsdate = new Date(vs);\nvar vedate = new Date(ve);\n\nvar vsdd = vsdate.getDate();\nif(vsdd < 10) vsdd = '0' + vsdd;\nvar vsmm = vsdate.getMonth()+1;\nvar vsyy = vsdate.getFullYear();\n\nvar vedd = vedate.getDate();\nif(vedd < 10) vedd = '0' + vedd;\nvar vemm = vedate.getMonth()+1;\nvar veyy = vedate.getFullYear();\n\nvar vsday = vsyy + '-' + vsmm + '-' + vsdd;\nvar veday = veyy + '-' + vemm + '-' + vedd;\n\n\n// msg.payload = { sdate: '2021-01-15', edate: '2021-01-15' };\nmsg.payload = { sdate: vsday, edate: veday };\nreturn msg;\n\n\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 340,
+    "y": 840,
+    "wires": [
+      [
+        "77a54b7688e98255"
+      ]
+    ]
+  },
+  {
+    "id": "5b1be2c68a95927b",
+    "type": "function",
+    "z": "178ae6b97d25ae48",
+    "name": "data parse",
+    "func": "var aJsonArray = new Array();\n\nvar j = 0; \nfor(var i = 0; i < msg.payload.length; i++)\n{\n    msg.payload[i].date = msg.payload[i].date.toLocaleString(\"en-US\", {timeZone: \"Asia/Seoul\"});\n    aJsonArray.push(msg.payload[i]);\n    j += 1;\n    if(j == 100) break;\n    \n}\n\nvar text = JSON.stringify(aJsonArray);\nvar obj = JSON.parse(text);\nmsg.payload = obj;\n\nreturn msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 730,
+    "y": 840,
+    "wires": [
+      [
+        "0d634439fc516ed6"
+      ]
+    ]
+  },
+  {
+    "id": "8525d83665a600c2",
+    "type": "ui_date_picker",
+    "z": "178ae6b97d25ae48",
+    "name": "",
+    "label": "From",
+    "group": "703d9f7865582c7a",
+    "order": 2,
+    "width": 4,
+    "height": 1,
+    "passthru": true,
+    "topic": "",
+    "topicType": "str",
+    "className": "",
+    "x": 270,
+    "y": 980,
+    "wires": [
+      [
+        "ac9779c42fc1a1bc"
+      ]
+    ]
+  },
+  {
+    "id": "5e0f456fd0b59b03",
+    "type": "ui_date_picker",
+    "z": "178ae6b97d25ae48",
+    "name": "",
+    "label": "To",
+    "group": "703d9f7865582c7a",
+    "order": 3,
+    "width": 4,
+    "height": 1,
+    "passthru": true,
+    "topic": "",
+    "topicType": "str",
+    "className": "",
+    "x": 270,
+    "y": 1040,
+    "wires": [
+      [
+        "26a09f5e8f3eedd3"
+      ]
+    ]
+  },
+  {
+    "id": "ac9779c42fc1a1bc",
+    "type": "function",
+    "z": "178ae6b97d25ae48",
+    "name": "store start_date",
+    "func": "global.set('start_date', msg.payload);\n\nmsg.payload = new Date(msg.payload);\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 430,
+    "y": 980,
+    "wires": [
+      [
+        "81ac8512d429722c"
+      ]
+    ]
+  },
+  {
+    "id": "26a09f5e8f3eedd3",
+    "type": "function",
+    "z": "178ae6b97d25ae48",
+    "name": "store end_date",
+    "func": "global.set('end_date', msg.payload);\n\nmsg.payload = new Date(msg.payload);\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 430,
+    "y": 1040,
+    "wires": [
+      [
+        "81ac8512d429722c"
+      ]
+    ]
+  },
+  {
+    "id": "87b18b003b633908",
+    "type": "ui_button",
+    "z": "178ae6b97d25ae48",
+    "name": "",
+    "group": "703d9f7865582c7a",
+    "order": 1,
+    "width": 2,
+    "height": 1,
+    "passthru": false,
+    "label": "Today",
+    "tooltip": "",
+    "color": "",
+    "bgcolor": "",
+    "className": "",
+    "icon": "",
+    "payload": "",
+    "payloadType": "date",
+    "topic": "",
+    "topicType": "str",
+    "x": 100,
+    "y": 980,
+    "wires": [
+      [
+        "8525d83665a600c2",
+        "5e0f456fd0b59b03"
+      ]
+    ]
+  },
+  {
+    "id": "77a54b7688e98255",
+    "type": "Stackhero-MySQL",
+    "z": "178ae6b97d25ae48",
+    "server": "f32ea2b.548ff6",
+    "name": "",
+    "x": 550,
+    "y": 840,
+    "wires": [
+      [
+        "5b1be2c68a95927b"
+      ]
+    ]
+  },
+  {
+    "id": "0d634439fc516ed6",
+    "type": "ui_table",
+    "z": "178ae6b97d25ae48",
+    "group": "703d9f7865582c7a",
+    "name": "",
+    "order": 5,
+    "width": 24,
+    "height": 8,
+    "columns": [
+      {
+        "field": "plcalive",
+        "title": "PLC STATUS",
+        "width": "10px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "date",
+        "title": "DATE",
+        "width": "15px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      }
+    ],
+    "outputs": 1,
+    "cts": true,
+    "x": 930,
+    "y": 840,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "dc22cfceef37cfeb",
+    "type": "debug",
+    "z": "178ae6b97d25ae48",
+    "name": "debug 22",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 940,
+    "y": 200,
+    "wires": []
+  },
+  {
+    "id": "a5126895a7254330",
+    "type": "comment",
+    "z": "178ae6b97d25ae48",
+    "name": "Maria DB fztable3",
+    "info": "",
+    "x": 130,
+    "y": 1140,
+    "wires": []
+  },
+  {
+    "id": "8b2ac3e0893e55b6",
+    "type": "inject",
+    "z": "178ae6b97d25ae48",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "str",
+    "x": 110,
+    "y": 1240,
+    "wires": [
+      [
+        "258df2f4fa0844cf"
+      ]
+    ]
+  },
+  {
+    "id": "258df2f4fa0844cf",
+    "type": "function",
+    "z": "178ae6b97d25ae48",
+    "name": "select an item from DB",
+    "func": "msg.topic = \"SELECT * FROM fztable3 WHERE DATE(date) BETWEEN :sdate AND :edate order by fz_idx desc limit 100;\";\n\nvar vs = global.get('start_date');\nvar ve = global.get('end_date');\n\nvar vsdate = new Date(vs);\nvar vedate = new Date(ve);\n\nvar vsdd = vsdate.getDate();\nif(vsdd < 10) vsdd = '0' + vsdd;\nvar vsmm = vsdate.getMonth()+1;\nvar vsyy = vsdate.getFullYear();\n\nvar vedd = vedate.getDate();\nif(vedd < 10) vedd = '0' + vedd;\nvar vemm = vedate.getMonth()+1;\nvar veyy = vedate.getFullYear();\n\nvar vsday = vsyy + '-' + vsmm + '-' + vsdd;\nvar veday = veyy + '-' + vemm + '-' + vedd;\n\n\n// msg.payload = { sdate: '2021-01-15', edate: '2021-01-15' };\nmsg.payload = { sdate: vsday, edate: veday };\nreturn msg;\n\n\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 340,
+    "y": 1240,
+    "wires": [
+      [
+        "b9707f3f0451011b"
+      ]
+    ]
+  },
+  {
+    "id": "f09ab504639bea65",
+    "type": "function",
+    "z": "178ae6b97d25ae48",
+    "name": "data parse",
+    "func": "var aJsonArray = new Array();\n\nvar j = 0; \nfor(var i = 0; i < msg.payload.length; i++)\n{\n    msg.payload[i].date = msg.payload[i].date.toLocaleString(\"en-US\", {timeZone: \"Asia/Seoul\"});\n    aJsonArray.push(msg.payload[i]);\n    j += 1;\n    if(j == 100) break;\n    \n}\n\nvar text = JSON.stringify(aJsonArray);\nvar obj = JSON.parse(text);\nmsg.payload = obj;\n\nreturn msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 730,
+    "y": 1240,
+    "wires": [
+      [
+        "6b501b002acc94f9"
+      ]
+    ]
+  },
+  {
+    "id": "7b39ca7fd6aff6bf",
+    "type": "ui_date_picker",
+    "z": "178ae6b97d25ae48",
+    "name": "",
+    "label": "From",
+    "group": "d97475d051f5686e",
+    "order": 2,
+    "width": 4,
+    "height": 1,
+    "passthru": true,
+    "topic": "",
+    "topicType": "str",
+    "className": "",
+    "x": 270,
+    "y": 1380,
+    "wires": [
+      [
+        "c00a787b66f161e2"
+      ]
+    ]
+  },
+  {
+    "id": "4c983561f9144d17",
+    "type": "ui_date_picker",
+    "z": "178ae6b97d25ae48",
+    "name": "",
+    "label": "To",
+    "group": "d97475d051f5686e",
+    "order": 3,
+    "width": 4,
+    "height": 1,
+    "passthru": true,
+    "topic": "",
+    "topicType": "str",
+    "className": "",
+    "x": 270,
+    "y": 1440,
+    "wires": [
+      [
+        "d0f46cfde706f543"
+      ]
+    ]
+  },
+  {
+    "id": "c00a787b66f161e2",
+    "type": "function",
+    "z": "178ae6b97d25ae48",
+    "name": "store start_date",
+    "func": "global.set('start_date', msg.payload);\n\nmsg.payload = new Date(msg.payload);\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 430,
+    "y": 1380,
+    "wires": [
+      [
+        "258df2f4fa0844cf"
+      ]
+    ]
+  },
+  {
+    "id": "d0f46cfde706f543",
+    "type": "function",
+    "z": "178ae6b97d25ae48",
+    "name": "store end_date",
+    "func": "global.set('end_date', msg.payload);\n\nmsg.payload = new Date(msg.payload);\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 430,
+    "y": 1440,
+    "wires": [
+      [
+        "258df2f4fa0844cf"
+      ]
+    ]
+  },
+  {
+    "id": "084d1a029609bd7f",
+    "type": "ui_button",
+    "z": "178ae6b97d25ae48",
+    "name": "",
+    "group": "d97475d051f5686e",
+    "order": 1,
+    "width": 2,
+    "height": 1,
+    "passthru": false,
+    "label": "Today",
+    "tooltip": "",
+    "color": "",
+    "bgcolor": "",
+    "className": "",
+    "icon": "",
+    "payload": "",
+    "payloadType": "date",
+    "topic": "",
+    "topicType": "str",
+    "x": 100,
+    "y": 1380,
+    "wires": [
+      [
+        "7b39ca7fd6aff6bf",
+        "4c983561f9144d17"
+      ]
+    ]
+  },
+  {
+    "id": "b9707f3f0451011b",
+    "type": "Stackhero-MySQL",
+    "z": "178ae6b97d25ae48",
+    "server": "f32ea2b.548ff6",
+    "name": "",
+    "x": 550,
+    "y": 1240,
+    "wires": [
+      [
+        "f09ab504639bea65"
+      ]
+    ]
+  },
+  {
+    "id": "6b501b002acc94f9",
+    "type": "ui_table",
+    "z": "178ae6b97d25ae48",
+    "group": "d97475d051f5686e",
+    "name": "",
+    "order": 5,
+    "width": 24,
+    "height": 8,
+    "columns": [
+      {
+        "field": "volt1",
+        "title": "냉동실 전압",
+        "width": "10px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "amp1",
+        "title": "냉동실 전류",
+        "width": "10px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "power1",
+        "title": "냉동실 전력",
+        "width": "10px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "volt2",
+        "title": "저온창고 전압",
+        "width": "10px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "amp2",
+        "title": "저온창고 전류",
+        "width": "10px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "power2",
+        "title": "저온창고 전력",
+        "width": "10px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "date",
+        "title": "DATE",
+        "width": "15px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      }
+    ],
+    "outputs": 1,
+    "cts": true,
+    "x": 930,
+    "y": 1240,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "48a2d0a9a90bf469",
+    "type": "inject",
+    "z": "260335fa2bb4c2e5",
+    "name": "CREATE",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 720,
+    "y": 320,
+    "wires": [
+      [
+        "0ad56f6640b94640"
+      ]
+    ]
+  },
+  {
+    "id": "5426ce67a26a5fe5",
+    "type": "debug",
+    "z": "260335fa2bb4c2e5",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 1250,
+    "y": 320,
+    "wires": []
+  },
+  {
+    "id": "8decc5b9bf5aa1d3",
+    "type": "inject",
+    "z": "260335fa2bb4c2e5",
+    "name": "INSERT",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 720,
+    "y": 380,
+    "wires": [
+      [
+        "97e24e92addcdc7d"
+      ]
+    ]
+  },
+  {
+    "id": "97e24e92addcdc7d",
+    "type": "function",
+    "z": "260335fa2bb4c2e5",
+    "name": "INSERT",
+    "func": "if (Math.random() < 0.5) { room = 503;}else{ room = 602; }\nif (Math.random() < 0.5) { id = 9909;}else{ id = 1893; }\n\ntopic = \"INSERT INTO `test`.`access` (`room`, `id`) VALUES ('\";\ntopic = topic + room +\"', '\";\ntopic = topic + id + \"');\";\n\nmsg.topic = topic;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 900,
+    "y": 380,
+    "wires": [
+      [
+        "a0708797906333a1"
+      ]
+    ]
+  },
+  {
+    "id": "b1ea0201133742b5",
+    "type": "debug",
+    "z": "260335fa2bb4c2e5",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 1250,
+    "y": 380,
+    "wires": []
+  },
+  {
+    "id": "e1197651fe165660",
+    "type": "inject",
+    "z": "260335fa2bb4c2e5",
+    "name": "DELETE ",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 720,
+    "y": 440,
+    "wires": [
+      [
+        "2726ed85eff986f7"
+      ]
+    ]
+  },
+  {
+    "id": "3840fb550fbadfab",
+    "type": "debug",
+    "z": "260335fa2bb4c2e5",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 1250,
+    "y": 440,
+    "wires": []
+  },
+  {
+    "id": "63ce7bb2a3b77558",
+    "type": "inject",
+    "z": "260335fa2bb4c2e5",
+    "name": "UPDATE",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 720,
+    "y": 500,
+    "wires": [
+      [
+        "df9db060fdb9330e"
+      ]
+    ]
+  },
+  {
+    "id": "967a03bc55db825d",
+    "type": "debug",
+    "z": "260335fa2bb4c2e5",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "x": 1250,
+    "y": 500,
+    "wires": []
+  },
+  {
+    "id": "af8343ecfae369b7",
+    "type": "inject",
+    "z": "260335fa2bb4c2e5",
+    "name": "COUNT",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 710,
+    "y": 560,
+    "wires": [
+      [
+        "88c9258920e035cb"
+      ]
+    ]
+  },
+  {
+    "id": "0c8e1d9efb3d8297",
+    "type": "inject",
+    "z": "260335fa2bb4c2e5",
+    "name": "SELECT",
+    "repeat": "1",
+    "crontab": "",
+    "once": false,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 720,
+    "y": 620,
+    "wires": [
+      [
+        "205140e41d0acbe8"
+      ]
+    ]
+  },
+  {
+    "id": "b89ab73d49021396",
+    "type": "ui_template",
+    "z": "260335fa2bb4c2e5",
+    "group": "",
+    "name": "",
+    "order": 2,
+    "width": "6",
+    "height": "7",
+    "format": "\n        \n<table style=\"width:100%\">\n  <tr>\n    <th>Index</th> \n    <th>Time</th>\n    <th>Room</th> \n    <th>ID</th>\n  </tr>\n  <tr ng-repeat=\"x in msg.payload | limitTo:10\">\n    <td><center>{{$index}}</center></td>\n    <td><center>{{msg.payload[$index].date}}</center></td>\n    <td><center>{{msg.payload[$index].room}}</center></td> \n    <td><center>{{msg.payload[$index].id}}</center></td>\n  </tr>\n</table>\n",
+    "storeOutMessages": true,
+    "fwdInMessages": true,
+    "resendOnRefresh": false,
+    "templateScope": "local",
+    "x": 1080,
+    "y": 680,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "d98ab4a0090bcc0c",
+    "type": "comment",
+    "z": "260335fa2bb4c2e5",
+    "name": "MariaDB",
+    "info": "https://mariadb.org/\n\n//SELECT COUNT(*) FROM RANDOMNUM\n//SELECT COUNT(*) FROM `test`\n// UPDATE RANDOMNUM SET BOOL = 1 WHERE VALUE > 20 AND BOOL = 0\n\n//UPDATE `test`.`access` SET `room`='602' LIMIT 1;\n\n//DELETE FROM RANDOMNUM WHERE TIMESTAMP <= strftime('%s','now', '-30 seconds')*1000\n\n//DELETE FROM `test`.`access` WHERE  `no`=3 AND `time`='2021-06-07 17:37:03' AND `room`=503 AND `id`=1893 LIMIT 1;\n",
+    "x": 700,
+    "y": 200,
+    "wires": []
+  },
+  {
+    "id": "0ad56f6640b94640",
+    "type": "function",
+    "z": "260335fa2bb4c2e5",
+    "name": "TABLE",
+    "func": "// @ts-nocheck\ntopic = \"CREATE TABLE `access` ( \";\ntopic = topic + \"`no` INT NULL AUTO_INCREMENT,\";\ntopic = topic + \"`date` TIMESTAMP NOT NULL,\";\ntopic = topic + \"`room` INT NULL,\";\ntopic = topic + \"`id` INT NULL,\";\ntopic = topic + \"INDEX `no` (`no`)) COLLATE='latin1_swedish_ci';\";\nmsg.topic = topic;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 900,
+    "y": 320,
+    "wires": [
+      [
+        "12ea4ec7e69c00c4"
+      ]
+    ]
+  },
+  {
+    "id": "d960546f7fb45bf6",
+    "type": "inject",
+    "z": "260335fa2bb4c2e5",
+    "name": "CREATE",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 720,
+    "y": 260,
+    "wires": [
+      [
+        "0f5fcaceadd70415"
+      ]
+    ]
+  },
+  {
+    "id": "d6b66dcf6c2c203c",
+    "type": "debug",
+    "z": "260335fa2bb4c2e5",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 1250,
+    "y": 260,
+    "wires": []
+  },
+  {
+    "id": "0f5fcaceadd70415",
+    "type": "function",
+    "z": "260335fa2bb4c2e5",
+    "name": "DATABASE",
+    "func": "var newMsg = {\n\"topic\" : \"CREATE DATABASE `test`;\"\n}\nreturn newMsg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 910,
+    "y": 260,
+    "wires": [
+      [
+        "e43bb60b081306dd"
+      ]
+    ]
+  },
+  {
+    "id": "2726ed85eff986f7",
+    "type": "function",
+    "z": "260335fa2bb4c2e5",
+    "name": "DELETE ",
+    "func": "var newMsg = {\n\"topic\" : \"DELETE FROM `test`.`access` ORDER BY no DESC LIMIT 1\"\n}\nreturn newMsg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 900,
+    "y": 440,
+    "wires": [
+      [
+        "6dd67726de1d744d"
+      ]
+    ]
+  },
+  {
+    "id": "df9db060fdb9330e",
+    "type": "function",
+    "z": "260335fa2bb4c2e5",
+    "name": "UPDATE",
+    "func": "var newMsg = {\n\"topic\" : \"UPDATE `test`.`access` SET `room`='602' ORDER BY date DESC LIMIT 1;\"\n}\nreturn newMsg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 900,
+    "y": 500,
+    "wires": [
+      [
+        "b841dfbced902147"
+      ]
+    ]
+  },
+  {
+    "id": "88c9258920e035cb",
+    "type": "function",
+    "z": "260335fa2bb4c2e5",
+    "name": "COUNT",
+    "func": "var newMsg = {\n\"topic\" : \"SELECT COUNT(*) FROM `test`.`access`;\"\n}\nreturn newMsg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 900,
+    "y": 560,
+    "wires": [
+      [
+        "17139805251cfb28"
+      ]
+    ]
+  },
+  {
+    "id": "864e8ab7a4a77e6b",
+    "type": "debug",
+    "z": "260335fa2bb4c2e5",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload[0]",
+    "targetType": "msg",
+    "x": 1260,
+    "y": 560,
+    "wires": []
+  },
+  {
+    "id": "205140e41d0acbe8",
+    "type": "function",
+    "z": "260335fa2bb4c2e5",
+    "name": "SELECT",
+    "func": "var newMsg = {\n\"topic\" : \"SELECT * FROM `test`.`access` ORDER BY date DESC LIMIT 20;\"\n}\nreturn newMsg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 900,
+    "y": 620,
+    "wires": [
+      [
+        "e174222f2d6c0407"
+      ]
+    ]
+  },
+  {
+    "id": "8eee8622bca2d573",
+    "type": "function",
+    "z": "260335fa2bb4c2e5",
+    "name": "Date to TS",
+    "func": "\nfor(var i = 0; i < msg.payload.length; i++){\n    var dd = new Date(parseInt((new Date(msg.payload[i].date).getTime()).toFixed(0)));\n    msg.payload[i].date = dd.toLocaleTimeString('it-IT');\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 910,
+    "y": 680,
+    "wires": [
+      [
+        "b89ab73d49021396"
+      ]
+    ]
+  },
+  {
+    "id": "a0708797906333a1",
+    "type": "mysql",
+    "z": "260335fa2bb4c2e5",
+    "mydb": "aa2c2977724dc955",
+    "name": "",
+    "x": 1070,
+    "y": 380,
+    "wires": [
+      [
+        "b1ea0201133742b5"
+      ]
+    ]
+  },
+  {
+    "id": "12ea4ec7e69c00c4",
+    "type": "mysql",
+    "z": "260335fa2bb4c2e5",
+    "mydb": "aa2c2977724dc955",
+    "name": "",
+    "x": 1070,
+    "y": 320,
+    "wires": [
+      [
+        "5426ce67a26a5fe5"
+      ]
+    ]
+  },
+  {
+    "id": "e43bb60b081306dd",
+    "type": "mysql",
+    "z": "260335fa2bb4c2e5",
+    "mydb": "aa2c2977724dc955",
+    "name": "",
+    "x": 1070,
+    "y": 260,
+    "wires": [
+      [
+        "d6b66dcf6c2c203c"
+      ]
+    ]
+  },
+  {
+    "id": "6dd67726de1d744d",
+    "type": "mysql",
+    "z": "260335fa2bb4c2e5",
+    "mydb": "aa2c2977724dc955",
+    "name": "",
+    "x": 1070,
+    "y": 440,
+    "wires": [
+      [
+        "3840fb550fbadfab"
+      ]
+    ]
+  },
+  {
+    "id": "b841dfbced902147",
+    "type": "mysql",
+    "z": "260335fa2bb4c2e5",
+    "mydb": "aa2c2977724dc955",
+    "name": "",
+    "x": 1070,
+    "y": 500,
+    "wires": [
+      [
+        "967a03bc55db825d"
+      ]
+    ]
+  },
+  {
+    "id": "17139805251cfb28",
+    "type": "mysql",
+    "z": "260335fa2bb4c2e5",
+    "mydb": "aa2c2977724dc955",
+    "name": "",
+    "x": 1070,
+    "y": 560,
+    "wires": [
+      [
+        "864e8ab7a4a77e6b"
+      ]
+    ]
+  },
+  {
+    "id": "e174222f2d6c0407",
+    "type": "mysql",
+    "z": "260335fa2bb4c2e5",
+    "mydb": "aa2c2977724dc955",
+    "name": "",
+    "x": 1070,
+    "y": 620,
+    "wires": [
+      [
+        "4da4ad96181e6896"
+      ]
+    ]
+  },
+  {
+    "id": "4da4ad96181e6896",
+    "type": "link out",
+    "z": "260335fa2bb4c2e5",
+    "name": "",
+    "links": [
+      "d5f68b78.692828",
+      "45830b1f52e8e2ec",
+      "33c14cb5.0c0b14",
+      "8b2213ea.cbdaa"
+    ],
+    "x": 1195,
+    "y": 620,
+    "wires": []
+  },
+  {
+    "id": "45830b1f52e8e2ec",
+    "type": "link in",
+    "z": "260335fa2bb4c2e5",
+    "name": "",
+    "links": [
+      "4da4ad96181e6896"
+    ],
+    "x": 755,
+    "y": 680,
+    "wires": [
+      [
+        "8eee8622bca2d573"
+      ]
+    ]
+  },
+  {
+    "id": "c9c1fa9e629bd48d",
+    "type": "comment",
+    "z": "e106d1f1c37712be",
+    "name": "AWS Cloud DB UI",
+    "info": "",
+    "x": 130,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "6ed763ed43ef550e",
+    "type": "ui_gauge",
+    "z": "e106d1f1c37712be",
+    "name": "amp1",
+    "group": "ee7ef0af7b91dbe4",
+    "order": 2,
+    "width": 4,
+    "height": 5,
+    "gtype": "gage",
+    "title": " <span class=\"material-icons\"> water </span> 전류",
+    "label": "",
+    "format": "{{value}}A",
+    "min": 0,
+    "max": "10",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "30",
+    "seg2": "80",
+    "className": "",
+    "x": 1110,
+    "y": 200,
+    "wires": []
+  },
+  {
+    "id": "87d80112c46dc5bf",
+    "type": "ui_gauge",
+    "z": "e106d1f1c37712be",
+    "name": "Power1",
+    "group": "ee7ef0af7b91dbe4",
+    "order": 6,
+    "width": 4,
+    "height": 5,
+    "gtype": "gage",
+    "title": "<span class=\"material-icons\"> power </span> 전력",
+    "label": "",
+    "format": "{{value}}KW",
+    "min": 0,
+    "max": "10",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "30",
+    "seg2": "80",
+    "className": "",
+    "x": 1120,
+    "y": 280,
+    "wires": []
+  },
+  {
+    "id": "044778b5b1a2a43f",
+    "type": "ui_gauge",
+    "z": "e106d1f1c37712be",
+    "name": "Voltage2",
+    "group": "c343f934b668208d",
+    "order": 1,
+    "width": 4,
+    "height": 5,
+    "gtype": "gage",
+    "title": "<span class=\"material-icons\"> electric_bolt </span> 전압",
+    "label": "",
+    "format": "{{value}}V",
+    "min": "200",
+    "max": "380",
+    "colors": [
+      "#ca3838",
+      "#e6e600",
+      "#00b500"
+    ],
+    "seg1": "100",
+    "seg2": "220",
+    "className": "",
+    "x": 1120,
+    "y": 420,
+    "wires": []
+  },
+  {
+    "id": "313578014a6196f5",
+    "type": "ui_gauge",
+    "z": "e106d1f1c37712be",
+    "name": "Ampere2",
+    "group": "c343f934b668208d",
+    "order": 2,
+    "width": 4,
+    "height": 5,
+    "gtype": "gage",
+    "title": " <span class=\"material-icons\"> water </span> 전류",
+    "label": "",
+    "format": "{{value}}A",
+    "min": 0,
+    "max": "10",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "30",
+    "seg2": "80",
+    "className": "",
+    "x": 1120,
+    "y": 500,
+    "wires": []
+  },
+  {
+    "id": "aa7577dee0414b31",
+    "type": "ui_gauge",
+    "z": "e106d1f1c37712be",
+    "name": "Power2",
+    "group": "c343f934b668208d",
+    "order": 6,
+    "width": 4,
+    "height": 5,
+    "gtype": "gage",
+    "title": "<span class=\"material-icons\"> power </span> 전력",
+    "label": "",
+    "format": "{{value}}KW",
+    "min": 0,
+    "max": "10",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "30",
+    "seg2": "80",
+    "className": "",
+    "x": 1120,
+    "y": 580,
+    "wires": []
+  },
+  {
+    "id": "0898cb1baf1ccb0c",
+    "type": "ui_gauge",
+    "z": "e106d1f1c37712be",
+    "name": "volt1",
+    "group": "ee7ef0af7b91dbe4",
+    "order": 1,
+    "width": 4,
+    "height": 5,
+    "gtype": "gage",
+    "title": "<span class=\"material-icons\"> electric_bolt </span> 전압",
+    "label": "",
+    "format": "{{value}}V",
+    "min": "200",
+    "max": "380",
+    "colors": [
+      "#ca3838",
+      "#e6e600",
+      "#00b500"
+    ],
+    "seg1": "100",
+    "seg2": "220",
+    "className": "",
+    "x": 1110,
+    "y": 120,
+    "wires": []
+  },
+  {
+    "id": "4b7a197a47ad613e",
+    "type": "modbus-read",
+    "z": "e106d1f1c37712be",
+    "name": "PLC_4",
+    "topic": "",
+    "showStatusActivities": false,
+    "logIOActivities": false,
+    "showErrors": true,
+    "unitid": "1",
+    "dataType": "InputRegister",
+    "adr": "40",
+    "quantity": "12",
+    "rate": "10",
+    "rateUnit": "s",
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "server": "1b6d45ce65e28311",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "x": 110,
+    "y": 300,
+    "wires": [
+      [
+        "bc9804b058e13de6",
+        "0cbffc3fa5d5a745"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "bc9804b058e13de6",
+    "type": "buffer-parser",
+    "z": "e106d1f1c37712be",
+    "name": "Modbus Holding Register Funtion",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "floatbe",
+        "name": "volt1",
+        "offset": 0,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "floatbe",
+        "name": "amp1",
+        "offset": 4,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "floatbe",
+        "name": "power1",
+        "offset": 8,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "floatbe",
+        "name": "volt2",
+        "offset": 12,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "floatbe",
+        "name": "amp2",
+        "offset": 16,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "floatbe",
+        "name": "power2",
+        "offset": 20,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": true,
+    "fanOutMultipleResult": true,
+    "setTopic": true,
+    "outputs": 6,
+    "x": 380,
+    "y": 300,
+    "wires": [
+      [
+        "9a70dce112e26472"
+      ],
+      [
+        "6aeb71ddad371aeb"
+      ],
+      [
+        "8735cb32bd9cb169"
+      ],
+      [
+        "d1be4cbc1c81b927"
+      ],
+      [
+        "b70ca0039bddb755"
+      ],
+      [
+        "c8d9d022084a096f"
+      ]
+    ]
+  },
+  {
+    "id": "9a70dce112e26472",
+    "type": "function",
+    "z": "e106d1f1c37712be",
+    "name": "volt1 Data Format Chage",
+    "func": "msg.payload = msg.payload.toFixed(1);\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 710,
+    "y": 220,
+    "wires": [
+      [
+        "0898cb1baf1ccb0c",
+        "b565940f6d4e6773"
+      ]
+    ]
+  },
+  {
+    "id": "6aeb71ddad371aeb",
+    "type": "function",
+    "z": "e106d1f1c37712be",
+    "name": "amp1 Data Format Chage",
+    "func": "msg.payload = msg.payload.toFixed(3);\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 710,
+    "y": 260,
+    "wires": [
+      [
+        "6ed763ed43ef550e",
+        "3204285d470c7e45"
+      ]
+    ]
+  },
+  {
+    "id": "8735cb32bd9cb169",
+    "type": "function",
+    "z": "e106d1f1c37712be",
+    "name": "power1 Data Format Chage",
+    "func": "msg.payload = (msg.payload/1000).toFixed(3);\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 720,
+    "y": 300,
+    "wires": [
+      [
+        "87d80112c46dc5bf",
+        "25da26b1e30763d7"
+      ]
+    ]
+  },
+  {
+    "id": "d1be4cbc1c81b927",
+    "type": "function",
+    "z": "e106d1f1c37712be",
+    "name": "volt2 Data Format Chage",
+    "func": "msg.payload = msg.payload.toFixed(1);\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 710,
+    "y": 360,
+    "wires": [
+      [
+        "044778b5b1a2a43f",
+        "10e1ee1e34200e67"
+      ]
+    ]
+  },
+  {
+    "id": "b70ca0039bddb755",
+    "type": "function",
+    "z": "e106d1f1c37712be",
+    "name": "amp2 Data Format Chage",
+    "func": "msg.payload = msg.payload.toFixed(3);\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 710,
+    "y": 400,
+    "wires": [
+      [
+        "313578014a6196f5",
+        "9b44f72e62528776"
+      ]
+    ]
+  },
+  {
+    "id": "c8d9d022084a096f",
+    "type": "function",
+    "z": "e106d1f1c37712be",
+    "name": "power2 Data Format Chage",
+    "func": "msg.payload = (msg.payload/1000).toFixed(3);\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 720,
+    "y": 440,
+    "wires": [
+      [
+        "aa7577dee0414b31",
+        "d3fd1013ff3d917e"
+      ]
+    ]
+  },
+  {
+    "id": "39ebc17c776a8926",
+    "type": "function",
+    "z": "e106d1f1c37712be",
+    "name": "SQL쿼리",
+    "func": "msg.payload = [\n    //msg.payload.Version,\n    msg.payload.volt1 = msg.payload.volt1.toFixed(1),\n    msg.payload.amp1 = msg.payload.amp1.toFixed(3),\n    msg.payload.power1 = (msg.payload.power1/1000).toFixed(3),\n    msg.payload.volt2 = msg.payload.volt2.toFixed(1),\n    msg.payload.amp2 = msg.payload.amp2.toFixed(3),\n    msg.payload.power2 = (msg.payload.power2 / 1000).toFixed(3) \n    \n]\n\n//var date = new Date();\nmsg.topic = \"insert into fztable3(volt1,amp1,power1,volt2,amp2,power2,date) values(?,?,?,?,?,?,current_timestamp());\";\n//msg.topic = \"insert into fztable(Temp1,Temp2,Weight,Flowmeter,date) values(?,?,?,?,'\"+date+\"');\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 860,
+    "y": 700,
+    "wires": [
+      [
+        "c7b8d41a142f4729"
+      ]
+    ]
+  },
+  {
+    "id": "c7b8d41a142f4729",
+    "type": "mysql",
+    "z": "e106d1f1c37712be",
+    "mydb": "8b88fe9a19eda841",
+    "name": "fztable Item",
+    "x": 1395,
+    "y": 700,
+    "wires": [
+      []
+    ],
+    "l": false
+  },
+  {
+    "id": "0cbffc3fa5d5a745",
+    "type": "buffer-parser",
+    "z": "e106d1f1c37712be",
+    "name": "Modbus Holding Register Funtion1",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "floatbe",
+        "name": "volt1",
+        "offset": 0,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "floatbe",
+        "name": "amp1",
+        "offset": 4,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "floatbe",
+        "name": "power1",
+        "offset": 8,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "floatbe",
+        "name": "volt2",
+        "offset": 12,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "floatbe",
+        "name": "amp2",
+        "offset": 16,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "floatbe",
+        "name": "power2",
+        "offset": 20,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "keyvalue",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 500,
+    "y": 700,
+    "wires": [
+      [
+        "39ebc17c776a8926"
+      ]
+    ]
+  },
+  {
+    "id": "b565940f6d4e6773",
+    "type": "ui_valuetrail",
+    "z": "e106d1f1c37712be",
+    "group": "ee7ef0af7b91dbe4",
+    "order": 3,
+    "width": 4,
+    "height": 1,
+    "name": "Volt1",
+    "label": "",
+    "unit": "",
+    "blur": true,
+    "minmax": true,
+    "allowtoggle": false,
+    "showvalue": false,
+    "decimals": "4",
+    "colorLine": "#ff9900",
+    "colorFromTheme": false,
+    "stroke": 2,
+    "property": "payload",
+    "pointcount": 8,
+    "x": 1110,
+    "y": 160,
+    "wires": []
+  },
+  {
+    "id": "3204285d470c7e45",
+    "type": "ui_valuetrail",
+    "z": "e106d1f1c37712be",
+    "group": "ee7ef0af7b91dbe4",
+    "order": 4,
+    "width": 4,
+    "height": 1,
+    "name": "Ampere1",
+    "label": "",
+    "unit": "",
+    "blur": true,
+    "minmax": true,
+    "allowtoggle": false,
+    "showvalue": false,
+    "decimals": "4",
+    "colorLine": "#ff9900",
+    "colorFromTheme": false,
+    "stroke": 2,
+    "property": "payload",
+    "pointcount": 8,
+    "x": 1120,
+    "y": 240,
+    "wires": []
+  },
+  {
+    "id": "25da26b1e30763d7",
+    "type": "ui_valuetrail",
+    "z": "e106d1f1c37712be",
+    "group": "ee7ef0af7b91dbe4",
+    "order": 12,
+    "width": 4,
+    "height": 1,
+    "name": "Power1",
+    "label": "",
+    "unit": "",
+    "blur": true,
+    "minmax": true,
+    "allowtoggle": false,
+    "showvalue": false,
+    "decimals": "4",
+    "colorLine": "#ff9900",
+    "colorFromTheme": false,
+    "stroke": 2,
+    "property": "payload",
+    "pointcount": 8,
+    "x": 1120,
+    "y": 320,
+    "wires": []
+  },
+  {
+    "id": "10e1ee1e34200e67",
+    "type": "ui_valuetrail",
+    "z": "e106d1f1c37712be",
+    "group": "c343f934b668208d",
+    "order": 3,
+    "width": 4,
+    "height": 1,
+    "name": "Volt1",
+    "label": "",
+    "unit": "",
+    "blur": true,
+    "minmax": true,
+    "allowtoggle": false,
+    "showvalue": false,
+    "decimals": "4",
+    "colorLine": "#ff9900",
+    "colorFromTheme": false,
+    "stroke": 2,
+    "property": "payload",
+    "pointcount": 8,
+    "x": 1110,
+    "y": 460,
+    "wires": []
+  },
+  {
+    "id": "9b44f72e62528776",
+    "type": "ui_valuetrail",
+    "z": "e106d1f1c37712be",
+    "group": "c343f934b668208d",
+    "order": 4,
+    "width": 4,
+    "height": 1,
+    "name": "Ampere1",
+    "label": "",
+    "unit": "",
+    "blur": true,
+    "minmax": true,
+    "allowtoggle": false,
+    "showvalue": false,
+    "decimals": "4",
+    "colorLine": "#ff9900",
+    "colorFromTheme": false,
+    "stroke": 2,
+    "property": "payload",
+    "pointcount": 8,
+    "x": 1120,
+    "y": 540,
+    "wires": []
+  },
+  {
+    "id": "d3fd1013ff3d917e",
+    "type": "ui_valuetrail",
+    "z": "e106d1f1c37712be",
+    "group": "c343f934b668208d",
+    "order": 12,
+    "width": 4,
+    "height": 1,
+    "name": "Power1",
+    "label": "",
+    "unit": "",
+    "blur": true,
+    "minmax": true,
+    "allowtoggle": false,
+    "showvalue": false,
+    "decimals": "4",
+    "colorLine": "#ff9900",
+    "colorFromTheme": false,
+    "stroke": 2,
+    "property": "payload",
+    "pointcount": 8,
+    "x": 1120,
+    "y": 620,
+    "wires": []
+  }
+]
