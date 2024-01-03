@@ -1,0 +1,3242 @@
+[
+  {
+    "id": "ea534a0bb0b5928e",
+    "type": "tab",
+    "label": "Data Insert DB",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "88eb231280c2e9e9",
+    "type": "tab",
+    "label": "Send API",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "34cbadba494cdf22",
+    "type": "tab",
+    "label": "DB Data remove",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "07e8b8ad6d28c925",
+    "type": "modbus-client",
+    "name": "smg-5420_1",
+    "clienttype": "tcp",
+    "bufferCommands": true,
+    "stateLogEnabled": false,
+    "queueLogEnabled": false,
+    "failureLogEnabled": true,
+    "tcpHost": "192.168.222.201",
+    "tcpPort": "5001",
+    "tcpType": "DEFAULT",
+    "serialPort": "COM4",
+    "serialType": "RTU-BUFFERD",
+    "serialBaudrate": "9600",
+    "serialDatabits": "8",
+    "serialStopbits": "1",
+    "serialParity": "none",
+    "serialConnectionDelay": "100",
+    "serialAsciiResponseStartDelimiter": "0x3A",
+    "unit_id": "1",
+    "commandDelay": "1",
+    "clientTimeout": "1000",
+    "reconnectOnTimeout": false,
+    "reconnectTimeout": "2000",
+    "parallelUnitIdsAllowed": true,
+    "showWarnings": true,
+    "showLogs": true
+  },
+  {
+    "id": "8ef41b99e87b0433",
+    "type": "modbus-client",
+    "name": "smg-5420_4",
+    "clienttype": "tcp",
+    "bufferCommands": true,
+    "stateLogEnabled": false,
+    "queueLogEnabled": false,
+    "failureLogEnabled": true,
+    "tcpHost": "192.168.222.204",
+    "tcpPort": "5004",
+    "tcpType": "DEFAULT",
+    "serialPort": "/dev/ttyUSB0",
+    "serialType": "RTU",
+    "serialBaudrate": "9600",
+    "serialDatabits": "8",
+    "serialStopbits": "1",
+    "serialParity": "none",
+    "serialConnectionDelay": "100",
+    "serialAsciiResponseStartDelimiter": "0x3A",
+    "unit_id": "4",
+    "commandDelay": "100",
+    "clientTimeout": "2000",
+    "reconnectOnTimeout": false,
+    "reconnectTimeout": "2000",
+    "parallelUnitIdsAllowed": true
+  },
+  {
+    "id": "78d380a20265ae5e",
+    "type": "modbus-client",
+    "name": "smg-5420_2",
+    "clienttype": "tcp",
+    "bufferCommands": true,
+    "stateLogEnabled": false,
+    "queueLogEnabled": false,
+    "failureLogEnabled": true,
+    "tcpHost": "192.168.222.202",
+    "tcpPort": "5002",
+    "tcpType": "DEFAULT",
+    "serialPort": "COM10",
+    "serialType": "RTU-BUFFERD",
+    "serialBaudrate": "9600",
+    "serialDatabits": "8",
+    "serialStopbits": "1",
+    "serialParity": "none",
+    "serialConnectionDelay": "100",
+    "serialAsciiResponseStartDelimiter": "0x3A",
+    "unit_id": "0",
+    "commandDelay": "1",
+    "clientTimeout": "1000",
+    "reconnectOnTimeout": false,
+    "reconnectTimeout": "2000",
+    "parallelUnitIdsAllowed": true,
+    "showWarnings": true,
+    "showLogs": true
+  },
+  {
+    "id": "feae362ac7930cae",
+    "type": "modbus-client",
+    "name": "smg_5420_3",
+    "clienttype": "tcp",
+    "bufferCommands": true,
+    "stateLogEnabled": false,
+    "queueLogEnabled": false,
+    "failureLogEnabled": true,
+    "tcpHost": "192.168.222.203",
+    "tcpPort": "5003",
+    "tcpType": "DEFAULT",
+    "serialPort": "COM10",
+    "serialType": "RTU-BUFFERD",
+    "serialBaudrate": "9600",
+    "serialDatabits": "8",
+    "serialStopbits": "1",
+    "serialParity": "none",
+    "serialConnectionDelay": "100",
+    "serialAsciiResponseStartDelimiter": "0x3A",
+    "unit_id": "0",
+    "commandDelay": "1",
+    "clientTimeout": "1000",
+    "reconnectOnTimeout": false,
+    "reconnectTimeout": "2000",
+    "parallelUnitIdsAllowed": true,
+    "showWarnings": true,
+    "showLogs": true
+  },
+  {
+    "id": "da28b1d93eba7f99",
+    "type": "mongodb",
+    "hostname": "127.0.0.1",
+    "topology": "direct",
+    "connectOptions": "",
+    "port": "27017",
+    "db": "fz_shm",
+    "name": ""
+  },
+  {
+    "id": "8c3a0a0b2c4c903a",
+    "type": "inject",
+    "z": "ea534a0bb0b5928e",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 100,
+    "wires": [
+      [
+        "4410c4f6f859597f"
+      ]
+    ]
+  },
+  {
+    "id": "4410c4f6f859597f",
+    "type": "modbus-getter",
+    "z": "ea534a0bb0b5928e",
+    "name": "smg-5420_1",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "1",
+    "dataType": "InputRegister",
+    "adr": "0",
+    "quantity": "1",
+    "server": "07e8b8ad6d28c925",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 290,
+    "y": 100,
+    "wires": [
+      [
+        "8a287edeb8a9cbb0"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "1258f7f276b80bb8",
+    "type": "debug",
+    "z": "ea534a0bb0b5928e",
+    "name": "debug 101",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 650,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "883f1373cbc35b7b",
+    "type": "inject",
+    "z": "ea534a0bb0b5928e",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 280,
+    "wires": [
+      [
+        "1bafa0bd6d1b8b76"
+      ]
+    ]
+  },
+  {
+    "id": "b895b5c13dda070d",
+    "type": "inject",
+    "z": "ea534a0bb0b5928e",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 480,
+    "wires": [
+      [
+        "147ca1be8a9ed725"
+      ]
+    ]
+  },
+  {
+    "id": "167d8937c61825bf",
+    "type": "inject",
+    "z": "ea534a0bb0b5928e",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 660,
+    "wires": [
+      [
+        "ac06a5939d2c44b6"
+      ]
+    ]
+  },
+  {
+    "id": "6a328979ef9afcec",
+    "type": "comment",
+    "z": "ea534a0bb0b5928e",
+    "name": "1층 팜유저장탱크 온도, 온도센서",
+    "info": "*온도제어기\n-제조사 : 코노텍\n-모델명 : TP10",
+    "x": 170,
+    "y": 620,
+    "wires": []
+  },
+  {
+    "id": "ac06a5939d2c44b6",
+    "type": "modbus-getter",
+    "z": "ea534a0bb0b5928e",
+    "name": "smg-5420_4",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "4",
+    "dataType": "InputRegister",
+    "adr": "100",
+    "quantity": "1",
+    "server": "8ef41b99e87b0433",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 290,
+    "y": 660,
+    "wires": [
+      [
+        "5cd5f49bd3cdbf60"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "5a45b7aa3ebaaa4a",
+    "type": "debug",
+    "z": "ea534a0bb0b5928e",
+    "name": "debug 102",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 650,
+    "y": 240,
+    "wires": []
+  },
+  {
+    "id": "51769f5661a2d345",
+    "type": "debug",
+    "z": "ea534a0bb0b5928e",
+    "name": "debug 103",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 650,
+    "y": 440,
+    "wires": []
+  },
+  {
+    "id": "3d3e720a28627ba8",
+    "type": "debug",
+    "z": "ea534a0bb0b5928e",
+    "name": "debug 104",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 670,
+    "y": 640,
+    "wires": []
+  },
+  {
+    "id": "1bafa0bd6d1b8b76",
+    "type": "modbus-getter",
+    "z": "ea534a0bb0b5928e",
+    "name": "smg-5420_2",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "2",
+    "dataType": "InputRegister",
+    "adr": "0",
+    "quantity": "1",
+    "server": "78d380a20265ae5e",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 290,
+    "y": 280,
+    "wires": [
+      [
+        "648b4c34358532ae"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "147ca1be8a9ed725",
+    "type": "modbus-getter",
+    "z": "ea534a0bb0b5928e",
+    "name": "smg-5420_3",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "3",
+    "dataType": "InputRegister",
+    "adr": "0",
+    "quantity": "1",
+    "server": "feae362ac7930cae",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 290,
+    "y": 480,
+    "wires": [
+      [
+        "16c25fc39e702fc7"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "8a287edeb8a9cbb0",
+    "type": "function",
+    "z": "ea534a0bb0b5928e",
+    "name": "parsing",
+    "func": "let device_id = 1;\nlet pressure = msg.payload[0] / 100;\nlet date = new Date();\nlet dateTime = date.toLocaleString();\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"device_name\": \"압력계1\",\n    \"ccode\": \"0039\",\n    \"scode\": \"79\",\n    \"pressure\": pressure,\n    \"date\": dateTime,  // 사용자가 보기 편한 날짜/시간\n    \"check_date\": date  // 시간 조건 조회를 위한 키\n}\n\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": "",
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 460,
+    "y": 100,
+    "wires": [
+      [
+        "1258f7f276b80bb8",
+        "15256f6ef2e74007",
+        "b91a0cbef2fcc1e8"
+      ]
+    ]
+  },
+  {
+    "id": "648b4c34358532ae",
+    "type": "function",
+    "z": "ea534a0bb0b5928e",
+    "name": "parsing",
+    "func": "let device_id = 2;\nlet pressure = msg.payload[0] / 100;\nlet date = new Date();\nlet dateTime = date.toLocaleString();\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"device_name\": \"압력계2\",\n    \"ccode\": \"0039\",\n    \"scode\": \"80\",\n    \"pressure\": pressure,\n    \"date\": dateTime,  // 사용자가 보기 편한 날짜/시간\n    \"check_date\": date  // 시간 조건 조회를 위한 키\n}\n\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": "",
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 460,
+    "y": 280,
+    "wires": [
+      [
+        "5a45b7aa3ebaaa4a",
+        "50d37271fd9016d8",
+        "920e02f39e3339c7"
+      ]
+    ]
+  },
+  {
+    "id": "16c25fc39e702fc7",
+    "type": "function",
+    "z": "ea534a0bb0b5928e",
+    "name": "parsing",
+    "func": "let device_id = 3;\nlet pressure = msg.payload[0] / 100;\nlet date = new Date();\nlet dateTime = date.toLocaleString();\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"device_name\": \"압력계3\",\n    \"ccode\": \"0039\",\n    \"scode\": \"81\",\n    \"pressure\": pressure,\n    \"date\": dateTime,  // 사용자가 보기 편한 날짜/시간\n    \"check_date\": date  // 시간 조건 조회를 위한 키\n}\n\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": "",
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 460,
+    "y": 480,
+    "wires": [
+      [
+        "51769f5661a2d345",
+        "488ae34828cc17bc",
+        "c885625cd169de11"
+      ]
+    ]
+  },
+  {
+    "id": "5cd5f49bd3cdbf60",
+    "type": "function",
+    "z": "ea534a0bb0b5928e",
+    "name": "parsing",
+    "func": "let device_id = 4;\nlet temp = \"\";\nlet date = new Date();\nlet dateTime = date.toLocaleString();\n\nif (msg.payload == \"error\") {\n    temp = \"\";\n} else {\n    temp = parseFloat(msg.payload[0]) / 10;\n}\n\nmsg.payload = {\n    \"device_name\": \"TP10\",\n    \"device_id\": device_id,\n    \"temp\": temp,\n    \"date\": dateTime,  // 사용자가 보기 편한 날짜/시간\n    \"check_date\": date  // 시간 조건 조회를 위한 키\n}\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": "",
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 460,
+    "y": 660,
+    "wires": [
+      [
+        "3d3e720a28627ba8",
+        "fe9b98bb790278c3"
+      ]
+    ]
+  },
+  {
+    "id": "15256f6ef2e74007",
+    "type": "mongodb out",
+    "z": "ea534a0bb0b5928e",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "",
+    "collection": "filter_pressure1",
+    "payonly": false,
+    "upsert": false,
+    "multi": false,
+    "operation": "store",
+    "x": 720,
+    "y": 100,
+    "wires": []
+  },
+  {
+    "id": "50d37271fd9016d8",
+    "type": "mongodb out",
+    "z": "ea534a0bb0b5928e",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "",
+    "collection": "filter_pressure2",
+    "payonly": false,
+    "upsert": false,
+    "multi": false,
+    "operation": "store",
+    "x": 720,
+    "y": 280,
+    "wires": []
+  },
+  {
+    "id": "488ae34828cc17bc",
+    "type": "mongodb out",
+    "z": "ea534a0bb0b5928e",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "",
+    "collection": "filter_pressure3",
+    "payonly": false,
+    "upsert": false,
+    "multi": false,
+    "operation": "store",
+    "x": 720,
+    "y": 480,
+    "wires": []
+  },
+  {
+    "id": "fe9b98bb790278c3",
+    "type": "mongodb out",
+    "z": "ea534a0bb0b5928e",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "",
+    "collection": "oilTank_temp",
+    "payonly": false,
+    "upsert": false,
+    "multi": false,
+    "operation": "store",
+    "x": 720,
+    "y": 680,
+    "wires": []
+  },
+  {
+    "id": "112a618bbe39ff09",
+    "type": "catch",
+    "z": "ea534a0bb0b5928e",
+    "name": "",
+    "scope": [
+      "ac06a5939d2c44b6"
+    ],
+    "uncaught": false,
+    "x": 270,
+    "y": 740,
+    "wires": [
+      [
+        "73f43b6060acf441"
+      ]
+    ]
+  },
+  {
+    "id": "73f43b6060acf441",
+    "type": "change",
+    "z": "ea534a0bb0b5928e",
+    "name": "",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "error",
+        "tot": "str"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 440,
+    "y": 740,
+    "wires": [
+      [
+        "5cd5f49bd3cdbf60"
+      ]
+    ]
+  },
+  {
+    "id": "2297bdf14bb43790",
+    "type": "comment",
+    "z": "ea534a0bb0b5928e",
+    "name": "2층_작업장, PLC1_에어세척기",
+    "info": "*수집 장비 : 에어세척기\n*수집 항목 : 에어압력, 검사시간\n*수집 주기 : 발생 시",
+    "x": 170,
+    "y": 860,
+    "wires": []
+  },
+  {
+    "id": "a59743946e966b09",
+    "type": "comment",
+    "z": "ea534a0bb0b5928e",
+    "name": "2층_작업장, PLC2_에어클리너",
+    "info": "*수집 장비 : 에어클리너\n*수집 항목 : 에어압력, 검사시간\n*수집 주기 : 발생 시",
+    "x": 170,
+    "y": 1020,
+    "wires": []
+  },
+  {
+    "id": "80e1988f66539f11",
+    "type": "comment",
+    "z": "ea534a0bb0b5928e",
+    "name": "2층_작업장, PLC3_모노블럭시스템",
+    "info": "*수집 장비 : 모노블럭시스템\n*수집 항목 : 충진 및 원터치캡핑\n*수집 주기 : 발생 시",
+    "x": 180,
+    "y": 1180,
+    "wires": []
+  },
+  {
+    "id": "f7989dc694da61bc",
+    "type": "inject",
+    "z": "ea534a0bb0b5928e",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 900,
+    "wires": [
+      [
+        "08f4d3cecf600ee1"
+      ]
+    ]
+  },
+  {
+    "id": "412fc6ac5eefbbdc",
+    "type": "inject",
+    "z": "ea534a0bb0b5928e",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 1060,
+    "wires": [
+      [
+        "98ca6ed80dbb2fc6"
+      ]
+    ]
+  },
+  {
+    "id": "f2ea3e59bff573e9",
+    "type": "inject",
+    "z": "ea534a0bb0b5928e",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 1220,
+    "wires": [
+      [
+        "3ecec96b54e0e69e"
+      ]
+    ]
+  },
+  {
+    "id": "08f4d3cecf600ee1",
+    "type": "modbus-getter",
+    "z": "ea534a0bb0b5928e",
+    "d": true,
+    "name": "",
+    "showStatusActivities": false,
+    "showErrors": false,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "",
+    "dataType": "",
+    "adr": "",
+    "quantity": "",
+    "server": "07e8b8ad6d28c925",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 300,
+    "y": 900,
+    "wires": [
+      [
+        "442fbab8c77584be"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "98ca6ed80dbb2fc6",
+    "type": "modbus-getter",
+    "z": "ea534a0bb0b5928e",
+    "d": true,
+    "name": "",
+    "showStatusActivities": false,
+    "showErrors": false,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "",
+    "dataType": "",
+    "adr": "",
+    "quantity": "",
+    "server": "07e8b8ad6d28c925",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 300,
+    "y": 1060,
+    "wires": [
+      [
+        "db4232b53ecc725f"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "417059960c441b37",
+    "type": "debug",
+    "z": "ea534a0bb0b5928e",
+    "name": "debug 111",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 650,
+    "y": 880,
+    "wires": []
+  },
+  {
+    "id": "442fbab8c77584be",
+    "type": "function",
+    "z": "ea534a0bb0b5928e",
+    "name": "function 1",
+    "func": "\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 480,
+    "y": 900,
+    "wires": [
+      [
+        "417059960c441b37",
+        "49e8edfc926697e4"
+      ]
+    ]
+  },
+  {
+    "id": "49e8edfc926697e4",
+    "type": "mongodb out",
+    "z": "ea534a0bb0b5928e",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "",
+    "collection": "air_washer",
+    "payonly": false,
+    "upsert": false,
+    "multi": false,
+    "operation": "store",
+    "x": 710,
+    "y": 920,
+    "wires": []
+  },
+  {
+    "id": "db4232b53ecc725f",
+    "type": "function",
+    "z": "ea534a0bb0b5928e",
+    "name": "function 2",
+    "func": "\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 480,
+    "y": 1060,
+    "wires": [
+      [
+        "cfa3c92809c069bb",
+        "316120ec6a8821de"
+      ]
+    ]
+  },
+  {
+    "id": "cfa3c92809c069bb",
+    "type": "debug",
+    "z": "ea534a0bb0b5928e",
+    "name": "debug 112",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 650,
+    "y": 1040,
+    "wires": []
+  },
+  {
+    "id": "316120ec6a8821de",
+    "type": "mongodb out",
+    "z": "ea534a0bb0b5928e",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "",
+    "collection": "air_cleaner",
+    "payonly": false,
+    "upsert": false,
+    "multi": false,
+    "operation": "store",
+    "x": 710,
+    "y": 1080,
+    "wires": []
+  },
+  {
+    "id": "950ad5742575087c",
+    "type": "function",
+    "z": "ea534a0bb0b5928e",
+    "name": "function 3",
+    "func": "\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 480,
+    "y": 1220,
+    "wires": [
+      [
+        "4a1573ab1532a224",
+        "a358cd79b02f0d20"
+      ]
+    ]
+  },
+  {
+    "id": "4a1573ab1532a224",
+    "type": "debug",
+    "z": "ea534a0bb0b5928e",
+    "name": "debug 113",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 650,
+    "y": 1200,
+    "wires": []
+  },
+  {
+    "id": "a358cd79b02f0d20",
+    "type": "mongodb out",
+    "z": "ea534a0bb0b5928e",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "",
+    "collection": "mono_block",
+    "payonly": false,
+    "upsert": false,
+    "multi": false,
+    "operation": "store",
+    "x": 710,
+    "y": 1240,
+    "wires": []
+  },
+  {
+    "id": "3321e827fbfe351a",
+    "type": "comment",
+    "z": "ea534a0bb0b5928e",
+    "name": "2층_작업장, PLC3_비전카메라",
+    "info": "*수집 장비 : 비전카메라\n*수집 항목 : 비전카메라 이미지\n*수집 주기 : 발생 시",
+    "x": 170,
+    "y": 1340,
+    "wires": []
+  },
+  {
+    "id": "7b09ed9e59da4dc0",
+    "type": "inject",
+    "z": "ea534a0bb0b5928e",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 1380,
+    "wires": [
+      [
+        "83792cafbe04e79f"
+      ]
+    ]
+  },
+  {
+    "id": "7cdcfebf94f79a85",
+    "type": "function",
+    "z": "ea534a0bb0b5928e",
+    "name": "function 4",
+    "func": "\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 480,
+    "y": 1380,
+    "wires": [
+      [
+        "cf8adcdbf6404c2a",
+        "68d63211b7d4b450"
+      ]
+    ]
+  },
+  {
+    "id": "cf8adcdbf6404c2a",
+    "type": "debug",
+    "z": "ea534a0bb0b5928e",
+    "name": "debug 114",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 650,
+    "y": 1360,
+    "wires": []
+  },
+  {
+    "id": "68d63211b7d4b450",
+    "type": "mongodb out",
+    "z": "ea534a0bb0b5928e",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "",
+    "collection": "vision_camera",
+    "payonly": false,
+    "upsert": false,
+    "multi": false,
+    "operation": "store",
+    "x": 720,
+    "y": 1400,
+    "wires": []
+  },
+  {
+    "id": "26e399676b1291a9",
+    "type": "comment",
+    "z": "ea534a0bb0b5928e",
+    "name": "2층_작업장, PLC3_캡선별공급기",
+    "info": "*수집 장비 : 캡선별공급기\n*수집 항목 : 생산수량, 불량수량 및 ���량 이미지, 가동시간\n*수집 주기 : 발생 시",
+    "x": 170,
+    "y": 1500,
+    "wires": []
+  },
+  {
+    "id": "20eb149d8b528cbc",
+    "type": "inject",
+    "z": "ea534a0bb0b5928e",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 1540,
+    "wires": [
+      [
+        "5dcb5888ad9e2463"
+      ]
+    ]
+  },
+  {
+    "id": "fbdd0ea681b404e9",
+    "type": "function",
+    "z": "ea534a0bb0b5928e",
+    "name": "function 5",
+    "func": "\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 480,
+    "y": 1540,
+    "wires": [
+      [
+        "05904b4e169dd804",
+        "0cc71338f8e68bc2"
+      ]
+    ]
+  },
+  {
+    "id": "05904b4e169dd804",
+    "type": "debug",
+    "z": "ea534a0bb0b5928e",
+    "name": "debug 115",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 650,
+    "y": 1520,
+    "wires": []
+  },
+  {
+    "id": "0cc71338f8e68bc2",
+    "type": "mongodb out",
+    "z": "ea534a0bb0b5928e",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "",
+    "collection": "cap_sorter",
+    "payonly": false,
+    "upsert": false,
+    "multi": false,
+    "operation": "store",
+    "x": 710,
+    "y": 1560,
+    "wires": []
+  },
+  {
+    "id": "bfc6e4ebb711d503",
+    "type": "comment",
+    "z": "ea534a0bb0b5928e",
+    "name": "2층_작업장, PLC3_중량검사기",
+    "info": "*수집 장비 : 중량검사기\n*수집 항목 : 생산품 중량\n*수집 주기 : 발생 시",
+    "x": 170,
+    "y": 1660,
+    "wires": []
+  },
+  {
+    "id": "4d3b73d13e4d3962",
+    "type": "inject",
+    "z": "ea534a0bb0b5928e",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 1700,
+    "wires": [
+      [
+        "c1bdaac07ca8784c"
+      ]
+    ]
+  },
+  {
+    "id": "52f69a337c09f4a5",
+    "type": "function",
+    "z": "ea534a0bb0b5928e",
+    "name": "function 6",
+    "func": "\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 480,
+    "y": 1700,
+    "wires": [
+      [
+        "3427b1e3fafb80cf",
+        "f02db0ada20309d5"
+      ]
+    ]
+  },
+  {
+    "id": "3427b1e3fafb80cf",
+    "type": "debug",
+    "z": "ea534a0bb0b5928e",
+    "name": "debug 116",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 650,
+    "y": 1680,
+    "wires": []
+  },
+  {
+    "id": "f02db0ada20309d5",
+    "type": "mongodb out",
+    "z": "ea534a0bb0b5928e",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "",
+    "collection": "weight_checker",
+    "payonly": false,
+    "upsert": false,
+    "multi": false,
+    "operation": "store",
+    "x": 720,
+    "y": 1720,
+    "wires": []
+  },
+  {
+    "id": "3ecec96b54e0e69e",
+    "type": "modbus-getter",
+    "z": "ea534a0bb0b5928e",
+    "d": true,
+    "name": "",
+    "showStatusActivities": false,
+    "showErrors": false,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "",
+    "dataType": "",
+    "adr": "",
+    "quantity": "",
+    "server": "07e8b8ad6d28c925",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 300,
+    "y": 1220,
+    "wires": [
+      [
+        "950ad5742575087c"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "83792cafbe04e79f",
+    "type": "modbus-getter",
+    "z": "ea534a0bb0b5928e",
+    "d": true,
+    "name": "",
+    "showStatusActivities": false,
+    "showErrors": false,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "",
+    "dataType": "",
+    "adr": "",
+    "quantity": "",
+    "server": "07e8b8ad6d28c925",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 300,
+    "y": 1380,
+    "wires": [
+      [
+        "7cdcfebf94f79a85"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "5dcb5888ad9e2463",
+    "type": "modbus-getter",
+    "z": "ea534a0bb0b5928e",
+    "d": true,
+    "name": "",
+    "showStatusActivities": false,
+    "showErrors": false,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "",
+    "dataType": "",
+    "adr": "",
+    "quantity": "",
+    "server": "07e8b8ad6d28c925",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 300,
+    "y": 1540,
+    "wires": [
+      [
+        "fbdd0ea681b404e9"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "c1bdaac07ca8784c",
+    "type": "modbus-getter",
+    "z": "ea534a0bb0b5928e",
+    "d": true,
+    "name": "",
+    "showStatusActivities": false,
+    "showErrors": false,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "",
+    "dataType": "",
+    "adr": "",
+    "quantity": "",
+    "server": "07e8b8ad6d28c925",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 300,
+    "y": 1700,
+    "wires": [
+      [
+        "52f69a337c09f4a5"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "b91a0cbef2fcc1e8",
+    "type": "http request",
+    "z": "ea534a0bb0b5928e",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0039/get_pos_filter",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 650,
+    "y": 160,
+    "wires": [
+      [
+        "2977b2f8b41cead8"
+      ]
+    ]
+  },
+  {
+    "id": "2977b2f8b41cead8",
+    "type": "debug",
+    "z": "ea534a0bb0b5928e",
+    "name": "debug 129",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 810,
+    "y": 160,
+    "wires": []
+  },
+  {
+    "id": "920e02f39e3339c7",
+    "type": "http request",
+    "z": "ea534a0bb0b5928e",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0039/get_pos_filter",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 650,
+    "y": 340,
+    "wires": [
+      [
+        "020c63f8041fcec1"
+      ]
+    ]
+  },
+  {
+    "id": "020c63f8041fcec1",
+    "type": "debug",
+    "z": "ea534a0bb0b5928e",
+    "name": "debug 130",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 810,
+    "y": 340,
+    "wires": []
+  },
+  {
+    "id": "c885625cd169de11",
+    "type": "http request",
+    "z": "ea534a0bb0b5928e",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0039/get_pos_filter",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 650,
+    "y": 540,
+    "wires": [
+      [
+        "bedb1235991ec1f0"
+      ]
+    ]
+  },
+  {
+    "id": "bedb1235991ec1f0",
+    "type": "debug",
+    "z": "ea534a0bb0b5928e",
+    "name": "debug 131",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 810,
+    "y": 540,
+    "wires": []
+  },
+  {
+    "id": "5db1e5a0bd39c665",
+    "type": "comment",
+    "z": "ea534a0bb0b5928e",
+    "name": "1층 여과압력1 데이터_CCP-1P 여과(PET)",
+    "info": "*디지털 인디게이터\n제조사 : sensys\n모델명 : A1-1000",
+    "x": 200,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "013540c1d280655f",
+    "type": "comment",
+    "z": "ea534a0bb0b5928e",
+    "name": "1층 여과압력2 데이터_CP여과",
+    "info": "*디지털 인디게이터\n제조사 : sensys\n모델명 : A1-1000",
+    "x": 170,
+    "y": 240,
+    "wires": []
+  },
+  {
+    "id": "ca3670b1902c6ad2",
+    "type": "comment",
+    "z": "ea534a0bb0b5928e",
+    "name": "1층 여과압력3 데이터_CCP-1P 여과(캔)",
+    "info": "*디지털 인디게이터\n제조사 : sensys\n모델명 : A1-1000",
+    "x": 190,
+    "y": 440,
+    "wires": []
+  },
+  {
+    "id": "62e4a209ec547825",
+    "type": "mongodb in",
+    "z": "88eb231280c2e9e9",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "",
+    "collection": "oilTank_temp",
+    "operation": "find",
+    "x": 500,
+    "y": 100,
+    "wires": [
+      [
+        "06856015697b3367"
+      ]
+    ]
+  },
+  {
+    "id": "06856015697b3367",
+    "type": "function",
+    "z": "88eb231280c2e9e9",
+    "name": "send API",
+    "func": "let device_id = msg.payload[0].device_id;\nlet temp = msg.payload[0].temp;\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0039\",\n    \"scode\": \"82\",\n    \"kind\": \"4\",\n    \"deviceId\": device_id,\n    \"temperature\": temp\n}\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 420,
+    "y": 180,
+    "wires": [
+      [
+        "d0cb0c39f16a6ede",
+        "6e4084f1b94dec35"
+      ]
+    ]
+  },
+  {
+    "id": "6e4084f1b94dec35",
+    "type": "debug",
+    "z": "88eb231280c2e9e9",
+    "name": "debug 107",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 610,
+    "y": 160,
+    "wires": []
+  },
+  {
+    "id": "46978355c54fb930",
+    "type": "inject",
+    "z": "88eb231280c2e9e9",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 100,
+    "y": 100,
+    "wires": [
+      [
+        "8431e9b65e82db14"
+      ]
+    ]
+  },
+  {
+    "id": "8431e9b65e82db14",
+    "type": "function",
+    "z": "88eb231280c2e9e9",
+    "name": "find query",
+    "func": "/* 설명\n  \"oilTank_temp\" 컬렉션에서 30초 이내에 저장된 데이터 중에 가장 최근 저장된 데이터 조회\n*/\n\nmsg.payload = {\n    \"check_date\": {\n        \"$gte\": new Date(Date.now() - 30 * 1000), // 현재 날짜 및 시간에서 30초 전의 날짜와 시간\n        \"$lte\": new Date()\n    }\n}\n\nmsg.sort = { \"check_date\": -1 }; // 내림차순 정렬\nmsg.limit = 1; // 최대 1개의 결과 반환\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 260,
+    "y": 100,
+    "wires": [
+      [
+        "62e4a209ec547825"
+      ]
+    ]
+  },
+  {
+    "id": "be448e3ae59be512",
+    "type": "comment",
+    "z": "88eb231280c2e9e9",
+    "name": "1층 팜유저장탱크 온도, 온도센서",
+    "info": "*온도제어기\n-제조사 : 코노텍\n-모델명 : TP10",
+    "x": 170,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "d0cb0c39f16a6ede",
+    "type": "http request",
+    "z": "88eb231280c2e9e9",
+    "d": true,
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0039/get_temperature",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 610,
+    "y": 200,
+    "wires": [
+      [
+        "87fed94f6762620a"
+      ]
+    ]
+  },
+  {
+    "id": "76829bfb78835087",
+    "type": "inject",
+    "z": "88eb231280c2e9e9",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 100,
+    "y": 340,
+    "wires": [
+      [
+        "a6f7187986db8402"
+      ]
+    ]
+  },
+  {
+    "id": "a6f7187986db8402",
+    "type": "function",
+    "z": "88eb231280c2e9e9",
+    "name": "find query",
+    "func": "/* 설명\n  \"air_washer\" 컬렉션에서 30초 이내에 저장된 데이터 중에 가장 최근 저장된 데이터 조회\n*/\n\nmsg.payload = {\n    \"check_date\": {\n        \"$gte\": new Date(Date.now() - 30 * 1000), // 현재 날짜 및 시간에서 30초 전의 날짜와 시간\n        \"$lte\": new Date()\n    }\n}\n\nmsg.sort = { \"check_date\": -1 }; // 내림차순 정렬\nmsg.limit = 1; // 최대 1개의 결과 반환\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 260,
+    "y": 340,
+    "wires": [
+      [
+        "d35987ddbb64de0c"
+      ]
+    ]
+  },
+  {
+    "id": "d35987ddbb64de0c",
+    "type": "mongodb in",
+    "z": "88eb231280c2e9e9",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "",
+    "collection": "air_washer",
+    "operation": "find",
+    "x": 490,
+    "y": 340,
+    "wires": [
+      [
+        "76a719f220729bb5"
+      ]
+    ]
+  },
+  {
+    "id": "76a719f220729bb5",
+    "type": "function",
+    "z": "88eb231280c2e9e9",
+    "name": "send API",
+    "func": "let device_id = msg.payload[0].payload.device_id;\nlet air_pressure = msg.payload[0].payload.air_pressure;\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0039\",\n    \"scode\": \"\",\n    \"kind\": \"\",\n    \"deviceId\": device_id,\n    \"pressure\": air_pressure\n}\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 420,
+    "y": 420,
+    "wires": [
+      [
+        "f40eec998c29bf1c",
+        "28f3e920b0f315b5"
+      ]
+    ]
+  },
+  {
+    "id": "28f3e920b0f315b5",
+    "type": "debug",
+    "z": "88eb231280c2e9e9",
+    "name": "debug 117",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 610,
+    "y": 400,
+    "wires": []
+  },
+  {
+    "id": "f40eec998c29bf1c",
+    "type": "http request",
+    "z": "88eb231280c2e9e9",
+    "d": true,
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 610,
+    "y": 440,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "d918458dab9e80a0",
+    "type": "comment",
+    "z": "88eb231280c2e9e9",
+    "name": "2층_작업장, PLC1_에어세척기",
+    "info": "*수집 장비 : 에어세척기\n*수집 항목 : 에어압력, 검사시간\n*수집 주기 : 발생 시",
+    "x": 150,
+    "y": 300,
+    "wires": []
+  },
+  {
+    "id": "536aed1f83f9b52a",
+    "type": "comment",
+    "z": "88eb231280c2e9e9",
+    "name": "2층_작업장, PLC2_에어클리너",
+    "info": "*수집 장비 : 에어클리너\n*수집 항목 : 에어압력, 검사시간\n*수집 주기 : 발생 시",
+    "x": 150,
+    "y": 500,
+    "wires": []
+  },
+  {
+    "id": "e49d26715a52bb74",
+    "type": "comment",
+    "z": "88eb231280c2e9e9",
+    "name": "2층_작업장, PLC3_모노블럭시스템",
+    "info": "*수집 장비 : 모노블럭시스템\n*수집 항목 : 충진 및 원터치캡핑\n*수집 주기 : 발생 시",
+    "x": 160,
+    "y": 700,
+    "wires": []
+  },
+  {
+    "id": "7931a4a5bcacad90",
+    "type": "comment",
+    "z": "88eb231280c2e9e9",
+    "name": "2층_작업장, PLC3_비전카메라",
+    "info": "*수집 장비 : 비전카메라\n*수집 항목 : 비전카메라 이미지\n*수집 주기 : 발생 시",
+    "x": 150,
+    "y": 900,
+    "wires": []
+  },
+  {
+    "id": "fb2f4da7c544eb7c",
+    "type": "comment",
+    "z": "88eb231280c2e9e9",
+    "name": "2층_작업장, PLC3_캡선별공급기",
+    "info": "*수집 장비 : 캡선별공급기\n*수집 항목 : 생산수량, 불량수량 및 불량 이미지, 가동시간\n*수집 주기 : 발생 시",
+    "x": 150,
+    "y": 1100,
+    "wires": []
+  },
+  {
+    "id": "589bf29b7b64887c",
+    "type": "comment",
+    "z": "88eb231280c2e9e9",
+    "name": "2층_작업장, PLC3_중량검사기",
+    "info": "*수집 장비 : 중량검사기\n*수집 항목 : 생산품 중량\n*수집 주기 : 발생 시",
+    "x": 150,
+    "y": 1300,
+    "wires": []
+  },
+  {
+    "id": "c4ff30629934685f",
+    "type": "inject",
+    "z": "88eb231280c2e9e9",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 100,
+    "y": 540,
+    "wires": [
+      [
+        "fd99c23f24250853"
+      ]
+    ]
+  },
+  {
+    "id": "fd99c23f24250853",
+    "type": "function",
+    "z": "88eb231280c2e9e9",
+    "name": "find query",
+    "func": "/* 설명\n  \"air_cleaner\" 컬렉션에서 30초 이내에 저장된 데이터 중에 가장 최근 저장된 데이터 조회\n*/\n\nmsg.payload = {\n    \"check_date\": {\n        \"$gte\": new Date(Date.now() - 30 * 1000), // 현재 날짜 및 시간에서 30초 전의 날짜와 시간\n        \"$lte\": new Date()\n    }\n}\n\nmsg.sort = { \"check_date\": -1 }; // 내림차순 정렬\nmsg.limit = 1; // 최대 1개의 결과 반환\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 260,
+    "y": 540,
+    "wires": [
+      [
+        "fee53807f81db7bd"
+      ]
+    ]
+  },
+  {
+    "id": "fee53807f81db7bd",
+    "type": "mongodb in",
+    "z": "88eb231280c2e9e9",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "",
+    "collection": "air_cleaner",
+    "operation": "find",
+    "x": 490,
+    "y": 540,
+    "wires": [
+      [
+        "c4429d44cca0ec02"
+      ]
+    ]
+  },
+  {
+    "id": "c4429d44cca0ec02",
+    "type": "function",
+    "z": "88eb231280c2e9e9",
+    "name": "send API",
+    "func": "let device_id = msg.payload[0].payload.device_id;\nlet air_cleaner = msg.payload[0].payload.air_cleaner;\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0039\",\n    \"scode\": \"\",\n    \"kind\": \"\",\n    \"deviceId\": device_id,\n    \"air_cleaner\": air_cleaner\n}\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 420,
+    "y": 620,
+    "wires": [
+      [
+        "0b67b63838d0569b",
+        "aee8370c6db65e00"
+      ]
+    ]
+  },
+  {
+    "id": "aee8370c6db65e00",
+    "type": "debug",
+    "z": "88eb231280c2e9e9",
+    "name": "debug 118",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 610,
+    "y": 600,
+    "wires": []
+  },
+  {
+    "id": "0b67b63838d0569b",
+    "type": "http request",
+    "z": "88eb231280c2e9e9",
+    "d": true,
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 610,
+    "y": 640,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "2ec0cc819bb7b33a",
+    "type": "inject",
+    "z": "88eb231280c2e9e9",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 100,
+    "y": 740,
+    "wires": [
+      [
+        "199fb715cbfe6c7e"
+      ]
+    ]
+  },
+  {
+    "id": "199fb715cbfe6c7e",
+    "type": "function",
+    "z": "88eb231280c2e9e9",
+    "name": "find query",
+    "func": "/* 설명\n  \"mono_block\" 컬렉션에서 30초 이내에 저장된 데이터 중에 가장 최근 저장된 데이터 조회\n*/\n\nmsg.payload = {\n    \"check_date\": {\n        \"$gte\": new Date(Date.now() - 30 * 1000), // 현재 날짜 및 시간에서 30초 전의 날짜와 시간\n        \"$lte\": new Date()\n    }\n}\n\nmsg.sort = { \"check_date\": -1 }; // 내림차순 정렬\nmsg.limit = 1; // 최대 1개의 결과 반환\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 260,
+    "y": 740,
+    "wires": [
+      [
+        "ab99c48c3dcc5f98"
+      ]
+    ]
+  },
+  {
+    "id": "ab99c48c3dcc5f98",
+    "type": "mongodb in",
+    "z": "88eb231280c2e9e9",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "",
+    "collection": "mono_block",
+    "operation": "find",
+    "x": 490,
+    "y": 740,
+    "wires": [
+      [
+        "bd0a0aa6fe736da8"
+      ]
+    ]
+  },
+  {
+    "id": "bd0a0aa6fe736da8",
+    "type": "function",
+    "z": "88eb231280c2e9e9",
+    "name": "send API",
+    "func": "let device_id = msg.payload[0].payload.device_id;\nlet mono_block = msg.payload[0].payload.mono_block;\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0039\",\n    \"scode\": \"\",\n    \"kind\": \"\",\n    \"deviceId\": device_id,\n    \"mono_block\": mono_block\n}\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 420,
+    "y": 820,
+    "wires": [
+      [
+        "1e6fc0fa375b6dfb",
+        "ef575d6e8444342c"
+      ]
+    ]
+  },
+  {
+    "id": "ef575d6e8444342c",
+    "type": "debug",
+    "z": "88eb231280c2e9e9",
+    "name": "debug 119",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 610,
+    "y": 800,
+    "wires": []
+  },
+  {
+    "id": "1e6fc0fa375b6dfb",
+    "type": "http request",
+    "z": "88eb231280c2e9e9",
+    "d": true,
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 610,
+    "y": 840,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "8792e36a87888b61",
+    "type": "inject",
+    "z": "88eb231280c2e9e9",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 100,
+    "y": 940,
+    "wires": [
+      [
+        "d38451a7237e596f"
+      ]
+    ]
+  },
+  {
+    "id": "d38451a7237e596f",
+    "type": "function",
+    "z": "88eb231280c2e9e9",
+    "name": "find query",
+    "func": "/* 설명\n  \"vision_camera\" 컬렉션에서 30초 이내에 저장된 데이터 중에 가장 최근 저장된 데이터 조회\n*/\n\nmsg.payload = {\n    \"check_date\": {\n        \"$gte\": new Date(Date.now() - 30 * 1000), // 현재 날짜 및 시간에서 30초 전의 날짜와 시간\n        \"$lte\": new Date()\n    }\n}\n\nmsg.sort = { \"check_date\": -1 }; // 내림차순 정렬\nmsg.limit = 1; // 최대 1개의 결과 반환\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 260,
+    "y": 940,
+    "wires": [
+      [
+        "d2b504bd7d78514a"
+      ]
+    ]
+  },
+  {
+    "id": "d2b504bd7d78514a",
+    "type": "mongodb in",
+    "z": "88eb231280c2e9e9",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "",
+    "collection": "vision_camera",
+    "operation": "find",
+    "x": 500,
+    "y": 940,
+    "wires": [
+      [
+        "87c83b29db901821"
+      ]
+    ]
+  },
+  {
+    "id": "87c83b29db901821",
+    "type": "function",
+    "z": "88eb231280c2e9e9",
+    "name": "send API",
+    "func": "let device_id = msg.payload[0].payload.device_id;\nlet vision_camera = msg.payload[0].payload.vision_camera;\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0039\",\n    \"scode\": \"\",\n    \"kind\": \"\",\n    \"deviceId\": device_id,\n    \"vision_camera\": vision_camera\n}\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 420,
+    "y": 1020,
+    "wires": [
+      [
+        "8738935fc18bd06b",
+        "2a4538a35530d8a4"
+      ]
+    ]
+  },
+  {
+    "id": "2a4538a35530d8a4",
+    "type": "debug",
+    "z": "88eb231280c2e9e9",
+    "name": "debug 120",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 610,
+    "y": 1000,
+    "wires": []
+  },
+  {
+    "id": "8738935fc18bd06b",
+    "type": "http request",
+    "z": "88eb231280c2e9e9",
+    "d": true,
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 610,
+    "y": 1040,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "573ff7ca4e49915b",
+    "type": "inject",
+    "z": "88eb231280c2e9e9",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 100,
+    "y": 1140,
+    "wires": [
+      [
+        "c74194eeb7e050f0"
+      ]
+    ]
+  },
+  {
+    "id": "c74194eeb7e050f0",
+    "type": "function",
+    "z": "88eb231280c2e9e9",
+    "name": "find query",
+    "func": "/* 설명\n  \"cap_sorter\" 컬렉션에서 30초 이내에 저장된 데이터 중에 가장 최근 저장된 데이터 조회\n*/\n\nmsg.payload = {\n    \"check_date\": {\n        \"$gte\": new Date(Date.now() - 30 * 1000), // 현재 날짜 및 시간에서 30초 전의 날짜와 시간\n        \"$lte\": new Date()\n    }\n}\n\nmsg.sort = { \"check_date\": -1 }; // 내림차순 정렬\nmsg.limit = 1; // 최대 1개의 결과 반환\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 260,
+    "y": 1140,
+    "wires": [
+      [
+        "6b1c09f6cf6cc87f"
+      ]
+    ]
+  },
+  {
+    "id": "6b1c09f6cf6cc87f",
+    "type": "mongodb in",
+    "z": "88eb231280c2e9e9",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "",
+    "collection": "cap_sorter",
+    "operation": "find",
+    "x": 490,
+    "y": 1140,
+    "wires": [
+      [
+        "974927bedeb7c11e"
+      ]
+    ]
+  },
+  {
+    "id": "974927bedeb7c11e",
+    "type": "function",
+    "z": "88eb231280c2e9e9",
+    "name": "send API",
+    "func": "let device_id = msg.payload[0].payload.device_id;\nlet cap_sorter = msg.payload[0].payload.cap_sorter;\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0039\",\n    \"scode\": \"\",\n    \"kind\": \"\",\n    \"deviceId\": device_id,\n    \"cap_sorter\": cap_sorter\n}\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 420,
+    "y": 1220,
+    "wires": [
+      [
+        "9ebecc27e5727f17",
+        "2abb7398f4b8dd80"
+      ]
+    ]
+  },
+  {
+    "id": "2abb7398f4b8dd80",
+    "type": "debug",
+    "z": "88eb231280c2e9e9",
+    "name": "debug 121",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 610,
+    "y": 1200,
+    "wires": []
+  },
+  {
+    "id": "9ebecc27e5727f17",
+    "type": "http request",
+    "z": "88eb231280c2e9e9",
+    "d": true,
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 610,
+    "y": 1240,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "8c763b43829582b5",
+    "type": "inject",
+    "z": "88eb231280c2e9e9",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 100,
+    "y": 1340,
+    "wires": [
+      [
+        "a5a4b681fc1d41a2"
+      ]
+    ]
+  },
+  {
+    "id": "a5a4b681fc1d41a2",
+    "type": "function",
+    "z": "88eb231280c2e9e9",
+    "name": "find query",
+    "func": "/* 설명\n  \"weight_checker\" 컬렉션에서 30초 이내에 저장된 데이터 중에 가장 최근 저장된 데이터 조회\n*/\n\nmsg.payload = {\n    \"check_date\": {\n        \"$gte\": new Date(Date.now() - 30 * 1000), // 현재 날짜 및 시간에서 30초 전의 날짜와 시간\n        \"$lte\": new Date()\n    }\n}\n\nmsg.sort = { \"check_date\": -1 }; // 내림차순 정렬\nmsg.limit = 1; // 최대 1개의 결과 반환\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 260,
+    "y": 1340,
+    "wires": [
+      [
+        "23061f8d4f809cf6"
+      ]
+    ]
+  },
+  {
+    "id": "23061f8d4f809cf6",
+    "type": "mongodb in",
+    "z": "88eb231280c2e9e9",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "",
+    "collection": "weight_checker",
+    "operation": "find",
+    "x": 500,
+    "y": 1340,
+    "wires": [
+      [
+        "ab4f922b6a70d325"
+      ]
+    ]
+  },
+  {
+    "id": "ab4f922b6a70d325",
+    "type": "function",
+    "z": "88eb231280c2e9e9",
+    "name": "send API",
+    "func": "let device_id = msg.payload[0].payload.device_id;\nlet weight_checker = msg.payload[0].payload.weight_checker;\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0039\",\n    \"scode\": \"\",\n    \"kind\": \"\",\n    \"deviceId\": device_id,\n    \"weight_checker\": weight_checker\n}\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 420,
+    "y": 1420,
+    "wires": [
+      [
+        "8ea90e17f06f9f05",
+        "75b09ac3b6249fac"
+      ]
+    ]
+  },
+  {
+    "id": "75b09ac3b6249fac",
+    "type": "debug",
+    "z": "88eb231280c2e9e9",
+    "name": "debug 122",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 610,
+    "y": 1400,
+    "wires": []
+  },
+  {
+    "id": "8ea90e17f06f9f05",
+    "type": "http request",
+    "z": "88eb231280c2e9e9",
+    "d": true,
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 610,
+    "y": 1440,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "87fed94f6762620a",
+    "type": "debug",
+    "z": "88eb231280c2e9e9",
+    "name": "debug 128",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 770,
+    "y": 200,
+    "wires": []
+  },
+  {
+    "id": "aaac308e8171396f",
+    "type": "inject",
+    "z": "34cbadba494cdf22",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "00 09 * * 0",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 100,
+    "wires": [
+      [
+        "237fc5c01c1f19ce"
+      ]
+    ]
+  },
+  {
+    "id": "237fc5c01c1f19ce",
+    "type": "function",
+    "z": "34cbadba494cdf22",
+    "name": "remove query",
+    "func": "let remove_date = {};\nremove_date.collection = \"filter_pressure1\";\n\nreturn remove_date;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 100,
+    "wires": [
+      [
+        "bed1f4f4a3cc5a5d"
+      ]
+    ]
+  },
+  {
+    "id": "bed1f4f4a3cc5a5d",
+    "type": "mongodb out",
+    "z": "34cbadba494cdf22",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "filter_pressure1",
+    "collection": "filter_pressure1",
+    "payonly": false,
+    "upsert": false,
+    "multi": false,
+    "operation": "delete",
+    "x": 500,
+    "y": 100,
+    "wires": []
+  },
+  {
+    "id": "94e1c81f07a7c396",
+    "type": "comment",
+    "z": "34cbadba494cdf22",
+    "name": "filter_pressure1 컬렉션 데이터 삭제(매주 일요일 오전9시)",
+    "info": "",
+    "x": 250,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "277b8b35978965fe",
+    "type": "function",
+    "z": "34cbadba494cdf22",
+    "name": "remove query",
+    "func": "let remove_date = {};\nremove_date.collection = \"filter_pressure2\";\n\nreturn remove_date;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 200,
+    "wires": [
+      [
+        "09e37fd9b52d2a59"
+      ]
+    ]
+  },
+  {
+    "id": "09e37fd9b52d2a59",
+    "type": "mongodb out",
+    "z": "34cbadba494cdf22",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "filter_pressure2",
+    "collection": "filter_pressure2",
+    "payonly": false,
+    "upsert": false,
+    "multi": false,
+    "operation": "delete",
+    "x": 500,
+    "y": 200,
+    "wires": []
+  },
+  {
+    "id": "7fb83c933b17d5e7",
+    "type": "comment",
+    "z": "34cbadba494cdf22",
+    "name": "filter_pressure2 컬렉션 데이터 삭제(���주 일요일 오전9시)",
+    "info": "",
+    "x": 250,
+    "y": 160,
+    "wires": []
+  },
+  {
+    "id": "e03f38f75d002ee8",
+    "type": "function",
+    "z": "34cbadba494cdf22",
+    "name": "remove query",
+    "func": "let remove_date = {};\nremove_date.collection = \"filter_pressure3\";\n\nreturn remove_date;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 300,
+    "wires": [
+      [
+        "2a5c36fbe5ccd852"
+      ]
+    ]
+  },
+  {
+    "id": "2a5c36fbe5ccd852",
+    "type": "mongodb out",
+    "z": "34cbadba494cdf22",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "filter_pressure3",
+    "collection": "filter_pressure3",
+    "payonly": false,
+    "upsert": false,
+    "multi": false,
+    "operation": "delete",
+    "x": 500,
+    "y": 300,
+    "wires": []
+  },
+  {
+    "id": "566eeb53885683d0",
+    "type": "comment",
+    "z": "34cbadba494cdf22",
+    "name": "filter_pressure3 컬렉션 데이터 삭제(매주 일요일 오전9시)",
+    "info": "",
+    "x": 250,
+    "y": 260,
+    "wires": []
+  },
+  {
+    "id": "44921ae6224d29d1",
+    "type": "function",
+    "z": "34cbadba494cdf22",
+    "name": "remove query",
+    "func": "let remove_date = {};\nremove_date.collection = \"oilTank_temp\";\n\nreturn remove_date;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 400,
+    "wires": [
+      [
+        "5af5e4dca2b1590e"
+      ]
+    ]
+  },
+  {
+    "id": "5af5e4dca2b1590e",
+    "type": "mongodb out",
+    "z": "34cbadba494cdf22",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "oilTank_temp",
+    "collection": "oilTank_temp",
+    "payonly": false,
+    "upsert": false,
+    "multi": false,
+    "operation": "delete",
+    "x": 490,
+    "y": 400,
+    "wires": []
+  },
+  {
+    "id": "00de505b61c60d74",
+    "type": "comment",
+    "z": "34cbadba494cdf22",
+    "name": "oilTank_temp 컬렉션 데이터 삭제(매주 일요일 오전9시)",
+    "info": "",
+    "x": 240,
+    "y": 360,
+    "wires": []
+  },
+  {
+    "id": "35e58d40651c01c9",
+    "type": "inject",
+    "z": "34cbadba494cdf22",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "00 09 * * 0",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 200,
+    "wires": [
+      [
+        "277b8b35978965fe"
+      ]
+    ]
+  },
+  {
+    "id": "03c894fd82594ca0",
+    "type": "inject",
+    "z": "34cbadba494cdf22",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "00 09 * * 0",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 300,
+    "wires": [
+      [
+        "e03f38f75d002ee8"
+      ]
+    ]
+  },
+  {
+    "id": "f692a5c58210372d",
+    "type": "inject",
+    "z": "34cbadba494cdf22",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "00 09 * * 0",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 400,
+    "wires": [
+      [
+        "44921ae6224d29d1"
+      ]
+    ]
+  },
+  {
+    "id": "1fd053c60283cf1b",
+    "type": "function",
+    "z": "34cbadba494cdf22",
+    "name": "remove query",
+    "func": "let remove_date = {};\nremove_date.collection = \"air_cleaner\";\n\nreturn remove_date;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 500,
+    "wires": [
+      [
+        "20131f91cc78c0d6"
+      ]
+    ]
+  },
+  {
+    "id": "20131f91cc78c0d6",
+    "type": "mongodb out",
+    "z": "34cbadba494cdf22",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "air_cleaner",
+    "collection": "air_cleaner",
+    "payonly": false,
+    "upsert": false,
+    "multi": false,
+    "operation": "delete",
+    "x": 490,
+    "y": 500,
+    "wires": []
+  },
+  {
+    "id": "5ad9b56b807180a4",
+    "type": "comment",
+    "z": "34cbadba494cdf22",
+    "name": "air_cleaner 컬렉션 데이터 삭제(매주 일요일 오전9시)",
+    "info": "",
+    "x": 230,
+    "y": 460,
+    "wires": []
+  },
+  {
+    "id": "ddb690aacad02897",
+    "type": "inject",
+    "z": "34cbadba494cdf22",
+    "d": true,
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "00 09 * * 0",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 500,
+    "wires": [
+      [
+        "1fd053c60283cf1b"
+      ]
+    ]
+  },
+  {
+    "id": "306a73e0e0460178",
+    "type": "function",
+    "z": "34cbadba494cdf22",
+    "name": "remove query",
+    "func": "let remove_date = {};\nremove_date.collection = \"air_washer\";\n\nreturn remove_date;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 600,
+    "wires": [
+      [
+        "4dfb19475141b3be"
+      ]
+    ]
+  },
+  {
+    "id": "4dfb19475141b3be",
+    "type": "mongodb out",
+    "z": "34cbadba494cdf22",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "air_washer",
+    "collection": "air_washer",
+    "payonly": false,
+    "upsert": false,
+    "multi": false,
+    "operation": "delete",
+    "x": 490,
+    "y": 600,
+    "wires": []
+  },
+  {
+    "id": "b7be0477b8b1c15f",
+    "type": "comment",
+    "z": "34cbadba494cdf22",
+    "name": "air_washer 컬렉션 데이터 삭제(매주 일요일 오전9시)",
+    "info": "",
+    "x": 230,
+    "y": 560,
+    "wires": []
+  },
+  {
+    "id": "2419fb1f6603f686",
+    "type": "inject",
+    "z": "34cbadba494cdf22",
+    "d": true,
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "00 09 * * 0",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 600,
+    "wires": [
+      [
+        "306a73e0e0460178"
+      ]
+    ]
+  },
+  {
+    "id": "ff101d9408631fbc",
+    "type": "function",
+    "z": "34cbadba494cdf22",
+    "name": "remove query",
+    "func": "let remove_date = {};\nremove_date.collection = \"mono_block\";\n\nreturn remove_date;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 700,
+    "wires": [
+      [
+        "99eb872f6b648359"
+      ]
+    ]
+  },
+  {
+    "id": "99eb872f6b648359",
+    "type": "mongodb out",
+    "z": "34cbadba494cdf22",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "mono_block",
+    "collection": "mono_block",
+    "payonly": false,
+    "upsert": false,
+    "multi": false,
+    "operation": "delete",
+    "x": 490,
+    "y": 700,
+    "wires": []
+  },
+  {
+    "id": "252ddf260821975d",
+    "type": "comment",
+    "z": "34cbadba494cdf22",
+    "name": "mono_block 컬렉션 데이터 삭제(매주 일요일 오전9시)",
+    "info": "",
+    "x": 240,
+    "y": 660,
+    "wires": []
+  },
+  {
+    "id": "d0cf2c8832ee0734",
+    "type": "inject",
+    "z": "34cbadba494cdf22",
+    "d": true,
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "00 09 * * 0",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 700,
+    "wires": [
+      [
+        "ff101d9408631fbc"
+      ]
+    ]
+  },
+  {
+    "id": "32167957b43a371c",
+    "type": "function",
+    "z": "34cbadba494cdf22",
+    "name": "remove query",
+    "func": "let remove_date = {};\nremove_date.collection = \"vision_camera\";\n\nreturn remove_date;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 800,
+    "wires": [
+      [
+        "c2de04ba28bff368"
+      ]
+    ]
+  },
+  {
+    "id": "c2de04ba28bff368",
+    "type": "mongodb out",
+    "z": "34cbadba494cdf22",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "vision_camera",
+    "collection": "vision_camera",
+    "payonly": false,
+    "upsert": false,
+    "multi": false,
+    "operation": "delete",
+    "x": 500,
+    "y": 800,
+    "wires": []
+  },
+  {
+    "id": "c155b8dff183eda4",
+    "type": "comment",
+    "z": "34cbadba494cdf22",
+    "name": "vision_camera 컬렉션 데이터 삭제(매주 일요일 오전9시)",
+    "info": "",
+    "x": 250,
+    "y": 760,
+    "wires": []
+  },
+  {
+    "id": "cf4241aeef874c53",
+    "type": "inject",
+    "z": "34cbadba494cdf22",
+    "d": true,
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "00 09 * * 0",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 800,
+    "wires": [
+      [
+        "32167957b43a371c"
+      ]
+    ]
+  },
+  {
+    "id": "4c4182de1872b477",
+    "type": "function",
+    "z": "34cbadba494cdf22",
+    "name": "remove query",
+    "func": "let remove_date = {};\nremove_date.collection = \"cap_sorter\";\n\nreturn remove_date;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 900,
+    "wires": [
+      [
+        "3616cfbfde414c97"
+      ]
+    ]
+  },
+  {
+    "id": "3616cfbfde414c97",
+    "type": "mongodb out",
+    "z": "34cbadba494cdf22",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "cap_sorter",
+    "collection": "cap_sorter",
+    "payonly": false,
+    "upsert": false,
+    "multi": false,
+    "operation": "delete",
+    "x": 490,
+    "y": 900,
+    "wires": []
+  },
+  {
+    "id": "68ed086d3cedada0",
+    "type": "comment",
+    "z": "34cbadba494cdf22",
+    "name": "cap_sorter 컬렉션 데이터 삭제(매주 일요일 오전9시)",
+    "info": "",
+    "x": 230,
+    "y": 860,
+    "wires": []
+  },
+  {
+    "id": "200622e76c8a7e90",
+    "type": "inject",
+    "z": "34cbadba494cdf22",
+    "d": true,
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "00 09 * * 0",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 900,
+    "wires": [
+      [
+        "4c4182de1872b477"
+      ]
+    ]
+  },
+  {
+    "id": "cdeb7d46df7dee15",
+    "type": "function",
+    "z": "34cbadba494cdf22",
+    "name": "remove query",
+    "func": "let remove_date = {};\nremove_date.collection = \"weight_checker\";\n\nreturn remove_date;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 1000,
+    "wires": [
+      [
+        "31a2d4376a5ff093"
+      ]
+    ]
+  },
+  {
+    "id": "31a2d4376a5ff093",
+    "type": "mongodb out",
+    "z": "34cbadba494cdf22",
+    "mongodb": "da28b1d93eba7f99",
+    "name": "weight_checker",
+    "collection": "weight_checker",
+    "payonly": false,
+    "upsert": false,
+    "multi": false,
+    "operation": "delete",
+    "x": 500,
+    "y": 1000,
+    "wires": []
+  },
+  {
+    "id": "32bd48ba603bea72",
+    "type": "comment",
+    "z": "34cbadba494cdf22",
+    "name": "weight_checker 컬렉션 데이터 삭제(매주 일요일 오전9시)",
+    "info": "",
+    "x": 250,
+    "y": 960,
+    "wires": []
+  },
+  {
+    "id": "fb00845007e83a27",
+    "type": "inject",
+    "z": "34cbadba494cdf22",
+    "d": true,
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "00 09 * * 0",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 1000,
+    "wires": [
+      [
+        "cdeb7d46df7dee15"
+      ]
+    ]
+  }
+]
