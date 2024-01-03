@@ -99,7 +99,7 @@
     "z": "76ae04d3b3f9cadb",
     "name": "자숙공정 데이터(PLC → 컨버터 → DB)",
     "info": "[하드웨어 구성도]\n장치 → PLC → 솔내컨버터(smg5400) → 미니PC\n\n\n[노드레드]\n1. 'modbusgetter'노드를 이용하여 데이터를 수집하고,\nparsing된 데이터를 MySQL DB에 저장.\n\n2. MySQL DB에 저장된 값을 API 이용하여 플랫폼에 보내기\n",
-    "x": 230,
+    "x": 190,
     "y": 40,
     "wires": []
   },
