@@ -1,0 +1,307 @@
+[
+  {
+    "id": "76ae04d3b3f9cadb",
+    "type": "tab",
+    "label": "플로우 1",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "64bc5f13b60f5328",
+    "type": "MySQLdatabase",
+    "name": "",
+    "host": "127.0.0.1",
+    "port": "3306",
+    "db": "fz_shm",
+    "tz": "",
+    "charset": "UTF8"
+  },
+  {
+    "id": "543b0d9b988bfb92",
+    "type": "modbus-client",
+    "name": "PLC (smg5400)",
+    "clienttype": "tcp",
+    "bufferCommands": true,
+    "stateLogEnabled": false,
+    "queueLogEnabled": false,
+    "failureLogEnabled": true,
+    "tcpHost": "192.168.0.40",
+    "tcpPort": "502",
+    "tcpType": "DEFAULT",
+    "serialPort": "/dev/ttyUSB",
+    "serialType": "RTU-BUFFERD",
+    "serialBaudrate": "9600",
+    "serialDatabits": "8",
+    "serialStopbits": "1",
+    "serialParity": "none",
+    "serialConnectionDelay": "100",
+    "serialAsciiResponseStartDelimiter": "0x3A",
+    "unit_id": "1",
+    "commandDelay": "1",
+    "clientTimeout": "1000",
+    "reconnectOnTimeout": true,
+    "reconnectTimeout": "2000",
+    "parallelUnitIdsAllowed": true,
+    "showWarnings": true,
+    "showLogs": true
+  },
+  {
+    "id": "601de0d8b9fb4d0b",
+    "type": "modbustcp-server",
+    "name": "PLC (smg5400)",
+    "host": "192.168.0.40",
+    "port": "502",
+    "unit_id": "1",
+    "reconnecttimeout": "2"
+  },
+  {
+    "id": "b30eb667579f1b55",
+    "type": "function",
+    "z": "76ae04d3b3f9cadb",
+    "name": "parsing",
+    "func": "let kettle_temp = parseInt(msg.payload[0]);  // 자숙 현재온도\nlet steaming_stick_temp = parseInt(msg.payload[1]);  // 품온 현재온도\n\nmsg.payload = {\n    \"자숙 현재온도\": kettle_temp,\n    \"품온 현재온도\": steaming_stick_temp\n}\n\nmsg.topic = \"INSERT INTO temperature (kettle_temp, steaming_stick_temp, date) VALUES ('\" + kettle_temp + \"', '\" + steaming_stick_temp + \"', NOW())\";\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 80,
+    "wires": [
+      [
+        "d8828f4dc3914174",
+        "43395772ec715c0c"
+      ]
+    ]
+  },
+  {
+    "id": "43395772ec715c0c",
+    "type": "debug",
+    "z": "76ae04d3b3f9cadb",
+    "name": "debug 1",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 780,
+    "y": 80,
+    "wires": []
+  },
+  {
+    "id": "73cee598b429ae47",
+    "type": "comment",
+    "z": "76ae04d3b3f9cadb",
+    "name": "자숙공정 데이터(PLC → 컨버터 → DB)",
+    "info": "[하드웨어 구성도]\n장치 → PLC → 솔내컨버터(smg5400) → 미니PC\n\n\n[노드레드]\n1. 'modbusgetter'노드를 이용하여 데이터를 수집하고,\nparsing된 데이터를 MySQL DB에 저장.\n\n2. MySQL DB에 저장된 값을 API 이용하여 플랫폼에 보내기\n",
+    "x": 230,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "d1f97de68bb44019",
+    "type": "inject",
+    "z": "76ae04d3b3f9cadb",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 260,
+    "wires": [
+      [
+        "61b67d9b46daa104"
+      ]
+    ]
+  },
+  {
+    "id": "61b67d9b46daa104",
+    "type": "function",
+    "z": "76ae04d3b3f9cadb",
+    "name": "SQL 쿼리",
+    "func": "msg.topic = \"SELECT * FROM fz_shm.temperature ORDER BY date DESC LIMIT 1\";\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 280,
+    "y": 260,
+    "wires": [
+      [
+        "52683e10025d9392"
+      ]
+    ]
+  },
+  {
+    "id": "f2dfeede07a1ca27",
+    "type": "function",
+    "z": "76ae04d3b3f9cadb",
+    "name": "send api",
+    "func": "var db_data = msg.payload;\nvar kettle_temp = db_data[0].kettle_temp;  // 자숙 현재온도\nvar steaming_stick_temp = db_data[0].steaming_stick_temp;  // 품온 현재온도\nvar date = db_data[0].date;\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\nmsg.payload = {\n    \"ccode\" : \"0052\",\n    \"scode\" : \"92\",\n    \"h_type\" : \"1\",\n    \"temperature\" : kettle_temp\n}\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 600,
+    "y": 260,
+    "wires": [
+      [
+        "8b87804dec91445a",
+        "edc30a2ae05dd042"
+      ]
+    ]
+  },
+  {
+    "id": "8b87804dec91445a",
+    "type": "http request",
+    "z": "76ae04d3b3f9cadb",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0052/get_heating",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 790,
+    "y": 220,
+    "wires": [
+      [
+        "022396fc70b6d65a"
+      ]
+    ]
+  },
+  {
+    "id": "022396fc70b6d65a",
+    "type": "debug",
+    "z": "76ae04d3b3f9cadb",
+    "name": "debug 2",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 960,
+    "y": 260,
+    "wires": []
+  },
+  {
+    "id": "53ca3ef70d600574",
+    "type": "comment",
+    "z": "76ae04d3b3f9cadb",
+    "name": "DB → api → platform",
+    "info": "",
+    "x": 140,
+    "y": 220,
+    "wires": []
+  },
+  {
+    "id": "d8828f4dc3914174",
+    "type": "mysql",
+    "z": "76ae04d3b3f9cadb",
+    "mydb": "64bc5f13b60f5328",
+    "name": "",
+    "x": 480,
+    "y": 140,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "52683e10025d9392",
+    "type": "mysql",
+    "z": "76ae04d3b3f9cadb",
+    "mydb": "64bc5f13b60f5328",
+    "name": "",
+    "x": 440,
+    "y": 260,
+    "wires": [
+      [
+        "f2dfeede07a1ca27",
+        "534bc600d466c57d"
+      ]
+    ]
+  },
+  {
+    "id": "d89d4ed57f03e05a",
+    "type": "modbustcp-read",
+    "z": "76ae04d3b3f9cadb",
+    "name": "PLC (smg5400)",
+    "topic": "",
+    "dataType": "InputRegister",
+    "adr": "0",
+    "quantity": "6",
+    "rate": "10",
+    "rateUnit": "s",
+    "server": "601de0d8b9fb4d0b",
+    "ieeeType": "off",
+    "ieeeBE": true,
+    "x": 120,
+    "y": 80,
+    "wires": [
+      [
+        "b30eb667579f1b55"
+      ]
+    ]
+  },
+  {
+    "id": "534bc600d466c57d",
+    "type": "debug",
+    "z": "76ae04d3b3f9cadb",
+    "name": "debug 3",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 600,
+    "y": 340,
+    "wires": []
+  },
+  {
+    "id": "edc30a2ae05dd042",
+    "type": "debug",
+    "z": "76ae04d3b3f9cadb",
+    "name": "debug 4",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 840,
+    "y": 400,
+    "wires": []
+  }
+]
