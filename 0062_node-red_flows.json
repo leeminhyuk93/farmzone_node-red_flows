@@ -1,0 +1,1970 @@
+[
+  {
+    "id": "d029c8e0ac0fd4d4",
+    "type": "tab",
+    "label": "Send API",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "e553273af07445b7",
+    "type": "tab",
+    "label": "Insert DB",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "bc518bc591d85b66",
+    "type": "tab",
+    "label": "백업",
+    "disabled": true,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "46c33fd38817389c",
+    "type": "serial-port",
+    "serialport": "COM8",
+    "serialbaud": "9600",
+    "databits": "8",
+    "parity": "none",
+    "stopbits": "1",
+    "waitfor": "",
+    "dtr": "none",
+    "rts": "none",
+    "cts": "none",
+    "dsr": "none",
+    "newline": "500",
+    "bin": "bin",
+    "out": "time",
+    "addchar": "",
+    "responsetimeout": "1000"
+  },
+  {
+    "id": "e96481d6a05c4a1c",
+    "type": "modbus-client",
+    "name": "",
+    "clienttype": "tcp",
+    "bufferCommands": true,
+    "stateLogEnabled": false,
+    "queueLogEnabled": false,
+    "failureLogEnabled": true,
+    "tcpHost": "192.168.222.215",
+    "tcpPort": "502",
+    "tcpType": "DEFAULT",
+    "serialPort": "/dev/ttyUSB",
+    "serialType": "RTU-BUFFERD",
+    "serialBaudrate": "9600",
+    "serialDatabits": "8",
+    "serialStopbits": "1",
+    "serialParity": "none",
+    "serialConnectionDelay": "100",
+    "serialAsciiResponseStartDelimiter": "0x3A",
+    "unit_id": "1",
+    "commandDelay": "1",
+    "clientTimeout": "1000",
+    "reconnectOnTimeout": true,
+    "reconnectTimeout": "2000",
+    "parallelUnitIdsAllowed": true,
+    "showWarnings": true,
+    "showLogs": true
+  },
+  {
+    "id": "4f4e445c4ce2de50",
+    "type": "MySQLdatabase",
+    "name": "",
+    "host": "127.0.0.1",
+    "port": "3306",
+    "db": "fz_shm",
+    "tz": "",
+    "charset": "UTF8"
+  },
+  {
+    "id": "3cbe198b273d7d33",
+    "type": "debug",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "debug 1",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 880,
+    "y": 120,
+    "wires": []
+  },
+  {
+    "id": "09d301da62914b68",
+    "type": "inject",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "Loop 1 Minute",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "60",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 100,
+    "wires": [
+      [
+        "45f7d9a7c6cde102"
+      ]
+    ]
+  },
+  {
+    "id": "28b0ef13378a3bd0",
+    "type": "function",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "parseData",
+    "func": "var adr = msg.payload[0].adr;\nvar temperature = msg.payload[0].temp;\nvar humidity = msg.payload[0].humid;\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0062\",\n    \"kind\": \"5\",\n    \"deviceId\": adr,\n    \"temperature\": temperature,\n    \"humidity\": humidity\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 570,
+    "y": 100,
+    "wires": [
+      [
+        "1a7e35629b6a3d9f",
+        "a68c8ca30b518d67"
+      ]
+    ]
+  },
+  {
+    "id": "a68c8ca30b518d67",
+    "type": "http request",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "",
+    "method": "POST",
+    "ret": "obj",
+    "paytoqs": "query",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0062/get_temperature",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 730,
+    "y": 120,
+    "wires": [
+      [
+        "3cbe198b273d7d33"
+      ]
+    ]
+  },
+  {
+    "id": "1a7e35629b6a3d9f",
+    "type": "debug",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "debug 2",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 720,
+    "y": 80,
+    "wires": []
+  },
+  {
+    "id": "ee4b46c4e4b4b097",
+    "type": "function",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "parseData",
+    "func": "var ccode = \"0062\";\nvar scode = \"94\";\nvar type = \"2\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nvar detected = false;\nif ((res.length % 32) == 0) {\n    if (paseData[29] == 1) {\n        detected = true;\n    }\n}\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode\n    };\n\n    return msg;\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 290,
+    "y": 580,
+    "wires": [
+      [
+        "b0b3a2ee6914dd42",
+        "df914be77ee4ef65"
+      ]
+    ]
+  },
+  {
+    "id": "a25aa71317828d7d",
+    "type": "function",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "parseData",
+    "func": "var ccode = \"0062\";\nvar scode = \"91\";\nvar type = \"2\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nvar detected = false;\n\nif (type == \"1\" && (res.length % 34) == 0) {\n    // 나우시스템즈\n    if (paseData[0] == ' ' && paseData[32] == '\\r' && paseData[33] == '\\n') {\n        if ((paseData[1] + paseData[2]) == \"80\" || (paseData[1] + paseData[2]) == \"81\") {\n            detected = true;\n        }\n    }\n\n} else if (type == \"1\" && ((res.length % 23) == 0 || (res.length % 24) == 0)) {\n    if (paseData[0] == 'R' && paseData[1] == 'E' && paseData[2] == 'J') {\n        detected = true;\n    }\n\n} else if (type == \"2\" && (res.length % 6) == 0) {\n    if (paseData[0] == '\\u0002' && paseData[5] == '\\u0003') {\n        if (paseData[3] == \"1\") {\n            detected = true;\n        }\n    }\n\n} else if (type == \"3\" && (res.length % 11) == 0) {\n    for (var i = 1; i <= (res.length / 11); i++) {\n        if (paseData[(i * 11 - 1)] == \"\\u0001\" || paseData[(i * 11 - 1)] == \"\\u0002\" || paseData[(i * 11 - 1)] == \"1\" || paseData[(i * 11 - 1)] == \"2\") {\n            detected = true;\n        }\n    }\n\n}\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode\n    };\n\n    return msg;\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 290,
+    "y": 280,
+    "wires": [
+      [
+        "06096dfad26f2b18",
+        "e447f31971c6a6f8"
+      ]
+    ]
+  },
+  {
+    "id": "7d8fdf3edefb1786",
+    "type": "function",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "parseData",
+    "func": "var ccode = \"0062\";\nvar scode = \"92\";\nvar type = \"2\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nvar detected = false;\n\nif (type == \"1\" && (res.length % 34) == 0) {\n    // 나우시스템즈\n    if (paseData[0] == ' ' && paseData[32] == '\\r' && paseData[33] == '\\n') {\n        if ((paseData[1] + paseData[2]) == \"80\" || (paseData[1] + paseData[2]) == \"81\") {\n            detected = true;\n        }\n    }\n\n} else if (type == \"1\" && ((res.length % 23) == 0 || (res.length % 24) == 0)) {\n    if (paseData[0] == 'R' && paseData[1] == 'E' && paseData[2] == 'J') {\n        detected = true;\n    }\n\n} else if (type == \"2\" && (res.length % 6) == 0) {\n    if (paseData[0] == '\\u0002' && paseData[5] == '\\u0003') {\n        if (paseData[3] == \"1\") {\n            detected = true;\n        }\n    }\n\n} else if (type == \"3\" && (res.length % 11) == 0) {\n    for (var i = 1; i <= (res.length / 11); i++) {\n        if (paseData[(i * 11 - 1)] == \"\\u0001\" || paseData[(i * 11 - 1)] == \"\\u0002\" || paseData[(i * 11 - 1)] == \"1\" || paseData[(i * 11 - 1)] == \"2\") {\n            detected = true;\n        }\n    }\n\n}\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode\n    };\n\n    return msg;\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 290,
+    "y": 380,
+    "wires": [
+      [
+        "8cb7e84575cefa08",
+        "713d2bd41c7315c0"
+      ]
+    ]
+  },
+  {
+    "id": "26c5330fa8405689",
+    "type": "function",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "parseData",
+    "func": "var ccode = \"0062\";\nvar scode = \"93\";\nvar type = \"2\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nvar detected = false;\n\nif (type == \"1\" && (res.length % 34) == 0) {\n    // 나우시스템즈\n    if (paseData[0] == ' ' && paseData[32] == '\\r' && paseData[33] == '\\n') {\n        if ((paseData[1] + paseData[2]) == \"80\" || (paseData[1] + paseData[2]) == \"81\") {\n            detected = true;\n        }\n    }\n\n} else if (type == \"1\" && ((res.length % 23) == 0 || (res.length % 24) == 0)) {\n    if (paseData[0] == 'R' && paseData[1] == 'E' && paseData[2] == 'J') {\n        detected = true;\n    }\n\n} else if (type == \"2\" && (res.length % 6) == 0) {\n    if (paseData[0] == '\\u0002' && paseData[5] == '\\u0003') {\n        if (paseData[3] == \"1\") {\n            detected = true;\n        }\n    }\n\n} else if (type == \"3\" && (res.length % 11) == 0) {\n    for (var i = 1; i <= (res.length / 11); i++) {\n        if (paseData[(i * 11 - 1)] == \"\\u0001\" || paseData[(i * 11 - 1)] == \"\\u0002\" || paseData[(i * 11 - 1)] == \"1\" || paseData[(i * 11 - 1)] == \"2\") {\n            detected = true;\n        }\n    }\n\n}\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode\n    };\n\n    return msg;\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 290,
+    "y": 480,
+    "wires": [
+      [
+        "2393766f7a9b091f",
+        "bca4298b17b699ed"
+      ]
+    ]
+  },
+  {
+    "id": "e29b0cd16a7dfa2c",
+    "type": "function",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "parseData",
+    "func": "var ccode = \"0062\";\nvar scode = \"95\";\nvar type = \"3\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nvar detected = false;\n\nif (type == \"1\" && (res.length % 34) == 0) {\n    // 나우시스템즈\n    if (paseData[0] == ' ' && paseData[32] == '\\r' && paseData[33] == '\\n') {\n        if ((paseData[1] + paseData[2]) == \"80\" || (paseData[1] + paseData[2]) == \"81\") {\n            detected = true;\n        }\n    }\n\n} else if (type == \"1\" && ((res.length % 23) == 0 || (res.length % 24) == 0)) {\n    if (paseData[0] == 'R' && paseData[1] == 'E' && paseData[2] == 'J') {\n        detected = true;\n    }\n\n} else if (type == \"2\" && (res.length % 6) == 0) {\n    if (paseData[0] == '\\u0002' && paseData[5] == '\\u0003') {\n        if (paseData[3] == \"1\") {\n            detected = true;\n        }\n    }\n\n} else if (type == \"3\" && (res.length % 11) == 0) {\n    for (var i = 1; i <= (res.length / 11); i++) {\n        if (paseData[(i * 11 - 1)] == \"\\u0001\" || paseData[(i * 11 - 1)] == \"\\u0002\" || paseData[(i * 11 - 1)] == \"1\" || paseData[(i * 11 - 1)] == \"2\") {\n            detected = true;\n        }\n    }\n\n}\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode\n    };\n\n    return msg;\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 290,
+    "y": 680,
+    "wires": [
+      [
+        "f9cd01e4fd49d81c",
+        "7441bb0877b42fca"
+      ]
+    ]
+  },
+  {
+    "id": "a0a2fb046af0aff8",
+    "type": "tcp in",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "금속검출기 5001",
+    "server": "server",
+    "host": "",
+    "port": "5001",
+    "datamode": "stream",
+    "datatype": "buffer",
+    "newline": "",
+    "topic": "",
+    "trim": false,
+    "base64": false,
+    "tls": "",
+    "x": 100,
+    "y": 280,
+    "wires": [
+      [
+        "a25aa71317828d7d"
+      ]
+    ]
+  },
+  {
+    "id": "a93e20dad09c9996",
+    "type": "tcp in",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "금속검출기 5002",
+    "server": "server",
+    "host": "",
+    "port": "5002",
+    "datamode": "stream",
+    "datatype": "buffer",
+    "newline": "",
+    "topic": "",
+    "trim": false,
+    "base64": false,
+    "tls": "",
+    "x": 100,
+    "y": 380,
+    "wires": [
+      [
+        "7d8fdf3edefb1786"
+      ]
+    ]
+  },
+  {
+    "id": "3bd78e0270b3b906",
+    "type": "tcp in",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "금속검출기 5003",
+    "server": "server",
+    "host": "",
+    "port": "5003",
+    "datamode": "stream",
+    "datatype": "buffer",
+    "newline": "",
+    "topic": "",
+    "trim": false,
+    "base64": false,
+    "tls": "",
+    "x": 100,
+    "y": 480,
+    "wires": [
+      [
+        "26c5330fa8405689",
+        "bb6d1ed9a9e67049"
+      ]
+    ]
+  },
+  {
+    "id": "2e0bd5ea742aa033",
+    "type": "tcp in",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "금속검출기 5004",
+    "server": "server",
+    "host": "",
+    "port": "5004",
+    "datamode": "stream",
+    "datatype": "buffer",
+    "newline": "",
+    "topic": "",
+    "trim": false,
+    "base64": false,
+    "tls": "",
+    "x": 100,
+    "y": 580,
+    "wires": [
+      [
+        "ee4b46c4e4b4b097",
+        "d928f1613c396636"
+      ]
+    ]
+  },
+  {
+    "id": "10e80dc5673a3e6f",
+    "type": "tcp in",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "금속검출기 5005",
+    "server": "server",
+    "host": "192.168.222.215",
+    "port": "5005",
+    "datamode": "stream",
+    "datatype": "buffer",
+    "newline": "",
+    "topic": "",
+    "trim": false,
+    "base64": false,
+    "tls": "",
+    "x": 100,
+    "y": 680,
+    "wires": [
+      [
+        "b49043722f6dda6e",
+        "e29b0cd16a7dfa2c"
+      ]
+    ]
+  },
+  {
+    "id": "06096dfad26f2b18",
+    "type": "http request",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0062/get_detection",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 470,
+    "y": 260,
+    "wires": [
+      [
+        "9d57311cf95049bf"
+      ]
+    ]
+  },
+  {
+    "id": "9d57311cf95049bf",
+    "type": "debug",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "debug 4",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 640,
+    "y": 260,
+    "wires": []
+  },
+  {
+    "id": "e447f31971c6a6f8",
+    "type": "debug",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "debug 5",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 460,
+    "y": 300,
+    "wires": []
+  },
+  {
+    "id": "8cb7e84575cefa08",
+    "type": "http request",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0062/get_detection",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 470,
+    "y": 360,
+    "wires": [
+      [
+        "0ca08d860a025c97"
+      ]
+    ]
+  },
+  {
+    "id": "0ca08d860a025c97",
+    "type": "debug",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "debug 6",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 640,
+    "y": 360,
+    "wires": []
+  },
+  {
+    "id": "713d2bd41c7315c0",
+    "type": "debug",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "debug 7",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 460,
+    "y": 400,
+    "wires": []
+  },
+  {
+    "id": "2393766f7a9b091f",
+    "type": "http request",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0062/get_detection",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 470,
+    "y": 460,
+    "wires": [
+      [
+        "1e33785ef3042d0b"
+      ]
+    ]
+  },
+  {
+    "id": "1e33785ef3042d0b",
+    "type": "debug",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "debug 8",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 640,
+    "y": 460,
+    "wires": []
+  },
+  {
+    "id": "bca4298b17b699ed",
+    "type": "debug",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "debug 9",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 480,
+    "y": 500,
+    "wires": []
+  },
+  {
+    "id": "b0b3a2ee6914dd42",
+    "type": "http request",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0062/get_detection",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 470,
+    "y": 560,
+    "wires": [
+      [
+        "b7b082e116c50802"
+      ]
+    ]
+  },
+  {
+    "id": "b7b082e116c50802",
+    "type": "debug",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "API 전송",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 640,
+    "y": 560,
+    "wires": []
+  },
+  {
+    "id": "df914be77ee4ef65",
+    "type": "debug",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "debug 11",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 460,
+    "y": 600,
+    "wires": []
+  },
+  {
+    "id": "f9cd01e4fd49d81c",
+    "type": "http request",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0062/get_detection",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 470,
+    "y": 660,
+    "wires": [
+      [
+        "11ccb6581d438ac8"
+      ]
+    ]
+  },
+  {
+    "id": "11ccb6581d438ac8",
+    "type": "debug",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "debug 12",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 640,
+    "y": 660,
+    "wires": []
+  },
+  {
+    "id": "7441bb0877b42fca",
+    "type": "debug",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "debug 13",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 460,
+    "y": 700,
+    "wires": []
+  },
+  {
+    "id": "8cf574be7cc1f25e",
+    "type": "tcp in",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "중량선별기 5006",
+    "server": "server",
+    "host": "",
+    "port": "5006",
+    "datamode": "stream",
+    "datatype": "buffer",
+    "newline": "",
+    "topic": "",
+    "trim": false,
+    "base64": false,
+    "tls": "",
+    "x": 100,
+    "y": 800,
+    "wires": [
+      [
+        "38739a445bf944cb",
+        "4f585c80462dd4a3"
+      ]
+    ]
+  },
+  {
+    "id": "c95edc45c4c392bc",
+    "type": "comment",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "원초 보관창고_코노텍 8300R1",
+    "info": "",
+    "x": 190,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "349ef2b0d6210000",
+    "type": "comment",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "모든다해(금속검출기)",
+    "info": "",
+    "x": 120,
+    "y": 240,
+    "wires": []
+  },
+  {
+    "id": "d6f0c40a4499c13c",
+    "type": "comment",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "모든다해(금속검출기)",
+    "info": "",
+    "x": 120,
+    "y": 340,
+    "wires": []
+  },
+  {
+    "id": "a938851ec766e156",
+    "type": "comment",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "모든다해(금속검출기)",
+    "info": "",
+    "x": 120,
+    "y": 440,
+    "wires": []
+  },
+  {
+    "id": "9c9b6cf88ff016f9",
+    "type": "comment",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "모든다해(알루미늄 검출기)",
+    "info": "",
+    "x": 130,
+    "y": 540,
+    "wires": []
+  },
+  {
+    "id": "25eb5bbe965cb314",
+    "type": "comment",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "모든다해(금속검출기 낙하형 접점)",
+    "info": "",
+    "x": 160,
+    "y": 640,
+    "wires": []
+  },
+  {
+    "id": "417d665b7b04b282",
+    "type": "debug",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "debug 14",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 640,
+    "y": 760,
+    "wires": []
+  },
+  {
+    "id": "f16adc9caebf718c",
+    "type": "comment",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "모든다해(중량선별기)",
+    "info": "",
+    "x": 120,
+    "y": 740,
+    "wires": []
+  },
+  {
+    "id": "3cc36a8293aa2623",
+    "type": "modbus-flex-getter",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "",
+    "showStatusActivities": false,
+    "showErrors": false,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "server": "e96481d6a05c4a1c",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 330,
+    "y": 960,
+    "wires": [
+      [
+        "8f118221b3b5b9ab"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "163e776ed05e78e3",
+    "type": "inject",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "Loop 10 Minute",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "600",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 900,
+    "wires": [
+      [
+        "0e3d57c67f7e1422"
+      ]
+    ]
+  },
+  {
+    "id": "0e3d57c67f7e1422",
+    "type": "function",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "sendBuffer",
+    "func": "msg.payload = {\n    'value': msg.payload,\n    'fc': 3,\n    'unitid': 1,\n    'address': 0,\n    'quantity': 20,\n\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 130,
+    "y": 960,
+    "wires": [
+      [
+        "3cc36a8293aa2623"
+      ]
+    ]
+  },
+  {
+    "id": "8f118221b3b5b9ab",
+    "type": "buffer-parser",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "hex",
+        "name": "생산일(월일)",
+        "offset": 0,
+        "length": 2,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "hex",
+        "name": "생산일(년도)",
+        "offset": 2,
+        "length": 2,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "ascii",
+        "name": "제품명",
+        "offset": 4,
+        "length": 5,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "생산수량1",
+        "offset": 14,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "생산수량2",
+        "offset": 16,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "생산속도(BPM)",
+        "offset": 18,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "전면온도",
+        "offset": 20,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "0.1",
+        "mask": ""
+      },
+      {
+        "type": "int16be",
+        "name": "후면온도",
+        "offset": 22,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "0.1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 530,
+    "y": 960,
+    "wires": [
+      [
+        "08c1ce43706b8ea0"
+      ]
+    ]
+  },
+  {
+    "id": "08c1ce43706b8ea0",
+    "type": "function",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "parseData",
+    "func": "var count = parseInt(msg.payload[3] + msg.payload[4]);\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0062\",\n    \"date\": msg.payload[0],\n    \"year\": msg.payload[1],\n    \"product\": msg.payload[2],\n    \"count\": count,\n    \"bpm\": msg.payload[5],\n    \"temp1\": msg.payload[6],\n    \"temp2\": msg.payload[7]\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 710,
+    "y": 960,
+    "wires": [
+      [
+        "ade86ad61a694925"
+      ]
+    ]
+  },
+  {
+    "id": "ade86ad61a694925",
+    "type": "debug",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "debug 19",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 880,
+    "y": 960,
+    "wires": []
+  },
+  {
+    "id": "a84d9b75c493917d",
+    "type": "debug",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "debug 20",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 460,
+    "y": 800,
+    "wires": []
+  },
+  {
+    "id": "51dd3c5b49c53863",
+    "type": "comment",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "리팩(포장기, 충전기)",
+    "info": "",
+    "x": 110,
+    "y": 860,
+    "wires": []
+  },
+  {
+    "id": "38739a445bf944cb",
+    "type": "buffer-parser",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "ascii",
+        "name": "X",
+        "offset": 0,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "ascii",
+        "name": "제품번호",
+        "offset": 1,
+        "length": 3,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "ascii",
+        "name": "상태코드",
+        "offset": 4,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "ascii",
+        "name": "계량무게",
+        "offset": 6,
+        "length": 7,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "ascii",
+        "name": "정상수량",
+        "offset": 14,
+        "length": 6,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "ascii",
+        "name": "과량수량",
+        "offset": 20,
+        "length": 4,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "ascii",
+        "name": "미달수량",
+        "offset": 24,
+        "length": 4,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "ascii",
+        "name": "금속수량",
+        "offset": 28,
+        "length": 4,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "ascii",
+        "name": "Y",
+        "offset": 32,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 290,
+    "y": 780,
+    "wires": [
+      [
+        "34ae3328baa4f4e1",
+        "a84d9b75c493917d"
+      ]
+    ]
+  },
+  {
+    "id": "34ae3328baa4f4e1",
+    "type": "function",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "parseData",
+    "func": "var status = msg.payload[2];\nvar product_code = msg.payload[1];\nvar product_weight = msg.payload[3];\nvar count = msg.payload[4];\nvar over = msg.payload[5];\nvar fall = msg.payload[6];\nvar metal = msg.payload[7];\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0062\",\n    \"status\": status,\n    \"product_code\": product_code,\n    \"product_weight\": product_weight,\n    \"count\": count,\n    \"over\": over,\n    \"fall\": fall,\n    \"metal\": metal\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 470,
+    "y": 760,
+    "wires": [
+      [
+        "417d665b7b04b282"
+      ]
+    ]
+  },
+  {
+    "id": "2d8ab539b4e1e7f1",
+    "type": "inject",
+    "z": "d029c8e0ac0fd4d4",
+    "d": true,
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "[88,48,48,49,78,44,48,49,48,51,56,46,48,44,48,48,49,49,55,57,48,48,48,49,48,48,50,52,48,48,52,57,89]",
+    "payloadType": "bin",
+    "x": 310,
+    "y": 720,
+    "wires": [
+      [
+        "38739a445bf944cb"
+      ]
+    ]
+  },
+  {
+    "id": "d928f1613c396636",
+    "type": "debug",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "debug 21",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 300,
+    "y": 520,
+    "wires": []
+  },
+  {
+    "id": "4f585c80462dd4a3",
+    "type": "debug",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "debug 22",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 280,
+    "y": 820,
+    "wires": []
+  },
+  {
+    "id": "5e26f065bda06dcf",
+    "type": "inject",
+    "z": "d029c8e0ac0fd4d4",
+    "d": true,
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "[\"0x02\", \"0x50\", \"0x30\", \"0x30\", \"0x34\", \"0x32\", \"0x30\", \"0x36\", \"0x31\", \"0x32\", \"0x30\", \"0x32\", \"0x33\", \"0x2D\", \"0x30\", \"0x39\", \"0x2D\", \"0x32\", \"0x35\", \"0x31\", \"0x34\", \"0x3A\", \"0x35\", \"0x33\", \"0x3A\", \"0x33\", \"0x31\", \"0x30\", \"0x31\", \"0x30\", \"0x5E\", \"0x03\"]",
+    "payloadType": "bin",
+    "x": 790,
+    "y": 560,
+    "wires": [
+      [
+        "2f23a7b9dc824313"
+      ]
+    ]
+  },
+  {
+    "id": "2f23a7b9dc824313",
+    "type": "function",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "parseData",
+    "func": "var ccode = \"0062\";\nvar scode = \"94\";\nvar type = \"2\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nvar detected = false;\nif ((res.length % 32) == 0) {\n    if (paseData[29] == 1) {\n        detected = true;\n    }\n}\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode\n    };\n\n    return msg;\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 950,
+    "y": 540,
+    "wires": [
+      [
+        "bb771c3970dcf29d"
+      ]
+    ]
+  },
+  {
+    "id": "bb771c3970dcf29d",
+    "type": "debug",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "debug 23",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 940,
+    "y": 580,
+    "wires": []
+  },
+  {
+    "id": "b49043722f6dda6e",
+    "type": "debug",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "debug 24",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 360,
+    "y": 640,
+    "wires": []
+  },
+  {
+    "id": "bb6d1ed9a9e67049",
+    "type": "debug",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "debug 25",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 300,
+    "y": 440,
+    "wires": []
+  },
+  {
+    "id": "45f7d9a7c6cde102",
+    "type": "function",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "Select DB",
+    "func": "// 현재시간에서 60초 이내에 저장된 데이터 중 마지막 데이터 조회\nmsg.topic = \"SELECT * FROM fz_shm.storage1 WHERE (wdate BETWEEN date_add(now(), interval -60 second) AND now()) ORDER BY wdate DESC LIMIT 1\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 280,
+    "y": 100,
+    "wires": [
+      [
+        "ab3724c7b4dbe4aa"
+      ]
+    ]
+  },
+  {
+    "id": "ab3724c7b4dbe4aa",
+    "type": "mysql",
+    "z": "d029c8e0ac0fd4d4",
+    "mydb": "4f4e445c4ce2de50",
+    "name": "",
+    "x": 420,
+    "y": 100,
+    "wires": [
+      [
+        "28b0ef13378a3bd0"
+      ]
+    ]
+  },
+  {
+    "id": "32a17f4c6674e57a",
+    "type": "function",
+    "z": "e553273af07445b7",
+    "name": "온도",
+    "func": "msg.payload = Buffer.from([2, 48, 49, 82, 88, 84, 80, 48, 3, 62]);\nnode.send(msg);",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 290,
+    "y": 80,
+    "wires": [
+      [
+        "f7336441e3f55dfe"
+      ]
+    ]
+  },
+  {
+    "id": "8336aceb6cc2f1a0",
+    "type": "inject",
+    "z": "e553273af07445b7",
+    "name": "Loop 1 Minute",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "60",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 100,
+    "wires": [
+      [
+        "32a17f4c6674e57a",
+        "a5a91d3a5a55887d"
+      ]
+    ]
+  },
+  {
+    "id": "52054c45a8ade2af",
+    "type": "switch",
+    "z": "e553273af07445b7",
+    "name": "",
+    "property": "payload[2]",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "T",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "H",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 130,
+    "y": 220,
+    "wires": [
+      [
+        "249aac2ad6f0dbcd"
+      ],
+      [
+        "249aac2ad6f0dbcd"
+      ]
+    ]
+  },
+  {
+    "id": "249aac2ad6f0dbcd",
+    "type": "join",
+    "z": "e553273af07445b7",
+    "name": "",
+    "mode": "custom",
+    "build": "array",
+    "property": "payload",
+    "propertyType": "msg",
+    "key": "payload",
+    "joiner": "\\n",
+    "joinerType": "str",
+    "accumulate": false,
+    "timeout": "",
+    "count": "2",
+    "reduceRight": false,
+    "reduceExp": "",
+    "reduceInit": "",
+    "reduceInitType": "num",
+    "reduceFixup": "",
+    "x": 270,
+    "y": 220,
+    "wires": [
+      [
+        "0de10abc80721aec"
+      ]
+    ]
+  },
+  {
+    "id": "a5a91d3a5a55887d",
+    "type": "function",
+    "z": "e553273af07445b7",
+    "name": "습도",
+    "func": "msg.payload = Buffer.from([2, 48, 49, 82, 88, 72, 80, 48, 3, 34]);\nnode.send(msg);",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 290,
+    "y": 120,
+    "wires": [
+      [
+        "f7336441e3f55dfe"
+      ]
+    ]
+  },
+  {
+    "id": "74eaea6838fa5c78",
+    "type": "buffer-parser",
+    "z": "e553273af07445b7",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "ascii",
+        "name": "item2",
+        "offset": 3,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "ascii",
+        "name": "item1",
+        "offset": 9,
+        "length": 4,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "ascii",
+        "name": "item3",
+        "offset": 6,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 570,
+    "y": 100,
+    "wires": [
+      [
+        "52054c45a8ade2af"
+      ]
+    ]
+  },
+  {
+    "id": "f7336441e3f55dfe",
+    "type": "serial request",
+    "z": "e553273af07445b7",
+    "name": "",
+    "serial": "46c33fd38817389c",
+    "x": 430,
+    "y": 100,
+    "wires": [
+      [
+        "74eaea6838fa5c78"
+      ]
+    ]
+  },
+  {
+    "id": "0436d33147ba21c1",
+    "type": "comment",
+    "z": "e553273af07445b7",
+    "name": "원초 보관창고_코노텍 8300R1",
+    "info": "",
+    "x": 170,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "0de10abc80721aec",
+    "type": "function",
+    "z": "e553273af07445b7",
+    "name": "parseData",
+    "func": "var temperature = \"\";\nvar humidity = \"\";\n\nfor (let i = 0; i < msg.payload.length; i++) {\n\n    msg.payload[i][1] = Buffer.from(msg.payload[i][1], \"hex\");\n\n    var temp = msg.payload[i][1].readInt16BE(0);\n\n    if (msg.payload[i][2] == 'T') {\n        temperature = parseFloat(temp) / 10;\n    }\n    if (msg.payload[i][2] == 'H') {\n        humidity = parseFloat(temp);\n    }\n\n    var adr = parseInt(msg.payload[i][0]);\n}\n\nmsg.payload = {\n    \"position\": \"원초냉장창고\",\n    \"deviceId\": adr,\n    \"temperature\": temperature,\n    \"humidity\": humidity\n};\n\nmsg.topic = \"INSERT INTO fz_shm.storage1 (adr, temp, humid) VALUES (\" + adr + \", \" + temperature + \", \" + humidity + \")\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 430,
+    "y": 220,
+    "wires": [
+      [
+        "150f723ac943de64",
+        "28792a09863c3c1b"
+      ]
+    ]
+  },
+  {
+    "id": "28792a09863c3c1b",
+    "type": "mysql",
+    "z": "e553273af07445b7",
+    "mydb": "4f4e445c4ce2de50",
+    "name": "",
+    "x": 620,
+    "y": 240,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "150f723ac943de64",
+    "type": "debug",
+    "z": "e553273af07445b7",
+    "name": "debug 32",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 620,
+    "y": 200,
+    "wires": []
+  },
+  {
+    "id": "1991f7e70362f82c",
+    "type": "function",
+    "z": "bc518bc591d85b66",
+    "name": "온도",
+    "func": "msg.payload = Buffer.from([2, 48, 49, 82, 88, 84, 80, 48, 3, 62]);\nnode.send(msg);",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 130,
+    "y": 160,
+    "wires": [
+      [
+        "ae3e1dcee5d086b8"
+      ]
+    ]
+  },
+  {
+    "id": "da7a2a826449a6ac",
+    "type": "inject",
+    "z": "bc518bc591d85b66",
+    "d": true,
+    "name": "Loop 1 Minute",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "60",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 140,
+    "y": 100,
+    "wires": [
+      [
+        "1991f7e70362f82c",
+        "947cfbec6df829b8"
+      ]
+    ]
+  },
+  {
+    "id": "4b76591248ed1e88",
+    "type": "switch",
+    "z": "bc518bc591d85b66",
+    "name": "",
+    "property": "payload[2]",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "T",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "H",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 590,
+    "y": 160,
+    "wires": [
+      [
+        "66c60db7da6ae6d5"
+      ],
+      [
+        "66c60db7da6ae6d5"
+      ]
+    ]
+  },
+  {
+    "id": "66c60db7da6ae6d5",
+    "type": "join",
+    "z": "bc518bc591d85b66",
+    "name": "",
+    "mode": "custom",
+    "build": "array",
+    "property": "payload",
+    "propertyType": "msg",
+    "key": "payload",
+    "joiner": "\\n",
+    "joinerType": "str",
+    "accumulate": false,
+    "timeout": "",
+    "count": "2",
+    "reduceRight": false,
+    "reduceExp": "",
+    "reduceInit": "",
+    "reduceInitType": "num",
+    "reduceFixup": "",
+    "x": 730,
+    "y": 160,
+    "wires": [
+      [
+        "6a495797dc5f5ca5"
+      ]
+    ]
+  },
+  {
+    "id": "947cfbec6df829b8",
+    "type": "function",
+    "z": "bc518bc591d85b66",
+    "name": "습도",
+    "func": "msg.payload = Buffer.from([2, 48, 49, 82, 88, 72, 80, 48, 3, 34]);\nnode.send(msg);",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 130,
+    "y": 200,
+    "wires": [
+      [
+        "ae3e1dcee5d086b8"
+      ]
+    ]
+  },
+  {
+    "id": "ebab2a2eb8fab8ab",
+    "type": "buffer-parser",
+    "z": "bc518bc591d85b66",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "ascii",
+        "name": "item2",
+        "offset": 3,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "ascii",
+        "name": "item1",
+        "offset": 9,
+        "length": 4,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "ascii",
+        "name": "item3",
+        "offset": 6,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 430,
+    "y": 180,
+    "wires": [
+      [
+        "4b76591248ed1e88",
+        "c3de78a6acfe8ae0"
+      ]
+    ]
+  },
+  {
+    "id": "ae3e1dcee5d086b8",
+    "type": "serial request",
+    "z": "bc518bc591d85b66",
+    "d": true,
+    "name": "",
+    "serial": "46c33fd38817389c",
+    "x": 270,
+    "y": 180,
+    "wires": [
+      [
+        "ebab2a2eb8fab8ab"
+      ]
+    ]
+  },
+  {
+    "id": "c3de78a6acfe8ae0",
+    "type": "debug",
+    "z": "bc518bc591d85b66",
+    "name": "debug 29",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 600,
+    "y": 200,
+    "wires": []
+  },
+  {
+    "id": "a2d136549a7b40d4",
+    "type": "comment",
+    "z": "bc518bc591d85b66",
+    "name": "코노텍 8300R1",
+    "info": "",
+    "x": 120,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "6a495797dc5f5ca5",
+    "type": "function",
+    "z": "bc518bc591d85b66",
+    "name": "parseData",
+    "func": "var temperature = \"\";\nvar humidity = \"\";\n\nfor (let i = 0; i < msg.payload.length; i++) {\n\n    msg.payload[i][1] = Buffer.from(msg.payload[i][1], \"hex\");\n\n    var temp = msg.payload[i][1].readInt16BE(0);\n\n    if (msg.payload[i][2] == 'T') {\n        temperature = parseFloat(temp) / 10;\n    }\n    if (msg.payload[i][2] == 'H') {\n        humidity = parseFloat(temp);\n    }\n\n    var adr = parseInt(msg.payload[i][0]);\n}\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0062\",\n    \"kind\": \"5\",\n    \"deviceId\": adr,\n    \"temperature\": temperature,\n    \"humidity\": humidity\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 890,
+    "y": 160,
+    "wires": [
+      [
+        "587aa7bddc2e7a6a",
+        "ddaabe2e263ba066"
+      ]
+    ]
+  },
+  {
+    "id": "587aa7bddc2e7a6a",
+    "type": "json",
+    "z": "bc518bc591d85b66",
+    "name": "",
+    "property": "payload",
+    "action": "",
+    "pretty": true,
+    "x": 1050,
+    "y": 140,
+    "wires": [
+      [
+        "69e9b4f23c0796ef"
+      ]
+    ]
+  },
+  {
+    "id": "ddaabe2e263ba066",
+    "type": "debug",
+    "z": "bc518bc591d85b66",
+    "name": "debug 30",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 1060,
+    "y": 180,
+    "wires": []
+  },
+  {
+    "id": "69e9b4f23c0796ef",
+    "type": "http request",
+    "z": "bc518bc591d85b66",
+    "d": true,
+    "name": "",
+    "method": "POST",
+    "ret": "obj",
+    "paytoqs": "query",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0062/get_temperature",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 1210,
+    "y": 140,
+    "wires": [
+      [
+        "0d985801235f3335"
+      ]
+    ]
+  },
+  {
+    "id": "0d985801235f3335",
+    "type": "debug",
+    "z": "bc518bc591d85b66",
+    "name": "debug 31",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 1380,
+    "y": 140,
+    "wires": []
+  }
+]
