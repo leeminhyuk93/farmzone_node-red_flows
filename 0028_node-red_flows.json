@@ -824,7 +824,7 @@
     "z": "5e99d5afcc1bc9a3",
     "name": "MySQL DB",
     "info": "",
-    "x": 100,
+    "x": 120,
     "y": 320,
     "wires": []
   },
