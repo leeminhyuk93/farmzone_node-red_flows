@@ -1,0 +1,283 @@
+[
+  {
+    "id": "680afc8e46551b31",
+    "type": "tab",
+    "label": "플로우 1",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "ddba9c0ddb75dcf8",
+    "type": "tab",
+    "label": "플로우 2",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "e932afc27a41611c",
+    "type": "serial-port",
+    "serialport": "COM9",
+    "serialbaud": "9600",
+    "databits": "8",
+    "parity": "none",
+    "stopbits": "1",
+    "waitfor": "",
+    "dtr": "none",
+    "rts": "none",
+    "cts": "none",
+    "dsr": "none",
+    "newline": "200",
+    "bin": "bin",
+    "out": "time",
+    "addchar": "",
+    "responsetimeout": "10000"
+  },
+  {
+    "id": "fe9b9df19a5e0673",
+    "type": "function",
+    "z": "680afc8e46551b31",
+    "name": "function 1",
+    "func": "msg.payload = Buffer.from([2, 48, 49, 82, 88, 84, 80, 48, 3, 62]);\nnode.send(msg);\n\nmsg.payload = Buffer.from([2, 48, 50, 82, 88, 84, 80, 48, 3, 61]);\nnode.send(msg);\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 260,
+    "y": 100,
+    "wires": [
+      [
+        "19ca8fcdd38f02ed"
+      ]
+    ]
+  },
+  {
+    "id": "19ca8fcdd38f02ed",
+    "type": "serial request",
+    "z": "680afc8e46551b31",
+    "name": "",
+    "serial": "e932afc27a41611c",
+    "x": 410,
+    "y": 100,
+    "wires": [
+      [
+        "fc730be6c302b6e1"
+      ]
+    ]
+  },
+  {
+    "id": "fc730be6c302b6e1",
+    "type": "buffer-parser",
+    "z": "680afc8e46551b31",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "ascii",
+        "name": "item1",
+        "offset": 3,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "ascii",
+        "name": "item2",
+        "offset": 9,
+        "length": 4,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 370,
+    "y": 180,
+    "wires": [
+      [
+        "092c8d398616d29a"
+      ]
+    ]
+  },
+  {
+    "id": "092c8d398616d29a",
+    "type": "function",
+    "z": "680afc8e46551b31",
+    "name": "function 2",
+    "func": "msg.payload[1] = Buffer.from(msg.payload[1], \"hex\");\n\n// 현재 온도 (음수 표현은 buffer parser에서 수정 조치, INT 16BE 필요)\nvar temp = msg.payload[1].readInt16BE(0);\nvar curTemp = parseFloat(temp) / 10;\n\n// 장치 국번\nvar unitid = parseInt(msg.payload[0]);\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\nmsg.payload = {\n    \"ccode\": \"0059\",\n    \"kind\": \"4\",\n    \"deviceId\": unitid,\n    \"temperature\": curTemp,\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 600,
+    "y": 180,
+    "wires": [
+      [
+        "16a767cb183e5b2a",
+        "f36deb8a4aec82da"
+      ]
+    ]
+  },
+  {
+    "id": "16a767cb183e5b2a",
+    "type": "http request",
+    "z": "680afc8e46551b31",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "https://pc.smarthaccpman.com/smh-api/c0059/get_temperature",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 770,
+    "y": 180,
+    "wires": [
+      [
+        "885df2f1807c4e21"
+      ]
+    ]
+  },
+  {
+    "id": "885df2f1807c4e21",
+    "type": "debug",
+    "z": "680afc8e46551b31",
+    "name": "debug 1",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 940,
+    "y": 180,
+    "wires": []
+  },
+  {
+    "id": "f36deb8a4aec82da",
+    "type": "debug",
+    "z": "680afc8e46551b31",
+    "name": "debug 2",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 760,
+    "y": 140,
+    "wires": []
+  },
+  {
+    "id": "92e60288431109d2",
+    "type": "comment",
+    "z": "680afc8e46551b31",
+    "name": "냉장/냉동",
+    "info": "",
+    "x": 100,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "84bfd607a8d4f65e",
+    "type": "inject",
+    "z": "680afc8e46551b31",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 110,
+    "y": 100,
+    "wires": [
+      [
+        "fe9b9df19a5e0673"
+      ]
+    ]
+  },
+  {
+    "id": "24234d67e41dcab1",
+    "type": "debug",
+    "z": "ddba9c0ddb75dcf8",
+    "name": "debug 3",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 480,
+    "y": 260,
+    "wires": []
+  },
+  {
+    "id": "9c571a5fa991e2bb",
+    "type": "http in",
+    "z": "ddba9c0ddb75dcf8",
+    "name": "",
+    "url": "/getSignal",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 300,
+    "y": 180,
+    "wires": [
+      [
+        "c891bbad0a4f43e4",
+        "24234d67e41dcab1"
+      ]
+    ]
+  },
+  {
+    "id": "c891bbad0a4f43e4",
+    "type": "http response",
+    "z": "ddba9c0ddb75dcf8",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 470,
+    "y": 200,
+    "wires": []
+  }
+]
