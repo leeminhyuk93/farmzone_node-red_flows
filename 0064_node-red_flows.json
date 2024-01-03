@@ -1,0 +1,467 @@
+[
+  {
+    "id": "71aaba71cce9c427",
+    "type": "tab",
+    "label": "플로우 1",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "adc276c44d0c018a",
+    "type": "modbus-client",
+    "name": "",
+    "clienttype": "simpleser",
+    "bufferCommands": true,
+    "stateLogEnabled": false,
+    "queueLogEnabled": false,
+    "failureLogEnabled": true,
+    "tcpHost": "127.0.0.1",
+    "tcpPort": "502",
+    "tcpType": "DEFAULT",
+    "serialPort": "COM7",
+    "serialType": "RTU-BUFFERD",
+    "serialBaudrate": "9600",
+    "serialDatabits": "8",
+    "serialStopbits": "1",
+    "serialParity": "none",
+    "serialConnectionDelay": "100",
+    "serialAsciiResponseStartDelimiter": "0x3A",
+    "unit_id": "1",
+    "commandDelay": "1",
+    "clientTimeout": "1000",
+    "reconnectOnTimeout": true,
+    "reconnectTimeout": "2000",
+    "parallelUnitIdsAllowed": true,
+    "showWarnings": true,
+    "showLogs": true
+  },
+  {
+    "id": "6b5903cef06c0040",
+    "type": "MySQLdatabase",
+    "name": "",
+    "host": "127.0.0.1",
+    "port": "3306",
+    "db": "fz_shm",
+    "tz": "",
+    "charset": "UTF8"
+  },
+  {
+    "id": "a4e408c03b2c2e8f",
+    "type": "inject",
+    "z": "71aaba71cce9c427",
+    "name": "Manual Inject",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "60",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 140,
+    "wires": [
+      [
+        "561e697e95310621"
+      ]
+    ]
+  },
+  {
+    "id": "561e697e95310621",
+    "type": "modbus-getter",
+    "z": "71aaba71cce9c427",
+    "name": "1",
+    "showStatusActivities": false,
+    "showErrors": false,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "1",
+    "dataType": "InputRegister",
+    "adr": "100",
+    "quantity": "1",
+    "server": "adc276c44d0c018a",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 110,
+    "y": 200,
+    "wires": [
+      [
+        "55daa5d40673ad8b"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "c4416050754c797f",
+    "type": "comment",
+    "z": "71aaba71cce9c427",
+    "name": "XR10 (1~6)",
+    "info": "",
+    "x": 150,
+    "y": 80,
+    "wires": []
+  },
+  {
+    "id": "3b33d78e8ce57481",
+    "type": "modbus-getter",
+    "z": "71aaba71cce9c427",
+    "name": "2",
+    "showStatusActivities": false,
+    "showErrors": false,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "2",
+    "dataType": "InputRegister",
+    "adr": "100",
+    "quantity": "1",
+    "server": "adc276c44d0c018a",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 110,
+    "y": 240,
+    "wires": [
+      [
+        "ad6c02ae8accaff0"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "ad6c02ae8accaff0",
+    "type": "delay",
+    "z": "71aaba71cce9c427",
+    "name": "0.2",
+    "pauseType": "delay",
+    "timeout": "0.2",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "outputs": 1,
+    "x": 230,
+    "y": 240,
+    "wires": [
+      [
+        "1e1b538f43576b10"
+      ]
+    ]
+  },
+  {
+    "id": "55daa5d40673ad8b",
+    "type": "delay",
+    "z": "71aaba71cce9c427",
+    "name": "0.2",
+    "pauseType": "delay",
+    "timeout": "0.2",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "outputs": 1,
+    "x": 230,
+    "y": 200,
+    "wires": [
+      [
+        "3b33d78e8ce57481",
+        "1e1b538f43576b10"
+      ]
+    ]
+  },
+  {
+    "id": "730b815e66188856",
+    "type": "debug",
+    "z": "71aaba71cce9c427",
+    "name": "debug for TCs",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 920,
+    "y": 280,
+    "wires": []
+  },
+  {
+    "id": "54c9f93776a09746",
+    "type": "http request",
+    "z": "71aaba71cce9c427",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0064/get_temperature",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 730,
+    "y": 280,
+    "wires": [
+      [
+        "730b815e66188856"
+      ]
+    ]
+  },
+  {
+    "id": "bf96f88cdf4fcf67",
+    "type": "function",
+    "z": "71aaba71cce9c427",
+    "name": "send api",
+    "func": "//현재 온도 (음수 표현은 buffer parser에서 수정 조치, INT 16BE 필요)\nvar curTemp = parseFloat(msg.payload) / 10;\n\n//장치 국번\nvar unitid = msg.unitId;\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\nmsg.payload = {\n    \"ccode\": \"0064\",\n    \"kind\": \"4\",\n    \"deviceId\": unitid,\n    \"temperature\": curTemp,\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 560,
+    "y": 220,
+    "wires": [
+      [
+        "54c9f93776a09746",
+        "bc082abcc8fc210c"
+      ]
+    ]
+  },
+  {
+    "id": "1e1b538f43576b10",
+    "type": "buffer-parser",
+    "z": "71aaba71cce9c427",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "int16be",
+        "name": "item1",
+        "offset": 0,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 410,
+    "y": 220,
+    "wires": [
+      [
+        "bf96f88cdf4fcf67"
+      ]
+    ]
+  },
+  {
+    "id": "bc082abcc8fc210c",
+    "type": "debug",
+    "z": "71aaba71cce9c427",
+    "name": "debug for TCs",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 760,
+    "y": 160,
+    "wires": []
+  },
+  {
+    "id": "e5c2d1fa02035552",
+    "type": "comment",
+    "z": "71aaba71cce9c427",
+    "name": "세척기(라즈베리파이)",
+    "info": "",
+    "x": 140,
+    "y": 400,
+    "wires": []
+  },
+  {
+    "id": "8da7a5653e264e6e",
+    "type": "inject",
+    "z": "71aaba71cce9c427",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 110,
+    "y": 440,
+    "wires": [
+      [
+        "2b530d750e600d72"
+      ]
+    ]
+  },
+  {
+    "id": "2b530d750e600d72",
+    "type": "function",
+    "z": "71aaba71cce9c427",
+    "name": "select query",
+    "func": "msg.topic = \"SELECT * FROM fztable ORDER BY date DESC LIMIT 1\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 270,
+    "y": 440,
+    "wires": [
+      [
+        "7e95019a3b9f3d8d"
+      ]
+    ]
+  },
+  {
+    "id": "7e95019a3b9f3d8d",
+    "type": "mysql",
+    "z": "71aaba71cce9c427",
+    "mydb": "6b5903cef06c0040",
+    "name": "",
+    "x": 440,
+    "y": 440,
+    "wires": [
+      [
+        "faae3da2dd2b61fc"
+      ]
+    ]
+  },
+  {
+    "id": "faae3da2dd2b61fc",
+    "type": "function",
+    "z": "71aaba71cce9c427",
+    "name": "send api",
+    "func": "//현재 온도 (음수 표현은 buffer parser에서 수정 조치, INT 16BE 필요)\nvar current_value = msg.payload;\n\nvar temp1 = current_value[0].temp1;\nvar rpm = current_value[0].RPM;\nvar date = current_value[0].date;\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0064\",\n    \"scode\": \"91\",\n    \"temp1\": temp1,\n    \"rpm\": rpm\n};\n\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 180,
+    "y": 520,
+    "wires": [
+      [
+        "49aade2dadf9ac80",
+        "8a6ec755bb0aaa50"
+      ]
+    ]
+  },
+  {
+    "id": "49aade2dadf9ac80",
+    "type": "http request",
+    "z": "71aaba71cce9c427",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0064/get_cleanser",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 350,
+    "y": 520,
+    "wires": [
+      [
+        "a74297d65ce82ebd"
+      ]
+    ]
+  },
+  {
+    "id": "a74297d65ce82ebd",
+    "type": "debug",
+    "z": "71aaba71cce9c427",
+    "name": "debug 1",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 520,
+    "y": 520,
+    "wires": []
+  },
+  {
+    "id": "8a6ec755bb0aaa50",
+    "type": "debug",
+    "z": "71aaba71cce9c427",
+    "name": "debug 2",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 340,
+    "y": 580,
+    "wires": []
+  }
+]
