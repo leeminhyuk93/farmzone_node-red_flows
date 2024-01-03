@@ -108,7 +108,7 @@
     "trim": false,
     "base64": false,
     "tls": "",
-    "x": 120,
+    "x": 140,
     "y": 100,
     "wires": [
       [
@@ -188,7 +188,7 @@
     "z": "aa27fc5935c8a25a",
     "name": "모든다해",
     "info": "",
-    "x": 100,
+    "x": 120,
     "y": 60,
     "wires": []
   },
@@ -381,7 +381,7 @@
     "type": "function",
     "z": "aa27fc5935c8a25a",
     "name": "send api",
-    "func": "//현재 온도 (음수 표현은 buffer parser에서 수정 조치, INT 16BE 필요)\n//var temperature = parseFloat(msg.payload) / 10;\nvar temperature = parseFloat(msg.payload[0]) / 10;\n\n//장치 국번\nvar unitid = msg.unitId;\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\nmsg.payload = {\n    \"ccode\": \"0058\",\n    'kind': '4',\n    \"deviceId\": '7',\n    \"temperature\": temperature\n};\n\nreturn msg;",
+    "func": "//현재 온도 (음수 표현은 buffer parser에서 수정 조치, INT 16BE 필요)\n//var temperature = parseFloat(msg.payload) / 10;\nvar temperature = parseFloat(msg.payload[0]) / 10;\n\n//장��� 국번\nvar unitid = msg.unitId;\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\nmsg.payload = {\n    \"ccode\": \"0058\",\n    'kind': '4',\n    \"deviceId\": '7',\n    \"temperature\": temperature\n};\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
