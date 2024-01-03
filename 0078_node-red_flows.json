@@ -1,0 +1,2065 @@
+[
+  {
+    "id": "36d5e65e96631414",
+    "type": "tab",
+    "label": "냉장 / 냉동",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "87ca1b5c61536aea",
+    "type": "tab",
+    "label": "가열(건조) / 금속검출",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "a567e046bc940a62",
+    "type": "MySQLdatabase",
+    "name": "EASY-LINK",
+    "host": "192.168.28.205",
+    "port": "3306",
+    "db": "fz_shm",
+    "tz": "",
+    "charset": "UTF8"
+  },
+  {
+    "id": "9876ee5440cc60c0",
+    "type": "inject",
+    "z": "36d5e65e96631414",
+    "name": "Loop 1 Minute",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "60",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 140,
+    "y": 140,
+    "wires": [
+      [
+        "47402ab70bcefb20"
+      ]
+    ]
+  },
+  {
+    "id": "547a1f2dacf34d48",
+    "type": "comment",
+    "z": "36d5e65e96631414",
+    "name": "192.168.28.218 냉장/냉동 전실",
+    "info": "",
+    "x": 210,
+    "y": 80,
+    "wires": []
+  },
+  {
+    "id": "0f1be245f6aedeef",
+    "type": "comment",
+    "z": "36d5e65e96631414",
+    "name": "192.168.28.219 냉장/냉동 외부",
+    "info": "",
+    "x": 150,
+    "y": 580,
+    "wires": []
+  },
+  {
+    "id": "47402ab70bcefb20",
+    "type": "function",
+    "z": "36d5e65e96631414",
+    "name": "sendQuery",
+    "func": "msg.topic = \"SELECT value1, value2, value3, value4, value5 FROM fz_shm.fztable_218_ch1 WHERE date BETWEEN date_add(now(), interval -60 second) AND now() ORDER BY date DESC LIMIT 1;\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 110,
+    "y": 200,
+    "wires": [
+      [
+        "76a10ef3201e0b22"
+      ]
+    ]
+  },
+  {
+    "id": "76a10ef3201e0b22",
+    "type": "mysql",
+    "z": "36d5e65e96631414",
+    "mydb": "a567e046bc940a62",
+    "name": "EASY-LINK",
+    "x": 290,
+    "y": 200,
+    "wires": [
+      [
+        "ba0ea8eb1d47cadc",
+        "c8e22b05f8cedef2",
+        "98f8be369ae364da",
+        "e321de9a9049bb4c"
+      ]
+    ]
+  },
+  {
+    "id": "b79ac179a6622e36",
+    "type": "debug",
+    "z": "36d5e65e96631414",
+    "name": "debug 21",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 880,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "ba0ea8eb1d47cadc",
+    "type": "function",
+    "z": "36d5e65e96631414",
+    "name": "parseData ID1",
+    "func": "var temperature = (msg && msg.payload[0] && msg.payload[0].value1) ? msg.payload[0].value1 : \"\";\n\ntemperature = Math.floor(temperature * 10) / 10;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0078\",\n    \"ip\": \"192.168.28.218\",\n    \"id\": 1,\n    \"temp\": temperature\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 520,
+    "y": 60,
+    "wires": [
+      [
+        "05f26cc14086895c",
+        "97b5f492bb4c517c"
+      ]
+    ]
+  },
+  {
+    "id": "e321de9a9049bb4c",
+    "type": "function",
+    "z": "36d5e65e96631414",
+    "name": "parseData ID4",
+    "func": "var temperature = (msg && msg.payload[0] && msg.payload[0].value4) ? msg.payload[0].value4 : \"\";\nvar humidity = (msg && msg.payload[0] && msg.payload[0].value5) ? msg.payload[0].value5 : \"\";\n\ntemperature = Math.floor(temperature * 10) / 10;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0078\",\n    \"ip\": \"192.168.28.218\",\n    \"id\": 4,\n    \"temp\": temperature,\n    \"humi\": humidity\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 520,
+    "y": 360,
+    "wires": [
+      [
+        "f0829459076f1bb8",
+        "d18b6402595a84ca"
+      ]
+    ]
+  },
+  {
+    "id": "98f8be369ae364da",
+    "type": "function",
+    "z": "36d5e65e96631414",
+    "name": "parseData ID3",
+    "func": "var temperature = (msg && msg.payload[0] && msg.payload[0].value3) ? msg.payload[0].value3 : \"\";\n\ntemperature = Math.floor(temperature * 10) / 10;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0078\",\n    \"ip\": \"192.168.28.218\",\n    \"id\": 3,\n    \"temp\": temperature\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 520,
+    "y": 260,
+    "wires": [
+      [
+        "5d173983d3631585",
+        "95264c22a1cd68b9"
+      ]
+    ]
+  },
+  {
+    "id": "c8e22b05f8cedef2",
+    "type": "function",
+    "z": "36d5e65e96631414",
+    "name": "parseData ID2",
+    "func": "var temperature = (msg && msg.payload[0] && msg.payload[0].value2) ? msg.payload[0].value2 : \"\";\n\ntemperature = Math.floor(temperature * 10) / 10;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0078\",\n    \"ip\": \"192.168.28.218\",\n    \"id\": 2,\n    \"temp\": temperature\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 520,
+    "y": 160,
+    "wires": [
+      [
+        "186ced095bc1a5b0",
+        "5813839e78578112"
+      ]
+    ]
+  },
+  {
+    "id": "d059be22a29e90fe",
+    "type": "debug",
+    "z": "36d5e65e96631414",
+    "name": "debug 22",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 880,
+    "y": 140,
+    "wires": []
+  },
+  {
+    "id": "012d2f05a3061e82",
+    "type": "debug",
+    "z": "36d5e65e96631414",
+    "name": "debug 23",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 880,
+    "y": 240,
+    "wires": []
+  },
+  {
+    "id": "a579a22ec9a75117",
+    "type": "debug",
+    "z": "36d5e65e96631414",
+    "name": "debug 24",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 880,
+    "y": 340,
+    "wires": []
+  },
+  {
+    "id": "05f26cc14086895c",
+    "type": "http request",
+    "z": "36d5e65e96631414",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://sempio.smarthaccpman.co.kr/smh-api/c0078/get_temperature",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 710,
+    "y": 40,
+    "wires": [
+      [
+        "b79ac179a6622e36"
+      ]
+    ]
+  },
+  {
+    "id": "186ced095bc1a5b0",
+    "type": "http request",
+    "z": "36d5e65e96631414",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://sempio.smarthaccpman.co.kr/smh-api/c0078/get_temperature",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 710,
+    "y": 140,
+    "wires": [
+      [
+        "d059be22a29e90fe"
+      ]
+    ]
+  },
+  {
+    "id": "5d173983d3631585",
+    "type": "http request",
+    "z": "36d5e65e96631414",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://sempio.smarthaccpman.co.kr/smh-api/c0078/get_temperature",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 710,
+    "y": 240,
+    "wires": [
+      [
+        "012d2f05a3061e82"
+      ]
+    ]
+  },
+  {
+    "id": "f0829459076f1bb8",
+    "type": "http request",
+    "z": "36d5e65e96631414",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://sempio.smarthaccpman.co.kr/smh-api/c0078/get_temperature",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 710,
+    "y": 340,
+    "wires": [
+      [
+        "a579a22ec9a75117"
+      ]
+    ]
+  },
+  {
+    "id": "97b5f492bb4c517c",
+    "type": "debug",
+    "z": "36d5e65e96631414",
+    "name": "debug 25",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 700,
+    "y": 80,
+    "wires": []
+  },
+  {
+    "id": "5813839e78578112",
+    "type": "debug",
+    "z": "36d5e65e96631414",
+    "name": "debug 26",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 700,
+    "y": 180,
+    "wires": []
+  },
+  {
+    "id": "95264c22a1cd68b9",
+    "type": "debug",
+    "z": "36d5e65e96631414",
+    "name": "debug 27",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 700,
+    "y": 280,
+    "wires": []
+  },
+  {
+    "id": "d18b6402595a84ca",
+    "type": "debug",
+    "z": "36d5e65e96631414",
+    "name": "debug 28",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 700,
+    "y": 380,
+    "wires": []
+  },
+  {
+    "id": "1870f9699f1018a2",
+    "type": "inject",
+    "z": "36d5e65e96631414",
+    "name": "Loop 1 Minute",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "60",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 620,
+    "wires": [
+      [
+        "5346415cf67207b2"
+      ]
+    ]
+  },
+  {
+    "id": "5346415cf67207b2",
+    "type": "function",
+    "z": "36d5e65e96631414",
+    "name": "sendQuery",
+    "func": "msg.topic = \"SELECT value1, value2, value3, value4, value5 FROM fz_shm.fztable_219_ch1 WHERE date BETWEEN date_add(now(), interval -60 second) AND now() ORDER BY date DESC LIMIT 1;\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 110,
+    "y": 680,
+    "wires": [
+      [
+        "9c0e289b1ea272a5"
+      ]
+    ]
+  },
+  {
+    "id": "9c0e289b1ea272a5",
+    "type": "mysql",
+    "z": "36d5e65e96631414",
+    "mydb": "a567e046bc940a62",
+    "name": "EASY-LINK",
+    "x": 290,
+    "y": 680,
+    "wires": [
+      [
+        "92a6b7015a5b22db",
+        "0f1b4acb716b5933",
+        "1f400e2376d1444d",
+        "c30308f980262ecd",
+        "1e6f05d361cdaae1"
+      ]
+    ]
+  },
+  {
+    "id": "1ae679fbefb7f76f",
+    "type": "debug",
+    "z": "36d5e65e96631414",
+    "name": "debug 29",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 880,
+    "y": 460,
+    "wires": []
+  },
+  {
+    "id": "92a6b7015a5b22db",
+    "type": "function",
+    "z": "36d5e65e96631414",
+    "name": "parseData ID1",
+    "func": "var temperature = (msg && msg.payload[0] && msg.payload[0].value1) ? msg.payload[0].value1 : \"\";\n\ntemperature = Math.floor(temperature * 10) / 10;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0078\",\n    \"ip\": \"192.168.28.219\",\n    \"id\": 1,\n    \"temp\": temperature\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 520,
+    "y": 480,
+    "wires": [
+      [
+        "221818621b6f3276",
+        "f393cf0f7b531ad8"
+      ]
+    ]
+  },
+  {
+    "id": "c30308f980262ecd",
+    "type": "function",
+    "z": "36d5e65e96631414",
+    "name": "parseData ID4",
+    "func": "var temperature = (msg && msg.payload[0] && msg.payload[0].value4) ? msg.payload[0].value4 : \"\";\n\ntemperature = Math.floor(temperature * 10) / 10;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0078\",\n    \"ip\": \"192.168.28.219\",\n    \"id\": 4,\n    \"temp\": temperature\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 520,
+    "y": 780,
+    "wires": [
+      [
+        "43c5d015b0602d74",
+        "2f40af07b46de6ac"
+      ]
+    ]
+  },
+  {
+    "id": "1f400e2376d1444d",
+    "type": "function",
+    "z": "36d5e65e96631414",
+    "name": "parseData ID3",
+    "func": "var temperature = (msg && msg.payload[0] && msg.payload[0].value3) ? msg.payload[0].value3 : \"\";\n\ntemperature = Math.floor(temperature * 10) / 10;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0078\",\n    \"ip\": \"192.168.28.219\",\n    \"id\": 3,\n    \"temp\": temperature\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 520,
+    "y": 680,
+    "wires": [
+      [
+        "11028f4fcef9dd21",
+        "89e9171a520837ee"
+      ]
+    ]
+  },
+  {
+    "id": "0f1b4acb716b5933",
+    "type": "function",
+    "z": "36d5e65e96631414",
+    "name": "parseData ID2",
+    "func": "var temperature = (msg && msg.payload[0] && msg.payload[0].value2) ? msg.payload[0].value2 : \"\";\n\ntemperature = Math.floor(temperature * 10) / 10;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0078\",\n    \"ip\": \"192.168.28.219\",\n    \"id\": 2,\n    \"temp\": temperature\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 520,
+    "y": 580,
+    "wires": [
+      [
+        "5a15e51d2b1aefaa",
+        "6dc97de4b6e2c8d7"
+      ]
+    ]
+  },
+  {
+    "id": "4eaeb9d29b4cf6e5",
+    "type": "debug",
+    "z": "36d5e65e96631414",
+    "name": "debug 30",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 880,
+    "y": 560,
+    "wires": []
+  },
+  {
+    "id": "065b06d641add8b1",
+    "type": "debug",
+    "z": "36d5e65e96631414",
+    "name": "debug 31",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 880,
+    "y": 660,
+    "wires": []
+  },
+  {
+    "id": "1bc436f1606001be",
+    "type": "debug",
+    "z": "36d5e65e96631414",
+    "name": "debug 32",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 880,
+    "y": 760,
+    "wires": []
+  },
+  {
+    "id": "221818621b6f3276",
+    "type": "http request",
+    "z": "36d5e65e96631414",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://sempio.smarthaccpman.co.kr/smh-api/c0078/get_temperature",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 710,
+    "y": 460,
+    "wires": [
+      [
+        "1ae679fbefb7f76f"
+      ]
+    ]
+  },
+  {
+    "id": "5a15e51d2b1aefaa",
+    "type": "http request",
+    "z": "36d5e65e96631414",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://sempio.smarthaccpman.co.kr/smh-api/c0078/get_temperature",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 710,
+    "y": 560,
+    "wires": [
+      [
+        "4eaeb9d29b4cf6e5"
+      ]
+    ]
+  },
+  {
+    "id": "11028f4fcef9dd21",
+    "type": "http request",
+    "z": "36d5e65e96631414",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://sempio.smarthaccpman.co.kr/smh-api/c0078/get_temperature",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 710,
+    "y": 660,
+    "wires": [
+      [
+        "065b06d641add8b1"
+      ]
+    ]
+  },
+  {
+    "id": "43c5d015b0602d74",
+    "type": "http request",
+    "z": "36d5e65e96631414",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://sempio.smarthaccpman.co.kr/smh-api/c0078/get_temperature",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 710,
+    "y": 760,
+    "wires": [
+      [
+        "1bc436f1606001be"
+      ]
+    ]
+  },
+  {
+    "id": "f393cf0f7b531ad8",
+    "type": "debug",
+    "z": "36d5e65e96631414",
+    "name": "debug 33",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 700,
+    "y": 500,
+    "wires": []
+  },
+  {
+    "id": "6dc97de4b6e2c8d7",
+    "type": "debug",
+    "z": "36d5e65e96631414",
+    "name": "debug 34",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 700,
+    "y": 600,
+    "wires": []
+  },
+  {
+    "id": "89e9171a520837ee",
+    "type": "debug",
+    "z": "36d5e65e96631414",
+    "name": "debug 35",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 700,
+    "y": 700,
+    "wires": []
+  },
+  {
+    "id": "2f40af07b46de6ac",
+    "type": "debug",
+    "z": "36d5e65e96631414",
+    "name": "debug 36",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 700,
+    "y": 800,
+    "wires": []
+  },
+  {
+    "id": "1e6f05d361cdaae1",
+    "type": "function",
+    "z": "36d5e65e96631414",
+    "name": "parseData ID4",
+    "func": "var temperature = (msg && msg.payload[0] && msg.payload[0].value5) ? msg.payload[0].value5 : \"\";\n\ntemperature = Math.floor(temperature * 10) / 10;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0078\",\n    \"ip\": \"192.168.28.219\",\n    \"id\": 5,\n    \"temp\": temperature\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 520,
+    "y": 880,
+    "wires": [
+      [
+        "dc86a55159b22f20",
+        "4b991f49051c5ab0"
+      ]
+    ]
+  },
+  {
+    "id": "dcc5e49e7e9ce3f9",
+    "type": "debug",
+    "z": "36d5e65e96631414",
+    "name": "debug 37",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 880,
+    "y": 860,
+    "wires": []
+  },
+  {
+    "id": "dc86a55159b22f20",
+    "type": "http request",
+    "z": "36d5e65e96631414",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://sempio.smarthaccpman.co.kr/smh-api/c0078/get_temperature",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 710,
+    "y": 860,
+    "wires": [
+      [
+        "dcc5e49e7e9ce3f9"
+      ]
+    ]
+  },
+  {
+    "id": "4b991f49051c5ab0",
+    "type": "debug",
+    "z": "36d5e65e96631414",
+    "name": "debug 38",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 700,
+    "y": 900,
+    "wires": []
+  },
+  {
+    "id": "8bb97391c80d199f",
+    "type": "debug",
+    "z": "87ca1b5c61536aea",
+    "name": "debug 1",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 680,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "e2034e407622b273",
+    "type": "tcp in",
+    "z": "87ca1b5c61536aea",
+    "name": "192.168.28.211:5001",
+    "server": "server",
+    "host": "",
+    "port": "5001",
+    "datamode": "stream",
+    "datatype": "buffer",
+    "newline": "",
+    "topic": "",
+    "trim": false,
+    "base64": false,
+    "tls": "",
+    "x": 120,
+    "y": 80,
+    "wires": [
+      [
+        "dc9b30262e9dc4aa",
+        "ce43edf87b738893"
+      ]
+    ]
+  },
+  {
+    "id": "9de1ed011eb0e752",
+    "type": "comment",
+    "z": "87ca1b5c61536aea",
+    "name": "금속검출기(Anritsu)",
+    "info": "",
+    "x": 110,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "dc9b30262e9dc4aa",
+    "type": "debug",
+    "z": "87ca1b5c61536aea",
+    "name": "debug 2",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 320,
+    "y": 100,
+    "wires": []
+  },
+  {
+    "id": "10691f23b70f7dbf",
+    "type": "http request",
+    "z": "87ca1b5c61536aea",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://sempio.smarthaccpman.co.kr/smh-api/c0078/get_detection",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 510,
+    "y": 40,
+    "wires": [
+      [
+        "8bb97391c80d199f"
+      ]
+    ]
+  },
+  {
+    "id": "b0513aab270f327e",
+    "type": "inject",
+    "z": "87ca1b5c61536aea",
+    "name": "Loop 1 Minute",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 240,
+    "wires": [
+      [
+        "459d99cdec4f0762"
+      ]
+    ]
+  },
+  {
+    "id": "ac36637b66768d8f",
+    "type": "comment",
+    "z": "87ca1b5c61536aea",
+    "name": "192.168.28.212 건조1",
+    "info": "",
+    "x": 120,
+    "y": 200,
+    "wires": []
+  },
+  {
+    "id": "459d99cdec4f0762",
+    "type": "function",
+    "z": "87ca1b5c61536aea",
+    "name": "sendQuery",
+    "func": "msg.topic  = \"SELECT\";\nmsg.topic += \"   (SELECT value1 FROM fz_shm.fztable_212_ch1 WHERE date BETWEEN date_add(now(), interval - 60 second) AND now() ORDER BY date DESC LIMIT 1) AS value1,\";\nmsg.topic += \"   (SELECT value3 FROM fz_shm.fztable_212_ch2 WHERE date BETWEEN date_add(now(), interval - 60 second) AND now() ORDER BY date DESC LIMIT 1) AS value3;\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 310,
+    "y": 240,
+    "wires": [
+      [
+        "0acae4f0044ce4b8"
+      ]
+    ]
+  },
+  {
+    "id": "0acae4f0044ce4b8",
+    "type": "mysql",
+    "z": "87ca1b5c61536aea",
+    "mydb": "a567e046bc940a62",
+    "name": "EASY-LINK",
+    "x": 490,
+    "y": 240,
+    "wires": [
+      [
+        "17632951c6d87c8c",
+        "6e2f1482a42e864c"
+      ]
+    ]
+  },
+  {
+    "id": "759374b5cf7f7e7a",
+    "type": "http request",
+    "z": "87ca1b5c61536aea",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://sempio.smarthaccpman.co.kr/smh-api/c0078/get_heating",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 850,
+    "y": 220,
+    "wires": [
+      [
+        "b920930b2b2cd2ba"
+      ]
+    ]
+  },
+  {
+    "id": "b920930b2b2cd2ba",
+    "type": "debug",
+    "z": "87ca1b5c61536aea",
+    "name": "debug 43",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 1040,
+    "y": 220,
+    "wires": []
+  },
+  {
+    "id": "1b472c662f37e0cf",
+    "type": "comment",
+    "z": "87ca1b5c61536aea",
+    "name": "192.168.28.213 건조2",
+    "info": "",
+    "x": 120,
+    "y": 320,
+    "wires": []
+  },
+  {
+    "id": "b7f9f2e5ecd686f2",
+    "type": "comment",
+    "z": "87ca1b5c61536aea",
+    "name": "192.168.28.214 건조3",
+    "info": "",
+    "x": 120,
+    "y": 440,
+    "wires": []
+  },
+  {
+    "id": "c7128d567487ea19",
+    "type": "comment",
+    "z": "87ca1b5c61536aea",
+    "name": "192.168.28.215 건조4",
+    "info": "",
+    "x": 120,
+    "y": 560,
+    "wires": []
+  },
+  {
+    "id": "6f0b1927c0f9a177",
+    "type": "comment",
+    "z": "87ca1b5c61536aea",
+    "name": "192.168.28.216 건조5",
+    "info": "",
+    "x": 120,
+    "y": 680,
+    "wires": []
+  },
+  {
+    "id": "62c0a63dc3eb52f2",
+    "type": "comment",
+    "z": "87ca1b5c61536aea",
+    "name": "192.168.28.217 건조6",
+    "info": "",
+    "x": 120,
+    "y": 800,
+    "wires": []
+  },
+  {
+    "id": "17632951c6d87c8c",
+    "type": "function",
+    "z": "87ca1b5c61536aea",
+    "name": "parseData",
+    "func": "var value1 = (msg && msg.payload[0] && msg.payload[0].value1 != null) ? msg.payload[0].value1 : \"\";\nvar value3 = (msg && msg.payload[0] && msg.payload[0].value3 != null) ? (msg.payload[0].value3 / 10) : \"\";\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0078\",\n    \"ip\": \"192.168.28.212\",\n    \"id\": 1,\n    \"on\": value1,\n    \"temp\": value3\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 670,
+    "y": 240,
+    "wires": [
+      [
+        "759374b5cf7f7e7a",
+        "08ce9a302d078515"
+      ]
+    ]
+  },
+  {
+    "id": "6e2f1482a42e864c",
+    "type": "debug",
+    "z": "87ca1b5c61536aea",
+    "name": "debug 44",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 660,
+    "y": 280,
+    "wires": []
+  },
+  {
+    "id": "08c3d8087bfa0b7f",
+    "type": "inject",
+    "z": "87ca1b5c61536aea",
+    "name": "Loop 1 Minute",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 360,
+    "wires": [
+      [
+        "0459376775b94ea4"
+      ]
+    ]
+  },
+  {
+    "id": "0459376775b94ea4",
+    "type": "function",
+    "z": "87ca1b5c61536aea",
+    "name": "sendQuery",
+    "func": "msg.topic = \"SELECT\";\nmsg.topic += \"   (SELECT value1 FROM fz_shm.fztable_213_ch1 WHERE date BETWEEN date_add(now(), interval - 60 second) AND now() ORDER BY date DESC LIMIT 1) AS value1,\";\nmsg.topic += \"   (SELECT value3 FROM fz_shm.fztable_213_ch2 WHERE date BETWEEN date_add(now(), interval - 60 second) AND now() ORDER BY date DESC LIMIT 1) AS value3;\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 310,
+    "y": 360,
+    "wires": [
+      [
+        "f5abe43402b47d6b"
+      ]
+    ]
+  },
+  {
+    "id": "f5abe43402b47d6b",
+    "type": "mysql",
+    "z": "87ca1b5c61536aea",
+    "mydb": "a567e046bc940a62",
+    "name": "EASY-LINK",
+    "x": 490,
+    "y": 360,
+    "wires": [
+      [
+        "db0bccb16a5f7b7a",
+        "9365bb55f5cd0f8e"
+      ]
+    ]
+  },
+  {
+    "id": "8b69eea3b647f2ce",
+    "type": "http request",
+    "z": "87ca1b5c61536aea",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://sempio.smarthaccpman.co.kr/smh-api/c0078/get_heating",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 850,
+    "y": 340,
+    "wires": [
+      [
+        "10da9aac56a64768"
+      ]
+    ]
+  },
+  {
+    "id": "10da9aac56a64768",
+    "type": "debug",
+    "z": "87ca1b5c61536aea",
+    "name": "debug 45",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 1020,
+    "y": 340,
+    "wires": []
+  },
+  {
+    "id": "db0bccb16a5f7b7a",
+    "type": "function",
+    "z": "87ca1b5c61536aea",
+    "name": "parseData",
+    "func": "var value1 = (msg && msg.payload[0] && msg.payload[0].value1 != null) ? msg.payload[0].value1 : \"\";\nvar value3 = (msg && msg.payload[0] && msg.payload[0].value3 != null) ? (msg.payload[0].value3 / 10) : \"\";\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0078\",\n    \"ip\": \"192.168.28.213\",\n    \"id\": 1,\n    \"on\": value1,\n    \"temp\": value3\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 670,
+    "y": 360,
+    "wires": [
+      [
+        "8b69eea3b647f2ce",
+        "0bfecba66cf4fa5e"
+      ]
+    ]
+  },
+  {
+    "id": "0bfecba66cf4fa5e",
+    "type": "debug",
+    "z": "87ca1b5c61536aea",
+    "name": "debug 46",
+    "active": false,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 840,
+    "y": 380,
+    "wires": []
+  },
+  {
+    "id": "a29e880c02cc9575",
+    "type": "inject",
+    "z": "87ca1b5c61536aea",
+    "name": "Loop 1 Minute",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 480,
+    "wires": [
+      [
+        "7b93b495e5a5ed4a"
+      ]
+    ]
+  },
+  {
+    "id": "7b93b495e5a5ed4a",
+    "type": "function",
+    "z": "87ca1b5c61536aea",
+    "name": "sendQuery",
+    "func": "msg.topic = \"SELECT\";\nmsg.topic += \"   (SELECT value1 FROM fz_shm.fztable_214_ch1 WHERE date BETWEEN date_add(now(), interval - 60 second) AND now() ORDER BY date DESC LIMIT 1) AS value1,\";\nmsg.topic += \"   (SELECT value3 FROM fz_shm.fztable_214_ch2 WHERE date BETWEEN date_add(now(), interval - 60 second) AND now() ORDER BY date DESC LIMIT 1) AS value3;\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 310,
+    "y": 480,
+    "wires": [
+      [
+        "4e33eba9aac4a30c"
+      ]
+    ]
+  },
+  {
+    "id": "4e33eba9aac4a30c",
+    "type": "mysql",
+    "z": "87ca1b5c61536aea",
+    "mydb": "a567e046bc940a62",
+    "name": "EASY-LINK",
+    "x": 490,
+    "y": 480,
+    "wires": [
+      [
+        "1af662603ff40362",
+        "57c48f68af74b3a7"
+      ]
+    ]
+  },
+  {
+    "id": "04e9b1f34c06cc8c",
+    "type": "http request",
+    "z": "87ca1b5c61536aea",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://sempio.smarthaccpman.co.kr/smh-api/c0078/get_heating",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 850,
+    "y": 460,
+    "wires": [
+      [
+        "60279ec012c02a61"
+      ]
+    ]
+  },
+  {
+    "id": "60279ec012c02a61",
+    "type": "debug",
+    "z": "87ca1b5c61536aea",
+    "name": "debug 47",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 1020,
+    "y": 460,
+    "wires": []
+  },
+  {
+    "id": "1af662603ff40362",
+    "type": "function",
+    "z": "87ca1b5c61536aea",
+    "name": "parseData",
+    "func": "var value1 = (msg && msg.payload[0] && msg.payload[0].value1 != null) ? msg.payload[0].value1 : \"\";\nvar value3 = (msg && msg.payload[0] && msg.payload[0].value3 != null) ? (msg.payload[0].value3 / 10) : \"\";\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0078\",\n    \"ip\": \"192.168.28.214\",\n    \"id\": 1,\n    \"on\": value1,\n    \"temp\": value3\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 670,
+    "y": 480,
+    "wires": [
+      [
+        "04e9b1f34c06cc8c",
+        "bad11b516dc18436"
+      ]
+    ]
+  },
+  {
+    "id": "bad11b516dc18436",
+    "type": "debug",
+    "z": "87ca1b5c61536aea",
+    "name": "debug 48",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 840,
+    "y": 500,
+    "wires": []
+  },
+  {
+    "id": "1431b90b6dad628c",
+    "type": "inject",
+    "z": "87ca1b5c61536aea",
+    "name": "Loop 1 Minute",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 600,
+    "wires": [
+      [
+        "b2ae87882ef271bc"
+      ]
+    ]
+  },
+  {
+    "id": "b2ae87882ef271bc",
+    "type": "function",
+    "z": "87ca1b5c61536aea",
+    "name": "sendQuery",
+    "func": "msg.topic = \"SELECT\";\nmsg.topic += \"   (SELECT value1 FROM fz_shm.fztable_215_ch1 WHERE date BETWEEN date_add(now(), interval - 60 second) AND now() ORDER BY date DESC LIMIT 1) AS value1,\";\nmsg.topic += \"   (SELECT value3 FROM fz_shm.fztable_215_ch2 WHERE date BETWEEN date_add(now(), interval - 60 second) AND now() ORDER BY date DESC LIMIT 1) AS value3;\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 310,
+    "y": 600,
+    "wires": [
+      [
+        "7d4a314950244137"
+      ]
+    ]
+  },
+  {
+    "id": "7d4a314950244137",
+    "type": "mysql",
+    "z": "87ca1b5c61536aea",
+    "mydb": "a567e046bc940a62",
+    "name": "EASY-LINK",
+    "x": 490,
+    "y": 600,
+    "wires": [
+      [
+        "0164574ee9cc47c3",
+        "2bd20dd64c786a1a"
+      ]
+    ]
+  },
+  {
+    "id": "aeee5a4180b10526",
+    "type": "http request",
+    "z": "87ca1b5c61536aea",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://sempio.smarthaccpman.co.kr/smh-api/c0078/get_heating",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 850,
+    "y": 580,
+    "wires": [
+      [
+        "1c694656c8f56435"
+      ]
+    ]
+  },
+  {
+    "id": "1c694656c8f56435",
+    "type": "debug",
+    "z": "87ca1b5c61536aea",
+    "name": "debug 49",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 1020,
+    "y": 580,
+    "wires": []
+  },
+  {
+    "id": "0164574ee9cc47c3",
+    "type": "function",
+    "z": "87ca1b5c61536aea",
+    "name": "parseData",
+    "func": "var value1 = (msg && msg.payload[0] && msg.payload[0].value1 != null) ? msg.payload[0].value1 : \"\";\nvar value3 = (msg && msg.payload[0] && msg.payload[0].value3 != null) ? (msg.payload[0].value3 / 10) : \"\";\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0078\",\n    \"ip\": \"192.168.28.215\",\n    \"id\": 1,\n    \"on\": value1,\n    \"temp\": value3\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 670,
+    "y": 600,
+    "wires": [
+      [
+        "aeee5a4180b10526",
+        "907939514b939e5a"
+      ]
+    ]
+  },
+  {
+    "id": "907939514b939e5a",
+    "type": "debug",
+    "z": "87ca1b5c61536aea",
+    "name": "debug 50",
+    "active": false,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 840,
+    "y": 620,
+    "wires": []
+  },
+  {
+    "id": "6c1a679d208dd598",
+    "type": "inject",
+    "z": "87ca1b5c61536aea",
+    "name": "Loop 1 Minute",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 720,
+    "wires": [
+      [
+        "751f3512c26a302d"
+      ]
+    ]
+  },
+  {
+    "id": "751f3512c26a302d",
+    "type": "function",
+    "z": "87ca1b5c61536aea",
+    "name": "sendQuery",
+    "func": "msg.topic = \"SELECT\";\nmsg.topic += \"   (SELECT value1 FROM fz_shm.fztable_216_ch1 WHERE date BETWEEN date_add(now(), interval - 60 second) AND now() ORDER BY date DESC LIMIT 1) AS value1,\";\nmsg.topic += \"   (SELECT value3 FROM fz_shm.fztable_216_ch2 WHERE date BETWEEN date_add(now(), interval - 60 second) AND now() ORDER BY date DESC LIMIT 1) AS value3;\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 310,
+    "y": 720,
+    "wires": [
+      [
+        "cd4e9eb0c7e40873"
+      ]
+    ]
+  },
+  {
+    "id": "cd4e9eb0c7e40873",
+    "type": "mysql",
+    "z": "87ca1b5c61536aea",
+    "mydb": "a567e046bc940a62",
+    "name": "EASY-LINK",
+    "x": 490,
+    "y": 720,
+    "wires": [
+      [
+        "ffd2f501f24acaf3",
+        "6f55439ee585195d"
+      ]
+    ]
+  },
+  {
+    "id": "b5b3a8853a07bb36",
+    "type": "http request",
+    "z": "87ca1b5c61536aea",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://sempio.smarthaccpman.co.kr/smh-api/c0078/get_heating",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 850,
+    "y": 700,
+    "wires": [
+      [
+        "22ab68ed95b74732"
+      ]
+    ]
+  },
+  {
+    "id": "22ab68ed95b74732",
+    "type": "debug",
+    "z": "87ca1b5c61536aea",
+    "name": "debug 51",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 1020,
+    "y": 700,
+    "wires": []
+  },
+  {
+    "id": "ffd2f501f24acaf3",
+    "type": "function",
+    "z": "87ca1b5c61536aea",
+    "name": "parseData",
+    "func": "var value1 = (msg && msg.payload[0] && msg.payload[0].value1 != null) ? msg.payload[0].value1 : \"\";\nvar value3 = (msg && msg.payload[0] && msg.payload[0].value3 != null) ? (msg.payload[0].value3 / 10) : \"\";\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0078\",\n    \"ip\": \"192.168.28.216\",\n    \"id\": 1,\n    \"on\": value1,\n    \"temp\": value3\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 670,
+    "y": 720,
+    "wires": [
+      [
+        "b5b3a8853a07bb36",
+        "1fec04a6337b08c6"
+      ]
+    ]
+  },
+  {
+    "id": "1fec04a6337b08c6",
+    "type": "debug",
+    "z": "87ca1b5c61536aea",
+    "name": "debug 52",
+    "active": false,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 840,
+    "y": 740,
+    "wires": []
+  },
+  {
+    "id": "e5ed926fed7e1b95",
+    "type": "inject",
+    "z": "87ca1b5c61536aea",
+    "name": "Loop 1 Minute",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 840,
+    "wires": [
+      [
+        "17d14967042e40d2"
+      ]
+    ]
+  },
+  {
+    "id": "17d14967042e40d2",
+    "type": "function",
+    "z": "87ca1b5c61536aea",
+    "name": "sendQuery",
+    "func": "msg.topic = \"SELECT\";\nmsg.topic += \"   (SELECT value1 FROM fz_shm.fztable_217_ch1 WHERE date BETWEEN date_add(now(), interval - 60 second) AND now() ORDER BY date DESC LIMIT 1) AS value1,\";\nmsg.topic += \"   (SELECT value2 FROM fz_shm.fztable_217_ch2 WHERE date BETWEEN date_add(now(), interval - 60 second) AND now() ORDER BY date DESC LIMIT 1) AS value2;\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 310,
+    "y": 840,
+    "wires": [
+      [
+        "3fda91350278b24b"
+      ]
+    ]
+  },
+  {
+    "id": "3fda91350278b24b",
+    "type": "mysql",
+    "z": "87ca1b5c61536aea",
+    "mydb": "a567e046bc940a62",
+    "name": "EASY-LINK",
+    "x": 490,
+    "y": 840,
+    "wires": [
+      [
+        "9bb4686001fc99ed",
+        "733e3d7f610a0698"
+      ]
+    ]
+  },
+  {
+    "id": "2f5d6240a4e6e4e0",
+    "type": "http request",
+    "z": "87ca1b5c61536aea",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://sempio.smarthaccpman.co.kr/smh-api/c0078/get_heating",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 850,
+    "y": 820,
+    "wires": [
+      [
+        "5662d80469d3f05d"
+      ]
+    ]
+  },
+  {
+    "id": "5662d80469d3f05d",
+    "type": "debug",
+    "z": "87ca1b5c61536aea",
+    "name": "debug 53",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 1020,
+    "y": 820,
+    "wires": []
+  },
+  {
+    "id": "9bb4686001fc99ed",
+    "type": "function",
+    "z": "87ca1b5c61536aea",
+    "name": "parseData",
+    "func": "var value1 = (msg && msg.payload[0] && msg.payload[0].value1 != null) ? msg.payload[0].value1 : \"\";\nvar value2 = (msg && msg.payload[0] && msg.payload[0].value2 != null) ? (msg.payload[0].value2) : \"\";\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0078\",\n    \"ip\": \"192.168.28.217\",\n    \"id\": 1,\n    \"on\": value1,\n    \"temp\": value2\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 670,
+    "y": 840,
+    "wires": [
+      [
+        "2f5d6240a4e6e4e0",
+        "4621cc7291fa9f30"
+      ]
+    ]
+  },
+  {
+    "id": "4621cc7291fa9f30",
+    "type": "debug",
+    "z": "87ca1b5c61536aea",
+    "name": "debug 54",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 840,
+    "y": 860,
+    "wires": []
+  },
+  {
+    "id": "ce43edf87b738893",
+    "type": "function",
+    "z": "87ca1b5c61536aea",
+    "name": "parseData",
+    "func": "var buffer1 = (msg && msg.payload[0]) ? msg.payload[0] : \"\";\nvar buffer2 = (msg && msg.payload[1]) ? msg.payload[1] : \"\";\nvar buffer3 = (msg && msg.payload[2]) ? msg.payload[2] : \"\";\nvar buffer4 = (msg && msg.payload[3]) ? msg.payload[3] : \"\";\n\nmsg.headers = {};\nmsg.payload = {};\n\nif(buffer1 == 2 && buffer4 == 3) {\n    if(buffer2 == 32 && buffer3 == 49) {\n        msg.headers = {\n            \"content-type\": \"application/json\",\n            \"Accept\": \"application/json\"\n        };\n\n        msg.payload = {\n            \"ccode\": \"0078\",\n            \"ip\": \"192.168.28.211\",\n            \"port\": 5001\n        };\n    }\n}\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 330,
+    "y": 60,
+    "wires": [
+      [
+        "10691f23b70f7dbf",
+        "a8fb3194d063dc07"
+      ]
+    ]
+  },
+  {
+    "id": "a8fb3194d063dc07",
+    "type": "debug",
+    "z": "87ca1b5c61536aea",
+    "name": "debug 55",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 500,
+    "y": 80,
+    "wires": []
+  },
+  {
+    "id": "3eca1c6d1488b3b6",
+    "type": "inject",
+    "z": "87ca1b5c61536aea",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "[\"0x02\", \"0x20\", \"0x31\", \"0x03\"]",
+    "payloadType": "bin",
+    "x": 450,
+    "y": 140,
+    "wires": [
+      [
+        "ce43edf87b738893",
+        "17531e31126e5cf0"
+      ]
+    ]
+  },
+  {
+    "id": "17531e31126e5cf0",
+    "type": "debug",
+    "z": "87ca1b5c61536aea",
+    "name": "debug 56",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 640,
+    "y": 140,
+    "wires": []
+  },
+  {
+    "id": "9365bb55f5cd0f8e",
+    "type": "debug",
+    "z": "87ca1b5c61536aea",
+    "name": "debug 58",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 658.5078125,
+    "y": 400.5234375,
+    "wires": []
+  },
+  {
+    "id": "57c48f68af74b3a7",
+    "type": "debug",
+    "z": "87ca1b5c61536aea",
+    "name": "debug 59",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 660,
+    "y": 520,
+    "wires": []
+  },
+  {
+    "id": "2bd20dd64c786a1a",
+    "type": "debug",
+    "z": "87ca1b5c61536aea",
+    "name": "debug 60",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 660,
+    "y": 640,
+    "wires": []
+  },
+  {
+    "id": "6f55439ee585195d",
+    "type": "debug",
+    "z": "87ca1b5c61536aea",
+    "name": "debug 61",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 660,
+    "y": 760,
+    "wires": []
+  },
+  {
+    "id": "733e3d7f610a0698",
+    "type": "debug",
+    "z": "87ca1b5c61536aea",
+    "name": "debug 62",
+    "active": true,
+    "tosidebar": false,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 660,
+    "y": 880,
+    "wires": []
+  },
+  {
+    "id": "08ce9a302d078515",
+    "type": "debug",
+    "z": "87ca1b5c61536aea",
+    "name": "debug 63",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 840,
+    "y": 260,
+    "wires": []
+  }
+]
