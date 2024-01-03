@@ -1,0 +1,3745 @@
+[
+  {
+    "id": "ddca7ba125929727",
+    "type": "tab",
+    "label": "플로우 1",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "73d8e18998c80e46",
+    "type": "serial-port",
+    "serialport": "COM7",
+    "serialbaud": "9600",
+    "databits": "8",
+    "parity": "none",
+    "stopbits": "1",
+    "waitfor": "",
+    "dtr": "none",
+    "rts": "none",
+    "cts": "none",
+    "dsr": "none",
+    "newline": "500",
+    "bin": "bin",
+    "out": "time",
+    "addchar": "",
+    "responsetimeout": "10000"
+  },
+  {
+    "id": "6f6934b2f47f4d33",
+    "type": "inject",
+    "z": "ddca7ba125929727",
+    "name": "Loop 1 Minute",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "60",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 140,
+    "y": 80,
+    "wires": [
+      [
+        "899f1f43ba069a37"
+      ]
+    ]
+  },
+  {
+    "id": "1e869f3fc7352192",
+    "type": "serial request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "serial": "73d8e18998c80e46",
+    "x": 490,
+    "y": 80,
+    "wires": [
+      [
+        "17aa8ad63a467443"
+      ]
+    ]
+  },
+  {
+    "id": "899f1f43ba069a37",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "sendBuffer",
+    "func": "msg.payload = Buffer.from([0x02, 0x30, 0x31, 0x52, 0x58, 0x54, 0x50, 0x30, 0x03, 0x3e])\n\nreturn msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 330,
+    "y": 80,
+    "wires": [
+      [
+        "1e869f3fc7352192"
+      ]
+    ]
+  },
+  {
+    "id": "3e702898fc4b1078",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 1",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1180,
+    "y": 80,
+    "wires": []
+  },
+  {
+    "id": "17aa8ad63a467443",
+    "type": "buffer-parser",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "ascii",
+        "name": "item1",
+        "offset": 3,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "ascii",
+        "name": "item6",
+        "offset": 9,
+        "length": 4,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 650,
+    "y": 80,
+    "wires": [
+      [
+        "6d983089a3ddc8e5"
+      ]
+    ]
+  },
+  {
+    "id": "6d983089a3ddc8e5",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "parseData",
+    "func": "var temperature = parseFloat(Buffer.from(msg.payload[1], \"hex\").readInt16BE(0)) / 10;\nvar adr = parseInt(msg.payload[0]);\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"kind\": \"4\",\n    \"ccode\": \"0033\",\n    \"deviceId\": adr,\n    \"temper\": temperature,\n    \"regdate\": formattedDate,\n    \"ip\": \"118.43.186.23\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 830,
+    "y": 80,
+    "wires": [
+      [
+        "e34ba4a99dd09af4"
+      ]
+    ]
+  },
+  {
+    "id": "e34ba4a99dd09af4",
+    "type": "http request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/hac_sensor/get_pos_sensor4_data",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 1010,
+    "y": 80,
+    "wires": [
+      [
+        "3e702898fc4b1078"
+      ]
+    ]
+  },
+  {
+    "id": "4a1e4b8b58cb51a4",
+    "type": "comment",
+    "z": "ddca7ba125929727",
+    "name": "냉장/냉동",
+    "info": "",
+    "x": 100,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "c7051dbcd4eabc46",
+    "type": "tcp in",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "server": "server",
+    "host": "",
+    "port": "5004",
+    "datamode": "stream",
+    "datatype": "utf8",
+    "newline": "",
+    "topic": "",
+    "trim": false,
+    "base64": false,
+    "tls": "",
+    "x": 100,
+    "y": 320,
+    "wires": [
+      [
+        "3d3adda6aeb2d725",
+        "e052e97277ea2aa7"
+      ]
+    ]
+  },
+  {
+    "id": "5a80e7c6ea7dd7e4",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 2",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 620,
+    "y": 200,
+    "wires": []
+  },
+  {
+    "id": "349a541233aaad26",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 3",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 620,
+    "y": 260,
+    "wires": []
+  },
+  {
+    "id": "19ba87c8caf3f563",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 4",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 620,
+    "y": 320,
+    "wires": []
+  },
+  {
+    "id": "f63a9e3dc0ae383c",
+    "type": "comment",
+    "z": "ddca7ba125929727",
+    "name": "금속검출기",
+    "info": "",
+    "x": 100,
+    "y": 160,
+    "wires": []
+  },
+  {
+    "id": "cf034f4ee091efc2",
+    "type": "inject",
+    "z": "ddca7ba125929727",
+    "name": "Loop 10 s",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 720,
+    "wires": [
+      [
+        "3c16a45c4cded148",
+        "9e147a78baa0edf2"
+      ]
+    ]
+  },
+  {
+    "id": "3fc8807746ebf6b6",
+    "type": "comment",
+    "z": "ddca7ba125929727",
+    "name": "익스트루더 202 & cutting motor",
+    "info": "",
+    "x": 170,
+    "y": 680,
+    "wires": []
+  },
+  {
+    "id": "3c16a45c4cded148",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "sendBuffer",
+    "func": "msg.payload = 'RDS DM0 9\\r';\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 330,
+    "y": 720,
+    "wires": [
+      [
+        "18e1652536911ed3"
+      ]
+    ]
+  },
+  {
+    "id": "a771a39b51838afe",
+    "type": "buffer-parser",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "ascii",
+        "name": "item1",
+        "offset": 48,
+        "length": 5,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 770,
+    "y": 720,
+    "wires": [
+      [
+        "c09489774e2ec2d7"
+      ]
+    ]
+  },
+  {
+    "id": "d0bcc37c7ebfc7a8",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 5",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 1300,
+    "y": 720,
+    "wires": []
+  },
+  {
+    "id": "18e1652536911ed3",
+    "type": "tcp request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "server": "192.168.0.202",
+    "port": "8501",
+    "out": "time",
+    "ret": "buffer",
+    "splitc": "0",
+    "newline": "",
+    "trim": false,
+    "tls": "",
+    "x": 550,
+    "y": 720,
+    "wires": [
+      [
+        "a771a39b51838afe"
+      ]
+    ]
+  },
+  {
+    "id": "5c59e4db43baf8ac",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "sendBuffer",
+    "func": "msg.payload = 'RDS DM03 9\\r';\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 330,
+    "y": 760,
+    "wires": [
+      [
+        "0ff8a9ecd1f0e469"
+      ]
+    ]
+  },
+  {
+    "id": "39e7e5be41d0dd06",
+    "type": "buffer-parser",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "ascii",
+        "name": "item1",
+        "offset": 0,
+        "length": 5,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 770,
+    "y": 760,
+    "wires": [
+      [
+        "a8f592be49d4360f"
+      ]
+    ]
+  },
+  {
+    "id": "452dcd3e0aa3ffce",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 6",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 1300,
+    "y": 760,
+    "wires": []
+  },
+  {
+    "id": "fe3d5b7d9816b882",
+    "type": "inject",
+    "z": "ddca7ba125929727",
+    "name": "Loop 10 s",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 880,
+    "wires": [
+      [
+        "1e562e2f9019845b",
+        "82f38a60e16e773d"
+      ]
+    ]
+  },
+  {
+    "id": "66b4f1c2b5c43957",
+    "type": "comment",
+    "z": "ddca7ba125929727",
+    "name": "익스트루더 203 & cutting motor",
+    "info": "",
+    "x": 170,
+    "y": 820,
+    "wires": []
+  },
+  {
+    "id": "1e562e2f9019845b",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "sendBuffer",
+    "func": "msg.payload = 'RDS DM0 9\\r';\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 330,
+    "y": 860,
+    "wires": [
+      [
+        "f409e55f23691320"
+      ]
+    ]
+  },
+  {
+    "id": "69e60a1fe084f66b",
+    "type": "buffer-parser",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "ascii",
+        "name": "item1",
+        "offset": 48,
+        "length": 5,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 770,
+    "y": 860,
+    "wires": [
+      [
+        "d1721b59ede790ce"
+      ]
+    ]
+  },
+  {
+    "id": "6d3cec8ee074d83f",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 7",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 1300,
+    "y": 860,
+    "wires": []
+  },
+  {
+    "id": "f409e55f23691320",
+    "type": "tcp request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "server": "192.168.0.203",
+    "port": "8501",
+    "out": "time",
+    "ret": "buffer",
+    "splitc": "0",
+    "newline": "",
+    "trim": false,
+    "tls": "",
+    "x": 550,
+    "y": 860,
+    "wires": [
+      [
+        "69e60a1fe084f66b"
+      ]
+    ]
+  },
+  {
+    "id": "b57cd9b1fa1a5980",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "sendBuffer",
+    "func": "msg.payload = 'RDS DM03 9\\r';\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 330,
+    "y": 900,
+    "wires": [
+      [
+        "07a43e5d49a904e2"
+      ]
+    ]
+  },
+  {
+    "id": "489a773e52027715",
+    "type": "buffer-parser",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "ascii",
+        "name": "item1",
+        "offset": 0,
+        "length": 6,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 770,
+    "y": 900,
+    "wires": [
+      [
+        "acef40319446e960"
+      ]
+    ]
+  },
+  {
+    "id": "ef7e806d48d33769",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 8",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 1300,
+    "y": 900,
+    "wires": []
+  },
+  {
+    "id": "07a43e5d49a904e2",
+    "type": "tcp request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "server": "192.168.0.203",
+    "port": "8501",
+    "out": "time",
+    "ret": "buffer",
+    "splitc": "0",
+    "newline": "",
+    "trim": false,
+    "tls": "",
+    "x": 550,
+    "y": 900,
+    "wires": [
+      [
+        "489a773e52027715"
+      ]
+    ]
+  },
+  {
+    "id": "8843a45804ca8c7e",
+    "type": "inject",
+    "z": "ddca7ba125929727",
+    "name": "Loop 10 s",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 1140,
+    "wires": [
+      [
+        "e83f67f82ad19aad",
+        "92fedd62aacef57d"
+      ]
+    ]
+  },
+  {
+    "id": "0ed2494e2c25b10a",
+    "type": "comment",
+    "z": "ddca7ba125929727",
+    "name": "팝핑기 11 & 생산주기",
+    "info": "",
+    "x": 140,
+    "y": 1100,
+    "wires": []
+  },
+  {
+    "id": "e83f67f82ad19aad",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "sendBuffer",
+    "func": "// 데이터 조립\nconst eduBuffer = Buffer.alloc(12); // 12바이트의 버퍼 생성\n\neduBuffer.writeUInt16BE(1, 0);   // TID\neduBuffer.writeUInt16BE(0, 2);   // PID\neduBuffer.writeUInt16BE(6, 4);   // Length\neduBuffer.writeUInt8(7, 6);      // Unit ID (국번)\neduBuffer.writeUInt8(3, 7);      // Function code\neduBuffer.writeUInt16BE(1, 8);   // Data (register address)\neduBuffer.writeUInt16BE(18, 10); // Data (count)\n\n// msg 객체의 payload에 데이터를 할당합니다.\nmsg.payload = eduBuffer;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 330,
+    "y": 1140,
+    "wires": [
+      [
+        "75104e1564483611"
+      ]
+    ]
+  },
+  {
+    "id": "f303de87c30e89ae",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 9",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1320,
+    "y": 1140,
+    "wires": []
+  },
+  {
+    "id": "75104e1564483611",
+    "type": "tcp request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "server": "192.168.0.221",
+    "port": "1483",
+    "out": "time",
+    "ret": "buffer",
+    "splitc": "0",
+    "newline": "",
+    "trim": false,
+    "tls": "",
+    "x": 550,
+    "y": 1140,
+    "wires": [
+      [
+        "b32835130df28521"
+      ]
+    ]
+  },
+  {
+    "id": "8f92c0f2e1c33e11",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "sendBuffer",
+    "func": "msg.payload = 'RDS DM00 9\\r';\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 330,
+    "y": 1180,
+    "wires": [
+      [
+        "9b96b65ef6ef45ec"
+      ]
+    ]
+  },
+  {
+    "id": "9b96b65ef6ef45ec",
+    "type": "tcp request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "server": "192.168.0.230",
+    "port": "8501",
+    "out": "time",
+    "ret": "buffer",
+    "splitc": "0",
+    "newline": "",
+    "trim": false,
+    "tls": "",
+    "x": 550,
+    "y": 1180,
+    "wires": [
+      [
+        "e91331546f856cec"
+      ]
+    ]
+  },
+  {
+    "id": "52944118c2f543b0",
+    "type": "inject",
+    "z": "ddca7ba125929727",
+    "name": "Loop 10 s",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 1260,
+    "wires": [
+      [
+        "12e841eb34fe1e04",
+        "ee72f13457e029f8"
+      ]
+    ]
+  },
+  {
+    "id": "12e841eb34fe1e04",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "sendBuffer",
+    "func": "// 데이터 조립\nconst eduBuffer = Buffer.alloc(12); // 12바이트의 버퍼 생성\n\neduBuffer.writeUInt16BE(1, 0);   // TID\neduBuffer.writeUInt16BE(0, 2);   // PID\neduBuffer.writeUInt16BE(6, 4);   // Length\neduBuffer.writeUInt8(7, 6);      // Unit ID (국번)\neduBuffer.writeUInt8(3, 7);      // Function code\neduBuffer.writeUInt16BE(1, 8);   // Data (register address)\neduBuffer.writeUInt16BE(18, 10); // Data (count)\n\n// msg 객체의 payload에 데이터를 할당합니다.\nmsg.payload = eduBuffer;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 330,
+    "y": 1260,
+    "wires": [
+      [
+        "c9fdd371f820337f"
+      ]
+    ]
+  },
+  {
+    "id": "5d81f3ba64d5c2f0",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 11",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1320,
+    "y": 1260,
+    "wires": []
+  },
+  {
+    "id": "c9fdd371f820337f",
+    "type": "tcp request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "server": "192.168.0.215",
+    "port": "1478",
+    "out": "time",
+    "ret": "buffer",
+    "splitc": "0",
+    "newline": "",
+    "trim": false,
+    "tls": "",
+    "x": 550,
+    "y": 1260,
+    "wires": [
+      [
+        "627caf479030c4ee"
+      ]
+    ]
+  },
+  {
+    "id": "91c43b1fd1788d4c",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "sendBuffer",
+    "func": "msg.payload = 'RDS DM01 9\\r';\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 330,
+    "y": 1300,
+    "wires": [
+      [
+        "1be38abb5a529876"
+      ]
+    ]
+  },
+  {
+    "id": "1159d6e99c00b033",
+    "type": "buffer-parser",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "ascii",
+        "name": "item1",
+        "offset": 0,
+        "length": 6,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 770,
+    "y": 1300,
+    "wires": [
+      [
+        "2b77ce06642f7614"
+      ]
+    ]
+  },
+  {
+    "id": "1be38abb5a529876",
+    "type": "tcp request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "server": "192.168.0.230",
+    "port": "8501",
+    "out": "time",
+    "ret": "buffer",
+    "splitc": "0",
+    "newline": "",
+    "trim": false,
+    "tls": "",
+    "x": 550,
+    "y": 1300,
+    "wires": [
+      [
+        "1159d6e99c00b033"
+      ]
+    ]
+  },
+  {
+    "id": "f9bdef47e6c97216",
+    "type": "inject",
+    "z": "ddca7ba125929727",
+    "name": "Loop 10 s",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 1380,
+    "wires": [
+      [
+        "e27f3f621a8d01a7",
+        "437bc5d8b682c642"
+      ]
+    ]
+  },
+  {
+    "id": "e27f3f621a8d01a7",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "sendBuffer",
+    "func": "// 데이터 조립\nconst eduBuffer = Buffer.alloc(12); // 12바이트의 버퍼 생성\n\neduBuffer.writeUInt16BE(1, 0);   // TID\neduBuffer.writeUInt16BE(0, 2);   // PID\neduBuffer.writeUInt16BE(6, 4);   // Length\neduBuffer.writeUInt8(7, 6);      // Unit ID (국번)\neduBuffer.writeUInt8(3, 7);      // Function code\neduBuffer.writeUInt16BE(1, 8);   // Data (register address)\neduBuffer.writeUInt16BE(18, 10); // Data (count)\n\n// msg 객체의 payload에 데이터를 할당합니다.\nmsg.payload = eduBuffer;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 330,
+    "y": 1380,
+    "wires": [
+      [
+        "362e5ae0b7408ddb"
+      ]
+    ]
+  },
+  {
+    "id": "eb6fd652e289cbe0",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 13",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1320,
+    "y": 1380,
+    "wires": []
+  },
+  {
+    "id": "362e5ae0b7408ddb",
+    "type": "tcp request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "server": "192.168.0.217",
+    "port": "1479",
+    "out": "time",
+    "ret": "buffer",
+    "splitc": "0",
+    "newline": "",
+    "trim": false,
+    "tls": "",
+    "x": 550,
+    "y": 1380,
+    "wires": [
+      [
+        "5f55dd9eb772326b"
+      ]
+    ]
+  },
+  {
+    "id": "8d78c0f678eadec3",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "sendBuffer",
+    "func": "msg.payload = 'RDS DM02 9\\r';\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 330,
+    "y": 1420,
+    "wires": [
+      [
+        "5c7c965c4bfb9904"
+      ]
+    ]
+  },
+  {
+    "id": "2d0ddfe7d2cc0e55",
+    "type": "buffer-parser",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "ascii",
+        "name": "item1",
+        "offset": 0,
+        "length": 6,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 770,
+    "y": 1420,
+    "wires": [
+      [
+        "7aa9c8b02d130818"
+      ]
+    ]
+  },
+  {
+    "id": "5c7c965c4bfb9904",
+    "type": "tcp request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "server": "192.168.0.230",
+    "port": "8501",
+    "out": "time",
+    "ret": "buffer",
+    "splitc": "0",
+    "newline": "",
+    "trim": false,
+    "tls": "",
+    "x": 550,
+    "y": 1420,
+    "wires": [
+      [
+        "2d0ddfe7d2cc0e55"
+      ]
+    ]
+  },
+  {
+    "id": "c5370d942477b279",
+    "type": "inject",
+    "z": "ddca7ba125929727",
+    "name": "Loop 10 s",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 1500,
+    "wires": [
+      [
+        "79c877fa8688b34b",
+        "ea2f097f53073e45"
+      ]
+    ]
+  },
+  {
+    "id": "79c877fa8688b34b",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "sendBuffer",
+    "func": "// 데이터 조립\nconst eduBuffer = Buffer.alloc(12); // 12바이트의 버퍼 생성\n\neduBuffer.writeUInt16BE(1, 0);   // TID\neduBuffer.writeUInt16BE(0, 2);   // PID\neduBuffer.writeUInt16BE(6, 4);   // Length\neduBuffer.writeUInt8(7, 6);      // Unit ID (국번)\neduBuffer.writeUInt8(3, 7);      // Function code\neduBuffer.writeUInt16BE(1, 8);   // Data (register address)\neduBuffer.writeUInt16BE(18, 10); // Data (count)\n\n// msg 객체의 payload에 데이터를 할당합니다.\nmsg.payload = eduBuffer;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 330,
+    "y": 1500,
+    "wires": [
+      [
+        "b291be2280d9e152"
+      ]
+    ]
+  },
+  {
+    "id": "eb56e170051febf0",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 15",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1320,
+    "y": 1500,
+    "wires": []
+  },
+  {
+    "id": "b291be2280d9e152",
+    "type": "tcp request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "server": "192.168.0.218",
+    "port": "1480",
+    "out": "time",
+    "ret": "buffer",
+    "splitc": "0",
+    "newline": "",
+    "trim": false,
+    "tls": "",
+    "x": 550,
+    "y": 1500,
+    "wires": [
+      [
+        "8bfa32522cdc1161"
+      ]
+    ]
+  },
+  {
+    "id": "cfc58a14b253c660",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "sendBuffer",
+    "func": "msg.payload = 'RDS DM03 9\\r';\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 330,
+    "y": 1540,
+    "wires": [
+      [
+        "9e6683d1a44c28c9"
+      ]
+    ]
+  },
+  {
+    "id": "69be6ef610a85fce",
+    "type": "buffer-parser",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "ascii",
+        "name": "item1",
+        "offset": 0,
+        "length": 6,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 770,
+    "y": 1540,
+    "wires": [
+      [
+        "396140023e4e11a2"
+      ]
+    ]
+  },
+  {
+    "id": "9e6683d1a44c28c9",
+    "type": "tcp request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "server": "192.168.0.230",
+    "port": "8501",
+    "out": "time",
+    "ret": "buffer",
+    "splitc": "0",
+    "newline": "",
+    "trim": false,
+    "tls": "",
+    "x": 550,
+    "y": 1540,
+    "wires": [
+      [
+        "69be6ef610a85fce"
+      ]
+    ]
+  },
+  {
+    "id": "6527d0d1c7907852",
+    "type": "inject",
+    "z": "ddca7ba125929727",
+    "name": "Loop 10 s",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 1620,
+    "wires": [
+      [
+        "b08df3479c8e78d7",
+        "4d395f7e11576f73"
+      ]
+    ]
+  },
+  {
+    "id": "b08df3479c8e78d7",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "sendBuffer",
+    "func": "// 데이터 조립\nconst eduBuffer = Buffer.alloc(12); // 12바이트의 버퍼 생성\n\neduBuffer.writeUInt16BE(1, 0);   // TID\neduBuffer.writeUInt16BE(0, 2);   // PID\neduBuffer.writeUInt16BE(6, 4);   // Length\neduBuffer.writeUInt8(7, 6);      // Unit ID (국번)\neduBuffer.writeUInt8(3, 7);      // Function code\neduBuffer.writeUInt16BE(1, 8);   // Data (register address)\neduBuffer.writeUInt16BE(18, 10); // Data (count)\n\n// msg 객체의 payload에 데이터를 할당합니다.\nmsg.payload = eduBuffer;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 330,
+    "y": 1620,
+    "wires": [
+      [
+        "12dc3c3f412e7bdc"
+      ]
+    ]
+  },
+  {
+    "id": "0c7d63607aaeabd4",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 17",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1320,
+    "y": 1620,
+    "wires": []
+  },
+  {
+    "id": "12dc3c3f412e7bdc",
+    "type": "tcp request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "server": "192.168.0.220",
+    "port": "1482",
+    "out": "time",
+    "ret": "buffer",
+    "splitc": "0",
+    "newline": "",
+    "trim": false,
+    "tls": "",
+    "x": 550,
+    "y": 1620,
+    "wires": [
+      [
+        "afe5756082ae2987"
+      ]
+    ]
+  },
+  {
+    "id": "7776062198e3347f",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "sendBuffer",
+    "func": "msg.payload = 'RDS DM04 9\\r';\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 330,
+    "y": 1660,
+    "wires": [
+      [
+        "8251205e665b2318"
+      ]
+    ]
+  },
+  {
+    "id": "8251205e665b2318",
+    "type": "tcp request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "server": "192.168.0.230",
+    "port": "8501",
+    "out": "time",
+    "ret": "buffer",
+    "splitc": "0",
+    "newline": "",
+    "trim": false,
+    "tls": "",
+    "x": 550,
+    "y": 1660,
+    "wires": [
+      [
+        "6285ca8fb2c1a9b1"
+      ]
+    ]
+  },
+  {
+    "id": "573d8f287c76e76a",
+    "type": "comment",
+    "z": "ddca7ba125929727",
+    "name": "팝핑기 5 & 생산주기",
+    "info": "",
+    "x": 130,
+    "y": 1220,
+    "wires": []
+  },
+  {
+    "id": "011d70c69edca239",
+    "type": "comment",
+    "z": "ddca7ba125929727",
+    "name": "팝핑기 7 & 생산주기",
+    "info": "",
+    "x": 130,
+    "y": 1340,
+    "wires": []
+  },
+  {
+    "id": "0ee72a8aee3b2649",
+    "type": "comment",
+    "z": "ddca7ba125929727",
+    "name": "팝핑기 8 & 생산주기",
+    "info": "",
+    "x": 130,
+    "y": 1460,
+    "wires": []
+  },
+  {
+    "id": "889951c8aec1d375",
+    "type": "comment",
+    "z": "ddca7ba125929727",
+    "name": "팝핑기 10 & 생산주기",
+    "info": "",
+    "x": 140,
+    "y": 1580,
+    "wires": []
+  },
+  {
+    "id": "dae20c65668cf8a7",
+    "type": "inject",
+    "z": "ddca7ba125929727",
+    "name": "Loop 10 s",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 1860,
+    "wires": [
+      [
+        "fca0d6d5e753e3c8"
+      ]
+    ]
+  },
+  {
+    "id": "fca0d6d5e753e3c8",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "sendBuffer",
+    "func": "msg.payload = 'RDS DM00 9\\r';\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 330,
+    "y": 1860,
+    "wires": [
+      [
+        "aa241c009c2cb327"
+      ]
+    ]
+  },
+  {
+    "id": "2a880749af81c958",
+    "type": "buffer-parser",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "ascii",
+        "name": "item1",
+        "offset": 0,
+        "length": 6,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 770,
+    "y": 1860,
+    "wires": [
+      [
+        "faa05c47c3237303"
+      ]
+    ]
+  },
+  {
+    "id": "0b262024ec0e62dc",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 20",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1320,
+    "y": 1860,
+    "wires": []
+  },
+  {
+    "id": "aa241c009c2cb327",
+    "type": "tcp request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "server": "192.168.0.207",
+    "port": "8501",
+    "out": "time",
+    "ret": "buffer",
+    "splitc": "0",
+    "newline": "",
+    "trim": false,
+    "tls": "",
+    "x": 550,
+    "y": 1860,
+    "wires": [
+      [
+        "2a880749af81c958"
+      ]
+    ]
+  },
+  {
+    "id": "d2d54f3f04fd2101",
+    "type": "comment",
+    "z": "ddca7ba125929727",
+    "name": "포장기 207, 208",
+    "info": "",
+    "x": 120,
+    "y": 1800,
+    "wires": []
+  },
+  {
+    "id": "4af4f391395ef251",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "sendBuffer",
+    "func": "msg.payload = 'RDS DM00 9\\r';\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 330,
+    "y": 1900,
+    "wires": [
+      [
+        "e1010fd72c88390f"
+      ]
+    ]
+  },
+  {
+    "id": "4a2add2fa3ab086c",
+    "type": "buffer-parser",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "ascii",
+        "name": "item1",
+        "offset": 0,
+        "length": 6,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 770,
+    "y": 1900,
+    "wires": [
+      [
+        "c840d8e7c0362a04"
+      ]
+    ]
+  },
+  {
+    "id": "2a97aa6bdb0a8c6e",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 21",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1320,
+    "y": 1900,
+    "wires": []
+  },
+  {
+    "id": "e1010fd72c88390f",
+    "type": "tcp request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "server": "192.168.0.208",
+    "port": "8501",
+    "out": "time",
+    "ret": "buffer",
+    "splitc": "0",
+    "newline": "",
+    "trim": false,
+    "tls": "",
+    "x": 550,
+    "y": 1900,
+    "wires": [
+      [
+        "4a2add2fa3ab086c"
+      ]
+    ]
+  },
+  {
+    "id": "8b88806f599b69f2",
+    "type": "inject",
+    "z": "ddca7ba125929727",
+    "name": "Loop 10 s",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 2020,
+    "wires": [
+      [
+        "cd0ed30b016547ec"
+      ]
+    ]
+  },
+  {
+    "id": "cd0ed30b016547ec",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "sendBuffer",
+    "func": "msg.payload = 'RDS DM40 9\\r';\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 330,
+    "y": 2020,
+    "wires": [
+      [
+        "0254f79c23a99816"
+      ]
+    ]
+  },
+  {
+    "id": "da44a8e8b15e6831",
+    "type": "buffer-parser",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "ascii",
+        "name": "item1",
+        "offset": 0,
+        "length": 6,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 770,
+    "y": 2020,
+    "wires": [
+      [
+        "b681c5ee5072b915"
+      ]
+    ]
+  },
+  {
+    "id": "87fe51534f4ad35e",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 22",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1300,
+    "y": 2020,
+    "wires": []
+  },
+  {
+    "id": "0254f79c23a99816",
+    "type": "tcp request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "server": "192.168.0.231",
+    "port": "8501",
+    "out": "time",
+    "ret": "buffer",
+    "splitc": "0",
+    "newline": "",
+    "trim": false,
+    "tls": "",
+    "x": 550,
+    "y": 2020,
+    "wires": [
+      [
+        "da44a8e8b15e6831"
+      ]
+    ]
+  },
+  {
+    "id": "b97f261cbdc3ac0d",
+    "type": "comment",
+    "z": "ddca7ba125929727",
+    "name": "캡핑기",
+    "info": "",
+    "x": 90,
+    "y": 1980,
+    "wires": []
+  },
+  {
+    "id": "ec47d5f376861bb8",
+    "type": "inject",
+    "z": "ddca7ba125929727",
+    "name": "Loop 10 s",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 2160,
+    "wires": [
+      [
+        "f0d7037bb6596786",
+        "40410e67031c0a31"
+      ]
+    ]
+  },
+  {
+    "id": "f0d7037bb6596786",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "sendBuffer",
+    "func": "msg.payload = 'RDS DM12 9\\r';\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 330,
+    "y": 2140,
+    "wires": [
+      [
+        "94bb61aac41d919e"
+      ]
+    ]
+  },
+  {
+    "id": "33c306ee95409dbc",
+    "type": "buffer-parser",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "ascii",
+        "name": "item1",
+        "offset": 0,
+        "length": 6,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 770,
+    "y": 2140,
+    "wires": [
+      [
+        "0eda2128f3a2a13a"
+      ]
+    ]
+  },
+  {
+    "id": "69b53ec3530b779f",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 23",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 1320,
+    "y": 2140,
+    "wires": []
+  },
+  {
+    "id": "94bb61aac41d919e",
+    "type": "tcp request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "server": "192.168.0.202",
+    "port": "8501",
+    "out": "time",
+    "ret": "buffer",
+    "splitc": "0",
+    "newline": "",
+    "trim": false,
+    "tls": "",
+    "x": 550,
+    "y": 2140,
+    "wires": [
+      [
+        "33c306ee95409dbc"
+      ]
+    ]
+  },
+  {
+    "id": "f4ba2b5cf45bcf48",
+    "type": "comment",
+    "z": "ddca7ba125929727",
+    "name": "오븐기 온도 & rpm",
+    "info": "",
+    "x": 130,
+    "y": 2100,
+    "wires": []
+  },
+  {
+    "id": "40410e67031c0a31",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "sendBuffer",
+    "func": "msg.payload = 'RDS DM14 9\\r';\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 330,
+    "y": 2180,
+    "wires": [
+      [
+        "a1e089c8f2fd97c5"
+      ]
+    ]
+  },
+  {
+    "id": "ad00f53a12a63bcb",
+    "type": "buffer-parser",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "ascii",
+        "name": "item1",
+        "offset": 0,
+        "length": 6,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 770,
+    "y": 2180,
+    "wires": [
+      [
+        "99368e687ce2ec82"
+      ]
+    ]
+  },
+  {
+    "id": "f46ef93f7ddbd99a",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 24",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 1320,
+    "y": 2180,
+    "wires": []
+  },
+  {
+    "id": "a1e089c8f2fd97c5",
+    "type": "tcp request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "server": "192.168.0.202",
+    "port": "8501",
+    "out": "time",
+    "ret": "buffer",
+    "splitc": "0",
+    "newline": "",
+    "trim": false,
+    "tls": "",
+    "x": 550,
+    "y": 2180,
+    "wires": [
+      [
+        "ad00f53a12a63bcb"
+      ]
+    ]
+  },
+  {
+    "id": "b681c5ee5072b915",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "parseData",
+    "func": "var count = parseInt(msg.payload[0]);\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"count\": count,\n    \"ccode\": \"0033\",\n    \"scode\": \"99\",\n    \"m_gubun\": \"5\",\n    \"m_adr\": \"1\",\n    \"regdate\": formattedDate, \n    \"ip\": \"118.43.186.23\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 950,
+    "y": 2020,
+    "wires": [
+      [
+        "8ea3c96af8a948e3",
+        "4e2d70754d51176e"
+      ]
+    ]
+  },
+  {
+    "id": "8ea3c96af8a948e3",
+    "type": "http request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/nodered/0033/api/get_pos_capping",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 1130,
+    "y": 2020,
+    "wires": [
+      [
+        "87fe51534f4ad35e"
+      ]
+    ]
+  },
+  {
+    "id": "c09489774e2ec2d7",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "parseData",
+    "func": "var temperature = (msg.payload[0]) / 10;\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"95\",\n    \"temp\": temperature,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 950,
+    "y": 720,
+    "wires": [
+      [
+        "38617202c874f543"
+      ]
+    ]
+  },
+  {
+    "id": "38617202c874f543",
+    "type": "http request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/nodered/0033/api/get_pos_extruder",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 1130,
+    "y": 720,
+    "wires": [
+      [
+        "d0bcc37c7ebfc7a8"
+      ]
+    ]
+  },
+  {
+    "id": "d1721b59ede790ce",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "parseData",
+    "func": "var temperature = (msg.payload[0]) / 10;\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"96\",\n    \"temp\": temperature,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 950,
+    "y": 860,
+    "wires": [
+      [
+        "9ac5d73ff844fde3"
+      ]
+    ]
+  },
+  {
+    "id": "9ac5d73ff844fde3",
+    "type": "http request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/nodered/0033/api/get_pos_extruder",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 1130,
+    "y": 860,
+    "wires": [
+      [
+        "6d3cec8ee074d83f"
+      ]
+    ]
+  },
+  {
+    "id": "b40d87410c22b082",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "parseData",
+    "func": "var temperature = msg.payload[0];\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"94\",\n    \"temp\": temperature,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 950,
+    "y": 1140,
+    "wires": [
+      [
+        "1f31d0637f7e3473"
+      ]
+    ]
+  },
+  {
+    "id": "1f31d0637f7e3473",
+    "type": "http request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/nodered/0033/api/get_pos_extruder",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 1130,
+    "y": 1140,
+    "wires": [
+      [
+        "f303de87c30e89ae"
+      ]
+    ]
+  },
+  {
+    "id": "ce4faaa1eb661fd7",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "parseData",
+    "func": "var temperature = msg.payload[0];\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"89\",\n    \"temp\": temperature,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 950,
+    "y": 1260,
+    "wires": [
+      [
+        "2d6ccb01576958d6"
+      ]
+    ]
+  },
+  {
+    "id": "2d6ccb01576958d6",
+    "type": "http request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/nodered/0033/api/get_pos_extruder",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 1130,
+    "y": 1260,
+    "wires": [
+      [
+        "5d81f3ba64d5c2f0"
+      ]
+    ]
+  },
+  {
+    "id": "5f55dd9eb772326b",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "parseData",
+    "func": "var temperature = msg.payload[10];\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"90\",\n    \"temp\": temperature,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 950,
+    "y": 1380,
+    "wires": [
+      [
+        "d35d651141ff8a16"
+      ]
+    ]
+  },
+  {
+    "id": "8bfa32522cdc1161",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "parseData",
+    "func": "var temperature = msg.payload[10];\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"91\",\n    \"temp\": temperature,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 950,
+    "y": 1500,
+    "wires": [
+      [
+        "b48a9eab048540f8"
+      ]
+    ]
+  },
+  {
+    "id": "d35d651141ff8a16",
+    "type": "http request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/nodered/0033/api/get_pos_extruder",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 1130,
+    "y": 1380,
+    "wires": [
+      [
+        "eb6fd652e289cbe0"
+      ]
+    ]
+  },
+  {
+    "id": "b48a9eab048540f8",
+    "type": "http request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/nodered/0033/api/get_pos_extruder",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 1130,
+    "y": 1500,
+    "wires": [
+      [
+        "eb56e170051febf0"
+      ]
+    ]
+  },
+  {
+    "id": "715d0b3e3a011140",
+    "type": "http request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/nodered/0033/api/get_pos_extruder",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 1130,
+    "y": 1620,
+    "wires": [
+      [
+        "0c7d63607aaeabd4"
+      ]
+    ]
+  },
+  {
+    "id": "faa05c47c3237303",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "parseData",
+    "func": "var count = parseInt(msg.payload[0]);\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"97\",\n    \"count\": count,\n    \"m_gubun\": \"6\",        \n    \"m_adr\": \"7\",\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 950,
+    "y": 1860,
+    "wires": [
+      [
+        "f307ffd55bc4d314",
+        "22d623c7ac2b7054"
+      ]
+    ]
+  },
+  {
+    "id": "f307ffd55bc4d314",
+    "type": "http request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/nodered/0033/api/get_pos_packaging",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 1130,
+    "y": 1860,
+    "wires": [
+      [
+        "0b262024ec0e62dc"
+      ]
+    ]
+  },
+  {
+    "id": "0ff8a9ecd1f0e469",
+    "type": "tcp request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "server": "192.168.0.202",
+    "port": "8501",
+    "out": "time",
+    "ret": "buffer",
+    "splitc": "0",
+    "newline": "",
+    "trim": false,
+    "tls": "",
+    "x": 550,
+    "y": 760,
+    "wires": [
+      [
+        "39e7e5be41d0dd06"
+      ]
+    ]
+  },
+  {
+    "id": "930572e26ff4fde1",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "parseData",
+    "func": "//var rpm = parseFloat(Buffer.from(msg.payload[0], \"hex\").readInt16BE(0)) / 10;\nvar inputString = msg.payload[0];\nvar parsedValue = parseInt(inputString, 10) / 100;\nvar formattedValue = parsedValue.toFixed(2); // 소수점 둘째 자리까지 포맷팅\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"94\",\n    \"rpm\": formattedValue,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 950,
+    "y": 1180,
+    "wires": [
+      [
+        "d97437e23d7e3039"
+      ]
+    ]
+  },
+  {
+    "id": "a8f592be49d4360f",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "parseData",
+    "func": "var inputString = msg.payload[0];\nvar parsedValue = parseInt(inputString, 10) / 100;\nvar formattedValue = parsedValue.toFixed(2); // 소수점 둘째 자리까지 포맷팅\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"95\",\n    \"rpm\": formattedValue,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 950,
+    "y": 760,
+    "wires": [
+      [
+        "d0b4e79b276e2c2c"
+      ]
+    ]
+  },
+  {
+    "id": "d0b4e79b276e2c2c",
+    "type": "http request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0033/get_pos_rpm",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 1130,
+    "y": 760,
+    "wires": [
+      [
+        "452dcd3e0aa3ffce"
+      ]
+    ]
+  },
+  {
+    "id": "acef40319446e960",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "parseData",
+    "func": "var inputString = msg.payload[0];\nvar parsedValue = parseInt(inputString, 10) / 100;\nvar formattedValue = parsedValue.toFixed(2); // 소수점 둘째 자리까지 포맷팅\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"96\",\n    \"rpm\": formattedValue,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 950,
+    "y": 900,
+    "wires": [
+      [
+        "4988a68f634d762d"
+      ]
+    ]
+  },
+  {
+    "id": "4988a68f634d762d",
+    "type": "http request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0033/get_pos_rpm",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 1130,
+    "y": 900,
+    "wires": [
+      [
+        "ef7e806d48d33769"
+      ]
+    ]
+  },
+  {
+    "id": "300489dfb8da5dad",
+    "type": "tcp in",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "server": "server",
+    "host": "",
+    "port": "5002",
+    "datamode": "stream",
+    "datatype": "utf8",
+    "newline": "",
+    "topic": "",
+    "trim": false,
+    "base64": false,
+    "tls": "",
+    "x": 100,
+    "y": 200,
+    "wires": [
+      [
+        "4f755b7d1800ede3"
+      ]
+    ]
+  },
+  {
+    "id": "2760dd87b8ad1eb9",
+    "type": "tcp in",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "server": "server",
+    "host": "",
+    "port": "5003",
+    "datamode": "stream",
+    "datatype": "utf8",
+    "newline": "",
+    "topic": "",
+    "trim": false,
+    "base64": false,
+    "tls": "",
+    "x": 100,
+    "y": 260,
+    "wires": [
+      [
+        "8c9e0e7eed1b8953",
+        "9fbfbe386ce3aafc"
+      ]
+    ]
+  },
+  {
+    "id": "2c9182ab71ad08c9",
+    "type": "http request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/nodered/0033/api/get_pos_detection",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 450,
+    "y": 200,
+    "wires": [
+      [
+        "5a80e7c6ea7dd7e4"
+      ]
+    ]
+  },
+  {
+    "id": "2fb7699c9e873150",
+    "type": "http request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/nodered/0033/api/get_pos_detection",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 450,
+    "y": 260,
+    "wires": [
+      [
+        "349a541233aaad26"
+      ]
+    ]
+  },
+  {
+    "id": "c033ec46bdcd2eb1",
+    "type": "http request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/nodered/0033/api/get_pos_detection",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 450,
+    "y": 320,
+    "wires": [
+      [
+        "19ba87c8caf3f563"
+      ]
+    ]
+  },
+  {
+    "id": "4f755b7d1800ede3",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "parseData",
+    "func": "var ccode = \"0033\";\nvar scode = \"84\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nif (paseData.length == 22 && msg.payload[0] == \"R\") {\n    var detected = true;\n}\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode,\n        \"regdate\": formattedDate\n    };\n\n    return msg;\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 270,
+    "y": 200,
+    "wires": [
+      [
+        "2c9182ab71ad08c9"
+      ]
+    ]
+  },
+  {
+    "id": "8c9e0e7eed1b8953",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "parseData",
+    "func": "var ccode = \"0033\";\nvar scode = \"83\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nif (paseData.length == 22 && msg.payload[0] == \"R\") {\n    var detected = true;\n}\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode,\n        \"regdate\": formattedDate\n    };\n\n    return msg;\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 270,
+    "y": 260,
+    "wires": [
+      [
+        "2fb7699c9e873150"
+      ]
+    ]
+  },
+  {
+    "id": "3d3adda6aeb2d725",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "parseData",
+    "func": "var ccode = \"0033\";\nvar scode = \"82\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nif (paseData.length == 22 && msg.payload[0] == \"R\") {\n    var detected = true;\n}\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode,\n        \"regdate\": formattedDate\n    };\n\n    return msg;\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 270,
+    "y": 320,
+    "wires": [
+      [
+        "c033ec46bdcd2eb1"
+      ]
+    ]
+  },
+  {
+    "id": "c840d8e7c0362a04",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "parseData",
+    "func": "var count = parseInt(msg.payload[0]);\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"98\",\n    \"count\": count,\n    \"m_gubun\": \"6\",        \n    \"m_adr\": \"8\",\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 950,
+    "y": 1900,
+    "wires": [
+      [
+        "f549e2188e1e82a1"
+      ]
+    ]
+  },
+  {
+    "id": "f549e2188e1e82a1",
+    "type": "http request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/nodered/0033/api/get_pos_packaging",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 1130,
+    "y": 1900,
+    "wires": [
+      [
+        "2a97aa6bdb0a8c6e"
+      ]
+    ]
+  },
+  {
+    "id": "d97437e23d7e3039",
+    "type": "http request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0033/get_pos_rpm",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 1130,
+    "y": 1180,
+    "wires": [
+      [
+        "d2ae74a670591b3b"
+      ]
+    ]
+  },
+  {
+    "id": "d2ae74a670591b3b",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 25",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1320,
+    "y": 1180,
+    "wires": []
+  },
+  {
+    "id": "2b77ce06642f7614",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "parseData",
+    "func": "var inputString = msg.payload[0];\nvar parsedValue = parseInt(inputString, 10) / 100;\nvar formattedValue = parsedValue.toFixed(2); // 소수점 둘째 자리까지 포맷팅\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"89\",\n    \"rpm\": formattedValue,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 950,
+    "y": 1300,
+    "wires": [
+      [
+        "9cb53701c275a0da"
+      ]
+    ]
+  },
+  {
+    "id": "9cb53701c275a0da",
+    "type": "http request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0033/get_pos_rpm",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 1130,
+    "y": 1300,
+    "wires": [
+      [
+        "0dc475cf43dfcbf0"
+      ]
+    ]
+  },
+  {
+    "id": "0dc475cf43dfcbf0",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 26",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1320,
+    "y": 1300,
+    "wires": []
+  },
+  {
+    "id": "7aa9c8b02d130818",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "parseData",
+    "func": "var inputString = msg.payload[0];\nvar parsedValue = parseInt(inputString, 10) / 100;\nvar formattedValue = parsedValue.toFixed(2); // 소수점 둘째 자리까지 포맷팅\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"90\",\n    \"rpm\": formattedValue,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 950,
+    "y": 1420,
+    "wires": [
+      [
+        "741fdb2fded2733f"
+      ]
+    ]
+  },
+  {
+    "id": "741fdb2fded2733f",
+    "type": "http request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0033/get_pos_rpm",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 1130,
+    "y": 1420,
+    "wires": [
+      [
+        "24500fa3fb9914d6"
+      ]
+    ]
+  },
+  {
+    "id": "24500fa3fb9914d6",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 27",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1320,
+    "y": 1420,
+    "wires": []
+  },
+  {
+    "id": "396140023e4e11a2",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "parseData",
+    "func": "var inputString = msg.payload[0];\nvar parsedValue = parseInt(inputString, 10) / 100;\nvar formattedValue = parsedValue.toFixed(2); // 소수점 둘째 자리까지 포맷팅\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"91\",\n    \"rpm\": formattedValue,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 950,
+    "y": 1540,
+    "wires": [
+      [
+        "fa9b47292353dedf"
+      ]
+    ]
+  },
+  {
+    "id": "fa9b47292353dedf",
+    "type": "http request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0033/get_pos_rpm",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 1130,
+    "y": 1540,
+    "wires": [
+      [
+        "68e5e05ad101c653"
+      ]
+    ]
+  },
+  {
+    "id": "68e5e05ad101c653",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 28",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1320,
+    "y": 1540,
+    "wires": []
+  },
+  {
+    "id": "98504f7c48c749fe",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "parseData",
+    "func": "var inputString = msg.payload[0];\nvar parsedValue = parseInt(inputString, 10) / 100;\nvar formattedValue = parsedValue.toFixed(2); // 소수점 둘째 자리까지 포맷팅\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"93\",\n    \"rpm\": formattedValue,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 950,
+    "y": 1660,
+    "wires": [
+      [
+        "d1c5016f48c64edc"
+      ]
+    ]
+  },
+  {
+    "id": "d1c5016f48c64edc",
+    "type": "http request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0033/get_pos_rpm",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 1130,
+    "y": 1660,
+    "wires": [
+      [
+        "d7aae28768cc9378"
+      ]
+    ]
+  },
+  {
+    "id": "d7aae28768cc9378",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 29",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1320,
+    "y": 1660,
+    "wires": []
+  },
+  {
+    "id": "0eda2128f3a2a13a",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "parseData",
+    "func": "var inputString = msg.payload[0];\nvar parsedValue = parseInt(inputString);\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"106\",\n    \"temp\": parsedValue,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 950,
+    "y": 2140,
+    "wires": [
+      [
+        "e83991d0beb382a9"
+      ]
+    ]
+  },
+  {
+    "id": "e83991d0beb382a9",
+    "type": "http request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/nodered/0033/api/get_pos_extruder",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 1130,
+    "y": 2140,
+    "wires": [
+      [
+        "69b53ec3530b779f"
+      ]
+    ]
+  },
+  {
+    "id": "99368e687ce2ec82",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "parseData",
+    "func": "var inputString = msg.payload[0];\nvar parsedValue = parseInt(inputString, 10) / 100;\nvar formattedValue = parsedValue.toFixed(2); // 소수점 둘째 자리까지 포맷팅\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"106\",\n    \"rpm\": formattedValue,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 950,
+    "y": 2180,
+    "wires": [
+      [
+        "e9d00a6286efa775"
+      ]
+    ]
+  },
+  {
+    "id": "e9d00a6286efa775",
+    "type": "http request",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0033/get_pos_rpm",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 1130,
+    "y": 2180,
+    "wires": [
+      [
+        "f46ef93f7ddbd99a"
+      ]
+    ]
+  },
+  {
+    "id": "9ec244eb33683f01",
+    "type": "inject",
+    "z": "ddca7ba125929727",
+    "name": "Loop 10 s",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "1",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 1900,
+    "wires": [
+      [
+        "4af4f391395ef251"
+      ]
+    ]
+  },
+  {
+    "id": "82f38a60e16e773d",
+    "type": "delay",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "0.5",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "outputs": 1,
+    "x": 150,
+    "y": 940,
+    "wires": [
+      [
+        "b57cd9b1fa1a5980"
+      ]
+    ]
+  },
+  {
+    "id": "92fedd62aacef57d",
+    "type": "delay",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "0.5",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "outputs": 1,
+    "x": 130,
+    "y": 1180,
+    "wires": [
+      [
+        "8f92c0f2e1c33e11"
+      ]
+    ]
+  },
+  {
+    "id": "9e147a78baa0edf2",
+    "type": "delay",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "0.5",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "outputs": 1,
+    "x": 130,
+    "y": 760,
+    "wires": [
+      [
+        "5c59e4db43baf8ac"
+      ]
+    ]
+  },
+  {
+    "id": "ee72f13457e029f8",
+    "type": "delay",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "0.5",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "outputs": 1,
+    "x": 130,
+    "y": 1300,
+    "wires": [
+      [
+        "91c43b1fd1788d4c"
+      ]
+    ]
+  },
+  {
+    "id": "437bc5d8b682c642",
+    "type": "delay",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "0.5",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "outputs": 1,
+    "x": 130,
+    "y": 1420,
+    "wires": [
+      [
+        "8d78c0f678eadec3"
+      ]
+    ]
+  },
+  {
+    "id": "ea2f097f53073e45",
+    "type": "delay",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "0.5",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "outputs": 1,
+    "x": 130,
+    "y": 1540,
+    "wires": [
+      [
+        "cfc58a14b253c660"
+      ]
+    ]
+  },
+  {
+    "id": "4d395f7e11576f73",
+    "type": "delay",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "0.5",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "outputs": 1,
+    "x": 130,
+    "y": 1660,
+    "wires": [
+      [
+        "7776062198e3347f"
+      ]
+    ]
+  },
+  {
+    "id": "4e2d70754d51176e",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 39",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 1120,
+    "y": 2080,
+    "wires": []
+  },
+  {
+    "id": "77a4873df194fc8e",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "parseData",
+    "func": "var temperature = msg.payload[0];\n\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"93\",\n    \"temp\": temperature,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 950,
+    "y": 1620,
+    "wires": [
+      [
+        "715d0b3e3a011140"
+      ]
+    ]
+  },
+  {
+    "id": "e91331546f856cec",
+    "type": "buffer-parser",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "ascii",
+        "name": "item1",
+        "offset": 0,
+        "length": 6,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 770,
+    "y": 1180,
+    "wires": [
+      [
+        "930572e26ff4fde1"
+      ]
+    ]
+  },
+  {
+    "id": "6285ca8fb2c1a9b1",
+    "type": "buffer-parser",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "ascii",
+        "name": "item1",
+        "offset": 0,
+        "length": 6,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 770,
+    "y": 1660,
+    "wires": [
+      [
+        "98504f7c48c749fe"
+      ]
+    ]
+  },
+  {
+    "id": "b32835130df28521",
+    "type": "buffer-parser",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "int16le",
+        "name": "item1",
+        "offset": 10,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 770,
+    "y": 1140,
+    "wires": [
+      [
+        "b40d87410c22b082"
+      ]
+    ]
+  },
+  {
+    "id": "627caf479030c4ee",
+    "type": "buffer-parser",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "int16le",
+        "name": "item1",
+        "offset": 10,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 770,
+    "y": 1260,
+    "wires": [
+      [
+        "ce4faaa1eb661fd7"
+      ]
+    ]
+  },
+  {
+    "id": "afe5756082ae2987",
+    "type": "buffer-parser",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "int16le",
+        "name": "item1",
+        "offset": 10,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 770,
+    "y": 1620,
+    "wires": [
+      [
+        "77a4873df194fc8e"
+      ]
+    ]
+  },
+  {
+    "id": "22d623c7ac2b7054",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 40",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1120,
+    "y": 1800,
+    "wires": []
+  },
+  {
+    "id": "e052e97277ea2aa7",
+    "type": "file",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "filename": "C:\\fzone\\mddh\\detector3.txt",
+    "filenameType": "str",
+    "appendNewline": true,
+    "createDir": true,
+    "overwriteFile": "false",
+    "encoding": "none",
+    "x": 320,
+    "y": 560,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "9fbfbe386ce3aafc",
+    "type": "file",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "filename": "C:\\fzone\\mddh\\detector2.txt",
+    "filenameType": "str",
+    "appendNewline": true,
+    "createDir": true,
+    "overwriteFile": "false",
+    "encoding": "none",
+    "x": 320,
+    "y": 480,
+    "wires": [
+      []
+    ]
+  }
+]
