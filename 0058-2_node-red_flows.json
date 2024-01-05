@@ -381,7 +381,7 @@
     "type": "function",
     "z": "aa27fc5935c8a25a",
     "name": "send api",
-    "func": "//현재 온도 (음수 표현은 buffer parser에서 수정 조치, INT 16BE 필요)\n//var temperature = parseFloat(msg.payload) / 10;\nvar temperature = parseFloat(msg.payload[0]) / 10;\n\n//장��� 국번\nvar unitid = msg.unitId;\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\nmsg.payload = {\n    \"ccode\": \"0058\",\n    'kind': '4',\n    \"deviceId\": '7',\n    \"temperature\": temperature\n};\n\nreturn msg;",
+    "func": "//현재 온도 (음수 표현은 buffer parser에서 수정 조치, INT 16BE 필요)\n//var temperature = parseFloat(msg.payload) / 10;\nvar temperature = parseFloat(msg.payload[0]) / 10;\n\n//장치 국번\nvar unitid = msg.unitId;\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\nmsg.payload = {\n    \"ccode\": \"0058\",\n    'kind': '4',\n    \"deviceId\": '7',\n    \"temperature\": temperature\n};\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -893,11 +893,12 @@
     "keepMsgProperties": false,
     "delayOnStart": false,
     "startDelayTime": "",
-    "x": 320,
-    "y": 300,
+    "x": 260,
+    "y": 360,
     "wires": [
       [
-        "01a6bc3e57544be8"
+        "01a6bc3e57544be8",
+        "4b24eed9a14ba057"
       ],
       []
     ]
@@ -1456,5 +1457,22 @@
         "714df7bd25d69168"
       ]
     ]
+  },
+  {
+    "id": "4b24eed9a14ba057",
+    "type": "debug",
+    "z": "ac833b31e09c4cf9",
+    "name": "debug 21",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 340,
+    "y": 200,
+    "wires": []
   }
 ]
