@@ -893,8 +893,8 @@
     "keepMsgProperties": false,
     "delayOnStart": false,
     "startDelayTime": "",
-    "x": 260,
-    "y": 360,
+    "x": 220,
+    "y": 320,
     "wires": [
       [
         "01a6bc3e57544be8",
@@ -925,7 +925,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 120,
-    "y": 300,
+    "y": 280,
     "wires": [
       [
         "b9d92568a4c83117"
@@ -1471,8 +1471,8 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "msg",
-    "x": 340,
-    "y": 200,
+    "x": 360,
+    "y": 220,
     "wires": []
   }
 ]
