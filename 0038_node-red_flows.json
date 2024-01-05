@@ -1074,8 +1074,8 @@
     "type": "comment",
     "z": "b59fbc26920ed8b2",
     "name": "온도 데이터_6대 정보",
-    "info": "[※1층 작업장 온도]\n-온도컨트롤러 설치 위치 : 1층 해동실\n-온도 센서 설치 위치 : 1층 작업장\n-제조사 : 코노텍\n-모델명 : FOX-2001CC\n-장치 국번 : 1\n-수집 데이터 : 온도\n-데이터 수집 방식 : RS485 TO USB (PC포트 : COM7)\n\n\n[※1층 해동실 온도]\n-온도컨트롤러 설치 위치 : 1층 해동실\n-온도 센서 설치 위치 : 1층 해동실\n-제조사 : 코노텍\n-모델명 : FOX-2001CC\n-장치 국번 : 2\n-수집 데이터 : 온도\n-데이터 수집 방식 : RS485 TO USB (PC포트 : COM7)\n\n\n[※1층 급속냉장창고 온도]\n-온도컨트롤러 설치 위치 : 1층 해동실\n-온도 센서 설치 위치 : 1층 급속냉장창고\n-제조사 : 코노텍\n-모델명 : FOX-2001CC\n-장치 국번 : 3\n-수집 데이터 : 온도\n-데이터 수집 방식 : RS485 TO USB (PC포트 : COM7)\n\n\n[※1층 완제품냉동창고1 온도]\n-온도컨트롤러 설치 위치 : 1층 완제품냉동창고1 앞\n-온도 센서 설치 위치 : 1층 완제품냉동창고1\n-제조사 : 코노텍\n-모델명 : FOX-2001CC\n-장치 국번 : 4                \n-수집 데이터 : 온도\n-데이터 수집 방식 : RS485 TO USB (PC포트 : COM7)\n\n\n[※1층 완제품냉동창고2 온도]\n-온도컨트롤러 설치 위치 : 1층 완제품냉동창고2 앞\n-온도 센서 설치 위치 : 1층 완제품냉동창고2\n-제조사 : 코노텍\n-모델명 : FOX-2001CC\n-장치 국번 : 5\n-수집 데이터 : 온도\n-데이터 수집 방식 : RS485 TO USB (PC포트 : COM8)\n\n\n[※1층 원료냉동창고 온도]\n-온도컨트롤러 설치 위치 : 1층 원료냉동창고 앞\n-온도 센서 설치 위치 : 1층 원료냉동창고\n-제조사 : 코노텍\n-모델명 : FOX-2001CC\n-장치 국번 : 6\n-수집 데이터 : 온도\n-데이터 수집 방식 : RS485 TO USB (PC포트 : COM8)",
-    "x": 160,
+    "info": "[※1층 작업장 온도]\n-온도컨트롤러 설치 위치 : 1층 해동실\n-온도 센서 설치 위치 : 1층 작업장\n-제조사 : 코노텍\n-모델명 : FOX-2001CC\n-장치 국번 : 1\n-수집 데이터 : 온도\n-데이터 수집 방식 : RS485 TO USB (PC포트 : COM7)\n\n\n[※1층 해동실 온도]\n-온도컨트롤러 설치 위치 : 1층 해동실\n-온도 센서 설치 위치 : 1층 해동실\n-제조사 : 코노텍\n-모델명 : FOX-2001CC\n-장치 국번 : 2\n-수집 데이터 : 온도\n-데이터 수집 방식 : RS485 TO USB (PC포트 : COM7)\n\n\n[※1층 급속냉장창고 온도]\n-온도컨트롤러 설치 위치 : 1층 해동실\n-온도 센서 설치 위치 : 1층 급속���장창고\n-제조사 : 코노텍\n-모델명 : FOX-2001CC\n-장치 국번 : 3\n-수집 데이터 : 온도\n-데이터 수집 방식 : RS485 TO USB (PC포트 : COM7)\n\n\n[※1층 완제품냉동창고1 온도]\n-온도컨트롤러 설치 위치 : 1층 완제품냉동창고1 앞\n-온도 센서 설치 위치 : 1층 완제품냉동창고1\n-제조사 : 코노텍\n-모델명 : FOX-2001CC\n-장치 국번 : 4                \n-수집 데이터 : 온도\n-데이터 수집 방식 : RS485 TO USB (PC포트 : COM7)\n\n\n[※1층 완제품냉동창고2 온도]\n-온도컨트롤러 설치 위치 : 1층 완제품냉동창고2 앞\n-온도 센서 설치 위치 : 1층 완제품냉동창고2\n-제조사 : 코노텍\n-모델명 : FOX-2001CC\n-장치 국번 : 5\n-수집 데이터 : 온도\n-데이터 수집 방식 : RS485 TO USB (PC포트 : COM8)\n\n\n[※1층 원료냉동창고 온도]\n-온도컨트롤러 설치 위치 : 1층 원료냉동창고 앞\n-온도 센서 설치 위치 : 1층 원료냉동창고\n-제조사 : 코노텍\n-모델명 : FOX-2001CC\n-장치 국번 : 6\n-수집 데이터 : 온도\n-데이터 수집 방식 : RS485 TO USB (PC포트 : COM8)",
+    "x": 140,
     "y": 40,
     "wires": []
   },
@@ -1143,7 +1143,7 @@
     "z": "b59fbc26920ed8b2",
     "name": "온도데이터 DB 저장",
     "info": "",
-    "x": 150,
+    "x": 130,
     "y": 80,
     "wires": []
   },
@@ -1245,7 +1245,7 @@
     "type": "function",
     "z": "b59fbc26920ed8b2",
     "name": "국번 1번 온도",
-    "func": "let db_date = msg.payload;\n\nlet adr = \"1\";  // 장치 번호\nlet device1_temp = db_date[0].temp1;  // 온도 데이터\n\nlet dateTime_v = updateDateTime();\n\nfunction updateDateTime() {\n    // 현재 날짜와 시간 가져오기\n    var now = new Date();\n\n    // 측정 시간을 10분 단위로 조정\n    var nowMin = now.getMinutes();\n    nowMin = nowMin - (nowMin % 10);\n    nowMin = (nowMin < 10 ? '0' : '') + nowMin;\n\n    // 시간 설정\n    var nowTime = now.getHours() + \":\" + nowMin;\n    var nowDateTime = now.getFullYear() + '-' + ((now.getMonth() + 1) < 10 ? '0' : '') + (now.getMonth() + 1) + '-' + (now.getDate() < 10 ? '0' : '') + now.getDate() + ' ' + nowTime;\n    var dateTime = [nowTime, nowDateTime];\n\n    return dateTime;\n}\n\n// 1초마다 updateDateTime ��수 호출\nsetInterval(updateDateTime, 1000);\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0038\",\n    \"kind\": 4,\n    \"deviceId\": adr,\n    \"mtime\": dateTime_v[0],\n    \"temperature\": device1_temp,\n    \"regdate\": dateTime_v[1],\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "func": "let db_date = msg.payload;\n\nlet adr = \"1\";  // 장치 번호\nlet device1_temp = db_date[0].temp1;  // 온도 데이터\n\nlet dateTime_v = updateDateTime();\n\nfunction updateDateTime() {\n    // 현재 날짜와 시간 가져오기\n    var now = new Date();\n\n    // 측정 시간을 10분 단위로 조정\n    var nowMin = now.getMinutes();\n    nowMin = nowMin - (nowMin % 10);\n    nowMin = (nowMin < 10 ? '0' : '') + nowMin;\n\n    // 시간 설정\n    var nowTime = now.getHours() + \":\" + nowMin;\n    var nowDateTime = now.getFullYear() + '-' + ((now.getMonth() + 1) < 10 ? '0' : '') + (now.getMonth() + 1) + '-' + (now.getDate() < 10 ? '0' : '') + now.getDate() + ' ' + nowTime;\n    var dateTime = [nowTime, nowDateTime];\n\n    return dateTime;\n}\n\n// 1초마다 updateDateTime 함수 호출\nsetInterval(updateDateTime, 1000);\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0038\",\n    \"kind\": 4,\n    \"deviceId\": adr,\n    \"mtime\": dateTime_v[0],\n    \"temperature\": device1_temp,\n    \"regdate\": dateTime_v[1],\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
