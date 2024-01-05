@@ -1284,7 +1284,7 @@
     "type": "debug",
     "z": "ac833b31e09c4cf9",
     "name": "debug 19",
-    "active": false,
+    "active": true,
     "tosidebar": true,
     "console": false,
     "tostatus": true,
@@ -1489,8 +1489,8 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "msg",
-    "x": 860,
-    "y": 500,
+    "x": 640,
+    "y": 480,
     "wires": []
   }
 ]
