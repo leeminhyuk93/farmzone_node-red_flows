@@ -2,9 +2,17 @@
   {
     "id": "71aaba71cce9c427",
     "type": "tab",
-    "label": "플로우 1",
+    "label": "Data Send",
     "disabled": false,
     "info": "",
+    "env": []
+  },
+  {
+    "id": "09f410f606b6def9",
+    "type": "tab",
+    "label": "Database delete",
+    "disabled": false,
+    "info": "*저장된 기간이 7일이 지나면 삭제",
     "env": []
   },
   {
@@ -47,6 +55,45 @@
     "charset": "UTF8"
   },
   {
+    "id": "611e0a37e0085ea2",
+    "type": "modbus-client",
+    "name": "",
+    "clienttype": "simpleser",
+    "bufferCommands": true,
+    "stateLogEnabled": false,
+    "queueLogEnabled": false,
+    "failureLogEnabled": true,
+    "tcpHost": "127.0.0.1",
+    "tcpPort": "502",
+    "tcpType": "DEFAULT",
+    "serialPort": "COM7",
+    "serialType": "RTU-BUFFERD",
+    "serialBaudrate": "9600",
+    "serialDatabits": "8",
+    "serialStopbits": "1",
+    "serialParity": "none",
+    "serialConnectionDelay": "100",
+    "serialAsciiResponseStartDelimiter": "0x3A",
+    "unit_id": "1",
+    "commandDelay": "1",
+    "clientTimeout": "1000",
+    "reconnectOnTimeout": true,
+    "reconnectTimeout": "2000",
+    "parallelUnitIdsAllowed": true,
+    "showWarnings": true,
+    "showLogs": true
+  },
+  {
+    "id": "8adaf37c4e8f7831",
+    "type": "MySQLdatabase",
+    "name": "",
+    "host": "127.0.0.1",
+    "port": "3306",
+    "db": "fz_shm",
+    "tz": "",
+    "charset": "UTF8"
+  },
+  {
     "id": "a4e408c03b2c2e8f",
     "type": "inject",
     "z": "71aaba71cce9c427",
@@ -68,7 +115,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 120,
-    "y": 140,
+    "y": 100,
     "wires": [
       [
         "561e697e95310621"
@@ -97,7 +144,7 @@
     "delayOnStart": false,
     "startDelayTime": "",
     "x": 110,
-    "y": 200,
+    "y": 160,
     "wires": [
       [
         "55daa5d40673ad8b"
@@ -111,8 +158,8 @@
     "z": "71aaba71cce9c427",
     "name": "XR10 (1~6)",
     "info": "",
-    "x": 110,
-    "y": 80,
+    "x": 90,
+    "y": 60,
     "wires": []
   },
   {
@@ -137,7 +184,7 @@
     "delayOnStart": false,
     "startDelayTime": "",
     "x": 110,
-    "y": 240,
+    "y": 200,
     "wires": [
       [
         "ad6c02ae8accaff0"
@@ -163,7 +210,7 @@
     "allowrate": false,
     "outputs": 1,
     "x": 230,
-    "y": 240,
+    "y": 200,
     "wires": [
       [
         "1e1b538f43576b10"
@@ -188,7 +235,7 @@
     "allowrate": false,
     "outputs": 1,
     "x": 230,
-    "y": 200,
+    "y": 160,
     "wires": [
       [
         "3b33d78e8ce57481",
@@ -209,8 +256,8 @@
     "targetType": "full",
     "statusVal": "payload",
     "statusType": "msg",
-    "x": 920,
-    "y": 280,
+    "x": 900,
+    "y": 220,
     "wires": []
   },
   {
@@ -230,7 +277,7 @@
     "senderr": false,
     "headers": [],
     "x": 730,
-    "y": 280,
+    "y": 220,
     "wires": [
       [
         "730b815e66188856"
@@ -249,7 +296,7 @@
     "finalize": "",
     "libs": [],
     "x": 560,
-    "y": 220,
+    "y": 180,
     "wires": [
       [
         "54c9f93776a09746",
@@ -292,7 +339,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 410,
-    "y": 220,
+    "y": 180,
     "wires": [
       [
         "bf96f88cdf4fcf67"
@@ -312,7 +359,7 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "auto",
-    "x": 760,
+    "x": 740,
     "y": 160,
     "wires": []
   },
@@ -322,15 +369,15 @@
     "z": "71aaba71cce9c427",
     "name": "세척기(라즈베리파이)",
     "info": "",
-    "x": 140,
-    "y": 400,
+    "x": 120,
+    "y": 760,
     "wires": []
   },
   {
     "id": "8da7a5653e264e6e",
     "type": "inject",
     "z": "71aaba71cce9c427",
-    "name": "",
+    "name": "10초",
     "props": [
       {
         "p": "payload"
@@ -347,8 +394,8 @@
     "topic": "",
     "payload": "",
     "payloadType": "date",
-    "x": 110,
-    "y": 440,
+    "x": 90,
+    "y": 800,
     "wires": [
       [
         "2b530d750e600d72"
@@ -366,8 +413,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 270,
-    "y": 440,
+    "x": 250,
+    "y": 800,
     "wires": [
       [
         "7e95019a3b9f3d8d"
@@ -380,8 +427,8 @@
     "z": "71aaba71cce9c427",
     "mydb": "6b5903cef06c0040",
     "name": "",
-    "x": 440,
-    "y": 440,
+    "x": 420,
+    "y": 800,
     "wires": [
       [
         "faae3da2dd2b61fc"
@@ -399,8 +446,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 180,
-    "y": 520,
+    "x": 580,
+    "y": 800,
     "wires": [
       [
         "49aade2dadf9ac80",
@@ -424,8 +471,8 @@
     "authType": "",
     "senderr": false,
     "headers": [],
-    "x": 350,
-    "y": 520,
+    "x": 750,
+    "y": 820,
     "wires": [
       [
         "a74297d65ce82ebd"
@@ -444,8 +491,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 520,
-    "y": 520,
+    "x": 900,
+    "y": 820,
     "wires": []
   },
   {
@@ -460,8 +507,801 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 340,
-    "y": 580,
+    "x": 740,
+    "y": 780,
+    "wires": []
+  },
+  {
+    "id": "5f12de8a01b05be4",
+    "type": "comment",
+    "z": "71aaba71cce9c427",
+    "name": "조도센서_1",
+    "info": "장치 : BCON-TRM200\n수집 데이터 : 습도, CO2, 조도",
+    "x": 90,
+    "y": 320,
+    "wires": []
+  },
+  {
+    "id": "cb9b33ad358fca9e",
+    "type": "inject",
+    "z": "71aaba71cce9c427",
+    "name": "10분",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "600",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 90,
+    "y": 360,
+    "wires": [
+      [
+        "995c8af1be6a47b9"
+      ]
+    ]
+  },
+  {
+    "id": "995c8af1be6a47b9",
+    "type": "function",
+    "z": "71aaba71cce9c427",
+    "name": "select query",
+    "func": "msg.topic = 'SELECT * FROM dtu1 WHERE (date BETWEEN date_add(now(), interval -60 second) AND now()) ORDER BY date DESC LIMIT 1';\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 250,
+    "y": 360,
+    "wires": [
+      [
+        "6290e9587b815253"
+      ]
+    ]
+  },
+  {
+    "id": "6290e9587b815253",
+    "type": "mysql",
+    "z": "71aaba71cce9c427",
+    "mydb": "8adaf37c4e8f7831",
+    "name": "",
+    "x": 420,
+    "y": 360,
+    "wires": [
+      [
+        "5c29d31f13a0e2dd"
+      ]
+    ]
+  },
+  {
+    "id": "5c29d31f13a0e2dd",
+    "type": "function",
+    "z": "71aaba71cce9c427",
+    "name": "send api",
+    "func": "let humid = msg.payload[0].value4;  // 습도\nlet co2 = msg.payload[0].value2;    // 이산화탄소\nlet lux = msg.payload[0].value5;    // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0064\",\n    \"scode\": \"73\",\n    \"humid\": humid,\n    \"co2\": co2,\n    \"lux\": lux\n};\n\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 580,
+    "y": 360,
+    "wires": [
+      [
+        "e195c8628e79d44d"
+      ]
+    ]
+  },
+  {
+    "id": "e195c8628e79d44d",
+    "type": "debug",
+    "z": "71aaba71cce9c427",
+    "name": "debug 4",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 740,
+    "y": 340,
+    "wires": []
+  },
+  {
+    "id": "a2932a58c0e9856f",
+    "type": "http request",
+    "z": "71aaba71cce9c427",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 750,
+    "y": 380,
+    "wires": [
+      [
+        "f6c88628af744056"
+      ]
+    ]
+  },
+  {
+    "id": "f6c88628af744056",
+    "type": "debug",
+    "z": "71aaba71cce9c427",
+    "name": "debug 5",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 900,
+    "y": 380,
+    "wires": []
+  },
+  {
+    "id": "82537656439d5ab8",
+    "type": "comment",
+    "z": "71aaba71cce9c427",
+    "name": "조도센서_2",
+    "info": "장치 : BCON-TRM200\n수집 데이터 : 습도, CO2, 조도",
+    "x": 90,
+    "y": 460,
+    "wires": []
+  },
+  {
+    "id": "d5df9906f508fdb5",
+    "type": "inject",
+    "z": "71aaba71cce9c427",
+    "name": "10분",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "600",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 90,
+    "y": 500,
+    "wires": [
+      [
+        "65780e71859e4d0e"
+      ]
+    ]
+  },
+  {
+    "id": "65780e71859e4d0e",
+    "type": "function",
+    "z": "71aaba71cce9c427",
+    "name": "select query",
+    "func": "msg.topic = 'SELECT * FROM dtu2 WHERE (date BETWEEN date_add(now(), interval -60 second) AND now()) ORDER BY date DESC LIMIT 1';\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 250,
+    "y": 500,
+    "wires": [
+      [
+        "afc6448a9f1372d1"
+      ]
+    ]
+  },
+  {
+    "id": "afc6448a9f1372d1",
+    "type": "mysql",
+    "z": "71aaba71cce9c427",
+    "mydb": "8adaf37c4e8f7831",
+    "name": "",
+    "x": 420,
+    "y": 500,
+    "wires": [
+      [
+        "1242455b19447bfe"
+      ]
+    ]
+  },
+  {
+    "id": "1242455b19447bfe",
+    "type": "function",
+    "z": "71aaba71cce9c427",
+    "name": "send api",
+    "func": "let humid = msg.payload[0].value4;  // 습도\nlet co2 = msg.payload[0].value2;    // 이산화탄소\nlet lux = msg.payload[0].value5;    // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0064\",\n    \"scode\": \"74\",\n    \"humid\": humid,\n    \"co2\": co2,\n    \"lux\": lux\n};\n\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 580,
+    "y": 500,
+    "wires": [
+      [
+        "1d207b634e6cd2c0"
+      ]
+    ]
+  },
+  {
+    "id": "1d207b634e6cd2c0",
+    "type": "debug",
+    "z": "71aaba71cce9c427",
+    "name": "debug 6",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 740,
+    "y": 480,
+    "wires": []
+  },
+  {
+    "id": "52dc96c4c1ec0fa3",
+    "type": "http request",
+    "z": "71aaba71cce9c427",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 750,
+    "y": 520,
+    "wires": [
+      [
+        "fcb1a46969e1f58d"
+      ]
+    ]
+  },
+  {
+    "id": "fcb1a46969e1f58d",
+    "type": "debug",
+    "z": "71aaba71cce9c427",
+    "name": "debug 7",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 900,
+    "y": 520,
+    "wires": []
+  },
+  {
+    "id": "12241d3c46c975b8",
+    "type": "comment",
+    "z": "71aaba71cce9c427",
+    "name": "조도센서_3",
+    "info": "장치 : BCON-TRM200\n수집 데이터 : 습도, CO2, 조도",
+    "x": 90,
+    "y": 600,
+    "wires": []
+  },
+  {
+    "id": "fe1326341239abcb",
+    "type": "inject",
+    "z": "71aaba71cce9c427",
+    "name": "10분",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "600",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 90,
+    "y": 640,
+    "wires": [
+      [
+        "94158f8f5b591dab"
+      ]
+    ]
+  },
+  {
+    "id": "94158f8f5b591dab",
+    "type": "function",
+    "z": "71aaba71cce9c427",
+    "name": "select query",
+    "func": "msg.topic = 'SELECT * FROM dtu3 WHERE (date BETWEEN date_add(now(), interval -60 second) AND now()) ORDER BY date DESC LIMIT 1';\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 250,
+    "y": 640,
+    "wires": [
+      [
+        "60c3bb4b6cf12f69"
+      ]
+    ]
+  },
+  {
+    "id": "60c3bb4b6cf12f69",
+    "type": "mysql",
+    "z": "71aaba71cce9c427",
+    "mydb": "8adaf37c4e8f7831",
+    "name": "",
+    "x": 420,
+    "y": 640,
+    "wires": [
+      [
+        "e4857a797d853573"
+      ]
+    ]
+  },
+  {
+    "id": "e4857a797d853573",
+    "type": "function",
+    "z": "71aaba71cce9c427",
+    "name": "send api",
+    "func": "let humid = msg.payload[0].value4;  // 습도\nlet co2 = msg.payload[0].value2;    // 이산화탄소\nlet lux = msg.payload[0].value5;    // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0064\",\n    \"scode\": \"75\",\n    \"humid\": humid,\n    \"co2\": co2,\n    \"lux\": lux\n};\n\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 580,
+    "y": 640,
+    "wires": [
+      [
+        "0b74657c9b9ea980"
+      ]
+    ]
+  },
+  {
+    "id": "0b74657c9b9ea980",
+    "type": "debug",
+    "z": "71aaba71cce9c427",
+    "name": "debug 8",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 740,
+    "y": 620,
+    "wires": []
+  },
+  {
+    "id": "b5b4b8c5304d1e5b",
+    "type": "http request",
+    "z": "71aaba71cce9c427",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 750,
+    "y": 660,
+    "wires": [
+      [
+        "97e2ccb78063bcee"
+      ]
+    ]
+  },
+  {
+    "id": "97e2ccb78063bcee",
+    "type": "debug",
+    "z": "71aaba71cce9c427",
+    "name": "debug 9",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 900,
+    "y": 660,
+    "wires": []
+  },
+  {
+    "id": "55ca49778522607e",
+    "type": "comment",
+    "z": "09f410f606b6def9",
+    "name": "dtu1 테이블 - 데이터 보관 기간 7일",
+    "info": "",
+    "x": 180,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "c8b173e25c134b49",
+    "type": "inject",
+    "z": "09f410f606b6def9",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 100,
+    "wires": [
+      [
+        "e0b740e4505b7d18"
+      ]
+    ]
+  },
+  {
+    "id": "e0b740e4505b7d18",
+    "type": "function",
+    "z": "09f410f606b6def9",
+    "name": "delete",
+    "func": "msg.topic = \"DELETE FROM dtu1 WHERE date < CURDATE() - INTERVAL 7 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 290,
+    "y": 100,
+    "wires": [
+      [
+        "be3c6eceae37cc60"
+      ]
+    ]
+  },
+  {
+    "id": "be3c6eceae37cc60",
+    "type": "mysql",
+    "z": "09f410f606b6def9",
+    "mydb": "6b5903cef06c0040",
+    "name": "",
+    "x": 440,
+    "y": 100,
+    "wires": [
+      [
+        "71d0da484b17e500"
+      ]
+    ]
+  },
+  {
+    "id": "71d0da484b17e500",
+    "type": "debug",
+    "z": "09f410f606b6def9",
+    "name": "debug 10",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 600,
+    "y": 100,
+    "wires": []
+  },
+  {
+    "id": "bf9539269325275b",
+    "type": "comment",
+    "z": "09f410f606b6def9",
+    "name": "dtu2 테이블 - 데이터 보관 기간 7일",
+    "info": "",
+    "x": 180,
+    "y": 180,
+    "wires": []
+  },
+  {
+    "id": "bb5f5bf9a6c34c24",
+    "type": "inject",
+    "z": "09f410f606b6def9",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 220,
+    "wires": [
+      [
+        "5df37f8dfa819cae"
+      ]
+    ]
+  },
+  {
+    "id": "5df37f8dfa819cae",
+    "type": "function",
+    "z": "09f410f606b6def9",
+    "name": "delete",
+    "func": "msg.topic = \"DELETE FROM dtu2 WHERE date < CURDATE() - INTERVAL 7 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 290,
+    "y": 220,
+    "wires": [
+      [
+        "bda031f0e2abbf40"
+      ]
+    ]
+  },
+  {
+    "id": "bda031f0e2abbf40",
+    "type": "mysql",
+    "z": "09f410f606b6def9",
+    "mydb": "6b5903cef06c0040",
+    "name": "",
+    "x": 440,
+    "y": 220,
+    "wires": [
+      [
+        "397786e37f0b71e1"
+      ]
+    ]
+  },
+  {
+    "id": "397786e37f0b71e1",
+    "type": "debug",
+    "z": "09f410f606b6def9",
+    "name": "debug 11",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 600,
+    "y": 220,
+    "wires": []
+  },
+  {
+    "id": "e7ac9350e0a10989",
+    "type": "comment",
+    "z": "09f410f606b6def9",
+    "name": "dtu3 테이블 - 데이터 보관 기간 7일",
+    "info": "",
+    "x": 180,
+    "y": 300,
+    "wires": []
+  },
+  {
+    "id": "9d1b710bec4a6ef0",
+    "type": "inject",
+    "z": "09f410f606b6def9",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 340,
+    "wires": [
+      [
+        "43fd5a119e2c1d62"
+      ]
+    ]
+  },
+  {
+    "id": "43fd5a119e2c1d62",
+    "type": "function",
+    "z": "09f410f606b6def9",
+    "name": "delete",
+    "func": "msg.topic = \"DELETE FROM dtu3 WHERE date < CURDATE() - INTERVAL 7 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 290,
+    "y": 340,
+    "wires": [
+      [
+        "2b5bac3059409bb7"
+      ]
+    ]
+  },
+  {
+    "id": "2b5bac3059409bb7",
+    "type": "mysql",
+    "z": "09f410f606b6def9",
+    "mydb": "6b5903cef06c0040",
+    "name": "",
+    "x": 440,
+    "y": 340,
+    "wires": [
+      [
+        "ea937ff1e5da221f"
+      ]
+    ]
+  },
+  {
+    "id": "ea937ff1e5da221f",
+    "type": "debug",
+    "z": "09f410f606b6def9",
+    "name": "debug 12",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 600,
+    "y": 340,
+    "wires": []
+  },
+  {
+    "id": "8b15e33be654a272",
+    "type": "comment",
+    "z": "09f410f606b6def9",
+    "name": "fztable 테이블 - 데이터 보관 기간 7일",
+    "info": "",
+    "x": 190,
+    "y": 420,
+    "wires": []
+  },
+  {
+    "id": "23492a663cac8269",
+    "type": "inject",
+    "z": "09f410f606b6def9",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 460,
+    "wires": [
+      [
+        "48d752f096177d72"
+      ]
+    ]
+  },
+  {
+    "id": "48d752f096177d72",
+    "type": "function",
+    "z": "09f410f606b6def9",
+    "name": "delete",
+    "func": "msg.topic = \"DELETE FROM fztable WHERE date < CURDATE() - INTERVAL 7 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 290,
+    "y": 460,
+    "wires": [
+      [
+        "0dd66bdb8d0d1d7e"
+      ]
+    ]
+  },
+  {
+    "id": "0dd66bdb8d0d1d7e",
+    "type": "mysql",
+    "z": "09f410f606b6def9",
+    "mydb": "6b5903cef06c0040",
+    "name": "",
+    "x": 440,
+    "y": 460,
+    "wires": [
+      [
+        "6df9f70765089c18"
+      ]
+    ]
+  },
+  {
+    "id": "6df9f70765089c18",
+    "type": "debug",
+    "z": "09f410f606b6def9",
+    "name": "debug 13",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 600,
+    "y": 460,
     "wires": []
   }
 ]
