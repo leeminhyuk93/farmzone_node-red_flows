@@ -921,8 +921,8 @@
     "name": "PLC1",
     "topic": "",
     "dataType": "InputRegister",
-    "adr": "0",
-    "quantity": "7",
+    "adr": "5",
+    "quantity": "1",
     "rate": "10",
     "rateUnit": "s",
     "server": "ae9d435d665efd43",
@@ -932,7 +932,7 @@
     "y": 60,
     "wires": [
       [
-        "a1c785bd3479d18d"
+        "ff4e9a797846b990"
       ]
     ]
   },
@@ -1045,22 +1045,6 @@
     "statusType": "auto",
     "x": 620,
     "y": 1380,
-    "wires": []
-  },
-  {
-    "id": "a1c785bd3479d18d",
-    "type": "debug",
-    "z": "5e99d5afcc1bc9a3",
-    "name": "debug 24",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 260,
-    "y": 100,
     "wires": []
   }
 ]
