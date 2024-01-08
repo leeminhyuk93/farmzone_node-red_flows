@@ -656,8 +656,8 @@
     "z": "59ca106284e989bb",
     "name": "나우시스템 금속검출 Protocol",
     "info": "Read Data->PLC Modbus 변환 후 송신\n34Byte",
-    "x": 200,
-    "y": 220,
+    "x": 180,
+    "y": 180,
     "wires": []
   },
   {
@@ -2503,10 +2503,10 @@
         "9d173c06cff3650c"
       ],
       [
-        "423bfa3467b36d5c"
+        "4137b779d5004bea"
       ],
       [
-        "4137b779d5004bea"
+        "423bfa3467b36d5c"
       ]
     ]
   },
@@ -2515,7 +2515,7 @@
     "type": "function",
     "z": "d2dda125f7cf4c6e",
     "name": "FC5: Coil Write_M100",
-    "func": "msg.payload = { \n    \n    'value': msg.payload,\n    'fc': 5,\n    'unitid': 1,\n    'address': 0 ,\n    'quantity': 1\n    \n} \nreturn msg;",
+    "func": "msg.payload = { \n    \n    'value': msg.payload,\n    'fc': 5,\n    'unitid': 1,\n    'address': 0,\n    'quantity': 1\n    \n} \nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -3516,7 +3516,7 @@
     "type": "function",
     "z": "d2dda125f7cf4c6e",
     "name": "FC5: Coil Write_M101",
-    "func": "msg.payload = { \n    \n    'value': msg.payload,\n    'fc': 5,\n    'unitid': 1,\n    'address': 1 ,\n    'quantity': 1\n    \n} \nreturn msg;",
+    "func": "msg.payload = { \n    \n    'value': msg.payload,\n    'fc': 5,\n    'unitid': 1,\n    'address': 2,\n    'quantity': 1\n    \n} \nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -3563,7 +3563,7 @@
     "type": "function",
     "z": "d2dda125f7cf4c6e",
     "name": "FC5: Coil Write_M102",
-    "func": "msg.payload = { \n    \n    'value': msg.payload,\n    'fc': 5,\n    'unitid': 1,\n    'address': 2 ,\n    'quantity': 1\n    \n} \nreturn msg;",
+    "func": "msg.payload = { \n    \n    'value': msg.payload,\n    'fc': 5,\n    'unitid': 1,\n    'address': 1,\n    'quantity': 1\n    \n} \nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
