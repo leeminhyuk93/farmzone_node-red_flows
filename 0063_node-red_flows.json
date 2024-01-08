@@ -337,8 +337,8 @@
     "topic": "",
     "payload": "",
     "payloadType": "date",
-    "x": 130,
-    "y": 1160,
+    "x": 110,
+    "y": 860,
     "wires": [
       [
         "761afa3123142970"
@@ -356,8 +356,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 310,
-    "y": 1160,
+    "x": 290,
+    "y": 860,
     "wires": [
       [
         "ca0ae599a19aa5ba"
@@ -370,8 +370,8 @@
     "z": "71aaba71cce9c427",
     "mydb": "5904de5649bf46eb",
     "name": "",
-    "x": 480,
-    "y": 1160,
+    "x": 460,
+    "y": 860,
     "wires": [
       [
         "c3c495ddd1578233"
@@ -384,8 +384,8 @@
     "z": "71aaba71cce9c427",
     "name": "세척기(라즈베리파이)",
     "info": "",
-    "x": 140,
-    "y": 1120,
+    "x": 120,
+    "y": 820,
     "wires": []
   },
   {
@@ -399,8 +399,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 140,
-    "y": 1260,
+    "x": 620,
+    "y": 860,
     "wires": [
       [
         "9fe0085f6834419d",
@@ -424,8 +424,8 @@
     "authType": "",
     "senderr": false,
     "headers": [],
-    "x": 310,
-    "y": 1260,
+    "x": 790,
+    "y": 880,
     "wires": [
       [
         "abc91bf6ef1f0b88"
@@ -444,8 +444,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 460,
-    "y": 1260,
+    "x": 940,
+    "y": 880,
     "wires": []
   },
   {
@@ -460,8 +460,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 300,
-    "y": 1300,
+    "x": 780,
+    "y": 840,
     "wires": []
   },
   {
@@ -470,7 +470,7 @@
     "z": "71aaba71cce9c427",
     "name": "조도센서_1",
     "info": "장치 : BCON-TRM200\n수집 데이터 : 습도, CO2, 조도",
-    "x": 110,
+    "x": 90,
     "y": 380,
     "wires": []
   },
@@ -495,7 +495,7 @@
     "topic": "",
     "payload": "",
     "payloadType": "date",
-    "x": 120,
+    "x": 100,
     "y": 420,
     "wires": [
       [
@@ -514,7 +514,7 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 290,
+    "x": 270,
     "y": 420,
     "wires": [
       [
@@ -528,7 +528,7 @@
     "z": "71aaba71cce9c427",
     "mydb": "5904de5649bf46eb",
     "name": "",
-    "x": 460,
+    "x": 440,
     "y": 420,
     "wires": [
       [
@@ -547,11 +547,12 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 120,
-    "y": 500,
+    "x": 600,
+    "y": 420,
     "wires": [
       [
-        "06929db1a31d27ce"
+        "06929db1a31d27ce",
+        "84bd3187168d9588"
       ]
     ]
   },
@@ -567,8 +568,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 280,
-    "y": 540,
+    "x": 760,
+    "y": 400,
     "wires": []
   },
   {
@@ -587,8 +588,8 @@
     "authType": "",
     "senderr": false,
     "headers": [],
-    "x": 290,
-    "y": 500,
+    "x": 770,
+    "y": 440,
     "wires": [
       [
         "8ec62db0f60c914f"
@@ -607,8 +608,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 440,
-    "y": 500,
+    "x": 920,
+    "y": 440,
     "wires": []
   },
   {
@@ -617,8 +618,8 @@
     "z": "71aaba71cce9c427",
     "name": "조도센서_2",
     "info": "장치 : BCON-TRM200\n수집 데이터 : 습도, CO2, 조도",
-    "x": 110,
-    "y": 620,
+    "x": 90,
+    "y": 520,
     "wires": []
   },
   {
@@ -642,8 +643,8 @@
     "topic": "",
     "payload": "",
     "payloadType": "date",
-    "x": 120,
-    "y": 660,
+    "x": 100,
+    "y": 560,
     "wires": [
       [
         "b6f1adf259e6b31d"
@@ -661,8 +662,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 290,
-    "y": 660,
+    "x": 270,
+    "y": 560,
     "wires": [
       [
         "b127793aceb10ca9"
@@ -675,8 +676,8 @@
     "z": "71aaba71cce9c427",
     "mydb": "5904de5649bf46eb",
     "name": "",
-    "x": 460,
-    "y": 660,
+    "x": 440,
+    "y": 560,
     "wires": [
       [
         "dc1564addf88c5cd"
@@ -694,11 +695,12 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 120,
-    "y": 740,
+    "x": 600,
+    "y": 560,
     "wires": [
       [
-        "a701896caa440a22"
+        "a701896caa440a22",
+        "693fd223add39748"
       ]
     ]
   },
@@ -714,8 +716,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 280,
-    "y": 780,
+    "x": 760,
+    "y": 540,
     "wires": []
   },
   {
@@ -734,8 +736,8 @@
     "authType": "",
     "senderr": false,
     "headers": [],
-    "x": 290,
-    "y": 740,
+    "x": 770,
+    "y": 580,
     "wires": [
       [
         "9642c9724e0f82fc"
@@ -754,8 +756,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 440,
-    "y": 740,
+    "x": 920,
+    "y": 580,
     "wires": []
   },
   {
@@ -764,8 +766,8 @@
     "z": "71aaba71cce9c427",
     "name": "조도센서_3",
     "info": "장치 : BCON-TRM200\n수집 데이터 : 습도, CO2, 조도",
-    "x": 110,
-    "y": 860,
+    "x": 90,
+    "y": 660,
     "wires": []
   },
   {
@@ -789,8 +791,8 @@
     "topic": "",
     "payload": "",
     "payloadType": "date",
-    "x": 120,
-    "y": 900,
+    "x": 100,
+    "y": 700,
     "wires": [
       [
         "f613a927408dcea6"
@@ -808,8 +810,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 290,
-    "y": 900,
+    "x": 270,
+    "y": 700,
     "wires": [
       [
         "5418079dcdddd7e6"
@@ -822,8 +824,8 @@
     "z": "71aaba71cce9c427",
     "mydb": "5904de5649bf46eb",
     "name": "",
-    "x": 460,
-    "y": 900,
+    "x": 440,
+    "y": 700,
     "wires": [
       [
         "8e6fd8b1007ef895"
@@ -841,11 +843,12 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 120,
-    "y": 980,
+    "x": 600,
+    "y": 700,
     "wires": [
       [
-        "248ecca0293d8f48"
+        "248ecca0293d8f48",
+        "e96e0671c1f5f4aa"
       ]
     ]
   },
@@ -861,8 +864,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 280,
-    "y": 1020,
+    "x": 760,
+    "y": 680,
     "wires": []
   },
   {
@@ -881,8 +884,8 @@
     "authType": "",
     "senderr": false,
     "headers": [],
-    "x": 290,
-    "y": 980,
+    "x": 770,
+    "y": 720,
     "wires": [
       [
         "eda8fa0dca6067f5"
@@ -901,8 +904,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 440,
-    "y": 980,
+    "x": 920,
+    "y": 720,
     "wires": []
   }
 ]
