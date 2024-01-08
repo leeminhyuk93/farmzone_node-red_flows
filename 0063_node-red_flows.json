@@ -337,7 +337,7 @@
     "topic": "",
     "payload": "",
     "payloadType": "date",
-    "x": 150,
+    "x": 130,
     "y": 440,
     "wires": [
       [
@@ -356,7 +356,7 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 330,
+    "x": 310,
     "y": 440,
     "wires": [
       [
@@ -370,7 +370,7 @@
     "z": "71aaba71cce9c427",
     "mydb": "5904de5649bf46eb",
     "name": "",
-    "x": 520,
+    "x": 480,
     "y": 440,
     "wires": [
       [
@@ -384,7 +384,7 @@
     "z": "71aaba71cce9c427",
     "name": "세척기(라즈베리파이)",
     "info": "",
-    "x": 160,
+    "x": 140,
     "y": 400,
     "wires": []
   },
@@ -462,6 +462,114 @@
     "statusType": "auto",
     "x": 300,
     "y": 580,
+    "wires": []
+  },
+  {
+    "id": "9f6597207b6f8faf",
+    "type": "comment",
+    "z": "71aaba71cce9c427",
+    "name": "조도센서_1",
+    "info": "장치 : BCON-TRM200\n수집 데이터 : 습도, CO2, 조도",
+    "x": 110,
+    "y": 700,
+    "wires": []
+  },
+  {
+    "id": "fa7d5987c215d4ce",
+    "type": "inject",
+    "z": "71aaba71cce9c427",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 740,
+    "wires": [
+      [
+        "8418cd0526220285"
+      ]
+    ]
+  },
+  {
+    "id": "8418cd0526220285",
+    "type": "function",
+    "z": "71aaba71cce9c427",
+    "name": "select query",
+    "func": "msg.topic = 'SELECT * FROM dtu1 WHERE (date BETWEEN date_add(now(), interval -60 second) AND now()) ORDER BY date DESC LIMIT 1';\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 290,
+    "y": 740,
+    "wires": [
+      [
+        "a1297ec49a119065"
+      ]
+    ]
+  },
+  {
+    "id": "a1297ec49a119065",
+    "type": "mysql",
+    "z": "71aaba71cce9c427",
+    "mydb": "5904de5649bf46eb",
+    "name": "",
+    "x": 460,
+    "y": 740,
+    "wires": [
+      [
+        "f6224e6cdc27cb6a",
+        "06929db1a31d27ce"
+      ]
+    ]
+  },
+  {
+    "id": "f6224e6cdc27cb6a",
+    "type": "function",
+    "z": "71aaba71cce9c427",
+    "name": "send api",
+    "func": "let humid = msg.payload[3];  // 습도\nlet co2 = msg.payload[1];    // 이산화탄소\nlet lux = msg.payload[4]     // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0063\",\n    \"scode\": \"91\",\n    \"humid\": humid,\n    \"co2\": co2,\n    \"lux\": lux\n};\n\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 120,
+    "y": 820,
+    "wires": [
+      [
+        "06929db1a31d27ce"
+      ]
+    ]
+  },
+  {
+    "id": "06929db1a31d27ce",
+    "type": "debug",
+    "z": "71aaba71cce9c427",
+    "name": "debug 4",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 460,
+    "y": 820,
     "wires": []
   }
 ]
