@@ -1178,7 +1178,7 @@
     "id": "b4a85c21425d5438",
     "type": "function",
     "z": "83321c3d1b0f6285",
-    "name": "parsing",
+    "name": "중간 온도",
     "func": "const device = 2;\nconst value = (msg.payload == null || msg.payload == undefined) ? \"\" : parseFloat(msg.payload / 10).readInt16BE(0);\n\nmsg.payload = [device, value];\nreturn msg;",
     "outputs": 1,
     "timeout": 0,
@@ -1213,7 +1213,7 @@
     "type": "function",
     "z": "83321c3d1b0f6285",
     "name": "insert DB",
-    "func": "var totalCount = \"\";\nvar middleTemp = \"\";\nvar omronTemp = \"\";\n\nfor (let i = 0; i < 3; i++) {\n    const deviceId = msg.payload[i][0];\n    const value = msg.payload[i][1];\n\n    switch (deviceId) {\n        case 1:\n            totalCount = value;\n            break;\n\n        case 2:\n            middleTemp = value;\n            break;\n\n        case 3:\n            omronTemp = value;\n            break;\n    }\n}\n\nmsg.payload = {\n    \"totalCount\": totalCount,\n    \"middleTemp\": middleTemp,\n    \"omronTemp\": omronTemp\n}\n\nmsg.topic = \"insert into temp(TotalCount,MiddleTemp,OmronTemp,date) values(\" + totalCount + \", \" + middleTemp + \", \" + omronTemp + \", current_timestamp());\";\nreturn msg;",
+    "func": "var totalCount = \"\";\nvar middleTemp = \"\";\nvar omronTemp = \"\";\n\nfor (let i = 0; i < 3; i++) {\n    const device = msg.payload[i][0];\n    const value = msg.payload[i][1];\n\n    switch (device) {\n        case 1:\n            totalCount = value;\n            break;\n\n        case 2:\n            middleTemp = value;\n            break;\n\n        case 3:\n            omronTemp = value;\n            break;\n    }\n}\n\nmsg.payload = {\n    \"totalCount\": totalCount,\n    \"middleTemp\": middleTemp,\n    \"omronTemp\": omronTemp\n}\n\nmsg.topic = \"insert into temp(TotalCount,MiddleTemp,OmronTemp,date) values(\" + totalCount + \", \" + middleTemp + \", \" + omronTemp + \", current_timestamp());\";\nreturn msg;",
     "outputs": 1,
     "timeout": "",
     "noerr": 0,
@@ -1316,7 +1316,7 @@
     "id": "49d22122e523338c",
     "type": "function",
     "z": "83321c3d1b0f6285",
-    "name": "parsing",
+    "name": "생산량",
     "func": "const device = 1;\nconst value = (msg.payload == null || msg.payload == undefined) ? \"\" : msg.payload;\n\nmsg.payload = [device, value];\nreturn msg;",
     "outputs": 1,
     "timeout": 0,
@@ -1324,7 +1324,7 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 520,
+    "x": 510,
     "y": 140,
     "wires": [
       [
@@ -1380,7 +1380,7 @@
     "drop": false,
     "allowrate": false,
     "outputs": 1,
-    "x": 330,
+    "x": 310,
     "y": 300,
     "wires": [
       [
@@ -1392,7 +1392,7 @@
     "id": "674022599477fcf0",
     "type": "function",
     "z": "83321c3d1b0f6285",
-    "name": "parsing",
+    "name": "2봉 워너믹서 온도",
     "func": "const device = 3;\nconst value = (msg.payload == null || msg.payload == undefined) ? \"\" : msg.payload[0];\n\nmsg.payload = [device, value];\nreturn msg;",
     "outputs": 1,
     "timeout": 0,
@@ -1400,7 +1400,7 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 500,
+    "x": 510,
     "y": 300,
     "wires": [
       [
@@ -1473,7 +1473,7 @@
     "type": "comment",
     "z": "83321c3d1b0f6285",
     "name": "장치 정보",
-    "info": "1. 셔틀패너_PLC\n-수집 데이터 : 생산량\n-IP : 192.168.0.222\n-PORT : 502\n-FC : 4\n-데이터 불러오는 주소 : 20\n\n2. 터널프리저_PLC\n-수집 데이터 : 중간온도\n-IP : 192.168.0.221\n-PORT : 502\n-FC : 4\n-데이터 불러오는 주소 : 5\n\n3. 오므론 온도컨트롤러\n-수집 데이터 : 2봉 워너믹서 온도\n-IP : 192.168.0.201\n-PORT : 1501\n-FC : 3\n-데이터 불러오는 주소 : 9218",
+    "info": "1. 셔틀패너_PLC\n-수집 데이터 : 생산량\n-IP : 192.168.0.222\n-PORT : 502\n-FC : 4\n-데이터 불러오는 주소 : 20\n\n2. 터널프리저_PLC\n-수집 데이터 : 중간 온도\n-IP : 192.168.0.221\n-PORT : 502\n-FC : 4\n-데이터 불러오는 주소 : 5\n\n3. 오므론 온도컨트롤러\n-수집 데이터 : 2봉 워너믹서 온도\n-IP : 192.168.0.201\n-PORT : 1501\n-FC : 3\n-데이터 불러오는 주소 : 9218",
     "x": 80,
     "y": 40,
     "wires": []
