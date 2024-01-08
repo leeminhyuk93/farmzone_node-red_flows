@@ -357,7 +357,7 @@
     "id": "e5c2d1fa02035552",
     "type": "comment",
     "z": "71aaba71cce9c427",
-    "name": "���척기(라즈베리파이)",
+    "name": "세척기(라즈베리파이)",
     "info": "",
     "x": 120,
     "y": 760,
@@ -578,7 +578,7 @@
     "type": "function",
     "z": "71aaba71cce9c427",
     "name": "send api",
-    "func": "let humid = msg.payload[0].value4;  // 습도\nlet co2 = msg.payload[0].value2;    // 이산화탄소\nlet lux = msg.payload[0].value5;    // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0064\",\n    \"scode\": \"73\",\n    \"humid\": humid,\n    \"co2\": co2,\n    \"lux\": lux\n};\n\n\nreturn msg;",
+    "func": "let temp = msg.payload[0].value3;   // 온도\ntemp = temp / 10;\nlet humid = msg.payload[0].value4;  // 습도\nhumid = humid / 10;\nlet co2 = msg.payload[0].value2;    // 이산화탄소\nlet lux = msg.payload[0].value5;    // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0064\",\n    \"scode\": \"73\",\n    \"temp\": temp,\n    \"humid\": humid,\n    \"co2\": co2,\n    \"lux\": lux\n};\n\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -716,26 +716,7 @@
     "y": 500,
     "wires": [
       [
-        "1242455b19447bfe"
-      ]
-    ]
-  },
-  {
-    "id": "1242455b19447bfe",
-    "type": "function",
-    "z": "71aaba71cce9c427",
-    "name": "send api",
-    "func": "let humid = msg.payload[0].value4;  // 습도\nlet co2 = msg.payload[0].value2;    // 이산화탄소\nlet lux = msg.payload[0].value5;    // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0064\",\n    \"scode\": \"74\",\n    \"humid\": humid,\n    \"co2\": co2,\n    \"lux\": lux\n};\n\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 580,
-    "y": 500,
-    "wires": [
-      [
-        "1d207b634e6cd2c0"
+        "dfec4d6543583a5d"
       ]
     ]
   },
@@ -863,26 +844,7 @@
     "y": 640,
     "wires": [
       [
-        "e4857a797d853573"
-      ]
-    ]
-  },
-  {
-    "id": "e4857a797d853573",
-    "type": "function",
-    "z": "71aaba71cce9c427",
-    "name": "send api",
-    "func": "let humid = msg.payload[0].value4;  // 습도\nlet co2 = msg.payload[0].value2;    // 이산화탄소\nlet lux = msg.payload[0].value5;    // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0064\",\n    \"scode\": \"75\",\n    \"humid\": humid,\n    \"co2\": co2,\n    \"lux\": lux\n};\n\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 580,
-    "y": 640,
-    "wires": [
-      [
-        "0b74657c9b9ea980"
+        "7146c1dab3701f84"
       ]
     ]
   },
@@ -941,6 +903,44 @@
     "x": 900,
     "y": 660,
     "wires": []
+  },
+  {
+    "id": "dfec4d6543583a5d",
+    "type": "function",
+    "z": "71aaba71cce9c427",
+    "name": "send api",
+    "func": "let temp = msg.payload[0].value3;   // 온도\ntemp = temp / 10;\nlet humid = msg.payload[0].value4;  // 습도\nhumid = humid / 10;\nlet co2 = msg.payload[0].value2;    // 이산화탄소\nlet lux = msg.payload[0].value5;    // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0064\",\n    \"scode\": \"74\",\n    \"temp\": temp,\n    \"humid\": humid,\n    \"co2\": co2,\n    \"lux\": lux\n};\n\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 580,
+    "y": 500,
+    "wires": [
+      [
+        "1d207b634e6cd2c0"
+      ]
+    ]
+  },
+  {
+    "id": "7146c1dab3701f84",
+    "type": "function",
+    "z": "71aaba71cce9c427",
+    "name": "send api",
+    "func": "let temp = msg.payload[0].value3;   // 온도\ntemp = temp / 10;\nlet humid = msg.payload[0].value4;  // 습도\nhumid = humid / 10;\nlet co2 = msg.payload[0].value2;    // 이산화탄소\nlet lux = msg.payload[0].value5;    // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0064\",\n    \"scode\": \"75\",\n    \"temp\": temp,\n    \"humid\": humid,\n    \"co2\": co2,\n    \"lux\": lux\n};\n\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 580,
+    "y": 640,
+    "wires": [
+      [
+        "0b74657c9b9ea980"
+      ]
+    ]
   },
   {
     "id": "55ca49778522607e",
