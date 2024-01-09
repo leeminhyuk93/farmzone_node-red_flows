@@ -190,7 +190,7 @@
     "finalize": "",
     "libs": [],
     "x": 320,
-    "y": 580,
+    "y": 760,
     "wires": [
       [
         "286698dbf7443c40"
@@ -219,7 +219,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 580,
+    "y": 760,
     "wires": [
       [
         "1e5c784762af09b5"
@@ -239,7 +239,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 800,
-    "y": 680,
+    "y": 860,
     "wires": []
   },
   {
@@ -254,7 +254,7 @@
     "finalize": "",
     "libs": [],
     "x": 410,
-    "y": 660,
+    "y": 840,
     "wires": [
       [
         "7f892c2283b22610",
@@ -279,7 +279,7 @@
     "senderr": false,
     "headers": [],
     "x": 650,
-    "y": 680,
+    "y": 860,
     "wires": [
       [
         "bfad8abbbd15031c"
@@ -298,7 +298,7 @@
     "finalize": "",
     "libs": [],
     "x": 320,
-    "y": 760,
+    "y": 940,
     "wires": [
       [
         "e07b7c790364ce19"
@@ -327,7 +327,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 760,
+    "y": 940,
     "wires": [
       [
         "e1d22dfaf43d02cc"
@@ -347,7 +347,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 800,
-    "y": 860,
+    "y": 1040,
     "wires": []
   },
   {
@@ -362,7 +362,7 @@
     "finalize": "",
     "libs": [],
     "x": 410,
-    "y": 840,
+    "y": 1020,
     "wires": [
       [
         "18aedf726099fd2e",
@@ -387,7 +387,7 @@
     "senderr": false,
     "headers": [],
     "x": 650,
-    "y": 860,
+    "y": 1040,
     "wires": [
       [
         "9b1d23d5df9e8f08"
@@ -407,7 +407,7 @@
     "finalize": "",
     "libs": [],
     "x": 310,
-    "y": 940,
+    "y": 580,
     "wires": [
       [
         "43b846e474111dd0"
@@ -436,7 +436,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 940,
+    "y": 580,
     "wires": [
       [
         "5d380b8b32f69578"
@@ -457,7 +457,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 740,
-    "y": 1040,
+    "y": 680,
     "wires": []
   },
   {
@@ -473,7 +473,7 @@
     "finalize": "",
     "libs": [],
     "x": 390,
-    "y": 1020,
+    "y": 660,
     "wires": [
       [
         "e77c25c19933cd11",
@@ -498,7 +498,7 @@
     "senderr": false,
     "headers": [],
     "x": 590,
-    "y": 1040,
+    "y": 680,
     "wires": [
       [
         "b160c23cce73f3a6"
@@ -522,7 +522,7 @@
     "mydb": "34654803fe111f09",
     "name": "",
     "x": 520,
-    "y": 580,
+    "y": 760,
     "wires": [
       [
         "0d4607aff816ded9"
@@ -536,7 +536,7 @@
     "mydb": "34654803fe111f09",
     "name": "",
     "x": 520,
-    "y": 760,
+    "y": 940,
     "wires": [
       [
         "dfa10c0a1fc7c0c9"
@@ -549,8 +549,8 @@
     "z": "5e99d5afcc1bc9a3",
     "mydb": "34654803fe111f09",
     "name": "",
-    "x": 520,
-    "y": 940,
+    "x": 500,
+    "y": 580,
     "wires": [
       [
         "85dd7e75227a911d"
@@ -564,7 +564,7 @@
     "name": "MySQL DB - 저장된 기간이 현재 날짜의 기준으로 7일이 지난 데이터는 삭제하는 delete query",
     "info": "",
     "x": 360,
-    "y": 1160,
+    "y": 1140,
     "wires": []
   },
   {
@@ -589,7 +589,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 1200,
+    "y": 1180,
     "wires": [
       [
         "6963cbfb1d112772"
@@ -609,7 +609,7 @@
     "finalize": "",
     "libs": [],
     "x": 310,
-    "y": 1200,
+    "y": 1180,
     "wires": [
       [
         "f1bc0a9e06da0625"
@@ -623,7 +623,7 @@
     "mydb": "b0b981838aca64c6",
     "name": "",
     "x": 480,
-    "y": 1200,
+    "y": 1180,
     "wires": [
       [
         "fc6803d8bdc147f8"
@@ -643,7 +643,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 640,
-    "y": 1200,
+    "y": 1180,
     "wires": []
   },
   {
@@ -1020,7 +1020,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 640,
-    "y": 640,
+    "y": 820,
     "wires": []
   },
   {
@@ -1036,7 +1036,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 640,
-    "y": 820,
+    "y": 1000,
     "wires": []
   },
   {
@@ -1052,7 +1052,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 580,
-    "y": 1000,
+    "y": 640,
     "wires": []
   },
   {
