@@ -1226,7 +1226,8 @@
     "y": 340,
     "wires": [
       [
-        "f40c76d72e7bd7d1"
+        "f40c76d72e7bd7d1",
+        "37ad13edcb079b9f"
       ]
     ]
   },
@@ -1475,22 +1476,6 @@
     "info": "1. 셔틀패너_PLC\n-수집 데이터 : 생산량\n-IP : 192.168.0.222\n-PORT : 502\n-FC : 4\n-데이터 불러오는 주소 : 20\n\n2. 터널프리저_PLC\n-수집 데이터 : 중간 온도\n-IP : 192.168.0.221\n-PORT : 502\n-FC : 4\n-데이터 불러오는 주소 : 5\n\n3. 오므론 온도컨트롤러\n-수집 데이터 : 2봉 워너믹서 온도\n-IP : 192.168.0.201\n-PORT : 1501\n-FC : 3\n-데이터 불러오는 주소 : 9218",
     "x": 80,
     "y": 40,
-    "wires": []
-  },
-  {
-    "id": "1704d0bd6f6fa305",
-    "type": "debug",
-    "z": "83321c3d1b0f6285",
-    "name": "debug 26",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 760,
-    "y": 120,
     "wires": []
   }
 ]
