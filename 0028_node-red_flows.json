@@ -1215,7 +1215,7 @@
     "type": "function",
     "z": "83321c3d1b0f6285",
     "name": "insert DB",
-    "func": "var totalCount = \"\";\nvar middleTemp = \"\";\nvar omronTemp = \"\";\n\nfor (let i = 0; i < 3; i++) {\n    const device = msg.payload[i][0];\n    const value = msg.payload[i][1];\n\n    switch (device) {\n        case 1:\n            totalCount = value;\n            break;\n\n        case 2:\n            middleTemp = value;\n            break;\n\n        case 3:\n            omronTemp = value;\n            break;\n    }\n}\n\nmsg.payload = {\n    \"totalCount\": totalCount,\n    \"middleTemp\": middleTemp,\n    \"omronTemp\": omronTemp\n}\n\nmsg.topic = \"insert into temp(TotalCount,MiddleTemp,OmronTemp,date) values(\" + totalCount + \", \" + middleTemp + \", \" + omronTemp + \", current_timestamp());\";\nreturn msg;",
+    "func": "var totalCount = \"\";\nvar middleTemp = \"\";\nvar omronTemp = \"\";\n\nfor (let i = 0; i < 3; i++) {\n    const device = msg.payload[i][0];\n    const value = msg.payload[i][1];\n\n    switch (device) {\n        case 1:\n            totalCount = value;\n            break;\n\n        case 2:\n            middleTemp = value;\n            break;\n\n        case 3:\n            omronTemp = value;\n            break;\n    }\n}\n\nmsg.payload = {\n    \"totalCount\": totalCount,\n    \"middleTemp\": middleTemp,\n    \"omronTemp\": omronTemp\n}\n\nmsg.topic = \"insert into temp(TotalCount,MiddleTemp,OmronTemp,date) values('\" + totalCount + \"', '\" + middleTemp + \"', '\" + omronTemp + \"', current_timestamp());\";\nreturn msg;",
     "outputs": 1,
     "timeout": "",
     "noerr": 0,
