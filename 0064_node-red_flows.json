@@ -16,6 +16,14 @@
     "env": []
   },
   {
+    "id": "e601eac88e6fb4bf",
+    "type": "tab",
+    "label": "플로우 1",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
     "id": "adc276c44d0c018a",
     "type": "modbus-client",
     "name": "",
@@ -56,6 +64,35 @@
   },
   {
     "id": "611e0a37e0085ea2",
+    "type": "modbus-client",
+    "name": "",
+    "clienttype": "simpleser",
+    "bufferCommands": true,
+    "stateLogEnabled": false,
+    "queueLogEnabled": false,
+    "failureLogEnabled": true,
+    "tcpHost": "127.0.0.1",
+    "tcpPort": "502",
+    "tcpType": "DEFAULT",
+    "serialPort": "COM7",
+    "serialType": "RTU-BUFFERD",
+    "serialBaudrate": "9600",
+    "serialDatabits": "8",
+    "serialStopbits": "1",
+    "serialParity": "none",
+    "serialConnectionDelay": "100",
+    "serialAsciiResponseStartDelimiter": "0x3A",
+    "unit_id": "1",
+    "commandDelay": "1",
+    "clientTimeout": "1000",
+    "reconnectOnTimeout": true,
+    "reconnectTimeout": "2000",
+    "parallelUnitIdsAllowed": true,
+    "showWarnings": true,
+    "showLogs": true
+  },
+  {
+    "id": "03bc750eb851639d",
     "type": "modbus-client",
     "name": "",
     "clienttype": "simpleser",
@@ -148,7 +185,7 @@
     "z": "71aaba71cce9c427",
     "name": "XR10 (1~6)",
     "info": "",
-    "x": 110,
+    "x": 90,
     "y": 60,
     "wires": []
   },
@@ -502,20 +539,20 @@
     "wires": []
   },
   {
-    "id": "5f12de8a01b05be4",
+    "id": "ebbf7b6900d0465c",
     "type": "comment",
     "z": "71aaba71cce9c427",
     "name": "조도센서_1",
-    "info": "장치 : BCON-TRM200\n수집 데이터 : 습도, CO2, 조도",
+    "info": "장치 : BCON-TRM200\n수집 데이터 : 온도, 습도, CO2, 조도",
     "x": 90,
     "y": 320,
     "wires": []
   },
   {
-    "id": "cb9b33ad358fca9e",
+    "id": "5efa3a789c8a493c",
     "type": "inject",
     "z": "71aaba71cce9c427",
-    "name": "10분",
+    "name": "9분",
     "props": [
       {
         "p": "payload"
@@ -525,9 +562,9 @@
         "vt": "str"
       }
     ],
-    "repeat": "600",
+    "repeat": "540",
     "crontab": "",
-    "once": false,
+    "once": true,
     "onceDelay": 0.1,
     "topic": "",
     "payload": "",
@@ -536,12 +573,12 @@
     "y": 360,
     "wires": [
       [
-        "995c8af1be6a47b9"
+        "bcabae7b2e30c513"
       ]
     ]
   },
   {
-    "id": "995c8af1be6a47b9",
+    "id": "bcabae7b2e30c513",
     "type": "function",
     "z": "71aaba71cce9c427",
     "name": "select query",
@@ -555,12 +592,12 @@
     "y": 360,
     "wires": [
       [
-        "6290e9587b815253"
+        "b7e848e7ea051546"
       ]
     ]
   },
   {
-    "id": "6290e9587b815253",
+    "id": "b7e848e7ea051546",
     "type": "mysql",
     "z": "71aaba71cce9c427",
     "mydb": "6b5903cef06c0040",
@@ -569,16 +606,16 @@
     "y": 360,
     "wires": [
       [
-        "5c29d31f13a0e2dd"
+        "352f024124dc3091"
       ]
     ]
   },
   {
-    "id": "5c29d31f13a0e2dd",
+    "id": "352f024124dc3091",
     "type": "function",
     "z": "71aaba71cce9c427",
     "name": "send api",
-    "func": "let temp = msg.payload[0].value3;   // 온도\ntemp = temp / 10;\nlet humid = msg.payload[0].value4;  // 습도\nhumid = humid / 10;\nlet co2 = msg.payload[0].value2;    // 이산화탄소\nlet lux = msg.payload[0].value5;    // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0064\",\n    \"scode\": \"73\",\n    \"temp\": temp,\n    \"humid\": humid,\n    \"co2\": co2,\n    \"lux\": lux\n};\n\n\nreturn msg;",
+    "func": "let temp = msg.payload[0].value3;   // 온도\nlet humid = msg.payload[0].value4;  // 습도\nlet co2 = msg.payload[0].value2;    // 이산화탄소\nlet lux = msg.payload[0].value5;    // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0064\",\n    \"scode\": \"73\",\n    \"kind\": \"5\",\n    \"deviceId\": \"3\",\n    \"co2\": co2,\n    \"temperature\": temp,\n    \"humidity\": humid,\n    \"lux\": lux\n};\n\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -588,12 +625,13 @@
     "y": 360,
     "wires": [
       [
-        "e195c8628e79d44d"
+        "8c466ae59bd64c7a",
+        "f4e642657dd0babc"
       ]
     ]
   },
   {
-    "id": "e195c8628e79d44d",
+    "id": "8c466ae59bd64c7a",
     "type": "debug",
     "z": "71aaba71cce9c427",
     "name": "debug 4",
@@ -609,14 +647,14 @@
     "wires": []
   },
   {
-    "id": "a2932a58c0e9856f",
+    "id": "f4e642657dd0babc",
     "type": "http request",
     "z": "71aaba71cce9c427",
     "name": "",
     "method": "POST",
     "ret": "txt",
     "paytoqs": "ignore",
-    "url": "",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0064/get_visual",
     "tls": "",
     "persist": false,
     "proxy": "",
@@ -628,41 +666,25 @@
     "y": 380,
     "wires": [
       [
-        "f6c88628af744056"
+        "5c05ee48d11bb486"
       ]
     ]
   },
   {
-    "id": "f6c88628af744056",
-    "type": "debug",
-    "z": "71aaba71cce9c427",
-    "name": "debug 5",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 900,
-    "y": 380,
-    "wires": []
-  },
-  {
-    "id": "82537656439d5ab8",
+    "id": "80392d766952fb1e",
     "type": "comment",
     "z": "71aaba71cce9c427",
     "name": "조도센서_2",
-    "info": "장치 : BCON-TRM200\n수집 데이터 : 습도, CO2, 조도",
+    "info": "장치 : BCON-TRM200\n수집 데이터 : 온도, 습도, CO2, 조도",
     "x": 90,
     "y": 460,
     "wires": []
   },
   {
-    "id": "d5df9906f508fdb5",
+    "id": "0cac20c245e17099",
     "type": "inject",
     "z": "71aaba71cce9c427",
-    "name": "10분",
+    "name": "9분",
     "props": [
       {
         "p": "payload"
@@ -672,9 +694,9 @@
         "vt": "str"
       }
     ],
-    "repeat": "600",
+    "repeat": "540",
     "crontab": "",
-    "once": false,
+    "once": true,
     "onceDelay": 0.1,
     "topic": "",
     "payload": "",
@@ -683,12 +705,12 @@
     "y": 500,
     "wires": [
       [
-        "65780e71859e4d0e"
+        "2c48d3cd6d237d5f"
       ]
     ]
   },
   {
-    "id": "65780e71859e4d0e",
+    "id": "2c48d3cd6d237d5f",
     "type": "function",
     "z": "71aaba71cce9c427",
     "name": "select query",
@@ -702,12 +724,12 @@
     "y": 500,
     "wires": [
       [
-        "afc6448a9f1372d1"
+        "e69b9e22d80f696b"
       ]
     ]
   },
   {
-    "id": "afc6448a9f1372d1",
+    "id": "e69b9e22d80f696b",
     "type": "mysql",
     "z": "71aaba71cce9c427",
     "mydb": "6b5903cef06c0040",
@@ -716,12 +738,104 @@
     "y": 500,
     "wires": [
       [
-        "dfec4d6543583a5d"
+        "dbc02993d0fccd85"
       ]
     ]
   },
   {
-    "id": "1d207b634e6cd2c0",
+    "id": "4f5cd9bc39df7fd2",
+    "type": "comment",
+    "z": "71aaba71cce9c427",
+    "name": "조도센서_3",
+    "info": "장치 : BCON-TRM200\n수집 데이터 : 온도, 습도, CO2, 조도",
+    "x": 90,
+    "y": 600,
+    "wires": []
+  },
+  {
+    "id": "b47c3deb34d461d4",
+    "type": "inject",
+    "z": "71aaba71cce9c427",
+    "name": "9분",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "540",
+    "crontab": "",
+    "once": true,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 90,
+    "y": 640,
+    "wires": [
+      [
+        "d026f62d4f84f934"
+      ]
+    ]
+  },
+  {
+    "id": "d026f62d4f84f934",
+    "type": "function",
+    "z": "71aaba71cce9c427",
+    "name": "select query",
+    "func": "msg.topic = 'SELECT * FROM dtu3 WHERE (date BETWEEN date_add(now(), interval -60 second) AND now()) ORDER BY date DESC LIMIT 1';\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 250,
+    "y": 640,
+    "wires": [
+      [
+        "55854614ec8ea77f"
+      ]
+    ]
+  },
+  {
+    "id": "55854614ec8ea77f",
+    "type": "mysql",
+    "z": "71aaba71cce9c427",
+    "mydb": "6b5903cef06c0040",
+    "name": "",
+    "x": 420,
+    "y": 640,
+    "wires": [
+      [
+        "5405ccd2533f3ade"
+      ]
+    ]
+  },
+  {
+    "id": "dbc02993d0fccd85",
+    "type": "function",
+    "z": "71aaba71cce9c427",
+    "name": "send api",
+    "func": "let temp = msg.payload[0].value3;   // 온도\nlet humid = msg.payload[0].value4;  // 습도\nlet co2 = msg.payload[0].value2;    // 이산화탄소\nlet lux = msg.payload[0].value5;    // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0064\",\n    \"scode\": \"74\",\n    \"kind\": \"5\",\n    \"deviceId\": \"4\",\n    \"co2\": co2,\n    \"temperature\": temp,\n    \"humidity\": humid,\n    \"lux\": lux\n};\n\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 580,
+    "y": 500,
+    "wires": [
+      [
+        "0f9e9804a9acddd4",
+        "7c868d6d013f1961"
+      ]
+    ]
+  },
+  {
+    "id": "0f9e9804a9acddd4",
     "type": "debug",
     "z": "71aaba71cce9c427",
     "name": "debug 6",
@@ -737,14 +851,14 @@
     "wires": []
   },
   {
-    "id": "52dc96c4c1ec0fa3",
+    "id": "7c868d6d013f1961",
     "type": "http request",
     "z": "71aaba71cce9c427",
     "name": "",
     "method": "POST",
     "ret": "txt",
     "paytoqs": "ignore",
-    "url": "",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0064/get_visual",
     "tls": "",
     "persist": false,
     "proxy": "",
@@ -756,100 +870,32 @@
     "y": 520,
     "wires": [
       [
-        "fcb1a46969e1f58d"
+        "c5ee18c9a7622d20"
       ]
     ]
   },
   {
-    "id": "fcb1a46969e1f58d",
-    "type": "debug",
-    "z": "71aaba71cce9c427",
-    "name": "debug 7",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 900,
-    "y": 520,
-    "wires": []
-  },
-  {
-    "id": "12241d3c46c975b8",
-    "type": "comment",
-    "z": "71aaba71cce9c427",
-    "name": "조도센서_3",
-    "info": "장치 : BCON-TRM200\n수집 데이터 : 습도, CO2, 조도",
-    "x": 90,
-    "y": 600,
-    "wires": []
-  },
-  {
-    "id": "fe1326341239abcb",
-    "type": "inject",
-    "z": "71aaba71cce9c427",
-    "name": "10분",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "600",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 90,
-    "y": 640,
-    "wires": [
-      [
-        "94158f8f5b591dab"
-      ]
-    ]
-  },
-  {
-    "id": "94158f8f5b591dab",
+    "id": "5405ccd2533f3ade",
     "type": "function",
     "z": "71aaba71cce9c427",
-    "name": "select query",
-    "func": "msg.topic = 'SELECT * FROM dtu3 WHERE (date BETWEEN date_add(now(), interval -60 second) AND now()) ORDER BY date DESC LIMIT 1';\n\nreturn msg;",
+    "name": "send api",
+    "func": "let temp = msg.payload[0].value3;   // 온도\nlet humid = msg.payload[0].value4;  // 습도\nlet co2 = msg.payload[0].value2;    // 이산화탄소\nlet lux = msg.payload[0].value5;    // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0064\",\n    \"scode\": \"75\",\n    \"kind\": \"5\",\n    \"deviceId\": \"5\",\n    \"co2\": co2,\n    \"temperature\": temp,\n    \"humidity\": humid,\n    \"lux\": lux\n};\n\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 250,
+    "x": 580,
     "y": 640,
     "wires": [
       [
-        "60c3bb4b6cf12f69"
+        "c5e072e84b7cddbb",
+        "33b18a3dae59721f"
       ]
     ]
   },
   {
-    "id": "60c3bb4b6cf12f69",
-    "type": "mysql",
-    "z": "71aaba71cce9c427",
-    "mydb": "6b5903cef06c0040",
-    "name": "",
-    "x": 420,
-    "y": 640,
-    "wires": [
-      [
-        "7146c1dab3701f84"
-      ]
-    ]
-  },
-  {
-    "id": "0b74657c9b9ea980",
+    "id": "c5e072e84b7cddbb",
     "type": "debug",
     "z": "71aaba71cce9c427",
     "name": "debug 8",
@@ -865,14 +911,14 @@
     "wires": []
   },
   {
-    "id": "b5b4b8c5304d1e5b",
+    "id": "33b18a3dae59721f",
     "type": "http request",
     "z": "71aaba71cce9c427",
     "name": "",
     "method": "POST",
     "ret": "txt",
     "paytoqs": "ignore",
-    "url": "",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0064/get_visual",
     "tls": "",
     "persist": false,
     "proxy": "",
@@ -884,12 +930,44 @@
     "y": 660,
     "wires": [
       [
-        "97e2ccb78063bcee"
+        "62be689dc477249b"
       ]
     ]
   },
   {
-    "id": "97e2ccb78063bcee",
+    "id": "5c05ee48d11bb486",
+    "type": "debug",
+    "z": "71aaba71cce9c427",
+    "name": "debug 5",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 900,
+    "y": 380,
+    "wires": []
+  },
+  {
+    "id": "c5ee18c9a7622d20",
+    "type": "debug",
+    "z": "71aaba71cce9c427",
+    "name": "debug 7",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 900,
+    "y": 520,
+    "wires": []
+  },
+  {
+    "id": "62be689dc477249b",
     "type": "debug",
     "z": "71aaba71cce9c427",
     "name": "debug 9",
@@ -903,44 +981,6 @@
     "x": 900,
     "y": 660,
     "wires": []
-  },
-  {
-    "id": "dfec4d6543583a5d",
-    "type": "function",
-    "z": "71aaba71cce9c427",
-    "name": "send api",
-    "func": "let temp = msg.payload[0].value3;   // 온도\ntemp = temp / 10;\nlet humid = msg.payload[0].value4;  // 습도\nhumid = humid / 10;\nlet co2 = msg.payload[0].value2;    // 이산화탄소\nlet lux = msg.payload[0].value5;    // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0064\",\n    \"scode\": \"74\",\n    \"temp\": temp,\n    \"humid\": humid,\n    \"co2\": co2,\n    \"lux\": lux\n};\n\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 580,
-    "y": 500,
-    "wires": [
-      [
-        "1d207b634e6cd2c0"
-      ]
-    ]
-  },
-  {
-    "id": "7146c1dab3701f84",
-    "type": "function",
-    "z": "71aaba71cce9c427",
-    "name": "send api",
-    "func": "let temp = msg.payload[0].value3;   // 온도\ntemp = temp / 10;\nlet humid = msg.payload[0].value4;  // 습도\nhumid = humid / 10;\nlet co2 = msg.payload[0].value2;    // 이산화탄소\nlet lux = msg.payload[0].value5;    // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0064\",\n    \"scode\": \"75\",\n    \"temp\": temp,\n    \"humid\": humid,\n    \"co2\": co2,\n    \"lux\": lux\n};\n\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 580,
-    "y": 640,
-    "wires": [
-      [
-        "0b74657c9b9ea980"
-      ]
-    ]
   },
   {
     "id": "55ca49778522607e",
