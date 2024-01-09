@@ -16,14 +16,6 @@
     "env": []
   },
   {
-    "id": "e601eac88e6fb4bf",
-    "type": "tab",
-    "label": "플로우 1",
-    "disabled": false,
-    "info": "",
-    "env": []
-  },
-  {
     "id": "adc276c44d0c018a",
     "type": "modbus-client",
     "name": "",
