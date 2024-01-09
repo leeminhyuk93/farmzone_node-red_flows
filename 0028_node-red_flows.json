@@ -178,361 +178,6 @@
     "showLogs": true
   },
   {
-    "id": "f68a7aea4f52d72b",
-    "type": "debug",
-    "z": "5e99d5afcc1bc9a3",
-    "name": "debug 9",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "payload",
-    "targetType": "msg",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 660,
-    "y": 60,
-    "wires": []
-  },
-  {
-    "id": "84bbad8421a8d64d",
-    "type": "debug",
-    "z": "5e99d5afcc1bc9a3",
-    "name": "debug 10",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "payload",
-    "targetType": "msg",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 660,
-    "y": 140,
-    "wires": []
-  },
-  {
-    "id": "ff4e9a797846b990",
-    "type": "function",
-    "z": "5e99d5afcc1bc9a3",
-    "name": "PLC1(터널프리저) 중간온도",
-    "func": "//TotalCount\n//MiddleTemp\n//OmronTemp\n\n//var temp = (Math.round(msg.payload * 10)) / 100\nvar temp = parseInt(msg.payload);\n\n// 영하 온도 표시\nif (temp > 32767) {    // temp값이 32767보다 크다면\n    temp -= 65536;     // temp값에서 65536을 뺀 후에 다시 대입\n}\n\nvar temp1 = temp + 3\ntemp1 = parseFloat(temp1) / 10;\nvar MiddleTemp\n//var MiddleTemp = global.get(\"counter\") || 0\nMiddleTemp = temp1  // 영상 온도\n\nglobal.set(\"MiddleTemp\", MiddleTemp)\nmsg.payload = MiddleTemp\n\n\nreturn msg;",
-    "outputs": 1,
-    "timeout": "",
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 320,
-    "y": 60,
-    "wires": [
-      [
-        "f68a7aea4f52d72b"
-      ]
-    ]
-  },
-  {
-    "id": "cd0a5840d943b86e",
-    "type": "inject",
-    "z": "5e99d5afcc1bc9a3",
-    "d": true,
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "2",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 110,
-    "y": 360,
-    "wires": [
-      [
-        "24d55790d0d4efd6",
-        "4a6a5add7b95bef0",
-        "76456b5e81f05835",
-        "fb7dd645e72cc41f",
-        "6f518b42d05a43a1"
-      ]
-    ]
-  },
-  {
-    "id": "24d55790d0d4efd6",
-    "type": "function",
-    "z": "5e99d5afcc1bc9a3",
-    "name": "PLC1 터널프리저 중간온도",
-    "func": "var temp = global.get(\"MiddleTemp\")\nmsg.payload = temp\nreturn msg;\n",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 340,
-    "y": 360,
-    "wires": [
-      [
-        "e312575749f4c95d"
-      ]
-    ]
-  },
-  {
-    "id": "e312575749f4c95d",
-    "type": "debug",
-    "z": "5e99d5afcc1bc9a3",
-    "name": "debug 12",
-    "active": false,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 580,
-    "y": 360,
-    "wires": []
-  },
-  {
-    "id": "390c49a009cbbfe6",
-    "type": "function",
-    "z": "5e99d5afcc1bc9a3",
-    "name": "PLC2(셔틀패너) Total수량",
-    "func": "//TotalCount\n//MiddleTemp\n//OmronTemp\nvar temp = msg.payload\nvar TotalCount\n//var TotalCount = global.get(\"TotalCount\") || 0\nTotalCount = temp * 1\nglobal.set(\"TotalCount\", TotalCount)\nmsg.payload = TotalCount\n\nreturn msg;",
-    "outputs": 1,
-    "timeout": "",
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 310,
-    "y": 140,
-    "wires": [
-      [
-        "84bbad8421a8d64d"
-      ]
-    ]
-  },
-  {
-    "id": "4a6a5add7b95bef0",
-    "type": "function",
-    "z": "5e99d5afcc1bc9a3",
-    "name": "PLC2(셔틀패너) Total수량",
-    "func": "var temp = global.get(\"TotalCount\")\nmsg.payload = temp\nreturn msg;\n//TotalCount\n//MiddleTemp\n//OmronTemp",
-    "outputs": 1,
-    "timeout": "",
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 330,
-    "y": 420,
-    "wires": [
-      [
-        "4c7bc34ad52e3687"
-      ]
-    ]
-  },
-  {
-    "id": "4c7bc34ad52e3687",
-    "type": "debug",
-    "z": "5e99d5afcc1bc9a3",
-    "name": "debug 13",
-    "active": false,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 580,
-    "y": 420,
-    "wires": []
-  },
-  {
-    "id": "76456b5e81f05835",
-    "type": "function",
-    "z": "5e99d5afcc1bc9a3",
-    "name": "TEMP(OMRON) TEMP",
-    "func": "var temp = global.get(\"OmronTemp\")\nmsg.payload = temp\n\nreturn msg;\n",
-    "outputs": 1,
-    "timeout": "",
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 330,
-    "y": 480,
-    "wires": [
-      [
-        "4f4ac4410af1c5c6"
-      ]
-    ]
-  },
-  {
-    "id": "4f4ac4410af1c5c6",
-    "type": "debug",
-    "z": "5e99d5afcc1bc9a3",
-    "name": "debug 14",
-    "active": false,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "payload",
-    "targetType": "msg",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 580,
-    "y": 480,
-    "wires": []
-  },
-  {
-    "id": "6f518b42d05a43a1",
-    "type": "function",
-    "z": "5e99d5afcc1bc9a3",
-    "d": true,
-    "name": "SQL쿼리",
-    "func": "var TotalCount = global.get(\"TotalCount\");\nvar MiddleTemp = global.get(\"MiddleTemp\");\n//var OmronTemp = global.get(\"OmronTemp\");\n//TotalCount\n//MiddleTemp\n//OmronTemp\n\nmsg.payload = [\n    //msg.payload.Version,\n    msg.payload.TotalCount = TotalCount,\n    msg.payload.MiddleTemp = \"22.0\",\n   // msg.payload.OmronTemp = OmronTemp,\n]\n\nmsg.topic = \"insert into fztable(TotalCount,MiddleTemp,date) values(?,?,current_timestamp());\";\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 280,
-    "y": 540,
-    "wires": [
-      []
-    ]
-  },
-  {
-    "id": "dc17230927eebbf3",
-    "type": "debug",
-    "z": "5e99d5afcc1bc9a3",
-    "name": "debug 15",
-    "active": false,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "payload",
-    "targetType": "msg",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 580,
-    "y": 640,
-    "wires": []
-  },
-  {
-    "id": "9ad0548b5affacd8",
-    "type": "inject",
-    "z": "5e99d5afcc1bc9a3",
-    "name": "7day",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "00 01 * * 0",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 110,
-    "y": 640,
-    "wires": [
-      [
-        "e05fcbe79c95309f"
-      ]
-    ]
-  },
-  {
-    "id": "e05fcbe79c95309f",
-    "type": "function",
-    "z": "5e99d5afcc1bc9a3",
-    "name": "truncate fztable",
-    "func": "msg.topic = \"truncate table fz_shm.fztable\";\n\nreturn msg;\n\n",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 300,
-    "y": 640,
-    "wires": [
-      []
-    ]
-  },
-  {
-    "id": "fb7dd645e72cc41f",
-    "type": "function",
-    "z": "5e99d5afcc1bc9a3",
-    "name": "SQL쿼리(test)",
-    "func": "var TotalCount = global.get(\"TotalCount\");\nvar MiddleTemp = global.get(\"MiddleTemp\");\nvar OmronTemp = global.get(\"OmronTemp\");\n//TotalCount\n//MiddleTemp\n//OmronTemp\n\nmsg.payload = [\n    //msg.payload.Version,\n    msg.payload.TotalCount = TotalCount,\n    msg.payload.MiddleTemp = MiddleTemp,\n    msg.payload.OmronTemp = OmronTemp,\n]\n\nmsg.topic = \"insert into temp(TotalCount,MiddleTemp,OmronTemp,date) values(?,?,?,current_timestamp());\";\nreturn msg;",
-    "outputs": 1,
-    "timeout": "",
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 300,
-    "y": 580,
-    "wires": [
-      [
-        "40071ae0e77d484c",
-        "dc17230927eebbf3"
-      ]
-    ]
-  },
-  {
-    "id": "c38a984ca610a1dc",
-    "type": "function",
-    "z": "5e99d5afcc1bc9a3",
-    "name": "TEMP(OMRON) TEMP",
-    "func": "//TotalCount\n//MiddleTemp\n//OmronTemp\n\nvar temp = msg.payload;\nvar OmronTemp\n//var OmronTemp = global.get(\"OmronTemp\") || 0\nOmronTemp = temp;\nglobal.set(\"OmronTemp\", OmronTemp)\nmsg.payload = OmronTemp\n\n\nreturn msg;",
-    "outputs": 1,
-    "timeout": "",
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 310,
-    "y": 240,
-    "wires": [
-      [
-        "b85989685e39ff34"
-      ]
-    ]
-  },
-  {
-    "id": "b85989685e39ff34",
-    "type": "debug",
-    "z": "5e99d5afcc1bc9a3",
-    "name": "debug 16",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "payload",
-    "targetType": "msg",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 660,
-    "y": 240,
-    "wires": []
-  },
-  {
     "id": "1e5c784762af09b5",
     "type": "function",
     "z": "5e99d5afcc1bc9a3",
@@ -545,7 +190,7 @@
     "finalize": "",
     "libs": [],
     "x": 320,
-    "y": 760,
+    "y": 580,
     "wires": [
       [
         "286698dbf7443c40"
@@ -574,7 +219,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 760,
+    "y": 580,
     "wires": [
       [
         "1e5c784762af09b5"
@@ -594,7 +239,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 440,
-    "y": 840,
+    "y": 660,
     "wires": []
   },
   {
@@ -609,7 +254,7 @@
     "finalize": "",
     "libs": [],
     "x": 750,
-    "y": 760,
+    "y": 580,
     "wires": [
       [
         "7f892c2283b22610"
@@ -633,7 +278,7 @@
     "senderr": false,
     "headers": [],
     "x": 270,
-    "y": 840,
+    "y": 660,
     "wires": [
       [
         "bfad8abbbd15031c"
@@ -652,7 +297,7 @@
     "finalize": "",
     "libs": [],
     "x": 320,
-    "y": 920,
+    "y": 740,
     "wires": [
       [
         "e07b7c790364ce19"
@@ -681,7 +326,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 920,
+    "y": 740,
     "wires": [
       [
         "e1d22dfaf43d02cc"
@@ -701,7 +346,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 440,
-    "y": 1000,
+    "y": 820,
     "wires": []
   },
   {
@@ -716,7 +361,7 @@
     "finalize": "",
     "libs": [],
     "x": 750,
-    "y": 920,
+    "y": 740,
     "wires": [
       [
         "18aedf726099fd2e"
@@ -740,7 +385,7 @@
     "senderr": false,
     "headers": [],
     "x": 270,
-    "y": 1000,
+    "y": 820,
     "wires": [
       [
         "9b1d23d5df9e8f08"
@@ -759,8 +404,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 290,
-    "y": 1120,
+    "x": 310,
+    "y": 940,
     "wires": [
       [
         "43b846e474111dd0"
@@ -788,8 +433,8 @@
     "topic": "",
     "payload": "",
     "payloadType": "date",
-    "x": 110,
-    "y": 1120,
+    "x": 130,
+    "y": 940,
     "wires": [
       [
         "5d380b8b32f69578"
@@ -809,8 +454,8 @@
     "targetType": "msg",
     "statusVal": "",
     "statusType": "auto",
-    "x": 460,
-    "y": 1240,
+    "x": 480,
+    "y": 1060,
     "wires": []
   },
   {
@@ -825,8 +470,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 690,
-    "y": 1120,
+    "x": 710,
+    "y": 940,
     "wires": [
       [
         "e77c25c19933cd11",
@@ -850,8 +495,8 @@
     "authType": "",
     "senderr": false,
     "headers": [],
-    "x": 250,
-    "y": 1200,
+    "x": 270,
+    "y": 1020,
     "wires": [
       [
         "b160c23cce73f3a6"
@@ -871,8 +516,8 @@
     "targetType": "msg",
     "statusVal": "",
     "statusType": "auto",
-    "x": 680,
-    "y": 1240,
+    "x": 700,
+    "y": 1060,
     "wires": []
   },
   {
@@ -882,63 +527,8 @@
     "name": "send API",
     "info": "",
     "x": 120,
-    "y": 720,
+    "y": 540,
     "wires": []
-  },
-  {
-    "id": "195fd8a83884830a",
-    "type": "comment",
-    "z": "5e99d5afcc1bc9a3",
-    "name": "MySQL DB",
-    "info": "",
-    "x": 120,
-    "y": 320,
-    "wires": []
-  },
-  {
-    "id": "bbda9e6ac5f1f5fb",
-    "type": "modbus-read",
-    "z": "5e99d5afcc1bc9a3",
-    "d": true,
-    "name": "smg-5400",
-    "topic": "",
-    "showStatusActivities": false,
-    "logIOActivities": false,
-    "showErrors": false,
-    "showWarnings": true,
-    "unitid": "1",
-    "dataType": "HoldingRegister",
-    "adr": "9218",
-    "quantity": "1",
-    "rate": "2",
-    "rateUnit": "s",
-    "delayOnStart": false,
-    "startDelayTime": "",
-    "server": "b9895735130da027",
-    "useIOFile": false,
-    "ioFile": "",
-    "useIOForPayload": false,
-    "emptyMsgOnFail": false,
-    "x": 100,
-    "y": 240,
-    "wires": [
-      [
-        "c38a984ca610a1dc"
-      ],
-      []
-    ]
-  },
-  {
-    "id": "40071ae0e77d484c",
-    "type": "mysql",
-    "z": "5e99d5afcc1bc9a3",
-    "mydb": "b0b981838aca64c6",
-    "name": "",
-    "x": 580,
-    "y": 580,
-    "wires": [
-      []
-    ]
   },
   {
     "id": "286698dbf7443c40",
@@ -947,7 +537,7 @@
     "mydb": "34654803fe111f09",
     "name": "",
     "x": 520,
-    "y": 760,
+    "y": 580,
     "wires": [
       [
         "0d4607aff816ded9"
@@ -961,7 +551,7 @@
     "mydb": "34654803fe111f09",
     "name": "",
     "x": 520,
-    "y": 920,
+    "y": 740,
     "wires": [
       [
         "dfa10c0a1fc7c0c9"
@@ -974,57 +564,11 @@
     "z": "5e99d5afcc1bc9a3",
     "mydb": "34654803fe111f09",
     "name": "",
-    "x": 500,
-    "y": 1120,
+    "x": 520,
+    "y": 940,
     "wires": [
       [
         "85dd7e75227a911d"
-      ]
-    ]
-  },
-  {
-    "id": "d6a35b7932731233",
-    "type": "modbustcp-read",
-    "z": "5e99d5afcc1bc9a3",
-    "d": true,
-    "name": "PLC1",
-    "topic": "",
-    "dataType": "InputRegister",
-    "adr": "5",
-    "quantity": "1",
-    "rate": "10",
-    "rateUnit": "s",
-    "server": "ae9d435d665efd43",
-    "ieeeType": "off",
-    "ieeeBE": true,
-    "x": 90,
-    "y": 60,
-    "wires": [
-      [
-        "ff4e9a797846b990"
-      ]
-    ]
-  },
-  {
-    "id": "e8bd1a5f1409c143",
-    "type": "modbustcp-read",
-    "z": "5e99d5afcc1bc9a3",
-    "d": true,
-    "name": "PLC1",
-    "topic": "",
-    "dataType": "InputRegister",
-    "adr": "20",
-    "quantity": "1",
-    "rate": "10",
-    "rateUnit": "s",
-    "server": "1141f23eed59efe7",
-    "ieeeType": "off",
-    "ieeeBE": true,
-    "x": 90,
-    "y": 140,
-    "wires": [
-      [
-        "390c49a009cbbfe6"
       ]
     ]
   },
@@ -1034,8 +578,8 @@
     "z": "5e99d5afcc1bc9a3",
     "name": "MySQL DB - 저장된 기간이 현재 날짜의 기준으로 7일이 지난 데이터는 삭제하는 delete query",
     "info": "",
-    "x": 340,
-    "y": 1340,
+    "x": 360,
+    "y": 1160,
     "wires": []
   },
   {
@@ -1059,8 +603,8 @@
     "topic": "",
     "payload": "",
     "payloadType": "date",
-    "x": 110,
-    "y": 1380,
+    "x": 130,
+    "y": 1200,
     "wires": [
       [
         "6963cbfb1d112772"
@@ -1079,8 +623,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 290,
-    "y": 1380,
+    "x": 310,
+    "y": 1200,
     "wires": [
       [
         "f1bc0a9e06da0625"
@@ -1093,8 +637,8 @@
     "z": "5e99d5afcc1bc9a3",
     "mydb": "b0b981838aca64c6",
     "name": "",
-    "x": 460,
-    "y": 1380,
+    "x": 480,
+    "y": 1200,
     "wires": [
       [
         "fc6803d8bdc147f8"
@@ -1113,14 +657,14 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 620,
-    "y": 1380,
+    "x": 640,
+    "y": 1200,
     "wires": []
   },
   {
     "id": "34a2d173c9eb4887",
     "type": "inject",
-    "z": "83321c3d1b0f6285",
+    "z": "5e99d5afcc1bc9a3",
     "name": "",
     "props": [
       {
@@ -1149,7 +693,7 @@
   {
     "id": "c99fcc1661171b9b",
     "type": "modbus-getter",
-    "z": "83321c3d1b0f6285",
+    "z": "5e99d5afcc1bc9a3",
     "name": "터널프리저_PLC",
     "showStatusActivities": true,
     "showErrors": true,
@@ -1179,7 +723,7 @@
   {
     "id": "b4a85c21425d5438",
     "type": "function",
-    "z": "83321c3d1b0f6285",
+    "z": "5e99d5afcc1bc9a3",
     "name": "중간 온도",
     "func": "const device = 2;\nlet value = (msg.payload == null || msg.payload == undefined) ? \"\" : msg.payload;\n\nif (value > 32767) {\n    value -= 65535;\n}\n\nvalue = parseFloat(value) / 10;\n\nmsg.payload = [device, value];\nreturn msg;",
     "outputs": 1,
@@ -1197,23 +741,9 @@
     ]
   },
   {
-    "id": "37ad13edcb079b9f",
-    "type": "mysql",
-    "z": "83321c3d1b0f6285",
-    "mydb": "b0b981838aca64c6",
-    "name": "",
-    "x": 860,
-    "y": 360,
-    "wires": [
-      [
-        "fc20c7108b97b430"
-      ]
-    ]
-  },
-  {
     "id": "cf67a0a3272b9658",
     "type": "function",
-    "z": "83321c3d1b0f6285",
+    "z": "5e99d5afcc1bc9a3",
     "name": "insert DB",
     "func": "var totalCount = \"\";\nvar middleTemp = \"\";\nvar omronTemp = \"\";\n\nfor (let i = 0; i < 3; i++) {\n    const device = msg.payload[i][0];\n    const value = msg.payload[i][1];\n\n    switch (device) {\n        case 1:\n            totalCount = value;\n            break;\n\n        case 2:\n            middleTemp = value;\n            break;\n\n        case 3:\n            omronTemp = value;\n            break;\n    }\n}\n\nmsg.payload = {\n    \"totalCount\": totalCount,\n    \"middleTemp\": middleTemp,\n    \"omronTemp\": omronTemp\n}\n\nmsg.topic = \"insert into temp(TotalCount, MiddleTemp, OmronTemp, date) values('\" + totalCount + \"', '\" + middleTemp + \"', '\" + omronTemp + \"', current_timestamp());\";\nreturn msg;",
     "outputs": 1,
@@ -1222,8 +752,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 700,
-    "y": 340,
+    "x": 620,
+    "y": 400,
     "wires": [
       [
         "f40c76d72e7bd7d1",
@@ -1234,7 +764,7 @@
   {
     "id": "cff0bbcbcd5d7c40",
     "type": "delay",
-    "z": "83321c3d1b0f6285",
+    "z": "5e99d5afcc1bc9a3",
     "name": "",
     "pauseType": "delay",
     "timeout": "0.5",
@@ -1260,7 +790,7 @@
   {
     "id": "49dcfdcb3e67e506",
     "type": "modbus-getter",
-    "z": "83321c3d1b0f6285",
+    "z": "5e99d5afcc1bc9a3",
     "name": "셔틀패너_PLC",
     "showStatusActivities": true,
     "showErrors": true,
@@ -1290,7 +820,7 @@
   {
     "id": "0d2a927bd22a5616",
     "type": "delay",
-    "z": "83321c3d1b0f6285",
+    "z": "5e99d5afcc1bc9a3",
     "name": "",
     "pauseType": "delay",
     "timeout": "0.5",
@@ -1316,7 +846,7 @@
   {
     "id": "49d22122e523338c",
     "type": "function",
-    "z": "83321c3d1b0f6285",
+    "z": "5e99d5afcc1bc9a3",
     "name": "생산량",
     "func": "const device = 1;\nconst value = (msg.payload == null || msg.payload == undefined) ? \"\" : msg.payload[0];\n\nmsg.payload = [device, value];\nreturn msg;",
     "outputs": 1,
@@ -1336,7 +866,7 @@
   {
     "id": "a7e3c5d78aa5b7c9",
     "type": "modbus-getter",
-    "z": "83321c3d1b0f6285",
+    "z": "5e99d5afcc1bc9a3",
     "name": "오므론_temp",
     "showStatusActivities": true,
     "showErrors": true,
@@ -1366,7 +896,7 @@
   {
     "id": "9873264689ffe9df",
     "type": "delay",
-    "z": "83321c3d1b0f6285",
+    "z": "5e99d5afcc1bc9a3",
     "name": "",
     "pauseType": "delay",
     "timeout": "0.5",
@@ -1391,7 +921,7 @@
   {
     "id": "674022599477fcf0",
     "type": "function",
-    "z": "83321c3d1b0f6285",
+    "z": "5e99d5afcc1bc9a3",
     "name": "2봉 워너믹서 온도",
     "func": "const device = 3;\nconst value = (msg.payload == null || msg.payload == undefined) ? \"\" : msg.payload[0];\n\nmsg.payload = [device, value];\nreturn msg;",
     "outputs": 1,
@@ -1411,7 +941,7 @@
   {
     "id": "176cfcc49a8e9042",
     "type": "join",
-    "z": "83321c3d1b0f6285",
+    "z": "5e99d5afcc1bc9a3",
     "name": "",
     "mode": "custom",
     "build": "array",
@@ -1437,25 +967,19 @@
     ]
   },
   {
-    "id": "fc20c7108b97b430",
-    "type": "debug",
-    "z": "83321c3d1b0f6285",
-    "name": "debug 24",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 1000,
-    "y": 360,
+    "id": "df5719370619911f",
+    "type": "comment",
+    "z": "5e99d5afcc1bc9a3",
+    "name": "장치 정보",
+    "info": "1. 셔틀패너_PLC\n-수집 데이터 : 생산량\n-IP : 192.168.0.222\n-PORT : 502\n-FC : 4\n-데이터 불러오는 주소 : 20\n\n2. 터널프리저_PLC\n-수집 데이터 : 중간 온도\n-IP : 192.168.0.221\n-PORT : 502\n-FC : 4\n-데이터 불러오는 주소 : 5\n\n3. 오므론 온도컨트롤러\n-수집 데이터 : 2봉 워너믹서 온도\n-IP : 192.168.0.201\n-PORT : 1501\n-FC : 3\n-데이터 불러오는 주소 : 9218",
+    "x": 80,
+    "y": 40,
     "wires": []
   },
   {
     "id": "f40c76d72e7bd7d1",
     "type": "debug",
-    "z": "83321c3d1b0f6285",
+    "z": "5e99d5afcc1bc9a3",
     "name": "debug 25",
     "active": true,
     "tosidebar": true,
@@ -1464,18 +988,448 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 860,
-    "y": 320,
+    "x": 780,
+    "y": 380,
     "wires": []
   },
   {
-    "id": "df5719370619911f",
+    "id": "37ad13edcb079b9f",
+    "type": "mysql",
+    "z": "5e99d5afcc1bc9a3",
+    "mydb": "b0b981838aca64c6",
+    "name": "",
+    "x": 780,
+    "y": 420,
+    "wires": [
+      [
+        "fc20c7108b97b430"
+      ]
+    ]
+  },
+  {
+    "id": "fc20c7108b97b430",
+    "type": "debug",
+    "z": "5e99d5afcc1bc9a3",
+    "name": "debug 24",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 940,
+    "y": 420,
+    "wires": []
+  },
+  {
+    "id": "f68a7aea4f52d72b",
+    "type": "debug",
+    "z": "83321c3d1b0f6285",
+    "name": "debug 9",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 680,
+    "y": 560,
+    "wires": []
+  },
+  {
+    "id": "84bbad8421a8d64d",
+    "type": "debug",
+    "z": "83321c3d1b0f6285",
+    "name": "debug 10",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 680,
+    "y": 640,
+    "wires": []
+  },
+  {
+    "id": "ff4e9a797846b990",
+    "type": "function",
+    "z": "83321c3d1b0f6285",
+    "name": "PLC1(터널프리저) 중간온도",
+    "func": "//TotalCount\n//MiddleTemp\n//OmronTemp\n\n//var temp = (Math.round(msg.payload * 10)) / 100\nvar temp = parseInt(msg.payload);\n\n// 영하 온도 표시\nif (temp > 32767) {    // temp값이 32767보다 크다면\n    temp -= 65536;     // temp값에서 65536을 뺀 후에 다시 대입\n}\n\nvar temp1 = temp + 3\ntemp1 = parseFloat(temp1) / 10;\nvar MiddleTemp\n//var MiddleTemp = global.get(\"counter\") || 0\nMiddleTemp = temp1  // 영상 온도\n\nglobal.set(\"MiddleTemp\", MiddleTemp)\nmsg.payload = MiddleTemp\n\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": "",
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 340,
+    "y": 560,
+    "wires": [
+      [
+        "f68a7aea4f52d72b"
+      ]
+    ]
+  },
+  {
+    "id": "cd0a5840d943b86e",
+    "type": "inject",
+    "z": "83321c3d1b0f6285",
+    "d": true,
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "2",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 860,
+    "wires": [
+      [
+        "24d55790d0d4efd6",
+        "4a6a5add7b95bef0",
+        "76456b5e81f05835",
+        "fb7dd645e72cc41f",
+        "6f518b42d05a43a1"
+      ]
+    ]
+  },
+  {
+    "id": "24d55790d0d4efd6",
+    "type": "function",
+    "z": "83321c3d1b0f6285",
+    "name": "PLC1 터널프리저 중간온도",
+    "func": "var temp = global.get(\"MiddleTemp\")\nmsg.payload = temp\nreturn msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 360,
+    "y": 860,
+    "wires": [
+      [
+        "e312575749f4c95d"
+      ]
+    ]
+  },
+  {
+    "id": "e312575749f4c95d",
+    "type": "debug",
+    "z": "83321c3d1b0f6285",
+    "name": "debug 12",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 600,
+    "y": 860,
+    "wires": []
+  },
+  {
+    "id": "390c49a009cbbfe6",
+    "type": "function",
+    "z": "83321c3d1b0f6285",
+    "name": "PLC2(셔틀패너) Total수량",
+    "func": "//TotalCount\n//MiddleTemp\n//OmronTemp\nvar temp = msg.payload\nvar TotalCount\n//var TotalCount = global.get(\"TotalCount\") || 0\nTotalCount = temp * 1\nglobal.set(\"TotalCount\", TotalCount)\nmsg.payload = TotalCount\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": "",
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 330,
+    "y": 640,
+    "wires": [
+      [
+        "84bbad8421a8d64d"
+      ]
+    ]
+  },
+  {
+    "id": "4a6a5add7b95bef0",
+    "type": "function",
+    "z": "83321c3d1b0f6285",
+    "name": "PLC2(셔틀패너) Total수량",
+    "func": "var temp = global.get(\"TotalCount\")\nmsg.payload = temp\nreturn msg;\n//TotalCount\n//MiddleTemp\n//OmronTemp",
+    "outputs": 1,
+    "timeout": "",
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 350,
+    "y": 920,
+    "wires": [
+      [
+        "4c7bc34ad52e3687"
+      ]
+    ]
+  },
+  {
+    "id": "4c7bc34ad52e3687",
+    "type": "debug",
+    "z": "83321c3d1b0f6285",
+    "name": "debug 13",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 600,
+    "y": 920,
+    "wires": []
+  },
+  {
+    "id": "76456b5e81f05835",
+    "type": "function",
+    "z": "83321c3d1b0f6285",
+    "name": "TEMP(OMRON) TEMP",
+    "func": "var temp = global.get(\"OmronTemp\")\nmsg.payload = temp\n\nreturn msg;\n",
+    "outputs": 1,
+    "timeout": "",
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 350,
+    "y": 980,
+    "wires": [
+      [
+        "4f4ac4410af1c5c6"
+      ]
+    ]
+  },
+  {
+    "id": "4f4ac4410af1c5c6",
+    "type": "debug",
+    "z": "83321c3d1b0f6285",
+    "name": "debug 14",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 600,
+    "y": 980,
+    "wires": []
+  },
+  {
+    "id": "6f518b42d05a43a1",
+    "type": "function",
+    "z": "83321c3d1b0f6285",
+    "d": true,
+    "name": "SQL쿼리",
+    "func": "var TotalCount = global.get(\"TotalCount\");\nvar MiddleTemp = global.get(\"MiddleTemp\");\n//var OmronTemp = global.get(\"OmronTemp\");\n//TotalCount\n//MiddleTemp\n//OmronTemp\n\nmsg.payload = [\n    //msg.payload.Version,\n    msg.payload.TotalCount = TotalCount,\n    msg.payload.MiddleTemp = \"22.0\",\n   // msg.payload.OmronTemp = OmronTemp,\n]\n\nmsg.topic = \"insert into fztable(TotalCount,MiddleTemp,date) values(?,?,current_timestamp());\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 1040,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "fb7dd645e72cc41f",
+    "type": "function",
+    "z": "83321c3d1b0f6285",
+    "name": "SQL쿼리(test)",
+    "func": "var TotalCount = global.get(\"TotalCount\");\nvar MiddleTemp = global.get(\"MiddleTemp\");\nvar OmronTemp = global.get(\"OmronTemp\");\n//TotalCount\n//MiddleTemp\n//OmronTemp\n\nmsg.payload = [\n    //msg.payload.Version,\n    msg.payload.TotalCount = TotalCount,\n    msg.payload.MiddleTemp = MiddleTemp,\n    msg.payload.OmronTemp = OmronTemp,\n]\n\nmsg.topic = \"insert into temp(TotalCount,MiddleTemp,OmronTemp,date) values(?,?,?,current_timestamp());\";\nreturn msg;",
+    "outputs": 1,
+    "timeout": "",
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 320,
+    "y": 1080,
+    "wires": [
+      [
+        "40071ae0e77d484c",
+        "dc17230927eebbf3"
+      ]
+    ]
+  },
+  {
+    "id": "c38a984ca610a1dc",
+    "type": "function",
+    "z": "83321c3d1b0f6285",
+    "name": "TEMP(OMRON) TEMP",
+    "func": "//TotalCount\n//MiddleTemp\n//OmronTemp\n\nvar temp = msg.payload;\nvar OmronTemp\n//var OmronTemp = global.get(\"OmronTemp\") || 0\nOmronTemp = temp;\nglobal.set(\"OmronTemp\", OmronTemp)\nmsg.payload = OmronTemp\n\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": "",
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 330,
+    "y": 740,
+    "wires": [
+      [
+        "b85989685e39ff34"
+      ]
+    ]
+  },
+  {
+    "id": "b85989685e39ff34",
+    "type": "debug",
+    "z": "83321c3d1b0f6285",
+    "name": "debug 16",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 680,
+    "y": 740,
+    "wires": []
+  },
+  {
+    "id": "195fd8a83884830a",
     "type": "comment",
     "z": "83321c3d1b0f6285",
-    "name": "장치 정보",
-    "info": "1. 셔틀패너_PLC\n-수집 데이터 : 생산량\n-IP : 192.168.0.222\n-PORT : 502\n-FC : 4\n-데이터 불러오는 주소 : 20\n\n2. 터널프리저_PLC\n-수집 데이터 : 중간 온도\n-IP : 192.168.0.221\n-PORT : 502\n-FC : 4\n-데이터 불러오는 주소 : 5\n\n3. 오므론 온도컨트롤러\n-수집 데이터 : 2봉 워너믹서 온도\n-IP : 192.168.0.201\n-PORT : 1501\n-FC : 3\n-데이터 불러오는 주소 : 9218",
-    "x": 80,
-    "y": 40,
+    "name": "MySQL DB",
+    "info": "",
+    "x": 140,
+    "y": 820,
+    "wires": []
+  },
+  {
+    "id": "bbda9e6ac5f1f5fb",
+    "type": "modbus-read",
+    "z": "83321c3d1b0f6285",
+    "d": true,
+    "name": "smg-5400",
+    "topic": "",
+    "showStatusActivities": false,
+    "logIOActivities": false,
+    "showErrors": false,
+    "showWarnings": true,
+    "unitid": "1",
+    "dataType": "HoldingRegister",
+    "adr": "9218",
+    "quantity": "1",
+    "rate": "2",
+    "rateUnit": "s",
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "server": "b9895735130da027",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "x": 120,
+    "y": 740,
+    "wires": [
+      [
+        "c38a984ca610a1dc"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "40071ae0e77d484c",
+    "type": "mysql",
+    "z": "83321c3d1b0f6285",
+    "mydb": "b0b981838aca64c6",
+    "name": "",
+    "x": 600,
+    "y": 1080,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "d6a35b7932731233",
+    "type": "modbustcp-read",
+    "z": "83321c3d1b0f6285",
+    "d": true,
+    "name": "PLC1",
+    "topic": "",
+    "dataType": "InputRegister",
+    "adr": "5",
+    "quantity": "1",
+    "rate": "10",
+    "rateUnit": "s",
+    "server": "ae9d435d665efd43",
+    "ieeeType": "off",
+    "ieeeBE": true,
+    "x": 110,
+    "y": 560,
+    "wires": [
+      [
+        "ff4e9a797846b990"
+      ]
+    ]
+  },
+  {
+    "id": "e8bd1a5f1409c143",
+    "type": "modbustcp-read",
+    "z": "83321c3d1b0f6285",
+    "d": true,
+    "name": "PLC1",
+    "topic": "",
+    "dataType": "InputRegister",
+    "adr": "20",
+    "quantity": "1",
+    "rate": "10",
+    "rateUnit": "s",
+    "server": "1141f23eed59efe7",
+    "ieeeType": "off",
+    "ieeeBE": true,
+    "x": 110,
+    "y": 640,
+    "wires": [
+      [
+        "390c49a009cbbfe6"
+      ]
+    ]
+  },
+  {
+    "id": "dc17230927eebbf3",
+    "type": "debug",
+    "z": "83321c3d1b0f6285",
+    "name": "debug 15",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 600,
+    "y": 1140,
     "wires": []
   }
 ]
