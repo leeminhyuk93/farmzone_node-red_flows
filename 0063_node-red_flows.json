@@ -478,7 +478,7 @@
     "id": "fa7d5987c215d4ce",
     "type": "inject",
     "z": "71aaba71cce9c427",
-    "name": "10분",
+    "name": "9분",
     "props": [
       {
         "p": "payload"
@@ -488,7 +488,7 @@
         "vt": "str"
       }
     ],
-    "repeat": "600",
+    "repeat": "540",
     "crontab": "",
     "once": false,
     "onceDelay": 0.1,
@@ -626,7 +626,7 @@
     "id": "465f433ab75faba7",
     "type": "inject",
     "z": "71aaba71cce9c427",
-    "name": "10분",
+    "name": "9분",
     "props": [
       {
         "p": "payload"
@@ -636,7 +636,7 @@
         "vt": "str"
       }
     ],
-    "repeat": "600",
+    "repeat": "540",
     "crontab": "",
     "once": false,
     "onceDelay": 0.1,
@@ -698,7 +698,7 @@
     "id": "76ec67f6cfd9b6d5",
     "type": "inject",
     "z": "71aaba71cce9c427",
-    "name": "10분",
+    "name": "9분",
     "props": [
       {
         "p": "payload"
@@ -708,7 +708,7 @@
         "vt": "str"
       }
     ],
-    "repeat": "600",
+    "repeat": "540",
     "crontab": "",
     "once": false,
     "onceDelay": 0.1,
