@@ -10,7 +10,7 @@
   {
     "id": "83321c3d1b0f6285",
     "type": "tab",
-    "label": "플로우 1",
+    "label": "구버전",
     "disabled": false,
     "info": "",
     "env": []
@@ -238,8 +238,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 440,
-    "y": 660,
+    "x": 800,
+    "y": 680,
     "wires": []
   },
   {
@@ -253,11 +253,12 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 750,
-    "y": 580,
+    "x": 410,
+    "y": 660,
     "wires": [
       [
-        "7f892c2283b22610"
+        "7f892c2283b22610",
+        "14801dd4ab5dc43a"
       ]
     ]
   },
@@ -277,8 +278,8 @@
     "authType": "",
     "senderr": false,
     "headers": [],
-    "x": 270,
-    "y": 660,
+    "x": 650,
+    "y": 680,
     "wires": [
       [
         "bfad8abbbd15031c"
@@ -297,7 +298,7 @@
     "finalize": "",
     "libs": [],
     "x": 320,
-    "y": 740,
+    "y": 760,
     "wires": [
       [
         "e07b7c790364ce19"
@@ -326,7 +327,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 740,
+    "y": 760,
     "wires": [
       [
         "e1d22dfaf43d02cc"
@@ -345,8 +346,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 440,
-    "y": 820,
+    "x": 800,
+    "y": 860,
     "wires": []
   },
   {
@@ -360,11 +361,12 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 750,
-    "y": 740,
+    "x": 410,
+    "y": 840,
     "wires": [
       [
-        "18aedf726099fd2e"
+        "18aedf726099fd2e",
+        "a8a07aa6ddffebb1"
       ]
     ]
   },
@@ -384,8 +386,8 @@
     "authType": "",
     "senderr": false,
     "headers": [],
-    "x": 270,
-    "y": 820,
+    "x": 650,
+    "y": 860,
     "wires": [
       [
         "9b1d23d5df9e8f08"
@@ -454,8 +456,8 @@
     "targetType": "msg",
     "statusVal": "",
     "statusType": "auto",
-    "x": 480,
-    "y": 1060,
+    "x": 740,
+    "y": 1040,
     "wires": []
   },
   {
@@ -470,12 +472,12 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 710,
-    "y": 940,
+    "x": 390,
+    "y": 1020,
     "wires": [
       [
         "e77c25c19933cd11",
-        "ab4a472db1e58811"
+        "8752b86df3456b66"
       ]
     ]
   },
@@ -495,8 +497,8 @@
     "authType": "",
     "senderr": false,
     "headers": [],
-    "x": 270,
-    "y": 1020,
+    "x": 590,
+    "y": 1040,
     "wires": [
       [
         "b160c23cce73f3a6"
@@ -504,29 +506,12 @@
     ]
   },
   {
-    "id": "ab4a472db1e58811",
-    "type": "debug",
-    "z": "5e99d5afcc1bc9a3",
-    "name": "debug 22",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "payload",
-    "targetType": "msg",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 700,
-    "y": 1060,
-    "wires": []
-  },
-  {
     "id": "3e47e8e8f69b1d1f",
     "type": "comment",
     "z": "5e99d5afcc1bc9a3",
     "name": "send API",
     "info": "",
-    "x": 120,
+    "x": 100,
     "y": 540,
     "wires": []
   },
@@ -551,7 +536,7 @@
     "mydb": "34654803fe111f09",
     "name": "",
     "x": 520,
-    "y": 740,
+    "y": 760,
     "wires": [
       [
         "dfa10c0a1fc7c0c9"
@@ -675,7 +660,7 @@
         "vt": "str"
       }
     ],
-    "repeat": "10",
+    "repeat": "8",
     "crontab": "",
     "once": false,
     "onceDelay": 0.1,
@@ -1023,6 +1008,54 @@
     "wires": []
   },
   {
+    "id": "14801dd4ab5dc43a",
+    "type": "debug",
+    "z": "5e99d5afcc1bc9a3",
+    "name": "debug 26",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 640,
+    "y": 640,
+    "wires": []
+  },
+  {
+    "id": "a8a07aa6ddffebb1",
+    "type": "debug",
+    "z": "5e99d5afcc1bc9a3",
+    "name": "debug 27",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 640,
+    "y": 820,
+    "wires": []
+  },
+  {
+    "id": "8752b86df3456b66",
+    "type": "debug",
+    "z": "5e99d5afcc1bc9a3",
+    "name": "debug 28",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 580,
+    "y": 1000,
+    "wires": []
+  },
+  {
     "id": "f68a7aea4f52d72b",
     "type": "debug",
     "z": "83321c3d1b0f6285",
@@ -1035,8 +1068,8 @@
     "targetType": "msg",
     "statusVal": "",
     "statusType": "auto",
-    "x": 680,
-    "y": 560,
+    "x": 660,
+    "y": 80,
     "wires": []
   },
   {
@@ -1052,8 +1085,8 @@
     "targetType": "msg",
     "statusVal": "",
     "statusType": "auto",
-    "x": 680,
-    "y": 640,
+    "x": 660,
+    "y": 160,
     "wires": []
   },
   {
@@ -1061,15 +1094,15 @@
     "type": "function",
     "z": "83321c3d1b0f6285",
     "name": "PLC1(터널프리저) 중간온도",
-    "func": "//TotalCount\n//MiddleTemp\n//OmronTemp\n\n//var temp = (Math.round(msg.payload * 10)) / 100\nvar temp = parseInt(msg.payload);\n\n// 영하 온도 표시\nif (temp > 32767) {    // temp값이 32767보다 크다면\n    temp -= 65536;     // temp값에서 65536을 뺀 후에 다시 대입\n}\n\nvar temp1 = temp + 3\ntemp1 = parseFloat(temp1) / 10;\nvar MiddleTemp\n//var MiddleTemp = global.get(\"counter\") || 0\nMiddleTemp = temp1  // 영상 온도\n\nglobal.set(\"MiddleTemp\", MiddleTemp)\nmsg.payload = MiddleTemp\n\n\nreturn msg;",
+    "func": "//TotalCount\n//MiddleTemp\n//OmronTemp\n\n//var temp = (Math.round(msg.payload * 10)) / 100\nvar temp = parseInt(msg.payload);\n\n// 영하 ��도 표시\nif (temp > 32767) {    // temp값이 32767보다 크다면\n    temp -= 65536;     // temp값에서 65536을 뺀 후에 다시 대입\n}\n\nvar temp1 = temp + 3\ntemp1 = parseFloat(temp1) / 10;\nvar MiddleTemp\n//var MiddleTemp = global.get(\"counter\") || 0\nMiddleTemp = temp1  // 영상 온도\n\nglobal.set(\"MiddleTemp\", MiddleTemp)\nmsg.payload = MiddleTemp\n\n\nreturn msg;",
     "outputs": 1,
     "timeout": "",
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 340,
-    "y": 560,
+    "x": 320,
+    "y": 80,
     "wires": [
       [
         "f68a7aea4f52d72b"
@@ -1098,8 +1131,8 @@
     "topic": "",
     "payload": "",
     "payloadType": "date",
-    "x": 130,
-    "y": 860,
+    "x": 110,
+    "y": 380,
     "wires": [
       [
         "24d55790d0d4efd6",
@@ -1121,8 +1154,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 360,
-    "y": 860,
+    "x": 340,
+    "y": 380,
     "wires": [
       [
         "e312575749f4c95d"
@@ -1141,8 +1174,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 600,
-    "y": 860,
+    "x": 580,
+    "y": 380,
     "wires": []
   },
   {
@@ -1157,8 +1190,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 330,
-    "y": 640,
+    "x": 310,
+    "y": 160,
     "wires": [
       [
         "84bbad8421a8d64d"
@@ -1177,8 +1210,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 350,
-    "y": 920,
+    "x": 330,
+    "y": 440,
     "wires": [
       [
         "4c7bc34ad52e3687"
@@ -1197,8 +1230,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 600,
-    "y": 920,
+    "x": 580,
+    "y": 440,
     "wires": []
   },
   {
@@ -1213,8 +1246,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 350,
-    "y": 980,
+    "x": 330,
+    "y": 500,
     "wires": [
       [
         "4f4ac4410af1c5c6"
@@ -1234,8 +1267,8 @@
     "targetType": "msg",
     "statusVal": "",
     "statusType": "auto",
-    "x": 600,
-    "y": 980,
+    "x": 580,
+    "y": 500,
     "wires": []
   },
   {
@@ -1250,8 +1283,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 300,
-    "y": 1040,
+    "x": 280,
+    "y": 560,
     "wires": [
       []
     ]
@@ -1268,8 +1301,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 320,
-    "y": 1080,
+    "x": 300,
+    "y": 600,
     "wires": [
       [
         "40071ae0e77d484c",
@@ -1289,8 +1322,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 330,
-    "y": 740,
+    "x": 310,
+    "y": 260,
     "wires": [
       [
         "b85989685e39ff34"
@@ -1310,8 +1343,8 @@
     "targetType": "msg",
     "statusVal": "",
     "statusType": "auto",
-    "x": 680,
-    "y": 740,
+    "x": 660,
+    "y": 260,
     "wires": []
   },
   {
@@ -1320,8 +1353,8 @@
     "z": "83321c3d1b0f6285",
     "name": "MySQL DB",
     "info": "",
-    "x": 140,
-    "y": 820,
+    "x": 80,
+    "y": 340,
     "wires": []
   },
   {
@@ -1348,8 +1381,8 @@
     "ioFile": "",
     "useIOForPayload": false,
     "emptyMsgOnFail": false,
-    "x": 120,
-    "y": 740,
+    "x": 100,
+    "y": 260,
     "wires": [
       [
         "c38a984ca610a1dc"
@@ -1361,10 +1394,11 @@
     "id": "40071ae0e77d484c",
     "type": "mysql",
     "z": "83321c3d1b0f6285",
+    "d": true,
     "mydb": "b0b981838aca64c6",
     "name": "",
-    "x": 600,
-    "y": 1080,
+    "x": 580,
+    "y": 600,
     "wires": [
       []
     ]
@@ -1384,8 +1418,8 @@
     "server": "ae9d435d665efd43",
     "ieeeType": "off",
     "ieeeBE": true,
-    "x": 110,
-    "y": 560,
+    "x": 90,
+    "y": 80,
     "wires": [
       [
         "ff4e9a797846b990"
@@ -1407,8 +1441,8 @@
     "server": "1141f23eed59efe7",
     "ieeeType": "off",
     "ieeeBE": true,
-    "x": 110,
-    "y": 640,
+    "x": 90,
+    "y": 160,
     "wires": [
       [
         "390c49a009cbbfe6"
@@ -1428,8 +1462,8 @@
     "targetType": "msg",
     "statusVal": "",
     "statusType": "auto",
-    "x": 600,
-    "y": 1140,
+    "x": 580,
+    "y": 660,
     "wires": []
   }
 ]
