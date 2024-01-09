@@ -235,6 +235,7 @@
     "id": "cd0a5840d943b86e",
     "type": "inject",
     "z": "5e99d5afcc1bc9a3",
+    "d": true,
     "name": "",
     "props": [
       {
@@ -898,6 +899,7 @@
     "id": "bbda9e6ac5f1f5fb",
     "type": "modbus-read",
     "z": "5e99d5afcc1bc9a3",
+    "d": true,
     "name": "smg-5400",
     "topic": "",
     "showStatusActivities": false,
@@ -984,6 +986,7 @@
     "id": "d6a35b7932731233",
     "type": "modbustcp-read",
     "z": "5e99d5afcc1bc9a3",
+    "d": true,
     "name": "PLC1",
     "topic": "",
     "dataType": "InputRegister",
@@ -1006,6 +1009,7 @@
     "id": "e8bd1a5f1409c143",
     "type": "modbustcp-read",
     "z": "5e99d5afcc1bc9a3",
+    "d": true,
     "name": "PLC1",
     "topic": "",
     "dataType": "InputRegister",
@@ -1117,7 +1121,6 @@
     "id": "34a2d173c9eb4887",
     "type": "inject",
     "z": "83321c3d1b0f6285",
-    "d": true,
     "name": "",
     "props": [
       {
@@ -1147,7 +1150,6 @@
     "id": "c99fcc1661171b9b",
     "type": "modbus-getter",
     "z": "83321c3d1b0f6285",
-    "d": true,
     "name": "터널프리저_PLC",
     "showStatusActivities": true,
     "showErrors": true,
@@ -1190,7 +1192,7 @@
     "y": 220,
     "wires": [
       [
-        "176cfcc49a8e9042"
+        "1704d0bd6f6fa305"
       ]
     ]
   },
@@ -1259,7 +1261,6 @@
     "id": "49dcfdcb3e67e506",
     "type": "modbus-getter",
     "z": "83321c3d1b0f6285",
-    "d": true,
     "name": "셔틀패너_PLC",
     "showStatusActivities": true,
     "showErrors": true,
@@ -1328,7 +1329,7 @@
     "y": 140,
     "wires": [
       [
-        "176cfcc49a8e9042"
+        "1704d0bd6f6fa305"
       ]
     ]
   },
@@ -1336,7 +1337,6 @@
     "id": "a7e3c5d78aa5b7c9",
     "type": "modbus-getter",
     "z": "83321c3d1b0f6285",
-    "d": true,
     "name": "오므론_temp",
     "showStatusActivities": false,
     "showErrors": false,
@@ -1404,7 +1404,7 @@
     "y": 300,
     "wires": [
       [
-        "176cfcc49a8e9042"
+        "1704d0bd6f6fa305"
       ]
     ]
   },
@@ -1476,6 +1476,22 @@
     "info": "1. 셔틀패너_PLC\n-수집 데이터 : 생산량\n-IP : 192.168.0.222\n-PORT : 502\n-FC : 4\n-데이터 불러오는 주소 : 20\n\n2. 터널프리저_PLC\n-수집 데이터 : 중간 온도\n-IP : 192.168.0.221\n-PORT : 502\n-FC : 4\n-데이터 불러오는 주소 : 5\n\n3. 오므론 온도컨트롤러\n-수집 데이터 : 2봉 워너믹서 온도\n-IP : 192.168.0.201\n-PORT : 1501\n-FC : 3\n-데이터 불러오는 주소 : 9218",
     "x": 80,
     "y": 40,
+    "wires": []
+  },
+  {
+    "id": "1704d0bd6f6fa305",
+    "type": "debug",
+    "z": "83321c3d1b0f6285",
+    "name": "debug 26",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 760,
+    "y": 120,
     "wires": []
   }
 ]
