@@ -85,7 +85,7 @@
     "type": "function",
     "z": "a42e116ce6033e0e",
     "name": "parse Data",
-    "func": "let device_id = msg.payload[0].FLD_CONTROLLER_ID;\nlet device_temp = msg.payload[0].FLD_AVG;\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0030\",\n    \"kind\": 3,\n    \"deviceId\" : device_id,\n    \"temperature\" : device_temp\n}\nreturn msg;",
+    "func": "var device_id = msg.payload[0].FLD_CONTROLLER_ID;\nvar device_temp = msg.payload[0].FLD_AVG;\n\n\n\nif (device_temp === 0) {\n\tdevice_temp = '0';\n}\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.payload = {\n    \"ccode\": \"0030\",\n    \"kind\": 3,\n    \"deviceId\" : device_id,\n    \"temperature\" : device_temp\n}\nreturn msg;",
     "outputs": 1,
     "timeout": 0,
     "noerr": 0,
