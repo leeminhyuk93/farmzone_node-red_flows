@@ -1181,7 +1181,7 @@
     "type": "function",
     "z": "83321c3d1b0f6285",
     "name": "중간 온도",
-    "func": "const device = 2;\nconst value = (msg.payload == null || msg.payload == undefined) ? \"\" : (msg.payload).readInt16BE(0);\n\nmsg.payload = [device, value];\nreturn msg;",
+    "func": "const device = 2;\nconst value = (msg.payload == null || msg.payload == undefined) ? \"\" : msg.payload;\n\nmsg.payload = [device, value];\nreturn msg;",
     "outputs": 1,
     "timeout": 0,
     "noerr": 0,
