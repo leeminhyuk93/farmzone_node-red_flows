@@ -11,7 +11,7 @@
     "id": "83321c3d1b0f6285",
     "type": "tab",
     "label": "구버전",
-    "disabled": false,
+    "disabled": true,
     "info": "",
     "env": []
   },
@@ -1094,7 +1094,7 @@
     "type": "function",
     "z": "83321c3d1b0f6285",
     "name": "PLC1(터널프리저) 중간온도",
-    "func": "//TotalCount\n//MiddleTemp\n//OmronTemp\n\n//var temp = (Math.round(msg.payload * 10)) / 100\nvar temp = parseInt(msg.payload);\n\n// 영하 ��도 표시\nif (temp > 32767) {    // temp값이 32767보다 크다면\n    temp -= 65536;     // temp값에서 65536을 뺀 후에 다시 대입\n}\n\nvar temp1 = temp + 3\ntemp1 = parseFloat(temp1) / 10;\nvar MiddleTemp\n//var MiddleTemp = global.get(\"counter\") || 0\nMiddleTemp = temp1  // 영상 온도\n\nglobal.set(\"MiddleTemp\", MiddleTemp)\nmsg.payload = MiddleTemp\n\n\nreturn msg;",
+    "func": "//TotalCount\n//MiddleTemp\n//OmronTemp\n\n//var temp = (Math.round(msg.payload * 10)) / 100\nvar temp = parseInt(msg.payload);\n\n// 영하 온도 표시\nif (temp > 32767) {    // temp값이 32767보다 크다면\n    temp -= 65536;     // temp값에서 65536을 뺀 후에 다시 대입\n}\n\nvar temp1 = temp + 3\ntemp1 = parseFloat(temp1) / 10;\nvar MiddleTemp\n//var MiddleTemp = global.get(\"counter\") || 0\nMiddleTemp = temp1  // 영상 온도\n\nglobal.set(\"MiddleTemp\", MiddleTemp)\nmsg.payload = MiddleTemp\n\n\nreturn msg;",
     "outputs": 1,
     "timeout": "",
     "noerr": 0,
