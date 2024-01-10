@@ -1352,7 +1352,7 @@
     "unitid": "3",
     "dataType": "InputRegister",
     "adr": "0",
-    "quantity": "1",
+    "quantity": "5",
     "server": "70a908f6e7075909",
     "useIOFile": false,
     "ioFile": "",
