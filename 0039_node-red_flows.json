@@ -196,7 +196,7 @@
     "serialParity": "none",
     "serialConnectionDelay": "100",
     "serialAsciiResponseStartDelimiter": "0x3A",
-    "unit_id": "1",
+    "unit_id": "2",
     "commandDelay": "1",
     "clientTimeout": "1000",
     "reconnectOnTimeout": true,
@@ -861,10 +861,10 @@
     "showErrors": true,
     "showWarnings": true,
     "logIOActivities": false,
-    "unitid": "1",
+    "unitid": "2",
     "dataType": "InputRegister",
     "adr": "0",
-    "quantity": "1",
+    "quantity": "5",
     "server": "844eeda3a12d891f",
     "useIOFile": false,
     "ioFile": "",
@@ -877,7 +877,7 @@
     "y": 900,
     "wires": [
       [
-        "442fbab8c77584be"
+        "fa0d9b9c212c6ecc"
       ],
       []
     ]
@@ -894,7 +894,7 @@
     "unitid": "1",
     "dataType": "InputRegister",
     "adr": "0",
-    "quantity": "1",
+    "quantity": "5",
     "server": "66eedb276c7fa439",
     "useIOFile": false,
     "ioFile": "",
@@ -907,7 +907,7 @@
     "y": 1060,
     "wires": [
       [
-        "db4232b53ecc725f"
+        "8e151000ede4cf6f"
       ],
       []
     ]
@@ -924,29 +924,9 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 650,
+    "x": 610,
     "y": 880,
     "wires": []
-  },
-  {
-    "id": "442fbab8c77584be",
-    "type": "function",
-    "z": "ea534a0bb0b5928e",
-    "name": "function 1",
-    "func": "\nreturn msg;",
-    "outputs": 1,
-    "timeout": 0,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 480,
-    "y": 900,
-    "wires": [
-      [
-        "417059960c441b37"
-      ]
-    ]
   },
   {
     "id": "49e8edfc926697e4",
@@ -959,29 +939,9 @@
     "upsert": false,
     "multi": false,
     "operation": "store",
-    "x": 710,
+    "x": 670,
     "y": 920,
     "wires": []
-  },
-  {
-    "id": "db4232b53ecc725f",
-    "type": "function",
-    "z": "ea534a0bb0b5928e",
-    "name": "function 2",
-    "func": "\nreturn msg;",
-    "outputs": 1,
-    "timeout": 0,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 480,
-    "y": 1060,
-    "wires": [
-      [
-        "cfa3c92809c069bb"
-      ]
-    ]
   },
   {
     "id": "cfa3c92809c069bb",
@@ -995,7 +955,7 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 650,
+    "x": 610,
     "y": 1040,
     "wires": []
   },
@@ -1010,29 +970,9 @@
     "upsert": false,
     "multi": false,
     "operation": "store",
-    "x": 710,
+    "x": 670,
     "y": 1080,
     "wires": []
-  },
-  {
-    "id": "950ad5742575087c",
-    "type": "function",
-    "z": "ea534a0bb0b5928e",
-    "name": "parsing",
-    "func": "let count = msg.payload[0];  // 생산량\nlet status = msg.payload[2];  // 장비 상태 (1 : 작동중, 0 : 작동중지)\n\nmsg.payload = {\n    \"생산량\" : count,\n    \"장비 상태\" : status\n}\n\nreturn msg;",
-    "outputs": 1,
-    "timeout": 0,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 480,
-    "y": 1220,
-    "wires": [
-      [
-        "4a1573ab1532a224"
-      ]
-    ]
   },
   {
     "id": "4a1573ab1532a224",
@@ -1046,7 +986,7 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 650,
+    "x": 610,
     "y": 1200,
     "wires": []
   },
@@ -1061,7 +1001,7 @@
     "upsert": false,
     "multi": false,
     "operation": "store",
-    "x": 710,
+    "x": 670,
     "y": 1240,
     "wires": []
   },
@@ -1610,6 +1550,66 @@
     "x": 190,
     "y": 440,
     "wires": []
+  },
+  {
+    "id": "950ad5742575087c",
+    "type": "function",
+    "z": "ea534a0bb0b5928e",
+    "name": "parsing",
+    "func": "let count = msg.payload[0];  // 생산량\nlet status = msg.payload[2];  // 장비 상태 (1 : 작동중, 0 : 작동중지)\n\nmsg.payload = {\n    \"생산량\" : count,\n    \"장비 상태\" : status\n}\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 440,
+    "y": 1220,
+    "wires": [
+      [
+        "4a1573ab1532a224"
+      ]
+    ]
+  },
+  {
+    "id": "8e151000ede4cf6f",
+    "type": "function",
+    "z": "ea534a0bb0b5928e",
+    "name": "parsing",
+    "func": "let pressure = msg.payload[0];  // 에어 압력\nlet status = msg.payload[2];  // 장비 상태 (1 : 작동중, 0 : 작동중지)\n\nmsg.payload = {\n    \"에어 압력\" : pressure,\n    \"장비 상태\" : status\n}\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 440,
+    "y": 1060,
+    "wires": [
+      [
+        "cfa3c92809c069bb"
+      ]
+    ]
+  },
+  {
+    "id": "fa0d9b9c212c6ecc",
+    "type": "function",
+    "z": "ea534a0bb0b5928e",
+    "name": "parsing",
+    "func": "let pressure = msg.payload[0];  // 에어 압력\nlet status = msg.payload[2];  // 장비 상태 (1 : 작동중, 0 : 작동중지)\n\nmsg.payload = {\n    \"에어 압력\" : pressure,\n    \"장비 상태\" : status\n}\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 440,
+    "y": 900,
+    "wires": [
+      [
+        "417059960c441b37"
+      ]
+    ]
   },
   {
     "id": "62e4a209ec547825",
