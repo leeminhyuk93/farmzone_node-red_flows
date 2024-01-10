@@ -907,7 +907,8 @@
     "y": 1060,
     "wires": [
       [
-        "8e151000ede4cf6f"
+        "8e151000ede4cf6f",
+        "7bdf110d9ff41ccc"
       ],
       []
     ]
@@ -1556,7 +1557,7 @@
     "type": "function",
     "z": "ea534a0bb0b5928e",
     "name": "parsing",
-    "func": "let count = msg.payload[0];  // 생산량\nlet status = msg.payload[2];  // 장비 상태 (1 : 작동중, 0 : 작동중지)\n\nmsg.payload = {\n    \"생산량\" : count,\n    \"장비 상태\" : status\n}\n\nreturn msg;",
+    "func": "let count = msg.payload[0];  // 생산량\nlet status = msg.payload[2];  // 장비 상태 (1 : 작동중, 0 : 작동중지)\n\nmsg.payload = {\n    \"생산량\" : count,\n    \"장비 ��태\" : status\n}\n\nreturn msg;",
     "outputs": 1,
     "timeout": 0,
     "noerr": 0,
@@ -1610,6 +1611,22 @@
         "417059960c441b37"
       ]
     ]
+  },
+  {
+    "id": "7bdf110d9ff41ccc",
+    "type": "debug",
+    "z": "ea534a0bb0b5928e",
+    "name": "debug 132",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 410,
+    "y": 1100,
+    "wires": []
   },
   {
     "id": "62e4a209ec547825",
