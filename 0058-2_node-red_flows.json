@@ -1482,7 +1482,7 @@
     "z": "ac833b31e09c4cf9",
     "name": "debug 23",
     "active": true,
-    "tosidebar": false,
+    "tosidebar": true,
     "console": false,
     "tostatus": true,
     "complete": "payload",
