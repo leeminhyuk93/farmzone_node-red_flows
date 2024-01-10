@@ -150,7 +150,7 @@
   {
     "id": "66eedb276c7fa439",
     "type": "modbus-client",
-    "name": "에어클리너 PLC",
+    "name": "에어클리너 PLC(디씨팩)",
     "clienttype": "tcp",
     "bufferCommands": true,
     "stateLogEnabled": false,
@@ -179,7 +179,7 @@
   {
     "id": "844eeda3a12d891f",
     "type": "modbus-client",
-    "name": "에어세척기 _PLC",
+    "name": "에어세척기 _PLC(SK팩)",
     "clienttype": "tcp",
     "bufferCommands": true,
     "stateLogEnabled": false,
@@ -739,9 +739,9 @@
     "id": "2297bdf14bb43790",
     "type": "comment",
     "z": "ea534a0bb0b5928e",
-    "name": "2층_작업장, PLC1_에어세척기",
+    "name": "2층_작업장, PLC1_에어세척기(SK팩)",
     "info": "*수집 장비 : 에어세척기\n*수집 항목 : 에어압력, 검사시간\n*수집 주기 : 발생 시",
-    "x": 170,
+    "x": 190,
     "y": 860,
     "wires": []
   },
@@ -749,9 +749,9 @@
     "id": "a59743946e966b09",
     "type": "comment",
     "z": "ea534a0bb0b5928e",
-    "name": "2층_작업장, PLC2_에어클리너",
+    "name": "2층_작업장, PLC2_에어클리너(디씨팩)",
     "info": "*수집 장비 : 에어클리너\n*수집 항목 : 에어압력, 검사시간\n*수집 주기 : 발생 시",
-    "x": 170,
+    "x": 190,
     "y": 1020,
     "wires": []
   },
