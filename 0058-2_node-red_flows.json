@@ -64,7 +64,7 @@
     "queueLogEnabled": false,
     "failureLogEnabled": false,
     "tcpHost": "192.168.0.211",
-    "tcpPort": "1501",
+    "tcpPort": "1502",
     "tcpType": "DEFAULT",
     "serialPort": "/dev/ttyUSB",
     "serialType": "RTU-BUFFERD",
@@ -74,11 +74,11 @@
     "serialParity": "none",
     "serialConnectionDelay": "100",
     "serialAsciiResponseStartDelimiter": "0x3A",
-    "unit_id": 1,
-    "commandDelay": 1,
-    "clientTimeout": 200,
+    "unit_id": "1",
+    "commandDelay": "1",
+    "clientTimeout": "200",
     "reconnectOnTimeout": false,
-    "reconnectTimeout": 2000,
+    "reconnectTimeout": "2000",
     "parallelUnitIdsAllowed": true,
     "showWarnings": true,
     "showLogs": true
@@ -876,7 +876,7 @@
     "id": "b9d92568a4c83117",
     "type": "modbus-getter",
     "z": "ac833b31e09c4cf9",
-    "name": "EZIN-23 (TCP 1501)",
+    "name": "EZIN-23 (TCP 1502)",
     "showStatusActivities": true,
     "showErrors": true,
     "showWarnings": false,
@@ -897,8 +897,7 @@
     "y": 320,
     "wires": [
       [
-        "01a6bc3e57544be8",
-        "4b24eed9a14ba057"
+        "01a6bc3e57544be8"
       ],
       []
     ]
@@ -1023,7 +1022,7 @@
     "type": "function",
     "z": "ac833b31e09c4cf9",
     "name": "parseData",
-    "func": "if (msg.payload == \"error\") {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": \"0058\",\n        \"kind\": \"4\",\n        \"deviceId\": \"7\",\n        \"temperature\": \"\"\n    };\n\n    return msg;\n\n} else {\n\n    //현재 온도 (음수 표현은 buffer parser에서 수정 조치, INT 16BE 필요)\n    var temperature = parseFloat(msg.payload[0]) / 10;\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": \"0058\",\n        \"kind\": \"4\",\n        \"deviceId\": \"7\",\n        \"temperature\": temperature\n    };\n\n    return msg;\n\n}",
+    "func": "if (msg.payload == \"error\") {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": \"0058\",\n        \"kind\": \"4\",\n        \"deviceId\": \"7\",\n        \"temperature\": \"\"\n    };\n\n    return msg;\n\n} else {\n\n    //현재 온도 (음수 표현은 buffer parser에서 수정 조치, INT 16BE 필요)\n    var temperature = '';\n    if (msg.payload[0] == 0) {\n        temperature = '0';\n    } else {\n        temperature = parseFloat(msg.payload[0]) / 10;\n    }\n\n\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": \"0058\",\n        \"kind\": \"4\",\n        \"deviceId\": \"7\",\n        \"temperature\": temperature\n    };\n\n    return msg;\n\n}",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -1458,23 +1457,6 @@
         "714df7bd25d69168"
       ]
     ]
-  },
-  {
-    "id": "4b24eed9a14ba057",
-    "type": "debug",
-    "z": "ac833b31e09c4cf9",
-    "name": "debug 21",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": true,
-    "complete": "payload",
-    "targetType": "msg",
-    "statusVal": "payload",
-    "statusType": "msg",
-    "x": 360,
-    "y": 220,
-    "wires": []
   },
   {
     "id": "d835776ed79853fa",
