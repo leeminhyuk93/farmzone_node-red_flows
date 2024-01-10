@@ -1576,7 +1576,7 @@
     "type": "function",
     "z": "ea534a0bb0b5928e",
     "name": "parsing",
-    "func": "let pressure = msg.payload[0] / 10;  // 에어 압력\nlet status = msg.payload[2];  // 장비 상태 (1 : 작동중, 0 : 작동중지)\n\nmsg.payload = {\n    \"에어 압력\" : pressure,\n    \"장비 상태\" : status\n}\n\nreturn msg;",
+    "func": "let pressure = Math.floor(msg.payload[0] / 10);  // 에어 압력\nlet status = msg.payload[2];  // 장비 상태 (1 : 작동중, 0 : 작동중지)\n\nmsg.payload = {\n    \"에어 압력\" : pressure,\n    \"장비 상태\" : status\n}\n\nreturn msg;",
     "outputs": 1,
     "timeout": 0,
     "noerr": 0,
