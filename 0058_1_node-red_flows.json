@@ -680,7 +680,7 @@
     "type": "function",
     "z": "71aaba71cce9c427",
     "name": "send api",
-    "func": "if (msg.payload == \"error\") {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": \"0058\",\n        \"kind\": \"4\",\n        \"deviceId\": \"1\",\n        \"temperature\": \"\"\n    };\n\n    return msg;\n\n} else {\n\n    //현재 온도 (음수 표현은 buffer parser에서 수정 조치, INT 16BE 필요)\n    var curTemp = '';\n    if (msg.payload == 0) {\n        curTemp = '0';\n    } else {\n        curTemp = parseFloat(msg.payload) / 10;\n    }\n\n    //장치 국번\n    var unitid = msg.unitId;\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": \"0058\",\n        \"kind\": \"4\",\n        \"deviceId\": '1',\n        \"temperature\": curTemp,\n    };\n\n    return msg;\n\n}",
+    "func": "if (msg.payload == \"error\") {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": \"0058\",\n        \"kind\": \"4\",\n        \"deviceId\": \"1\",\n        \"temperature\": \"\"\n    };\n\n    return msg;\n\n} else {\n\n    //현재 온도 (음수 표���은 buffer parser에서 수정 조치, INT 16BE 필요)\n    var curTemp = '';\n    if (msg.payload == 0) {\n        curTemp = '0';\n    } else {\n        curTemp = parseFloat(msg.payload) / 10;\n    }\n\n    //장치 국번\n    var unitid = msg.unitId;\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": \"0058\",\n        \"kind\": \"4\",\n        \"deviceId\": '1',\n        \"temperature\": curTemp,\n    };\n\n    return msg;\n\n}",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -1321,7 +1321,8 @@
     "y": 1380,
     "wires": [
       [
-        "d1f475b8fe74a5f0"
+        "d1f475b8fe74a5f0",
+        "2890902de149b147"
       ]
     ]
   },
@@ -1336,7 +1337,7 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 340,
+    "x": 360,
     "y": 1380,
     "wires": [
       [
@@ -1456,7 +1457,7 @@
     "type": "function",
     "z": "71aaba71cce9c427",
     "name": "parsing2",
-    "func": "let device_name = \"열성형 포장기\";   // 장치명\nlet model = msg.payload[0];  // 현재 받아온 model 값(생산 모델 번호, 확실하지 않음)\nlet count = parseInt(msg.payload[1]);  // 현재 받아온 count 값(생산량)\n\nlet db_model = global.get(\"db_data\")[\"model\"];  //db에 저장된 마지막 model 값\nlet db_count = global.get(\"db_data\")[\"count\"];  //db에 저장된 마지막 count 값\n\nmsg.payload = {\n    \"장치명\": device_name,\n    \"이전 생산모델 번���\": db_model,\n    \"현재 생산모델 번호\": model,\n    \"이전 생산량\": db_count,\n    \"현재 생산량\": count\n}\n\n\nif (model == db_model) {  //현재 받아온 model 값과 db에 저장된 마지막 model 값이 같을 경우\n    if (count != db_count) {  //현재 받아온 count 값과 db에 저장된 마지막 count 값이 다를 경우\n        msg.topic = \"INSERT INTO fz_shm (model, count, date) VALUES ('\" + model + \"', '\" + count + \"', NOW())\";\n        return msg;\n    }\n} else {  //현재 받아온 model 값과 db에 저장된 마지막 model 값이 다를 경우\n    msg.topic = \"INSERT INTO fz_shm (model, count, date) VALUES ('\" + model + \"', '\" + count + \"', NOW())\";\n    return msg;\n}\n",
+    "func": "let device_name = \"열성형 포장기\";   // 장치명\nlet model = msg.payload[0];  // 현재 받아온 model 값(생산 모델 번호, 확실하지 않음)\nlet count = parseInt(msg.payload[1]);  // 현재 받아온 count 값(생산량)\n\nlet db_model = global.get(\"db_data\")[\"model\"];  //db에 저장된 마지막 model 값\nlet db_count = global.get(\"db_data\")[\"count\"];  //db에 저장된 마지막 count 값\n\nmsg.payload = {\n    \"장치명\": device_name,\n    \"이�� 생산모델 번호\": db_model,\n    \"현재 생산모델 번호\": model,\n    \"이전 생산량\": db_count,\n    \"현재 생산량\": count\n}\n\n\nif (model == db_model) {  //현재 받아온 model 값과 db에 저장된 마지막 model 값이 같을 경우\n    if (count != db_count) {  //현재 받아온 count 값과 db에 저장된 마지막 count 값이 다를 경우\n        msg.topic = \"INSERT INTO fz_shm (model, count, date) VALUES ('\" + model + \"', '\" + count + \"', NOW())\";\n        return msg;\n    }\n} else {  //현재 받아온 model 값과 db에 저장된 마지막 model 값이 다를 경우\n    msg.topic = \"INSERT INTO fz_shm (model, count, date) VALUES ('\" + model + \"', '\" + count + \"', NOW())\";\n    return msg;\n}\n",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -2331,6 +2332,22 @@
     "statusType": "auto",
     "x": 780,
     "y": 340,
+    "wires": []
+  },
+  {
+    "id": "2890902de149b147",
+    "type": "debug",
+    "z": "71aaba71cce9c427",
+    "name": "debug 16",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 300,
+    "y": 1520,
     "wires": []
   }
 ]
