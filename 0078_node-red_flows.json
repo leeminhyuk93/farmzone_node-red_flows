@@ -942,8 +942,8 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "auto",
-    "x": 320,
-    "y": 100,
+    "x": 200,
+    "y": 140,
     "wires": []
   },
   {
@@ -1934,8 +1934,8 @@
     "topic": "",
     "payload": "[\"0x02\", \"0x20\", \"0x31\", \"0x03\"]",
     "payloadType": "bin",
-    "x": 450,
-    "y": 140,
+    "x": 410,
+    "y": 180,
     "wires": [
       [
         "ce43edf87b738893",
@@ -1956,8 +1956,8 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "auto",
-    "x": 640,
-    "y": 140,
+    "x": 700,
+    "y": 160,
     "wires": []
   },
   {
@@ -2050,7 +2050,7 @@
     "type": "debug",
     "z": "87ca1b5c61536aea",
     "name": "debug 63",
-    "active": true,
+    "active": false,
     "tosidebar": true,
     "console": false,
     "tostatus": true,
