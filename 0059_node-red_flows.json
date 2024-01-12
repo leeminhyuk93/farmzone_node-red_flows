@@ -35,6 +35,35 @@
     "responsetimeout": "10000"
   },
   {
+    "id": "b0091eac42438820",
+    "type": "modbus-client",
+    "name": "",
+    "clienttype": "tcp",
+    "bufferCommands": true,
+    "stateLogEnabled": false,
+    "queueLogEnabled": false,
+    "failureLogEnabled": true,
+    "tcpHost": "192.168.1.201",
+    "tcpPort": "502",
+    "tcpType": "DEFAULT",
+    "serialPort": "/dev/ttyUSB",
+    "serialType": "RTU-BUFFERD",
+    "serialBaudrate": "9600",
+    "serialDatabits": "8",
+    "serialStopbits": "1",
+    "serialParity": "none",
+    "serialConnectionDelay": "100",
+    "serialAsciiResponseStartDelimiter": "0x3A",
+    "unit_id": "1",
+    "commandDelay": "1",
+    "clientTimeout": "1000",
+    "reconnectOnTimeout": true,
+    "reconnectTimeout": "2000",
+    "parallelUnitIdsAllowed": true,
+    "showWarnings": true,
+    "showLogs": true
+  },
+  {
     "id": "fe9b9df19a5e0673",
     "type": "function",
     "z": "680afc8e46551b31",
@@ -129,7 +158,7 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 600,
+    "x": 540,
     "y": 180,
     "wires": [
       [
@@ -154,8 +183,8 @@
     "authType": "",
     "senderr": false,
     "headers": [],
-    "x": 770,
-    "y": 180,
+    "x": 710,
+    "y": 200,
     "wires": [
       [
         "885df2f1807c4e21"
@@ -175,8 +204,8 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "auto",
-    "x": 940,
-    "y": 180,
+    "x": 860,
+    "y": 200,
     "wires": []
   },
   {
@@ -192,7 +221,7 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "auto",
-    "x": 760,
+    "x": 700,
     "y": 140,
     "wires": []
   },
@@ -202,8 +231,8 @@
     "z": "680afc8e46551b31",
     "name": "냉장/냉동",
     "info": "",
-    "x": 120,
-    "y": 40,
+    "x": 80,
+    "y": 60,
     "wires": []
   },
   {
@@ -234,6 +263,150 @@
         "fe9b9df19a5e0673"
       ]
     ]
+  },
+  {
+    "id": "5e83d3293a781bd8",
+    "type": "comment",
+    "z": "680afc8e46551b31",
+    "name": "포장기_PLC",
+    "info": "*PLC 정보\n -제조사 : LS산전\n -CPU 모델명 : \n -IP 주소 : 192.168.1.\n -PORT : 502\n\n*데이터 수집 항목\n -포장 수량\n -선별 수량\n -가동시간\n -장비 I/O",
+    "x": 90,
+    "y": 280,
+    "wires": []
+  },
+  {
+    "id": "3857ebe0dd96a0cf",
+    "type": "inject",
+    "z": "680afc8e46551b31",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 100,
+    "y": 320,
+    "wires": [
+      [
+        "49eda1d179f06695"
+      ]
+    ]
+  },
+  {
+    "id": "49eda1d179f06695",
+    "type": "modbus-getter",
+    "z": "680afc8e46551b31",
+    "name": "포장기_PLC",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "1",
+    "dataType": "InputRegister",
+    "adr": "0",
+    "quantity": "5",
+    "server": "b0091eac42438820",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 270,
+    "y": 320,
+    "wires": [
+      [
+        "3862ecd89282445a"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "3862ecd89282445a",
+    "type": "function",
+    "z": "680afc8e46551b31",
+    "name": "parsing",
+    "func": "\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 440,
+    "y": 320,
+    "wires": [
+      [
+        "80946a3b1a9768d3"
+      ]
+    ]
+  },
+  {
+    "id": "80946a3b1a9768d3",
+    "type": "debug",
+    "z": "680afc8e46551b31",
+    "name": "debug 4",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 600,
+    "y": 320,
+    "wires": []
+  },
+  {
+    "id": "4f2401c20651dad1",
+    "type": "http request",
+    "z": "680afc8e46551b31",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 610,
+    "y": 360,
+    "wires": [
+      [
+        "b4f91a02cb36c07d"
+      ]
+    ]
+  },
+  {
+    "id": "b4f91a02cb36c07d",
+    "type": "debug",
+    "z": "680afc8e46551b31",
+    "name": "debug 5",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 760,
+    "y": 360,
+    "wires": []
   },
   {
     "id": "24234d67e41dcab1",
