@@ -332,7 +332,8 @@
     "y": 520,
     "wires": [
       [
-        "a4c9b4fa79ef5836"
+        "a4c9b4fa79ef5836",
+        "374b14eecf0291e0"
       ]
     ]
   },
@@ -472,6 +473,52 @@
     "statusType": "auto",
     "x": 640,
     "y": 480,
+    "wires": []
+  },
+  {
+    "id": "374b14eecf0291e0",
+    "type": "modbus-getter",
+    "z": "76ae04d3b3f9cadb",
+    "name": "PLC (smg-5400)",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "1",
+    "dataType": "InputRegister",
+    "adr": "0",
+    "quantity": "11",
+    "server": "543b0d9b988bfb92",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": true,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 300,
+    "y": 600,
+    "wires": [
+      [
+        "f0adead235b47ba5"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "f0adead235b47ba5",
+    "type": "debug",
+    "z": "76ae04d3b3f9cadb",
+    "name": "debug 8",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 480,
+    "y": 600,
     "wires": []
   }
 ]
