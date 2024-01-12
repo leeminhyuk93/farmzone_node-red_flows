@@ -315,7 +315,7 @@
     "unitid": "1",
     "dataType": "InputRegister",
     "adr": "0",
-    "quantity": "10",
+    "quantity": "2",
     "server": "b0091eac42438820",
     "useIOFile": false,
     "ioFile": "",
