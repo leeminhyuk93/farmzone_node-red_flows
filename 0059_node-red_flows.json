@@ -307,7 +307,6 @@
     "id": "49eda1d179f06695",
     "type": "modbus-getter",
     "z": "680afc8e46551b31",
-    "d": true,
     "name": "포장기_PLC",
     "showStatusActivities": true,
     "showErrors": true,
