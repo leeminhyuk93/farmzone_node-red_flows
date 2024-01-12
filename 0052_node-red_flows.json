@@ -107,6 +107,7 @@
     "id": "d1f97de68bb44019",
     "type": "inject",
     "z": "76ae04d3b3f9cadb",
+    "d": true,
     "name": "",
     "props": [
       {
@@ -177,6 +178,7 @@
     "id": "8b87804dec91445a",
     "type": "http request",
     "z": "76ae04d3b3f9cadb",
+    "d": true,
     "name": "",
     "method": "POST",
     "ret": "txt",
@@ -254,6 +256,7 @@
     "id": "d89d4ed57f03e05a",
     "type": "modbustcp-read",
     "z": "76ae04d3b3f9cadb",
+    "d": true,
     "name": "PLC (smg5400)",
     "topic": "",
     "dataType": "InputRegister",
@@ -302,6 +305,173 @@
     "statusType": "auto",
     "x": 840,
     "y": 400,
+    "wires": []
+  },
+  {
+    "id": "e0677ae75a9c18df",
+    "type": "inject",
+    "z": "76ae04d3b3f9cadb",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 520,
+    "wires": [
+      [
+        "a4c9b4fa79ef5836"
+      ]
+    ]
+  },
+  {
+    "id": "a4c9b4fa79ef5836",
+    "type": "modbus-getter",
+    "z": "76ae04d3b3f9cadb",
+    "name": "PLC (smg-5400)",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "1",
+    "dataType": "InputRegister",
+    "adr": "0",
+    "quantity": "6",
+    "server": "543b0d9b988bfb92",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": true,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 300,
+    "y": 520,
+    "wires": [
+      [
+        "68bfcf1792610609"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "68bfcf1792610609",
+    "type": "function",
+    "z": "76ae04d3b3f9cadb",
+    "name": "parsing",
+    "func": "let kettle_temp = parseInt(msg.payload[0]);  // 자숙 현재온도\nlet steaming_stick_temp = parseInt(msg.payload[1]);  // 품온 현재온도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\nmsg.payload = {\n    \"ccode\" : \"0052\",\n    \"scode\" : \"92\",\n    \"h_type\" : \"1\",\n    \"temperature\" : kettle_temp,\n    \"자숙 현재온도\": kettle_temp,\n    \"품온 현재온도\": steaming_stick_temp\n}\n\nmsg.topic = \"INSERT INTO temperature (kettle_temp, steaming_stick_temp, date) VALUES ('\" + kettle_temp + \"', '\" + steaming_stick_temp + \"', NOW())\";\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 480,
+    "y": 520,
+    "wires": [
+      [
+        "1ecb10afa5a25135",
+        "b07497ddc03432ac",
+        "97a8e214da98e33d"
+      ]
+    ]
+  },
+  {
+    "id": "1ecb10afa5a25135",
+    "type": "mysql",
+    "z": "76ae04d3b3f9cadb",
+    "mydb": "64bc5f13b60f5328",
+    "name": "",
+    "x": 640,
+    "y": 520,
+    "wires": [
+      [
+        "e2dbc45727ec5d5e"
+      ]
+    ]
+  },
+  {
+    "id": "b07497ddc03432ac",
+    "type": "http request",
+    "z": "76ae04d3b3f9cadb",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0052/get_heating",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 650,
+    "y": 560,
+    "wires": [
+      [
+        "18b8e45b8d3efc78"
+      ]
+    ]
+  },
+  {
+    "id": "e2dbc45727ec5d5e",
+    "type": "debug",
+    "z": "76ae04d3b3f9cadb",
+    "name": "debug 5",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 780,
+    "y": 520,
+    "wires": []
+  },
+  {
+    "id": "18b8e45b8d3efc78",
+    "type": "debug",
+    "z": "76ae04d3b3f9cadb",
+    "name": "debug 6",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 800,
+    "y": 560,
+    "wires": []
+  },
+  {
+    "id": "97a8e214da98e33d",
+    "type": "debug",
+    "z": "76ae04d3b3f9cadb",
+    "name": "debug 7",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 640,
+    "y": 480,
     "wires": []
   }
 ]
