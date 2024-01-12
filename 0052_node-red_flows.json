@@ -137,7 +137,7 @@
     "type": "function",
     "z": "76ae04d3b3f9cadb",
     "name": "SQL 쿼리",
-    "func": "msg.topic = \"SELECT * FROM fz_shm.temperature ORDER BY date DESC LIMIT 1\";\nreturn msg;",
+    "func": "msg.topic = \"SELECT * FROM fz_shm.temperature WHERE (date BETWEEN date_add(now(), interval -15 second) AND now()) ORDER BY date DESC LIMIT 1\";\nreturn msg;",
     "outputs": 1,
     "timeout": 0,
     "noerr": 0,
