@@ -64,6 +64,16 @@
     "showLogs": true
   },
   {
+    "id": "8e572f554e8c44d0",
+    "type": "MySQLdatabase",
+    "name": "fz_shm",
+    "host": "127.0.0.1",
+    "port": "3306",
+    "db": "fz_shm",
+    "tz": "",
+    "charset": "UTF8"
+  },
+  {
     "id": "fe9b9df19a5e0673",
     "type": "function",
     "z": "680afc8e46551b31",
@@ -329,7 +339,7 @@
     "wires": [
       [
         "3862ecd89282445a",
-        "80946a3b1a9768d3"
+        "97d34afa2046df74"
       ],
       []
     ]
@@ -339,17 +349,18 @@
     "type": "function",
     "z": "680afc8e46551b31",
     "name": "parsing",
-    "func": "let totalCount = msg.payload[0];  // 총 생산수량 (D6003값이 워드 최��값인 32767이 넘어갈때마다 0으로 초기화됨)\nlet wordMaxCount = msg.payload[1];   // D6003값이 워드 최대값인 32767이 넘어갈때마다 1씩 증가\nlet wordMax = 32767 * wordMaxCount;  // 더블워드값을 계산하기 위해 워드 최대값인 32767에 'dwordCount' 변수값을 곱한다.\n\nif (wordMaxCount > 0) {  // 워드 최대값이 초과할때마다 1씩 증가하는데 초과 횟수가 1이상일 경우\n    totalCount = totalCount + wordMax;   // 총 생산수량 = 초기화 후 총 생산수량 + wordMax값\n}\n\nmsg.payload = {\n    \"총 생산수량\": totalCount\n}\n\nreturn msg;",
+    "func": "let totalCount = msg.payload[0];  // 총 생산수량 (D6003값이 워드 최대값인 32767이 넘어갈때마다 0으로 초기화됨)\nlet wordMaxCount = msg.payload[1];   // D6003값이 워드 최대값인 32767이 넘어갈때마다 1씩 증가\nlet wordMax = 32767 * wordMaxCount;  // 더블워드값을 계산하기 위해 워드 최대값인 32767에 'dwordCount' 변수값을 곱한다.\n\nif (wordMaxCount > 0) {  // 워드 최대값이 초과할때마다 1씩 증가하는데 초과 횟수가 1이상일 경우\n    totalCount = totalCount + wordMax;   // 총 생산수량 = 초기화 후 총 생산수량 + wordMax값\n}\n\nmsg.payload = {\n    \"총 생산수량\": totalCount\n}\n\nmsg.topic = \"INSERT INTO fz_shm.storage1 (totalCount) VALUES ('\" + totalCount + \"')\";\n//msg.topic = \"INSERT INTO fz_shm.storage1 (totalCount) VALUES ('\" + totalCount + \"', '\" +  onoff + \"')\";\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
     "x": 440,
-    "y": 360,
+    "y": 340,
     "wires": [
       [
-        "80946a3b1a9768d3"
+        "80946a3b1a9768d3",
+        "ce95ef61fd61e82e"
       ]
     ]
   },
@@ -366,7 +377,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 600,
-    "y": 320,
+    "y": 280,
     "wires": []
   },
   {
@@ -385,8 +396,8 @@
     "authType": "",
     "senderr": false,
     "headers": [],
-    "x": 610,
-    "y": 360,
+    "x": 590,
+    "y": 500,
     "wires": [
       [
         "b4f91a02cb36c07d"
@@ -405,8 +416,54 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 760,
-    "y": 360,
+    "x": 740,
+    "y": 500,
+    "wires": []
+  },
+  {
+    "id": "97d34afa2046df74",
+    "type": "debug",
+    "z": "680afc8e46551b31",
+    "name": "debug 6",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 420,
+    "y": 280,
+    "wires": []
+  },
+  {
+    "id": "ce95ef61fd61e82e",
+    "type": "mysql",
+    "z": "680afc8e46551b31",
+    "mydb": "8e572f554e8c44d0",
+    "name": "fz_shm",
+    "x": 600,
+    "y": 340,
+    "wires": [
+      [
+        "b0bd4e57dab77e16"
+      ]
+    ]
+  },
+  {
+    "id": "b0bd4e57dab77e16",
+    "type": "debug",
+    "z": "680afc8e46551b31",
+    "name": "debug 7",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 740,
+    "y": 340,
     "wires": []
   },
   {
