@@ -779,14 +779,14 @@
         "vt": "str"
       }
     ],
-    "repeat": "",
+    "repeat": "1",
     "crontab": "",
     "once": false,
     "onceDelay": 0.1,
     "topic": "",
     "payload": "",
     "payloadType": "date",
-    "x": 120,
+    "x": 130,
     "y": 900,
     "wires": [
       [
@@ -1598,7 +1598,7 @@
     "type": "function",
     "z": "ea534a0bb0b5928e",
     "name": "parsing",
-    "func": "let pressure = 0;\n\nif (msg.payload[0] <= 980) {\n    pressure = Math.abs((msg.payload[0] / 10000) - 0.095);\n} else {\n    pressure = (msg.payload[0] / 10000) - 0.07;  // 에어 압��\n}\n\npressure = pressure.toFixed(2);\n\nlet status = msg.payload[2];  // 현재 가동 상태 (1 : 가동중, 0 : 가동안함)\nlet prev_status = status;    // 이전 가동 상태 (현재 가동 상태와 비교하여 다를 때마다 체크)\nlet check = (prev_status != status) ? 1 : 0;  // 비교하여 다르면 1 같으면 0\nlet start_check = \"\";  // 가동 시작 체크\nlet end_check = \"\";    // 가동 종료 체크\nvar start_time = 0;   // 가동 시작 시간\nvar end_time = 0;    // 가동 종료 시간\nlet operatingTime = 0;  // 총 가동 시간\nlet dateTime = new Date();  // 현재 시간\n\nif (check == 1 && status == 1) { // 가동 시작 체크 : check 값이 1이면서 status 값이 1일때 시간 확인\n    start_check = \"시작\";   // 가동 상태 체크\n    start_time = dateTime;  // 가동 시작 시간 체크\n} else if (check == 1 && status == 0) { // 가동 종료 시간 : check 값이 1이면서 status 값이 0일때 시간 확인\n    end_check = \"종료\";   // 가동 상태 체크\n    end_time = dateTime;  // 가동 종료 시간 체크\n}\n\nif (start_check == \"시작\" && end_check == \"종료\") {\n    start_check = \"\"; // 변수값 초기화\n    end_check = \"\";   // 변수값 초기화\n\n    operatingTime = end_time - start_time;\n\n    let hours = Math.floor(operatingTime / 3600000);\n    let minutes = Math.floor((operatingTime % 3600000) / 60000);\n    let seconds = Math.floor((operatingTime % 60000) / 1000);\n\n    operatingTime = `${hours}시 ${minutes}분 ${seconds}초`;\n}\n\nmsg.payload = {\n    \"에어 압력\" : pressure,\n    \"가동 상태\" : status,\n    \"현재 날짜/시간\" : dateTime\n}\n\nreturn msg;",
+    "func": "let pressure = 0;\n\nif (msg.payload[0] <= 980) {\n    pressure = Math.abs((msg.payload[0] / 10000) - 0.095);\n} else {\n    pressure = (msg.payload[0] / 10000) - 0.07;  // 에어 압력\n}\n\npressure = pressure.toFixed(2);\n\nlet status = msg.payload[2];  // 현재 가동 상태 (1 : 가동중, 0 : 가동안함)\nlet prev_status = status;    // 이전 가동 상태 (현재 가동 상태와 비교하여 다를 때마다 체크)\nlet check = (prev_status != status) ? 1 : 0;  // 비교하여 다르면 1 같으면 0\nlet start_check = \"\";  // 가동 시작 체크\nlet end_check = \"\";    // 가동 종료 체크\nvar start_time = 0;   // 가동 시작 시간\nvar end_time = 0;    // 가동 종료 시간\nlet operatingTime = 0;  // 총 가동 시간\nlet dateTime = new Date();  // 현재 시간\n\nif (check == 1 && status == 1) { // 가동 시작 체크 : check 값이 1이면서 status 값이 1일때 시간 확인\n    start_check = \"시작\";   // 가동 상태 체크\n    start_time = dateTime.getTime();  // 가동 시작 시간 체크\n} else if (check == 1 && status == 0) { // 가동 종료 시간 : check 값이 1이면서 status 값이 0일때 시간 확인\n    end_check = \"종료\";   // 가동 상태 체크\n    end_time = dateTime.getTime();  // 가동 종료 시간 체크\n}\n\nif (start_check == \"시작\" && end_check == \"종료\") {\n    start_check = \"\"; // 변수값 초기화\n    end_check = \"\";   // 변수값 초기화\n\n    operatingTime = end_time - start_time;\n\n    let hours = Math.floor(operatingTime / 3600000);\n    let minutes = Math.floor((operatingTime % 3600000) / 60000);\n    let seconds = Math.floor((operatingTime % 60000) / 1000);\n\n    operatingTime = `${hours}시 ${minutes}분 ${seconds}초`;\n}\n\nmsg.payload = {\n    \"에어 압력\" : pressure,\n    \"가동 상태\" : status,\n    \"가동 시간\" : operatingTime\n}\n\nreturn msg;",
     "outputs": 1,
     "timeout": 0,
     "noerr": 0,
@@ -3243,7 +3243,7 @@
     "id": "68ed086d3cedada0",
     "type": "comment",
     "z": "34cbadba494cdf22",
-    "name": "cap_sorter 컬렉션 데이터 삭제(매주 일요일 오���9시)",
+    "name": "cap_sorter 컬렉션 데이터 삭제(��주 일요일 오전9시)",
     "info": "",
     "x": 230,
     "y": 860,
