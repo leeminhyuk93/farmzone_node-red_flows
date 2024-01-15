@@ -504,7 +504,7 @@
     "showWarnings": true,
     "logIOActivities": false,
     "unitid": "1",
-    "dataType": "Input",
+    "dataType": "InputRegister",
     "adr": "0",
     "quantity": "10",
     "server": "b0091eac42438820",
