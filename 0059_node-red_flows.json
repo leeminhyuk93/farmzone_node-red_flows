@@ -325,7 +325,7 @@
     "unitid": "1",
     "dataType": "InputRegister",
     "adr": "0",
-    "quantity": "10",
+    "quantity": "5",
     "server": "b0091eac42438820",
     "useIOFile": false,
     "ioFile": "",
@@ -359,7 +359,8 @@
     "y": 340,
     "wires": [
       [
-        "80946a3b1a9768d3"
+        "80946a3b1a9768d3",
+        "ce95ef61fd61e82e"
       ]
     ]
   },
