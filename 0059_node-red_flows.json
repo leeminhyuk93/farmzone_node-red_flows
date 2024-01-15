@@ -505,7 +505,7 @@
     "logIOActivities": false,
     "unitid": "1",
     "dataType": "Input",
-    "adr": "6000",
+    "adr": "0",
     "quantity": "10",
     "server": "b0091eac42438820",
     "useIOFile": false,
