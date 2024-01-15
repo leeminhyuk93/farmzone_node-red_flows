@@ -466,6 +466,81 @@
     "wires": []
   },
   {
+    "id": "96f0a59135fd3ba0",
+    "type": "inject",
+    "z": "680afc8e46551b31",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 100,
+    "y": 420,
+    "wires": [
+      [
+        "c265407c7132cd3d"
+      ]
+    ]
+  },
+  {
+    "id": "c265407c7132cd3d",
+    "type": "modbus-getter",
+    "z": "680afc8e46551b31",
+    "name": "포장기_PLC(비트)",
+    "showStatusActivities": false,
+    "showErrors": false,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "1",
+    "dataType": "HoldingRegister",
+    "adr": "0",
+    "quantity": "10",
+    "server": "b0091eac42438820",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 290,
+    "y": 420,
+    "wires": [
+      [
+        "b268cd081f9994fb"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "b268cd081f9994fb",
+    "type": "debug",
+    "z": "680afc8e46551b31",
+    "name": "debug 8",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 480,
+    "y": 420,
+    "wires": []
+  },
+  {
     "id": "24234d67e41dcab1",
     "type": "debug",
     "z": "ddba9c0ddb75dcf8",
