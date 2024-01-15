@@ -298,7 +298,7 @@
         "vt": "str"
       }
     ],
-    "repeat": "30",
+    "repeat": "5",
     "crontab": "",
     "once": false,
     "onceDelay": 0.1,
