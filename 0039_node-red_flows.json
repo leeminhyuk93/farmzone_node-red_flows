@@ -760,7 +760,7 @@
     "type": "comment",
     "z": "ea534a0bb0b5928e",
     "name": "2층_작업장, PLC3_모노블럭시스템",
-    "info": "*수집 장비 : 모노블럭시스템\n*수집 항목 : 충진 및 원터치캡핑 \n        생산수량(워드), 가동 상태(비트)\n*수집 주기 : 발생 시\n\n\n - 비트 읽기 영역 : D02002.0  (가동시간 ��산용)\n하루마다 1이 처음 들어올때 시간 체크와 0으로 바뀌었을때 시간 체크해서\n하루 총 가동시간 계산하기\n - 작동중 데이터(비트) 출력되는 값 : 1\n - 작동 중지 데이터(비트) 출력되는 값 : 0",
+    "info": "*수집 장비 : 모노블럭시스템\n*수집 항목 : 충진 및 원터치캡핑 \n        생산수량(워드), 가동 상태(비트)\n*수집 주기 : 발생 시\n\n\n - 비트 읽기 영역 : D02002.0  (가동시간 계산용)\n하루마다 1이 처음 들어올때 시간 체크와 0으로 바뀌었을때 시간 체크해서\n하루 총 가동시간 계산하기\n - 작동중 데이터(비트) 출력되는 값 : 1\n - 작동 중지 데이터(비트) 출력되는 값 : 0",
     "x": 180,
     "y": 1180,
     "wires": []
@@ -1099,104 +1099,13 @@
     "wires": []
   },
   {
-    "id": "26e399676b1291a9",
-    "type": "comment",
-    "z": "ea534a0bb0b5928e",
-    "name": "2층_작업장, PLC3_캡선별공급기",
-    "info": "*수집 장비 : 캡선별공급기\n*수집 항목 : 생산수량, 불량수량 및 불량 이미지, 가동시간\n*수집 주기 : 발생 시",
-    "x": 170,
-    "y": 1500,
-    "wires": []
-  },
-  {
-    "id": "20eb149d8b528cbc",
-    "type": "inject",
-    "z": "ea534a0bb0b5928e",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 120,
-    "y": 1540,
-    "wires": [
-      [
-        "5dcb5888ad9e2463"
-      ]
-    ]
-  },
-  {
-    "id": "fbdd0ea681b404e9",
-    "type": "function",
-    "z": "ea534a0bb0b5928e",
-    "name": "function 5",
-    "func": "\nreturn msg;",
-    "outputs": 1,
-    "timeout": 0,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 480,
-    "y": 1540,
-    "wires": [
-      [
-        "05904b4e169dd804",
-        "0cc71338f8e68bc2"
-      ]
-    ]
-  },
-  {
-    "id": "05904b4e169dd804",
-    "type": "debug",
-    "z": "ea534a0bb0b5928e",
-    "name": "debug 115",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 650,
-    "y": 1520,
-    "wires": []
-  },
-  {
-    "id": "0cc71338f8e68bc2",
-    "type": "mongodb out",
-    "z": "ea534a0bb0b5928e",
-    "mongodb": "da28b1d93eba7f99",
-    "name": "",
-    "collection": "cap_sorter",
-    "payonly": false,
-    "upsert": false,
-    "multi": false,
-    "operation": "store",
-    "x": 710,
-    "y": 1560,
-    "wires": []
-  },
-  {
     "id": "bfc6e4ebb711d503",
     "type": "comment",
     "z": "ea534a0bb0b5928e",
     "name": "2층_작업장, 중량검사기",
     "info": "*수집 장비 : 중량검사기\n*수집 항목 : 생산품 중량\n*수집 주기 : 발생 시",
     "x": 140,
-    "y": 1660,
+    "y": 1500,
     "wires": []
   },
   {
@@ -1221,7 +1130,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 120,
-    "y": 1700,
+    "y": 1540,
     "wires": [
       [
         "c1bdaac07ca8784c"
@@ -1241,7 +1150,7 @@
     "finalize": "",
     "libs": [],
     "x": 480,
-    "y": 1700,
+    "y": 1540,
     "wires": [
       [
         "3427b1e3fafb80cf",
@@ -1262,7 +1171,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 650,
-    "y": 1680,
+    "y": 1520,
     "wires": []
   },
   {
@@ -1277,7 +1186,7 @@
     "multi": false,
     "operation": "store",
     "x": 720,
-    "y": 1720,
+    "y": 1560,
     "wires": []
   },
   {
@@ -1342,37 +1251,6 @@
     ]
   },
   {
-    "id": "5dcb5888ad9e2463",
-    "type": "modbus-getter",
-    "z": "ea534a0bb0b5928e",
-    "d": true,
-    "name": "",
-    "showStatusActivities": false,
-    "showErrors": false,
-    "showWarnings": true,
-    "logIOActivities": false,
-    "unitid": "",
-    "dataType": "",
-    "adr": "",
-    "quantity": "",
-    "server": "07e8b8ad6d28c925",
-    "useIOFile": false,
-    "ioFile": "",
-    "useIOForPayload": false,
-    "emptyMsgOnFail": false,
-    "keepMsgProperties": false,
-    "delayOnStart": false,
-    "startDelayTime": "",
-    "x": 300,
-    "y": 1540,
-    "wires": [
-      [
-        "fbdd0ea681b404e9"
-      ],
-      []
-    ]
-  },
-  {
     "id": "c1bdaac07ca8784c",
     "type": "modbus-getter",
     "z": "ea534a0bb0b5928e",
@@ -1395,7 +1273,7 @@
     "delayOnStart": false,
     "startDelayTime": "",
     "x": 300,
-    "y": 1700,
+    "y": 1540,
     "wires": [
       [
         "52f69a337c09f4a5"
@@ -1558,7 +1436,7 @@
     "type": "function",
     "z": "ea534a0bb0b5928e",
     "name": "parsing",
-    "func": "let count = msg.payload[0];   // 총 생산량\nlet status = msg.payload[2];  // 현재 가동 상태 (1 : 가동중, 0 : 가동안함)\nlet prev_status = status;    // ���전 가동 상태 (현재 가동 상태와 비교하여 다를 때마다 체크)\nlet check = (prev_status != status) ? 1 : 0;  // 비교하여 다르면 1 같으면 0\nlet start_check = \"\";  // 가동 시작 체크\nlet end_check = \"\";    // 가동 종료 체크\nvar start_time = 0;   // 가동 시작 시간\nvar end_time = 0;    // 가동 종료 시간\nlet operatingTime = 0;  // 총 가동 시간\nlet dateTime = new Date();  // 현재 시간\n\nif (check == 1 && status == 1) { // 가동 시작 체크 : check 값이 1이면서 status 값이 1일때 시간 확인\n    start_check = \"시작\";   // 가동 상태 체크\n    start_time = dateTime.getTime();  // 가동 시작 시간 체크\n} else if (check == 1 && status == 0) { // 가동 종료 시간 : check 값이 1이면서 status 값이 0일때 시간 확인\n    end_check = \"종료\";   // 가동 상태 체크\n    end_time = dateTime.getTime();  // 가동 종료 시간 체크\n}\n\nif (start_check == \"시작\" && end_check == \"종료\") {\n    start_check = \"\"; // 변수값 초기화\n    end_check = \"\";   // 변수값 초기화\n\n    operatingTime = end_time - start_time;\n\n    let hours = Math.floor(operatingTime / 3600000);\n    let minutes = Math.floor((operatingTime % 3600000) / 60000);\n    let seconds = Math.floor((operatingTime % 60000) / 1000);\n\n    operatingTime = `${hours}시 ${minutes}분 ${seconds}초`;\n}\n\nmsg.payload = {\n    \"장비명\" : \"모노블럭 시스템\",\n    \"총 생산량\" : count,\n    \"가동 상태\" : status,\n    \"가동 시간\" : operatingTime\n}\n\nreturn msg;",
+    "func": "let count = msg.payload[0];   // 총 생산량\nlet status = msg.payload[2];  // 현재 가동 상태 (1 : 가동중, 0 : 가동안함)\nlet prev_status = status;    // 이전 가동 상태 (현재 가동 상태와 비교하여 다를 때마다 체크)\nlet check = (prev_status != status) ? 1 : 0;  // 비교하여 다르면 1 같으면 0\nlet start_check = \"\";  // 가동 시작 체크\nlet end_check = \"\";    // 가동 종료 체크\nvar start_time = 0;   // 가동 시작 시간\nvar end_time = 0;    // 가동 종료 시간\nlet operatingTime = 0;  // 총 가동 시간\nlet dateTime = new Date();  // 현재 시간\nlet saveTimeUser = dateTime.toLocaleString();  //저장된 시간(사용자용)\n\nif (check == 1 && status == 1) { // 가동 시작 체크 : check 값이 1이면서 status 값이 1일때 시간 확인\n    start_check = \"시작\";   // 가동 상태 체크\n    start_time = dateTime.getTime();  // 가동 시작 시간 체크\n} else if (check == 1 && status == 0) { // 가동 종료 시간 : check 값이 1이면서 status 값이 0일때 시간 확인\n    end_check = \"종료\";   // 가동 상태 체크\n    end_time = dateTime.getTime();  // 가동 종료 시간 체크\n}\n\nif (start_check == \"시작\" && end_check == \"종료\") {\n    start_check = \"\"; // 변수값 초기화\n    end_check = \"\";   // 변수값 초기화\n\n    operatingTime = end_time - start_time;\n\n    let hours = Math.floor(operatingTime / 3600000);\n    let minutes = Math.floor((operatingTime % 3600000) / 60000);\n    let seconds = Math.floor((operatingTime % 60000) / 1000);\n\n    operatingTime = `${hours}시 ${minutes}분 ${seconds}초`;\n}\n\nmsg.payload = {\n    \"equipName\" : \"모노블럭 시스템\",   //장비명\n    \"totalCount\" : count,             //총 생산량\n    \"status\" : status,                //가동상태\n    \"startTime\" : start_time,         //가동 시작시간\n    \"endTime\": end_time,              //가동 종료시간\n    \"operatingTime\" : operatingTime,  //가동시간\n    \"saveTimeUser\" : saveTimeUser,    //저장시간\n    \"saveTimeDB\" : dateTime           //저장시간(find용)\n}\n\nreturn msg;",
     "outputs": 1,
     "timeout": 0,
     "noerr": 0,
@@ -1951,23 +1829,13 @@
     "wires": []
   },
   {
-    "id": "fb2f4da7c544eb7c",
-    "type": "comment",
-    "z": "88eb231280c2e9e9",
-    "name": "2층_작업장, PLC3_캡선별공급기",
-    "info": "*수집 장비 : 캡선별공급기\n*수집 항목 : 생산수량, 불량수량 및 불량 이미지, 가동시간\n*수집 주기 : 발생 시",
-    "x": 150,
-    "y": 1100,
-    "wires": []
-  },
-  {
     "id": "589bf29b7b64887c",
     "type": "comment",
     "z": "88eb231280c2e9e9",
     "name": "2층_작업장, PLC3_중량검사기",
     "info": "*수집 장비 : 중량검사기\n*수집 항목 : 생산품 중량\n*수집 주기 : 발생 시",
     "x": 150,
-    "y": 1300,
+    "y": 1100,
     "wires": []
   },
   {
@@ -2346,131 +2214,6 @@
     ]
   },
   {
-    "id": "573ff7ca4e49915b",
-    "type": "inject",
-    "z": "88eb231280c2e9e9",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 100,
-    "y": 1140,
-    "wires": [
-      [
-        "c74194eeb7e050f0"
-      ]
-    ]
-  },
-  {
-    "id": "c74194eeb7e050f0",
-    "type": "function",
-    "z": "88eb231280c2e9e9",
-    "name": "find query",
-    "func": "/* 설명\n  \"cap_sorter\" 컬렉션에서 30초 이내에 저장된 데이터 중에 가장 최근 저장된 데이터 조회\n*/\n\nmsg.payload = {\n    \"check_date\": {\n        \"$gte\": new Date(Date.now() - 30 * 1000), // 현재 날짜 및 시간에서 30초 전의 날짜와 시간\n        \"$lte\": new Date()\n    }\n}\n\nmsg.sort = { \"check_date\": -1 }; // 내림차순 정렬\nmsg.limit = 1; // 최대 1개의 결과 반환\n\nreturn msg;",
-    "outputs": 1,
-    "timeout": 0,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 260,
-    "y": 1140,
-    "wires": [
-      [
-        "6b1c09f6cf6cc87f"
-      ]
-    ]
-  },
-  {
-    "id": "6b1c09f6cf6cc87f",
-    "type": "mongodb in",
-    "z": "88eb231280c2e9e9",
-    "mongodb": "da28b1d93eba7f99",
-    "name": "",
-    "collection": "cap_sorter",
-    "operation": "find",
-    "x": 490,
-    "y": 1140,
-    "wires": [
-      [
-        "974927bedeb7c11e"
-      ]
-    ]
-  },
-  {
-    "id": "974927bedeb7c11e",
-    "type": "function",
-    "z": "88eb231280c2e9e9",
-    "name": "send API",
-    "func": "let device_id = msg.payload[0].payload.device_id;\nlet cap_sorter = msg.payload[0].payload.cap_sorter;\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0039\",\n    \"scode\": \"\",\n    \"kind\": \"\",\n    \"deviceId\": device_id,\n    \"cap_sorter\": cap_sorter\n}\n\nreturn msg;",
-    "outputs": 1,
-    "timeout": 0,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 420,
-    "y": 1220,
-    "wires": [
-      [
-        "9ebecc27e5727f17",
-        "2abb7398f4b8dd80"
-      ]
-    ]
-  },
-  {
-    "id": "2abb7398f4b8dd80",
-    "type": "debug",
-    "z": "88eb231280c2e9e9",
-    "name": "debug 121",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 610,
-    "y": 1200,
-    "wires": []
-  },
-  {
-    "id": "9ebecc27e5727f17",
-    "type": "http request",
-    "z": "88eb231280c2e9e9",
-    "d": true,
-    "name": "",
-    "method": "POST",
-    "ret": "txt",
-    "paytoqs": "ignore",
-    "url": "",
-    "tls": "",
-    "persist": false,
-    "proxy": "",
-    "insecureHTTPParser": false,
-    "authType": "",
-    "senderr": false,
-    "headers": [],
-    "x": 610,
-    "y": 1240,
-    "wires": [
-      []
-    ]
-  },
-  {
     "id": "8c763b43829582b5",
     "type": "inject",
     "z": "88eb231280c2e9e9",
@@ -2492,7 +2235,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 100,
-    "y": 1340,
+    "y": 1140,
     "wires": [
       [
         "a5a4b681fc1d41a2"
@@ -2512,7 +2255,7 @@
     "finalize": "",
     "libs": [],
     "x": 260,
-    "y": 1340,
+    "y": 1140,
     "wires": [
       [
         "23061f8d4f809cf6"
@@ -2528,7 +2271,7 @@
     "collection": "weight_checker",
     "operation": "find",
     "x": 500,
-    "y": 1340,
+    "y": 1140,
     "wires": [
       [
         "ab4f922b6a70d325"
@@ -2548,7 +2291,7 @@
     "finalize": "",
     "libs": [],
     "x": 420,
-    "y": 1420,
+    "y": 1220,
     "wires": [
       [
         "8ea90e17f06f9f05",
@@ -2569,7 +2312,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 610,
-    "y": 1400,
+    "y": 1200,
     "wires": []
   },
   {
@@ -2590,7 +2333,7 @@
     "senderr": false,
     "headers": [],
     "x": 610,
-    "y": 1440,
+    "y": 1240,
     "wires": [
       []
     ]
@@ -3208,81 +2951,6 @@
     ]
   },
   {
-    "id": "4c4182de1872b477",
-    "type": "function",
-    "z": "34cbadba494cdf22",
-    "name": "remove query",
-    "func": "let remove_date = {};\nremove_date.collection = \"cap_sorter\";\n\nreturn remove_date;",
-    "outputs": 1,
-    "timeout": 0,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 300,
-    "y": 900,
-    "wires": [
-      [
-        "3616cfbfde414c97"
-      ]
-    ]
-  },
-  {
-    "id": "3616cfbfde414c97",
-    "type": "mongodb out",
-    "z": "34cbadba494cdf22",
-    "mongodb": "da28b1d93eba7f99",
-    "name": "cap_sorter",
-    "collection": "cap_sorter",
-    "payonly": false,
-    "upsert": false,
-    "multi": false,
-    "operation": "delete",
-    "x": 490,
-    "y": 900,
-    "wires": []
-  },
-  {
-    "id": "68ed086d3cedada0",
-    "type": "comment",
-    "z": "34cbadba494cdf22",
-    "name": "cap_sorter 컬렉션 데이터 삭제(매주 일요일 오전9시)",
-    "info": "",
-    "x": 230,
-    "y": 860,
-    "wires": []
-  },
-  {
-    "id": "200622e76c8a7e90",
-    "type": "inject",
-    "z": "34cbadba494cdf22",
-    "d": true,
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "00 09 * * 0",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 130,
-    "y": 900,
-    "wires": [
-      [
-        "4c4182de1872b477"
-      ]
-    ]
-  },
-  {
     "id": "cdeb7d46df7dee15",
     "type": "function",
     "z": "34cbadba494cdf22",
@@ -3295,7 +2963,7 @@
     "finalize": "",
     "libs": [],
     "x": 300,
-    "y": 1000,
+    "y": 900,
     "wires": [
       [
         "31a2d4376a5ff093"
@@ -3314,7 +2982,7 @@
     "multi": false,
     "operation": "delete",
     "x": 500,
-    "y": 1000,
+    "y": 900,
     "wires": []
   },
   {
@@ -3324,7 +2992,7 @@
     "name": "weight_checker 컬렉션 데이터 삭제(매주 일요일 오전9시)",
     "info": "",
     "x": 250,
-    "y": 960,
+    "y": 860,
     "wires": []
   },
   {
@@ -3350,7 +3018,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 1000,
+    "y": 900,
     "wires": [
       [
         "cdeb7d46df7dee15"
