@@ -16,6 +16,14 @@
     "env": []
   },
   {
+    "id": "4fe8cf280b88384a",
+    "type": "tab",
+    "label": "플로우 1",
+    "disabled": true,
+    "info": "",
+    "env": []
+  },
+  {
     "id": "b9895735130da027",
     "type": "modbus-client",
     "name": "오므론 온도제어기",
@@ -696,12 +704,11 @@
     "keepMsgProperties": false,
     "delayOnStart": false,
     "startDelayTime": "",
-    "x": 170,
-    "y": 220,
+    "x": 290,
+    "y": 160,
     "wires": [
       [
-        "cff0bbcbcd5d7c40",
-        "9a335ec3935f09f1"
+        "b4a85c21425d5438"
       ],
       []
     ]
@@ -718,8 +725,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 540,
-    "y": 220,
+    "x": 480,
+    "y": 160,
     "wires": [
       [
         "176cfcc49a8e9042"
@@ -738,38 +745,12 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 620,
-    "y": 400,
+    "x": 480,
+    "y": 360,
     "wires": [
       [
         "f40c76d72e7bd7d1",
         "37ad13edcb079b9f"
-      ]
-    ]
-  },
-  {
-    "id": "cff0bbcbcd5d7c40",
-    "type": "delay",
-    "z": "5e99d5afcc1bc9a3",
-    "name": "",
-    "pauseType": "delay",
-    "timeout": "0.5",
-    "timeoutUnits": "seconds",
-    "rate": "1",
-    "nbRateUnits": "1",
-    "rateUnits": "second",
-    "randomFirst": "1",
-    "randomLast": "5",
-    "randomUnits": "seconds",
-    "drop": false,
-    "allowrate": false,
-    "outputs": 1,
-    "x": 370,
-    "y": 220,
-    "wires": [
-      [
-        "b4a85c21425d5438",
-        "a7e3c5d78aa5b7c9"
       ]
     ]
   },
@@ -794,39 +775,13 @@
     "keepMsgProperties": false,
     "delayOnStart": false,
     "startDelayTime": "",
-    "x": 160,
-    "y": 140,
+    "x": 300,
+    "y": 80,
     "wires": [
       [
-        "0d2a927bd22a5616"
+        "49d22122e523338c"
       ],
       []
-    ]
-  },
-  {
-    "id": "0d2a927bd22a5616",
-    "type": "delay",
-    "z": "5e99d5afcc1bc9a3",
-    "name": "",
-    "pauseType": "delay",
-    "timeout": "0.5",
-    "timeoutUnits": "seconds",
-    "rate": "1",
-    "nbRateUnits": "1",
-    "rateUnits": "second",
-    "randomFirst": "1",
-    "randomLast": "5",
-    "randomUnits": "seconds",
-    "drop": false,
-    "allowrate": false,
-    "outputs": 1,
-    "x": 350,
-    "y": 140,
-    "wires": [
-      [
-        "49d22122e523338c",
-        "c99fcc1661171b9b"
-      ]
     ]
   },
   {
@@ -841,8 +796,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 510,
-    "y": 140,
+    "x": 470,
+    "y": 80,
     "wires": [
       [
         "176cfcc49a8e9042"
@@ -870,38 +825,13 @@
     "keepMsgProperties": false,
     "delayOnStart": false,
     "startDelayTime": "",
-    "x": 150,
-    "y": 300,
-    "wires": [
-      [
-        "9873264689ffe9df"
-      ],
-      []
-    ]
-  },
-  {
-    "id": "9873264689ffe9df",
-    "type": "delay",
-    "z": "5e99d5afcc1bc9a3",
-    "name": "",
-    "pauseType": "delay",
-    "timeout": "0.5",
-    "timeoutUnits": "seconds",
-    "rate": "1",
-    "nbRateUnits": "1",
-    "rateUnits": "second",
-    "randomFirst": "1",
-    "randomLast": "5",
-    "randomUnits": "seconds",
-    "drop": false,
-    "allowrate": false,
-    "outputs": 1,
-    "x": 310,
-    "y": 300,
+    "x": 270,
+    "y": 240,
     "wires": [
       [
         "674022599477fcf0"
-      ]
+      ],
+      []
     ]
   },
   {
@@ -916,8 +846,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 510,
-    "y": 300,
+    "x": 470,
+    "y": 240,
     "wires": [
       [
         "176cfcc49a8e9042"
@@ -944,7 +874,7 @@
     "reduceInit": "",
     "reduceInitType": "",
     "reduceFixup": "",
-    "x": 730,
+    "x": 710,
     "y": 220,
     "wires": [
       [
@@ -974,8 +904,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 780,
-    "y": 380,
+    "x": 640,
+    "y": 340,
     "wires": []
   },
   {
@@ -984,8 +914,8 @@
     "z": "5e99d5afcc1bc9a3",
     "mydb": "b0b981838aca64c6",
     "name": "",
-    "x": 780,
-    "y": 420,
+    "x": 640,
+    "y": 380,
     "wires": [
       [
         "fc20c7108b97b430"
@@ -1004,8 +934,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 940,
-    "y": 420,
+    "x": 780,
+    "y": 380,
     "wires": []
   },
   {
@@ -1057,20 +987,62 @@
     "wires": []
   },
   {
-    "id": "9a335ec3935f09f1",
-    "type": "debug",
+    "id": "f5484f0a17536b95",
+    "type": "inject",
     "z": "5e99d5afcc1bc9a3",
-    "name": "debug 29",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 380,
-    "y": 260,
-    "wires": []
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "8",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 110,
+    "y": 160,
+    "wires": [
+      [
+        "c99fcc1661171b9b"
+      ]
+    ]
+  },
+  {
+    "id": "28d237f85bd91079",
+    "type": "inject",
+    "z": "5e99d5afcc1bc9a3",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "8",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 110,
+    "y": 240,
+    "wires": [
+      [
+        "a7e3c5d78aa5b7c9"
+      ]
+    ]
   },
   {
     "id": "f68a7aea4f52d72b",
@@ -1481,6 +1453,901 @@
     "statusType": "auto",
     "x": 580,
     "y": 660,
+    "wires": []
+  },
+  {
+    "id": "8249a0a2244b7e4e",
+    "type": "function",
+    "z": "4fe8cf280b88384a",
+    "name": "SQL쿼리(MiddleTemp)",
+    "func": "msg.topic = 'SELECT MiddleTemp, date FROM temp WHERE (date BETWEEN date_add(now(), interval -15 second) AND now()) ORDER BY date DESC LIMIT 1';\nreturn msg;",
+    "outputs": 1,
+    "timeout": "",
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 320,
+    "y": 780,
+    "wires": [
+      [
+        "f58c284e96e9b956"
+      ]
+    ]
+  },
+  {
+    "id": "3aa59b279302d4b8",
+    "type": "inject",
+    "z": "4fe8cf280b88384a",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 780,
+    "wires": [
+      [
+        "8249a0a2244b7e4e"
+      ]
+    ]
+  },
+  {
+    "id": "e147619376c96606",
+    "type": "debug",
+    "z": "4fe8cf280b88384a",
+    "name": "debug 30",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 800,
+    "y": 880,
+    "wires": []
+  },
+  {
+    "id": "93c8775e274edd85",
+    "type": "function",
+    "z": "4fe8cf280b88384a",
+    "name": "터널프리저(중간온도) send api",
+    "func": "let input_value = msg.payload;\nlet temp = input_value[0]['MiddleTemp'];\nlet date = input_value[0]['date'];\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\nmsg.payload = {\n    \"ccode\": \"0098\",\n    \"scode\" : \"153\",\n    \"middleTemp\" : temp,\n    \"deviceId\" : \"1\",\n    \"regdate\" : date,\n    \"ip\" : \"127.0.0.1\"\n}\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 410,
+    "y": 860,
+    "wires": [
+      [
+        "1957075bffd4beaf",
+        "9fd6d50496639b59"
+      ]
+    ]
+  },
+  {
+    "id": "1957075bffd4beaf",
+    "type": "http request",
+    "z": "4fe8cf280b88384a",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "https://pc.smarthaccpman.com/nodered_api/get_pos_damia",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 650,
+    "y": 880,
+    "wires": [
+      [
+        "e147619376c96606"
+      ]
+    ]
+  },
+  {
+    "id": "b7fb01c33a226e11",
+    "type": "function",
+    "z": "4fe8cf280b88384a",
+    "name": "SQL쿼리(OmronTemp)",
+    "func": "msg.topic = 'SELECT OmronTemp, date FROM temp WHERE (date BETWEEN date_add(now(), interval -15 second) AND now()) ORDER BY date DESC LIMIT 1';\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 320,
+    "y": 960,
+    "wires": [
+      [
+        "0215ad2b35117846"
+      ]
+    ]
+  },
+  {
+    "id": "f347766b0fa4ed89",
+    "type": "inject",
+    "z": "4fe8cf280b88384a",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 960,
+    "wires": [
+      [
+        "b7fb01c33a226e11"
+      ]
+    ]
+  },
+  {
+    "id": "9ee0c104432d4c04",
+    "type": "debug",
+    "z": "4fe8cf280b88384a",
+    "name": "debug 31",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 800,
+    "y": 1060,
+    "wires": []
+  },
+  {
+    "id": "1f587bf461340646",
+    "type": "function",
+    "z": "4fe8cf280b88384a",
+    "name": "오므론(2봉 워너믹서) send api",
+    "func": "let input_value = msg.payload;\nlet temp = input_value[0]['OmronTemp'];\nlet date = input_value[0]['date'];\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\nmsg.payload = {\n    \"ccode\": \"0098\",\n    \"scode\": \"154\",\n    \"middleTemp\": temp,\n    \"deviceId\" : \"1\",\n    \"regdate\" : date,\n    \"ip\" : \"127.0.0.1\"\n}\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 410,
+    "y": 1040,
+    "wires": [
+      [
+        "39bd323ded23398e",
+        "fa1544f79c217716"
+      ]
+    ]
+  },
+  {
+    "id": "39bd323ded23398e",
+    "type": "http request",
+    "z": "4fe8cf280b88384a",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "https://pc.smarthaccpman.com/nodered_api/get_pos_damia",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 650,
+    "y": 1060,
+    "wires": [
+      [
+        "9ee0c104432d4c04"
+      ]
+    ]
+  },
+  {
+    "id": "73a5382afd7e5c12",
+    "type": "function",
+    "z": "4fe8cf280b88384a",
+    "name": "SQL쿼리(셔틀패너)",
+    "func": "msg.topic = 'SELECT TotalCount, date FROM temp WHERE (date BETWEEN date_add(now(), interval -15 second) AND now()) ORDER BY date DESC LIMIT 1';\nreturn msg;",
+    "outputs": 1,
+    "timeout": "",
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 310,
+    "y": 600,
+    "wires": [
+      [
+        "5e06bebf6303701f"
+      ]
+    ]
+  },
+  {
+    "id": "538d714857a2cc70",
+    "type": "inject",
+    "z": "4fe8cf280b88384a",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 600,
+    "wires": [
+      [
+        "73a5382afd7e5c12"
+      ]
+    ]
+  },
+  {
+    "id": "8d6bb984566ef5c3",
+    "type": "debug",
+    "z": "4fe8cf280b88384a",
+    "name": "debug 32",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 740,
+    "y": 700,
+    "wires": []
+  },
+  {
+    "id": "96cb72b337abb55e",
+    "type": "function",
+    "z": "4fe8cf280b88384a",
+    "name": "셔틀패너 send api",
+    "func": "let input_value = msg.payload;\nlet count = input_value[0]['TotalCount'];\nlet date = input_value[0]['date'];\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\nmsg.payload = {\n    \"ccode\": \"0098\",\n    \"count\": count,\n    \"deviceId\": \"2\",\n    \"sdate\": date,\n    \"edate\" : date,\n    \"regdate\": date, \n    \"ip\" : \"127.0.0.1\"\n}\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": "",
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 390,
+    "y": 680,
+    "wires": [
+      [
+        "e2f8fc1645c12c9a",
+        "3a50d0db4adebfd4"
+      ]
+    ]
+  },
+  {
+    "id": "e2f8fc1645c12c9a",
+    "type": "http request",
+    "z": "4fe8cf280b88384a",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "https://pc.smarthaccpman.com/nodered_api/get_pos_damia2",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 590,
+    "y": 700,
+    "wires": [
+      [
+        "8d6bb984566ef5c3"
+      ]
+    ]
+  },
+  {
+    "id": "bce04dd250149f21",
+    "type": "comment",
+    "z": "4fe8cf280b88384a",
+    "name": "send API",
+    "info": "",
+    "x": 100,
+    "y": 560,
+    "wires": []
+  },
+  {
+    "id": "f58c284e96e9b956",
+    "type": "mysql",
+    "z": "4fe8cf280b88384a",
+    "mydb": "34654803fe111f09",
+    "name": "",
+    "x": 520,
+    "y": 780,
+    "wires": [
+      [
+        "93c8775e274edd85"
+      ]
+    ]
+  },
+  {
+    "id": "0215ad2b35117846",
+    "type": "mysql",
+    "z": "4fe8cf280b88384a",
+    "mydb": "34654803fe111f09",
+    "name": "",
+    "x": 520,
+    "y": 960,
+    "wires": [
+      [
+        "1f587bf461340646"
+      ]
+    ]
+  },
+  {
+    "id": "5e06bebf6303701f",
+    "type": "mysql",
+    "z": "4fe8cf280b88384a",
+    "mydb": "34654803fe111f09",
+    "name": "",
+    "x": 500,
+    "y": 600,
+    "wires": [
+      [
+        "96cb72b337abb55e"
+      ]
+    ]
+  },
+  {
+    "id": "73250bc85373a0c3",
+    "type": "comment",
+    "z": "4fe8cf280b88384a",
+    "name": "MySQL DB - 저장된 기간이 현재 날짜의 기준으로 7일이 지난 데이터는 삭제하는 delete query",
+    "info": "",
+    "x": 360,
+    "y": 1160,
+    "wires": []
+  },
+  {
+    "id": "46fae2e5b83441a4",
+    "type": "inject",
+    "z": "4fe8cf280b88384a",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "05 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 1200,
+    "wires": [
+      [
+        "aa98e755e1d91e87"
+      ]
+    ]
+  },
+  {
+    "id": "aa98e755e1d91e87",
+    "type": "function",
+    "z": "4fe8cf280b88384a",
+    "name": "delete query",
+    "func": "msg.topic = \"DELETE FROM temp WHERE date < CURDATE() - INTERVAL 7 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 310,
+    "y": 1200,
+    "wires": [
+      [
+        "a6802eb8c02843e0"
+      ]
+    ]
+  },
+  {
+    "id": "a6802eb8c02843e0",
+    "type": "mysql",
+    "z": "4fe8cf280b88384a",
+    "mydb": "b0b981838aca64c6",
+    "name": "",
+    "x": 480,
+    "y": 1200,
+    "wires": [
+      [
+        "0f1e11ffda12d9fb"
+      ]
+    ]
+  },
+  {
+    "id": "0f1e11ffda12d9fb",
+    "type": "debug",
+    "z": "4fe8cf280b88384a",
+    "name": "debug 33",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 640,
+    "y": 1200,
+    "wires": []
+  },
+  {
+    "id": "4e3cc694ea6b0506",
+    "type": "inject",
+    "z": "4fe8cf280b88384a",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "8",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 110,
+    "y": 100,
+    "wires": [
+      [
+        "c090bcd57bf06b9d"
+      ]
+    ]
+  },
+  {
+    "id": "54c9b432c4b4bdca",
+    "type": "modbus-getter",
+    "z": "4fe8cf280b88384a",
+    "name": "터널프리저_PLC",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "2",
+    "dataType": "InputRegister",
+    "adr": "5",
+    "quantity": "1",
+    "server": "6dbb6a874d8b5575",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": true,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 170,
+    "y": 240,
+    "wires": [
+      [
+        "fd38488db2b667b9",
+        "3aa525895db3c118"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "cdbdbff92c2265a1",
+    "type": "function",
+    "z": "4fe8cf280b88384a",
+    "name": "중간 온도",
+    "func": "const device = 2;\nlet value = (msg.payload == null || msg.payload == \"\") ? \"\" : msg.payload;\n\nif (value > 32767) {\n    value -= 65535;\n}\n\nvalue = parseFloat(value) / 10;\nvalue = value + 3;\n\nmsg.payload = [device, value];\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 540,
+    "y": 240,
+    "wires": [
+      [
+        "0221e73f5b5a9ed4"
+      ]
+    ]
+  },
+  {
+    "id": "cfeddedcaa64c44e",
+    "type": "function",
+    "z": "4fe8cf280b88384a",
+    "name": "insert DB",
+    "func": "var totalCount = \"\";\nvar middleTemp = \"\";\nvar omronTemp = \"\";\n\nfor (let i = 0; i < 3; i++) {\n    const device = msg.payload[i][0];\n    const value = msg.payload[i][1];\n\n    switch (device) {\n        case 1:\n            totalCount = value;\n            break;\n\n        case 2:\n            middleTemp = value;\n            break;\n\n        case 3:\n            omronTemp = value;\n            break;\n    }\n}\n\nmsg.payload = {\n    \"totalCount\": totalCount,\n    \"middleTemp\": middleTemp,\n    \"omronTemp\": omronTemp\n}\n\nmsg.topic = \"insert into temp(TotalCount, MiddleTemp, OmronTemp, date) values('\" + totalCount + \"', '\" + middleTemp + \"', '\" + omronTemp + \"', current_timestamp());\";\nreturn msg;",
+    "outputs": 1,
+    "timeout": "",
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 620,
+    "y": 420,
+    "wires": [
+      [
+        "37c0a20477456a0e",
+        "d785e42ab1bfb46c"
+      ]
+    ]
+  },
+  {
+    "id": "fd38488db2b667b9",
+    "type": "delay",
+    "z": "4fe8cf280b88384a",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "0.5",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "outputs": 1,
+    "x": 370,
+    "y": 240,
+    "wires": [
+      [
+        "cdbdbff92c2265a1",
+        "763a19ce668999cd"
+      ]
+    ]
+  },
+  {
+    "id": "c090bcd57bf06b9d",
+    "type": "modbus-getter",
+    "z": "4fe8cf280b88384a",
+    "name": "셔틀패너_PLC",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "1",
+    "dataType": "InputRegister",
+    "adr": "20",
+    "quantity": "1",
+    "server": "f9ef823e3f5745f0",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": true,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 160,
+    "y": 160,
+    "wires": [
+      [
+        "069203312f93c986"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "069203312f93c986",
+    "type": "delay",
+    "z": "4fe8cf280b88384a",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "0.5",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "outputs": 1,
+    "x": 350,
+    "y": 160,
+    "wires": [
+      [
+        "cb43c1f6c1d3c863",
+        "54c9b432c4b4bdca"
+      ]
+    ]
+  },
+  {
+    "id": "cb43c1f6c1d3c863",
+    "type": "function",
+    "z": "4fe8cf280b88384a",
+    "name": "생산량",
+    "func": "const device = 1;\nconst value = (msg.payload == null || msg.payload == \"\") ? \"\" : msg.payload[0];\n\nmsg.payload = [device, value];\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 510,
+    "y": 160,
+    "wires": [
+      [
+        "0221e73f5b5a9ed4"
+      ]
+    ]
+  },
+  {
+    "id": "763a19ce668999cd",
+    "type": "modbus-getter",
+    "z": "4fe8cf280b88384a",
+    "name": "오므론_temp",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "1",
+    "dataType": "HoldingRegister",
+    "adr": "9218",
+    "quantity": "1",
+    "server": "b9895735130da027",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": true,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 150,
+    "y": 320,
+    "wires": [
+      [
+        "7d9a9f40bcc1af2a"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "7d9a9f40bcc1af2a",
+    "type": "delay",
+    "z": "4fe8cf280b88384a",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "0.5",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "outputs": 1,
+    "x": 310,
+    "y": 320,
+    "wires": [
+      [
+        "4302b24e17bd2147"
+      ]
+    ]
+  },
+  {
+    "id": "4302b24e17bd2147",
+    "type": "function",
+    "z": "4fe8cf280b88384a",
+    "name": "2봉 워너믹서 온도",
+    "func": "const device = 3;\nconst value = (msg.payload == null || msg.payload == \"\") ? \"\" : msg.payload[0];\n\nmsg.payload = [device, value];\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 510,
+    "y": 320,
+    "wires": [
+      [
+        "0221e73f5b5a9ed4"
+      ]
+    ]
+  },
+  {
+    "id": "0221e73f5b5a9ed4",
+    "type": "join",
+    "z": "4fe8cf280b88384a",
+    "name": "",
+    "mode": "custom",
+    "build": "array",
+    "property": "payload",
+    "propertyType": "msg",
+    "key": "topic",
+    "joiner": "\\n",
+    "joinerType": "str",
+    "accumulate": false,
+    "timeout": "",
+    "count": "3",
+    "reduceRight": false,
+    "reduceExp": "",
+    "reduceInit": "",
+    "reduceInitType": "",
+    "reduceFixup": "",
+    "x": 730,
+    "y": 240,
+    "wires": [
+      [
+        "cfeddedcaa64c44e"
+      ]
+    ]
+  },
+  {
+    "id": "cc90c2caac39d4ba",
+    "type": "comment",
+    "z": "4fe8cf280b88384a",
+    "name": "장치 정보",
+    "info": "1. 셔틀패너_PLC\n-수집 데이터 : 생산량\n-IP : 192.168.0.222\n-PORT : 502\n-FC : 4\n-데이터 불러오는 주소 : 20\n\n2. 터널프리저_PLC\n-수집 데이터 : 중간 온도\n-IP : 192.168.0.221\n-PORT : 502\n-FC : 4\n-데이터 불러오는 주소 : 5\n\n3. 오므론 온도컨트롤러\n-수집 데이터 : 2봉 워너믹서 온도\n-IP : 192.168.0.201\n-PORT : 1501\n-FC : 3\n-데이터 불러오는 주소 : 9218",
+    "x": 80,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "37c0a20477456a0e",
+    "type": "debug",
+    "z": "4fe8cf280b88384a",
+    "name": "debug 34",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 780,
+    "y": 400,
+    "wires": []
+  },
+  {
+    "id": "d785e42ab1bfb46c",
+    "type": "mysql",
+    "z": "4fe8cf280b88384a",
+    "mydb": "b0b981838aca64c6",
+    "name": "",
+    "x": 780,
+    "y": 440,
+    "wires": [
+      [
+        "33ba7e6a2003e452"
+      ]
+    ]
+  },
+  {
+    "id": "33ba7e6a2003e452",
+    "type": "debug",
+    "z": "4fe8cf280b88384a",
+    "name": "debug 35",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 940,
+    "y": 440,
+    "wires": []
+  },
+  {
+    "id": "9fd6d50496639b59",
+    "type": "debug",
+    "z": "4fe8cf280b88384a",
+    "name": "debug 36",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 640,
+    "y": 840,
+    "wires": []
+  },
+  {
+    "id": "fa1544f79c217716",
+    "type": "debug",
+    "z": "4fe8cf280b88384a",
+    "name": "debug 37",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 640,
+    "y": 1020,
+    "wires": []
+  },
+  {
+    "id": "3a50d0db4adebfd4",
+    "type": "debug",
+    "z": "4fe8cf280b88384a",
+    "name": "debug 38",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 580,
+    "y": 660,
+    "wires": []
+  },
+  {
+    "id": "3aa525895db3c118",
+    "type": "debug",
+    "z": "4fe8cf280b88384a",
+    "name": "debug 39",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 380,
+    "y": 280,
     "wires": []
   }
 ]
