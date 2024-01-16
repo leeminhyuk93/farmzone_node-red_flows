@@ -848,8 +848,7 @@
     "y": 1240,
     "wires": [
       [
-        "3ecec96b54e0e69e",
-        "d870f9d1b5e11042"
+        "3ecec96b54e0e69e"
       ]
     ]
   },
@@ -1641,20 +1640,6 @@
         "4a1573ab1532a224",
         "a358cd79b02f0d20"
       ]
-    ]
-  },
-  {
-    "id": "d870f9d1b5e11042",
-    "type": "require",
-    "z": "ea534a0bb0b5928e",
-    "name": "moment",
-    "module": "moment",
-    "field": "set(\"moment\")",
-    "fieldType": "global",
-    "x": 260,
-    "y": 1280,
-    "wires": [
-      []
     ]
   },
   {
