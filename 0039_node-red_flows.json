@@ -1983,7 +1983,7 @@
     "type": "function",
     "z": "88eb231280c2e9e9",
     "name": "find query",
-    "func": "/* 설명\n  \"vision_camera\" 컬렉션에서 30초 이내에 저장된 데이터 중에 가장 최근 저장된 데이터 조회\n*/\n\nmsg.payload = {\n    \"check_date\": {\n        \"$gte\": new Date(Date.now() - 30 * 1000), // 현재 날짜 및 시간��서 30초 전의 날짜와 시간\n        \"$lte\": new Date()\n    }\n}\n\nmsg.sort = { \"check_date\": -1 }; // 내림차순 정렬\nmsg.limit = 1; // 최대 1개의 결과 반환\n\nreturn msg;",
+    "func": "/* 설명\n  \"vision_camera\" 컬렉션에서 30초 이내에 저장된 데이터 중에 가장 최근 저장된 데이터 조회\n*/\n\nmsg.payload = {\n    \"check_date\": {\n        \"$gte\": new Date(Date.now() - 30 * 1000), // 현재 날짜 및 시간에서 30초 전의 날짜와 시간\n        \"$lte\": new Date()\n    }\n}\n\nmsg.sort = { \"check_date\": -1 }; // 내림차순 정렬\nmsg.limit = 1; // 최대 1개의 결과 반환\n\nreturn msg;",
     "outputs": 1,
     "timeout": 0,
     "noerr": 0,
