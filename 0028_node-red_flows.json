@@ -718,7 +718,7 @@
     "type": "function",
     "z": "5e99d5afcc1bc9a3",
     "name": "중간 온도",
-    "func": "const device = 2;\nlet value = (msg.payload == null || msg.payload == \"\") ? \"\" : msg.payload;\n\nif (value > 32767) {\n    value -= 65535;\n}\n\nvalue = parseFloat(value) / 10;\nvalue = value + 3;\n\nmsg.payload = [device, value];\nreturn msg;",
+    "func": "const device = 2;\nlet value = (msg.payload == null || msg.payload == \"\") ? \"\" : msg.payload;\n\nif (value > 32767) {\n    value -= 65535;\n}\n\nvalue = parseFloat(value) / 10;\nvalue = value + 3.4;\n\nmsg.payload = [device, value];\nreturn msg;",
     "outputs": 1,
     "timeout": 0,
     "noerr": 0,
