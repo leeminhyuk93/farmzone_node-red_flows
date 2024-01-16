@@ -349,7 +349,7 @@
     "type": "function",
     "z": "680afc8e46551b31",
     "name": "parsing",
-    "func": "let totalCount = msg.payload[0];  // D6003_총 생산수량 (D6003값이 워드 최대값인 32767이 넘어갈때마다 0으로 초기화됨)\nlet wordMaxCount = msg.payload[1];   // D6004_총생산수량 더블워드 D6003값이 워드 최대값인 32767이 넘어갈때마다 1씩 증가\nlet wordMax = 32767 * wordMaxCount;  // 더블워드값을 계산하기 위해 워드 최대값인 32767에 'dwordCount' 변수값을 곱한다.\nlet productNum = msg.payload[2];  // D6005_품목Data (총60개 : 0~59)\n\nif (wordMaxCount > 0) {  // 워드 최대값이 초과할때마다 1씩 증가하는데 초과 횟수가 1이상일 경우\n    totalCount = totalCount + wordMax;   // 총 생산수량 = 초기화 후 총 생산수량 + wordMax값\n}\n\nmsg.payload = {\n    \"품목 번호\": productNum,\n    \"총 포장횟수\": totalCount\n}\n\nmsg.topic = \"INSERT INTO fz_shm.packing (productNum, totalCount) VALUES ('\" + productNum + \"', '\" + totalCount + \"')\";\n\nreturn msg;",
+    "func": "let totalCount = msg.payload[0];  // D6003_총 생산수량 (D6003값이 워드 최대값인 32767이 넘어갈때마다 0으로 초기화됨)\nlet wordMaxCount = msg.payload[1];   // D6004_총생산수량 더블워드 D6003값이 워드 최대값인 32767이 넘어갈때마다 1씩 증가\nlet wordMax = 32767 * wordMaxCount;  // 더블워드값을 계산하기 위해 워드 최대값인 32767에 'dwordCount' 변수값을 곱한다.\nlet productNum = msg.payload[2];  // D6005_품목Data (총60개 : 0~59)\n\nlet initTime = new Date();\ninitTime = initTime.getHours();\n\nif (wordMaxCount > 0) {  // 워드 최대값이 초과할때마다 1씩 증가하는데 초과 횟수가 1이상일 경우\n    totalCount = totalCount + wordMax;   // 총 생산수량 = 초기화 후 총 생산수량 + wordMax값\n}\n\nmsg.payload = {\n    \"품목 번호\": productNum,\n    \"총 포장횟수\": totalCount,\n    \"현재 시간\": initTime\n}\n\nmsg.topic = \"INSERT INTO fz_shm.packing (productNum, totalCount) VALUES ('\" + productNum + \"', '\" + totalCount + \"')\";\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
