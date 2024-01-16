@@ -1471,7 +1471,7 @@
     "y": 1620,
     "wires": [
       [
-        "afe5756082ae2987"
+        "77a4873df194fc8e"
       ]
     ]
   },
@@ -3684,12 +3684,10 @@
     "fanOutMultipleResult": false,
     "setTopic": true,
     "outputs": 1,
-    "x": 770,
-    "y": 1620,
+    "x": 790,
+    "y": 1740,
     "wires": [
-      [
-        "77a4873df194fc8e"
-      ]
+      []
     ]
   },
   {
