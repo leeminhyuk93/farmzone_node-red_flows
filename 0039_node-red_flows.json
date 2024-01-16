@@ -2509,7 +2509,6 @@
     "id": "ddb690aacad02897",
     "type": "inject",
     "z": "34cbadba494cdf22",
-    "d": true,
     "name": "",
     "props": [
       {
@@ -2584,7 +2583,6 @@
     "id": "2419fb1f6603f686",
     "type": "inject",
     "z": "34cbadba494cdf22",
-    "d": true,
     "name": "",
     "props": [
       {
@@ -2659,7 +2657,6 @@
     "id": "d0cf2c8832ee0734",
     "type": "inject",
     "z": "34cbadba494cdf22",
-    "d": true,
     "name": "",
     "props": [
       {
