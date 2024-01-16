@@ -920,7 +920,7 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "sendBuffer",
-    "func": "// 데이터 조립\nconst eduBuffer = Buffer.alloc(12); // 12바이트의 버퍼 생성\n\neduBuffer.writeUInt16BE(1, 0);   // TID\neduBuffer.writeUInt16BE(0, 2);   // PID\neduBuffer.writeUInt16BE(6, 4);   // Length\neduBuffer.writeUInt8(7, 6);      // Unit ID (국번)\neduBuffer.writeUInt8(3, 7);      // Function code\neduBuffer.writeUInt16BE(1, 8);   // Data (register address)\neduBuffer.writeUInt16BE(18, 10); // Data (count)\n\n// msg 객체의 payload에 데이터를 할당합니다.\nmsg.payload = eduBuffer;\n\nreturn msg;",
+    "func": "// 데이터 ��립\nconst eduBuffer = Buffer.alloc(12); // 12바이트의 버퍼 생성\n\neduBuffer.writeUInt16BE(1, 0);   // TID\neduBuffer.writeUInt16BE(0, 2);   // PID\neduBuffer.writeUInt16BE(6, 4);   // Length\neduBuffer.writeUInt8(7, 6);      // Unit ID (국번)\neduBuffer.writeUInt8(3, 7);      // Function code\neduBuffer.writeUInt16BE(1, 8);   // Data (register address)\neduBuffer.writeUInt16BE(18, 10); // Data (count)\n\n// msg 객체의 payload에 데이터를 할당합니다.\nmsg.payload = eduBuffer;\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -1028,7 +1028,8 @@
     "y": 1300,
     "wires": [
       [
-        "2b77ce06642f7614"
+        "2b77ce06642f7614",
+        "f015928163052baa"
       ]
     ]
   },
@@ -1196,7 +1197,8 @@
     "y": 1420,
     "wires": [
       [
-        "7aa9c8b02d130818"
+        "7aa9c8b02d130818",
+        "23a59f09c15d3626"
       ]
     ]
   },
@@ -1364,7 +1366,8 @@
     "y": 1540,
     "wires": [
       [
-        "396140023e4e11a2"
+        "396140023e4e11a2",
+        "e0ab81cd97c18f9c"
       ]
     ]
   },
@@ -3755,6 +3758,54 @@
     "statusType": "auto",
     "x": 1000,
     "y": 1740,
+    "wires": []
+  },
+  {
+    "id": "e0ab81cd97c18f9c",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 42",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1020,
+    "y": 1580,
+    "wires": []
+  },
+  {
+    "id": "23a59f09c15d3626",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 43",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 951,
+    "y": 1460.666748046875,
+    "wires": []
+  },
+  {
+    "id": "f015928163052baa",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 44",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 960,
+    "y": 1340,
     "wires": []
   }
 ]
