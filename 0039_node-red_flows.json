@@ -752,7 +752,7 @@
     "name": "2층_작업장, PLC2_에어클리너(디씨팩)",
     "info": "*수집 장비 : 에어클리너\n*수집 항목 : 에어압력, 작동시간\n*수집 주기 : 발생 시\n\n - 비트 읽기 영역 : D02002.0  (가동시간 계산용)\n하루마다 1이 처음 들어올때 시간 체크와 0으로 바뀌었을때 시간 체크해서\n하루 총 가동시간 계산하기\n - 작동중 데이터(비트) 출력되는 값 : 1\n - 작동 중지 데이터(비트) 출력되는 값 : 0",
     "x": 190,
-    "y": 1020,
+    "y": 1040,
     "wires": []
   },
   {
@@ -760,9 +760,9 @@
     "type": "comment",
     "z": "ea534a0bb0b5928e",
     "name": "2층_작업장, PLC3_모노블럭시스템",
-    "info": "*수집 장비 : 모노블럭시스템\n*수집 항목 : 충진 및 원터치캡핑 \n        생산수량(워드), 가동 상태(비트)\n*수집 주기 : 발생 시\n\n\n - 비트 읽기 영역 : D02002.0  (가동시간 계산용)\n하루마다 1이 처음 들어올때 시간 체크와 0으로 바뀌었을때 시간 체크해서\n하루 총 가동시간 계산하기\n - 작동중 데이터(비트) 출력되는 값 : 1\n - 작동 중지 데이터(비트) 출력되는 값 : 0",
+    "info": "*수집 장비 : 모노블럭시스템\n*수집 항목 : 충진 및 원터치캡핑 \n        생산수량(워드), 가동 상태(비트)\n*수집 주기 : 발생 시\n\n\n - 비트 읽기 영역 : D02002.0  (가동시간 ��산용)\n하루마다 1이 처음 들어올때 시간 체크와 0으로 바뀌었을때 시간 체크해서\n하루 총 가동시간 계산하기\n - 작동중 데이터(비트) 출력되는 값 : 1\n - 작동 중지 데이터(비트) 출력되는 값 : 0",
     "x": 180,
-    "y": 1180,
+    "y": 1200,
     "wires": []
   },
   {
@@ -816,7 +816,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 1060,
+    "y": 1080,
     "wires": [
       [
         "98ca6ed80dbb2fc6"
@@ -845,7 +845,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 1220,
+    "y": 1240,
     "wires": [
       [
         "3ecec96b54e0e69e"
@@ -905,7 +905,7 @@
     "delayOnStart": false,
     "startDelayTime": "",
     "x": 280,
-    "y": 1060,
+    "y": 1080,
     "wires": [
       [
         "8e151000ede4cf6f",
@@ -927,7 +927,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 610,
-    "y": 880,
+    "y": 860,
     "wires": []
   },
   {
@@ -942,7 +942,7 @@
     "multi": false,
     "operation": "store",
     "x": 670,
-    "y": 920,
+    "y": 900,
     "wires": []
   },
   {
@@ -989,7 +989,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 610,
-    "y": 1200,
+    "y": 1220,
     "wires": []
   },
   {
@@ -1004,7 +1004,7 @@
     "multi": false,
     "operation": "store",
     "x": 670,
-    "y": 1240,
+    "y": 1260,
     "wires": []
   },
   {
@@ -1014,7 +1014,7 @@
     "name": "2층_작업장, PLC3_비전카메라",
     "info": "*수집 장비 : 비전카메라\n*수집 항목 : 비전카메라 이미지\n*수집 주기 : 발생 시",
     "x": 170,
-    "y": 1340,
+    "y": 1360,
     "wires": []
   },
   {
@@ -1039,7 +1039,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 120,
-    "y": 1380,
+    "y": 1400,
     "wires": [
       [
         "83792cafbe04e79f"
@@ -1059,7 +1059,7 @@
     "finalize": "",
     "libs": [],
     "x": 480,
-    "y": 1380,
+    "y": 1400,
     "wires": [
       [
         "cf8adcdbf6404c2a",
@@ -1080,7 +1080,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 650,
-    "y": 1360,
+    "y": 1380,
     "wires": []
   },
   {
@@ -1095,7 +1095,7 @@
     "multi": false,
     "operation": "store",
     "x": 720,
-    "y": 1400,
+    "y": 1420,
     "wires": []
   },
   {
@@ -1105,7 +1105,7 @@
     "name": "2층_작업장, 중량검사기",
     "info": "*수집 장비 : 중량검사기\n*수집 항목 : 생산품 중량\n*수집 주기 : 발생 시",
     "x": 140,
-    "y": 1500,
+    "y": 1520,
     "wires": []
   },
   {
@@ -1130,7 +1130,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 120,
-    "y": 1540,
+    "y": 1560,
     "wires": [
       [
         "c1bdaac07ca8784c"
@@ -1150,7 +1150,7 @@
     "finalize": "",
     "libs": [],
     "x": 480,
-    "y": 1540,
+    "y": 1560,
     "wires": [
       [
         "3427b1e3fafb80cf",
@@ -1171,7 +1171,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 650,
-    "y": 1520,
+    "y": 1540,
     "wires": []
   },
   {
@@ -1186,7 +1186,7 @@
     "multi": false,
     "operation": "store",
     "x": 720,
-    "y": 1560,
+    "y": 1580,
     "wires": []
   },
   {
@@ -1211,7 +1211,7 @@
     "delayOnStart": false,
     "startDelayTime": "",
     "x": 280,
-    "y": 1220,
+    "y": 1240,
     "wires": [
       [
         "950ad5742575087c"
@@ -1242,7 +1242,7 @@
     "delayOnStart": false,
     "startDelayTime": "",
     "x": 300,
-    "y": 1380,
+    "y": 1400,
     "wires": [
       [
         "7cdcfebf94f79a85"
@@ -1273,7 +1273,7 @@
     "delayOnStart": false,
     "startDelayTime": "",
     "x": 300,
-    "y": 1540,
+    "y": 1560,
     "wires": [
       [
         "52f69a337c09f4a5"
@@ -1444,7 +1444,7 @@
     "finalize": "",
     "libs": [],
     "x": 440,
-    "y": 1220,
+    "y": 1240,
     "wires": [
       [
         "4a1573ab1532a224",
@@ -1457,7 +1457,7 @@
     "type": "function",
     "z": "ea534a0bb0b5928e",
     "name": "parsing",
-    "func": "let pressure = 0;\n\nif (msg.payload[0] <= 980) {\n    pressure = Math.abs((msg.payload[0] / 10000) - 0.095);\n} else {\n    pressure = msg.payload[0] / 10000;  // 에어 압력\n}\n\npressure = pressure.toFixed(2);\n\nlet status = msg.payload[2];  // 현재 가동 상태 (1 : 가동중, 0 : 가동안함)\nlet prev_status = status;    // 이전 가동 상태 (현재 가동 상태와 비교하여 다를 때마다 체크)\nlet check = (prev_status != status) ? 1 : 0;  // 비교하여 다르면 1 같으면 0\nlet start_check = \"\";  // 가동 시작 체크\nlet end_check = \"\";    // 가동 종료 체크\nvar start_time = 0;   // 가동 시작 시간\nvar end_time = 0;    // 가동 종료 시간\nlet operatingTime = 0;  // 총 가동 시간\nlet dateTime = new Date();  // 현재 시간\n\nif (check == 1 && status == 1) { // 가동 시작 체크 : check 값이 1이면서 status 값이 1일때 시간 확인\n    start_check = \"시작\";   // 가동 상태 체크\n    start_time = dateTime.getTime();  // 가동 시작 시간 체크\n} else if (check == 1 && status == 0) { // 가동 종료 시간 : check 값이 1이면서 status 값이 0일때 시간 확인\n    end_check = \"종료\";   // 가동 상태 체크\n    end_time = dateTime.getTime();  // 가동 종료 시간 체크\n}\n\nif (start_check == \"시작\" && end_check == \"종료\") {\n    start_check = \"\"; // 변수값 초기화\n    end_check = \"\";   // 변수값 초기화\n\n    operatingTime = end_time - start_time;\n\n    let hours = Math.floor(operatingTime / 3600000);\n    let minutes = Math.floor((operatingTime % 3600000) / 60000);\n    let seconds = Math.floor((operatingTime % 60000) / 1000);\n\n    operatingTime = `${hours}시 ${minutes}분 ${seconds}초`;\n}\n\nmsg.payload = {\n    \"장비명\" : \"에어세척기(디씨팩)\",\n    \"에어 압력\" : pressure,\n    \"가동 상태\" : status,\n    \"가동 시간\" : operatingTime\n}\n\nreturn msg;",
+    "func": "let pressure = 0;  // 에어 압력\nlet dateTime = new Date();  // 현재 시간\nlet saveDateTime = dateTime.toLocaleString();  //저장 시간\n\nif (msg.payload[0] <= 980) {\n    pressure = Math.abs((msg.payload[0] / 10000) - 0.095);\n} else {\n    pressure = msg.payload[0] / 10000;  // 에어 압력\n}\n\npressure = pressure.toFixed(2);\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"equipName\" : \"에어클리너(디씨팩)\",\n    \"ccode\": \"0039\",\n    \"scode\": \"\",\n    \"pressure\" : pressure,\n    \"saveDateTime\": saveDateTime,      //저장 시간(사용자가 보기 편한 날짜/시간)\n    \"dateTime\": dateTime               // 저장 시간(DB find 활용)\n}\n\nreturn msg;",
     "outputs": 1,
     "timeout": 0,
     "noerr": 0,
@@ -1465,7 +1465,7 @@
     "finalize": "",
     "libs": [],
     "x": 440,
-    "y": 1060,
+    "y": 1080,
     "wires": [
       [
         "cfa3c92809c069bb",
@@ -1478,7 +1478,7 @@
     "type": "function",
     "z": "ea534a0bb0b5928e",
     "name": "parsing",
-    "func": "let pressure = 0;\n\nif (msg.payload[0] <= 980) {\n    pressure = Math.abs((msg.payload[0] / 10000) - 0.095);\n} else {\n    pressure = (msg.payload[0] / 10000) - 0.07;  // 에어 압력\n}\n\npressure = pressure.toFixed(2);\n\nlet status = msg.payload[2];  // 현재 가동 상태 (1 : 가동중, 0 : 가동안함)\nlet prev_status = status;    // 이전 가동 상태 (현재 가동 상태와 비교하여 다를 때마다 체크)\nlet check = (prev_status != status) ? 1 : 0;  // 비교하여 다르면 1 같으면 0\nlet start_check = \"\";  // 가동 시작 체크\nlet end_check = \"\";    // 가동 종료 체크\nvar start_time = 0;   // 가동 시작 시간\nvar end_time = 0;    // 가동 종료 시간\nlet operatingTime = 0;  // 총 가동 시간\nlet dateTime = new Date();  // 현재 시간\n\nif (check == 1 && status == 1) { // 가동 시작 체크 : check 값이 1이면서 status 값이 1일때 시간 확인\n    start_check = \"시작\";   // 가동 상태 체크\n    start_time = dateTime.getTime();  // 가동 시작 시간 체크\n} else if (check == 1 && status == 0) { // 가동 종료 시간 : check 값이 1이면서 status 값이 0일때 시간 확인\n    end_check = \"종료\";   // 가동 상태 체크\n    end_time = dateTime.getTime();  // 가동 종료 시간 체크\n}\n\nif (start_check == \"시작\" && end_check == \"종료\") {\n    start_check = \"\"; // 변수값 초기화\n    end_check = \"\";   // 변수값 초기화\n\n    operatingTime = end_time - start_time;\n\n    let hours = Math.floor(operatingTime / 3600000);\n    let minutes = Math.floor((operatingTime % 3600000) / 60000);\n    let seconds = Math.floor((operatingTime % 60000) / 1000);\n\n    operatingTime = `${hours}시 ${minutes}분 ${seconds}초`;\n}\n\nmsg.payload = {\n    \"장비명\" : \"에어세척기(SK팩)\",\n    \"에어 압력\" : pressure,\n    \"가동 상태\" : status,\n    \"가동 시간\" : operatingTime\n}\n\nreturn msg;",
+    "func": "let pressure = 0;  // 에어 압력\nlet dateTime = new Date();  // 현재 시간\nlet saveDateTime = dateTime.toLocaleString();  //저장 시간\n\nif (msg.payload[0] <= 980) {\n    pressure = Math.abs((msg.payload[0] / 10000) - 0.095);\n} else {\n    pressure = (msg.payload[0] / 10000) - 0.07;  // 에어 압력\n}\n\npressure = pressure.toFixed(2);\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"equipName\" : \"에어세척기(SK팩)\",\n    \"ccode\": \"0039\",\n    \"scode\": \"\",\n    \"pressure\" : pressure,\n    \"saveDateTime\": saveDateTime,      //저장 시간(사용자가 보기 편한 날짜/시간)\n    \"dateTime\": dateTime               // 저장 시간(DB find 활용)\n}\n\nreturn msg;",
     "outputs": 1,
     "timeout": 0,
     "noerr": 0,
@@ -1506,8 +1506,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 410,
-    "y": 1100,
+    "x": 430,
+    "y": 1040,
     "wires": []
   },
   {
@@ -1523,7 +1523,87 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 430,
+    "y": 860,
+    "wires": []
+  },
+  {
+    "id": "259f037bc85cb7e3",
+    "type": "http request",
+    "z": "ea534a0bb0b5928e",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 610,
     "y": 960,
+    "wires": [
+      [
+        "ca24dd312478d4e6"
+      ]
+    ]
+  },
+  {
+    "id": "ca24dd312478d4e6",
+    "type": "debug",
+    "z": "ea534a0bb0b5928e",
+    "name": "debug 134",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 770,
+    "y": 960,
+    "wires": []
+  },
+  {
+    "id": "6d34a1eaa3610eef",
+    "type": "http request",
+    "z": "ea534a0bb0b5928e",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 610,
+    "y": 1140,
+    "wires": [
+      [
+        "8eee07ef527694d3"
+      ]
+    ]
+  },
+  {
+    "id": "8eee07ef527694d3",
+    "type": "debug",
+    "z": "ea534a0bb0b5928e",
+    "name": "debug 135",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 770,
+    "y": 1140,
     "wires": []
   },
   {
@@ -1634,7 +1714,7 @@
     "z": "88eb231280c2e9e9",
     "name": "1층 팜유저장탱크 온도, 온도센서",
     "info": "*온도제어기\n-제조사 : 코노텍\n-모델명 : TP10",
-    "x": 170,
+    "x": 150,
     "y": 60,
     "wires": []
   },
@@ -1664,158 +1744,13 @@
     ]
   },
   {
-    "id": "76829bfb78835087",
-    "type": "inject",
-    "z": "88eb231280c2e9e9",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 100,
-    "y": 340,
-    "wires": [
-      [
-        "a6f7187986db8402"
-      ]
-    ]
-  },
-  {
-    "id": "a6f7187986db8402",
-    "type": "function",
-    "z": "88eb231280c2e9e9",
-    "name": "find query",
-    "func": "/* 설명\n  \"air_washer\" 컬렉션에서 30초 이내에 저장된 데이터 중에 가장 최근 저장된 데이터 조회\n*/\n\nmsg.payload = {\n    \"check_date\": {\n        \"$gte\": new Date(Date.now() - 30 * 1000), // 현재 날짜 및 시간에서 30초 전의 날짜와 시간\n        \"$lte\": new Date()\n    }\n}\n\nmsg.sort = { \"check_date\": -1 }; // 내림차순 정렬\nmsg.limit = 1; // 최대 1개의 결과 반환\n\nreturn msg;",
-    "outputs": 1,
-    "timeout": 0,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 260,
-    "y": 340,
-    "wires": [
-      [
-        "d35987ddbb64de0c"
-      ]
-    ]
-  },
-  {
-    "id": "d35987ddbb64de0c",
-    "type": "mongodb in",
-    "z": "88eb231280c2e9e9",
-    "mongodb": "da28b1d93eba7f99",
-    "name": "",
-    "collection": "air_washer",
-    "operation": "find",
-    "x": 490,
-    "y": 340,
-    "wires": [
-      [
-        "76a719f220729bb5"
-      ]
-    ]
-  },
-  {
-    "id": "76a719f220729bb5",
-    "type": "function",
-    "z": "88eb231280c2e9e9",
-    "name": "send API",
-    "func": "let device_id = msg.payload[0].payload.device_id;\nlet air_pressure = msg.payload[0].payload.air_pressure;\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0039\",\n    \"scode\": \"\",\n    \"kind\": \"\",\n    \"deviceId\": device_id,\n    \"pressure\": air_pressure\n}\n\nreturn msg;",
-    "outputs": 1,
-    "timeout": 0,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 420,
-    "y": 420,
-    "wires": [
-      [
-        "f40eec998c29bf1c",
-        "28f3e920b0f315b5"
-      ]
-    ]
-  },
-  {
-    "id": "28f3e920b0f315b5",
-    "type": "debug",
-    "z": "88eb231280c2e9e9",
-    "name": "debug 117",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 610,
-    "y": 400,
-    "wires": []
-  },
-  {
-    "id": "f40eec998c29bf1c",
-    "type": "http request",
-    "z": "88eb231280c2e9e9",
-    "d": true,
-    "name": "",
-    "method": "POST",
-    "ret": "txt",
-    "paytoqs": "ignore",
-    "url": "",
-    "tls": "",
-    "persist": false,
-    "proxy": "",
-    "insecureHTTPParser": false,
-    "authType": "",
-    "senderr": false,
-    "headers": [],
-    "x": 610,
-    "y": 440,
-    "wires": [
-      []
-    ]
-  },
-  {
-    "id": "d918458dab9e80a0",
-    "type": "comment",
-    "z": "88eb231280c2e9e9",
-    "name": "2층_작업장, PLC1_에어세척기",
-    "info": "*수집 장비 : 에어세척기\n*수집 항목 : 에어압력, 검사시간\n*수집 주기 : 발생 시",
-    "x": 150,
-    "y": 300,
-    "wires": []
-  },
-  {
-    "id": "536aed1f83f9b52a",
-    "type": "comment",
-    "z": "88eb231280c2e9e9",
-    "name": "2층_작업장, PLC2_에어클리너",
-    "info": "*수집 장비 : 에어클리너\n*수집 항목 : 에어압력, 검사시간\n*수집 주기 : 발생 시",
-    "x": 150,
-    "y": 500,
-    "wires": []
-  },
-  {
     "id": "e49d26715a52bb74",
     "type": "comment",
     "z": "88eb231280c2e9e9",
     "name": "2층_작업장, PLC3_모노블럭시스템",
     "info": "*수집 장비 : 모노블럭시스템\n*수집 항목 : 충진 및 원터치캡핑\n*수집 주기 : 발생 시",
     "x": 160,
-    "y": 700,
+    "y": 280,
     "wires": []
   },
   {
@@ -1825,7 +1760,7 @@
     "name": "2층_작업장, PLC3_비전카메라",
     "info": "*수집 장비 : 비전카메라\n*수집 항목 : 비전카메라 이미지\n*수집 주기 : 발생 시",
     "x": 150,
-    "y": 900,
+    "y": 480,
     "wires": []
   },
   {
@@ -1835,133 +1770,8 @@
     "name": "2층_작업장, PLC3_중량검사기",
     "info": "*수집 장비 : 중량검사기\n*수집 항목 : 생산품 중량\n*수집 주기 : 발생 시",
     "x": 150,
-    "y": 1100,
+    "y": 680,
     "wires": []
-  },
-  {
-    "id": "c4ff30629934685f",
-    "type": "inject",
-    "z": "88eb231280c2e9e9",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 100,
-    "y": 540,
-    "wires": [
-      [
-        "fd99c23f24250853"
-      ]
-    ]
-  },
-  {
-    "id": "fd99c23f24250853",
-    "type": "function",
-    "z": "88eb231280c2e9e9",
-    "name": "find query",
-    "func": "/* 설명\n  \"air_cleaner\" 컬렉션에서 30초 이내에 저장된 데이터 중에 가장 최근 저장된 데이터 조회\n*/\n\nmsg.payload = {\n    \"check_date\": {\n        \"$gte\": new Date(Date.now() - 30 * 1000), // 현재 날짜 및 시간에서 30초 전의 날짜와 시간\n        \"$lte\": new Date()\n    }\n}\n\nmsg.sort = { \"check_date\": -1 }; // 내림차순 정렬\nmsg.limit = 1; // 최대 1개의 결과 반환\n\nreturn msg;",
-    "outputs": 1,
-    "timeout": 0,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 260,
-    "y": 540,
-    "wires": [
-      [
-        "fee53807f81db7bd"
-      ]
-    ]
-  },
-  {
-    "id": "fee53807f81db7bd",
-    "type": "mongodb in",
-    "z": "88eb231280c2e9e9",
-    "mongodb": "da28b1d93eba7f99",
-    "name": "",
-    "collection": "air_cleaner",
-    "operation": "find",
-    "x": 490,
-    "y": 540,
-    "wires": [
-      [
-        "c4429d44cca0ec02"
-      ]
-    ]
-  },
-  {
-    "id": "c4429d44cca0ec02",
-    "type": "function",
-    "z": "88eb231280c2e9e9",
-    "name": "send API",
-    "func": "let device_id = msg.payload[0].payload.device_id;\nlet air_cleaner = msg.payload[0].payload.air_cleaner;\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0039\",\n    \"scode\": \"\",\n    \"kind\": \"\",\n    \"deviceId\": device_id,\n    \"air_cleaner\": air_cleaner\n}\n\nreturn msg;",
-    "outputs": 1,
-    "timeout": 0,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 420,
-    "y": 620,
-    "wires": [
-      [
-        "0b67b63838d0569b",
-        "aee8370c6db65e00"
-      ]
-    ]
-  },
-  {
-    "id": "aee8370c6db65e00",
-    "type": "debug",
-    "z": "88eb231280c2e9e9",
-    "name": "debug 118",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 610,
-    "y": 600,
-    "wires": []
-  },
-  {
-    "id": "0b67b63838d0569b",
-    "type": "http request",
-    "z": "88eb231280c2e9e9",
-    "d": true,
-    "name": "",
-    "method": "POST",
-    "ret": "txt",
-    "paytoqs": "ignore",
-    "url": "",
-    "tls": "",
-    "persist": false,
-    "proxy": "",
-    "insecureHTTPParser": false,
-    "authType": "",
-    "senderr": false,
-    "headers": [],
-    "x": 610,
-    "y": 640,
-    "wires": [
-      []
-    ]
   },
   {
     "id": "2ec0cc819bb7b33a",
@@ -1985,7 +1795,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 100,
-    "y": 740,
+    "y": 320,
     "wires": [
       [
         "199fb715cbfe6c7e"
@@ -2005,7 +1815,7 @@
     "finalize": "",
     "libs": [],
     "x": 260,
-    "y": 740,
+    "y": 320,
     "wires": [
       [
         "ab99c48c3dcc5f98"
@@ -2021,7 +1831,7 @@
     "collection": "mono_block",
     "operation": "find",
     "x": 490,
-    "y": 740,
+    "y": 320,
     "wires": [
       [
         "bd0a0aa6fe736da8"
@@ -2041,7 +1851,7 @@
     "finalize": "",
     "libs": [],
     "x": 420,
-    "y": 820,
+    "y": 400,
     "wires": [
       [
         "1e6fc0fa375b6dfb",
@@ -2062,7 +1872,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 610,
-    "y": 800,
+    "y": 380,
     "wires": []
   },
   {
@@ -2083,7 +1893,7 @@
     "senderr": false,
     "headers": [],
     "x": 610,
-    "y": 840,
+    "y": 420,
     "wires": [
       []
     ]
@@ -2110,7 +1920,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 100,
-    "y": 940,
+    "y": 520,
     "wires": [
       [
         "d38451a7237e596f"
@@ -2130,7 +1940,7 @@
     "finalize": "",
     "libs": [],
     "x": 260,
-    "y": 940,
+    "y": 520,
     "wires": [
       [
         "d2b504bd7d78514a"
@@ -2146,7 +1956,7 @@
     "collection": "vision_camera",
     "operation": "find",
     "x": 500,
-    "y": 940,
+    "y": 520,
     "wires": [
       [
         "87c83b29db901821"
@@ -2166,7 +1976,7 @@
     "finalize": "",
     "libs": [],
     "x": 420,
-    "y": 1020,
+    "y": 600,
     "wires": [
       [
         "8738935fc18bd06b",
@@ -2187,7 +1997,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 610,
-    "y": 1000,
+    "y": 580,
     "wires": []
   },
   {
@@ -2208,7 +2018,7 @@
     "senderr": false,
     "headers": [],
     "x": 610,
-    "y": 1040,
+    "y": 620,
     "wires": [
       []
     ]
@@ -2235,7 +2045,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 100,
-    "y": 1140,
+    "y": 720,
     "wires": [
       [
         "a5a4b681fc1d41a2"
@@ -2255,7 +2065,7 @@
     "finalize": "",
     "libs": [],
     "x": 260,
-    "y": 1140,
+    "y": 720,
     "wires": [
       [
         "23061f8d4f809cf6"
@@ -2271,7 +2081,7 @@
     "collection": "weight_checker",
     "operation": "find",
     "x": 500,
-    "y": 1140,
+    "y": 720,
     "wires": [
       [
         "ab4f922b6a70d325"
@@ -2291,7 +2101,7 @@
     "finalize": "",
     "libs": [],
     "x": 420,
-    "y": 1220,
+    "y": 800,
     "wires": [
       [
         "8ea90e17f06f9f05",
@@ -2312,7 +2122,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 610,
-    "y": 1200,
+    "y": 780,
     "wires": []
   },
   {
@@ -2333,7 +2143,7 @@
     "senderr": false,
     "headers": [],
     "x": 610,
-    "y": 1240,
+    "y": 820,
     "wires": [
       []
     ]
