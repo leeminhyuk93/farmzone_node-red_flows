@@ -1214,7 +1214,8 @@
     "y": 1240,
     "wires": [
       [
-        "950ad5742575087c"
+        "950ad5742575087c",
+        "344deeb164a4766c"
       ],
       []
     ]
@@ -1436,7 +1437,7 @@
     "type": "function",
     "z": "ea534a0bb0b5928e",
     "name": "parsing",
-    "func": "let count = msg.payload[0];   // 총 생산량\nlet status = msg.payload[2];  // 현재 가동 상태 (1 : 가동중, 0 : 가동안함)\nlet prev_status = status;    // 이전 가동 상태 (현재 가동 상태와 비교하여 다를 때마다 체크)\nlet check = (prev_status != status) ? 1 : 0;  // 비교하여 다르면 1 같으면 0\nlet start_check = \"\";  // 가동 시작 체크\nlet end_check = \"\";    // 가동 종료 체크\nvar start_time = 0;   // 가동 시작 시간\nvar end_time = 0;    // 가동 종료 시간\nlet operatingTime = 0;  // 총 가동 시간\nlet dateTime = new Date();  // 현재 시간\nlet saveTimeUser = dateTime.toLocaleString();  //저장된 시간(사용자용)\n\nif (check == 1 && status == 1) { // 가동 시작 체크 : check 값이 1이면서 status 값이 1일때 시간 확인\n    start_check = \"시작\";   // 가동 상태 체크\n    start_time = dateTime.getTime();  // 가동 시작 시간 체크\n} else if (check == 1 && status == 0) { // 가동 종료 시간 : check 값이 1이면서 status 값이 0일때 시간 확인\n    end_check = \"종료\";   // 가동 상태 체크\n    end_time = dateTime.getTime();  // 가동 종료 시간 체크\n}\n\nif (start_check == \"시작\" && end_check == \"종료\") {\n    start_check = \"\"; // 변수값 초기화\n    end_check = \"\";   // 변수값 초기화\n\n    operatingTime = end_time - start_time;\n\n    let hours = Math.floor(operatingTime / 3600000);\n    let minutes = Math.floor((operatingTime % 3600000) / 60000);\n    let seconds = Math.floor((operatingTime % 60000) / 1000);\n\n    operatingTime = `${hours}시 ${minutes}분 ${seconds}초`;\n}\n\nmsg.payload = {\n    \"equipName\" : \"모노블럭 시스템\",   //장비명\n    \"totalCount\" : count,             //총 생산량\n    \"status\" : status,                //가동상태\n    \"startTime\" : start_time,         //가동 시작시간\n    \"endTime\": end_time,              //가동 종료시간\n    \"operatingTime\" : operatingTime,  //가동시간\n    \"saveTimeUser\" : saveTimeUser,    //저장시간\n    \"saveTimeDB\" : dateTime           //저장시간(find용)\n}\n\nreturn msg;",
+    "func": "let totalCount = global.get(\"totalCount\");   // 총 생산량\nlet status = global.get(\"status\");\n\nlet prev_status = status;    // 이전 가동 상태 (현재 가동 상태와 비교하여 다를 때마다 체크)\nlet check = (prev_status != status) ? 1 : 0;  // 비교하여 다르면 1 같으면 0\nlet start_check = \"\";  // 가동 시작 체크\nlet end_check = \"\";    // 가동 종료 체크\nvar start_time = 0;   // 가동 시작 시간\nvar end_time = 0;    // 가동 종료 시간\nlet operatingTime = 0;  // 총 가동 시간\nlet dateTime = new Date();  // 현재 시간\nlet saveTimeUser = dateTime.toLocaleString();  //저장된 시간(사용자용)\n\nif (check == 1 && status == 1) { // 가동 시작 체크 : check 값이 1이면서 status 값이 1일때 시간 확인\n    start_check = \"시작\";   // 가동 상태 체크\n    start_time = dateTime.getTime();  // 가동 시작 시간 체크\n} else if (check == 1 && status == 0) { // 가동 종료 시간 : check 값이 1이면서 status 값이 0일때 시간 확인\n    end_check = \"종료\";   // 가동 상태 체크\n    end_time = dateTime.getTime();  // 가동 종료 시간 체크\n}\n\nif (start_check == \"시작\" && end_check == \"종료\") {\n    start_check = \"\"; // 변수값 초기화\n    end_check = \"\";   // 변수값 초기화\n\n    operatingTime = end_time - start_time;\n\n    let hours = Math.floor(operatingTime / 3600000);\n    let minutes = Math.floor((operatingTime % 3600000) / 60000);\n    let seconds = Math.floor((operatingTime % 60000) / 1000);\n\n    operatingTime = `${hours}시 ${minutes}분 ${seconds}초`;\n}\n\nmsg.payload = {\n    \"equipName\" : \"모노블럭 시스템\",   //장비명\n    \"totalCount\" : totalCount,        //총 생산량\n    \"status\" : status,                //가동상태\n    \"startTime\" : start_time,         //가동 시작시간\n    \"endTime\": end_time,              //가동 종료시간\n    \"operatingTime\" : operatingTime,  //가동시간\n    \"saveTimeUser\" : saveTimeUser,    //저장시간\n    \"saveTimeDB\" : dateTime           //저장시간(find용)\n}\n\nreturn msg;",
     "outputs": 1,
     "timeout": 0,
     "noerr": 0,
@@ -1607,6 +1608,24 @@
     "wires": []
   },
   {
+    "id": "344deeb164a4766c",
+    "type": "function",
+    "z": "ea534a0bb0b5928e",
+    "name": "globalSet",
+    "func": "global.set(\"totalCount\", msg.payload[0]);  //총 생산량\nglobal.set(\"status\", msg.payload[2]);   // 현재 가동상태\n\nreturn;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 420,
+    "y": 1300,
+    "wires": [
+      []
+    ]
+  },
+  {
     "id": "62e4a209ec547825",
     "type": "mongodb in",
     "z": "88eb231280c2e9e9",
@@ -1758,7 +1777,7 @@
     "type": "comment",
     "z": "88eb231280c2e9e9",
     "name": "2층_작업장, PLC3_비전카메라",
-    "info": "*수집 장비 : 비전카메라\n*수집 항목 : 비전카메라 이미지\n*수집 주기 : 발생 시",
+    "info": "*수집 장비 : 비전카메라\n*수집 항목 : ��전카메라 이미지\n*수집 주기 : 발생 시",
     "x": 150,
     "y": 480,
     "wires": []
