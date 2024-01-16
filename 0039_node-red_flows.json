@@ -848,7 +848,8 @@
     "y": 1240,
     "wires": [
       [
-        "3ecec96b54e0e69e"
+        "3ecec96b54e0e69e",
+        "d870f9d1b5e11042"
       ]
     ]
   },
@@ -1626,7 +1627,7 @@
     "type": "function",
     "z": "ea534a0bb0b5928e",
     "name": "parsing",
-    "func": "const moment = global.get('moment') || require('moment'); // 'moment' 라이브러리를 사용\n\nlet totalCount = msg.payload[0];   // 총 생산량\nlet status = msg.payload[2];       // 현재 가동 상태\nlet prevStatus = 0;               // 이전 가동 상태\nlet check = 0;                     // 현재 가동 상태와 이전 가동 상태 비교하여 같으면 0, 다르면 1로 체크\nlet startTime = null;   // 가동 시작 시간\nlet endTime = null;    // 가동 종료 시간\nlet operatingTime = null;  // 총 가동 시간\nlet dateTime = new Date();\nlet saveDateTime = dateTime.fromat('YYYY-MM-DD HH:mm:ss');\n\nif (prevStatus == status) {\n    check = 0;   // 상태가 동일하면 변경 없음\n} else {\n    check = 1;   // 상태가 변경되면 1로 설정\n    prevStatus = status;    // 현재 상태를 이전 상태 변수에 할당\n}\n\n// 상태가 변경되고, 상태가 1일 경우 작업 시작 시간 설정\nif (check == 1 && status == 1) { // 가동 시작 체크 : check 값이 1이면서 status 값이 1일때 시간 확인\n    startTime = moment();\n    startTime = startTime.fromat('YYYY-MM-DD HH:mm:ss');\n} \n\nif (check == 1 && status == 0) { // 가동 종료 시간 : check 값이 1이면서 status 값이 0일때 시간 확인\n    endTime = moment();\n    endTime = endTime.fromat('YYYY-MM-DD HH:mm:ss');\n\n    operatingTime = endTime.diff(startTime);\n    operatingTime = formatDuration(operatingTime);\n}\n\n// 밀리초를 시, 분, 초로 포맷팅\nfunction formatDuration(durationInMilliseconds) {\n    const duration = moment.duration(durationInMilliseconds);\n    return `${duration.hours()}시간 ${duration.minutes()}분 ${duration.seconds()}초`;\n}\n\n\nmsg.payload = {\n    \"equipName\" : \"모노블럭 시스템\",   //장비명\n    \"totalCount\" : totalCount,        //총 생산량\n    \"status\" : status,                //가동상태\n    \"startTime\": startTime,         //가동 시작시간\n    \"endTime\": endTime,              //가동 종료시간\n    \"operatingTime\": operatingTime,  //가동시간\n    \"saveDateTime\": saveDateTime,    //저장시간\n    \"saveTimeDB\" : dateTime           //저장시간(find용)\n}\n\nreturn msg;",
+    "func": "const moment = global.get(\"moment\") || require('moment'); // 'moment' 라이브러리를 사용\n\nlet totalCount = msg.payload[0];   // 총 생산량\nlet status = msg.payload[2];       // 현재 가동 상태\nlet prevStatus = 0;               // 이전 가동 상태\nlet check = 0;                     // 현재 가동 상태와 이전 가동 상태 비교하여 같으면 0, 다르면 1로 체크\nlet startTime = null;   // 가동 시작 시간\nlet endTime = null;    // 가동 종료 시간\nlet operatingTime = null;  // 총 가동 시간\nlet dateTime = new Date();\nlet saveDateTime = dateTime.fromat('YYYY-MM-DD HH:mm:ss');\n\nif (prevStatus == status) {\n    check = 0;   // 상태가 동일하면 변경 없음\n} else {\n    check = 1;   // 상태가 변경되면 1로 설정\n    prevStatus = status;    // 현재 상태를 이전 상태 변수에 할당\n}\n\n// 상태가 변경되고, 상태가 1일 경우 작업 시작 시간 설정\nif (check == 1 && status == 1) { // 가동 시작 체크 : check 값이 1이면서 status 값이 1일때 시간 확인\n    startTime = moment();\n    startTime = startTime.fromat('YYYY-MM-DD HH:mm:ss');\n} \n\nif (check == 1 && status == 0) { // 가동 종료 시간 : check 값이 1이면서 status 값이 0일때 시간 확인\n    endTime = moment();\n    endTime = endTime.fromat('YYYY-MM-DD HH:mm:ss');\n\n    operatingTime = endTime.diff(startTime);\n    operatingTime = formatDuration(operatingTime);\n}\n\n// 밀리초를 시, 분, 초로 포맷팅\nfunction formatDuration(durationInMilliseconds) {\n    const duration = moment.duration(durationInMilliseconds);\n    return `${duration.hours()}시간 ${duration.minutes()}분 ${duration.seconds()}초`;\n}\n\n\nmsg.payload = {\n    \"equipName\" : \"모노블럭 시스템\",   //장비명\n    \"totalCount\" : totalCount,        //총 생산량\n    \"status\" : status,                //가동상태\n    \"startTime\": startTime,         //가동 시작시간\n    \"endTime\": endTime,              //가동 종료시간\n    \"operatingTime\": operatingTime,  //가동시간\n    \"saveDateTime\": saveDateTime,    //저장시간\n    \"saveTimeDB\" : dateTime           //저장시간(find용)\n}\n\nreturn msg;",
     "outputs": 1,
     "timeout": 0,
     "noerr": 0,
@@ -1640,6 +1641,20 @@
         "4a1573ab1532a224",
         "a358cd79b02f0d20"
       ]
+    ]
+  },
+  {
+    "id": "d870f9d1b5e11042",
+    "type": "require",
+    "z": "ea534a0bb0b5928e",
+    "name": "moment",
+    "module": "moment",
+    "field": "set(\"moment\")",
+    "fieldType": "global",
+    "x": 260,
+    "y": 1280,
+    "wires": [
+      []
     ]
   },
   {
@@ -1968,7 +1983,7 @@
     "type": "function",
     "z": "88eb231280c2e9e9",
     "name": "find query",
-    "func": "/* 설명\n  \"vision_camera\" 컬렉션에서 30초 이내에 저장된 데이터 중에 가장 최근 저장된 데이터 조회\n*/\n\nmsg.payload = {\n    \"check_date\": {\n        \"$gte\": new Date(Date.now() - 30 * 1000), // 현재 날짜 및 시간에서 30초 전의 날짜와 시간\n        \"$lte\": new Date()\n    }\n}\n\nmsg.sort = { \"check_date\": -1 }; // 내림차순 정렬\nmsg.limit = 1; // 최대 1개의 결과 반환\n\nreturn msg;",
+    "func": "/* 설명\n  \"vision_camera\" 컬렉션에서 30초 이내에 저장된 데이터 중에 가장 최근 저장된 데이터 조회\n*/\n\nmsg.payload = {\n    \"check_date\": {\n        \"$gte\": new Date(Date.now() - 30 * 1000), // 현재 날짜 및 시간��서 30초 전의 날짜와 시간\n        \"$lte\": new Date()\n    }\n}\n\nmsg.sort = { \"check_date\": -1 }; // 내림차순 정렬\nmsg.limit = 1; // 최대 1개의 결과 반환\n\nreturn msg;",
     "outputs": 1,
     "timeout": 0,
     "noerr": 0,
