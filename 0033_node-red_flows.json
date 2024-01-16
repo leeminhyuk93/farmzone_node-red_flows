@@ -2583,7 +2583,7 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "parseData",
-    "func": "var inputString = msg.payload[0];\nvar parsedValue = parseInt(inputString, 10) / 100;\nvar formattedValue = parsedValue.toFixed(2); // 소수점 둘째 자리까지 포맷팅\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"95\",\n    \"rpm\": formattedValue,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "func": "var inputString = msg.payload[0];\nvar parsedValue = parseInt(inputString, 10) / 100;\nvar formattedValue = parsedValue.toFixed(2); // 소수점 둘째 자리까지 ���맷팅\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"95\",\n    \"rpm\": formattedValue,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -2938,7 +2938,8 @@
     "y": 1300,
     "wires": [
       [
-        "9cb53701c275a0da"
+        "9cb53701c275a0da",
+        "bf44a68c7c65c5fc"
       ]
     ]
   },
@@ -3805,6 +3806,22 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 960,
+    "y": 1340,
+    "wires": []
+  },
+  {
+    "id": "bf44a68c7c65c5fc",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 45",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1140,
     "y": 1340,
     "wires": []
   }
