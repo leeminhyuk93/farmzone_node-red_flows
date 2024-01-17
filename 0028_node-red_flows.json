@@ -464,7 +464,7 @@
     "targetType": "msg",
     "statusVal": "",
     "statusType": "auto",
-    "x": 800,
+    "x": 740,
     "y": 680,
     "wires": []
   },
@@ -950,8 +950,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 720,
-    "y": 780,
+    "x": 640,
+    "y": 820,
     "wires": []
   },
   {
@@ -966,8 +966,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 700,
-    "y": 960,
+    "x": 640,
+    "y": 1000,
     "wires": []
   },
   {
@@ -982,8 +982,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 800,
-    "y": 500,
+    "x": 580,
+    "y": 640,
     "wires": []
   },
   {
