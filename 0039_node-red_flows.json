@@ -739,9 +739,9 @@
     "id": "2297bdf14bb43790",
     "type": "comment",
     "z": "ea534a0bb0b5928e",
-    "name": "2층_작업장, PLC1_에어세척기(SK팩)",
+    "name": "2층_작업장, PLC1_에어세척기(SK팩) pet ",
     "info": "*수집 장비 : 에어세척기\n*수집 항목 : 에어압력, 작동 시간\n*수집 주기 : 발생 시",
-    "x": 190,
+    "x": 200,
     "y": 860,
     "wires": []
   },
@@ -749,10 +749,10 @@
     "id": "a59743946e966b09",
     "type": "comment",
     "z": "ea534a0bb0b5928e",
-    "name": "2층_작업장, PLC2_에어클리너(디씨팩)",
+    "name": "2층_작업장, PLC2_에어클리너(디씨팩) 캔 에어압",
     "info": "*수집 장비 : 에어클리너\n*수집 항목 : 에어압력, 작동시간\n*수집 주기 : 발생 시\n\n - 비트 읽기 영역 : D02002.0  (가동시간 계산용)\n하루마다 1이 처음 들어올때 시간 체크와 0으로 바뀌었을때 시간 체크해서\n하루 총 가동시간 계산하기\n - 작동중 데이터(비트) 출력되는 값 : 1\n - 작동 중지 데이터(비트) 출력되는 값 : 0",
-    "x": 190,
-    "y": 1040,
+    "x": 200,
+    "y": 1000,
     "wires": []
   },
   {
@@ -760,7 +760,7 @@
     "type": "comment",
     "z": "ea534a0bb0b5928e",
     "name": "2층_작업장, PLC3_모노블럭시스템",
-    "info": "*수집 장비 : 모노블럭시스템\n*수집 항목 : 충진 및 원터치캡핑 \n        생산수량(워드), 가동 상태(비트)\n*수집 주기 : 발생 시\n\n\n - 비트 읽기 영역 : D02002.0  (가동시간 ��산용)\n하루마다 1이 처음 들어올때 시간 체크와 0으로 바뀌었을때 시간 체크해서\n하루 총 가동시간 계산하기\n - 작동중 데이터(비트) 출력되는 값 : 1\n - 작동 중지 데이터(비트) 출력되는 값 : 0",
+    "info": "*수집 장비 : 모노블럭시스템\n*수집 항목 : 충진 및 원터치캡핑 \n        생산수량(워드), 가동 상태(비트)\n*수집 주기 : 발생 시\n\n\n - 비트 읽기 영역 : D02002.0  (가동시간 계산용)\n하루마다 1이 처음 들어올때 시간 체크와 0으로 바뀌었을때 시간 체크해서\n하루 총 가동시간 계산하기\n - 작동중 데이터(비트) 출력되는 값 : 1\n - 작동 중지 데이터(비트) 출력되는 값 : 0",
     "x": 180,
     "y": 1200,
     "wires": []
@@ -1663,7 +1663,7 @@
     "type": "function",
     "z": "88eb231280c2e9e9",
     "name": "send API",
-    "func": "let device_id = msg.payload[0].device_id;\nlet temp = msg.payload[0].temp;\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0039\",\n    \"scode\": \"82\",\n    \"kind\": \"4\",\n    \"deviceId\": device_id,\n    \"temperature\": temp\n}\n\nreturn msg;",
+    "func": "let device_id = msg.payload[0].device_id;\nlet temp = msg.payload[0].temp;\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0039\",\n    \"kind\": \"4\",\n    \"deviceId\": device_id,\n    \"temperature\": temp\n}\n\nreturn msg;",
     "outputs": 1,
     "timeout": 0,
     "noerr": 0,
@@ -1709,14 +1709,14 @@
         "vt": "str"
       }
     ],
-    "repeat": "",
+    "repeat": "60",
     "crontab": "",
     "once": false,
     "onceDelay": 0.1,
     "topic": "",
     "payload": "",
     "payloadType": "date",
-    "x": 100,
+    "x": 110,
     "y": 100,
     "wires": [
       [
@@ -1749,7 +1749,7 @@
     "type": "comment",
     "z": "88eb231280c2e9e9",
     "name": "1층 팜유저장탱크 온도, 온도센서",
-    "info": "*온도제어기\n-��조사 : 코노텍\n-모델명 : TP10",
+    "info": "*온도제어기\n-제조사 : 코노텍\n-모델명 : TP10",
     "x": 150,
     "y": 60,
     "wires": []
@@ -1758,7 +1758,6 @@
     "id": "d0cb0c39f16a6ede",
     "type": "http request",
     "z": "88eb231280c2e9e9",
-    "d": true,
     "name": "",
     "method": "POST",
     "ret": "txt",
@@ -2196,7 +2195,7 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 770,
+    "x": 790,
     "y": 200,
     "wires": []
   },
@@ -2757,7 +2756,7 @@
     "id": "c155b8dff183eda4",
     "type": "comment",
     "z": "34cbadba494cdf22",
-    "name": "vision_camera 컬렉션 ���이터 삭제(매주 일요일 오전9시)",
+    "name": "vision_camera 컬렉션 데이터 삭제(매주 일요일 오전9시)",
     "info": "",
     "x": 250,
     "y": 760,
