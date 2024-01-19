@@ -515,6 +515,7 @@
     "id": "fe3d5b7d9816b882",
     "type": "inject",
     "z": "ddca7ba125929727",
+    "d": true,
     "name": "Loop 10 s",
     "props": [
       {
@@ -2583,7 +2584,7 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "parseData",
-    "func": "var inputString = msg.payload[0];\nvar parsedValue = parseInt(inputString, 10) / 100;\nvar formattedValue = parsedValue.toFixed(2); // 소수점 둘째 자리까지 ���맷팅\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"95\",\n    \"rpm\": formattedValue,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "func": "var inputString = msg.payload[0];\nvar parsedValue = parseInt(inputString, 10) / 100;\nvar formattedValue = parsedValue.toFixed(2); // 소수점 둘째 자리까지 포맷팅\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"95\",\n    \"rpm\": formattedValue,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
