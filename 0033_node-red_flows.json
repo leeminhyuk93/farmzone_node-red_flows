@@ -36,7 +36,7 @@
     "queueLogEnabled": false,
     "failureLogEnabled": true,
     "tcpHost": "192.168.0.203",
-    "tcpPort": "502",
+    "tcpPort": "8501",
     "tcpType": "DEFAULT",
     "serialPort": "/dev/ttyUSB",
     "serialType": "RTU-BUFFERD",
