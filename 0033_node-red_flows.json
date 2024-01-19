@@ -665,9 +665,9 @@
     "name": "",
     "server": "192.168.0.203",
     "port": "8501",
-    "out": "sit",
+    "out": "time",
     "ret": "buffer",
-    "splitc": " ",
+    "splitc": "0",
     "newline": "",
     "trim": false,
     "tls": "",
@@ -676,7 +676,7 @@
     "wires": [
       [
         "69e60a1fe084f66b",
-        "a79b641e9b271425"
+        "f6b27b4ac625c133"
       ]
     ]
   },
@@ -3911,8 +3911,27 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 760,
-    "y": 820,
+    "x": 780,
+    "y": 980,
     "wires": []
+  },
+  {
+    "id": "f6b27b4ac625c133",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "function 1",
+    "func": "let data = msg.payload;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 620,
+    "y": 980,
+    "wires": [
+      [
+        "a79b641e9b271425"
+      ]
+    ]
   }
 ]
