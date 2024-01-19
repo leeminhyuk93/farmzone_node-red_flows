@@ -515,7 +515,6 @@
     "id": "fe3d5b7d9816b882",
     "type": "inject",
     "z": "ddca7ba125929727",
-    "d": true,
     "name": "Loop 10 s",
     "props": [
       {
