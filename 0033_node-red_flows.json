@@ -327,7 +327,6 @@
     "id": "cf034f4ee091efc2",
     "type": "inject",
     "z": "ddca7ba125929727",
-    "d": true,
     "name": "Loop 10 s",
     "props": [
       {
@@ -446,7 +445,6 @@
     "id": "18e1652536911ed3",
     "type": "tcp request",
     "z": "ddca7ba125929727",
-    "d": true,
     "name": "",
     "server": "192.168.0.202",
     "port": "8501",
@@ -2576,7 +2574,6 @@
     "id": "0ff8a9ecd1f0e469",
     "type": "tcp request",
     "z": "ddca7ba125929727",
-    "d": true,
     "name": "",
     "server": "192.168.0.202",
     "port": "8501",
@@ -3908,6 +3905,7 @@
     "id": "1ecc19a2715f4dd0",
     "type": "modbus-getter",
     "z": "ddca7ba125929727",
+    "d": true,
     "name": "익스트루터 203",
     "showStatusActivities": true,
     "showErrors": true,
