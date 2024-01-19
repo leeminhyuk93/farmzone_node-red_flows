@@ -27,6 +27,35 @@
     "responsetimeout": "10000"
   },
   {
+    "id": "0062858c0f835f8a",
+    "type": "modbus-client",
+    "name": "",
+    "clienttype": "tcp",
+    "bufferCommands": true,
+    "stateLogEnabled": false,
+    "queueLogEnabled": false,
+    "failureLogEnabled": true,
+    "tcpHost": "192.168.0.203",
+    "tcpPort": "502",
+    "tcpType": "DEFAULT",
+    "serialPort": "/dev/ttyUSB",
+    "serialType": "RTU-BUFFERD",
+    "serialBaudrate": "9600",
+    "serialDatabits": "8",
+    "serialStopbits": "1",
+    "serialParity": "none",
+    "serialConnectionDelay": "100",
+    "serialAsciiResponseStartDelimiter": "0x3A",
+    "unit_id": "1",
+    "commandDelay": "1",
+    "clientTimeout": "1000",
+    "reconnectOnTimeout": true,
+    "reconnectTimeout": "2000",
+    "parallelUnitIdsAllowed": true,
+    "showWarnings": true,
+    "showLogs": true
+  },
+  {
     "id": "6f6934b2f47f4d33",
     "type": "inject",
     "z": "ddca7ba125929727",
@@ -515,6 +544,7 @@
     "id": "fe3d5b7d9816b882",
     "type": "inject",
     "z": "ddca7ba125929727",
+    "d": true,
     "name": "Loop 10 s",
     "props": [
       {
@@ -633,6 +663,7 @@
     "id": "f409e55f23691320",
     "type": "tcp request",
     "z": "ddca7ba125929727",
+    "d": true,
     "name": "",
     "server": "192.168.0.203",
     "port": "8501",
@@ -732,6 +763,7 @@
     "id": "07a43e5d49a904e2",
     "type": "tcp request",
     "z": "ddca7ba125929727",
+    "d": true,
     "name": "",
     "server": "192.168.0.203",
     "port": "8501",
@@ -3867,6 +3899,81 @@
     "statusType": "auto",
     "x": 1120,
     "y": 980,
+    "wires": []
+  },
+  {
+    "id": "1ecc19a2715f4dd0",
+    "type": "modbus-getter",
+    "z": "ddca7ba125929727",
+    "name": "익스트루터 203",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "1",
+    "dataType": "HoldingRegister",
+    "adr": "0",
+    "quantity": "10",
+    "server": "0062858c0f835f8a",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 400,
+    "y": 1000,
+    "wires": [
+      [
+        "b381a6797fa1d923"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "b4f6ef912f830f10",
+    "type": "inject",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 220,
+    "y": 1000,
+    "wires": [
+      [
+        "1ecc19a2715f4dd0"
+      ]
+    ]
+  },
+  {
+    "id": "b381a6797fa1d923",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 46",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 580,
+    "y": 1000,
     "wires": []
   }
 ]
