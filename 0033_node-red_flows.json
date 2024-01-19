@@ -35,7 +35,7 @@
     "stateLogEnabled": false,
     "queueLogEnabled": false,
     "failureLogEnabled": true,
-    "tcpHost": "192.168.0.203",
+    "tcpHost": "192.168.0.202",
     "tcpPort": "8501",
     "tcpType": "DEFAULT",
     "serialPort": "/dev/ttyUSB",
@@ -327,6 +327,7 @@
     "id": "cf034f4ee091efc2",
     "type": "inject",
     "z": "ddca7ba125929727",
+    "d": true,
     "name": "Loop 10 s",
     "props": [
       {
@@ -445,6 +446,7 @@
     "id": "18e1652536911ed3",
     "type": "tcp request",
     "z": "ddca7ba125929727",
+    "d": true,
     "name": "",
     "server": "192.168.0.202",
     "port": "8501",
@@ -2574,6 +2576,7 @@
     "id": "0ff8a9ecd1f0e469",
     "type": "tcp request",
     "z": "ddca7ba125929727",
+    "d": true,
     "name": "",
     "server": "192.168.0.202",
     "port": "8501",
