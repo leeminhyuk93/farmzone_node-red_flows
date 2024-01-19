@@ -46,7 +46,7 @@
     "serialParity": "none",
     "serialConnectionDelay": "100",
     "serialAsciiResponseStartDelimiter": "0x3A",
-    "unit_id": "0",
+    "unit_id": "2",
     "commandDelay": "1",
     "clientTimeout": "1000",
     "reconnectOnTimeout": true,
