@@ -3920,7 +3920,7 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "function 1",
-    "func": "let data = msg.payload;\nconst data9Buffer = Buffer.from([data[48], data[49], data[50], data[51], data[52]]);\nconst data9String = data9Buffer.toString('utf-8');\nconst data9 = parseFloat(data9String);\n\nmsg.payload = `현재 온도값 : ${data9}`;\n\nreturn msg;",
+    "func": "let data = msg.payload;\nconst data9Buffer = Buffer.from([data[48], data[49], data[50], data[51], data[52]]);\nconst data9String = data9Buffer.toString('utf-8');\nlet data9 = parseFloat(data9String) / 10;\n\nmsg.payload = `현재 온도값 : ${data9}`;\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
