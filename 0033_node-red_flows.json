@@ -775,7 +775,8 @@
     "y": 900,
     "wires": [
       [
-        "489a773e52027715"
+        "489a773e52027715",
+        "b7f5ea1eeaa5130f"
       ]
     ]
   },
@@ -3919,19 +3920,54 @@
     "id": "f6b27b4ac625c133",
     "type": "function",
     "z": "ddca7ba125929727",
-    "name": "function 1",
+    "name": "temperature",
     "func": "let data = msg.payload;\nconst data9Buffer = Buffer.from([data[48], data[49], data[50], data[51], data[52]]);\nconst data9String = data9Buffer.toString('utf-8');\nlet data9 = parseFloat(data9String) / 10;\n\nmsg.payload = `현재 온도값 : ${data9}`;\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 620,
+    "x": 630,
     "y": 980,
     "wires": [
       [
         "a79b641e9b271425"
       ]
     ]
+  },
+  {
+    "id": "b7f5ea1eeaa5130f",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "rpm",
+    "func": "let data = msg.payload;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 610,
+    "y": 1020,
+    "wires": [
+      [
+        "cc5bce508e46d85b"
+      ]
+    ]
+  },
+  {
+    "id": "cc5bce508e46d85b",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 47",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 740,
+    "y": 1020,
+    "wires": []
   }
 ]
