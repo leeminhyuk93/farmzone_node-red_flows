@@ -544,7 +544,6 @@
     "id": "fe3d5b7d9816b882",
     "type": "inject",
     "z": "ddca7ba125929727",
-    "d": true,
     "name": "Loop 10 s",
     "props": [
       {
@@ -663,7 +662,6 @@
     "id": "f409e55f23691320",
     "type": "tcp request",
     "z": "ddca7ba125929727",
-    "d": true,
     "name": "",
     "server": "192.168.0.203",
     "port": "8501",
@@ -763,7 +761,6 @@
     "id": "07a43e5d49a904e2",
     "type": "tcp request",
     "z": "ddca7ba125929727",
-    "d": true,
     "name": "",
     "server": "192.168.0.203",
     "port": "8501",
