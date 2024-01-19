@@ -431,7 +431,8 @@
     "y": 660,
     "wires": [
       [
-        "5cd5f49bd3cdbf60"
+        "5cd5f49bd3cdbf60",
+        "6d3c85b4d97a0a33"
       ],
       []
     ]
@@ -687,7 +688,7 @@
     "upsert": false,
     "multi": false,
     "operation": "store",
-    "x": 720,
+    "x": 860,
     "y": 680,
     "wires": []
   },
@@ -700,7 +701,7 @@
       "ac06a5939d2c44b6"
     ],
     "uncaught": false,
-    "x": 270,
+    "x": 110,
     "y": 740,
     "wires": [
       [
@@ -727,7 +728,7 @@
     "from": "",
     "to": "",
     "reg": false,
-    "x": 440,
+    "x": 260,
     "y": 740,
     "wires": [
       [
@@ -1643,6 +1644,66 @@
     ]
   },
   {
+    "id": "6d3c85b4d97a0a33",
+    "type": "function",
+    "z": "ea534a0bb0b5928e",
+    "name": "send API",
+    "func": "let device_id = 1;\nlet temp = msg.payload[0].temp;\n\n\nif (msg.payload == \"error\") {\n    temp = \"\";\n} else {\n    temp = parseFloat(msg.payload[0]) / 10;\n}\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0039\",\n    \"kind\": \"4\",\n    \"deviceId\": device_id,\n    \"temperature\": temp\n}\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 460,
+    "y": 720,
+    "wires": [
+      [
+        "8bd37a078f294f5a"
+      ]
+    ]
+  },
+  {
+    "id": "8bd37a078f294f5a",
+    "type": "http request",
+    "z": "ea534a0bb0b5928e",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0039/get_temperature",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 570,
+    "y": 780,
+    "wires": [
+      [
+        "c440edde71ed2ff8"
+      ]
+    ]
+  },
+  {
+    "id": "c440edde71ed2ff8",
+    "type": "debug",
+    "z": "ea534a0bb0b5928e",
+    "name": "debug 136",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 770,
+    "y": 780,
+    "wires": []
+  },
+  {
     "id": "62e4a209ec547825",
     "type": "mongodb in",
     "z": "88eb231280c2e9e9",
@@ -1758,6 +1819,7 @@
     "id": "d0cb0c39f16a6ede",
     "type": "http request",
     "z": "88eb231280c2e9e9",
+    "d": true,
     "name": "",
     "method": "POST",
     "ret": "txt",
@@ -2756,7 +2818,7 @@
     "id": "c155b8dff183eda4",
     "type": "comment",
     "z": "34cbadba494cdf22",
-    "name": "vision_camera 컬렉��� 데이터 삭제(매주 일요일 오전9시)",
+    "name": "vision_camera 컬렉션 데이터 삭제(매주 일요일 오전9시)",
     "info": "",
     "x": 250,
     "y": 760,
