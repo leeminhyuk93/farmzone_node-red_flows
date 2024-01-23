@@ -2768,7 +2768,7 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "parseData",
-    "func": "var ccode = \"0033\";\nvar scode = \"84\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nif (paseData.length == 22 && msg.payload[0] == \"R\") {\n    var detected = true;\n}\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode,\n        \"regdate\": formattedDate\n    };\n\n    msg.topic = \"INSERT INTO fz_shm.metal_detector3 (scode, detection) VALUES (\" + scode + \", 검출)\";\n\n    return msg;\n}",
+    "func": "var ccode = \"0033\";\nvar scode = \"84\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nif (paseData.length == 22 && msg.payload[0] == \"R\") {\n    var detected = true;\n}\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode,\n        \"regdate\": formattedDate\n    };\n\n    msg.topic = \"INSERT INTO fz_shm.metal_detector3 (scode, detection) VALUES (\" + scode + \", 'O')\";\n\n    return msg;\n}",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -2788,7 +2788,7 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "parseData",
-    "func": "var ccode = \"0033\";\nvar scode = \"83\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nif (paseData.length == 22 && msg.payload[0] == \"R\") {\n    var detected = true;\n}\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode,\n        \"regdate\": formattedDate\n    };\n\n    msg.topic = \"INSERT INTO fz_shm.metal_detector2 (scode, detection) VALUES (\" + scode + \", 검출)\";\n\n    return msg;\n}",
+    "func": "var ccode = \"0033\";\nvar scode = \"83\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nif (paseData.length == 22 && msg.payload[0] == \"R\") {\n    var detected = true;\n}\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode,\n        \"regdate\": formattedDate\n    };\n\n    msg.topic = \"INSERT INTO fz_shm.metal_detector2 (scode, detection) VALUES (\" + scode + \", 'O')\";\n\n    return msg;\n}",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -2808,7 +2808,7 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "parseData",
-    "func": "var ccode = \"0033\";\nvar scode = \"82\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nif (paseData.length == 22 && msg.payload[0] == \"R\") {\n    var detected = true;\n}\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode,\n        \"regdate\": formattedDate\n    };\n\n    msg.topic = \"INSERT INTO fz_shm.metal_detector1 (scode, detection) VALUES (\" + scode + \", 검출)\";\n\n    return msg;\n}",
+    "func": "var ccode = \"0033\";\nvar scode = \"82\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nif (paseData.length == 22 && msg.payload[0] == \"R\") {\n    var detected = true;\n}\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode,\n        \"regdate\": formattedDate\n    };\n\n    msg.topic = \"INSERT INTO fz_shm.metal_detector1 (scode, detection) VALUES (\" + scode + \", 'O')\";\n\n    return msg;\n}",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -4036,54 +4036,6 @@
     "x": 760,
     "y": 2040,
     "wires": []
-  },
-  {
-    "id": "2b28c5f6c19065c9",
-    "type": "function",
-    "z": "ddca7ba125929727",
-    "name": "function 1",
-    "func": "msg.topic = \"INSERT INTO fz_shm.metal_detector1 (scode, detection) VALUES (\" + 82 + \", 'O')\";\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 320,
-    "y": 540,
-    "wires": [
-      [
-        "65c952e6d76230bd"
-      ]
-    ]
-  },
-  {
-    "id": "8b4e3eda99c47c48",
-    "type": "inject",
-    "z": "ddca7ba125929727",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 160,
-    "y": 540,
-    "wires": [
-      [
-        "2b28c5f6c19065c9"
-      ]
-    ]
   },
   {
     "id": "49ad75513fd213dc",
@@ -5832,7 +5784,7 @@
     "type": "function",
     "z": "5ba174697c0e9d9b",
     "name": "sendBuffer",
-    "func": "// 데이터 조립\nconst eduBuffer = Buffer.alloc(12); // 12바이트의 버퍼 생성\n\neduBuffer.writeUInt16BE(1, 0);   // TID\neduBuffer.writeUInt16BE(0, 2);   // PID\neduBuffer.writeUInt16BE(6, 4);   // Length\neduBuffer.writeUInt8(7, 6);      // Unit ID (국번)\neduBuffer.writeUInt8(3, 7);      // Function code\neduBuffer.writeUInt16BE(1, 8);   // Data (register address)\neduBuffer.writeUInt16BE(18, 10); // Data (count)\n\n// msg 객체의 payload에 데이터를 할당합니다.\nmsg.payload = eduBuffer;\n\nreturn msg;",
+    "func": "// 데이터 조립\nconst eduBuffer = Buffer.alloc(12); // 12바이트의 버�� 생성\n\neduBuffer.writeUInt16BE(1, 0);   // TID\neduBuffer.writeUInt16BE(0, 2);   // PID\neduBuffer.writeUInt16BE(6, 4);   // Length\neduBuffer.writeUInt8(7, 6);      // Unit ID (국번)\neduBuffer.writeUInt8(3, 7);      // Function code\neduBuffer.writeUInt16BE(1, 8);   // Data (register address)\neduBuffer.writeUInt16BE(18, 10); // Data (count)\n\n// msg 객체의 payload에 데이터를 할당합니다.\nmsg.payload = eduBuffer;\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
