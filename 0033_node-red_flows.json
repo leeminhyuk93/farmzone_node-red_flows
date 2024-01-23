@@ -11,7 +11,7 @@
     "id": "5ba174697c0e9d9b",
     "type": "tab",
     "label": "플로우 2",
-    "disabled": false,
+    "disabled": true,
     "info": "",
     "env": []
   },
@@ -291,7 +291,7 @@
     "base64": false,
     "tls": "",
     "x": 100,
-    "y": 320,
+    "y": 360,
     "wires": [
       [
         "3d3adda6aeb2d725",
@@ -347,7 +347,7 @@
     "statusVal": "payload",
     "statusType": "auto",
     "x": 620,
-    "y": 320,
+    "y": 360,
     "wires": []
   },
   {
@@ -976,7 +976,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 1260,
+    "y": 1340,
     "wires": [
       [
         "12e841eb34fe1e04",
@@ -996,7 +996,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 1260,
+    "y": 1340,
     "wires": [
       [
         "c9fdd371f820337f"
@@ -1016,7 +1016,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 1320,
-    "y": 1260,
+    "y": 1340,
     "wires": []
   },
   {
@@ -1033,7 +1033,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 1260,
+    "y": 1340,
     "wires": [
       [
         "627caf479030c4ee"
@@ -1052,7 +1052,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 1300,
+    "y": 1380,
     "wires": [
       [
         "1be38abb5a529876"
@@ -1094,7 +1094,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 1300,
+    "y": 1380,
     "wires": [
       [
         "2b77ce06642f7614"
@@ -1115,7 +1115,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 1300,
+    "y": 1380,
     "wires": [
       [
         "1159d6e99c00b033"
@@ -1144,7 +1144,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 1380,
+    "y": 1520,
     "wires": [
       [
         "e27f3f621a8d01a7",
@@ -1164,7 +1164,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 1380,
+    "y": 1520,
     "wires": [
       [
         "362e5ae0b7408ddb"
@@ -1184,7 +1184,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 1320,
-    "y": 1380,
+    "y": 1520,
     "wires": []
   },
   {
@@ -1201,7 +1201,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 1380,
+    "y": 1520,
     "wires": [
       [
         "5f55dd9eb772326b"
@@ -1220,7 +1220,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 1420,
+    "y": 1560,
     "wires": [
       [
         "5c7c965c4bfb9904"
@@ -1262,7 +1262,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 1420,
+    "y": 1560,
     "wires": [
       [
         "7aa9c8b02d130818",
@@ -1284,7 +1284,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 1420,
+    "y": 1560,
     "wires": [
       [
         "2d0ddfe7d2cc0e55"
@@ -1313,7 +1313,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 1500,
+    "y": 1700,
     "wires": [
       [
         "79c877fa8688b34b",
@@ -1333,7 +1333,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 1500,
+    "y": 1700,
     "wires": [
       [
         "b291be2280d9e152"
@@ -1353,7 +1353,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 1320,
-    "y": 1500,
+    "y": 1700,
     "wires": []
   },
   {
@@ -1370,7 +1370,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 1500,
+    "y": 1700,
     "wires": [
       [
         "8bfa32522cdc1161"
@@ -1389,7 +1389,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 1540,
+    "y": 1740,
     "wires": [
       [
         "9e6683d1a44c28c9"
@@ -1431,7 +1431,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 1540,
+    "y": 1740,
     "wires": [
       [
         "396140023e4e11a2",
@@ -1453,7 +1453,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 1540,
+    "y": 1740,
     "wires": [
       [
         "69be6ef610a85fce"
@@ -1482,30 +1482,11 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 1620,
+    "y": 1920,
     "wires": [
       [
-        "b08df3479c8e78d7",
-        "4d395f7e11576f73"
-      ]
-    ]
-  },
-  {
-    "id": "b08df3479c8e78d7",
-    "type": "function",
-    "z": "ddca7ba125929727",
-    "name": "sendBuffer",
-    "func": "// 데이터 조립\nconst eduBuffer = Buffer.alloc(12); // 12바이트의 버퍼 생성\n\neduBuffer.writeUInt16BE(1, 0);   // TID\neduBuffer.writeUInt16BE(0, 2);   // PID\neduBuffer.writeUInt16BE(6, 4);   // Length\neduBuffer.writeUInt8(7, 6);      // Unit ID (국번)\neduBuffer.writeUInt8(3, 7);      // Function code\neduBuffer.writeUInt16BE(1, 8);   // Data (register address)\neduBuffer.writeUInt16BE(18, 10); // Data (count)\n\n// msg 객체의 payload에 데이터를 할당합니다.\nmsg.payload = eduBuffer;\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 330,
-    "y": 1620,
-    "wires": [
-      [
-        "12dc3c3f412e7bdc"
+        "4d395f7e11576f73",
+        "2655ff27fd854ae6"
       ]
     ]
   },
@@ -1521,31 +1502,9 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 1320,
-    "y": 1620,
+    "x": 860,
+    "y": 1920,
     "wires": []
-  },
-  {
-    "id": "12dc3c3f412e7bdc",
-    "type": "tcp request",
-    "z": "ddca7ba125929727",
-    "d": true,
-    "name": "",
-    "server": "192.168.0.220",
-    "port": "1482",
-    "out": "sit",
-    "ret": "buffer",
-    "splitc": " ",
-    "newline": "",
-    "trim": false,
-    "tls": "",
-    "x": 550,
-    "y": 1620,
-    "wires": [
-      [
-        "62a016df19736e31"
-      ]
-    ]
   },
   {
     "id": "7776062198e3347f",
@@ -1559,7 +1518,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 1660,
+    "y": 1960,
     "wires": [
       [
         "8251205e665b2318"
@@ -1580,7 +1539,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 1660,
+    "y": 1960,
     "wires": [
       [
         "6285ca8fb2c1a9b1"
@@ -1591,10 +1550,10 @@
     "id": "573d8f287c76e76a",
     "type": "comment",
     "z": "ddca7ba125929727",
-    "name": "팝핑기 5 & 생산주기",
+    "name": "팝핑기 5 & ��산주기",
     "info": "",
     "x": 130,
-    "y": 1220,
+    "y": 1300,
     "wires": []
   },
   {
@@ -1604,7 +1563,7 @@
     "name": "팝핑기 7 & 생산주기",
     "info": "",
     "x": 130,
-    "y": 1340,
+    "y": 1480,
     "wires": []
   },
   {
@@ -1614,17 +1573,17 @@
     "name": "팝핑기 8 & 생산주기",
     "info": "",
     "x": 130,
-    "y": 1460,
+    "y": 1660,
     "wires": []
   },
   {
     "id": "889951c8aec1d375",
     "type": "comment",
     "z": "ddca7ba125929727",
-    "name": "팝핑기 10 & 생산주기",
+    "name": "팝핑기 10 온도 & 생산주기",
     "info": "",
-    "x": 140,
-    "y": 1580,
+    "x": 150,
+    "y": 1880,
     "wires": []
   },
   {
@@ -1649,7 +1608,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 1860,
+    "y": 2120,
     "wires": [
       [
         "fca0d6d5e753e3c8"
@@ -1668,7 +1627,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 1860,
+    "y": 2120,
     "wires": [
       [
         "aa241c009c2cb327"
@@ -1710,7 +1669,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 1860,
+    "y": 2120,
     "wires": [
       [
         "faa05c47c3237303"
@@ -1730,7 +1689,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 1320,
-    "y": 1860,
+    "y": 2120,
     "wires": []
   },
   {
@@ -1747,7 +1706,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 1860,
+    "y": 2120,
     "wires": [
       [
         "2a880749af81c958"
@@ -1760,8 +1719,8 @@
     "z": "ddca7ba125929727",
     "name": "포장기 207, 208",
     "info": "",
-    "x": 140,
-    "y": 1800,
+    "x": 120,
+    "y": 2080,
     "wires": []
   },
   {
@@ -1776,7 +1735,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 1900,
+    "y": 2160,
     "wires": [
       [
         "e1010fd72c88390f"
@@ -1818,7 +1777,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 1900,
+    "y": 2160,
     "wires": [
       [
         "c840d8e7c0362a04"
@@ -1838,7 +1797,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 1320,
-    "y": 1900,
+    "y": 2160,
     "wires": []
   },
   {
@@ -1855,7 +1814,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 1900,
+    "y": 2160,
     "wires": [
       [
         "4a2add2fa3ab086c"
@@ -1884,7 +1843,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 2020,
+    "y": 2280,
     "wires": [
       [
         "cd0ed30b016547ec"
@@ -1903,7 +1862,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 2020,
+    "y": 2280,
     "wires": [
       [
         "0254f79c23a99816"
@@ -1945,7 +1904,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 2020,
+    "y": 2280,
     "wires": [
       [
         "b681c5ee5072b915"
@@ -1965,7 +1924,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 1300,
-    "y": 2020,
+    "y": 2280,
     "wires": []
   },
   {
@@ -1982,7 +1941,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 2020,
+    "y": 2280,
     "wires": [
       [
         "da44a8e8b15e6831"
@@ -1996,7 +1955,7 @@
     "name": "캡핑기",
     "info": "",
     "x": 90,
-    "y": 1980,
+    "y": 2240,
     "wires": []
   },
   {
@@ -2021,7 +1980,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 2160,
+    "y": 2420,
     "wires": [
       [
         "f0d7037bb6596786",
@@ -2041,7 +2000,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 2140,
+    "y": 2400,
     "wires": [
       [
         "94bb61aac41d919e"
@@ -2083,7 +2042,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 2140,
+    "y": 2400,
     "wires": [
       [
         "0eda2128f3a2a13a"
@@ -2104,7 +2063,7 @@
     "statusVal": "payload",
     "statusType": "auto",
     "x": 1320,
-    "y": 2140,
+    "y": 2400,
     "wires": []
   },
   {
@@ -2121,7 +2080,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 2140,
+    "y": 2400,
     "wires": [
       [
         "33c306ee95409dbc"
@@ -2135,7 +2094,7 @@
     "name": "오븐기 온도 & rpm",
     "info": "",
     "x": 130,
-    "y": 2100,
+    "y": 2380,
     "wires": []
   },
   {
@@ -2150,7 +2109,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 2180,
+    "y": 2440,
     "wires": [
       [
         "a1e089c8f2fd97c5"
@@ -2192,7 +2151,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 2180,
+    "y": 2440,
     "wires": [
       [
         "99368e687ce2ec82"
@@ -2213,7 +2172,7 @@
     "statusVal": "payload",
     "statusType": "auto",
     "x": 1320,
-    "y": 2180,
+    "y": 2440,
     "wires": []
   },
   {
@@ -2230,7 +2189,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 2180,
+    "y": 2440,
     "wires": [
       [
         "ad00f53a12a63bcb"
@@ -2249,7 +2208,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 2020,
+    "y": 2280,
     "wires": [
       [
         "8ea3c96af8a948e3",
@@ -2274,7 +2233,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 2020,
+    "y": 2280,
     "wires": [
       [
         "87fe51534f4ad35e"
@@ -2423,7 +2382,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 1260,
+    "y": 1340,
     "wires": [
       [
         "2d6ccb01576958d6"
@@ -2447,7 +2406,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 1260,
+    "y": 1340,
     "wires": [
       [
         "5d81f3ba64d5c2f0"
@@ -2466,7 +2425,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 1380,
+    "y": 1520,
     "wires": [
       [
         "d35d651141ff8a16"
@@ -2485,7 +2444,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 1500,
+    "y": 1700,
     "wires": [
       [
         "b48a9eab048540f8"
@@ -2509,7 +2468,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 1380,
+    "y": 1520,
     "wires": [
       [
         "eb6fd652e289cbe0"
@@ -2533,7 +2492,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 1500,
+    "y": 1700,
     "wires": [
       [
         "eb56e170051febf0"
@@ -2556,8 +2515,8 @@
     "authType": "",
     "senderr": false,
     "headers": [],
-    "x": 1130,
-    "y": 1620,
+    "x": 690,
+    "y": 1920,
     "wires": [
       [
         "0c7d63607aaeabd4"
@@ -2576,7 +2535,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 1860,
+    "y": 2120,
     "wires": [
       [
         "f307ffd55bc4d314",
@@ -2601,7 +2560,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 1860,
+    "y": 2120,
     "wires": [
       [
         "0b262024ec0e62dc"
@@ -2848,7 +2807,7 @@
     "senderr": false,
     "headers": [],
     "x": 450,
-    "y": 320,
+    "y": 360,
     "wires": [
       [
         "19ba87c8caf3f563"
@@ -2905,7 +2864,7 @@
     "finalize": "",
     "libs": [],
     "x": 270,
-    "y": 320,
+    "y": 360,
     "wires": [
       [
         "c033ec46bdcd2eb1"
@@ -2924,7 +2883,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 1900,
+    "y": 2160,
     "wires": [
       [
         "f549e2188e1e82a1"
@@ -2948,7 +2907,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 1900,
+    "y": 2160,
     "wires": [
       [
         "2a97aa6bdb0a8c6e"
@@ -3007,7 +2966,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 1300,
+    "y": 1380,
     "wires": [
       [
         "9cb53701c275a0da"
@@ -3031,7 +2990,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 1300,
+    "y": 1380,
     "wires": [
       [
         "0dc475cf43dfcbf0"
@@ -3051,7 +3010,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 1320,
-    "y": 1300,
+    "y": 1380,
     "wires": []
   },
   {
@@ -3066,7 +3025,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 1420,
+    "y": 1560,
     "wires": [
       [
         "741fdb2fded2733f"
@@ -3090,7 +3049,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 1420,
+    "y": 1560,
     "wires": [
       [
         "24500fa3fb9914d6"
@@ -3110,7 +3069,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 1320,
-    "y": 1420,
+    "y": 1560,
     "wires": []
   },
   {
@@ -3125,7 +3084,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 1540,
+    "y": 1740,
     "wires": [
       [
         "fa9b47292353dedf"
@@ -3149,7 +3108,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 1540,
+    "y": 1740,
     "wires": [
       [
         "68e5e05ad101c653"
@@ -3169,7 +3128,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 1320,
-    "y": 1540,
+    "y": 1740,
     "wires": []
   },
   {
@@ -3177,14 +3136,14 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "parseData",
-    "func": "var inputString = msg.payload[0];\nvar parsedValue = parseInt(inputString, 10) / 100;\nvar formattedValue = parsedValue.toFixed(2); // 소수점 둘째 자리까지 포맷팅\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"93\",\n    \"rpm\": formattedValue,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "func": "var inputString = msg.payload[0];\nvar parsedValue = parseInt(inputString, 10) / 100;\nvar formattedValue = parsedValue.toFixed(2); // 소수점 둘째 자���까지 포맷팅\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"93\",\n    \"rpm\": formattedValue,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 1660,
+    "y": 1960,
     "wires": [
       [
         "d1c5016f48c64edc"
@@ -3208,7 +3167,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 1660,
+    "y": 1960,
     "wires": [
       [
         "d7aae28768cc9378"
@@ -3227,8 +3186,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 1320,
-    "y": 1660,
+    "x": 1300,
+    "y": 1960,
     "wires": []
   },
   {
@@ -3243,7 +3202,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 2140,
+    "y": 2400,
     "wires": [
       [
         "e83991d0beb382a9"
@@ -3267,7 +3226,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 2140,
+    "y": 2400,
     "wires": [
       [
         "69b53ec3530b779f"
@@ -3286,7 +3245,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 2180,
+    "y": 2440,
     "wires": [
       [
         "e9d00a6286efa775"
@@ -3310,7 +3269,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 2180,
+    "y": 2440,
     "wires": [
       [
         "f46ef93f7ddbd99a"
@@ -3339,7 +3298,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 1900,
+    "y": 2160,
     "wires": [
       [
         "4af4f391395ef251"
@@ -3439,7 +3398,7 @@
     "allowrate": false,
     "outputs": 1,
     "x": 130,
-    "y": 1300,
+    "y": 1380,
     "wires": [
       [
         "91c43b1fd1788d4c"
@@ -3464,7 +3423,7 @@
     "allowrate": false,
     "outputs": 1,
     "x": 130,
-    "y": 1420,
+    "y": 1560,
     "wires": [
       [
         "8d78c0f678eadec3"
@@ -3489,7 +3448,7 @@
     "allowrate": false,
     "outputs": 1,
     "x": 130,
-    "y": 1540,
+    "y": 1740,
     "wires": [
       [
         "cfc58a14b253c660"
@@ -3514,7 +3473,7 @@
     "allowrate": false,
     "outputs": 1,
     "x": 130,
-    "y": 1660,
+    "y": 1960,
     "wires": [
       [
         "7776062198e3347f"
@@ -3535,25 +3494,8 @@
     "statusVal": "payload",
     "statusType": "auto",
     "x": 1120,
-    "y": 2080,
+    "y": 2340,
     "wires": []
-  },
-  {
-    "id": "77a4873df194fc8e",
-    "type": "function",
-    "z": "ddca7ba125929727",
-    "name": "parseData",
-    "func": "var temperature = msg.payload[0];\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"93\",\n    \"temp\": temperature,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 950,
-    "y": 1620,
-    "wires": [
-      []
-    ]
   },
   {
     "id": "e91331546f856cec",
@@ -3632,11 +3574,10 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 1660,
+    "y": 1960,
     "wires": [
       [
-        "98504f7c48c749fe",
-        "e17da1a1654c7b71"
+        "98504f7c48c749fe"
       ]
     ]
   },
@@ -3717,51 +3658,11 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 1260,
+    "y": 1340,
     "wires": [
       [
         "ce4faaa1eb661fd7"
       ]
-    ]
-  },
-  {
-    "id": "afe5756082ae2987",
-    "type": "buffer-parser",
-    "z": "ddca7ba125929727",
-    "name": "",
-    "data": "payload",
-    "dataType": "msg",
-    "specification": "spec",
-    "specificationType": "ui",
-    "items": [
-      {
-        "type": "int16le",
-        "name": "item1",
-        "offset": 10,
-        "length": 1,
-        "offsetbit": 0,
-        "scale": "1",
-        "mask": ""
-      }
-    ],
-    "swap1": "",
-    "swap2": "",
-    "swap3": "",
-    "swap1Type": "swap",
-    "swap2Type": "swap",
-    "swap3Type": "swap",
-    "msgProperty": "payload",
-    "msgPropertyType": "str",
-    "resultType": "value",
-    "resultTypeType": "return",
-    "multipleResult": false,
-    "fanOutMultipleResult": false,
-    "setTopic": true,
-    "outputs": 1,
-    "x": 790,
-    "y": 1700,
-    "wires": [
-      []
     ]
   },
   {
@@ -3777,7 +3678,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 1120,
-    "y": 1800,
+    "y": 2060,
     "wires": []
   },
   {
@@ -3792,7 +3693,7 @@
     "overwriteFile": "false",
     "encoding": "none",
     "x": 320,
-    "y": 560,
+    "y": 400,
     "wires": [
       []
     ]
@@ -3809,26 +3710,10 @@
     "overwriteFile": "false",
     "encoding": "none",
     "x": 320,
-    "y": 480,
+    "y": 300,
     "wires": [
       []
     ]
-  },
-  {
-    "id": "e17da1a1654c7b71",
-    "type": "debug",
-    "z": "ddca7ba125929727",
-    "name": "debug 41",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 1000,
-    "y": 1740,
-    "wires": []
   },
   {
     "id": "e0ab81cd97c18f9c",
@@ -3843,7 +3728,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 1020,
-    "y": 1580,
+    "y": 1780,
     "wires": []
   },
   {
@@ -3859,50 +3744,8 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 951,
-    "y": 1460.666748046875,
+    "y": 1600.666748046875,
     "wires": []
-  },
-  {
-    "id": "62a016df19736e31",
-    "type": "buffer-parser",
-    "z": "ddca7ba125929727",
-    "name": "",
-    "data": "payload",
-    "dataType": "msg",
-    "specification": "spec",
-    "specificationType": "ui",
-    "items": [
-      {
-        "type": "int16le",
-        "name": "item1",
-        "offset": 10,
-        "length": 1,
-        "offsetbit": 0,
-        "scale": "1",
-        "mask": ""
-      }
-    ],
-    "swap1": "",
-    "swap2": "",
-    "swap3": "",
-    "swap1Type": "swap",
-    "swap2Type": "swap",
-    "swap3Type": "swap",
-    "msgProperty": "payload",
-    "msgPropertyType": "str",
-    "resultType": "value",
-    "resultTypeType": "return",
-    "multipleResult": false,
-    "fanOutMultipleResult": false,
-    "setTopic": true,
-    "outputs": 1,
-    "x": 770,
-    "y": 1620,
-    "wires": [
-      [
-        "77a4873df194fc8e"
-      ]
-    ]
   },
   {
     "id": "7051a2de1dd188f5",
@@ -4047,36 +3890,7 @@
     ]
   },
   {
-    "id": "1380f4921a93e612",
-    "type": "inject",
-    "z": "ddca7ba125929727",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "10",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 130,
-    "y": 1720,
-    "wires": [
-      [
-        "3c6124645192ba1d"
-      ]
-    ]
-  },
-  {
-    "id": "3c6124645192ba1d",
+    "id": "2655ff27fd854ae6",
     "type": "modbus-getter",
     "z": "ddca7ba125929727",
     "name": "팝핑기10",
@@ -4096,50 +3910,33 @@
     "keepMsgProperties": false,
     "delayOnStart": false,
     "startDelayTime": "",
-    "x": 280,
-    "y": 1720,
+    "x": 320,
+    "y": 1920,
     "wires": [
       [
-        "3668ca0c5ca534b9"
+        "7870cbd4f7ca6a08"
       ],
       []
     ]
   },
   {
-    "id": "3668ca0c5ca534b9",
+    "id": "7870cbd4f7ca6a08",
     "type": "function",
     "z": "ddca7ba125929727",
-    "name": "function 1",
-    "func": "//var temperature = parseFloat(Buffer.from(msg.payload[10], \"hex\").readInt16BE(0)) / 10;\nvar temperature = msg.payload[1];\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"93\",\n    \"temp\": temperature,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "name": "온도_parseData",
+    "func": "var temperature = msg.payload[1];\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"93\",\n    \"temp\": temperature,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 440,
-    "y": 1720,
+    "x": 500,
+    "y": 1920,
     "wires": [
       [
-        "25365a9bb35daa0b",
         "715d0b3e3a011140"
       ]
     ]
-  },
-  {
-    "id": "25365a9bb35daa0b",
-    "type": "debug",
-    "z": "ddca7ba125929727",
-    "name": "debug 49",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 600,
-    "y": 1720,
-    "wires": []
   },
   {
     "id": "292ce6c66e1593ab",
