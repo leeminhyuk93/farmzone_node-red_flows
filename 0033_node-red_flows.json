@@ -800,7 +800,7 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "sendBuffer",
-    "func": "msg.payload = 'RDS DM03 9\\r';\nreturn msg;",
+    "func": "msg.payload = 'RDS DM04 9\\r';\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
