@@ -4042,7 +4042,7 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "function 1",
-    "func": "msg.topic = \"INSERT INTO fz_shm.metal_detector1 (scode, detection) VALUES (\" + 82 + \", 검출)\";\nreturn msg;",
+    "func": "msg.topic = \"INSERT INTO fz_shm.metal_detector1 (scode, detection) VALUES (\" + 82 + \", '검출')\";\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
