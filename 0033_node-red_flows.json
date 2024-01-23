@@ -4105,7 +4105,7 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "function 1",
-    "func": "var temperature = parseFloat(Buffer.from(msg.payload[10], \"hex\").readInt16BE(0)) / 10;\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"93\",\n    \"temp\": temperature,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "func": "//var temperature = parseFloat(Buffer.from(msg.payload[10], \"hex\").readInt16BE(0)) / 10;\nvar temperature = msg.payload;\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"93\",\n    \"temp\": temperature,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
