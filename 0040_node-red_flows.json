@@ -656,7 +656,7 @@
     "z": "59ca106284e989bb",
     "name": "나우시스템 금속검출 Protocol",
     "info": "Read Data->PLC Modbus 변환 후 송신\n34Byte",
-    "x": 180,
+    "x": 160,
     "y": 80,
     "wires": []
   },
@@ -6385,7 +6385,7 @@
     "id": "2957c237f274c569",
     "type": "comment",
     "z": "03e67490e8ad96bb",
-    "name": "���척공정(CCP-1BP) Send API",
+    "name": "세척공정(CCP-1BP) Send API",
     "info": "",
     "x": 140,
     "y": 1340,
