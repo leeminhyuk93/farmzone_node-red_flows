@@ -141,11 +141,11 @@
     "serialParity": "none",
     "serialConnectionDelay": "100",
     "serialAsciiResponseStartDelimiter": "0x3A",
-    "unit_id": "0",
-    "commandDelay": "1",
-    "clientTimeout": "1000",
+    "unit_id": 0,
+    "commandDelay": 1,
+    "clientTimeout": 1000,
     "reconnectOnTimeout": true,
-    "reconnectTimeout": "2000",
+    "reconnectTimeout": 2000,
     "parallelUnitIdsAllowed": true,
     "showWarnings": true,
     "showLogs": true
@@ -413,7 +413,7 @@
     "type": "comment",
     "z": "ddca7ba125929727",
     "name": "금속검출기 정보",
-    "info": "※금속검출기 정보\n5002 : 팽��미\nscode : 84\n플랫폼 화면 표시명 : 금속검출기3(팽화미)\n\n5003 : 팝핑기\nscode : 83\n플랫폼 화면 표시명 : 금속검출기2(팝핑기)\n\n5004 : 중량기\nscode : 82\n플랫폼 화면 표시명 : 금속검출기1(중량기)",
+    "info": "※금속검출기 정보\n5002 : 팽화미\nscode : 84\n플랫폼 화면 표시명 : 금속검출기3(팽화미)\n\n5003 : 팝핑기\nscode : 83\n플랫폼 화면 표시명 : 금속검출기2(팝핑기)\n\n5004 : 중량기\nscode : 82\n플랫폼 화면 표시명 : 금속검출기1(중량기)",
     "x": 120,
     "y": 160,
     "wires": []
@@ -758,7 +758,6 @@
     "id": "f409e55f23691320",
     "type": "tcp request",
     "z": "ddca7ba125929727",
-    "d": true,
     "name": "",
     "server": "192.168.0.203",
     "port": "8501",
@@ -859,7 +858,6 @@
     "id": "07a43e5d49a904e2",
     "type": "tcp request",
     "z": "ddca7ba125929727",
-    "d": true,
     "name": "",
     "server": "192.168.0.203",
     "port": "8501",
@@ -3997,157 +3995,6 @@
         "715d0b3e3a011140"
       ]
     ]
-  },
-  {
-    "id": "e88cc08fd5b3abf1",
-    "type": "modbus-getter",
-    "z": "ddca7ba125929727",
-    "d": true,
-    "name": "익스트루더202",
-    "showStatusActivities": true,
-    "showErrors": true,
-    "showWarnings": true,
-    "logIOActivities": false,
-    "unitid": "1",
-    "dataType": "HoldingRegister",
-    "adr": "0",
-    "quantity": "10",
-    "server": "ab93d6d8d27aaf4c",
-    "useIOFile": false,
-    "ioFile": "",
-    "useIOForPayload": false,
-    "emptyMsgOnFail": false,
-    "keepMsgProperties": false,
-    "delayOnStart": false,
-    "startDelayTime": "",
-    "x": 300,
-    "y": 540,
-    "wires": [
-      [
-        "c1184370a0cc8271"
-      ],
-      []
-    ]
-  },
-  {
-    "id": "125c4eaab95747d6",
-    "type": "inject",
-    "z": "ddca7ba125929727",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 120,
-    "y": 540,
-    "wires": [
-      [
-        "e88cc08fd5b3abf1"
-      ]
-    ]
-  },
-  {
-    "id": "c1184370a0cc8271",
-    "type": "debug",
-    "z": "ddca7ba125929727",
-    "name": "debug 82",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 480,
-    "y": 540,
-    "wires": []
-  },
-  {
-    "id": "4a13c00bb43bc31d",
-    "type": "modbus-getter",
-    "z": "ddca7ba125929727",
-    "name": "익스트루더203",
-    "showStatusActivities": true,
-    "showErrors": true,
-    "showWarnings": true,
-    "logIOActivities": false,
-    "unitid": "1",
-    "dataType": "HoldingRegister",
-    "adr": "0",
-    "quantity": "10",
-    "server": "0d9fdce91c4ca78d",
-    "useIOFile": false,
-    "ioFile": "",
-    "useIOForPayload": false,
-    "emptyMsgOnFail": false,
-    "keepMsgProperties": false,
-    "delayOnStart": false,
-    "startDelayTime": "",
-    "x": 300,
-    "y": 600,
-    "wires": [
-      [
-        "d5ad0d081e881026"
-      ],
-      []
-    ]
-  },
-  {
-    "id": "6caecb7c333d7e27",
-    "type": "inject",
-    "z": "ddca7ba125929727",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 120,
-    "y": 600,
-    "wires": [
-      [
-        "4a13c00bb43bc31d"
-      ]
-    ]
-  },
-  {
-    "id": "d5ad0d081e881026",
-    "type": "debug",
-    "z": "ddca7ba125929727",
-    "name": "debug 83",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 480,
-    "y": 600,
-    "wires": []
   },
   {
     "id": "292ce6c66e1593ab",
