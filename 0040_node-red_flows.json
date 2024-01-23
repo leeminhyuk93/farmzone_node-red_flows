@@ -657,7 +657,7 @@
     "name": "나우시스템 금속검출 Protocol",
     "info": "Read Data->PLC Modbus 변환 후 송신\n34Byte",
     "x": 160,
-    "y": 80,
+    "y": 100,
     "wires": []
   },
   {
