@@ -93,6 +93,64 @@
     "showLogs": true
   },
   {
+    "id": "ab93d6d8d27aaf4c",
+    "type": "modbus-client",
+    "name": "키엔스PLC_202",
+    "clienttype": "tcp",
+    "bufferCommands": true,
+    "stateLogEnabled": false,
+    "queueLogEnabled": false,
+    "failureLogEnabled": true,
+    "tcpHost": "192.168.0.202",
+    "tcpPort": "8501",
+    "tcpType": "DEFAULT",
+    "serialPort": "/dev/ttyUSB",
+    "serialType": "RTU-BUFFERD",
+    "serialBaudrate": "9600",
+    "serialDatabits": "8",
+    "serialStopbits": "1",
+    "serialParity": "none",
+    "serialConnectionDelay": "100",
+    "serialAsciiResponseStartDelimiter": "0x3A",
+    "unit_id": "1",
+    "commandDelay": "1",
+    "clientTimeout": "1000",
+    "reconnectOnTimeout": true,
+    "reconnectTimeout": "2000",
+    "parallelUnitIdsAllowed": true,
+    "showWarnings": true,
+    "showLogs": true
+  },
+  {
+    "id": "0d9fdce91c4ca78d",
+    "type": "modbus-client",
+    "name": "키엔스 PLC_203",
+    "clienttype": "tcp",
+    "bufferCommands": true,
+    "stateLogEnabled": false,
+    "queueLogEnabled": false,
+    "failureLogEnabled": true,
+    "tcpHost": "192.168.0.203",
+    "tcpPort": "8501",
+    "tcpType": "DEFAULT",
+    "serialPort": "/dev/ttyUSB",
+    "serialType": "RTU-BUFFERD",
+    "serialBaudrate": "9600",
+    "serialDatabits": "8",
+    "serialStopbits": "1",
+    "serialParity": "none",
+    "serialConnectionDelay": "100",
+    "serialAsciiResponseStartDelimiter": "0x3A",
+    "unit_id": "1",
+    "commandDelay": "1",
+    "clientTimeout": "1000",
+    "reconnectOnTimeout": true,
+    "reconnectTimeout": "2000",
+    "parallelUnitIdsAllowed": true,
+    "showWarnings": true,
+    "showLogs": true
+  },
+  {
     "id": "6f6934b2f47f4d33",
     "type": "inject",
     "z": "ddca7ba125929727",
@@ -355,7 +413,7 @@
     "type": "comment",
     "z": "ddca7ba125929727",
     "name": "금속검출기 정보",
-    "info": "※금속검출기 정보\n5002 : 팽화미\nscode : 84\n플랫폼 화면 표시명 : 금속검출기3(팽화미)\n\n5003 : 팝핑기\nscode : 83\n플랫폼 화면 표시명 : 금속검출기2(팝핑기)\n\n5004 : 중량기\nscode : 82\n플랫폼 화면 표시명 : 금속검출기1(중량기)",
+    "info": "※금속검출기 정보\n5002 : 팽��미\nscode : 84\n플랫폼 화면 표시명 : 금속검출기3(팽화미)\n\n5003 : 팝핑기\nscode : 83\n플랫폼 화면 표시명 : 금속검출기2(팝핑기)\n\n5004 : 중량기\nscode : 82\n플랫폼 화면 표시명 : 금속검출기1(중량기)",
     "x": 120,
     "y": 160,
     "wires": []
@@ -863,7 +921,7 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "sendBuffer",
-    "func": "// 데이터 조립\nconst eduBuffer = Buffer.alloc(12); // 12바이트의 버퍼 생성\n\neduBuffer.writeUInt16BE(1, 0);   // TID\neduBuffer.writeUInt16BE(0, 2);   // PID\neduBuffer.writeUInt16BE(6, 4);   // Length\neduBuffer.writeUInt8(7, 6);      // Unit ID (국번)\neduBuffer.writeUInt8(3, 7);      // Function code\neduBuffer.writeUInt16BE(1, 8);   // Data (register address)\neduBuffer.writeUInt16BE(18, 10); // Data (count)\n\n// msg 객체의 payload에 데이터를 할당합니다.\nmsg.payload = eduBuffer;\n\nreturn msg;",
+    "func": "// 데이터 조립\nconst eduBuffer = Buffer.alloc(12); // 12바이트의 버퍼 생성\n\neduBuffer.writeUInt16BE(1, 0);   // TID\neduBuffer.writeUInt16BE(0, 2);   // PID\neduBuffer.writeUInt16BE(6, 4);   // Length\neduBuffer.writeUInt8(7, 6);      // Unit ID (국번)\neduBuffer.writeUInt8(3, 7);      // Function code\neduBuffer.writeUInt16BE(1, 8);   // Data (register address)\neduBuffer.writeUInt16BE(18, 10); // Data (count)\n\n// msg 객체의 payload에 데이터를 ���당합니다.\nmsg.payload = eduBuffer;\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -1550,7 +1608,7 @@
     "id": "573d8f287c76e76a",
     "type": "comment",
     "z": "ddca7ba125929727",
-    "name": "팝핑기 5 & ��산주기",
+    "name": "팝핑기 5 & 생산주기",
     "info": "",
     "x": 130,
     "y": 1300,
@@ -3136,7 +3194,7 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "parseData",
-    "func": "var inputString = msg.payload[0];\nvar parsedValue = parseInt(inputString, 10) / 100;\nvar formattedValue = parsedValue.toFixed(2); // 소수점 둘째 자���까지 포맷팅\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"93\",\n    \"rpm\": formattedValue,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "func": "var inputString = msg.payload[0];\nvar parsedValue = parseInt(inputString, 10) / 100;\nvar formattedValue = parsedValue.toFixed(2); // 소수점 둘째 자리까지 포맷팅\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"93\",\n    \"rpm\": formattedValue,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -3937,6 +3995,156 @@
         "715d0b3e3a011140"
       ]
     ]
+  },
+  {
+    "id": "e88cc08fd5b3abf1",
+    "type": "modbus-getter",
+    "z": "ddca7ba125929727",
+    "name": "익스트루더202",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "1",
+    "dataType": "HoldingRegister",
+    "adr": "0",
+    "quantity": "10",
+    "server": "ab93d6d8d27aaf4c",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 300,
+    "y": 540,
+    "wires": [
+      [
+        "c1184370a0cc8271"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "125c4eaab95747d6",
+    "type": "inject",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 540,
+    "wires": [
+      [
+        "e88cc08fd5b3abf1"
+      ]
+    ]
+  },
+  {
+    "id": "c1184370a0cc8271",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 82",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 480,
+    "y": 540,
+    "wires": []
+  },
+  {
+    "id": "4a13c00bb43bc31d",
+    "type": "modbus-getter",
+    "z": "ddca7ba125929727",
+    "name": "익스트루더203",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "1",
+    "dataType": "HoldingRegister",
+    "adr": "0",
+    "quantity": "10",
+    "server": "0d9fdce91c4ca78d",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 300,
+    "y": 600,
+    "wires": [
+      [
+        "d5ad0d081e881026"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "6caecb7c333d7e27",
+    "type": "inject",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 600,
+    "wires": [
+      [
+        "4a13c00bb43bc31d"
+      ]
+    ]
+  },
+  {
+    "id": "d5ad0d081e881026",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 83",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 480,
+    "y": 600,
+    "wires": []
   },
   {
     "id": "292ce6c66e1593ab",
