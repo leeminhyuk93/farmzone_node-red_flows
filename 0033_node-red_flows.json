@@ -169,6 +169,122 @@
     "charset": "UTF8"
   },
   {
+    "id": "b50ac237ad1860d5",
+    "type": "modbus-client",
+    "name": "팝핑기11_smg5400",
+    "clienttype": "tcp",
+    "bufferCommands": true,
+    "stateLogEnabled": false,
+    "queueLogEnabled": false,
+    "failureLogEnabled": true,
+    "tcpHost": "192.168.0.221",
+    "tcpPort": "1483",
+    "tcpType": "DEFAULT",
+    "serialPort": "/dev/ttyUSB",
+    "serialType": "RTU-BUFFERD",
+    "serialBaudrate": "9600",
+    "serialDatabits": "8",
+    "serialStopbits": "1",
+    "serialParity": "none",
+    "serialConnectionDelay": "100",
+    "serialAsciiResponseStartDelimiter": "0x3A",
+    "unit_id": 1,
+    "commandDelay": 1,
+    "clientTimeout": 1000,
+    "reconnectOnTimeout": true,
+    "reconnectTimeout": 2000,
+    "parallelUnitIdsAllowed": true,
+    "showWarnings": true,
+    "showLogs": true
+  },
+  {
+    "id": "9660dfaad348690d",
+    "type": "modbus-client",
+    "name": "팝핑기5_smg5400",
+    "clienttype": "tcp",
+    "bufferCommands": true,
+    "stateLogEnabled": false,
+    "queueLogEnabled": false,
+    "failureLogEnabled": true,
+    "tcpHost": "192.168.0.215",
+    "tcpPort": "1478",
+    "tcpType": "DEFAULT",
+    "serialPort": "/dev/ttyUSB",
+    "serialType": "RTU-BUFFERD",
+    "serialBaudrate": "9600",
+    "serialDatabits": "8",
+    "serialStopbits": "1",
+    "serialParity": "none",
+    "serialConnectionDelay": "100",
+    "serialAsciiResponseStartDelimiter": "0x3A",
+    "unit_id": 1,
+    "commandDelay": 1,
+    "clientTimeout": 1000,
+    "reconnectOnTimeout": true,
+    "reconnectTimeout": 2000,
+    "parallelUnitIdsAllowed": true,
+    "showWarnings": true,
+    "showLogs": true
+  },
+  {
+    "id": "3ba0815679b50145",
+    "type": "modbus-client",
+    "name": "팝핑기7_smg5400",
+    "clienttype": "tcp",
+    "bufferCommands": true,
+    "stateLogEnabled": false,
+    "queueLogEnabled": false,
+    "failureLogEnabled": true,
+    "tcpHost": "192.168.0.217",
+    "tcpPort": "1479",
+    "tcpType": "DEFAULT",
+    "serialPort": "/dev/ttyUSB",
+    "serialType": "RTU-BUFFERD",
+    "serialBaudrate": "9600",
+    "serialDatabits": "8",
+    "serialStopbits": "1",
+    "serialParity": "none",
+    "serialConnectionDelay": "100",
+    "serialAsciiResponseStartDelimiter": "0x3A",
+    "unit_id": "1",
+    "commandDelay": "1",
+    "clientTimeout": "1000",
+    "reconnectOnTimeout": true,
+    "reconnectTimeout": "2000",
+    "parallelUnitIdsAllowed": true,
+    "showWarnings": true,
+    "showLogs": true
+  },
+  {
+    "id": "2905461be0ed3b31",
+    "type": "modbus-client",
+    "name": "팝핑기8_smg5400",
+    "clienttype": "tcp",
+    "bufferCommands": true,
+    "stateLogEnabled": false,
+    "queueLogEnabled": false,
+    "failureLogEnabled": true,
+    "tcpHost": "192.168.0.218",
+    "tcpPort": "1480",
+    "tcpType": "DEFAULT",
+    "serialPort": "/dev/ttyUSB",
+    "serialType": "RTU-BUFFERD",
+    "serialBaudrate": "9600",
+    "serialDatabits": "8",
+    "serialStopbits": "1",
+    "serialParity": "none",
+    "serialConnectionDelay": "100",
+    "serialAsciiResponseStartDelimiter": "0x3A",
+    "unit_id": "1",
+    "commandDelay": "1",
+    "clientTimeout": "1000",
+    "reconnectOnTimeout": true,
+    "reconnectTimeout": "2000",
+    "parallelUnitIdsAllowed": true,
+    "showWarnings": true,
+    "showLogs": true
+  },
+  {
     "id": "6f6934b2f47f4d33",
     "type": "inject",
     "z": "ddca7ba125929727",
@@ -572,8 +688,7 @@
     "y": 720,
     "wires": [
       [
-        "a771a39b51838afe",
-        "fa09c656277d3a66"
+        "a771a39b51838afe"
       ]
     ]
   },
@@ -790,8 +905,7 @@
     "y": 860,
     "wires": [
       [
-        "69e60a1fe084f66b",
-        "f6b27b4ac625c133"
+        "69e60a1fe084f66b"
       ]
     ]
   },
@@ -890,8 +1004,7 @@
     "y": 900,
     "wires": [
       [
-        "489a773e52027715",
-        "b7f5ea1eeaa5130f"
+        "489a773e52027715"
       ]
     ]
   },
@@ -917,11 +1030,11 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 1140,
+    "y": 1300,
     "wires": [
       [
-        "e83f67f82ad19aad",
-        "92fedd62aacef57d"
+        "92fedd62aacef57d",
+        "3939898bb60ceba1"
       ]
     ]
   },
@@ -929,30 +1042,11 @@
     "id": "0ed2494e2c25b10a",
     "type": "comment",
     "z": "ddca7ba125929727",
-    "name": "팝핑기 11 & 생산주기",
-    "info": "",
+    "name": "팝핑기11_온도&RPM",
+    "info": "온도는 솔내컨버터\nRPM은 키엔스 PLC\n\n솔내컨버터 정보\nIP : 192.168.0.221\nPORT : 1483",
     "x": 140,
-    "y": 1100,
+    "y": 1260,
     "wires": []
-  },
-  {
-    "id": "e83f67f82ad19aad",
-    "type": "function",
-    "z": "ddca7ba125929727",
-    "name": "sendBuffer",
-    "func": "// 데이터 조립\nconst eduBuffer = Buffer.alloc(12); // 12바이트의 버퍼 생성\n\neduBuffer.writeUInt16BE(1, 0);   // TID\neduBuffer.writeUInt16BE(0, 2);   // PID\neduBuffer.writeUInt16BE(6, 4);   // Length\neduBuffer.writeUInt8(7, 6);      // Unit ID (국번)\neduBuffer.writeUInt8(3, 7);      // Function code\neduBuffer.writeUInt16BE(1, 8);   // Data (register address)\neduBuffer.writeUInt16BE(18, 10); // Data (count)\n\n// msg 객체의 payload에 데이터를 할당합니다.\nmsg.payload = eduBuffer;\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 330,
-    "y": 1140,
-    "wires": [
-      [
-        "75104e1564483611"
-      ]
-    ]
   },
   {
     "id": "f303de87c30e89ae",
@@ -966,30 +1060,9 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 1320,
-    "y": 1140,
+    "x": 940,
+    "y": 1300,
     "wires": []
-  },
-  {
-    "id": "75104e1564483611",
-    "type": "tcp request",
-    "z": "ddca7ba125929727",
-    "name": "",
-    "server": "192.168.0.221",
-    "port": "1483",
-    "out": "sit",
-    "ret": "buffer",
-    "splitc": " ",
-    "newline": "",
-    "trim": false,
-    "tls": "",
-    "x": 550,
-    "y": 1140,
-    "wires": [
-      [
-        "b32835130df28521"
-      ]
-    ]
   },
   {
     "id": "8f92c0f2e1c33e11",
@@ -1003,7 +1076,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 1180,
+    "y": 1340,
     "wires": [
       [
         "9b96b65ef6ef45ec"
@@ -1024,7 +1097,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 1180,
+    "y": 1340,
     "wires": [
       [
         "e91331546f856cec"
@@ -1053,30 +1126,11 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 1340,
+    "y": 1500,
     "wires": [
       [
-        "12e841eb34fe1e04",
-        "ee72f13457e029f8"
-      ]
-    ]
-  },
-  {
-    "id": "12e841eb34fe1e04",
-    "type": "function",
-    "z": "ddca7ba125929727",
-    "name": "sendBuffer",
-    "func": "// 데이터 조립\nconst eduBuffer = Buffer.alloc(12); // 12바이트의 버퍼 생성\n\neduBuffer.writeUInt16BE(1, 0);   // TID\neduBuffer.writeUInt16BE(0, 2);   // PID\neduBuffer.writeUInt16BE(6, 4);   // Length\neduBuffer.writeUInt8(7, 6);      // Unit ID (국번)\neduBuffer.writeUInt8(3, 7);      // Function code\neduBuffer.writeUInt16BE(1, 8);   // Data (register address)\neduBuffer.writeUInt16BE(18, 10); // Data (count)\n\n// msg 객체의 payload에 데이터를 할당합니다.\nmsg.payload = eduBuffer;\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 330,
-    "y": 1340,
-    "wires": [
-      [
-        "c9fdd371f820337f"
+        "ee72f13457e029f8",
+        "a9ee9cbb084cd790"
       ]
     ]
   },
@@ -1092,30 +1146,9 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 1320,
-    "y": 1340,
+    "x": 920,
+    "y": 1500,
     "wires": []
-  },
-  {
-    "id": "c9fdd371f820337f",
-    "type": "tcp request",
-    "z": "ddca7ba125929727",
-    "name": "",
-    "server": "192.168.0.215",
-    "port": "1478",
-    "out": "sit",
-    "ret": "buffer",
-    "splitc": " ",
-    "newline": "",
-    "trim": false,
-    "tls": "",
-    "x": 550,
-    "y": 1340,
-    "wires": [
-      [
-        "627caf479030c4ee"
-      ]
-    ]
   },
   {
     "id": "91c43b1fd1788d4c",
@@ -1129,7 +1162,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 1380,
+    "y": 1540,
     "wires": [
       [
         "1be38abb5a529876"
@@ -1171,7 +1204,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 1380,
+    "y": 1540,
     "wires": [
       [
         "2b77ce06642f7614"
@@ -1192,7 +1225,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 1380,
+    "y": 1540,
     "wires": [
       [
         "1159d6e99c00b033"
@@ -1221,30 +1254,11 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 1520,
+    "y": 1680,
     "wires": [
       [
-        "e27f3f621a8d01a7",
-        "437bc5d8b682c642"
-      ]
-    ]
-  },
-  {
-    "id": "e27f3f621a8d01a7",
-    "type": "function",
-    "z": "ddca7ba125929727",
-    "name": "sendBuffer",
-    "func": "// 데이터 조립\nconst eduBuffer = Buffer.alloc(12); // 12바이트의 버퍼 생성\n\neduBuffer.writeUInt16BE(1, 0);   // TID\neduBuffer.writeUInt16BE(0, 2);   // PID\neduBuffer.writeUInt16BE(6, 4);   // Length\neduBuffer.writeUInt8(7, 6);      // Unit ID (국번)\neduBuffer.writeUInt8(3, 7);      // Function code\neduBuffer.writeUInt16BE(1, 8);   // Data (register address)\neduBuffer.writeUInt16BE(18, 10); // Data (count)\n\n// msg 객체의 payload에 데이터를 할당합니다.\nmsg.payload = eduBuffer;\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 330,
-    "y": 1520,
-    "wires": [
-      [
-        "362e5ae0b7408ddb"
+        "437bc5d8b682c642",
+        "6932357e27084b01"
       ]
     ]
   },
@@ -1260,30 +1274,9 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 1320,
-    "y": 1520,
+    "x": 920,
+    "y": 1680,
     "wires": []
-  },
-  {
-    "id": "362e5ae0b7408ddb",
-    "type": "tcp request",
-    "z": "ddca7ba125929727",
-    "name": "",
-    "server": "192.168.0.217",
-    "port": "1479",
-    "out": "sit",
-    "ret": "buffer",
-    "splitc": " ",
-    "newline": "",
-    "trim": false,
-    "tls": "",
-    "x": 550,
-    "y": 1520,
-    "wires": [
-      [
-        "5f55dd9eb772326b"
-      ]
-    ]
   },
   {
     "id": "8d78c0f678eadec3",
@@ -1297,7 +1290,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 1560,
+    "y": 1720,
     "wires": [
       [
         "5c7c965c4bfb9904"
@@ -1339,11 +1332,10 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 1560,
+    "y": 1720,
     "wires": [
       [
-        "7aa9c8b02d130818",
-        "23a59f09c15d3626"
+        "7aa9c8b02d130818"
       ]
     ]
   },
@@ -1361,7 +1353,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 1560,
+    "y": 1720,
     "wires": [
       [
         "2d0ddfe7d2cc0e55"
@@ -1390,30 +1382,11 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 1700,
+    "y": 1860,
     "wires": [
       [
-        "79c877fa8688b34b",
-        "ea2f097f53073e45"
-      ]
-    ]
-  },
-  {
-    "id": "79c877fa8688b34b",
-    "type": "function",
-    "z": "ddca7ba125929727",
-    "name": "sendBuffer",
-    "func": "// 데이터 조립\nconst eduBuffer = Buffer.alloc(12); // 12바이트의 버퍼 생성\n\neduBuffer.writeUInt16BE(1, 0);   // TID\neduBuffer.writeUInt16BE(0, 2);   // PID\neduBuffer.writeUInt16BE(6, 4);   // Length\neduBuffer.writeUInt8(7, 6);      // Unit ID (국번)\neduBuffer.writeUInt8(3, 7);      // Function code\neduBuffer.writeUInt16BE(1, 8);   // Data (register address)\neduBuffer.writeUInt16BE(18, 10); // Data (count)\n\n// msg 객체의 payload에 데이터를 할당합니다.\nmsg.payload = eduBuffer;\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 330,
-    "y": 1700,
-    "wires": [
-      [
-        "b291be2280d9e152"
+        "ea2f097f53073e45",
+        "1f208a21a99f4096"
       ]
     ]
   },
@@ -1429,30 +1402,9 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 1320,
-    "y": 1700,
+    "x": 920,
+    "y": 1860,
     "wires": []
-  },
-  {
-    "id": "b291be2280d9e152",
-    "type": "tcp request",
-    "z": "ddca7ba125929727",
-    "name": "",
-    "server": "192.168.0.218",
-    "port": "1480",
-    "out": "sit",
-    "ret": "buffer",
-    "splitc": " ",
-    "newline": "",
-    "trim": false,
-    "tls": "",
-    "x": 550,
-    "y": 1700,
-    "wires": [
-      [
-        "8bfa32522cdc1161"
-      ]
-    ]
   },
   {
     "id": "cfc58a14b253c660",
@@ -1466,7 +1418,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 1740,
+    "y": 1900,
     "wires": [
       [
         "9e6683d1a44c28c9"
@@ -1508,11 +1460,10 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 1740,
+    "y": 1900,
     "wires": [
       [
-        "396140023e4e11a2",
-        "e0ab81cd97c18f9c"
+        "396140023e4e11a2"
       ]
     ]
   },
@@ -1530,7 +1481,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 1740,
+    "y": 1900,
     "wires": [
       [
         "69be6ef610a85fce"
@@ -1559,7 +1510,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 1920,
+    "y": 2080,
     "wires": [
       [
         "4d395f7e11576f73",
@@ -1579,8 +1530,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 860,
-    "y": 1920,
+    "x": 940,
+    "y": 2080,
     "wires": []
   },
   {
@@ -1595,7 +1546,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 1960,
+    "y": 2120,
     "wires": [
       [
         "8251205e665b2318"
@@ -1616,7 +1567,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 1960,
+    "y": 2120,
     "wires": [
       [
         "6285ca8fb2c1a9b1"
@@ -1627,40 +1578,40 @@
     "id": "573d8f287c76e76a",
     "type": "comment",
     "z": "ddca7ba125929727",
-    "name": "팝핑기 5 & 생산주기",
-    "info": "",
+    "name": "팝핑기5_온도&RPM",
+    "info": "온도는 솔내컨버터\nRPM은 키엔스 PLC\n\n솔내컨버터 정보\nIP : 192.168.0.215\nPORT : 1478",
     "x": 130,
-    "y": 1300,
+    "y": 1460,
     "wires": []
   },
   {
     "id": "011d70c69edca239",
     "type": "comment",
     "z": "ddca7ba125929727",
-    "name": "팝핑기 7 & 생산주기",
-    "info": "",
+    "name": "팝핑기7 _온도&RPM",
+    "info": "온도는 솔내컨버터\nRPM은 키엔스 PLC\n\n솔내컨버터 정보\nIP : 192.168.0.217\nPORT : 1479",
     "x": 130,
-    "y": 1480,
+    "y": 1640,
     "wires": []
   },
   {
     "id": "0ee72a8aee3b2649",
     "type": "comment",
     "z": "ddca7ba125929727",
-    "name": "팝핑기 8 & 생산주기",
-    "info": "",
+    "name": "팝핑기8_온도&RPM",
+    "info": "온도는 솔내컨버터\nRPM은 키엔스 PLC\n\n솔내컨버터 정보\nIP : 192.168.0.218\nPORT : 1480",
     "x": 130,
-    "y": 1660,
+    "y": 1820,
     "wires": []
   },
   {
     "id": "889951c8aec1d375",
     "type": "comment",
     "z": "ddca7ba125929727",
-    "name": "팝핑기 10 온도 & 생산주기",
-    "info": "",
-    "x": 150,
-    "y": 1880,
+    "name": "팝핑기10_온도&RPM",
+    "info": "온도는 솔내컨버터\nRPM은 키엔스 PLC\n\n솔내컨버터 정보\nIP : 192.168.0.218\nPORT : 1480",
+    "x": 140,
+    "y": 2040,
     "wires": []
   },
   {
@@ -1685,7 +1636,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 2120,
+    "y": 2280,
     "wires": [
       [
         "fca0d6d5e753e3c8"
@@ -1704,7 +1655,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 2120,
+    "y": 2280,
     "wires": [
       [
         "aa241c009c2cb327"
@@ -1746,7 +1697,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 2120,
+    "y": 2280,
     "wires": [
       [
         "faa05c47c3237303"
@@ -1766,7 +1717,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 1320,
-    "y": 2120,
+    "y": 2280,
     "wires": []
   },
   {
@@ -1783,7 +1734,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 2120,
+    "y": 2280,
     "wires": [
       [
         "2a880749af81c958"
@@ -1797,7 +1748,7 @@
     "name": "포장기 207, 208",
     "info": "",
     "x": 120,
-    "y": 2080,
+    "y": 2240,
     "wires": []
   },
   {
@@ -1812,7 +1763,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 2160,
+    "y": 2320,
     "wires": [
       [
         "e1010fd72c88390f"
@@ -1854,7 +1805,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 2160,
+    "y": 2320,
     "wires": [
       [
         "c840d8e7c0362a04"
@@ -1874,7 +1825,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 1320,
-    "y": 2160,
+    "y": 2320,
     "wires": []
   },
   {
@@ -1891,7 +1842,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 2160,
+    "y": 2320,
     "wires": [
       [
         "4a2add2fa3ab086c"
@@ -1920,7 +1871,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 2280,
+    "y": 2440,
     "wires": [
       [
         "cd0ed30b016547ec"
@@ -1939,7 +1890,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 2280,
+    "y": 2440,
     "wires": [
       [
         "0254f79c23a99816"
@@ -1981,7 +1932,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 2280,
+    "y": 2440,
     "wires": [
       [
         "b681c5ee5072b915"
@@ -2001,7 +1952,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 1300,
-    "y": 2280,
+    "y": 2440,
     "wires": []
   },
   {
@@ -2018,7 +1969,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 2280,
+    "y": 2440,
     "wires": [
       [
         "da44a8e8b15e6831"
@@ -2032,7 +1983,7 @@
     "name": "캡핑기",
     "info": "",
     "x": 90,
-    "y": 2240,
+    "y": 2400,
     "wires": []
   },
   {
@@ -2057,7 +2008,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 2420,
+    "y": 1080,
     "wires": [
       [
         "f0d7037bb6596786",
@@ -2077,7 +2028,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 2400,
+    "y": 1060,
     "wires": [
       [
         "94bb61aac41d919e"
@@ -2119,7 +2070,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 2400,
+    "y": 1060,
     "wires": [
       [
         "0eda2128f3a2a13a"
@@ -2140,7 +2091,7 @@
     "statusVal": "payload",
     "statusType": "auto",
     "x": 1320,
-    "y": 2400,
+    "y": 1060,
     "wires": []
   },
   {
@@ -2157,7 +2108,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 2400,
+    "y": 1060,
     "wires": [
       [
         "33c306ee95409dbc"
@@ -2171,7 +2122,7 @@
     "name": "오븐기 온도 & rpm",
     "info": "",
     "x": 130,
-    "y": 2380,
+    "y": 1040,
     "wires": []
   },
   {
@@ -2186,7 +2137,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 2440,
+    "y": 1100,
     "wires": [
       [
         "a1e089c8f2fd97c5"
@@ -2228,7 +2179,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 2440,
+    "y": 1100,
     "wires": [
       [
         "99368e687ce2ec82"
@@ -2249,7 +2200,7 @@
     "statusVal": "payload",
     "statusType": "auto",
     "x": 1320,
-    "y": 2440,
+    "y": 1100,
     "wires": []
   },
   {
@@ -2266,7 +2217,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 2440,
+    "y": 1100,
     "wires": [
       [
         "ad00f53a12a63bcb"
@@ -2285,7 +2236,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 2280,
+    "y": 2440,
     "wires": [
       [
         "8ea3c96af8a948e3",
@@ -2310,7 +2261,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 2280,
+    "y": 2440,
     "wires": [
       [
         "87fe51534f4ad35e"
@@ -2375,8 +2326,7 @@
     "y": 860,
     "wires": [
       [
-        "9ac5d73ff844fde3",
-        "7051a2de1dd188f5"
+        "9ac5d73ff844fde3"
       ]
     ]
   },
@@ -2405,25 +2355,6 @@
     ]
   },
   {
-    "id": "b40d87410c22b082",
-    "type": "function",
-    "z": "ddca7ba125929727",
-    "name": "parseData",
-    "func": "var temperature = msg.payload[0];\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"94\",\n    \"temp\": temperature,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 950,
-    "y": 1140,
-    "wires": [
-      [
-        "1f31d0637f7e3473"
-      ]
-    ]
-  },
-  {
     "id": "1f31d0637f7e3473",
     "type": "http request",
     "z": "ddca7ba125929727",
@@ -2439,30 +2370,11 @@
     "authType": "",
     "senderr": false,
     "headers": [],
-    "x": 1130,
-    "y": 1140,
+    "x": 770,
+    "y": 1300,
     "wires": [
       [
         "f303de87c30e89ae"
-      ]
-    ]
-  },
-  {
-    "id": "ce4faaa1eb661fd7",
-    "type": "function",
-    "z": "ddca7ba125929727",
-    "name": "parseData",
-    "func": "var temperature = msg.payload[0];\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"89\",\n    \"temp\": temperature,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 950,
-    "y": 1340,
-    "wires": [
-      [
-        "2d6ccb01576958d6"
       ]
     ]
   },
@@ -2482,49 +2394,11 @@
     "authType": "",
     "senderr": false,
     "headers": [],
-    "x": 1130,
-    "y": 1340,
+    "x": 770,
+    "y": 1500,
     "wires": [
       [
         "5d81f3ba64d5c2f0"
-      ]
-    ]
-  },
-  {
-    "id": "5f55dd9eb772326b",
-    "type": "function",
-    "z": "ddca7ba125929727",
-    "name": "parseData",
-    "func": "var temperature = msg.payload[10];\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"90\",\n    \"temp\": temperature,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 950,
-    "y": 1520,
-    "wires": [
-      [
-        "d35d651141ff8a16"
-      ]
-    ]
-  },
-  {
-    "id": "8bfa32522cdc1161",
-    "type": "function",
-    "z": "ddca7ba125929727",
-    "name": "parseData",
-    "func": "var temperature = msg.payload[10];\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"91\",\n    \"temp\": temperature,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 950,
-    "y": 1700,
-    "wires": [
-      [
-        "b48a9eab048540f8"
       ]
     ]
   },
@@ -2544,8 +2418,8 @@
     "authType": "",
     "senderr": false,
     "headers": [],
-    "x": 1130,
-    "y": 1520,
+    "x": 770,
+    "y": 1680,
     "wires": [
       [
         "eb6fd652e289cbe0"
@@ -2568,8 +2442,8 @@
     "authType": "",
     "senderr": false,
     "headers": [],
-    "x": 1130,
-    "y": 1700,
+    "x": 770,
+    "y": 1860,
     "wires": [
       [
         "eb56e170051febf0"
@@ -2592,8 +2466,8 @@
     "authType": "",
     "senderr": false,
     "headers": [],
-    "x": 690,
-    "y": 1920,
+    "x": 770,
+    "y": 2080,
     "wires": [
       [
         "0c7d63607aaeabd4"
@@ -2612,7 +2486,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 2120,
+    "y": 2280,
     "wires": [
       [
         "f307ffd55bc4d314",
@@ -2637,7 +2511,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 2120,
+    "y": 2280,
     "wires": [
       [
         "0b262024ec0e62dc"
@@ -2661,8 +2535,7 @@
     "y": 760,
     "wires": [
       [
-        "39e7e5be41d0dd06",
-        "46fa8509aefd5d5a"
+        "39e7e5be41d0dd06"
       ]
     ]
   },
@@ -2678,7 +2551,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 1180,
+    "y": 1340,
     "wires": [
       [
         "d97437e23d7e3039"
@@ -2743,8 +2616,7 @@
     "y": 900,
     "wires": [
       [
-        "4988a68f634d762d",
-        "279519ec9456dc77"
+        "4988a68f634d762d"
       ]
     ]
   },
@@ -2963,7 +2835,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 2160,
+    "y": 2320,
     "wires": [
       [
         "f549e2188e1e82a1"
@@ -2987,7 +2859,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 2160,
+    "y": 2320,
     "wires": [
       [
         "2a97aa6bdb0a8c6e"
@@ -3011,7 +2883,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 1180,
+    "y": 1340,
     "wires": [
       [
         "d2ae74a670591b3b"
@@ -3031,7 +2903,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 1320,
-    "y": 1180,
+    "y": 1340,
     "wires": []
   },
   {
@@ -3046,7 +2918,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 1380,
+    "y": 1540,
     "wires": [
       [
         "9cb53701c275a0da"
@@ -3070,7 +2942,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 1380,
+    "y": 1540,
     "wires": [
       [
         "0dc475cf43dfcbf0"
@@ -3089,8 +2961,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 1320,
-    "y": 1380,
+    "x": 1280,
+    "y": 1540,
     "wires": []
   },
   {
@@ -3105,7 +2977,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 1560,
+    "y": 1720,
     "wires": [
       [
         "741fdb2fded2733f"
@@ -3129,7 +3001,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 1560,
+    "y": 1720,
     "wires": [
       [
         "24500fa3fb9914d6"
@@ -3148,8 +3020,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 1320,
-    "y": 1560,
+    "x": 1280,
+    "y": 1720,
     "wires": []
   },
   {
@@ -3164,7 +3036,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 1740,
+    "y": 1900,
     "wires": [
       [
         "fa9b47292353dedf"
@@ -3188,7 +3060,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 1740,
+    "y": 1900,
     "wires": [
       [
         "68e5e05ad101c653"
@@ -3207,8 +3079,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 1320,
-    "y": 1740,
+    "x": 1280,
+    "y": 1900,
     "wires": []
   },
   {
@@ -3223,7 +3095,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 1960,
+    "y": 2120,
     "wires": [
       [
         "d1c5016f48c64edc"
@@ -3247,7 +3119,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 1960,
+    "y": 2120,
     "wires": [
       [
         "d7aae28768cc9378"
@@ -3267,7 +3139,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 1300,
-    "y": 1960,
+    "y": 2120,
     "wires": []
   },
   {
@@ -3282,7 +3154,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 2400,
+    "y": 1060,
     "wires": [
       [
         "e83991d0beb382a9"
@@ -3306,7 +3178,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 2400,
+    "y": 1060,
     "wires": [
       [
         "69b53ec3530b779f"
@@ -3325,7 +3197,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 2440,
+    "y": 1100,
     "wires": [
       [
         "e9d00a6286efa775"
@@ -3349,7 +3221,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 2440,
+    "y": 1100,
     "wires": [
       [
         "f46ef93f7ddbd99a"
@@ -3378,7 +3250,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 2160,
+    "y": 2320,
     "wires": [
       [
         "4af4f391395ef251"
@@ -3428,7 +3300,7 @@
     "allowrate": false,
     "outputs": 1,
     "x": 130,
-    "y": 1180,
+    "y": 1340,
     "wires": [
       [
         "8f92c0f2e1c33e11"
@@ -3478,7 +3350,7 @@
     "allowrate": false,
     "outputs": 1,
     "x": 130,
-    "y": 1380,
+    "y": 1540,
     "wires": [
       [
         "91c43b1fd1788d4c"
@@ -3503,7 +3375,7 @@
     "allowrate": false,
     "outputs": 1,
     "x": 130,
-    "y": 1560,
+    "y": 1720,
     "wires": [
       [
         "8d78c0f678eadec3"
@@ -3528,7 +3400,7 @@
     "allowrate": false,
     "outputs": 1,
     "x": 130,
-    "y": 1740,
+    "y": 1900,
     "wires": [
       [
         "cfc58a14b253c660"
@@ -3553,7 +3425,7 @@
     "allowrate": false,
     "outputs": 1,
     "x": 130,
-    "y": 1960,
+    "y": 2120,
     "wires": [
       [
         "7776062198e3347f"
@@ -3574,7 +3446,7 @@
     "statusVal": "payload",
     "statusType": "auto",
     "x": 1120,
-    "y": 2340,
+    "y": 2500,
     "wires": []
   },
   {
@@ -3612,7 +3484,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 1180,
+    "y": 1340,
     "wires": [
       [
         "930572e26ff4fde1"
@@ -3654,94 +3526,10 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 1960,
+    "y": 2120,
     "wires": [
       [
         "98504f7c48c749fe"
-      ]
-    ]
-  },
-  {
-    "id": "b32835130df28521",
-    "type": "buffer-parser",
-    "z": "ddca7ba125929727",
-    "name": "",
-    "data": "payload",
-    "dataType": "msg",
-    "specification": "spec",
-    "specificationType": "ui",
-    "items": [
-      {
-        "type": "int16le",
-        "name": "item1",
-        "offset": 10,
-        "length": 1,
-        "offsetbit": 0,
-        "scale": "1",
-        "mask": ""
-      }
-    ],
-    "swap1": "",
-    "swap2": "",
-    "swap3": "",
-    "swap1Type": "swap",
-    "swap2Type": "swap",
-    "swap3Type": "swap",
-    "msgProperty": "payload",
-    "msgPropertyType": "str",
-    "resultType": "value",
-    "resultTypeType": "return",
-    "multipleResult": false,
-    "fanOutMultipleResult": false,
-    "setTopic": true,
-    "outputs": 1,
-    "x": 770,
-    "y": 1140,
-    "wires": [
-      [
-        "b40d87410c22b082"
-      ]
-    ]
-  },
-  {
-    "id": "627caf479030c4ee",
-    "type": "buffer-parser",
-    "z": "ddca7ba125929727",
-    "name": "",
-    "data": "payload",
-    "dataType": "msg",
-    "specification": "spec",
-    "specificationType": "ui",
-    "items": [
-      {
-        "type": "int16le",
-        "name": "item1",
-        "offset": 10,
-        "length": 1,
-        "offsetbit": 0,
-        "scale": "1",
-        "mask": ""
-      }
-    ],
-    "swap1": "",
-    "swap2": "",
-    "swap3": "",
-    "swap1Type": "swap",
-    "swap2Type": "swap",
-    "swap3Type": "swap",
-    "msgProperty": "payload",
-    "msgPropertyType": "str",
-    "resultType": "value",
-    "resultTypeType": "return",
-    "multipleResult": false,
-    "fanOutMultipleResult": false,
-    "setTopic": true,
-    "outputs": 1,
-    "x": 770,
-    "y": 1340,
-    "wires": [
-      [
-        "ce4faaa1eb661fd7"
       ]
     ]
   },
@@ -3758,7 +3546,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 1120,
-    "y": 2060,
+    "y": 2220,
     "wires": []
   },
   {
@@ -3796,184 +3584,10 @@
     ]
   },
   {
-    "id": "e0ab81cd97c18f9c",
-    "type": "debug",
-    "z": "ddca7ba125929727",
-    "name": "debug 42",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 1020,
-    "y": 1780,
-    "wires": []
-  },
-  {
-    "id": "23a59f09c15d3626",
-    "type": "debug",
-    "z": "ddca7ba125929727",
-    "name": "debug 43",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 951,
-    "y": 1600.666748046875,
-    "wires": []
-  },
-  {
-    "id": "7051a2de1dd188f5",
-    "type": "debug",
-    "z": "ddca7ba125929727",
-    "name": "debug 44",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": true,
-    "complete": "payload",
-    "targetType": "msg",
-    "statusVal": "payload",
-    "statusType": "auto",
-    "x": 1100,
-    "y": 820,
-    "wires": []
-  },
-  {
-    "id": "279519ec9456dc77",
-    "type": "debug",
-    "z": "ddca7ba125929727",
-    "name": "debug 45",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": true,
-    "complete": "payload",
-    "targetType": "msg",
-    "statusVal": "payload",
-    "statusType": "auto",
-    "x": 1120,
-    "y": 980,
-    "wires": []
-  },
-  {
-    "id": "a79b641e9b271425",
-    "type": "debug",
-    "z": "ddca7ba125929727",
-    "name": "debug 46",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 780,
-    "y": 980,
-    "wires": []
-  },
-  {
-    "id": "f6b27b4ac625c133",
-    "type": "function",
-    "z": "ddca7ba125929727",
-    "name": "temperature",
-    "func": "let data = msg.payload;\nconst dataBuffer = Buffer.from([data[48], data[49], data[50], data[51], data[52]]);\nconst dataString = dataBuffer.toString('utf-8');\nlet temp = parseFloat(dataString) / 10;\n\nmsg.payload = {\n    \"장비명\": \"익스트루더(203)\",\n    \"온도\": temp\n}\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 630,
-    "y": 980,
-    "wires": [
-      [
-        "a79b641e9b271425"
-      ]
-    ]
-  },
-  {
-    "id": "b7f5ea1eeaa5130f",
-    "type": "function",
-    "z": "ddca7ba125929727",
-    "name": "rpm",
-    "func": "let data = msg.payload;\nconst dataBuffer = Buffer.from([data[0], data[1], data[2], data[3], data[4], data[5]]);\nconst dataString = parseInt(dataBuffer, 10) / 100;\nlet rpm = dataString.toFixed(2);\n\nmsg.payload = {\n    \"장비명\": \"익스트루더(203)\",\n    \"rpm\": rpm\n}\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 610,
-    "y": 1020,
-    "wires": [
-      [
-        "a79b641e9b271425"
-      ]
-    ]
-  },
-  {
-    "id": "fa09c656277d3a66",
-    "type": "function",
-    "z": "ddca7ba125929727",
-    "name": "temperature",
-    "func": "let data = msg.payload;\nconst dataBuffer = Buffer.from([data[48], data[49], data[50], data[51], data[52]]);\nconst dataString = dataBuffer.toString('utf-8');\nlet temp = parseFloat(dataString) / 10;\n\nmsg.payload = {\n    \"장비명\" : \"익스트루더(202)\",\n    \"온도\" : temp\n}\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 750,
-    "y": 600,
-    "wires": [
-      [
-        "df7a30679f263554"
-      ]
-    ]
-  },
-  {
-    "id": "df7a30679f263554",
-    "type": "debug",
-    "z": "ddca7ba125929727",
-    "name": "debug 48",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 900,
-    "y": 600,
-    "wires": []
-  },
-  {
-    "id": "46fa8509aefd5d5a",
-    "type": "function",
-    "z": "ddca7ba125929727",
-    "name": "rpm",
-    "func": "let data = msg.payload;\nconst dataBuffer = Buffer.from([data[0], data[1], data[2], data[3], data[4], data[5]]);\nconst dataString = parseInt(dataBuffer, 10) / 100;\nlet rpm = dataString.toFixed(2);\n\nmsg.payload = {\n    \"장비명\": \"익스트루더(202)\",\n    \"rpm\": rpm\n}\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 730,
-    "y": 640,
-    "wires": [
-      [
-        "df7a30679f263554"
-      ]
-    ]
-  },
-  {
     "id": "2655ff27fd854ae6",
     "type": "modbus-getter",
     "z": "ddca7ba125929727",
-    "name": "팝핑기10",
+    "name": "192.168.0.220_1482",
     "showStatusActivities": true,
     "showErrors": true,
     "showWarnings": true,
@@ -3990,8 +3604,8 @@
     "keepMsgProperties": false,
     "delayOnStart": false,
     "startDelayTime": "",
-    "x": 320,
-    "y": 1920,
+    "x": 360,
+    "y": 2080,
     "wires": [
       [
         "7870cbd4f7ca6a08"
@@ -4010,11 +3624,12 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 500,
-    "y": 1920,
+    "x": 580,
+    "y": 2080,
     "wires": [
       [
-        "715d0b3e3a011140"
+        "715d0b3e3a011140",
+        "3b7581b82314c2f3"
       ]
     ]
   },
@@ -4141,6 +3756,334 @@
     "x": 580,
     "y": 460,
     "wires": []
+  },
+  {
+    "id": "3939898bb60ceba1",
+    "type": "modbus-getter",
+    "z": "ddca7ba125929727",
+    "name": "192.168.0.221_1483",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "1",
+    "dataType": "HoldingRegister",
+    "adr": "0",
+    "quantity": "18",
+    "server": "b50ac237ad1860d5",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 360,
+    "y": 1300,
+    "wires": [
+      [
+        "b41ea0f994996099"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "b41ea0f994996099",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "온도_parseData",
+    "func": "var temperature = msg.payload[1];\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"94\",\n    \"temp\": temperature,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 580,
+    "y": 1300,
+    "wires": [
+      [
+        "1f31d0637f7e3473",
+        "3242576693006b3b"
+      ]
+    ]
+  },
+  {
+    "id": "a9ee9cbb084cd790",
+    "type": "modbus-getter",
+    "z": "ddca7ba125929727",
+    "name": "192.168.0.215_1478",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "1",
+    "dataType": "HoldingRegister",
+    "adr": "0",
+    "quantity": "18",
+    "server": "9660dfaad348690d",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 360,
+    "y": 1500,
+    "wires": [
+      [
+        "89fe817140ce3a1b"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "89fe817140ce3a1b",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "온도_parseData",
+    "func": "var temperature = msg.payload[1];\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"89\",\n    \"temp\": temperature,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 580,
+    "y": 1500,
+    "wires": [
+      [
+        "2d6ccb01576958d6",
+        "6a007d27c4c6761c"
+      ]
+    ]
+  },
+  {
+    "id": "6932357e27084b01",
+    "type": "modbus-getter",
+    "z": "ddca7ba125929727",
+    "name": "192.168.0.217_1479",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "1",
+    "dataType": "HoldingRegister",
+    "adr": "0",
+    "quantity": "18",
+    "server": "3ba0815679b50145",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 360,
+    "y": 1680,
+    "wires": [
+      [
+        "c03bcfb51704d72c"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "c03bcfb51704d72c",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "온도_parseData",
+    "func": "var temperature = msg.payload[1];\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"90\",\n    \"temp\": temperature,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 580,
+    "y": 1680,
+    "wires": [
+      [
+        "d35d651141ff8a16",
+        "44362b2814763abc"
+      ]
+    ]
+  },
+  {
+    "id": "1f208a21a99f4096",
+    "type": "modbus-getter",
+    "z": "ddca7ba125929727",
+    "name": "192.168.0.218_1480",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "1",
+    "dataType": "HoldingRegister",
+    "adr": "0",
+    "quantity": "18",
+    "server": "2905461be0ed3b31",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 360,
+    "y": 1860,
+    "wires": [
+      [
+        "cf630ca07552fa93"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "cf630ca07552fa93",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "온도_parseData",
+    "func": "var temperature = msg.payload[1];\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"91\",\n    \"temp\": temperature,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 580,
+    "y": 1860,
+    "wires": [
+      [
+        "b48a9eab048540f8",
+        "78758c868fb35eb4"
+      ]
+    ]
+  },
+  {
+    "id": "3242576693006b3b",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 90",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 760,
+    "y": 1260,
+    "wires": []
+  },
+  {
+    "id": "6a007d27c4c6761c",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 91",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 760,
+    "y": 1460,
+    "wires": []
+  },
+  {
+    "id": "44362b2814763abc",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 92",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 760,
+    "y": 1640,
+    "wires": []
+  },
+  {
+    "id": "78758c868fb35eb4",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 93",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 760,
+    "y": 1820,
+    "wires": []
+  },
+  {
+    "id": "3b7581b82314c2f3",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 94",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 760,
+    "y": 2040,
+    "wires": []
+  },
+  {
+    "id": "2b28c5f6c19065c9",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "function 1",
+    "func": "msg.topic = \"INSERT INTO fz_shm.metal_detector1 (scode, detection) VALUES (\" + 82 + \", 검출)\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 320,
+    "y": 540,
+    "wires": [
+      [
+        "65c952e6d76230bd"
+      ]
+    ]
+  },
+  {
+    "id": "8b4e3eda99c47c48",
+    "type": "inject",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 160,
+    "y": 540,
+    "wires": [
+      [
+        "2b28c5f6c19065c9"
+      ]
+    ]
   },
   {
     "id": "49ad75513fd213dc",
@@ -7602,7 +7545,7 @@
     "type": "function",
     "z": "5ba174697c0e9d9b",
     "name": "parseData",
-    "func": "var inputString = msg.payload[0];\nvar parsedValue = parseInt(inputString, 10) / 100;\nvar formattedValue = parsedValue.toFixed(2); // 소수점 둘째 자리��지 포맷팅\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"93\",\n    \"rpm\": formattedValue,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "func": "var inputString = msg.payload[0];\nvar parsedValue = parseInt(inputString, 10) / 100;\nvar formattedValue = parsedValue.toFixed(2); // 소수점 둘째 자리까지 포맷팅\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"93\",\n    \"rpm\": formattedValue,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
