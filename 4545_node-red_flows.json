@@ -1410,7 +1410,7 @@
     "id": "15bdcd378ca734b0",
     "type": "comment",
     "z": "4ed13c30ba3b9c35",
-    "name": "MQTT처��_10초갱신",
+    "name": "MQTT처리_10초갱신",
     "info": "",
     "x": 160,
     "y": 1400,
