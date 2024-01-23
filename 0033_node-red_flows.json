@@ -4080,7 +4080,7 @@
     "showWarnings": true,
     "logIOActivities": false,
     "unitid": "7",
-    "dataType": "InputRegister",
+    "dataType": "HoldingRegister",
     "adr": "0",
     "quantity": "18",
     "server": "47635b80e08f7627",
