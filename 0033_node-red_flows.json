@@ -458,7 +458,8 @@
     "y": 720,
     "wires": [
       [
-        "a771a39b51838afe"
+        "a771a39b51838afe",
+        "fa09c656277d3a66"
       ]
     ]
   },
@@ -2586,7 +2587,8 @@
     "y": 760,
     "wires": [
       [
-        "39e7e5be41d0dd06"
+        "39e7e5be41d0dd06",
+        "46fa8509aefd5d5a"
       ]
     ]
   },
@@ -3921,7 +3923,7 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "temperature",
-    "func": "let data = msg.payload;\nconst dataBuffer = Buffer.from([data[48], data[49], data[50], data[51], data[52]]);\nconst dataString = dataBuffer.toString('utf-8');\nlet temp = parseFloat(dataString) / 10;\n\nmsg.payload = `현재 온도값 : ${temp}`;\n\nreturn msg;",
+    "func": "let data = msg.payload;\nconst dataBuffer = Buffer.from([data[48], data[49], data[50], data[51], data[52]]);\nconst dataString = dataBuffer.toString('utf-8');\nlet temp = parseFloat(dataString) / 10;\n\nmsg.payload = {\n    \"장비명\": \"익스트루더(203)\",\n    \"온도\": temp\n}\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -3940,7 +3942,7 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "rpm",
-    "func": "let data = msg.payload;\nconst dataBuffer = Buffer.from([data[0], data[1], data[2], data[3], data[4], data[5]]);\nconst dataString = parseInt(dataBuffer, 10) / 100;\nlet rpm = dataString.toFixed(2);\n\nmsg.payload = `현재 RPM : ${rpm}`;\n\nreturn msg;",
+    "func": "let data = msg.payload;\nconst dataBuffer = Buffer.from([data[0], data[1], data[2], data[3], data[4], data[5]]);\nconst dataString = parseInt(dataBuffer, 10) / 100;\nlet rpm = dataString.toFixed(2);\n\nmsg.payload = {\n    \"장비명\": \"익스트루더(203)\",\n    \"rpm\": rpm\n}\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -3950,15 +3952,34 @@
     "y": 1020,
     "wires": [
       [
-        "cc5bce508e46d85b"
+        "a79b641e9b271425"
       ]
     ]
   },
   {
-    "id": "cc5bce508e46d85b",
+    "id": "fa09c656277d3a66",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "temperature",
+    "func": "let data = msg.payload;\nconst dataBuffer = Buffer.from([data[48], data[49], data[50], data[51], data[52]]);\nconst dataString = dataBuffer.toString('utf-8');\nlet temp = parseFloat(dataString) / 10;\n\nmsg.payload = {\n    \"장비명\" : \"익스트루더(202)\",\n    \"온도\" : temp\n}\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 750,
+    "y": 600,
+    "wires": [
+      [
+        "df7a30679f263554"
+      ]
+    ]
+  },
+  {
+    "id": "df7a30679f263554",
     "type": "debug",
     "z": "ddca7ba125929727",
-    "name": "debug 47",
+    "name": "debug 48",
     "active": true,
     "tosidebar": true,
     "console": false,
@@ -3966,8 +3987,27 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 740,
-    "y": 1020,
+    "x": 900,
+    "y": 600,
     "wires": []
+  },
+  {
+    "id": "46fa8509aefd5d5a",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "rpm",
+    "func": "let data = msg.payload;\nconst dataBuffer = Buffer.from([data[0], data[1], data[2], data[3], data[4], data[5]]);\nconst dataString = parseInt(dataBuffer, 10) / 100;\nlet rpm = dataString.toFixed(2);\n\nmsg.payload = {\n    \"장비명\": \"익스트루더(202)\",\n    \"rpm\": rpm\n}\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 730,
+    "y": 640,
+    "wires": [
+      [
+        "df7a30679f263554"
+      ]
+    ]
   }
 ]
