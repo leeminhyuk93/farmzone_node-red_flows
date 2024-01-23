@@ -8,18 +8,18 @@
     "env": []
   },
   {
-    "id": "5ba174697c0e9d9b",
-    "type": "tab",
-    "label": "플로우 2",
-    "disabled": true,
-    "info": "",
-    "env": []
-  },
-  {
     "id": "0cbf0487adb00722",
     "type": "tab",
     "label": "Database Delete",
     "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "5ba174697c0e9d9b",
+    "type": "tab",
+    "label": "플로우 2",
+    "disabled": true,
     "info": "",
     "env": []
   },
@@ -4143,6 +4143,328 @@
     "wires": []
   },
   {
+    "id": "49ad75513fd213dc",
+    "type": "comment",
+    "z": "0cbf0487adb00722",
+    "name": "저장기간 30일(30일 지난 데이터는 삭제)",
+    "info": "",
+    "x": 180,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "b7d26d69f58b88f9",
+    "type": "inject",
+    "z": "0cbf0487adb00722",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "00 06 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 110,
+    "y": 80,
+    "wires": [
+      [
+        "b12b3f4dafe2a0e5"
+      ]
+    ]
+  },
+  {
+    "id": "b12b3f4dafe2a0e5",
+    "type": "function",
+    "z": "0cbf0487adb00722",
+    "name": "cold_storage",
+    "func": "msg.topic = \"DELETE FROM fz_shm.cold_storage WHERE wdate <= DATE_SUB(NOW(), INTERVAL 30 DAY);\"\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 270,
+    "y": 80,
+    "wires": [
+      [
+        "59b0cb6c0259b570"
+      ]
+    ]
+  },
+  {
+    "id": "59b0cb6c0259b570",
+    "type": "mysql",
+    "z": "0cbf0487adb00722",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 420,
+    "y": 80,
+    "wires": [
+      [
+        "b2221a47cd30bf41"
+      ]
+    ]
+  },
+  {
+    "id": "b2221a47cd30bf41",
+    "type": "debug",
+    "z": "0cbf0487adb00722",
+    "name": "debug 86",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 560,
+    "y": 80,
+    "wires": []
+  },
+  {
+    "id": "918b46f6dc43c49b",
+    "type": "inject",
+    "z": "0cbf0487adb00722",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "00 06 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 110,
+    "y": 140,
+    "wires": [
+      [
+        "94cd20356055eca6"
+      ]
+    ]
+  },
+  {
+    "id": "94cd20356055eca6",
+    "type": "function",
+    "z": "0cbf0487adb00722",
+    "name": "metal_detector1",
+    "func": "msg.topic = \"DELETE FROM fz_shm.metal_detector1 WHERE wdate <= DATE_SUB(NOW(), INTERVAL 30 DAY);\"\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 280,
+    "y": 140,
+    "wires": [
+      [
+        "361db925894d574e"
+      ]
+    ]
+  },
+  {
+    "id": "361db925894d574e",
+    "type": "mysql",
+    "z": "0cbf0487adb00722",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 440,
+    "y": 140,
+    "wires": [
+      [
+        "385003216ccd8520"
+      ]
+    ]
+  },
+  {
+    "id": "385003216ccd8520",
+    "type": "debug",
+    "z": "0cbf0487adb00722",
+    "name": "debug 87",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 580,
+    "y": 140,
+    "wires": []
+  },
+  {
+    "id": "7a6fc4c6efecd77c",
+    "type": "inject",
+    "z": "0cbf0487adb00722",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "00 06 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 110,
+    "y": 200,
+    "wires": [
+      [
+        "9492c0a6580670ea"
+      ]
+    ]
+  },
+  {
+    "id": "9492c0a6580670ea",
+    "type": "function",
+    "z": "0cbf0487adb00722",
+    "name": "metal_detector2",
+    "func": "msg.topic = \"DELETE FROM fz_shm.metal_detector2 WHERE wdate <= DATE_SUB(NOW(), INTERVAL 30 DAY);\"\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 280,
+    "y": 200,
+    "wires": [
+      [
+        "3da4e632dda327ad"
+      ]
+    ]
+  },
+  {
+    "id": "3da4e632dda327ad",
+    "type": "mysql",
+    "z": "0cbf0487adb00722",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 440,
+    "y": 200,
+    "wires": [
+      [
+        "2c79f21b42722bcc"
+      ]
+    ]
+  },
+  {
+    "id": "2c79f21b42722bcc",
+    "type": "debug",
+    "z": "0cbf0487adb00722",
+    "name": "debug 88",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 580,
+    "y": 200,
+    "wires": []
+  },
+  {
+    "id": "35922c38af24a09c",
+    "type": "function",
+    "z": "0cbf0487adb00722",
+    "name": "metal_detector3",
+    "func": "msg.topic = \"DELETE FROM fz_shm.metal_detector3 WHERE wdate <= DATE_SUB(NOW(), INTERVAL 30 DAY);\"\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 280,
+    "y": 260,
+    "wires": [
+      [
+        "8f02c2b856e83a26"
+      ]
+    ]
+  },
+  {
+    "id": "a5984aae7831aeb3",
+    "type": "inject",
+    "z": "0cbf0487adb00722",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "00 06 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 110,
+    "y": 260,
+    "wires": [
+      [
+        "35922c38af24a09c"
+      ]
+    ]
+  },
+  {
+    "id": "8f02c2b856e83a26",
+    "type": "mysql",
+    "z": "0cbf0487adb00722",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 440,
+    "y": 260,
+    "wires": [
+      [
+        "946b8167ffbc3985"
+      ]
+    ]
+  },
+  {
+    "id": "946b8167ffbc3985",
+    "type": "debug",
+    "z": "0cbf0487adb00722",
+    "name": "debug 89",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 580,
+    "y": 260,
+    "wires": []
+  },
+  {
     "id": "292ce6c66e1593ab",
     "type": "inject",
     "z": "5ba174697c0e9d9b",
@@ -7280,7 +7602,7 @@
     "type": "function",
     "z": "5ba174697c0e9d9b",
     "name": "parseData",
-    "func": "var inputString = msg.payload[0];\nvar parsedValue = parseInt(inputString, 10) / 100;\nvar formattedValue = parsedValue.toFixed(2); // 소수점 둘째 자리까지 포맷팅\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"93\",\n    \"rpm\": formattedValue,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "func": "var inputString = msg.payload[0];\nvar parsedValue = parseInt(inputString, 10) / 100;\nvar formattedValue = parsedValue.toFixed(2); // 소수��� 둘째 자리까지 포맷팅\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"93\",\n    \"rpm\": formattedValue,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -8154,327 +8476,5 @@
         "5a143ce4dc4d095f"
       ]
     ]
-  },
-  {
-    "id": "49ad75513fd213dc",
-    "type": "comment",
-    "z": "0cbf0487adb00722",
-    "name": "저장기간 30일(30일 지난 데이터는 삭제)",
-    "info": "",
-    "x": 180,
-    "y": 40,
-    "wires": []
-  },
-  {
-    "id": "b7d26d69f58b88f9",
-    "type": "inject",
-    "z": "0cbf0487adb00722",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "00 06 * * *",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 110,
-    "y": 80,
-    "wires": [
-      [
-        "b12b3f4dafe2a0e5"
-      ]
-    ]
-  },
-  {
-    "id": "b12b3f4dafe2a0e5",
-    "type": "function",
-    "z": "0cbf0487adb00722",
-    "name": "cold_storage",
-    "func": "msg.topic = \"DELETE FROM fz_shm.cold_storage WHERE wdate <= DATE_SUB(NOW(), INTERVAL 30 DAY);\"\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 270,
-    "y": 80,
-    "wires": [
-      [
-        "59b0cb6c0259b570"
-      ]
-    ]
-  },
-  {
-    "id": "59b0cb6c0259b570",
-    "type": "mysql",
-    "z": "0cbf0487adb00722",
-    "mydb": "ed78c7db4255f1b4",
-    "name": "",
-    "x": 420,
-    "y": 80,
-    "wires": [
-      [
-        "b2221a47cd30bf41"
-      ]
-    ]
-  },
-  {
-    "id": "b2221a47cd30bf41",
-    "type": "debug",
-    "z": "0cbf0487adb00722",
-    "name": "debug 86",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 560,
-    "y": 80,
-    "wires": []
-  },
-  {
-    "id": "918b46f6dc43c49b",
-    "type": "inject",
-    "z": "0cbf0487adb00722",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "00 06 * * *",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 110,
-    "y": 120,
-    "wires": [
-      [
-        "94cd20356055eca6"
-      ]
-    ]
-  },
-  {
-    "id": "94cd20356055eca6",
-    "type": "function",
-    "z": "0cbf0487adb00722",
-    "name": "metal_detector1",
-    "func": "msg.topic = \"DELETE FROM fz_shm.metal_detector1 WHERE wdate <= DATE_SUB(NOW(), INTERVAL 30 DAY);\"\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 280,
-    "y": 120,
-    "wires": [
-      [
-        "361db925894d574e"
-      ]
-    ]
-  },
-  {
-    "id": "361db925894d574e",
-    "type": "mysql",
-    "z": "0cbf0487adb00722",
-    "mydb": "ed78c7db4255f1b4",
-    "name": "",
-    "x": 440,
-    "y": 120,
-    "wires": [
-      [
-        "385003216ccd8520"
-      ]
-    ]
-  },
-  {
-    "id": "385003216ccd8520",
-    "type": "debug",
-    "z": "0cbf0487adb00722",
-    "name": "debug 87",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 580,
-    "y": 120,
-    "wires": []
-  },
-  {
-    "id": "7a6fc4c6efecd77c",
-    "type": "inject",
-    "z": "0cbf0487adb00722",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "00 06 * * *",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 110,
-    "y": 160,
-    "wires": [
-      [
-        "9492c0a6580670ea"
-      ]
-    ]
-  },
-  {
-    "id": "9492c0a6580670ea",
-    "type": "function",
-    "z": "0cbf0487adb00722",
-    "name": "metal_detector2",
-    "func": "msg.topic = \"DELETE FROM fz_shm.metal_detector2 WHERE wdate <= DATE_SUB(NOW(), INTERVAL 30 DAY);\"\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 280,
-    "y": 160,
-    "wires": [
-      [
-        "3da4e632dda327ad"
-      ]
-    ]
-  },
-  {
-    "id": "3da4e632dda327ad",
-    "type": "mysql",
-    "z": "0cbf0487adb00722",
-    "mydb": "ed78c7db4255f1b4",
-    "name": "",
-    "x": 440,
-    "y": 160,
-    "wires": [
-      [
-        "2c79f21b42722bcc"
-      ]
-    ]
-  },
-  {
-    "id": "2c79f21b42722bcc",
-    "type": "debug",
-    "z": "0cbf0487adb00722",
-    "name": "debug 88",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 580,
-    "y": 160,
-    "wires": []
-  },
-  {
-    "id": "35922c38af24a09c",
-    "type": "function",
-    "z": "0cbf0487adb00722",
-    "name": "metal_detector3",
-    "func": "msg.topic = \"DELETE FROM fz_shm.metal_detector3 WHERE wdate <= DATE_SUB(NOW(), INTERVAL 30 DAY);\"\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 280,
-    "y": 200,
-    "wires": [
-      [
-        "8f02c2b856e83a26"
-      ]
-    ]
-  },
-  {
-    "id": "a5984aae7831aeb3",
-    "type": "inject",
-    "z": "0cbf0487adb00722",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "00 06 * * *",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 110,
-    "y": 200,
-    "wires": [
-      [
-        "35922c38af24a09c"
-      ]
-    ]
-  },
-  {
-    "id": "8f02c2b856e83a26",
-    "type": "mysql",
-    "z": "0cbf0487adb00722",
-    "mydb": "ed78c7db4255f1b4",
-    "name": "",
-    "x": 440,
-    "y": 200,
-    "wires": [
-      [
-        "946b8167ffbc3985"
-      ]
-    ]
-  },
-  {
-    "id": "946b8167ffbc3985",
-    "type": "debug",
-    "z": "0cbf0487adb00722",
-    "name": "debug 89",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 580,
-    "y": 200,
-    "wires": []
   }
 ]
