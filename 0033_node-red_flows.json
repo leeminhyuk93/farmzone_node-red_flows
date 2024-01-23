@@ -360,7 +360,7 @@
     "base64": false,
     "tls": "",
     "x": 100,
-    "y": 360,
+    "y": 440,
     "wires": [
       [
         "3d3adda6aeb2d725",
@@ -381,7 +381,7 @@
     "targetType": "msg",
     "statusVal": "",
     "statusType": "auto",
-    "x": 620,
+    "x": 600,
     "y": 200,
     "wires": []
   },
@@ -398,8 +398,8 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "auto",
-    "x": 620,
-    "y": 260,
+    "x": 600,
+    "y": 300,
     "wires": []
   },
   {
@@ -415,8 +415,8 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "auto",
-    "x": 620,
-    "y": 360,
+    "x": 600,
+    "y": 420,
     "wires": []
   },
   {
@@ -426,7 +426,7 @@
     "name": "금속검출기 정보",
     "info": "※금속검출기 정보\n5002 : 팽화미\nscode : 84\n플랫폼 화면 표시명 : 금속검출기3(팽화미)\n\n5003 : 팝핑기\nscode : 83\n플랫폼 화면 표시명 : 금속검출기2(팝핑기)\n\n5004 : 중량기\nscode : 82\n플랫폼 화면 표시명 : 금속검출기1(중량기)",
     "x": 120,
-    "y": 160,
+    "y": 180,
     "wires": []
   },
   {
@@ -2780,7 +2780,7 @@
     "base64": false,
     "tls": "",
     "x": 100,
-    "y": 200,
+    "y": 220,
     "wires": [
       [
         "4f755b7d1800ede3"
@@ -2803,7 +2803,7 @@
     "base64": false,
     "tls": "",
     "x": 100,
-    "y": 260,
+    "y": 320,
     "wires": [
       [
         "8c9e0e7eed1b8953",
@@ -2852,7 +2852,7 @@
     "senderr": false,
     "headers": [],
     "x": 450,
-    "y": 260,
+    "y": 300,
     "wires": [
       [
         "349a541233aaad26"
@@ -2876,7 +2876,7 @@
     "senderr": false,
     "headers": [],
     "x": 450,
-    "y": 360,
+    "y": 420,
     "wires": [
       [
         "19ba87c8caf3f563"
@@ -2888,17 +2888,18 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "parseData",
-    "func": "var ccode = \"0033\";\nvar scode = \"84\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nif (paseData.length == 22 && msg.payload[0] == \"R\") {\n    var detected = true;\n}\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode,\n        \"regdate\": formattedDate\n    };\n\n    return msg;\n}",
+    "func": "var ccode = \"0033\";\nvar scode = \"84\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nif (paseData.length == 22 && msg.payload[0] == \"R\") {\n    var detected = true;\n}\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode,\n        \"regdate\": formattedDate\n    };\n\n    msg.topic = \"INSERT INTO fz_shm.metal_detector3 (scode, detection) VALUES (\" + scode + \", 검출)\";\n\n    return msg;\n}",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
     "x": 270,
-    "y": 200,
+    "y": 220,
     "wires": [
       [
-        "2c9182ab71ad08c9"
+        "2c9182ab71ad08c9",
+        "fbc7ea26b46915a7"
       ]
     ]
   },
@@ -2907,17 +2908,18 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "parseData",
-    "func": "var ccode = \"0033\";\nvar scode = \"83\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nif (paseData.length == 22 && msg.payload[0] == \"R\") {\n    var detected = true;\n}\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode,\n        \"regdate\": formattedDate\n    };\n\n    return msg;\n}",
+    "func": "var ccode = \"0033\";\nvar scode = \"83\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nif (paseData.length == 22 && msg.payload[0] == \"R\") {\n    var detected = true;\n}\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode,\n        \"regdate\": formattedDate\n    };\n\n    msg.topic = \"INSERT INTO fz_shm.metal_detector2 (scode, detection) VALUES (\" + scode + \", 검출)\";\n\n    return msg;\n}",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
     "x": 270,
-    "y": 260,
+    "y": 320,
     "wires": [
       [
-        "2fb7699c9e873150"
+        "2fb7699c9e873150",
+        "c5ea703e13856055"
       ]
     ]
   },
@@ -2926,17 +2928,18 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "parseData",
-    "func": "var ccode = \"0033\";\nvar scode = \"82\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nif (paseData.length == 22 && msg.payload[0] == \"R\") {\n    var detected = true;\n}\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode,\n        \"regdate\": formattedDate\n    };\n\n    return msg;\n}",
+    "func": "var ccode = \"0033\";\nvar scode = \"82\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nif (paseData.length == 22 && msg.payload[0] == \"R\") {\n    var detected = true;\n}\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode,\n        \"regdate\": formattedDate\n    };\n\n    msg.topic = \"INSERT INTO fz_shm.metal_detector1 (scode, detection) VALUES (\" + scode + \", 검출)\";\n\n    return msg;\n}",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
     "x": 270,
-    "y": 360,
+    "y": 440,
     "wires": [
       [
-        "c033ec46bdcd2eb1"
+        "c033ec46bdcd2eb1",
+        "65c952e6d76230bd"
       ]
     ]
   },
@@ -3761,8 +3764,8 @@
     "createDir": true,
     "overwriteFile": "false",
     "encoding": "none",
-    "x": 320,
-    "y": 400,
+    "x": 220,
+    "y": 480,
     "wires": [
       []
     ]
@@ -3778,8 +3781,8 @@
     "createDir": true,
     "overwriteFile": "false",
     "encoding": "none",
-    "x": 320,
-    "y": 300,
+    "x": 220,
+    "y": 360,
     "wires": [
       []
     ]
@@ -4026,15 +4029,109 @@
     "type": "debug",
     "z": "ddca7ba125929727",
     "name": "debug 82",
-    "active": true,
+    "active": false,
     "tosidebar": true,
     "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
     "statusType": "auto",
     "x": 1140,
     "y": 120,
+    "wires": []
+  },
+  {
+    "id": "fbc7ea26b46915a7",
+    "type": "mysql",
+    "z": "ddca7ba125929727",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 440,
+    "y": 240,
+    "wires": [
+      [
+        "3bd9b7f898cf847a"
+      ]
+    ]
+  },
+  {
+    "id": "3bd9b7f898cf847a",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 83",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 580,
+    "y": 240,
+    "wires": []
+  },
+  {
+    "id": "c5ea703e13856055",
+    "type": "mysql",
+    "z": "ddca7ba125929727",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 440,
+    "y": 340,
+    "wires": [
+      [
+        "05cda3b41ee3da32"
+      ]
+    ]
+  },
+  {
+    "id": "05cda3b41ee3da32",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 84",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 580,
+    "y": 340,
+    "wires": []
+  },
+  {
+    "id": "65c952e6d76230bd",
+    "type": "mysql",
+    "z": "ddca7ba125929727",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 440,
+    "y": 460,
+    "wires": [
+      [
+        "4fc77b5281c09dc2"
+      ]
+    ]
+  },
+  {
+    "id": "4fc77b5281c09dc2",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 85",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 580,
+    "y": 460,
     "wires": []
   },
   {
