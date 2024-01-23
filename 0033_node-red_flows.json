@@ -56,6 +56,35 @@
     "showLogs": true
   },
   {
+    "id": "47635b80e08f7627",
+    "type": "modbus-client",
+    "name": "팝핑기10_smg5400",
+    "clienttype": "tcp",
+    "bufferCommands": true,
+    "stateLogEnabled": false,
+    "queueLogEnabled": false,
+    "failureLogEnabled": true,
+    "tcpHost": "192.168.0.220",
+    "tcpPort": "1482",
+    "tcpType": "DEFAULT",
+    "serialPort": "/dev/ttyUSB",
+    "serialType": "RTU-BUFFERD",
+    "serialBaudrate": "9600",
+    "serialDatabits": "8",
+    "serialStopbits": "1",
+    "serialParity": "none",
+    "serialConnectionDelay": "100",
+    "serialAsciiResponseStartDelimiter": "0x3A",
+    "unit_id": "1",
+    "commandDelay": "1",
+    "clientTimeout": "1000",
+    "reconnectOnTimeout": true,
+    "reconnectTimeout": "2000",
+    "parallelUnitIdsAllowed": true,
+    "showWarnings": true,
+    "showLogs": true
+  },
+  {
     "id": "6f6934b2f47f4d33",
     "type": "inject",
     "z": "ddca7ba125929727",
@@ -1492,6 +1521,7 @@
     "id": "12dc3c3f412e7bdc",
     "type": "tcp request",
     "z": "ddca7ba125929727",
+    "d": true,
     "name": "",
     "server": "192.168.0.220",
     "port": "1482",
@@ -3722,8 +3752,8 @@
     "fanOutMultipleResult": false,
     "setTopic": true,
     "outputs": 1,
-    "x": 770,
-    "y": 1740,
+    "x": 790,
+    "y": 1700,
     "wires": [
       []
     ]
@@ -4009,5 +4039,99 @@
         "df7a30679f263554"
       ]
     ]
+  },
+  {
+    "id": "1380f4921a93e612",
+    "type": "inject",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 1720,
+    "wires": [
+      [
+        "3c6124645192ba1d"
+      ]
+    ]
+  },
+  {
+    "id": "3c6124645192ba1d",
+    "type": "modbus-getter",
+    "z": "ddca7ba125929727",
+    "name": "팝핑기10",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "showWarnings": true,
+    "logIOActivities": false,
+    "unitid": "1",
+    "dataType": "HoldingRegister",
+    "adr": "0",
+    "quantity": "10",
+    "server": "47635b80e08f7627",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "delayOnStart": false,
+    "startDelayTime": "",
+    "x": 260,
+    "y": 1720,
+    "wires": [
+      [
+        "3668ca0c5ca534b9"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "3668ca0c5ca534b9",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "function 1",
+    "func": "\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 420,
+    "y": 1720,
+    "wires": [
+      [
+        "25365a9bb35daa0b"
+      ]
+    ]
+  },
+  {
+    "id": "25365a9bb35daa0b",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 49",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 560,
+    "y": 1720,
+    "wires": []
   }
 ]
