@@ -151,6 +151,16 @@
     "showLogs": true
   },
   {
+    "id": "ed78c7db4255f1b4",
+    "type": "MySQLdatabase",
+    "name": "fz_shm",
+    "host": "127.0.0.1",
+    "port": "3306",
+    "db": "fz_shm",
+    "tz": "",
+    "charset": "UTF8"
+  },
+  {
     "id": "6f6934b2f47f4d33",
     "type": "inject",
     "z": "ddca7ba125929727",
@@ -225,7 +235,7 @@
     "targetType": "msg",
     "statusVal": "",
     "statusType": "auto",
-    "x": 1180,
+    "x": 1160,
     "y": 80,
     "wires": []
   },
@@ -285,7 +295,7 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "parseData",
-    "func": "var temperature = parseFloat(Buffer.from(msg.payload[1], \"hex\").readInt16BE(0)) / 10;\nvar adr = parseInt(msg.payload[0]);\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"kind\": \"4\",\n    \"ccode\": \"0033\",\n    \"deviceId\": adr,\n    \"temper\": temperature,\n    \"regdate\": formattedDate,\n    \"ip\": \"118.43.186.23\"\n};\n\nreturn msg;",
+    "func": "var temperature = parseFloat(Buffer.from(msg.payload[1], \"hex\").readInt16BE(0)) / 10;\nvar adr = parseInt(msg.payload[0]);\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"kind\": \"4\",\n    \"ccode\": \"0033\",\n    \"deviceId\": adr,\n    \"temper\": temperature,\n    \"regdate\": formattedDate,\n    \"ip\": \"118.43.186.23\"\n};\n\nmsg.topic = \"INSERT INTO fz_shm.cold_storage (temperature) VALUES (\" + temperature + \")\";\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -295,7 +305,8 @@
     "y": 80,
     "wires": [
       [
-        "e34ba4a99dd09af4"
+        "e34ba4a99dd09af4",
+        "26a19be881b34d8a"
       ]
     ]
   },
@@ -658,7 +669,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 880,
+    "y": 860,
     "wires": [
       [
         "1e562e2f9019845b",
@@ -3380,8 +3391,8 @@
     "drop": false,
     "allowrate": false,
     "outputs": 1,
-    "x": 150,
-    "y": 940,
+    "x": 130,
+    "y": 900,
     "wires": [
       [
         "b57cd9b1fa1a5980"
@@ -3995,6 +4006,36 @@
         "715d0b3e3a011140"
       ]
     ]
+  },
+  {
+    "id": "26a19be881b34d8a",
+    "type": "mysql",
+    "z": "ddca7ba125929727",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "fz_shm",
+    "x": 1000,
+    "y": 120,
+    "wires": [
+      [
+        "5708aea4fb1833a9"
+      ]
+    ]
+  },
+  {
+    "id": "5708aea4fb1833a9",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 82",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1140,
+    "y": 120,
+    "wires": []
   },
   {
     "id": "292ce6c66e1593ab",
