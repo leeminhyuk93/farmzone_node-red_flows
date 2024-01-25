@@ -4210,7 +4210,7 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "insert DB",
-    "func": "let value = msg.payload;\nlet temperature = msg.payload[0].temp;\nlet rpm = msg.payload[1].rpm;\n\nlet check = Object.keys(value).includes('temp');\n\nif (check == true) {\n    msg.payload = \"temp값을 받았습니다.\";\n} else if (check = false) {\n    msg.payload = \"temp값을 받지 못했습니다.\";\n}\n\nreturn msg;",
+    "func": "let value = msg.payload;\nlet temperature = msg.payload[0].temp;\nlet rpm = msg.payload[1].rpm;\n\nlet check = Object.keys(value).includes('temp');\n\nif (check == true) {\n    msg.payload = \"temp값을 받았습니다.\";\n} else if (check == false) {\n    msg.payload = \"temp값을 받지 못했습니다.\";\n}\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
