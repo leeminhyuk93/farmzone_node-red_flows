@@ -4210,7 +4210,7 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "insert DB",
-    "func": "let value = msg.payload[0];\n// let temperature = value[0].temp;\n// let rpm = value[1].rpm;\n\n// let check = Object.keys(value[0]).includes('temp');\n\n// if (check == true) {\n//     msg.payload = check;\n// } else {\n//     msg.payload = check;\n// }\n\nmsg.payload = value;\n\nreturn msg;",
+    "func": "let value = msg.payload;\nlet temperature = value[0].temp;\nlet rpm = value[1].rpm;\n\nlet checkArr = msg.payload[0];\nlet check = Object.keys(checkArr).includes('temp');\n\nif (check == true) {\n    msg.payload = check;\n} else {\n    msg.payload = check;\n}\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
