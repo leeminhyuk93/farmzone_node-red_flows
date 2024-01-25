@@ -3295,7 +3295,7 @@
     "z": "ddca7ba125929727",
     "name": "",
     "pauseType": "delay",
-    "timeout": "0.5",
+    "timeout": "1",
     "timeoutUnits": "seconds",
     "rate": "1",
     "nbRateUnits": "1",
@@ -3306,7 +3306,7 @@
     "drop": false,
     "allowrate": false,
     "outputs": 1,
-    "x": 130,
+    "x": 120,
     "y": 1440,
     "wires": [
       [
