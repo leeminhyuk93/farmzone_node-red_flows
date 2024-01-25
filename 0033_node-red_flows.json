@@ -4180,26 +4180,9 @@
     "y": 1380,
     "wires": [
       [
-        "588272b8d338cbad",
         "ccdac1e258122bb3"
       ]
     ]
-  },
-  {
-    "id": "588272b8d338cbad",
-    "type": "debug",
-    "z": "ddca7ba125929727",
-    "name": "debug 95",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 1280,
-    "y": 1340,
-    "wires": []
   },
   {
     "id": "2737b586a18eb403",
@@ -4293,7 +4276,7 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "insert DB",
-    "func": "let value = msg.payload;\nlet temperature = value[0].temp;\nlet rpm1 = value[1].rpm;  // 온도, rpm 데이터 정상 수집될 경우 사용\nlet rpm2 = value[0].rpm;  // 온도 데이터 정상 수집이 안될 경우 사용\n\n\n// 온도 데이터 유무르 판단하여 데이터 처리\nlet checkArr = msg.payload[0];  //받아온 배열 중 첫번째 객체를 저장\nlet check = Object.keys(checkArr).includes('temp');  //객체에 'temp' 키 유무 판단(있으면 true, 없으면 false)\n\nif (check == true) {   //temp가 있다면 정상적으로 온도데이터 받아와서 처리\n    msg.payload = check;\n    msg.topic = \"INSERT INTO fz_shm.popping7 (temperature, rpm) VALUES (\" + temperature + \", \" + rpm1 + \")\";\n\n} else {               //temp가 없다면 온도값을 공백으로 처리, rpm만 정상값 처리\n    msg.payload = check;\n    msg.topic = \"INSERT INTO fz_shm.popping7 (temperature, rpm) VALUES ('\" + '' + \"', '\" + rpm2 + \"')\";\n}\n\n\nreturn msg;",
+    "func": "let value = msg.payload;\nlet temperature = value[0].temp;\nlet rpm1 = value[1].rpm;  // 온도, rpm 데이터 정상 수집될 경우 사용\nlet rpm2 = value[0].rpm;  // 온도 데이터 정상 수집이 안될 경우 사용\n\n\n// 온도 데이터 유무르 판단하여 데이터 처리\nlet checkArr = msg.payload[0];  //받아온 배열 중 첫번째 객체를 저장\nlet check = Object.keys(checkArr).includes('temp');  //객체에 'temp' 키 유무 판단(있으면 true, 없으면 false)\n\n// if (check == true) {   //temp가 있다면 정상적으로 온도데이터 받아와서 처리\n//     msg.payload = check;\n//     msg.topic = \"INSERT INTO fz_shm.popping7 (temperature, rpm) VALUES (\" + temperature + \", \" + rpm1 + \")\";\n\n// } else {               //temp가 없다면 온도값을 공백으로 처리, rpm만 정상값 처리\n//     msg.payload = check;\n//     msg.topic = \"INSERT INTO fz_shm.popping7 (temperature, rpm) VALUES ('\" + '' + \"', '\" + rpm2 + \"')\";\n// }\n\nmsg.payload = checkArr;\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -4303,7 +4286,8 @@
     "y": 1780,
     "wires": [
       [
-        "6bf976fc267cf6ee"
+        "6bf976fc267cf6ee",
+        "588272b8d338cbad"
       ]
     ]
   },
@@ -4352,7 +4336,7 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "insert DB",
-    "func": "let value = msg.payload;\nlet temperature = value[0].temp;\nlet rpm1 = value[1].rpm;  // 온도, rpm 데이터 정상 수집될 경우 사용\nlet rpm2 = value[0].rpm;  // 온도 데이터 정상 수집이 안될 경우 사용\n\n\n// 온도 데이터 유무르 판단하여 데이터 처리\nlet checkArr = msg.payload[0];  //받아온 배열 중 첫번째 객체를 저장\nlet check = Object.keys(checkArr).includes('temp');  //객체에 'temp' 키 유무 판단(있으면 true, 없으면 false)\n\nif (check == true) {   //temp가 있다면 정상적으로 온도데이터 받아와서 처리\n    msg.payload = check;\n    msg.topic = \"INSERT INTO fz_shm.popping8 (temperature, rpm) VALUES (\" + temperature + \", \" + rpm1 + \")\";\n\n} else {               //temp가 없��면 온도값을 공백으로 처리, rpm만 정상값 처리\n    msg.payload = check;\n    msg.topic = \"INSERT INTO fz_shm.popping8 (temperature, rpm) VALUES ('\" + '' + \"', '\" + rpm2 + \"')\";\n}\n\n\nreturn msg;",
+    "func": "let value = msg.payload;\nlet temperature = value[0].temp;\nlet rpm1 = value[1].rpm;  // 온도, rpm 데이터 정상 수집될 경우 사용\nlet rpm2 = value[0].rpm;  // 온도 데이터 정상 수집이 안될 경우 사용\n\n\n// 온도 데이터 유무르 판단하여 데이터 처리\nlet checkArr = msg.payload[0];  //받아온 배열 중 첫번째 객체를 저장\nlet check = Object.keys(checkArr).includes('temp');  //객체에 'temp' 키 유무 판단(있으면 true, 없으면 false)\n\nif (check == true) {   //temp가 있다면 정상적으로 온도데이터 받아와서 처리\n    msg.payload = check;\n    msg.topic = \"INSERT INTO fz_shm.popping8 (temperature, rpm) VALUES (\" + temperature + \", \" + rpm1 + \")\";\n\n} else {               //temp가 없다면 온도값을 공백으로 처리, rpm만 정상값 처리\n    msg.payload = check;\n    msg.topic = \"INSERT INTO fz_shm.popping8 (temperature, rpm) VALUES ('\" + '' + \"', '\" + rpm2 + \"')\";\n}\n\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -4436,6 +4420,22 @@
     "wires": [
       []
     ]
+  },
+  {
+    "id": "588272b8d338cbad",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 95",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1300,
+    "y": 1740,
+    "wires": []
   },
   {
     "id": "49ad75513fd213dc",
@@ -7777,7 +7777,7 @@
     "type": "function",
     "z": "5ba174697c0e9d9b",
     "name": "parseData",
-    "func": "var inputString = msg.payload[0];\nvar parsedValue = parseInt(inputString, 10) / 100;\nvar formattedValue = parsedValue.toFixed(2); // 소수점 둘째 자리까지 포맷팅\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"90\",\n    \"rpm\": formattedValue,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "func": "var inputString = msg.payload[0];\nvar parsedValue = parseInt(inputString, 10) / 100;\nvar formattedValue = parsedValue.toFixed(2); // 소��점 둘째 자리까지 포맷팅\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"90\",\n    \"rpm\": formattedValue,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
