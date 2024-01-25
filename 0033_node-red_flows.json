@@ -93,8 +93,8 @@
     "serialAsciiResponseStartDelimiter": "0x3A",
     "unit_id": "7",
     "commandDelay": "1",
-    "clientTimeout": "1000",
-    "reconnectOnTimeout": true,
+    "clientTimeout": "500",
+    "reconnectOnTimeout": false,
     "reconnectTimeout": "2000",
     "parallelUnitIdsAllowed": true,
     "showWarnings": true,
@@ -188,11 +188,11 @@
     "serialParity": "none",
     "serialConnectionDelay": "100",
     "serialAsciiResponseStartDelimiter": "0x3A",
-    "unit_id": 1,
-    "commandDelay": 1,
-    "clientTimeout": 500,
+    "unit_id": "1",
+    "commandDelay": "1",
+    "clientTimeout": "500",
     "reconnectOnTimeout": false,
-    "reconnectTimeout": 2000,
+    "reconnectTimeout": "2000",
     "parallelUnitIdsAllowed": true,
     "showWarnings": true,
     "showLogs": true
@@ -217,11 +217,11 @@
     "serialParity": "none",
     "serialConnectionDelay": "100",
     "serialAsciiResponseStartDelimiter": "0x3A",
-    "unit_id": 1,
-    "commandDelay": 1,
-    "clientTimeout": 1000,
-    "reconnectOnTimeout": true,
-    "reconnectTimeout": 2000,
+    "unit_id": "1",
+    "commandDelay": "1",
+    "clientTimeout": "500",
+    "reconnectOnTimeout": false,
+    "reconnectTimeout": "2000",
     "parallelUnitIdsAllowed": true,
     "showWarnings": true,
     "showLogs": true
@@ -248,8 +248,8 @@
     "serialAsciiResponseStartDelimiter": "0x3A",
     "unit_id": "1",
     "commandDelay": "1",
-    "clientTimeout": "1000",
-    "reconnectOnTimeout": true,
+    "clientTimeout": "500",
+    "reconnectOnTimeout": false,
     "reconnectTimeout": "2000",
     "parallelUnitIdsAllowed": true,
     "showWarnings": true,
@@ -277,8 +277,8 @@
     "serialAsciiResponseStartDelimiter": "0x3A",
     "unit_id": "1",
     "commandDelay": "1",
-    "clientTimeout": "1000",
-    "reconnectOnTimeout": true,
+    "clientTimeout": "500",
+    "reconnectOnTimeout": false,
     "reconnectTimeout": "2000",
     "parallelUnitIdsAllowed": true,
     "showWarnings": true,
@@ -1335,7 +1335,8 @@
     "y": 1840,
     "wires": [
       [
-        "7aa9c8b02d130818"
+        "7aa9c8b02d130818",
+        "d61cb1b5e180ee4b"
       ]
     ]
   },
@@ -2926,7 +2927,8 @@
     "y": 1640,
     "wires": [
       [
-        "9cb53701c275a0da"
+        "9cb53701c275a0da",
+        "2737b586a18eb403"
       ]
     ]
   },
@@ -3044,7 +3046,8 @@
     "y": 2040,
     "wires": [
       [
-        "fa9b47292353dedf"
+        "fa9b47292353dedf",
+        "9a9ae67aeb0da68a"
       ]
     ]
   },
@@ -3103,7 +3106,8 @@
     "y": 2240,
     "wires": [
       [
-        "d1c5016f48c64edc"
+        "d1c5016f48c64edc",
+        "ff724c2b1e0c61ee"
       ]
     ]
   },
@@ -3607,7 +3611,7 @@
     "useIOFile": false,
     "ioFile": "",
     "useIOForPayload": false,
-    "emptyMsgOnFail": false,
+    "emptyMsgOnFail": true,
     "keepMsgProperties": false,
     "delayOnStart": false,
     "startDelayTime": "",
@@ -3636,7 +3640,8 @@
     "wires": [
       [
         "715d0b3e3a011140",
-        "3b7581b82314c2f3"
+        "3b7581b82314c2f3",
+        "ff724c2b1e0c61ee"
       ]
     ]
   },
@@ -3832,7 +3837,7 @@
     "useIOFile": false,
     "ioFile": "",
     "useIOForPayload": false,
-    "emptyMsgOnFail": false,
+    "emptyMsgOnFail": true,
     "keepMsgProperties": false,
     "delayOnStart": false,
     "startDelayTime": "",
@@ -3861,7 +3866,8 @@
     "wires": [
       [
         "2d6ccb01576958d6",
-        "6a007d27c4c6761c"
+        "6a007d27c4c6761c",
+        "2737b586a18eb403"
       ]
     ]
   },
@@ -3882,7 +3888,7 @@
     "useIOFile": false,
     "ioFile": "",
     "useIOForPayload": false,
-    "emptyMsgOnFail": false,
+    "emptyMsgOnFail": true,
     "keepMsgProperties": false,
     "delayOnStart": false,
     "startDelayTime": "",
@@ -3911,7 +3917,8 @@
     "wires": [
       [
         "d35d651141ff8a16",
-        "44362b2814763abc"
+        "44362b2814763abc",
+        "d61cb1b5e180ee4b"
       ]
     ]
   },
@@ -3932,7 +3939,7 @@
     "useIOFile": false,
     "ioFile": "",
     "useIOForPayload": false,
-    "emptyMsgOnFail": false,
+    "emptyMsgOnFail": true,
     "keepMsgProperties": false,
     "delayOnStart": false,
     "startDelayTime": "",
@@ -3961,7 +3968,8 @@
     "wires": [
       [
         "b48a9eab048540f8",
-        "78758c868fb35eb4"
+        "78758c868fb35eb4",
+        "9a9ae67aeb0da68a"
       ]
     ]
   },
@@ -4130,54 +4138,6 @@
     ]
   },
   {
-    "id": "48ab5caa15b47079",
-    "type": "mysql",
-    "z": "ddca7ba125929727",
-    "mydb": "ed78c7db4255f1b4",
-    "name": "",
-    "x": 760,
-    "y": 1580,
-    "wires": [
-      []
-    ]
-  },
-  {
-    "id": "f25dc48670086a4e",
-    "type": "mysql",
-    "z": "ddca7ba125929727",
-    "mydb": "ed78c7db4255f1b4",
-    "name": "",
-    "x": 760,
-    "y": 1780,
-    "wires": [
-      []
-    ]
-  },
-  {
-    "id": "d3b524d9fd8b8168",
-    "type": "mysql",
-    "z": "ddca7ba125929727",
-    "mydb": "ed78c7db4255f1b4",
-    "name": "",
-    "x": 760,
-    "y": 1980,
-    "wires": [
-      []
-    ]
-  },
-  {
-    "id": "4359c579243b2a33",
-    "type": "mysql",
-    "z": "ddca7ba125929727",
-    "mydb": "ed78c7db4255f1b4",
-    "name": "",
-    "x": 760,
-    "y": 2180,
-    "wires": [
-      []
-    ]
-  },
-  {
     "id": "3d3234c1b95e7654",
     "type": "join",
     "z": "ddca7ba125929727",
@@ -4210,7 +4170,7 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "insert DB",
-    "func": "let value = msg.payload;\nlet temperature = value[0].temp;\nlet rpm1 = value[1].rpm;  // 온도, rpm 데이터 정상 수집될 경우 사용\nlet rpm2 = value[0].rpm;  // 온도 데이터 정상 수집이 안될 경우 사용\n\n\n// 온도 데이터 유무르 판단하여 데이터 처리\nlet checkArr = msg.payload[0];  //받아온 배열 중 첫번째 객체를 저장\nlet check = Object.keys(checkArr).includes('temp');  //객체에 'temp' 키 유무 판단(있으면 true, 없으면 false)\n\nif (check == true) {   //temp가 있다면 정상적으로 온도데이터 받아와서 처리\n    msg.payload = check;\n\n    msg.topic = \"INSERT INTO fz_shm.popping11 (temperature, rpm) VALUES (\" + temperature + \", \" + rpm1 + \")\";\n} else {               //temp가 없다면 온도값을 공백으로 처리, rpm만 정상값 처리\n    msg.payload = check;\n\n    msg.topic = \"INSERT INTO fz_shm.popping11 (temperature, rpm) VALUES ('\" + '' + \"', '\" + rpm2 + \"')\";\n}\n\n\nreturn msg;",
+    "func": "let value = msg.payload;\nlet temperature = value[0].temp;\nlet rpm1 = value[1].rpm;  // 온도, rpm 데이터 정상 수집될 경우 사용\nlet rpm2 = value[0].rpm;  // 온도 데이터 정상 ��집이 안될 경우 사용\n\n\n// 온도 데이터 유무르 판단하여 데이터 처리\nlet checkArr = msg.payload[0];  //받아온 배열 중 첫번째 객체를 저장\nlet check = Object.keys(checkArr).includes('temp');  //객체에 'temp' 키 유무 판단(있으면 true, 없으면 false)\n\nif (check == true) {   //temp가 있다면 정상적으로 온도데이터 받아와서 처리\n    msg.payload = check;\n    msg.topic = \"INSERT INTO fz_shm.popping11 (temperature, rpm) VALUES (\" + temperature + \", \" + rpm1 + \")\";\n\n} else {               //temp가 없다면 온도값을 공백으로 처리, rpm만 정상값 처리\n    msg.payload = check;\n    msg.topic = \"INSERT INTO fz_shm.popping11 (temperature, rpm) VALUES ('\" + '' + \"', '\" + rpm2 + \"')\";\n}\n\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -4240,6 +4200,242 @@
     "x": 1280,
     "y": 1340,
     "wires": []
+  },
+  {
+    "id": "2737b586a18eb403",
+    "type": "join",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "mode": "custom",
+    "build": "array",
+    "property": "payload",
+    "propertyType": "msg",
+    "key": "topic",
+    "joiner": "\\n",
+    "joinerType": "str",
+    "accumulate": false,
+    "timeout": "",
+    "count": "2",
+    "reduceRight": false,
+    "reduceExp": "",
+    "reduceInit": "",
+    "reduceInitType": "",
+    "reduceFixup": "",
+    "x": 1010,
+    "y": 1580,
+    "wires": [
+      [
+        "c2b719555bbb4688"
+      ]
+    ]
+  },
+  {
+    "id": "c2b719555bbb4688",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "insert DB",
+    "func": "let value = msg.payload;\nlet temperature = value[0].temp;\nlet rpm1 = value[1].rpm;  // 온도, rpm 데이터 정상 수집될 경우 사용\nlet rpm2 = value[0].rpm;  // 온도 데이터 정상 수집이 안될 경우 사용\n\n\n// 온도 데이터 유무르 판단하여 데이터 처리\nlet checkArr = msg.payload[0];  //받아온 배열 중 첫번째 객체를 저장\nlet check = Object.keys(checkArr).includes('temp');  //객체에 'temp' 키 유무 판단(있으면 true, 없으면 false)\n\nif (check == true) {   //temp가 있다면 정상적으로 온도데이터 받아와서 처리\n    msg.payload = check;\n    msg.topic = \"INSERT INTO fz_shm.popping5 (temperature, rpm) VALUES (\" + temperature + \", \" + rpm1 + \")\";\n\n} else {               //temp가 없다면 온도값을 공백으로 처리, rpm만 정상값 처리\n    msg.payload = check;\n    msg.topic = \"INSERT INTO fz_shm.popping5 (temperature, rpm) VALUES ('\" + '' + \"', '\" + rpm2 + \"')\";\n}\n\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1140,
+    "y": 1580,
+    "wires": [
+      [
+        "8b1a09a08a07d4d5"
+      ]
+    ]
+  },
+  {
+    "id": "8b1a09a08a07d4d5",
+    "type": "mysql",
+    "z": "ddca7ba125929727",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 1300,
+    "y": 1580,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "d61cb1b5e180ee4b",
+    "type": "join",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "mode": "custom",
+    "build": "array",
+    "property": "payload",
+    "propertyType": "msg",
+    "key": "topic",
+    "joiner": "\\n",
+    "joinerType": "str",
+    "accumulate": false,
+    "timeout": "",
+    "count": "2",
+    "reduceRight": false,
+    "reduceExp": "",
+    "reduceInit": "",
+    "reduceInitType": "",
+    "reduceFixup": "",
+    "x": 1010,
+    "y": 1780,
+    "wires": [
+      [
+        "cd58b11175fe3b84"
+      ]
+    ]
+  },
+  {
+    "id": "cd58b11175fe3b84",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "insert DB",
+    "func": "let value = msg.payload;\nlet temperature = value[0].temp;\nlet rpm1 = value[1].rpm;  // 온도, rpm 데이터 정상 수집될 경우 사용\nlet rpm2 = value[0].rpm;  // 온도 데이터 정상 수집이 안될 경우 사용\n\n\n// 온도 데이터 유무르 판단하여 데이터 처리\nlet checkArr = msg.payload[0];  //받아온 배열 중 첫번째 객체를 저장\nlet check = Object.keys(checkArr).includes('temp');  //객체에 'temp' 키 유무 판단(있으면 true, 없으면 false)\n\nif (check == true) {   //temp가 있다면 정상적으로 온도데이터 받아와서 처리\n    msg.payload = check;\n    msg.topic = \"INSERT INTO fz_shm.popping7 (temperature, rpm) VALUES (\" + temperature + \", \" + rpm1 + \")\";\n\n} else {               //temp가 없다면 온도값을 공백으로 처리, rpm만 정상값 처리\n    msg.payload = check;\n    msg.topic = \"INSERT INTO fz_shm.popping7 (temperature, rpm) VALUES ('\" + '' + \"', '\" + rpm2 + \"')\";\n}\n\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1140,
+    "y": 1780,
+    "wires": [
+      [
+        "6bf976fc267cf6ee"
+      ]
+    ]
+  },
+  {
+    "id": "6bf976fc267cf6ee",
+    "type": "mysql",
+    "z": "ddca7ba125929727",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 1300,
+    "y": 1780,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "9a9ae67aeb0da68a",
+    "type": "join",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "mode": "custom",
+    "build": "array",
+    "property": "payload",
+    "propertyType": "msg",
+    "key": "topic",
+    "joiner": "\\n",
+    "joinerType": "str",
+    "accumulate": false,
+    "timeout": "",
+    "count": "2",
+    "reduceRight": false,
+    "reduceExp": "",
+    "reduceInit": "",
+    "reduceInitType": "",
+    "reduceFixup": "",
+    "x": 1010,
+    "y": 1980,
+    "wires": [
+      [
+        "0bece106cd19e962"
+      ]
+    ]
+  },
+  {
+    "id": "0bece106cd19e962",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "insert DB",
+    "func": "let value = msg.payload;\nlet temperature = value[0].temp;\nlet rpm1 = value[1].rpm;  // 온도, rpm 데이터 정상 수집될 경우 사용\nlet rpm2 = value[0].rpm;  // 온도 데이터 정상 수집이 안될 경우 사용\n\n\n// 온도 데이터 유무르 판단하여 데이터 처리\nlet checkArr = msg.payload[0];  //받아온 배열 중 첫번째 객체를 저장\nlet check = Object.keys(checkArr).includes('temp');  //객체에 'temp' 키 유무 판단(있으면 true, 없으면 false)\n\nif (check == true) {   //temp가 있다면 정상적으로 온도데이터 받아와서 처리\n    msg.payload = check;\n    msg.topic = \"INSERT INTO fz_shm.popping8 (temperature, rpm) VALUES (\" + temperature + \", \" + rpm1 + \")\";\n\n} else {               //temp가 없��면 온도값을 공백으로 처리, rpm만 정상값 처리\n    msg.payload = check;\n    msg.topic = \"INSERT INTO fz_shm.popping8 (temperature, rpm) VALUES ('\" + '' + \"', '\" + rpm2 + \"')\";\n}\n\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1140,
+    "y": 1980,
+    "wires": [
+      [
+        "f4ad1c0fb2100bb8"
+      ]
+    ]
+  },
+  {
+    "id": "f4ad1c0fb2100bb8",
+    "type": "mysql",
+    "z": "ddca7ba125929727",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 1300,
+    "y": 1980,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "ff724c2b1e0c61ee",
+    "type": "join",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "mode": "custom",
+    "build": "array",
+    "property": "payload",
+    "propertyType": "msg",
+    "key": "topic",
+    "joiner": "\\n",
+    "joinerType": "str",
+    "accumulate": false,
+    "timeout": "",
+    "count": "2",
+    "reduceRight": false,
+    "reduceExp": "",
+    "reduceInit": "",
+    "reduceInitType": "",
+    "reduceFixup": "",
+    "x": 1010,
+    "y": 2180,
+    "wires": [
+      [
+        "30108bd3e8618b21"
+      ]
+    ]
+  },
+  {
+    "id": "30108bd3e8618b21",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "insert DB",
+    "func": "let value = msg.payload;\nlet temperature = value[0].temp;\nlet rpm1 = value[1].rpm;  // 온도, rpm 데이터 정상 수집될 경우 사용\nlet rpm2 = value[0].rpm;  // 온도 데이터 정상 수집이 안될 경우 사용\n\n\n// 온도 데이터 유무르 판단하여 데이터 처리\nlet checkArr = msg.payload[0];  //받아온 배열 중 첫번째 객체를 저장\nlet check = Object.keys(checkArr).includes('temp');  //객체에 'temp' 키 유무 판단(있으면 true, 없으면 false)\n\nif (check == true) {   //temp가 있다면 정상적으로 온도데이터 받아와서 처리\n    msg.payload = check;\n    msg.topic = \"INSERT INTO fz_shm.popping10 (temperature, rpm) VALUES (\" + temperature + \", \" + rpm1 + \")\";\n\n} else {               //temp가 없다면 온도값을 공백으로 처리, rpm만 정상값 처리\n    msg.payload = check;\n    msg.topic = \"INSERT INTO fz_shm.popping10 (temperature, rpm) VALUES ('\" + '' + \"', '\" + rpm2 + \"')\";\n}\n\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1140,
+    "y": 2180,
+    "wires": [
+      [
+        "3375ad00df1c5b0f"
+      ]
+    ]
+  },
+  {
+    "id": "3375ad00df1c5b0f",
+    "type": "mysql",
+    "z": "ddca7ba125929727",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 1300,
+    "y": 2180,
+    "wires": [
+      []
+    ]
   },
   {
     "id": "49ad75513fd213dc",
@@ -5644,7 +5840,7 @@
     "type": "function",
     "z": "5ba174697c0e9d9b",
     "name": "sendBuffer",
-    "func": "// 데이터 조립\nconst eduBuffer = Buffer.alloc(12); // 12바이트의 버퍼 생성\n\neduBuffer.writeUInt16BE(1, 0);   // TID\neduBuffer.writeUInt16BE(0, 2);   // PID\neduBuffer.writeUInt16BE(6, 4);   // Length\neduBuffer.writeUInt8(7, 6);      // Unit ID (국번)\neduBuffer.writeUInt8(3, 7);      // Function code\neduBuffer.writeUInt16BE(1, 8);   // Data (register address)\neduBuffer.writeUInt16BE(18, 10); // Data (count)\n\n// msg 객체의 payload에 ��이터를 할당합니다.\nmsg.payload = eduBuffer;\n\nreturn msg;",
+    "func": "// 데이터 조립\nconst eduBuffer = Buffer.alloc(12); // 12바이트의 버퍼 생성\n\neduBuffer.writeUInt16BE(1, 0);   // TID\neduBuffer.writeUInt16BE(0, 2);   // PID\neduBuffer.writeUInt16BE(6, 4);   // Length\neduBuffer.writeUInt8(7, 6);      // Unit ID (국번)\neduBuffer.writeUInt8(3, 7);      // Function code\neduBuffer.writeUInt16BE(1, 8);   // Data (register address)\neduBuffer.writeUInt16BE(18, 10); // Data (count)\n\n// msg 객체의 payload에 데이터를 할당합니다.\nmsg.payload = eduBuffer;\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
