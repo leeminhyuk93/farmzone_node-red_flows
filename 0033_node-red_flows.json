@@ -668,7 +668,7 @@
     "statusVal": "payload",
     "statusType": "auto",
     "x": 1280,
-    "y": 700,
+    "y": 720,
     "wires": []
   },
   {
@@ -885,7 +885,7 @@
     "statusVal": "payload",
     "statusType": "auto",
     "x": 1280,
-    "y": 880,
+    "y": 900,
     "wires": []
   },
   {
@@ -1636,7 +1636,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 2460,
+    "y": 2420,
     "wires": [
       [
         "fca0d6d5e753e3c8"
@@ -1655,7 +1655,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 2460,
+    "y": 2420,
     "wires": [
       [
         "aa241c009c2cb327"
@@ -1697,7 +1697,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 2460,
+    "y": 2420,
     "wires": [
       [
         "faa05c47c3237303"
@@ -1716,8 +1716,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 1320,
-    "y": 2460,
+    "x": 1280,
+    "y": 2400,
     "wires": []
   },
   {
@@ -1734,7 +1734,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 2460,
+    "y": 2420,
     "wires": [
       [
         "2a880749af81c958"
@@ -1745,10 +1745,10 @@
     "id": "d2d54f3f04fd2101",
     "type": "comment",
     "z": "ddca7ba125929727",
-    "name": "포장기 207, 208",
+    "name": "포장기 1호기_207",
     "info": "",
-    "x": 120,
-    "y": 2420,
+    "x": 130,
+    "y": 2380,
     "wires": []
   },
   {
@@ -1763,7 +1763,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 2500,
+    "y": 2540,
     "wires": [
       [
         "e1010fd72c88390f"
@@ -1805,7 +1805,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 2500,
+    "y": 2540,
     "wires": [
       [
         "c840d8e7c0362a04"
@@ -1824,8 +1824,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 1320,
-    "y": 2500,
+    "x": 1280,
+    "y": 2520,
     "wires": []
   },
   {
@@ -1842,7 +1842,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 2500,
+    "y": 2540,
     "wires": [
       [
         "4a2add2fa3ab086c"
@@ -1871,7 +1871,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 2620,
+    "y": 2660,
     "wires": [
       [
         "cd0ed30b016547ec"
@@ -1890,7 +1890,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 2620,
+    "y": 2660,
     "wires": [
       [
         "0254f79c23a99816"
@@ -1932,7 +1932,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 2620,
+    "y": 2660,
     "wires": [
       [
         "b681c5ee5072b915"
@@ -1951,8 +1951,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 1300,
-    "y": 2620,
+    "x": 1280,
+    "y": 2640,
     "wires": []
   },
   {
@@ -1969,7 +1969,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 2620,
+    "y": 2660,
     "wires": [
       [
         "da44a8e8b15e6831"
@@ -1983,7 +1983,7 @@
     "name": "캡핑기",
     "info": "",
     "x": 90,
-    "y": 2580,
+    "y": 2620,
     "wires": []
   },
   {
@@ -2091,7 +2091,7 @@
     "statusVal": "payload",
     "statusType": "auto",
     "x": 1280,
-    "y": 1100,
+    "y": 1120,
     "wires": []
   },
   {
@@ -2229,18 +2229,18 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "parseData",
-    "func": "var count = parseInt(msg.payload[0]);\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"count\": count,\n    \"ccode\": \"0033\",\n    \"scode\": \"99\",\n    \"m_gubun\": \"5\",\n    \"m_adr\": \"1\",\n    \"regdate\": formattedDate, \n    \"ip\": \"118.43.186.23\"\n};\n\nreturn msg;",
+    "func": "var count = parseInt(msg.payload[0]);\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"count\": count,\n    \"ccode\": \"0033\",\n    \"scode\": \"99\",\n    \"m_gubun\": \"5\",\n    \"m_adr\": \"1\",\n    \"regdate\": formattedDate, \n    \"ip\": \"118.43.186.23\"\n};\n\nmsg.topic = \"INSERT INTO fz_shm.capping (count) VALUES (\" + count + \")\";\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 2620,
+    "y": 2660,
     "wires": [
       [
         "8ea3c96af8a948e3",
-        "4e2d70754d51176e"
+        "53ae1e84c8aff1cc"
       ]
     ]
   },
@@ -2261,7 +2261,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 2620,
+    "y": 2640,
     "wires": [
       [
         "87fe51534f4ad35e"
@@ -2305,7 +2305,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 700,
+    "y": 720,
     "wires": [
       [
         "d0bcc37c7ebfc7a8"
@@ -2327,7 +2327,8 @@
     "y": 900,
     "wires": [
       [
-        "9ac5d73ff844fde3"
+        "9ac5d73ff844fde3",
+        "1159cc1f929749a9"
       ]
     ]
   },
@@ -2348,7 +2349,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 880,
+    "y": 900,
     "wires": [
       [
         "6d3cec8ee074d83f"
@@ -2480,18 +2481,18 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "parseData",
-    "func": "var count = parseInt(msg.payload[0]);\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"97\",\n    \"count\": count,\n    \"m_gubun\": \"6\",        \n    \"m_adr\": \"7\",\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "func": "var count = parseInt(msg.payload[0]);\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"97\",\n    \"count\": count,\n    \"m_gubun\": \"6\",        \n    \"m_adr\": \"7\",\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nmsg.topic = \"INSERT INTO fz_shm.packing1 (count) VALUES (\" + count + \")\";\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 2460,
+    "y": 2420,
     "wires": [
       [
         "f307ffd55bc4d314",
-        "22d623c7ac2b7054"
+        "9ada7aeb88d6c826"
       ]
     ]
   },
@@ -2512,7 +2513,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 2460,
+    "y": 2400,
     "wires": [
       [
         "0b262024ec0e62dc"
@@ -2619,7 +2620,8 @@
     "y": 980,
     "wires": [
       [
-        "4988a68f634d762d"
+        "4988a68f634d762d",
+        "1159cc1f929749a9"
       ]
     ]
   },
@@ -2831,17 +2833,18 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "parseData",
-    "func": "var count = parseInt(msg.payload[0]);\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"98\",\n    \"count\": count,\n    \"m_gubun\": \"6\",        \n    \"m_adr\": \"8\",\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "func": "var count = parseInt(msg.payload[0]);\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"98\",\n    \"count\": count,\n    \"m_gubun\": \"6\",        \n    \"m_adr\": \"8\",\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nmsg.topic = \"INSERT INTO fz_shm.packing2 (count) VALUES (\" + count + \")\";\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 2500,
+    "y": 2540,
     "wires": [
       [
-        "f549e2188e1e82a1"
+        "f549e2188e1e82a1",
+        "a9885ed08532b6e9"
       ]
     ]
   },
@@ -2862,7 +2865,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 2500,
+    "y": 2520,
     "wires": [
       [
         "2a97aa6bdb0a8c6e"
@@ -3164,7 +3167,8 @@
     "y": 1120,
     "wires": [
       [
-        "e83991d0beb382a9"
+        "e83991d0beb382a9",
+        "68e59e198cf69cfa"
       ]
     ]
   },
@@ -3185,7 +3189,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 1100,
+    "y": 1120,
     "wires": [
       [
         "69b53ec3530b779f"
@@ -3207,7 +3211,8 @@
     "y": 1200,
     "wires": [
       [
-        "e9d00a6286efa775"
+        "e9d00a6286efa775",
+        "68e59e198cf69cfa"
       ]
     ]
   },
@@ -3257,7 +3262,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 2500,
+    "y": 2540,
     "wires": [
       [
         "4af4f391395ef251"
@@ -3440,23 +3445,6 @@
     ]
   },
   {
-    "id": "4e2d70754d51176e",
-    "type": "debug",
-    "z": "ddca7ba125929727",
-    "name": "debug 39",
-    "active": false,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": true,
-    "complete": "payload",
-    "targetType": "msg",
-    "statusVal": "payload",
-    "statusType": "auto",
-    "x": 1120,
-    "y": 2680,
-    "wires": []
-  },
-  {
     "id": "e91331546f856cec",
     "type": "buffer-parser",
     "z": "ddca7ba125929727",
@@ -3539,22 +3527,6 @@
         "98504f7c48c749fe"
       ]
     ]
-  },
-  {
-    "id": "22d623c7ac2b7054",
-    "type": "debug",
-    "z": "ddca7ba125929727",
-    "name": "debug 40",
-    "active": false,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 1120,
-    "y": 2400,
-    "wires": []
   },
   {
     "id": "e052e97277ea2aa7",
@@ -4365,7 +4337,7 @@
     "reduceInitType": "",
     "reduceFixup": "",
     "x": 1110,
-    "y": 740,
+    "y": 760,
     "wires": [
       [
         "b568c8a712609590"
@@ -4377,17 +4349,17 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "insert DB",
-    "func": "let value = msg.payload;\nlet temperature = value[0].temp;\nlet rpm1 = value[1].rpm;  // 온도, rpm 데이터 정상 수집될 경우 사용\nlet rpm2 = value[0].rpm;  // 온도 데이터 정상 수집이 안될 경우 사용\n\n\n// 온도 데이터 유무르 판단하여 데이터 처리\nlet checkArr = msg.payload[0];  //받아온 배열 중 첫번째 객체를 저장\nlet check = Object.keys(checkArr).includes('temp');  //객체에 'temp' 키 유무 판단(있으면 true, 없으면 false)\n\nif (check == true) {   //temp가 있다면 정상적으로 온도데이터 받아와서 처리\n    msg.payload = check;\n    msg.topic = \"INSERT INTO fz_shm.extruder1 (temperature, rpm) VALUES (\" + temperature + \", \" + rpm1 + \")\";\n\n} else {               //temp가 없다면 온도값을 공백으로 처리, rpm만 정상값 처리\n    msg.payload = check;\n    msg.topic = \"INSERT INTO fz_shm.extruder1 (temperature, rpm) VALUES ('\" + '' + \"', '\" + rpm2 + \"')\";\n}\n\n\nreturn msg;",
+    "func": "let value = msg.payload;\nlet temperature = value[0].temp;\nlet rpm = value[1].rpm;\n\nmsg.topic = \"INSERT INTO fz_shm.extruder1 (temperature, rpm) VALUES (\" + temperature + \", \" + rpm + \")\";\n\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 1240,
-    "y": 740,
+    "x": 1260,
+    "y": 760,
     "wires": [
       [
-        "08322881a002ea4a"
+        "bfbeb44b93848c16"
       ]
     ]
   },
@@ -4397,27 +4369,175 @@
     "z": "ddca7ba125929727",
     "mydb": "ed78c7db4255f1b4",
     "name": "",
-    "x": 1440,
-    "y": 740,
+    "x": 1420,
+    "y": 760,
     "wires": [
       []
     ]
   },
   {
-    "id": "08322881a002ea4a",
-    "type": "debug",
+    "id": "1159cc1f929749a9",
+    "type": "join",
     "z": "ddca7ba125929727",
-    "name": "debug 95",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 1460,
-    "y": 780,
+    "name": "",
+    "mode": "custom",
+    "build": "array",
+    "property": "payload",
+    "propertyType": "msg",
+    "key": "topic",
+    "joiner": "\\n",
+    "joinerType": "str",
+    "accumulate": false,
+    "timeout": "",
+    "count": "2",
+    "reduceRight": false,
+    "reduceExp": "",
+    "reduceInit": "",
+    "reduceInitType": "",
+    "reduceFixup": "",
+    "x": 1110,
+    "y": 940,
+    "wires": [
+      [
+        "cb4253240cc3c7b6"
+      ]
+    ]
+  },
+  {
+    "id": "cb4253240cc3c7b6",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "insert DB",
+    "func": "let value = msg.payload;\nlet temperature = value[0].temp;\nlet rpm = value[1].rpm;\n\nmsg.topic = \"INSERT INTO fz_shm.extruder2 (temperature, rpm) VALUES (\" + temperature + \", \" + rpm + \")\";\n\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1260,
+    "y": 940,
+    "wires": [
+      [
+        "41329192e2822ffe"
+      ]
+    ]
+  },
+  {
+    "id": "41329192e2822ffe",
+    "type": "mysql",
+    "z": "ddca7ba125929727",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 1420,
+    "y": 940,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "68e59e198cf69cfa",
+    "type": "join",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "mode": "custom",
+    "build": "array",
+    "property": "payload",
+    "propertyType": "msg",
+    "key": "topic",
+    "joiner": "\\n",
+    "joinerType": "str",
+    "accumulate": false,
+    "timeout": "",
+    "count": "2",
+    "reduceRight": false,
+    "reduceExp": "",
+    "reduceInit": "",
+    "reduceInitType": "",
+    "reduceFixup": "",
+    "x": 1110,
+    "y": 1160,
+    "wires": [
+      [
+        "2587323ff7dd159d"
+      ]
+    ]
+  },
+  {
+    "id": "2587323ff7dd159d",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "insert DB",
+    "func": "let value = msg.payload;\nlet temperature = value[0].temp;\nlet rpm = value[1].rpm;\n\nmsg.topic = \"INSERT INTO fz_shm.oven (temperature, rpm) VALUES (\" + temperature + \", \" + rpm + \")\";\n\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1260,
+    "y": 1160,
+    "wires": [
+      [
+        "5a5deb5da65d5ebb"
+      ]
+    ]
+  },
+  {
+    "id": "5a5deb5da65d5ebb",
+    "type": "mysql",
+    "z": "ddca7ba125929727",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 1420,
+    "y": 1160,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "4e22672b8f9653af",
+    "type": "comment",
+    "z": "ddca7ba125929727",
+    "name": "포장기 2호기_208",
+    "info": "",
+    "x": 130,
+    "y": 2500,
     "wires": []
+  },
+  {
+    "id": "9ada7aeb88d6c826",
+    "type": "mysql",
+    "z": "ddca7ba125929727",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 1120,
+    "y": 2440,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "a9885ed08532b6e9",
+    "type": "mysql",
+    "z": "ddca7ba125929727",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 1120,
+    "y": 2560,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "53ae1e84c8aff1cc",
+    "type": "mysql",
+    "z": "ddca7ba125929727",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 1120,
+    "y": 2680,
+    "wires": [
+      []
+    ]
   },
   {
     "id": "49ad75513fd213dc",
