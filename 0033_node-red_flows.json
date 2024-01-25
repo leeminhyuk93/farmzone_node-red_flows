@@ -667,8 +667,8 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "auto",
-    "x": 1300,
-    "y": 720,
+    "x": 1280,
+    "y": 700,
     "wires": []
   },
   {
@@ -704,7 +704,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 760,
+    "y": 800,
     "wires": [
       [
         "0ff8a9ecd1f0e469"
@@ -746,7 +746,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 760,
+    "y": 800,
     "wires": [
       [
         "a8f592be49d4360f"
@@ -766,8 +766,8 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "auto",
-    "x": 1300,
-    "y": 760,
+    "x": 1280,
+    "y": 780,
     "wires": []
   },
   {
@@ -792,7 +792,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 860,
+    "y": 900,
     "wires": [
       [
         "1e562e2f9019845b",
@@ -807,7 +807,7 @@
     "name": "익스트루더 203 & cutting motor",
     "info": "",
     "x": 170,
-    "y": 820,
+    "y": 860,
     "wires": []
   },
   {
@@ -822,7 +822,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 860,
+    "y": 900,
     "wires": [
       [
         "f409e55f23691320"
@@ -864,7 +864,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 860,
+    "y": 900,
     "wires": [
       [
         "d1721b59ede790ce"
@@ -884,8 +884,8 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "auto",
-    "x": 1300,
-    "y": 860,
+    "x": 1280,
+    "y": 880,
     "wires": []
   },
   {
@@ -902,7 +902,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 860,
+    "y": 900,
     "wires": [
       [
         "69e60a1fe084f66b"
@@ -921,7 +921,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 900,
+    "y": 980,
     "wires": [
       [
         "07a43e5d49a904e2"
@@ -963,7 +963,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 900,
+    "y": 980,
     "wires": [
       [
         "acef40319446e960"
@@ -983,8 +983,8 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "auto",
-    "x": 1300,
-    "y": 900,
+    "x": 1280,
+    "y": 960,
     "wires": []
   },
   {
@@ -1001,7 +1001,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 900,
+    "y": 980,
     "wires": [
       [
         "489a773e52027715"
@@ -1030,7 +1030,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 1300,
+    "y": 1360,
     "wires": [
       [
         "92fedd62aacef57d",
@@ -1045,7 +1045,7 @@
     "name": "팝핑기11_온도&RPM",
     "info": "온도는 솔내컨버터\nRPM은 키엔스 PLC\n\n솔내컨버터 정보\nIP : 192.168.0.221\nPORT : 1483",
     "x": 140,
-    "y": 1260,
+    "y": 1320,
     "wires": []
   },
   {
@@ -1060,8 +1060,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 940,
-    "y": 1300,
+    "x": 920,
+    "y": 1340,
     "wires": []
   },
   {
@@ -1076,7 +1076,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 1340,
+    "y": 1440,
     "wires": [
       [
         "9b96b65ef6ef45ec"
@@ -1097,7 +1097,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 1340,
+    "y": 1440,
     "wires": [
       [
         "e91331546f856cec"
@@ -1126,7 +1126,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 1500,
+    "y": 1560,
     "wires": [
       [
         "ee72f13457e029f8",
@@ -1147,7 +1147,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 920,
-    "y": 1500,
+    "y": 1540,
     "wires": []
   },
   {
@@ -1162,7 +1162,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 1540,
+    "y": 1640,
     "wires": [
       [
         "1be38abb5a529876"
@@ -1204,7 +1204,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 1540,
+    "y": 1640,
     "wires": [
       [
         "2b77ce06642f7614"
@@ -1225,7 +1225,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 1540,
+    "y": 1640,
     "wires": [
       [
         "1159d6e99c00b033"
@@ -1254,7 +1254,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 1680,
+    "y": 1760,
     "wires": [
       [
         "437bc5d8b682c642",
@@ -1275,7 +1275,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 920,
-    "y": 1680,
+    "y": 1740,
     "wires": []
   },
   {
@@ -1290,7 +1290,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 1720,
+    "y": 1840,
     "wires": [
       [
         "5c7c965c4bfb9904"
@@ -1332,7 +1332,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 1720,
+    "y": 1840,
     "wires": [
       [
         "7aa9c8b02d130818"
@@ -1353,7 +1353,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 1720,
+    "y": 1840,
     "wires": [
       [
         "2d0ddfe7d2cc0e55"
@@ -1382,7 +1382,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 1860,
+    "y": 1960,
     "wires": [
       [
         "ea2f097f53073e45",
@@ -1403,7 +1403,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 920,
-    "y": 1860,
+    "y": 1940,
     "wires": []
   },
   {
@@ -1418,7 +1418,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 1900,
+    "y": 2040,
     "wires": [
       [
         "9e6683d1a44c28c9"
@@ -1460,7 +1460,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 1900,
+    "y": 2040,
     "wires": [
       [
         "396140023e4e11a2"
@@ -1481,7 +1481,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 1900,
+    "y": 2040,
     "wires": [
       [
         "69be6ef610a85fce"
@@ -1510,7 +1510,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 2080,
+    "y": 2160,
     "wires": [
       [
         "4d395f7e11576f73",
@@ -1530,8 +1530,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 940,
-    "y": 2080,
+    "x": 920,
+    "y": 2140,
     "wires": []
   },
   {
@@ -1546,7 +1546,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 2120,
+    "y": 2240,
     "wires": [
       [
         "8251205e665b2318"
@@ -1567,7 +1567,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 2120,
+    "y": 2240,
     "wires": [
       [
         "6285ca8fb2c1a9b1"
@@ -1581,7 +1581,7 @@
     "name": "팝핑기5_온도&RPM",
     "info": "온도는 솔내컨버터\nRPM은 키엔스 PLC\n\n솔내컨버터 정보\nIP : 192.168.0.215\nPORT : 1478",
     "x": 130,
-    "y": 1460,
+    "y": 1520,
     "wires": []
   },
   {
@@ -1591,7 +1591,7 @@
     "name": "팝핑기7 _온도&RPM",
     "info": "온도는 솔내컨버터\nRPM은 키엔스 PLC\n\n솔내컨버터 정보\nIP : 192.168.0.217\nPORT : 1479",
     "x": 130,
-    "y": 1640,
+    "y": 1720,
     "wires": []
   },
   {
@@ -1601,7 +1601,7 @@
     "name": "팝핑기8_온도&RPM",
     "info": "온도는 솔내컨버터\nRPM은 키엔스 PLC\n\n솔내컨버터 정보\nIP : 192.168.0.218\nPORT : 1480",
     "x": 130,
-    "y": 1820,
+    "y": 1920,
     "wires": []
   },
   {
@@ -1611,7 +1611,7 @@
     "name": "팝핑기10_온도&RPM",
     "info": "온도는 솔내컨버터\nRPM은 키엔스 PLC\n\n솔내컨버터 정보\nIP : 192.168.0.218\nPORT : 1480",
     "x": 140,
-    "y": 2040,
+    "y": 2120,
     "wires": []
   },
   {
@@ -1636,7 +1636,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 2280,
+    "y": 2460,
     "wires": [
       [
         "fca0d6d5e753e3c8"
@@ -1655,7 +1655,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 2280,
+    "y": 2460,
     "wires": [
       [
         "aa241c009c2cb327"
@@ -1697,7 +1697,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 2280,
+    "y": 2460,
     "wires": [
       [
         "faa05c47c3237303"
@@ -1717,7 +1717,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 1320,
-    "y": 2280,
+    "y": 2460,
     "wires": []
   },
   {
@@ -1734,7 +1734,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 2280,
+    "y": 2460,
     "wires": [
       [
         "2a880749af81c958"
@@ -1748,7 +1748,7 @@
     "name": "포장기 207, 208",
     "info": "",
     "x": 120,
-    "y": 2240,
+    "y": 2420,
     "wires": []
   },
   {
@@ -1763,7 +1763,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 2320,
+    "y": 2500,
     "wires": [
       [
         "e1010fd72c88390f"
@@ -1805,7 +1805,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 2320,
+    "y": 2500,
     "wires": [
       [
         "c840d8e7c0362a04"
@@ -1825,7 +1825,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 1320,
-    "y": 2320,
+    "y": 2500,
     "wires": []
   },
   {
@@ -1842,7 +1842,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 2320,
+    "y": 2500,
     "wires": [
       [
         "4a2add2fa3ab086c"
@@ -1871,7 +1871,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 2440,
+    "y": 2620,
     "wires": [
       [
         "cd0ed30b016547ec"
@@ -1890,7 +1890,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 2440,
+    "y": 2620,
     "wires": [
       [
         "0254f79c23a99816"
@@ -1932,7 +1932,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 2440,
+    "y": 2620,
     "wires": [
       [
         "b681c5ee5072b915"
@@ -1952,7 +1952,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 1300,
-    "y": 2440,
+    "y": 2620,
     "wires": []
   },
   {
@@ -1969,7 +1969,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 2440,
+    "y": 2620,
     "wires": [
       [
         "da44a8e8b15e6831"
@@ -1983,7 +1983,7 @@
     "name": "캡핑기",
     "info": "",
     "x": 90,
-    "y": 2400,
+    "y": 2580,
     "wires": []
   },
   {
@@ -2008,7 +2008,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 1080,
+    "y": 1140,
     "wires": [
       [
         "f0d7037bb6596786",
@@ -2028,7 +2028,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 1060,
+    "y": 1120,
     "wires": [
       [
         "94bb61aac41d919e"
@@ -2070,7 +2070,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 1060,
+    "y": 1120,
     "wires": [
       [
         "0eda2128f3a2a13a"
@@ -2090,8 +2090,8 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "auto",
-    "x": 1320,
-    "y": 1060,
+    "x": 1280,
+    "y": 1100,
     "wires": []
   },
   {
@@ -2108,7 +2108,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 1060,
+    "y": 1120,
     "wires": [
       [
         "33c306ee95409dbc"
@@ -2122,7 +2122,7 @@
     "name": "오븐기 온도 & rpm",
     "info": "",
     "x": 130,
-    "y": 1040,
+    "y": 1100,
     "wires": []
   },
   {
@@ -2137,7 +2137,7 @@
     "finalize": "",
     "libs": [],
     "x": 330,
-    "y": 1100,
+    "y": 1200,
     "wires": [
       [
         "a1e089c8f2fd97c5"
@@ -2179,7 +2179,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 1100,
+    "y": 1200,
     "wires": [
       [
         "99368e687ce2ec82"
@@ -2199,8 +2199,8 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "auto",
-    "x": 1320,
-    "y": 1100,
+    "x": 1280,
+    "y": 1180,
     "wires": []
   },
   {
@@ -2217,7 +2217,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 1100,
+    "y": 1200,
     "wires": [
       [
         "ad00f53a12a63bcb"
@@ -2236,7 +2236,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 2440,
+    "y": 2620,
     "wires": [
       [
         "8ea3c96af8a948e3",
@@ -2261,7 +2261,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 2440,
+    "y": 2620,
     "wires": [
       [
         "87fe51534f4ad35e"
@@ -2283,7 +2283,8 @@
     "y": 720,
     "wires": [
       [
-        "38617202c874f543"
+        "38617202c874f543",
+        "2b6c8e2e83cfdb12"
       ]
     ]
   },
@@ -2304,7 +2305,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 720,
+    "y": 700,
     "wires": [
       [
         "d0bcc37c7ebfc7a8"
@@ -2323,10 +2324,11 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 860,
+    "y": 900,
     "wires": [
       [
-        "9ac5d73ff844fde3"
+        "9ac5d73ff844fde3",
+        "a578d716b34002b3"
       ]
     ]
   },
@@ -2347,7 +2349,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 860,
+    "y": 880,
     "wires": [
       [
         "6d3cec8ee074d83f"
@@ -2371,7 +2373,7 @@
     "senderr": false,
     "headers": [],
     "x": 770,
-    "y": 1300,
+    "y": 1340,
     "wires": [
       [
         "f303de87c30e89ae"
@@ -2395,7 +2397,7 @@
     "senderr": false,
     "headers": [],
     "x": 770,
-    "y": 1500,
+    "y": 1540,
     "wires": [
       [
         "5d81f3ba64d5c2f0"
@@ -2419,7 +2421,7 @@
     "senderr": false,
     "headers": [],
     "x": 770,
-    "y": 1680,
+    "y": 1740,
     "wires": [
       [
         "eb6fd652e289cbe0"
@@ -2443,7 +2445,7 @@
     "senderr": false,
     "headers": [],
     "x": 770,
-    "y": 1860,
+    "y": 1940,
     "wires": [
       [
         "eb56e170051febf0"
@@ -2467,7 +2469,7 @@
     "senderr": false,
     "headers": [],
     "x": 770,
-    "y": 2080,
+    "y": 2140,
     "wires": [
       [
         "0c7d63607aaeabd4"
@@ -2486,7 +2488,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 2280,
+    "y": 2460,
     "wires": [
       [
         "f307ffd55bc4d314",
@@ -2511,7 +2513,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 2280,
+    "y": 2460,
     "wires": [
       [
         "0b262024ec0e62dc"
@@ -2532,7 +2534,7 @@
     "trim": false,
     "tls": "",
     "x": 550,
-    "y": 760,
+    "y": 800,
     "wires": [
       [
         "39e7e5be41d0dd06"
@@ -2551,10 +2553,11 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 1340,
+    "y": 1440,
     "wires": [
       [
-        "d97437e23d7e3039"
+        "d97437e23d7e3039",
+        "3d3234c1b95e7654"
       ]
     ]
   },
@@ -2570,10 +2573,11 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 760,
+    "y": 800,
     "wires": [
       [
-        "d0b4e79b276e2c2c"
+        "d0b4e79b276e2c2c",
+        "02581de2fb5e479f"
       ]
     ]
   },
@@ -2594,7 +2598,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 760,
+    "y": 780,
     "wires": [
       [
         "452dcd3e0aa3ffce"
@@ -2613,10 +2617,11 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 900,
+    "y": 980,
     "wires": [
       [
-        "4988a68f634d762d"
+        "4988a68f634d762d",
+        "c9072d04f9ba5ce9"
       ]
     ]
   },
@@ -2637,7 +2642,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 900,
+    "y": 960,
     "wires": [
       [
         "ef7e806d48d33769"
@@ -2835,7 +2840,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 2320,
+    "y": 2500,
     "wires": [
       [
         "f549e2188e1e82a1"
@@ -2859,7 +2864,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 2320,
+    "y": 2500,
     "wires": [
       [
         "2a97aa6bdb0a8c6e"
@@ -2883,7 +2888,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 1340,
+    "y": 1440,
     "wires": [
       [
         "d2ae74a670591b3b"
@@ -2902,8 +2907,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 1320,
-    "y": 1340,
+    "x": 1280,
+    "y": 1440,
     "wires": []
   },
   {
@@ -2918,7 +2923,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 1540,
+    "y": 1640,
     "wires": [
       [
         "9cb53701c275a0da"
@@ -2942,7 +2947,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 1540,
+    "y": 1640,
     "wires": [
       [
         "0dc475cf43dfcbf0"
@@ -2962,7 +2967,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 1280,
-    "y": 1540,
+    "y": 1640,
     "wires": []
   },
   {
@@ -2977,7 +2982,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 1720,
+    "y": 1840,
     "wires": [
       [
         "741fdb2fded2733f"
@@ -3001,7 +3006,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 1720,
+    "y": 1840,
     "wires": [
       [
         "24500fa3fb9914d6"
@@ -3021,7 +3026,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 1280,
-    "y": 1720,
+    "y": 1840,
     "wires": []
   },
   {
@@ -3036,7 +3041,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 1900,
+    "y": 2040,
     "wires": [
       [
         "fa9b47292353dedf"
@@ -3060,7 +3065,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 1900,
+    "y": 2040,
     "wires": [
       [
         "68e5e05ad101c653"
@@ -3080,7 +3085,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 1280,
-    "y": 1900,
+    "y": 2040,
     "wires": []
   },
   {
@@ -3095,7 +3100,7 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 2120,
+    "y": 2240,
     "wires": [
       [
         "d1c5016f48c64edc"
@@ -3119,7 +3124,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 2120,
+    "y": 2240,
     "wires": [
       [
         "d7aae28768cc9378"
@@ -3139,7 +3144,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 1300,
-    "y": 2120,
+    "y": 2240,
     "wires": []
   },
   {
@@ -3154,10 +3159,11 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 1060,
+    "y": 1120,
     "wires": [
       [
-        "e83991d0beb382a9"
+        "e83991d0beb382a9",
+        "329189552d602e59"
       ]
     ]
   },
@@ -3178,7 +3184,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 1060,
+    "y": 1100,
     "wires": [
       [
         "69b53ec3530b779f"
@@ -3197,10 +3203,11 @@
     "finalize": "",
     "libs": [],
     "x": 950,
-    "y": 1100,
+    "y": 1200,
     "wires": [
       [
-        "e9d00a6286efa775"
+        "e9d00a6286efa775",
+        "6bf83941836e9efc"
       ]
     ]
   },
@@ -3221,7 +3228,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 1100,
+    "y": 1180,
     "wires": [
       [
         "f46ef93f7ddbd99a"
@@ -3250,7 +3257,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 2320,
+    "y": 2500,
     "wires": [
       [
         "4af4f391395ef251"
@@ -3275,7 +3282,7 @@
     "allowrate": false,
     "outputs": 1,
     "x": 130,
-    "y": 900,
+    "y": 980,
     "wires": [
       [
         "b57cd9b1fa1a5980"
@@ -3300,7 +3307,7 @@
     "allowrate": false,
     "outputs": 1,
     "x": 130,
-    "y": 1340,
+    "y": 1440,
     "wires": [
       [
         "8f92c0f2e1c33e11"
@@ -3325,7 +3332,7 @@
     "allowrate": false,
     "outputs": 1,
     "x": 130,
-    "y": 760,
+    "y": 800,
     "wires": [
       [
         "5c59e4db43baf8ac"
@@ -3350,7 +3357,7 @@
     "allowrate": false,
     "outputs": 1,
     "x": 130,
-    "y": 1540,
+    "y": 1640,
     "wires": [
       [
         "91c43b1fd1788d4c"
@@ -3375,7 +3382,7 @@
     "allowrate": false,
     "outputs": 1,
     "x": 130,
-    "y": 1720,
+    "y": 1840,
     "wires": [
       [
         "8d78c0f678eadec3"
@@ -3400,7 +3407,7 @@
     "allowrate": false,
     "outputs": 1,
     "x": 130,
-    "y": 1900,
+    "y": 2040,
     "wires": [
       [
         "cfc58a14b253c660"
@@ -3425,7 +3432,7 @@
     "allowrate": false,
     "outputs": 1,
     "x": 130,
-    "y": 2120,
+    "y": 2240,
     "wires": [
       [
         "7776062198e3347f"
@@ -3446,7 +3453,7 @@
     "statusVal": "payload",
     "statusType": "auto",
     "x": 1120,
-    "y": 2500,
+    "y": 2680,
     "wires": []
   },
   {
@@ -3484,7 +3491,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 1340,
+    "y": 1440,
     "wires": [
       [
         "930572e26ff4fde1"
@@ -3526,7 +3533,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 770,
-    "y": 2120,
+    "y": 2240,
     "wires": [
       [
         "98504f7c48c749fe"
@@ -3546,7 +3553,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 1120,
-    "y": 2220,
+    "y": 2400,
     "wires": []
   },
   {
@@ -3605,7 +3612,7 @@
     "delayOnStart": false,
     "startDelayTime": "",
     "x": 360,
-    "y": 2080,
+    "y": 2160,
     "wires": [
       [
         "7870cbd4f7ca6a08"
@@ -3625,7 +3632,7 @@
     "finalize": "",
     "libs": [],
     "x": 580,
-    "y": 2080,
+    "y": 2160,
     "wires": [
       [
         "715d0b3e3a011140",
@@ -3779,7 +3786,7 @@
     "delayOnStart": false,
     "startDelayTime": "",
     "x": 360,
-    "y": 1300,
+    "y": 1360,
     "wires": [
       [
         "b41ea0f994996099"
@@ -3799,11 +3806,12 @@
     "finalize": "",
     "libs": [],
     "x": 580,
-    "y": 1300,
+    "y": 1360,
     "wires": [
       [
         "1f31d0637f7e3473",
-        "3242576693006b3b"
+        "3242576693006b3b",
+        "3d3234c1b95e7654"
       ]
     ]
   },
@@ -3829,7 +3837,7 @@
     "delayOnStart": false,
     "startDelayTime": "",
     "x": 360,
-    "y": 1500,
+    "y": 1560,
     "wires": [
       [
         "89fe817140ce3a1b"
@@ -3849,7 +3857,7 @@
     "finalize": "",
     "libs": [],
     "x": 580,
-    "y": 1500,
+    "y": 1560,
     "wires": [
       [
         "2d6ccb01576958d6",
@@ -3879,7 +3887,7 @@
     "delayOnStart": false,
     "startDelayTime": "",
     "x": 360,
-    "y": 1680,
+    "y": 1760,
     "wires": [
       [
         "c03bcfb51704d72c"
@@ -3899,7 +3907,7 @@
     "finalize": "",
     "libs": [],
     "x": 580,
-    "y": 1680,
+    "y": 1760,
     "wires": [
       [
         "d35d651141ff8a16",
@@ -3929,7 +3937,7 @@
     "delayOnStart": false,
     "startDelayTime": "",
     "x": 360,
-    "y": 1860,
+    "y": 1960,
     "wires": [
       [
         "cf630ca07552fa93"
@@ -3949,7 +3957,7 @@
     "finalize": "",
     "libs": [],
     "x": 580,
-    "y": 1860,
+    "y": 1960,
     "wires": [
       [
         "b48a9eab048540f8",
@@ -3969,8 +3977,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 760,
-    "y": 1260,
+    "x": 600,
+    "y": 1320,
     "wires": []
   },
   {
@@ -3985,8 +3993,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 760,
-    "y": 1460,
+    "x": 600,
+    "y": 1520,
     "wires": []
   },
   {
@@ -4001,8 +4009,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 760,
-    "y": 1640,
+    "x": 600,
+    "y": 1720,
     "wires": []
   },
   {
@@ -4017,8 +4025,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 760,
-    "y": 1820,
+    "x": 600,
+    "y": 1920,
     "wires": []
   },
   {
@@ -4033,8 +4041,203 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
+    "x": 580,
+    "y": 2120,
+    "wires": []
+  },
+  {
+    "id": "2b6c8e2e83cfdb12",
+    "type": "mysql",
+    "z": "ddca7ba125929727",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 1120,
+    "y": 740,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "02581de2fb5e479f",
+    "type": "mysql",
+    "z": "ddca7ba125929727",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 1120,
+    "y": 820,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "a578d716b34002b3",
+    "type": "mysql",
+    "z": "ddca7ba125929727",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 1120,
+    "y": 920,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "c9072d04f9ba5ce9",
+    "type": "mysql",
+    "z": "ddca7ba125929727",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 1120,
+    "y": 1000,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "329189552d602e59",
+    "type": "mysql",
+    "z": "ddca7ba125929727",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 1120,
+    "y": 1140,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "6bf83941836e9efc",
+    "type": "mysql",
+    "z": "ddca7ba125929727",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 1120,
+    "y": 1220,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "ccdac1e258122bb3",
+    "type": "mysql",
+    "z": "ddca7ba125929727",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 1300,
+    "y": 1380,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "48ab5caa15b47079",
+    "type": "mysql",
+    "z": "ddca7ba125929727",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
     "x": 760,
-    "y": 2040,
+    "y": 1580,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "f25dc48670086a4e",
+    "type": "mysql",
+    "z": "ddca7ba125929727",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 760,
+    "y": 1780,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "d3b524d9fd8b8168",
+    "type": "mysql",
+    "z": "ddca7ba125929727",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 760,
+    "y": 1980,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "4359c579243b2a33",
+    "type": "mysql",
+    "z": "ddca7ba125929727",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 760,
+    "y": 2180,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "3d3234c1b95e7654",
+    "type": "join",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "mode": "custom",
+    "build": "array",
+    "property": "payload",
+    "propertyType": "msg",
+    "key": "topic",
+    "joiner": "\\n",
+    "joinerType": "str",
+    "accumulate": false,
+    "timeout": "",
+    "count": "2",
+    "reduceRight": false,
+    "reduceExp": "",
+    "reduceInit": "",
+    "reduceInitType": "",
+    "reduceFixup": "",
+    "x": 1010,
+    "y": 1380,
+    "wires": [
+      [
+        "1d18ac303e63fc24"
+      ]
+    ]
+  },
+  {
+    "id": "1d18ac303e63fc24",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "insert DB",
+    "func": "\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1140,
+    "y": 1380,
+    "wires": [
+      [
+        "588272b8d338cbad"
+      ]
+    ]
+  },
+  {
+    "id": "588272b8d338cbad",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 95",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1280,
+    "y": 1340,
     "wires": []
   },
   {
@@ -5440,7 +5643,7 @@
     "type": "function",
     "z": "5ba174697c0e9d9b",
     "name": "sendBuffer",
-    "func": "// 데이터 조립\nconst eduBuffer = Buffer.alloc(12); // 12바이트의 버퍼 생성\n\neduBuffer.writeUInt16BE(1, 0);   // TID\neduBuffer.writeUInt16BE(0, 2);   // PID\neduBuffer.writeUInt16BE(6, 4);   // Length\neduBuffer.writeUInt8(7, 6);      // Unit ID (국번)\neduBuffer.writeUInt8(3, 7);      // Function code\neduBuffer.writeUInt16BE(1, 8);   // Data (register address)\neduBuffer.writeUInt16BE(18, 10); // Data (count)\n\n// msg 객체의 payload에 데이터를 할당합니다.\nmsg.payload = eduBuffer;\n\nreturn msg;",
+    "func": "// 데이터 ���립\nconst eduBuffer = Buffer.alloc(12); // 12바이트의 버퍼 생성\n\neduBuffer.writeUInt16BE(1, 0);   // TID\neduBuffer.writeUInt16BE(0, 2);   // PID\neduBuffer.writeUInt16BE(6, 4);   // Length\neduBuffer.writeUInt8(7, 6);      // Unit ID (국번)\neduBuffer.writeUInt8(3, 7);      // Function code\neduBuffer.writeUInt16BE(1, 8);   // Data (register address)\neduBuffer.writeUInt16BE(18, 10); // Data (count)\n\n// msg 객체의 payload에 데이터를 할당합니다.\nmsg.payload = eduBuffer;\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
