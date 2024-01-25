@@ -767,7 +767,7 @@
     "statusVal": "payload",
     "statusType": "auto",
     "x": 1280,
-    "y": 780,
+    "y": 800,
     "wires": []
   },
   {
@@ -984,7 +984,7 @@
     "statusVal": "payload",
     "statusType": "auto",
     "x": 1280,
-    "y": 960,
+    "y": 980,
     "wires": []
   },
   {
@@ -2200,7 +2200,7 @@
     "statusVal": "payload",
     "statusType": "auto",
     "x": 1280,
-    "y": 1180,
+    "y": 1200,
     "wires": []
   },
   {
@@ -2273,7 +2273,7 @@
     "type": "function",
     "z": "ddca7ba125929727",
     "name": "parseData",
-    "func": "var temperature = (msg.payload[0]) / 10;\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"95\",\n    \"temp\": temperature,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\nreturn msg;",
+    "func": "var temperature = (msg.payload[0]) / 10;\n\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {\n    \"content-type\": \"application/json\",\n    \"Accept\": \"application/json\"\n};\n\n\nmsg.payload = {\n    \"ccode\": \"0033\",\n    \"scode\": \"95\",\n    \"temp\": temperature,\n    \"regdate\": formattedDate,\n    \"ip\": \"127.0.0.1\"\n};\n\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -2284,7 +2284,7 @@
     "wires": [
       [
         "38617202c874f543",
-        "2b6c8e2e83cfdb12"
+        "9294cd9effd7593b"
       ]
     ]
   },
@@ -2327,8 +2327,7 @@
     "y": 900,
     "wires": [
       [
-        "9ac5d73ff844fde3",
-        "a578d716b34002b3"
+        "9ac5d73ff844fde3"
       ]
     ]
   },
@@ -2577,7 +2576,7 @@
     "wires": [
       [
         "d0b4e79b276e2c2c",
-        "02581de2fb5e479f"
+        "9294cd9effd7593b"
       ]
     ]
   },
@@ -2598,7 +2597,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 780,
+    "y": 800,
     "wires": [
       [
         "452dcd3e0aa3ffce"
@@ -2620,8 +2619,7 @@
     "y": 980,
     "wires": [
       [
-        "4988a68f634d762d",
-        "c9072d04f9ba5ce9"
+        "4988a68f634d762d"
       ]
     ]
   },
@@ -2642,7 +2640,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 960,
+    "y": 980,
     "wires": [
       [
         "ef7e806d48d33769"
@@ -3166,8 +3164,7 @@
     "y": 1120,
     "wires": [
       [
-        "e83991d0beb382a9",
-        "329189552d602e59"
+        "e83991d0beb382a9"
       ]
     ]
   },
@@ -3210,8 +3207,7 @@
     "y": 1200,
     "wires": [
       [
-        "e9d00a6286efa775",
-        "6bf83941836e9efc"
+        "e9d00a6286efa775"
       ]
     ]
   },
@@ -3232,7 +3228,7 @@
     "senderr": false,
     "headers": [],
     "x": 1130,
-    "y": 1180,
+    "y": 1200,
     "wires": [
       [
         "f46ef93f7ddbd99a"
@@ -4054,78 +4050,6 @@
     "wires": []
   },
   {
-    "id": "2b6c8e2e83cfdb12",
-    "type": "mysql",
-    "z": "ddca7ba125929727",
-    "mydb": "ed78c7db4255f1b4",
-    "name": "",
-    "x": 1120,
-    "y": 740,
-    "wires": [
-      []
-    ]
-  },
-  {
-    "id": "02581de2fb5e479f",
-    "type": "mysql",
-    "z": "ddca7ba125929727",
-    "mydb": "ed78c7db4255f1b4",
-    "name": "",
-    "x": 1120,
-    "y": 820,
-    "wires": [
-      []
-    ]
-  },
-  {
-    "id": "a578d716b34002b3",
-    "type": "mysql",
-    "z": "ddca7ba125929727",
-    "mydb": "ed78c7db4255f1b4",
-    "name": "",
-    "x": 1120,
-    "y": 920,
-    "wires": [
-      []
-    ]
-  },
-  {
-    "id": "c9072d04f9ba5ce9",
-    "type": "mysql",
-    "z": "ddca7ba125929727",
-    "mydb": "ed78c7db4255f1b4",
-    "name": "",
-    "x": 1120,
-    "y": 1000,
-    "wires": [
-      []
-    ]
-  },
-  {
-    "id": "329189552d602e59",
-    "type": "mysql",
-    "z": "ddca7ba125929727",
-    "mydb": "ed78c7db4255f1b4",
-    "name": "",
-    "x": 1120,
-    "y": 1140,
-    "wires": [
-      []
-    ]
-  },
-  {
-    "id": "6bf83941836e9efc",
-    "type": "mysql",
-    "z": "ddca7ba125929727",
-    "mydb": "ed78c7db4255f1b4",
-    "name": "",
-    "x": 1120,
-    "y": 1220,
-    "wires": [
-      []
-    ]
-  },
-  {
     "id": "ccdac1e258122bb3",
     "type": "mysql",
     "z": "ddca7ba125929727",
@@ -4402,22 +4326,6 @@
     ]
   },
   {
-    "id": "588272b8d338cbad",
-    "type": "debug",
-    "z": "ddca7ba125929727",
-    "name": "debug 95",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 1300,
-    "y": 1740,
-    "wires": []
-  },
-  {
     "id": "b9d38faa02ac140c",
     "type": "function",
     "z": "ddca7ba125929727",
@@ -4435,6 +4343,81 @@
         "6bf976fc267cf6ee"
       ]
     ]
+  },
+  {
+    "id": "9294cd9effd7593b",
+    "type": "join",
+    "z": "ddca7ba125929727",
+    "name": "",
+    "mode": "custom",
+    "build": "array",
+    "property": "payload",
+    "propertyType": "msg",
+    "key": "topic",
+    "joiner": "\\n",
+    "joinerType": "str",
+    "accumulate": false,
+    "timeout": "",
+    "count": "2",
+    "reduceRight": false,
+    "reduceExp": "",
+    "reduceInit": "",
+    "reduceInitType": "",
+    "reduceFixup": "",
+    "x": 1110,
+    "y": 740,
+    "wires": [
+      [
+        "b568c8a712609590"
+      ]
+    ]
+  },
+  {
+    "id": "b568c8a712609590",
+    "type": "function",
+    "z": "ddca7ba125929727",
+    "name": "insert DB",
+    "func": "let value = msg.payload;\nlet temperature = value[0].temp;\nlet rpm1 = value[1].rpm;  // 온도, rpm 데이터 정상 수집될 경우 사용\nlet rpm2 = value[0].rpm;  // 온도 데이터 정상 수집이 안될 경우 사용\n\n\n// 온도 데이터 유무르 판단하여 데이터 처리\nlet checkArr = msg.payload[0];  //받아온 배열 중 첫번째 객체를 저장\nlet check = Object.keys(checkArr).includes('temp');  //객체에 'temp' 키 유무 판단(있으면 true, 없으면 false)\n\nif (check == true) {   //temp가 있다면 정상적으로 온도데이터 받아와서 처리\n    msg.payload = check;\n    msg.topic = \"INSERT INTO fz_shm.extruder1 (temperature, rpm) VALUES (\" + temperature + \", \" + rpm1 + \")\";\n\n} else {               //temp가 없다면 온도값을 공백으로 처리, rpm만 정상값 처리\n    msg.payload = check;\n    msg.topic = \"INSERT INTO fz_shm.extruder1 (temperature, rpm) VALUES ('\" + '' + \"', '\" + rpm2 + \"')\";\n}\n\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1240,
+    "y": 740,
+    "wires": [
+      [
+        "08322881a002ea4a"
+      ]
+    ]
+  },
+  {
+    "id": "bfbeb44b93848c16",
+    "type": "mysql",
+    "z": "ddca7ba125929727",
+    "mydb": "ed78c7db4255f1b4",
+    "name": "",
+    "x": 1440,
+    "y": 740,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "08322881a002ea4a",
+    "type": "debug",
+    "z": "ddca7ba125929727",
+    "name": "debug 95",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1460,
+    "y": 780,
+    "wires": []
   },
   {
     "id": "49ad75513fd213dc",
