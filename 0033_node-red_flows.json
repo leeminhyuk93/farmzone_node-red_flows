@@ -188,11 +188,11 @@
     "serialParity": "none",
     "serialConnectionDelay": "100",
     "serialAsciiResponseStartDelimiter": "0x3A",
-    "unit_id": "1",
-    "commandDelay": "1",
-    "clientTimeout": "500",
+    "unit_id": 1,
+    "commandDelay": 1,
+    "clientTimeout": 500,
     "reconnectOnTimeout": false,
-    "reconnectTimeout": "2000",
+    "reconnectTimeout": 2000,
     "parallelUnitIdsAllowed": true,
     "showWarnings": true,
     "showLogs": true
@@ -3295,7 +3295,7 @@
     "z": "ddca7ba125929727",
     "name": "",
     "pauseType": "delay",
-    "timeout": "1",
+    "timeout": "0.5",
     "timeoutUnits": "seconds",
     "rate": "1",
     "nbRateUnits": "1",
@@ -3306,7 +3306,7 @@
     "drop": false,
     "allowrate": false,
     "outputs": 1,
-    "x": 120,
+    "x": 130,
     "y": 1440,
     "wires": [
       [
