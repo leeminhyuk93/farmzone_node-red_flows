@@ -712,7 +712,7 @@
     "base64": false,
     "tls": "",
     "x": 100,
-    "y": 800,
+    "y": 820,
     "wires": [
       [
         "38739a445bf944cb",
@@ -794,7 +794,7 @@
     "statusVal": "payload",
     "statusType": "msg",
     "x": 640,
-    "y": 760,
+    "y": 780,
     "wires": []
   },
   {
@@ -804,7 +804,7 @@
     "name": "모든다해(중량선별기)",
     "info": "",
     "x": 120,
-    "y": 740,
+    "y": 760,
     "wires": []
   },
   {
@@ -825,7 +825,7 @@
     "delayOnStart": false,
     "startDelayTime": "",
     "x": 330,
-    "y": 960,
+    "y": 1020,
     "wires": [
       [
         "8f118221b3b5b9ab",
@@ -856,7 +856,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 900,
+    "y": 960,
     "wires": [
       [
         "0e3d57c67f7e1422"
@@ -875,7 +875,7 @@
     "finalize": "",
     "libs": [],
     "x": 130,
-    "y": 960,
+    "y": 1020,
     "wires": [
       [
         "3cc36a8293aa2623"
@@ -980,7 +980,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 530,
-    "y": 960,
+    "y": 1020,
     "wires": [
       [
         "08c1ce43706b8ea0"
@@ -999,7 +999,7 @@
     "finalize": "",
     "libs": [],
     "x": 710,
-    "y": 960,
+    "y": 1020,
     "wires": [
       [
         "ade86ad61a694925"
@@ -1020,7 +1020,7 @@
     "statusVal": "payload",
     "statusType": "msg",
     "x": 880,
-    "y": 960,
+    "y": 1020,
     "wires": []
   },
   {
@@ -1037,7 +1037,7 @@
     "statusVal": "payload",
     "statusType": "msg",
     "x": 460,
-    "y": 800,
+    "y": 820,
     "wires": []
   },
   {
@@ -1047,7 +1047,7 @@
     "name": "리팩(포장기, 충전기)",
     "info": "",
     "x": 110,
-    "y": 860,
+    "y": 920,
     "wires": []
   },
   {
@@ -1157,7 +1157,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 290,
-    "y": 780,
+    "y": 800,
     "wires": [
       [
         "34ae3328baa4f4e1",
@@ -1177,7 +1177,7 @@
     "finalize": "",
     "libs": [],
     "x": 470,
-    "y": 760,
+    "y": 780,
     "wires": [
       [
         "417d665b7b04b282"
@@ -1207,7 +1207,7 @@
     "payload": "[88,48,48,49,78,44,48,49,48,51,56,46,48,44,48,48,49,49,55,57,48,48,48,49,48,48,50,52,48,48,52,57,89]",
     "payloadType": "bin",
     "x": 310,
-    "y": 720,
+    "y": 740,
     "wires": [
       [
         "38739a445bf944cb"
@@ -1245,7 +1245,7 @@
     "statusVal": "payload",
     "statusType": "auto",
     "x": 280,
-    "y": 820,
+    "y": 840,
     "wires": []
   },
   {
@@ -1383,15 +1383,15 @@
     "id": "222641fe3bd93bb3",
     "type": "function",
     "z": "d029c8e0ac0fd4d4",
-    "name": "function 1",
-    "func": "let data = msg.payload;\nlet plc_date = data[1] * 65536 + data[0];   // PLC YYYYMMDD 연월일(16진수)\nlet product_name = data[2];   // 제품명\nlet count = data[7];          // 생산수량 현재값\nlet bpm = data[9];            // 생산속도 설정값\nlet temp1 = data[10];         // 접착 전면온도 현재값\nlet temp2 = data[11];         // 접착 후면온도 현재값\n\n\n// PLC에서 받은 날짜 데이터를 변환\nfunction dateParsing(plc_date) {\n    // 16진수 값을 문자열로 변환하고 뒤에서 8자리를 추출\n    const hexString = plc_date.toString(16);\n    const dateString = hexString.slice(-8);\n\n    // 년, 월, 일을 추출\n    const year = dateString.slice(0, 4);\n    const month = dateString.slice(4, 6);\n    const day = dateString.slice(6, 8);\n\n    // YYYYMMDD 형식으로 반환\n    return year + month + day;\n}\n\nconst result = dateParsing(plc_date);\n\nlet year = result.slice(0, 4);  // 연도\nlet mmdd = result.slice(4, 8);  // 월일\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0062\",\n    \"year\": year,\n    \"date\": mmdd,\n    \"product\": product_name,\n    \"count\": count,\n    \"bpm\": bpm,\n    \"temp1\": temp1,\n    \"temp2\": temp2\n};\n\nreturn msg;",
+    "name": "parsing",
+    "func": "let data = msg.payload;\nlet plc_date = data[1] * 65536 + data[0];   // PLC YYYYMMDD 연월일(16진수)\nlet product = data[2];        // 제품\nlet count = data[7];          // 생산수량 현재값\nlet bpm = data[9];            // 생산속도 설정값\nlet temp1 = data[10];         // 접착 전면온도 현재값\nlet temp2 = data[11];         // 접착 후면온도 현재값\n\n\n// PLC에서 받은 날짜 데이터를 변환\nfunction dateParsing(plc_date) {\n    // 16진수 값을 문자열로 변환하고 뒤에서 8자리를 추출\n    const hexString = plc_date.toString(16);\n    const dateString = hexString.slice(-8);\n\n    // 년, 월, 일을 추출\n    const year = dateString.slice(0, 4);\n    const month = dateString.slice(4, 6);\n    const day = dateString.slice(6, 8);\n\n    // YYYYMMDD 형식으로 반환\n    return year + month + day;\n}\n\nconst result = dateParsing(plc_date);\n\nlet year = result.slice(0, 4);  // 연도\nlet mmdd = result.slice(4, 8);  // 월일\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0062\",\n    \"year\": year,\n    \"date\": mmdd,\n    \"product\": product,\n    \"count\": count,\n    \"bpm\": bpm,\n    \"temp1\": temp1,\n    \"temp2\": temp2\n};\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
     "x": 500,
-    "y": 1020,
+    "y": 1080,
     "wires": [
       [
         "6f7c55cf0cf8ccdf"
@@ -1411,7 +1411,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 660,
-    "y": 1020,
+    "y": 1080,
     "wires": []
   },
   {
