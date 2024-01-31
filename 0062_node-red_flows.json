@@ -829,7 +829,8 @@
     "wires": [
       [
         "8f118221b3b5b9ab",
-        "20a0df07125ac9ed"
+        "20a0df07125ac9ed",
+        "44b53fa0f0c4541b"
       ],
       []
     ]
@@ -1393,6 +1394,41 @@
     "statusType": "auto",
     "x": 520,
     "y": 980,
+    "wires": []
+  },
+  {
+    "id": "44b53fa0f0c4541b",
+    "type": "function",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "function 1",
+    "func": "let date = msg.payload;\nlet product = date[2];\nproduct = String.fromCharCode(parseInt(product, 16));\n\nmsg.payload = \"제품명 : \" + product;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 500,
+    "y": 1060,
+    "wires": [
+      [
+        "c05598559b12d99d"
+      ]
+    ]
+  },
+  {
+    "id": "c05598559b12d99d",
+    "type": "debug",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "debug 34",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 640,
+    "y": 1060,
     "wires": []
   },
   {
