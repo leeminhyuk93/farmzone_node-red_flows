@@ -1401,7 +1401,7 @@
     "type": "function",
     "z": "d029c8e0ac0fd4d4",
     "name": "function 1",
-    "func": "let date = msg.payload;\nlet product = date[2];\n//product = String.fromCharCode(parseInt(product, 16));\n\nmsg.payload = \"제품명 : \" + product;\n\nreturn msg;",
+    "func": "let date = msg.payload;\nlet product = date[2];\nproduct = String.fromCharCode(product);\n\nmsg.payload = \"제품명 : \" + product;\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
