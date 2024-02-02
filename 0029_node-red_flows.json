@@ -746,6 +746,155 @@
     ]
   },
   {
+    "id": "6d773cea86de91e6",
+    "type": "comment",
+    "z": "8869509f0a5a1c90",
+    "name": "금속검출기7",
+    "info": "컨버터 : HTA _ EasyLink\nDB에 저장되어 있는 데이터를 전송",
+    "x": 90,
+    "y": 880,
+    "wires": []
+  },
+  {
+    "id": "b247962b049b59fb",
+    "type": "inject",
+    "z": "8869509f0a5a1c90",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 100,
+    "y": 920,
+    "wires": [
+      [
+        "aaf155396506646b"
+      ]
+    ]
+  },
+  {
+    "id": "aaf155396506646b",
+    "type": "function",
+    "z": "8869509f0a5a1c90",
+    "name": "Select query",
+    "func": "msg.topic = 'SELECT * FROM fz_shm.mb1_word WHERE (wdate BETWEEN date_add(now(), interval -60 second) AND now()) ORDER BY wdate DESC LIMIT 1';\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 270,
+    "y": 920,
+    "wires": [
+      [
+        "835711c4e2aab378"
+      ]
+    ]
+  },
+  {
+    "id": "835711c4e2aab378",
+    "type": "mysql",
+    "z": "8869509f0a5a1c90",
+    "mydb": "8d94a23b2f33e75c",
+    "name": "",
+    "x": 440,
+    "y": 920,
+    "wires": [
+      [
+        "a6a44bfe8bfc16b9"
+      ]
+    ]
+  },
+  {
+    "id": "a6a44bfe8bfc16b9",
+    "type": "function",
+    "z": "8869509f0a5a1c90",
+    "name": "send api",
+    "func": "var adr = msg.payload[0].adr;\nvar temperature = msg.payload[0].temp;\nvar humidity = msg.payload[0].humid;\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.payload = {\n    \"kind\": \"5\",\n    \"ccode\": \"0099\",\n    \"deviceId\": adr,\n    \"temper\": temperature,\n    \"hum\": humidity,\n    \"regdate\": formattedDate,\n    \"ip\": \"121.165.255.217\"\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 600,
+    "y": 920,
+    "wires": [
+      [
+        "5c34eea31f644fb4"
+      ]
+    ]
+  },
+  {
+    "id": "d5bf3a2256022a14",
+    "type": "http request",
+    "z": "8869509f0a5a1c90",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/hac_sensor/get_pos_sensor5_data",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 770,
+    "y": 920,
+    "wires": [
+      [
+        "12cd5838da532ca2"
+      ]
+    ]
+  },
+  {
+    "id": "12cd5838da532ca2",
+    "type": "debug",
+    "z": "8869509f0a5a1c90",
+    "name": "debug 45",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 920,
+    "y": 920,
+    "wires": []
+  },
+  {
+    "id": "5c34eea31f644fb4",
+    "type": "debug",
+    "z": "8869509f0a5a1c90",
+    "name": "debug 46",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 760,
+    "y": 960,
+    "wires": []
+  },
+  {
     "id": "960c4071e36bcd53",
     "type": "inject",
     "z": "fe49faf8561dd1cd",
@@ -2754,7 +2903,7 @@
     "type": "function",
     "z": "80c430f064a697a6",
     "name": "Parsing",
-    "func": "let out_chlorine = \"\"; // 외부 고농도\nlet in_chlorine = \"\"; // 내부 고농도\nlet residual_chlorine = \"\"; // 잔류염소\nlet hz = 0; // 세��속도\n\nconst dataArray = msg.payload;\n\nfor (let i = 0; i < 4; i++) {\n    const deviceId = msg.payload[i][0];\n    const value = msg.payload[i][1];\n\n    switch (deviceId) {\n        case 1:\n            out_chlorine = value;\n            break;\n\n        case 2:\n            in_chlorine = value;\n            break;\n\n        case 3:\n            residual_chlorine = value;\n            break;\n\n        case 4:\n            hz = value;\n            break;\n    }\n}\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\nmsg.payload = {\n    \"ccode\": \"0099\",\n    \"scode\": \"150\",\n    \"out_chlorine\": out_chlorine,\n    \"in_chlorine\": in_chlorine,\n    \"residual_chlorine\": residual_chlorine,\n    \"rpm\": hz\n};\n\nreturn msg;",
+    "func": "let out_chlorine = \"\"; // 외부 고농도\nlet in_chlorine = \"\"; // 내부 고농도\nlet residual_chlorine = \"\"; // 잔류염소\nlet hz = 0; // 세척속도\n\nconst dataArray = msg.payload;\n\nfor (let i = 0; i < 4; i++) {\n    const deviceId = msg.payload[i][0];\n    const value = msg.payload[i][1];\n\n    switch (deviceId) {\n        case 1:\n            out_chlorine = value;\n            break;\n\n        case 2:\n            in_chlorine = value;\n            break;\n\n        case 3:\n            residual_chlorine = value;\n            break;\n\n        case 4:\n            hz = value;\n            break;\n    }\n}\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\nmsg.payload = {\n    \"ccode\": \"0099\",\n    \"scode\": \"150\",\n    \"out_chlorine\": out_chlorine,\n    \"in_chlorine\": in_chlorine,\n    \"residual_chlorine\": residual_chlorine,\n    \"rpm\": hz\n};\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
