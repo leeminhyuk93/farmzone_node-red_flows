@@ -789,7 +789,7 @@
     "type": "function",
     "z": "8869509f0a5a1c90",
     "name": "Select query",
-    "func": "msg.topic = 'SELECT * FROM fz_shm.mb1_word WHERE (wdate BETWEEN date_add(now(), interval -60 second) AND now()) ORDER BY wdate DESC LIMIT 1';\n\nreturn msg;",
+    "func": "msg.topic = 'SELECT * FROM fz_shm.mb1_word WHERE (date BETWEEN date_add(now(), interval -60 second) AND now()) ORDER BY date DESC LIMIT 1';\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
