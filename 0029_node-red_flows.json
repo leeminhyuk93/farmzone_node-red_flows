@@ -749,17 +749,17 @@
     "id": "6d773cea86de91e6",
     "type": "comment",
     "z": "8869509f0a5a1c90",
-    "name": "금속검출기7",
-    "info": "컨버터 : HTA _ EasyLink\nDB에 저장되어 있는 데이터를 전송",
-    "x": 90,
-    "y": 880,
+    "name": "7번 금속검출기 데이터 수집 및 클라우드 전송 방식",
+    "info": "[ ⊙7번 금속검출기 데이터 수집 및 클라우드 전송 방식 ]\n\n[ 1. 금속검출기 검출 시 데이터 저장 방식 ]\n금속검출기에서 검출 시 접점신호를 HTA 컨버터\n장치로 받아서 HTA EasyLink 프로그램을 \n이용해 로컬PC mysql DB에 저장시키는 방식\n\n[ 2. 검출된 데이터를 노드레드에서 클라우드 서버로 전송하는 방식 ]\n노드레드에서는\nmysql DB에서 7번 금속검출기 데이터가 \n저장되어 있는 'mb1_word' 테이블을\n0.5초마다 조회해서 'fz_idx' 컬럼 데이터를\n조회한 다음 1초 이전의 'fz_idx' 컬럼 \n데이터와 비교해서 데이터가 다르면\n클라우드 서버로 전송하는 방식이다.\n(※0.5초마다 http request 요청을 하면 \n클라우드 서버의 트래픽이 많아지기 때문에\n이를 방지하기 위해 'switch'노드를 사용하여\n\"검출\"시에만 http request 요청하도록 셋팅함)\n\n\n※ 'mb1_word' 테이블을 조회하는 노드가 2개 있다.\n\n▶첫번째 노드 : 1초 이전의 'fz_idx' 컬럼 데이터를 조회한 값을 현재 'fz_idx' 컬럼 데이터와\n              비교하여 다르면 클라우드 서버로 전송하는 노드\n              ( 현재 'fz_idx' 컬럼 데이터와 1초 이전의 'fz_idx' 컬럼 데이터가 같을 경우\n             '검출되지 않았다'로 판단으로 클라우드 서버에 데이터를 전송하지 않음)\n\n▶두번째 노드 : 금속검출 시  'mb1_word' 테이블에 저장되는 'fz_idx' 컬럼 데이터를\n               1초 이후에 조회해서 'mb1_word_count' 플로우 변수에 데이터를 저장하여\n               첫번째 노드에서 현재 'fz_idx' 컬럼 데이터와 비교할 수 있는 역할을 한다.",
+    "x": 210,
+    "y": 1540,
     "wires": []
   },
   {
     "id": "b247962b049b59fb",
     "type": "inject",
     "z": "8869509f0a5a1c90",
-    "name": "",
+    "name": "0.5 sec",
     "props": [
       {
         "p": "payload"
@@ -769,7 +769,7 @@
         "vt": "str"
       }
     ],
-    "repeat": "",
+    "repeat": "0.5",
     "crontab": "",
     "once": false,
     "onceDelay": 0.1,
@@ -777,10 +777,11 @@
     "payload": "",
     "payloadType": "date",
     "x": 100,
-    "y": 920,
+    "y": 1580,
     "wires": [
       [
-        "aaf155396506646b"
+        "aaf155396506646b",
+        "7ed14a2051f1db2e"
       ]
     ]
   },
@@ -789,14 +790,14 @@
     "type": "function",
     "z": "8869509f0a5a1c90",
     "name": "Select query",
-    "func": "msg.topic = 'SELECT * FROM fz_shm.mb1_word WHERE (date BETWEEN date_add(now(), interval -60 second) AND now()) ORDER BY date DESC LIMIT 1';\n\nreturn msg;",
+    "func": "msg.topic = 'SELECT fz_idx FROM fz_shm.mb1_word ORDER BY date DESC LIMIT 1';\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
     "x": 270,
-    "y": 920,
+    "y": 1580,
     "wires": [
       [
         "835711c4e2aab378"
@@ -810,7 +811,7 @@
     "mydb": "8d94a23b2f33e75c",
     "name": "",
     "x": 440,
-    "y": 920,
+    "y": 1580,
     "wires": [
       [
         "a6a44bfe8bfc16b9"
@@ -822,17 +823,17 @@
     "type": "function",
     "z": "8869509f0a5a1c90",
     "name": "send api",
-    "func": "var adr = msg.payload[0].adr;\nvar temperature = msg.payload[0].temp;\nvar humidity = msg.payload[0].humid;\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nvar now = new Date();\nvar formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.payload = {\n    \"kind\": \"5\",\n    \"ccode\": \"0099\",\n    \"deviceId\": adr,\n    \"temper\": temperature,\n    \"hum\": humidity,\n    \"regdate\": formattedDate,\n    \"ip\": \"121.165.255.217\"\n};\n\nreturn msg;",
+    "func": "let data = msg.payload[0].fz_idx;   // 현재 데이터\nlet prev_mb1_word = flow.get(\"prev_mb1_word\");  // 1초 이전의 데이터\n\nif (data == prev_mb1_word) {  //검출 안됨 : 현재 데이터와 1초 이전의 데이터가 같을 경우\n    msg.payload = 1;\n    return msg;\n    \n} else {         //검출 : 현재 데이터와 1초 이전의 데이터가 다를 경우\n    msg.payload = 2;\n    return msg;\n}\n",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
     "x": 600,
-    "y": 920,
+    "y": 1580,
     "wires": [
       [
-        "5c34eea31f644fb4"
+        "1e14d5147019c6b7"
       ]
     ]
   },
@@ -844,7 +845,7 @@
     "method": "POST",
     "ret": "txt",
     "paytoqs": "ignore",
-    "url": "http://pc.smarthaccpman.com/hac_sensor/get_pos_sensor5_data",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0099/get_detection",
     "tls": "",
     "persist": false,
     "proxy": "",
@@ -852,8 +853,8 @@
     "authType": "",
     "senderr": false,
     "headers": [],
-    "x": 770,
-    "y": 920,
+    "x": 1050,
+    "y": 1600,
     "wires": [
       [
         "12cd5838da532ca2"
@@ -873,8 +874,8 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "auto",
-    "x": 920,
-    "y": 920,
+    "x": 1200,
+    "y": 1600,
     "wires": []
   },
   {
@@ -882,6 +883,293 @@
     "type": "debug",
     "z": "8869509f0a5a1c90",
     "name": "debug 46",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 1060,
+    "y": 1540,
+    "wires": []
+  },
+  {
+    "id": "56af949419182ec6",
+    "type": "function",
+    "z": "8869509f0a5a1c90",
+    "name": "Select query",
+    "func": "msg.topic = 'SELECT fz_idx FROM fz_shm.mb1_word ORDER BY date DESC LIMIT 1';\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 430,
+    "y": 1740,
+    "wires": [
+      [
+        "963a46fe756dc4e6"
+      ]
+    ]
+  },
+  {
+    "id": "963a46fe756dc4e6",
+    "type": "mysql",
+    "z": "8869509f0a5a1c90",
+    "mydb": "8d94a23b2f33e75c",
+    "name": "",
+    "x": 600,
+    "y": 1740,
+    "wires": [
+      [
+        "e55c04dc15098363"
+      ]
+    ]
+  },
+  {
+    "id": "e55c04dc15098363",
+    "type": "function",
+    "z": "8869509f0a5a1c90",
+    "name": "1초 이전의 데이터",
+    "func": "let prev_mb1_word = msg.payload[0].fz_idx;  // 'mb1_word' 테이블에 저장되어 있는 데이터 개수\n\nflow.set(\"prev_mb1_word\", prev_mb1_word);  //현재 플로우에서 전역으로 사용 할 수 있는 변수\n\nmsg.payload = prev_mb1_word;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 790,
+    "y": 1740,
+    "wires": [
+      [
+        "6d0a86519aa208cd"
+      ]
+    ]
+  },
+  {
+    "id": "6d0a86519aa208cd",
+    "type": "debug",
+    "z": "8869509f0a5a1c90",
+    "name": "debug 47",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 960,
+    "y": 1740,
+    "wires": []
+  },
+  {
+    "id": "7ed14a2051f1db2e",
+    "type": "delay",
+    "z": "8869509f0a5a1c90",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "1",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "outputs": 1,
+    "x": 260,
+    "y": 1740,
+    "wires": [
+      [
+        "56af949419182ec6"
+      ]
+    ]
+  },
+  {
+    "id": "981022f42ceae149",
+    "type": "comment",
+    "z": "8869509f0a5a1c90",
+    "name": "1초 이전의 'mb1_word' 테이블 데이터",
+    "info": "'prev_mb1_word' 변수 : 1초 이전의 'mb1_word' 테이블 데이터",
+    "x": 170,
+    "y": 1700,
+    "wires": []
+  },
+  {
+    "id": "d67bf5d5add0200a",
+    "type": "function",
+    "z": "8869509f0a5a1c90",
+    "name": "검출 안됨",
+    "func": "msg.payload = \"검출 안됨\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 900,
+    "y": 1540,
+    "wires": [
+      [
+        "5c34eea31f644fb4"
+      ]
+    ]
+  },
+  {
+    "id": "1e14d5147019c6b7",
+    "type": "switch",
+    "z": "8869509f0a5a1c90",
+    "name": "",
+    "property": "payload",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "1",
+        "vt": "num"
+      },
+      {
+        "t": "eq",
+        "v": "2",
+        "vt": "num"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 750,
+    "y": 1580,
+    "wires": [
+      [
+        "d67bf5d5add0200a"
+      ],
+      [
+        "bf66b22491092483"
+      ]
+    ]
+  },
+  {
+    "id": "bf66b22491092483",
+    "type": "function",
+    "z": "8869509f0a5a1c90",
+    "name": "검출",
+    "func": "msg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0099\",\n    \"scode\": \"151\",\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 890,
+    "y": 1600,
+    "wires": [
+      [
+        "d5bf3a2256022a14",
+        "50fe5ca93e572787"
+      ]
+    ]
+  },
+  {
+    "id": "50fe5ca93e572787",
+    "type": "debug",
+    "z": "8869509f0a5a1c90",
+    "name": "debug 48",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 1040,
+    "y": 1640,
+    "wires": []
+  },
+  {
+    "id": "102c0357b7b81fb6",
+    "type": "comment",
+    "z": "8869509f0a5a1c90",
+    "name": "금속검출기 7대",
+    "info": "1~6번 장비 제조사 : 나우시스템즈(RS232, 솔내 컨버터)\n7번 장비 제조사 : 스퀘어 (접점 방식, HTA EasyLink)",
+    "x": 100,
+    "y": 900,
+    "wires": []
+  },
+  {
+    "id": "93ce12536496ab01",
+    "type": "function",
+    "z": "8869509f0a5a1c90",
+    "name": "send api",
+    "func": "var ccode = \"0099\";\nvar scode = \"144\";\nvar type = \"1\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nvar detected = false;\n\nif (type == \"1\" && (res.length % 34) == 0) {\n    // 나우시스템즈\n    if (paseData[0] == ' ' && paseData[32] == '\\r' && paseData[33] == '\\n') {\n        if ((paseData[1] + paseData[2]) == \"80\" || (paseData[1] + paseData[2]) == \"81\") {\n            detected = true;\n        }\n    }\n\n} else if (type == \"1\" && ((res.length % 32) == 0)) {\n    detected = true;\n}\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode\n    };\n\n    return msg;\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 280,
+    "y": 940,
+    "wires": [
+      [
+        "0474d20952188cfe"
+      ]
+    ]
+  },
+  {
+    "id": "9d6c10252845d4e9",
+    "type": "tcp in",
+    "z": "8869509f0a5a1c90",
+    "name": "나우시스템즈_1",
+    "server": "server",
+    "host": "",
+    "port": "5001",
+    "datamode": "stream",
+    "datatype": "buffer",
+    "newline": "",
+    "topic": "",
+    "trim": false,
+    "base64": false,
+    "tls": "",
+    "x": 100,
+    "y": 940,
+    "wires": [
+      [
+        "93ce12536496ab01",
+        "cd03604ad2b49cd1"
+      ]
+    ]
+  },
+  {
+    "id": "0474d20952188cfe",
+    "type": "http request",
+    "z": "8869509f0a5a1c90",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/hac_ccp_data/get_pos_detector",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 450,
+    "y": 940,
+    "wires": [
+      [
+        "c324c926eccb864f"
+      ]
+    ]
+  },
+  {
+    "id": "c324c926eccb864f",
+    "type": "debug",
+    "z": "8869509f0a5a1c90",
+    "name": "debug 49",
     "active": true,
     "tosidebar": true,
     "console": false,
@@ -890,9 +1178,620 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "auto",
-    "x": 760,
-    "y": 960,
+    "x": 600,
+    "y": 940,
     "wires": []
+  },
+  {
+    "id": "a4b891947d7b0a0e",
+    "type": "function",
+    "z": "8869509f0a5a1c90",
+    "name": "send api",
+    "func": "var ccode = \"0099\";\nvar scode = \"145\";\nvar type = \"1\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nvar detected = false;\n\nif (type == \"1\" && (res.length % 34) == 0) {\n    // 나우시스템즈\n    if (paseData[0] == ' ' && paseData[32] == '\\r' && paseData[33] == '\\n') {\n        if ((paseData[1] + paseData[2]) == \"80\" || (paseData[1] + paseData[2]) == \"81\") {\n            detected = true;\n        }\n    }\n\n} else if (type == \"1\" && ((res.length % 32) == 0)) {\n    detected = true;\n}\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode\n    };\n\n    return msg;\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 280,
+    "y": 1040,
+    "wires": [
+      [
+        "ec9faa94702fa1cb"
+      ]
+    ]
+  },
+  {
+    "id": "de945765ab96d6c6",
+    "type": "tcp in",
+    "z": "8869509f0a5a1c90",
+    "name": "나우시스템즈_2",
+    "server": "server",
+    "host": "",
+    "port": "5002",
+    "datamode": "stream",
+    "datatype": "buffer",
+    "newline": "",
+    "topic": "",
+    "trim": false,
+    "base64": false,
+    "tls": "",
+    "x": 100,
+    "y": 1040,
+    "wires": [
+      [
+        "a4b891947d7b0a0e",
+        "67645b85e3e243ba"
+      ]
+    ]
+  },
+  {
+    "id": "ec9faa94702fa1cb",
+    "type": "http request",
+    "z": "8869509f0a5a1c90",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/hac_ccp_data/get_pos_detector",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 450,
+    "y": 1040,
+    "wires": [
+      [
+        "86ddb09d4ed4dfca"
+      ]
+    ]
+  },
+  {
+    "id": "86ddb09d4ed4dfca",
+    "type": "debug",
+    "z": "8869509f0a5a1c90",
+    "name": "debug 50",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 600,
+    "y": 1040,
+    "wires": []
+  },
+  {
+    "id": "0e08cbfe0e8cdd43",
+    "type": "function",
+    "z": "8869509f0a5a1c90",
+    "name": "send api",
+    "func": "var ccode = \"0099\";\nvar scode = \"146\";\nvar type = \"1\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nvar detected = false;\n\nif (type == \"1\" && (res.length % 34) == 0) {\n    // 나우시스템즈\n    if (paseData[0] == ' ' && paseData[32] == '\\r' && paseData[33] == '\\n') {\n        if ((paseData[1] + paseData[2]) == \"80\" || (paseData[1] + paseData[2]) == \"81\") {\n            detected = true;\n        }\n    }\n\n} else if (type == \"1\" && ((res.length % 32) == 0)) {\n    detected = true;\n}\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode\n    };\n\n    return msg;\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 280,
+    "y": 1140,
+    "wires": [
+      [
+        "3bc4af9f068e8582"
+      ]
+    ]
+  },
+  {
+    "id": "56987fe214c54820",
+    "type": "tcp in",
+    "z": "8869509f0a5a1c90",
+    "name": "나우시스템즈_3",
+    "server": "server",
+    "host": "",
+    "port": "5003",
+    "datamode": "stream",
+    "datatype": "buffer",
+    "newline": "",
+    "topic": "",
+    "trim": false,
+    "base64": false,
+    "tls": "",
+    "x": 100,
+    "y": 1140,
+    "wires": [
+      [
+        "0e08cbfe0e8cdd43",
+        "a7b1d4f40ea4677a"
+      ]
+    ]
+  },
+  {
+    "id": "3bc4af9f068e8582",
+    "type": "http request",
+    "z": "8869509f0a5a1c90",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/hac_ccp_data/get_pos_detector",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 450,
+    "y": 1140,
+    "wires": [
+      [
+        "3165feb6fb0efe40"
+      ]
+    ]
+  },
+  {
+    "id": "3165feb6fb0efe40",
+    "type": "debug",
+    "z": "8869509f0a5a1c90",
+    "name": "debug 51",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 600,
+    "y": 1140,
+    "wires": []
+  },
+  {
+    "id": "5512a40a02d50734",
+    "type": "function",
+    "z": "8869509f0a5a1c90",
+    "name": "send api",
+    "func": "var ccode = \"0099\";\nvar scode = \"147\";\nvar type = \"1\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nvar detected = false;\n\nif (type == \"1\" && (res.length % 34) == 0) {\n    // 나우시스템즈\n    if (paseData[0] == ' ' && paseData[32] == '\\r' && paseData[33] == '\\n') {\n        if ((paseData[1] + paseData[2]) == \"80\" || (paseData[1] + paseData[2]) == \"81\") {\n            detected = true;\n        }\n    }\n\n} else if (type == \"1\" && ((res.length % 32) == 0)) {\n    detected = true;\n}\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode\n    };\n\n    return msg;\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 280,
+    "y": 1240,
+    "wires": [
+      [
+        "e634b7df876df42b"
+      ]
+    ]
+  },
+  {
+    "id": "334a8f4cb5b24fc1",
+    "type": "tcp in",
+    "z": "8869509f0a5a1c90",
+    "name": "나우시스템즈_4",
+    "server": "server",
+    "host": "",
+    "port": "5004",
+    "datamode": "stream",
+    "datatype": "buffer",
+    "newline": "",
+    "topic": "",
+    "trim": false,
+    "base64": false,
+    "tls": "",
+    "x": 100,
+    "y": 1240,
+    "wires": [
+      [
+        "5512a40a02d50734",
+        "b088bdeec40d9835"
+      ]
+    ]
+  },
+  {
+    "id": "e634b7df876df42b",
+    "type": "http request",
+    "z": "8869509f0a5a1c90",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/hac_ccp_data/get_pos_detector",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 450,
+    "y": 1240,
+    "wires": [
+      [
+        "a33e289d56727cfc"
+      ]
+    ]
+  },
+  {
+    "id": "a33e289d56727cfc",
+    "type": "debug",
+    "z": "8869509f0a5a1c90",
+    "name": "debug 52",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 600,
+    "y": 1240,
+    "wires": []
+  },
+  {
+    "id": "e1699e2831c13631",
+    "type": "function",
+    "z": "8869509f0a5a1c90",
+    "name": "send api",
+    "func": "var ccode = \"0099\";\nvar scode = \"148\";\nvar type = \"1\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nvar detected = false;\n\nif (type == \"1\" && (res.length % 34) == 0) {\n    // 나우시스템즈\n    if (paseData[0] == ' ' && paseData[32] == '\\r' && paseData[33] == '\\n') {\n        if ((paseData[1] + paseData[2]) == \"80\" || (paseData[1] + paseData[2]) == \"81\") {\n            detected = true;\n        }\n    }\n\n} else if (type == \"1\" && ((res.length % 32) == 0)) {\n    detected = true;\n}\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode\n    };\n\n    return msg;\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 280,
+    "y": 1340,
+    "wires": [
+      [
+        "30b37daef82361aa"
+      ]
+    ]
+  },
+  {
+    "id": "c66ba3ff10ae34ab",
+    "type": "tcp in",
+    "z": "8869509f0a5a1c90",
+    "name": "나우시스템즈_5",
+    "server": "server",
+    "host": "",
+    "port": "5005",
+    "datamode": "stream",
+    "datatype": "buffer",
+    "newline": "",
+    "topic": "",
+    "trim": false,
+    "base64": false,
+    "tls": "",
+    "x": 100,
+    "y": 1340,
+    "wires": [
+      [
+        "e1699e2831c13631",
+        "1b85de1a99d7bf3c"
+      ]
+    ]
+  },
+  {
+    "id": "30b37daef82361aa",
+    "type": "http request",
+    "z": "8869509f0a5a1c90",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/hac_ccp_data/get_pos_detector",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 450,
+    "y": 1340,
+    "wires": [
+      [
+        "fe901eeb2f56b59f"
+      ]
+    ]
+  },
+  {
+    "id": "fe901eeb2f56b59f",
+    "type": "debug",
+    "z": "8869509f0a5a1c90",
+    "name": "debug 53",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 600,
+    "y": 1340,
+    "wires": []
+  },
+  {
+    "id": "8af30e3fa023b4b0",
+    "type": "function",
+    "z": "8869509f0a5a1c90",
+    "name": "send api",
+    "func": "var ccode = \"0099\";\nvar scode = \"149\";\nvar type = \"1\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nvar detected = false;\n\nif (type == \"1\" && (res.length % 34) == 0) {\n    // 나우시스템즈\n    if (paseData[0] == ' ' && paseData[32] == '\\r' && paseData[33] == '\\n') {\n        if ((paseData[1] + paseData[2]) == \"80\" || (paseData[1] + paseData[2]) == \"81\") {\n            detected = true;\n        }\n    }\n\n} else if (type == \"1\" && ((res.length % 32) == 0)) {\n    detected = true;\n}\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode\n    };\n\n    return msg;\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 280,
+    "y": 1440,
+    "wires": [
+      [
+        "64eab40100da2187"
+      ]
+    ]
+  },
+  {
+    "id": "1197533c9cf62b0d",
+    "type": "tcp in",
+    "z": "8869509f0a5a1c90",
+    "name": "나우시스템즈_6",
+    "server": "server",
+    "host": "",
+    "port": "5006",
+    "datamode": "stream",
+    "datatype": "buffer",
+    "newline": "",
+    "topic": "",
+    "trim": false,
+    "base64": false,
+    "tls": "",
+    "x": 100,
+    "y": 1440,
+    "wires": [
+      [
+        "8af30e3fa023b4b0",
+        "cc05ae16577df7d2"
+      ]
+    ]
+  },
+  {
+    "id": "64eab40100da2187",
+    "type": "http request",
+    "z": "8869509f0a5a1c90",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/hac_ccp_data/get_pos_detector",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 450,
+    "y": 1440,
+    "wires": [
+      [
+        "d0595b6431718eff"
+      ]
+    ]
+  },
+  {
+    "id": "d0595b6431718eff",
+    "type": "debug",
+    "z": "8869509f0a5a1c90",
+    "name": "debug 54",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 600,
+    "y": 1440,
+    "wires": []
+  },
+  {
+    "id": "cd03604ad2b49cd1",
+    "type": "debug",
+    "z": "8869509f0a5a1c90",
+    "name": "debug 55",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 280,
+    "y": 900,
+    "wires": []
+  },
+  {
+    "id": "67645b85e3e243ba",
+    "type": "debug",
+    "z": "8869509f0a5a1c90",
+    "name": "debug 56",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 280,
+    "y": 1000,
+    "wires": []
+  },
+  {
+    "id": "a7b1d4f40ea4677a",
+    "type": "debug",
+    "z": "8869509f0a5a1c90",
+    "name": "debug 57",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 280,
+    "y": 1100,
+    "wires": []
+  },
+  {
+    "id": "b088bdeec40d9835",
+    "type": "debug",
+    "z": "8869509f0a5a1c90",
+    "name": "debug 58",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 280,
+    "y": 1200,
+    "wires": []
+  },
+  {
+    "id": "1b85de1a99d7bf3c",
+    "type": "debug",
+    "z": "8869509f0a5a1c90",
+    "name": "debug 59",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 280,
+    "y": 1300,
+    "wires": []
+  },
+  {
+    "id": "cc05ae16577df7d2",
+    "type": "debug",
+    "z": "8869509f0a5a1c90",
+    "name": "debug 60",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 280,
+    "y": 1400,
+    "wires": []
+  },
+  {
+    "id": "6233b1d8ea66aa2e",
+    "type": "function",
+    "z": "8869509f0a5a1c90",
+    "name": "send api",
+    "func": "var ccode = \"0099\";\nvar scode = \"148\";\nvar type = \"1\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nvar detected = false;\n\nif (type == \"1\" && (res.length % 34) == 0) {\n    // 나우시스템즈\n    if (paseData[0] == ' ' && paseData[32] == '\\r' && paseData[33] == '\\n') {\n        if ((paseData[1] + paseData[2]) == \"80\" || (paseData[1] + paseData[2]) == \"81\") {\n            detected = true;\n        }\n    }\n\n} else if (type == \"1\" && ((res.length % 32) == 0)) {\n    detected = true;\n}\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode\n    };\n\n    return msg;\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 280,
+    "y": 2020,
+    "wires": [
+      [
+        "1b42f3a65b3826ee"
+      ]
+    ]
+  },
+  {
+    "id": "1b42f3a65b3826ee",
+    "type": "http request",
+    "z": "8869509f0a5a1c90",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/hac_ccp_data/get_pos_detector",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 450,
+    "y": 2020,
+    "wires": [
+      [
+        "48aaf71608337a2f"
+      ]
+    ]
+  },
+  {
+    "id": "48aaf71608337a2f",
+    "type": "debug",
+    "z": "8869509f0a5a1c90",
+    "name": "debug 61",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 600,
+    "y": 2020,
+    "wires": []
+  },
+  {
+    "id": "c94cf4fcea777925",
+    "type": "inject",
+    "z": "8869509f0a5a1c90",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 220,
+    "y": 2120,
+    "wires": [
+      [
+        "6233b1d8ea66aa2e"
+      ]
+    ]
   },
   {
     "id": "960c4071e36bcd53",
