@@ -750,7 +750,7 @@
     "type": "comment",
     "z": "8869509f0a5a1c90",
     "name": "7번 금속검출기 데이터 수집 및 클라우드 전송 방식",
-    "info": "[ ⊙7번 금속검출기 데이터 수집 및 클라우드 전송 방식 ]\n\n[ 1. 금속검출기 검출 시 데이터 저장 방식 ]\n금속검출기에서 검출 시 접점신호를 HTA 컨버터\n장치로 받아서 HTA EasyLink 프로그램을 \n이용해 로컬PC mysql DB에 저장시키는 방식\n\n[ 2. 검출된 데이터를 노드레드에서 클라우드 서버로 전송하는 방식 ]\n노드레드에서는\nmysql DB에서 7번 금속검출기 데이터가 \n저장되어 있는 'mb1_word' 테이블을\n0.5초마다 조회해서 'fz_idx' 컬럼 데이터를\n조회한 다음 1초 이전의 'fz_idx' 컬럼 \n데이터와 비교해서 데이터가 다르면\n클라우드 서버로 전송하는 방식이다.\n(※0.5초마다 http request 요청을 하면 \n클라우드 서버의 트래픽이 많아지기 때문에\n이를 방지하기 위해 'switch'노드를 사용하여\n\"검출\"시에만 http request 요청하도록 셋팅함)\n\n\n※ 'mb1_word' 테이블을 조회하는 노드가 2개 있다.\n\n▶첫번째 노드 : 1초 이전의 'fz_idx' 컬럼 데이터를 조회한 값을 현재 'fz_idx' 컬럼 데이터와\n              비교하여 다르면 클라우드 서버로 전송하는 노드\n              ( 현재 'fz_idx' 컬럼 데이터와 1초 이전의 'fz_idx' 컬럼 데이터가 같을 경우\n             '검출되지 않았다'로 판단으로 클라우드 서버에 데이터를 전송하지 않음)\n\n▶두번째 노드 : 금속검출 시  'mb1_word' 테이블에 저장되는 'fz_idx' 컬럼 데이터를\n               1초 이후에 조회해서 'mb1_word_count' 플로우 변수에 데이터를 저장하여\n               첫번째 노드에서 현재 'fz_idx' 컬럼 데이터와 비교할 수 있는 역할을 한다.",
+    "info": "[ ⊙7번 금속검출기 데이터 수집 및 클라우드 전송 방식 ]\n\n[ 1. 금속검출기 검출 시 데이터 저장 방식 ]\n금속검출기에서 검출 시 접점신호를 HTA 컨버터\n장치로 받아서 HTA EasyLink 프로그램을 \n이용해 로컬PC mysql DB에 저장시키는 방식\n\n[ 2. 검출된 데이터를 노드레드에서 클라우드 서버로 전송하는 방식 ]\n노드레드에서는\nmysql DB에서 7번 금속검출기 데이터가 \n저장되어 있는 'mb1_word' 테이블을\n0.5초마다 조회해서 'fz_idx' 컬럼 데이터를\n조회한 다음 1초 이전의 'fz_idx' 컬럼 \n데이터와 비교해서 데이터가 다르면\n클라우드 서버로 전송하는 방식이다.\n(※0.5초마다 http request 요청을 하면 \n클라우드 서버의 트래픽이 많아지기 때문에\n이를 방지하기 위해 'switch'노드를 사용하여\n\"검출\"시에만 http request 요청하도록 셋팅함)\n\n\n※ 'mb1_word' 테이블을 조회하는 노드가 2개 있다.\n\n▶첫번째 노드 : 1초 이전의 'fz_idx' 컬럼 데이터를 조회한 값을 현재 'fz_idx' 컬럼 데이터와\n              비교하여 다르면 클라우드 서버로 전송하는 노드\n              ( 현재 'fz_idx' 컬럼 데이터와 1초 이전의 'fz_idx' 컬럼 데이터가 같을 경우\n             '검출되지 않았다'로 판단으로 클라우드 서버에 데이터를 전송하지 않음)\n\n▶두번째 노드 : 금속검출 시  'mb1_word' 테이블에 저장되는 'fz_idx' 컬럼 데이터를\n               0.5초 마다 조회해서 'mb1_word_count' 플로우 변수에 데이터를 저장하여\n               첫번째 노드에서 현재 'fz_idx' 컬럼 데이터와 비교할 수 있는 역할을 한다.",
     "x": 210,
     "y": 1540,
     "wires": []
@@ -781,7 +781,7 @@
     "wires": [
       [
         "aaf155396506646b",
-        "7ed14a2051f1db2e"
+        "56af949419182ec6"
       ]
     ]
   },
@@ -800,7 +800,7 @@
     "y": 1580,
     "wires": [
       [
-        "835711c4e2aab378"
+        "7ed14a2051f1db2e"
       ]
     ]
   },
@@ -810,7 +810,7 @@
     "z": "8869509f0a5a1c90",
     "mydb": "8d94a23b2f33e75c",
     "name": "",
-    "x": 440,
+    "x": 580,
     "y": 1580,
     "wires": [
       [
@@ -823,13 +823,13 @@
     "type": "function",
     "z": "8869509f0a5a1c90",
     "name": "send api",
-    "func": "let data = msg.payload[0].fz_idx;   // 현재 데이터\nlet prev_mb1_word = flow.get(\"prev_mb1_word\");  // 1초 이전의 데이터\n\nif (data == prev_mb1_word) {  //검출 안됨 : 현재 데이터와 1초 이전의 데이터가 같을 경우\n    msg.payload = 1;\n    return msg;\n    \n} else {         //검출 : 현재 데이터와 1초 이전의 데이터가 다를 경우\n    msg.payload = 2;\n    return msg;\n}\n",
+    "func": "let data = msg.payload[0].fz_idx;   // 현재 데이터\nlet mb1_word = flow.get(\"mb1_word\");  // 1초 이전의 데이터\n\nif (data == mb1_word) {  //검출 안됨 : 현재 데이터와 1초 이전의 데이터가 같을 경우\n    msg.payload = 1;\n    return msg;\n    \n} else {         //검출 : 현재 데이터와 1초 이전의 데이터가 다를 경우\n    msg.payload = 2;\n    return msg;\n}\n",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 600,
+    "x": 740,
     "y": 1580,
     "wires": [
       [
@@ -853,7 +853,7 @@
     "authType": "",
     "senderr": false,
     "headers": [],
-    "x": 1050,
+    "x": 1190,
     "y": 1600,
     "wires": [
       [
@@ -874,7 +874,7 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "auto",
-    "x": 1200,
+    "x": 1340,
     "y": 1600,
     "wires": []
   },
@@ -891,7 +891,7 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "auto",
-    "x": 1060,
+    "x": 1200,
     "y": 1540,
     "wires": []
   },
@@ -906,8 +906,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 430,
-    "y": 1740,
+    "x": 270,
+    "y": 1700,
     "wires": [
       [
         "963a46fe756dc4e6"
@@ -920,8 +920,8 @@
     "z": "8869509f0a5a1c90",
     "mydb": "8d94a23b2f33e75c",
     "name": "",
-    "x": 600,
-    "y": 1740,
+    "x": 440,
+    "y": 1700,
     "wires": [
       [
         "e55c04dc15098363"
@@ -933,14 +933,14 @@
     "type": "function",
     "z": "8869509f0a5a1c90",
     "name": "1초 이전의 데이터",
-    "func": "let prev_mb1_word = msg.payload[0].fz_idx;  // 'mb1_word' 테이블에 저장되어 있는 데이터 개수\n\nflow.set(\"prev_mb1_word\", prev_mb1_word);  //현재 플로우에서 전역으로 사용 할 수 있는 변수\n\nmsg.payload = prev_mb1_word;\n\nreturn msg;",
+    "func": "let mb1_word = msg.payload[0].fz_idx;  // 'mb1_word' 테이블에 저장되어 있는 데이터 개수\n\nflow.set(\"mb1_word\", mb1_word);  //현재 플로우에서 전역으로 사용 할 수 있는 변수\n\nmsg.payload = mb1_word;\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 790,
-    "y": 1740,
+    "x": 630,
+    "y": 1700,
     "wires": [
       [
         "6d0a86519aa208cd"
@@ -960,8 +960,8 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "auto",
-    "x": 960,
-    "y": 1740,
+    "x": 800,
+    "y": 1700,
     "wires": []
   },
   {
@@ -981,11 +981,11 @@
     "drop": false,
     "allowrate": false,
     "outputs": 1,
-    "x": 260,
-    "y": 1740,
+    "x": 420,
+    "y": 1580,
     "wires": [
       [
-        "56af949419182ec6"
+        "835711c4e2aab378"
       ]
     ]
   },
@@ -993,10 +993,10 @@
     "id": "981022f42ceae149",
     "type": "comment",
     "z": "8869509f0a5a1c90",
-    "name": "1초 이전의 'mb1_word' 테이블 데이터",
-    "info": "'prev_mb1_word' 변수 : 1초 이전의 'mb1_word' 테이블 데이터",
-    "x": 170,
-    "y": 1700,
+    "name": "'mb1_word' 테이블 데이터",
+    "info": "'mb1_word' 변수 : 현재 'mb1_word' 테이블 데이터",
+    "x": 130,
+    "y": 1660,
     "wires": []
   },
   {
@@ -1010,7 +1010,7 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 900,
+    "x": 1040,
     "y": 1540,
     "wires": [
       [
@@ -1040,7 +1040,7 @@
     "checkall": "true",
     "repair": false,
     "outputs": 2,
-    "x": 750,
+    "x": 890,
     "y": 1580,
     "wires": [
       [
@@ -1062,7 +1062,7 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 890,
+    "x": 1030,
     "y": 1600,
     "wires": [
       [
@@ -1084,7 +1084,7 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "auto",
-    "x": 1040,
+    "x": 1180,
     "y": 1640,
     "wires": []
   },
@@ -1594,6 +1594,353 @@
     "statusType": "auto",
     "x": 600,
     "y": 1440,
+    "wires": []
+  },
+  {
+    "id": "5217ba70df2d21f6",
+    "type": "comment",
+    "z": "8869509f0a5a1c90",
+    "name": "7번 금속검출기 데이터 수집 및 클라우드 전송 방식(미사용-테스트 버전)",
+    "info": "[ ⊙7번 금속검출기 데이터 수집 및 클라우드 전송 방식 ]\n\n[ 1. 금속검출기 검출 시 데이터 저장 방식 ]\n금속검출기에서 검출 시 접점신호를 HTA 컨버터\n장치로 받아서 HTA EasyLink 프로그램을 \n이용해 로컬PC mysql DB에 저장시키는 방식\n\n[ 2. 검출된 데이터를 노드레드에서 클라우드 서버로 전송하는 방식 ]\n노드레드에서는\nmysql DB에서 7번 금속검출기 데이터가 \n저장되어 있는 'mb1_word' 테이블을\n0.5초마다 조회해서 'fz_idx' 컬럼 데���터를\n조회한 다음 1초 이전의 'fz_idx' 컬럼 \n데이터와 비교해서 데이터가 다르면\n클라우드 서버로 전송하는 방식이다.\n(※0.5초마다 http request 요청을 하면 \n클라우드 서버의 트래픽이 많아지기 때문에\n이를 방지하기 위해 'switch'노드를 사용하여\n\"검출\"시에만 http request 요청하도록 셋팅함)\n\n\n※ 'mb1_word' 테이블을 조회하는 노드가 2개 있다.\n\n▶첫번째 노드 : 1초 이전의 'fz_idx' 컬럼 데이터를 조회한 값을 현재 'fz_idx' 컬럼 데이터와\n              비교하여 다르면 클라우드 서버로 전송하는 노드\n              ( 현재 'fz_idx' 컬럼 데이터와 1초 이전의 'fz_idx' 컬럼 데이터가 같을 경우\n             '검출되지 않았다'로 판단으로 클라우드 서버에 데이터를 전송하지 않음)\n\n▶두번째 노드 : 금속검출 시  'mb1_word' 테이블에 저장되는 'fz_idx' 컬럼 데이터를\n               1초 이후에 조회해서 'mb1_word_count' 플로우 변수에 데이터를 저장하여\n               첫번째 노드에서 현재 'fz_idx' 컬럼 데이터와 비교할 수 있는 역할을 한다.",
+    "x": 270,
+    "y": 1920,
+    "wires": []
+  },
+  {
+    "id": "ac0abc0a87d14a54",
+    "type": "inject",
+    "z": "8869509f0a5a1c90",
+    "d": true,
+    "name": "0.5 sec",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "0.5",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 100,
+    "y": 1960,
+    "wires": [
+      [
+        "4d49d67ec82f2293",
+        "dadd7f9a8172d019"
+      ]
+    ]
+  },
+  {
+    "id": "4d49d67ec82f2293",
+    "type": "function",
+    "z": "8869509f0a5a1c90",
+    "name": "Select query",
+    "func": "msg.topic = 'SELECT fz_idx FROM fz_shm.mb1_word ORDER BY date DESC LIMIT 1';\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 270,
+    "y": 1960,
+    "wires": [
+      [
+        "2281139d4ffbda28"
+      ]
+    ]
+  },
+  {
+    "id": "2281139d4ffbda28",
+    "type": "mysql",
+    "z": "8869509f0a5a1c90",
+    "d": true,
+    "mydb": "8d94a23b2f33e75c",
+    "name": "",
+    "x": 440,
+    "y": 1960,
+    "wires": [
+      [
+        "a7a238e194d1c912"
+      ]
+    ]
+  },
+  {
+    "id": "a7a238e194d1c912",
+    "type": "function",
+    "z": "8869509f0a5a1c90",
+    "name": "send api",
+    "func": "let data = msg.payload[0].fz_idx;   // 현재 데이터\nlet prev_mb1_word = flow.get(\"prev_mb1_word\");  // 1초 이전의 데이터\n\nif (data == prev_mb1_word) {  //검출 안됨 : 현재 데이터와 1초 이전의 데이터가 같을 경우\n    msg.payload = 1;\n    return msg;\n    \n} else {         //검출 : 현재 데이터와 1초 이전의 데이터가 다를 경우\n    msg.payload = 2;\n    return msg;\n}\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 600,
+    "y": 1960,
+    "wires": [
+      [
+        "322768c68bfd4ea7"
+      ]
+    ]
+  },
+  {
+    "id": "6ed0f84031c3b391",
+    "type": "http request",
+    "z": "8869509f0a5a1c90",
+    "d": true,
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0099/get_detection",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 1050,
+    "y": 1980,
+    "wires": [
+      [
+        "fe37802742a1336c"
+      ]
+    ]
+  },
+  {
+    "id": "fe37802742a1336c",
+    "type": "debug",
+    "z": "8869509f0a5a1c90",
+    "name": "debug 55",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 1200,
+    "y": 1980,
+    "wires": []
+  },
+  {
+    "id": "74e0e2f55e31a61f",
+    "type": "debug",
+    "z": "8869509f0a5a1c90",
+    "name": "debug 56",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 1060,
+    "y": 1920,
+    "wires": []
+  },
+  {
+    "id": "7d36c7a8441892c6",
+    "type": "function",
+    "z": "8869509f0a5a1c90",
+    "name": "Select query",
+    "func": "msg.topic = 'SELECT fz_idx FROM fz_shm.mb1_word ORDER BY date DESC LIMIT 1';\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 430,
+    "y": 2120,
+    "wires": [
+      [
+        "a84b808727b65115"
+      ]
+    ]
+  },
+  {
+    "id": "a84b808727b65115",
+    "type": "mysql",
+    "z": "8869509f0a5a1c90",
+    "d": true,
+    "mydb": "8d94a23b2f33e75c",
+    "name": "",
+    "x": 600,
+    "y": 2120,
+    "wires": [
+      [
+        "743dfdebb9ee71b9"
+      ]
+    ]
+  },
+  {
+    "id": "743dfdebb9ee71b9",
+    "type": "function",
+    "z": "8869509f0a5a1c90",
+    "name": "1초 이전의 데이터",
+    "func": "let prev_mb1_word = msg.payload[0].fz_idx;  // 'mb1_word' 테이블에 저장되어 있는 데이터 개수\n\nflow.set(\"prev_mb1_word\", prev_mb1_word);  //현재 플로우에서 전역으로 사용 할 수 있는 변수\n\nmsg.payload = prev_mb1_word;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 790,
+    "y": 2120,
+    "wires": [
+      [
+        "c6b0fe25f5140c1b"
+      ]
+    ]
+  },
+  {
+    "id": "c6b0fe25f5140c1b",
+    "type": "debug",
+    "z": "8869509f0a5a1c90",
+    "name": "debug 57",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 960,
+    "y": 2120,
+    "wires": []
+  },
+  {
+    "id": "dadd7f9a8172d019",
+    "type": "delay",
+    "z": "8869509f0a5a1c90",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "1",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "outputs": 1,
+    "x": 260,
+    "y": 2120,
+    "wires": [
+      [
+        "7d36c7a8441892c6"
+      ]
+    ]
+  },
+  {
+    "id": "920d5c8ec4db8e00",
+    "type": "comment",
+    "z": "8869509f0a5a1c90",
+    "name": "1초 이전의 'mb1_word' 테이블 데이터",
+    "info": "'prev_mb1_word' 변수 : 1초 이전의 'mb1_word' 테이블 데이터",
+    "x": 170,
+    "y": 2080,
+    "wires": []
+  },
+  {
+    "id": "ac6f597995c34a70",
+    "type": "function",
+    "z": "8869509f0a5a1c90",
+    "name": "검출 안됨",
+    "func": "msg.payload = \"검출 안됨\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 900,
+    "y": 1920,
+    "wires": [
+      [
+        "74e0e2f55e31a61f"
+      ]
+    ]
+  },
+  {
+    "id": "322768c68bfd4ea7",
+    "type": "switch",
+    "z": "8869509f0a5a1c90",
+    "name": "",
+    "property": "payload",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "1",
+        "vt": "num"
+      },
+      {
+        "t": "eq",
+        "v": "2",
+        "vt": "num"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 750,
+    "y": 1960,
+    "wires": [
+      [
+        "ac6f597995c34a70"
+      ],
+      [
+        "66b6028224f5485c"
+      ]
+    ]
+  },
+  {
+    "id": "66b6028224f5485c",
+    "type": "function",
+    "z": "8869509f0a5a1c90",
+    "name": "검출",
+    "func": "msg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0099\",\n    \"scode\": \"151\",\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 890,
+    "y": 1980,
+    "wires": [
+      [
+        "6ed0f84031c3b391",
+        "78a084ef366343a0"
+      ]
+    ]
+  },
+  {
+    "id": "78a084ef366343a0",
+    "type": "debug",
+    "z": "8869509f0a5a1c90",
+    "name": "debug 58",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 1040,
+    "y": 2020,
     "wires": []
   },
   {
