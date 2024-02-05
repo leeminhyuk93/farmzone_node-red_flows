@@ -1709,7 +1709,7 @@
     "type": "function",
     "z": "8869509f0a5a1c90",
     "name": "send api",
-    "func": "var ccode = \"0099\";\nvar scode = \"148\";\nvar type = \"1\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nvar detected = false;\n\nif (type == \"1\" && (res.length % 34) == 0) {\n    // 나우시스템즈\n    if (paseData[0] == ' ' && paseData[32] == '\\r' && paseData[33] == '\\n') {\n        if ((paseData[1] + paseData[2]) == \"80\" || (paseData[1] + paseData[2]) == \"81\") {\n            detected = true;\n        }\n    }\n\n} else if (type == \"1\" && ((res.length % 32) == 0)) {\n    detected = true;\n}\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode\n    };\n\n    return msg;\n}",
+    "func": "var ccode = \"0099\";\nvar scode = \"148\";\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\nmsg.payload = {\n    \"ccode\": ccode,\n    \"scode\": scode\n};\n\nreturn msg;\n",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -1760,8 +1760,8 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "auto",
-    "x": 600,
-    "y": 2020,
+    "x": 620,
+    "y": 2040,
     "wires": []
   },
   {
