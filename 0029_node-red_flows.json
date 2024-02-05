@@ -1731,7 +1731,7 @@
     "method": "POST",
     "ret": "txt",
     "paytoqs": "ignore",
-    "url": "http://pc.smarthaccpman.com/hac_ccp_data/get_pos_detector",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0099/get_detection",
     "tls": "",
     "persist": false,
     "proxy": "",
