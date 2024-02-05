@@ -1149,7 +1149,7 @@
     "method": "POST",
     "ret": "txt",
     "paytoqs": "ignore",
-    "url": "http://pc.smarthaccpman.com/hac_ccp_data/get_pos_detector",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0099/get_detection",
     "tls": "",
     "persist": false,
     "proxy": "",
@@ -1233,7 +1233,7 @@
     "method": "POST",
     "ret": "txt",
     "paytoqs": "ignore",
-    "url": "http://pc.smarthaccpman.com/hac_ccp_data/get_pos_detector",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0099/get_detection",
     "tls": "",
     "persist": false,
     "proxy": "",
@@ -1317,7 +1317,7 @@
     "method": "POST",
     "ret": "txt",
     "paytoqs": "ignore",
-    "url": "http://pc.smarthaccpman.com/hac_ccp_data/get_pos_detector",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0099/get_detection",
     "tls": "",
     "persist": false,
     "proxy": "",
@@ -1401,7 +1401,7 @@
     "method": "POST",
     "ret": "txt",
     "paytoqs": "ignore",
-    "url": "http://pc.smarthaccpman.com/hac_ccp_data/get_pos_detector",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0099/get_detection",
     "tls": "",
     "persist": false,
     "proxy": "",
@@ -1485,7 +1485,7 @@
     "method": "POST",
     "ret": "txt",
     "paytoqs": "ignore",
-    "url": "http://pc.smarthaccpman.com/hac_ccp_data/get_pos_detector",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0099/get_detection",
     "tls": "",
     "persist": false,
     "proxy": "",
@@ -1569,7 +1569,7 @@
     "method": "POST",
     "ret": "txt",
     "paytoqs": "ignore",
-    "url": "http://pc.smarthaccpman.com/hac_ccp_data/get_pos_detector",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0099/get_detection",
     "tls": "",
     "persist": false,
     "proxy": "",
@@ -1703,95 +1703,6 @@
     "x": 280,
     "y": 1400,
     "wires": []
-  },
-  {
-    "id": "6233b1d8ea66aa2e",
-    "type": "function",
-    "z": "8869509f0a5a1c90",
-    "name": "send api",
-    "func": "var ccode = \"0099\";\nvar scode = \"148\";\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\nmsg.payload = {\n    \"ccode\": ccode,\n    \"scode\": scode\n};\n\nreturn msg;\n",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 280,
-    "y": 2020,
-    "wires": [
-      [
-        "1b42f3a65b3826ee"
-      ]
-    ]
-  },
-  {
-    "id": "1b42f3a65b3826ee",
-    "type": "http request",
-    "z": "8869509f0a5a1c90",
-    "name": "",
-    "method": "POST",
-    "ret": "txt",
-    "paytoqs": "ignore",
-    "url": "http://pc.smarthaccpman.com/smh-api/c0099/get_detection",
-    "tls": "",
-    "persist": false,
-    "proxy": "",
-    "insecureHTTPParser": false,
-    "authType": "",
-    "senderr": false,
-    "headers": [],
-    "x": 450,
-    "y": 2020,
-    "wires": [
-      [
-        "48aaf71608337a2f"
-      ]
-    ]
-  },
-  {
-    "id": "48aaf71608337a2f",
-    "type": "debug",
-    "z": "8869509f0a5a1c90",
-    "name": "debug 61",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": true,
-    "complete": "payload",
-    "targetType": "msg",
-    "statusVal": "payload",
-    "statusType": "auto",
-    "x": 620,
-    "y": 2040,
-    "wires": []
-  },
-  {
-    "id": "c94cf4fcea777925",
-    "type": "inject",
-    "z": "8869509f0a5a1c90",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 220,
-    "y": 2120,
-    "wires": [
-      [
-        "6233b1d8ea66aa2e"
-      ]
-    ]
   },
   {
     "id": "960c4071e36bcd53",
