@@ -4993,7 +4993,8 @@
     "y": 920,
     "wires": [
       [
-        "1df163cc485a0cf0"
+        "1df163cc485a0cf0",
+        "701fce8791531def"
       ]
     ]
   },
@@ -5174,7 +5175,7 @@
     "id": "e7dd3610941b7be3",
     "type": "modbus-getter",
     "z": "03e67490e8ad96bb",
-    "name": "온/습도 장치1_습도",
+    "name": "온/습도 장치1_��도",
     "showStatusActivities": true,
     "showErrors": false,
     "logIOActivities": false,
@@ -6388,7 +6389,7 @@
     "type": "function",
     "z": "03e67490e8ad96bb",
     "name": "store weightDB(0kg)",
-    "func": "let weight = msg.payload;\nweight = weight.slice(0, 4);   // 0.00 문자열 자르기 전자저울에 아무것도 올리지 않았을때 0kg으로 출력\n\nmsg.topic = \"INSERT INTO weight (wdate, value) VALUES (now(), '\" + 0 + \"')\";\nmsg.payload = \"weight : \" + weight;\nreturn msg;",
+    "func": "let weight = msg.payload;\nweight = weight.slice(0, 4);   // 0.00 문자열 자르기 전자저울에 아무것도 올��지 않았을때 0kg으로 출력\n\nmsg.topic = \"INSERT INTO weight (wdate, value) VALUES (now(), '\" + 0 + \"')\";\nmsg.payload = \"weight : \" + weight;\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -6464,6 +6465,22 @@
     "statusType": "auto",
     "x": 520,
     "y": 980,
+    "wires": []
+  },
+  {
+    "id": "701fce8791531def",
+    "type": "debug",
+    "z": "03e67490e8ad96bb",
+    "name": "debug 67",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 727,
+    "y": 981,
     "wires": []
   }
 ]
