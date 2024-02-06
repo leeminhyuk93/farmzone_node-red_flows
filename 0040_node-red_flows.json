@@ -4937,7 +4937,7 @@
     "mydb": "8b88fe9a19eda841",
     "name": "",
     "x": 680,
-    "y": 940,
+    "y": 920,
     "wires": [
       []
     ]
@@ -4990,7 +4990,7 @@
     "finalize": "",
     "libs": [],
     "x": 460,
-    "y": 940,
+    "y": 920,
     "wires": [
       [
         "1df163cc485a0cf0"
@@ -5018,7 +5018,8 @@
     "y": 920,
     "wires": [
       [
-        "cdd8a9762412c747"
+        "cdd8a9762412c747",
+        "3d432590ae52b3d7"
       ]
     ]
   },
@@ -5452,7 +5453,7 @@
     "type": "function",
     "z": "03e67490e8ad96bb",
     "name": "Insert DB",
-    "func": "//장치 국번\nvar unitid = msg.unitId;\n\n//현재 온도\nvar temp = parseFloat(msg.payload) / 10;\n\nmsg.payload = {\n    \"장치\": \"온도2\",\n    \"���번\": unitid,\n    \"온도\": temp,\n};\n\nmsg.topic = \"INSERT INTO fz_shm.device2 (temperature, address) VALUES ('\" + temp + \"', '\" + unitid + \"')\";\n\nreturn msg;",
+    "func": "//장치 국번\nvar unitid = msg.unitId;\n\n//현재 온도\nvar temp = parseFloat(msg.payload) / 10;\n\nmsg.payload = {\n    \"장치\": \"온도2\",\n    \"국번\": unitid,\n    \"온도\": temp,\n};\n\nmsg.topic = \"INSERT INTO fz_shm.device2 (temperature, address) VALUES ('\" + temp + \"', '\" + unitid + \"')\";\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -6393,8 +6394,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 460,
-    "y": 880,
+    "x": 540,
+    "y": 860,
     "wires": [
       [
         "691ea87ddbe0c271"
@@ -6447,6 +6448,22 @@
     "statusType": "auto",
     "x": 780,
     "y": 1520,
+    "wires": []
+  },
+  {
+    "id": "3d432590ae52b3d7",
+    "type": "debug",
+    "z": "03e67490e8ad96bb",
+    "name": "debug 66",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 520,
+    "y": 980,
     "wires": []
   }
 ]
