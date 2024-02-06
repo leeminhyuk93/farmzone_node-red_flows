@@ -4927,9 +4927,7 @@
     "x": 480,
     "y": 780,
     "wires": [
-      [
-        "1df163cc485a0cf0"
-      ]
+      []
     ]
   },
   {
@@ -5048,7 +5046,7 @@
     "y": 920,
     "wires": [
       [
-        "691ea87ddbe0c271"
+        "a2bbaf841ebf5161"
       ],
       [
         "45f84dd45fcfd4d6"
@@ -5096,7 +5094,7 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 540,
+    "x": 720,
     "y": 900,
     "wires": []
   },
@@ -6408,6 +6406,25 @@
     "y": 420,
     "wires": [
       []
+    ]
+  },
+  {
+    "id": "a2bbaf841ebf5161",
+    "type": "function",
+    "z": "03e67490e8ad96bb",
+    "name": "store weightDB",
+    "func": "let weight = msg.payload;\nweight = weight.slice(0, 4);   // 0.00 문자열 자르기 전자저울에 아무것도 올리지 않았을때 0kg으로 출력\n\nmsg.topic = \"INSERT INTO weight (wdate, value) VALUES (now(), '\" + weight + \"')\";\nmsg.payload = \"successful\"\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 560,
+    "y": 900,
+    "wires": [
+      [
+        "691ea87ddbe0c271"
+      ]
     ]
   }
 ]
