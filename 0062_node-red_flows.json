@@ -1169,7 +1169,7 @@
     "type": "function",
     "z": "d029c8e0ac0fd4d4",
     "name": "parseData",
-    "func": "var status = msg.payload[2];\nvar product_code = msg.payload[1];\nvar product_weight = msg.payload[3];\nvar count = msg.payload[4];\nvar over = msg.payload[5];\nvar fall = msg.payload[6];\nvar metal = msg.payload[7];\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0062\",\n    \"status\": status,\n    \"product_code\": product_code,\n    \"product_weight\": product_weight,\n    \"count\": count,\n    \"over\": over,\n    \"fall\": fall,\n    \"metal\": metal\n};\n\nreturn msg;",
+    "func": "var data = msg.payload;\nvar status = msg.payload[2];\nvar product_code = msg.payload[1];\nvar product_weight = msg.payload[3];\nvar count = msg.payload[4];\nvar over = msg.payload[5];\nvar fall = msg.payload[6];\nvar metal = msg.payload[7];\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0062\",\n    \"status\": status,\n    \"product_code\": product_code,\n    \"product_weight\": product_weight,\n    \"count\": count,\n    \"over\": over,\n    \"fall\": fall,\n    \"metal\": metal,\n    \"전체 데이터\" : data\n};\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
