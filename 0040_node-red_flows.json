@@ -1111,7 +1111,7 @@
     "type": "function",
     "z": "c5dfa95e29f53252",
     "name": "FC 6: Preset Single Register_D50",
-    "func": "msg.payload = { \n    \n    'value': msg.payload,\n    'fc': 16,\n    'unitid': 1,\n    'address': 50, //PLC M150\n    'quantity': 34\n} \nreturn msg;\n\n/*1. Printer-NMD530(=MD)간 통신 프로토콜\n1.1 접속사양\n-. 통신접속: RS-232C\n-. 설정: Baud Rate = 9600, Bit Length = 8 bits, Parity = None, Stop Bits = 1 Stop\n*** 장비의 프린터 설정은 사용자매뉴얼 참조.\n\n1.\t공백: 0x20\n2.\t검출코드:  ��80” ~ “83” (ASCII Code)\n3.\t품번:        “  1” ~ “100” (ASCII Code)\n4.\t시분초(24시간형식): HH:MM:SS (ASCII Code) – 예) 5시 15분 30초  “05:15:30”\n5.\t검출수량: 예) 검출수량 200이면  “   200” (= 0x20 0x20 0x20 0x32 0x30 0x30)\n6.\t생산수량: 예) 총수향 12345이면  “  12345” (= 0x20 0x20 0x31 0x32 0x33 0x34 0x35)\n7.\tCR/LF: 0xd 0xa\n\nEx) 공백은 ‘~‘로 표시했음.   “~80~~100~09:24:30~~~~~21~~~12345”\n*/",
+    "func": "msg.payload = { \n    \n    'value': msg.payload,\n    'fc': 16,\n    'unitid': 1,\n    'address': 50, //PLC M150\n    'quantity': 34\n} \nreturn msg;\n\n/*1. Printer-NMD530(=MD)간 통신 프로토콜\n1.1 접속사양\n-. 통신접속: RS-232C\n-. 설정: Baud Rate = 9600, Bit Length = 8 bits, Parity = None, Stop Bits = 1 Stop\n*** 장비의 프린터 설정은 사용자매뉴얼 참조.\n\n1.\t공백: 0x20\n2.\t검출코드:  “80” ~ “83” (ASCII Code)\n3.\t품번:        “  1” ~ “100” (ASCII Code)\n4.\t시분초(24시간형식): HH:MM:SS (ASCII Code) – 예) 5시 15분 30초  “05:15:30”\n5.\t검출수량: 예) 검출수량 200이면  “   200” (= 0x20 0x20 0x20 0x32 0x30 0x30)\n6.\t생산수량: 예) 총수향 12345이면  “  12345” (= 0x20 0x20 0x31 0x32 0x33 0x34 0x35)\n7.\tCR/LF: 0xd 0xa\n\nEx) 공백은 ‘~‘로 표시했음.   “~80~~100~09:24:30~~~~~21~~~12345”\n*/",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -4936,8 +4936,8 @@
     "z": "03e67490e8ad96bb",
     "mydb": "8b88fe9a19eda841",
     "name": "",
-    "x": 780,
-    "y": 940,
+    "x": 360,
+    "y": 920,
     "wires": [
       []
     ]
@@ -4959,7 +4959,7 @@
     "name": "Cas weight",
     "info": "Read Data->PLC Modbus 변환 후 송신\n34Byte",
     "x": 100,
-    "y": 880,
+    "y": 860,
     "wires": []
   },
   {
@@ -4974,7 +4974,7 @@
     "y": 920,
     "wires": [
       [
-        "b77a045c3907421c"
+        "45f84dd45fcfd4d6"
       ]
     ]
   },
@@ -4983,14 +4983,14 @@
     "type": "function",
     "z": "03e67490e8ad96bb",
     "name": "store weightDB",
-    "func": "let weight = parseFloat(msg.payload);\n\nmsg.topic = \"INSERT INTO weight (wdate, value) VALUES (now(), '\" + weight + \"')\";\nmsg.payload = \"successful\"\nreturn msg;",
+    "func": "let weight = parseFloat(msg.payload);\n\nif (msg.payload == \"\") {\n    msg.payload = \"weight : \" + 0.00;\n\n    msg.topic = \"INSERT INTO weight (wdate, value) VALUES (now(), '\" + 0.00 + \"')\";\n    return msg;\n\n} else {\n    msg.payload = \"weight : \" + weight;\n\n    msg.topic = \"INSERT INTO weight (wdate, value) VALUES (now(), '\" + weight + \"')\";\n    return msg;\n}",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 560,
-    "y": 940,
+    "x": 180,
+    "y": 920,
     "wires": [
       [
         "1df163cc485a0cf0"
@@ -5015,7 +5015,7 @@
     "repair": false,
     "outputs": 1,
     "x": 190,
-    "y": 920,
+    "y": 960,
     "wires": [
       [
         "cdd8a9762412c747"
@@ -5043,14 +5043,12 @@
     "repair": false,
     "outputs": 2,
     "x": 310,
-    "y": 920,
+    "y": 960,
     "wires": [
       [
         "a2bbaf841ebf5161"
       ],
-      [
-        "45f84dd45fcfd4d6"
-      ]
+      []
     ]
   },
   {
@@ -5060,22 +5058,22 @@
     "name": "0KG will not be stored",
     "info": "",
     "x": 360,
-    "y": 880,
+    "y": 860,
     "wires": []
   },
   {
     "id": "ce5c033f57a29b3f",
     "type": "function",
     "z": "03e67490e8ad96bb",
-    "name": "function 2",
+    "name": "Flowmeter1",
     "func": "/*msg.payload = msg.payload.Flowmeter1_L;\nvar num = 1;\nmsg.topic = \"INSERT INTO fz_shm.waterflow (wdate, id, value) VALUES (now(), '\"+ num +\"', '\"+ msg.payload +\"')\"\n\nreturn msg;*/\n\n\nvar val1 = msg.payload.Flowmeter1_L;\nvar val11 = msg.payload.Flowmeter1_TON;\n\nglobal.set(\"gFlow1\", val1);\nglobal.set(\"gFlow11\", val11);\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 240,
-    "y": 1040,
+    "x": 170,
+    "y": 1020,
     "wires": [
       [
         "b265833be6e71e86"
@@ -5107,7 +5105,7 @@
       "61db9b404ac740e7"
     ],
     "x": 55,
-    "y": 1040,
+    "y": 1060,
     "wires": [
       [
         "682e49a217b2f888",
@@ -5120,15 +5118,15 @@
     "id": "682e49a217b2f888",
     "type": "function",
     "z": "03e67490e8ad96bb",
-    "name": "function 4",
+    "name": "Flowmeter2",
     "func": "/*msg.payload = msg.payload.Flowmeter2_L;\nvar num = 2;\nmsg.topic = \"INSERT INTO fz_shm.waterflow (wdate, id, value) VALUES (now(), '\"+ num +\"', '\"+ msg.payload +\"')\"\n\nreturn msg;*/\n\n\n\nvar val2 = msg.payload.Flowmeter2_L;\nvar val21 = msg.payload.Flowmeter2_TON;\nglobal.set(\"gFlow2\", val2);\nglobal.set(\"gFlow21\", val21);\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 240,
-    "y": 1080,
+    "x": 170,
+    "y": 1060,
     "wires": [
       [
         "38f8362fb9a083d4"
@@ -5139,15 +5137,15 @@
     "id": "c3e2e780a6b3d372",
     "type": "function",
     "z": "03e67490e8ad96bb",
-    "name": "function 5",
+    "name": "Flowmeter3",
     "func": "/*msg.payload = msg.payload.Flowmeter3_L;\nvar num = 3;\nmsg.topic = \"INSERT INTO fz_shm.waterflow (wdate, id, value) VALUES (now(), '\"+ num +\"', '\"+ msg.payload +\"')\"\n\nreturn msg;*/\n\nvar val3 = msg.payload.Flowmeter3_L;\nvar val31 = msg.payload.Flowmeter3_TON;\nglobal.set(\"gFlow3\", val3);\nglobal.set(\"gFlow31\", val31);\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 240,
-    "y": 1120,
+    "x": 170,
+    "y": 1100,
     "wires": [
       [
         "e90d9dc84e918551"
@@ -6083,8 +6081,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 600,
-    "y": 1060,
+    "x": 320,
+    "y": 1020,
     "wires": []
   },
   {
@@ -6099,8 +6097,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 600,
-    "y": 1100,
+    "x": 320,
+    "y": 1060,
     "wires": []
   },
   {
@@ -6115,8 +6113,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 600,
-    "y": 1140,
+    "x": 320,
+    "y": 1100,
     "wires": []
   },
   {
@@ -6385,7 +6383,7 @@
     "id": "2957c237f274c569",
     "type": "comment",
     "z": "03e67490e8ad96bb",
-    "name": "��척공정(CCP-1BP) Send API",
+    "name": "세척공정(CCP-1BP) Send API",
     "info": "",
     "x": 140,
     "y": 1340,
@@ -6423,8 +6421,7 @@
     "y": 900,
     "wires": [
       [
-        "691ea87ddbe0c271",
-        "1df163cc485a0cf0"
+        "691ea87ddbe0c271"
       ]
     ]
   }
