@@ -6151,7 +6151,8 @@
     "y": 1380,
     "wires": [
       [
-        "e6752929957246e9"
+        "e6752929957246e9",
+        "6a9217aac774d73b"
       ]
     ]
   },
@@ -6165,8 +6166,8 @@
     "y": 1380,
     "wires": [
       [
-        "46817d7220098536",
-        "d1950d47889a563d"
+        "d1950d47889a563d",
+        "31c7a35ceefaedd6"
       ]
     ]
   },
@@ -6186,7 +6187,8 @@
     "wires": [
       [
         "3d528907123a4a6c",
-        "a5eff7898d6a1390"
+        "a5eff7898d6a1390",
+        "a098cd8b1689806d"
       ]
     ]
   },
@@ -6204,22 +6206,6 @@
     "statusType": "auto",
     "x": 780,
     "y": 1360,
-    "wires": []
-  },
-  {
-    "id": "46817d7220098536",
-    "type": "debug",
-    "z": "03e67490e8ad96bb",
-    "name": "debug 59",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 600,
-    "y": 1420,
     "wires": []
   },
   {
@@ -6414,5 +6400,53 @@
         "691ea87ddbe0c271"
       ]
     ]
+  },
+  {
+    "id": "31c7a35ceefaedd6",
+    "type": "debug",
+    "z": "03e67490e8ad96bb",
+    "name": "debug 63",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 540,
+    "y": 1500,
+    "wires": []
+  },
+  {
+    "id": "6a9217aac774d73b",
+    "type": "debug",
+    "z": "03e67490e8ad96bb",
+    "name": "debug 64",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 340,
+    "y": 1500,
+    "wires": []
+  },
+  {
+    "id": "a098cd8b1689806d",
+    "type": "debug",
+    "z": "03e67490e8ad96bb",
+    "name": "debug 65",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 780,
+    "y": 1520,
+    "wires": []
   }
 ]
