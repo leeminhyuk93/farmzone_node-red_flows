@@ -1111,7 +1111,7 @@
     "type": "function",
     "z": "c5dfa95e29f53252",
     "name": "FC 6: Preset Single Register_D50",
-    "func": "msg.payload = { \n    \n    'value': msg.payload,\n    'fc': 16,\n    'unitid': 1,\n    'address': 50, //PLC M150\n    'quantity': 34\n} \nreturn msg;\n\n/*1. Printer-NMD530(=MD)간 통신 프로토콜\n1.1 접속사양\n-. 통신접속: RS-232C\n-. 설정: Baud Rate = 9600, Bit Length = 8 bits, Parity = None, Stop Bits = 1 Stop\n*** 장비의 프린터 설정은 사용자매뉴얼 참조.\n\n1.\t공백: 0x20\n2.\t검출코드:  “80” ~ “83” (ASCII Code)\n3.\t품번:        “  1” ~ “100” (ASCII Code)\n4.\t시분초(24시간형식): HH:MM:SS (ASCII Code) – 예) 5시 15분 30초  “05:15:30”\n5.\t검출수량: 예) 검출수량 200이면  “   200” (= 0x20 0x20 0x20 0x32 0x30 0x30)\n6.\t생산수량: 예) 총수향 12345이면  “  12345” (= 0x20 0x20 0x31 0x32 0x33 0x34 0x35)\n7.\tCR/LF: 0xd 0xa\n\nEx) 공백은 ‘~‘로 표시했음.   “~80~~100~09:24:30~~~~~21~~~12345”\n*/",
+    "func": "msg.payload = { \n    \n    'value': msg.payload,\n    'fc': 16,\n    'unitid': 1,\n    'address': 50, //PLC M150\n    'quantity': 34\n} \nreturn msg;\n\n/*1. Printer-NMD530(=MD)간 통신 프로토콜\n1.1 접속사양\n-. 통신접속: RS-232C\n-. 설정: Baud Rate = 9600, Bit Length = 8 bits, Parity = None, Stop Bits = 1 Stop\n*** 장비의 프린터 설정은 사용자매뉴얼 참조.\n\n1.\t공백: 0x20\n2.\t검출코드:  ��80” ~ “83” (ASCII Code)\n3.\t품번:        “  1” ~ “100” (ASCII Code)\n4.\t시분초(24시간형식): HH:MM:SS (ASCII Code) – 예) 5시 15분 30초  “05:15:30”\n5.\t검출수량: 예) 검출수량 200이면  “   200” (= 0x20 0x20 0x20 0x32 0x30 0x30)\n6.\t생산수량: 예) 총수향 12345이면  “  12345” (= 0x20 0x20 0x31 0x32 0x33 0x34 0x35)\n7.\tCR/LF: 0xd 0xa\n\nEx) 공백은 ‘~‘로 표시했음.   “~80~~100~09:24:30~~~~~21~~~12345”\n*/",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -5020,8 +5020,7 @@
     "y": 920,
     "wires": [
       [
-        "cdd8a9762412c747",
-        "691ea87ddbe0c271"
+        "cdd8a9762412c747"
       ]
     ]
   },
@@ -5048,7 +5047,9 @@
     "x": 310,
     "y": 920,
     "wires": [
-      [],
+      [
+        "691ea87ddbe0c271"
+      ],
       [
         "45f84dd45fcfd4d6"
       ]
@@ -5095,8 +5096,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 340,
-    "y": 980,
+    "x": 540,
+    "y": 900,
     "wires": []
   },
   {
