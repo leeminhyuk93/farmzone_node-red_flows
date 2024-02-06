@@ -4983,7 +4983,7 @@
     "type": "function",
     "z": "03e67490e8ad96bb",
     "name": "store weightDB",
-    "func": "let weight = parseFloat(msg.payload);\n\nif (msg.payload == \"\") {\n    msg.payload = \"weight : \" + 0.00;\n\n    msg.topic = \"INSERT INTO weight (wdate, value) VALUES (now(), '\" + 0.00 + \"')\";\n    return msg;\n\n} else {\n    msg.payload = \"weight : \" + weight;\n\n    msg.topic = \"INSERT INTO weight (wdate, value) VALUES (now(), '\" + weight + \"')\";\n    return msg;\n}",
+    "func": "if (msg.payload == \"\") {\n    msg.payload = \"weight : \" + 0.00;\n\n    msg.topic = \"INSERT INTO weight (wdate, value) VALUES (now(), '\" + 0.00 + \"')\";\n    return msg;\n\n} else {\n    let weight = parseFloat(msg.payload);\n    \n    msg.payload = \"weight : \" + weight;\n\n    msg.topic = \"INSERT INTO weight (wdate, value) VALUES (now(), '\" + weight + \"')\";\n    return msg;\n}",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
