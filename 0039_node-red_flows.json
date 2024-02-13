@@ -1492,7 +1492,8 @@
     "wires": [
       [
         "417059960c441b37",
-        "49e8edfc926697e4"
+        "49e8edfc926697e4",
+        "259f037bc85cb7e3"
       ]
     ]
   },
@@ -1703,72 +1704,6 @@
     "statusType": "auto",
     "x": 770,
     "y": 780,
-    "wires": []
-  },
-  {
-    "id": "03ae931a982f4875",
-    "type": "inject",
-    "z": "ea534a0bb0b5928e",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "1",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 210,
-    "y": 960,
-    "wires": [
-      [
-        "16ff959db2dcb8aa"
-      ]
-    ]
-  },
-  {
-    "id": "16ff959db2dcb8aa",
-    "type": "function",
-    "z": "ea534a0bb0b5928e",
-    "name": "parsing",
-    "func": "let random = Math.round(Math.random() + 10);\nlet pressure = 0;  // 에어 압력\nlet dateTime = new Date();  // 현재 시간\nlet saveDateTime = dateTime.toLocaleString();  //저장 시간\n\nif (msg.payload[0] <= 980) {\n    pressure = Math.abs((msg.payload[0] / 10000) - 0.095);\n} else {\n    pressure = (msg.payload[0] / 10000) - 0.07;  // 에어 압력\n}\n\npressure = pressure.toFixed(2);\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"equipName\" : \"에어세척기(SK팩)\",\n    \"ccode\": \"0039\",\n    \"scode\": \"83\",\n    \"pressure\": random,\n    \"saveDateTime\": saveDateTime,      //저장 시간(사용자가 보기 편한 날짜/시간)\n    \"dateTime\": dateTime               // 저장 시간(DB find 활용)\n}\n\nreturn msg;",
-    "outputs": 1,
-    "timeout": 0,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 405.5078125,
-    "y": 955.5234375,
-    "wires": [
-      [
-        "259f037bc85cb7e3",
-        "fa3291330a28b04a"
-      ]
-    ]
-  },
-  {
-    "id": "fa3291330a28b04a",
-    "type": "debug",
-    "z": "ea534a0bb0b5928e",
-    "name": "debug 137",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 550,
-    "y": 1000,
     "wires": []
   },
   {
@@ -2664,7 +2599,7 @@
     "id": "5ad9b56b807180a4",
     "type": "comment",
     "z": "34cbadba494cdf22",
-    "name": "air_cleaner 컬렉션 데이터 삭제(매주 일요일 오전9���)",
+    "name": "air_cleaner 컬렉션 데이터 삭제(매주 일요일 오전9시)",
     "info": "",
     "x": 230,
     "y": 460,
