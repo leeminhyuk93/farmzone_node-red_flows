@@ -1750,9 +1750,26 @@
     "y": 955.5234375,
     "wires": [
       [
-        "259f037bc85cb7e3"
+        "259f037bc85cb7e3",
+        "fa3291330a28b04a"
       ]
     ]
+  },
+  {
+    "id": "fa3291330a28b04a",
+    "type": "debug",
+    "z": "ea534a0bb0b5928e",
+    "name": "debug 137",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 550,
+    "y": 1000,
+    "wires": []
   },
   {
     "id": "62e4a209ec547825",
