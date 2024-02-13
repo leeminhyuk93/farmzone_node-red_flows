@@ -1470,7 +1470,8 @@
     "wires": [
       [
         "cfa3c92809c069bb",
-        "316120ec6a8821de"
+        "316120ec6a8821de",
+        "6d34a1eaa3610eef"
       ]
     ]
   },
@@ -1535,7 +1536,7 @@
     "method": "POST",
     "ret": "txt",
     "paytoqs": "ignore",
-    "url": "",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0039/get_pos_bottle",
     "tls": "",
     "persist": false,
     "proxy": "",
@@ -1575,7 +1576,7 @@
     "method": "POST",
     "ret": "txt",
     "paytoqs": "ignore",
-    "url": "",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0039/get_pos_bottle",
     "tls": "",
     "persist": false,
     "proxy": "",
@@ -1703,6 +1704,55 @@
     "x": 770,
     "y": 780,
     "wires": []
+  },
+  {
+    "id": "03ae931a982f4875",
+    "type": "inject",
+    "z": "ea534a0bb0b5928e",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "1",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 210,
+    "y": 960,
+    "wires": [
+      [
+        "16ff959db2dcb8aa"
+      ]
+    ]
+  },
+  {
+    "id": "16ff959db2dcb8aa",
+    "type": "function",
+    "z": "ea534a0bb0b5928e",
+    "name": "parsing",
+    "func": "let pressure = 0;  // 에어 압력\nlet dateTime = new Date();  // 현재 시간\nlet saveDateTime = dateTime.toLocaleString();  //저장 시간\n\nif (msg.payload[0] <= 980) {\n    pressure = Math.abs((msg.payload[0] / 10000) - 0.095);\n} else {\n    pressure = (msg.payload[0] / 10000) - 0.07;  // 에어 압력\n}\n\npressure = pressure.toFixed(2);\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"equipName\" : \"에어세척기(SK팩)\",\n    \"ccode\": \"0039\",\n    \"scode\": \"83\",\n    \"pressure\" : 0.20,\n    \"saveDateTime\": saveDateTime,      //저장 시간(사용자가 보기 편한 날짜/시간)\n    \"dateTime\": dateTime               // 저장 시간(DB find 활용)\n}\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 405.5078125,
+    "y": 955.5234375,
+    "wires": [
+      [
+        "259f037bc85cb7e3"
+      ]
+    ]
   },
   {
     "id": "62e4a209ec547825",
@@ -1905,7 +1955,7 @@
     "type": "function",
     "z": "88eb231280c2e9e9",
     "name": "find query",
-    "func": "/* 설명\n  \"mono_block\" 컬렉션에서 30초 이내에 저장된 데이터 중에 가장 최근 저장된 ���이터 조회\n*/\n\nmsg.payload = {\n    \"check_date\": {\n        \"$gte\": new Date(Date.now() - 30 * 1000), // 현재 날짜 및 시간에서 30초 전의 날짜와 시간\n        \"$lte\": new Date()\n    }\n}\n\nmsg.sort = { \"check_date\": -1 }; // 내림차순 정렬\nmsg.limit = 1; // 최대 1개의 결과 반환\n\nreturn msg;",
+    "func": "/* 설명\n  \"mono_block\" 컬렉션에서 30초 이내에 저장된 데이터 중에 가장 최근 저장된 데이터 조회\n*/\n\nmsg.payload = {\n    \"check_date\": {\n        \"$gte\": new Date(Date.now() - 30 * 1000), // 현재 날짜 및 시간에서 30초 전의 날짜와 시간\n        \"$lte\": new Date()\n    }\n}\n\nmsg.sort = { \"check_date\": -1 }; // 내림차순 정렬\nmsg.limit = 1; // 최대 1개의 결과 반환\n\nreturn msg;",
     "outputs": 1,
     "timeout": 0,
     "noerr": 0,
