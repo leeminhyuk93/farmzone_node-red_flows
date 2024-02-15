@@ -1110,47 +1110,18 @@
     "wires": []
   },
   {
-    "id": "4d3b73d13e4d3962",
-    "type": "inject",
-    "z": "ea534a0bb0b5928e",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 120,
-    "y": 1560,
-    "wires": [
-      [
-        "c1bdaac07ca8784c"
-      ]
-    ]
-  },
-  {
     "id": "52f69a337c09f4a5",
     "type": "function",
     "z": "ea534a0bb0b5928e",
-    "name": "function 6",
-    "func": "\nreturn msg;",
+    "name": "parsing",
+    "func": "var status = msg.payload[2];\nvar product_code = msg.payload[1];\nvar product_weight = msg.payload[3];\nvar count = msg.payload[4];\nvar over = msg.payload[5];\nvar fall = msg.payload[6];\nvar metal = msg.payload[7];\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0039\",\n    \"status\": status,\n    \"product_code\": product_code,\n    \"product_weight\": product_weight,\n    \"count\": count,\n    \"over\": over,\n    \"fall\": fall,\n    \"metal\": metal\n};\n\nreturn msg;",
     "outputs": 1,
     "timeout": 0,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 480,
+    "x": 440,
     "y": 1560,
     "wires": [
       [
@@ -1171,8 +1142,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 650,
-    "y": 1540,
+    "x": 610,
+    "y": 1520,
     "wires": []
   },
   {
@@ -1186,8 +1157,8 @@
     "upsert": false,
     "multi": false,
     "operation": "store",
-    "x": 720,
-    "y": 1580,
+    "x": 680,
+    "y": 1560,
     "wires": []
   },
   {
@@ -1247,37 +1218,6 @@
     "wires": [
       [
         "7cdcfebf94f79a85"
-      ],
-      []
-    ]
-  },
-  {
-    "id": "c1bdaac07ca8784c",
-    "type": "modbus-getter",
-    "z": "ea534a0bb0b5928e",
-    "d": true,
-    "name": "",
-    "showStatusActivities": false,
-    "showErrors": false,
-    "showWarnings": true,
-    "logIOActivities": false,
-    "unitid": "",
-    "dataType": "",
-    "adr": "",
-    "quantity": "",
-    "server": "07e8b8ad6d28c925",
-    "useIOFile": false,
-    "ioFile": "",
-    "useIOForPayload": false,
-    "emptyMsgOnFail": false,
-    "keepMsgProperties": false,
-    "delayOnStart": false,
-    "startDelayTime": "",
-    "x": 300,
-    "y": 1560,
-    "wires": [
-      [
-        "52f69a337c09f4a5"
       ],
       []
     ]
@@ -1704,6 +1644,184 @@
     "statusType": "auto",
     "x": 770,
     "y": 780,
+    "wires": []
+  },
+  {
+    "id": "9bd998258d78f08c",
+    "type": "tcp in",
+    "z": "ea534a0bb0b5928e",
+    "d": true,
+    "name": "",
+    "server": "server",
+    "host": "",
+    "port": "5008",
+    "datamode": "stream",
+    "datatype": "buffer",
+    "newline": "",
+    "topic": "",
+    "trim": false,
+    "base64": false,
+    "tls": "",
+    "x": 100,
+    "y": 1560,
+    "wires": [
+      [
+        "4b3178c2b69b0794"
+      ]
+    ]
+  },
+  {
+    "id": "4b3178c2b69b0794",
+    "type": "buffer-parser",
+    "z": "ea534a0bb0b5928e",
+    "name": "",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "ascii",
+        "name": "X",
+        "offset": 0,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "ascii",
+        "name": "제품번호",
+        "offset": 1,
+        "length": 3,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "ascii",
+        "name": "상태코드",
+        "offset": 4,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "ascii",
+        "name": "계량무게",
+        "offset": 6,
+        "length": 7,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "ascii",
+        "name": "정상수량",
+        "offset": 14,
+        "length": 6,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "ascii",
+        "name": "과량수량",
+        "offset": 20,
+        "length": 4,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "ascii",
+        "name": "미달수량",
+        "offset": 24,
+        "length": 4,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "ascii",
+        "name": "금속수량",
+        "offset": 28,
+        "length": 4,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      },
+      {
+        "type": "ascii",
+        "name": "Y",
+        "offset": 32,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 270,
+    "y": 1560,
+    "wires": [
+      [
+        "52f69a337c09f4a5"
+      ]
+    ]
+  },
+  {
+    "id": "e1c242c97f4ac00e",
+    "type": "http request",
+    "z": "ea534a0bb0b5928e",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 610,
+    "y": 1620,
+    "wires": [
+      [
+        "e0e316f39d37306d"
+      ]
+    ]
+  },
+  {
+    "id": "e0e316f39d37306d",
+    "type": "debug",
+    "z": "ea534a0bb0b5928e",
+    "name": "debug 137",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 770,
+    "y": 1620,
     "wires": []
   },
   {
