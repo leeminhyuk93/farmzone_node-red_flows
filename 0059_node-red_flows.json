@@ -298,7 +298,7 @@
         "vt": "str"
       }
     ],
-    "repeat": "5",
+    "repeat": "10",
     "crontab": "",
     "once": false,
     "onceDelay": 0.1,
@@ -309,7 +309,8 @@
     "y": 320,
     "wires": [
       [
-        "49eda1d179f06695"
+        "49eda1d179f06695",
+        "1465f3d5c0a1c7e2"
       ]
     ]
   },
@@ -334,7 +335,7 @@
     "keepMsgProperties": false,
     "delayOnStart": false,
     "startDelayTime": "",
-    "x": 270,
+    "x": 290,
     "y": 320,
     "wires": [
       [
@@ -349,13 +350,13 @@
     "type": "function",
     "z": "680afc8e46551b31",
     "name": "parsing",
-    "func": "let totalCount = msg.payload[0];  // D6003_총 생산수량 (D6003값이 워드 최대값인 32767이 넘어갈때마다 0으로 초기화됨)\nlet wordMaxCount = msg.payload[1];   // D6004_총생산수량 더블워드 D6003값이 워드 최대값인 32767이 넘어갈때마다 1씩 증가\nlet wordMax = 32767 * wordMaxCount;  // 더블워드값을 계산하기 위해 워드 최대값인 32767에 'dwordCount' 변수값을 곱한다.\nlet productNum = msg.payload[2];  // D6005_품목Data (총60개 : 0~59)\n\nlet initTime = new Date();\ninitTime = initTime.getHours();\n\nif (parseInt(initTime) > 22) {\n    totalCount = 0;\n}\n\nif (wordMaxCount > 0) {  // 워드 최대값이 초과할때마다 1씩 증가하는데 초과 횟수가 1이상일 경우\n    totalCount = totalCount + wordMax;   // 총 생산수량 = 초기화 후 총 생산수량 + wordMax값\n}\n\nmsg.payload = {\n    \"품목 번호\": productNum,\n    \"총 포장횟수\": totalCount,\n    \"현재 시간\": parseInt(initTime)\n}\n\nmsg.topic = \"INSERT INTO fz_shm.packing (productNum, totalCount) VALUES ('\" + productNum + \"', '\" + totalCount + \"')\";\n\nreturn msg;",
+    "func": "let plc_data = msg.payload;    // PLC 데이터\nlet carry = plc_data[1];   // D6004_총생산수량 더블워드 D6003값이 65536이 넘어갈때마다 1씩 증가\nlet tot_cnt = plc_data[0] + (carry * 65536);  // D6003_총 생산수량 (D6003값이 65536이 넘어갈때마다 0으로 초기화됨)\nlet product_num = plc_data[2];  // D6005_품목Data (총60개 : 0~59)\n\n\nmsg.payload = {\n    \"품목 번호\": product_num,\n    \"총 포장횟수\": tot_cnt\n}\n\nmsg.topic = \"INSERT INTO fz_shm.packing (productNum, totalCount) VALUES ('\" + product_num + \"', '\" + tot_cnt + \"')\";\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 440,
+    "x": 460,
     "y": 340,
     "wires": [
       [
@@ -376,7 +377,7 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 600,
+    "x": 620,
     "y": 280,
     "wires": []
   },
@@ -388,7 +389,7 @@
     "method": "POST",
     "ret": "txt",
     "paytoqs": "ignore",
-    "url": "",
+    "url": "http://pc.smarthaccpman.com/smh-api/c0059/get_thermoforming",
     "tls": "",
     "persist": false,
     "proxy": "",
@@ -396,8 +397,8 @@
     "authType": "",
     "senderr": false,
     "headers": [],
-    "x": 590,
-    "y": 500,
+    "x": 790,
+    "y": 420,
     "wires": [
       [
         "b4f91a02cb36c07d"
@@ -416,8 +417,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 740,
-    "y": 500,
+    "x": 940,
+    "y": 420,
     "wires": []
   },
   {
@@ -432,7 +433,7 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 420,
+    "x": 440,
     "y": 280,
     "wires": []
   },
@@ -442,7 +443,7 @@
     "z": "680afc8e46551b31",
     "mydb": "8e572f554e8c44d0",
     "name": "fz_shm",
-    "x": 600,
+    "x": 620,
     "y": 340,
     "wires": [
       [
@@ -462,9 +463,61 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 740,
+    "x": 780,
     "y": 340,
     "wires": []
+  },
+  {
+    "id": "1465f3d5c0a1c7e2",
+    "type": "function",
+    "z": "680afc8e46551b31",
+    "name": "SELECT Query",
+    "func": "msg.topic = \"SELECT product_num, tot_cnt FROM fz_shm.packing WHERE (wdate BETWEEN date_add(now(), interval -15 second) AND now()) ORDER BY wdate DESC LIMIT 1\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 280,
+    "y": 420,
+    "wires": [
+      [
+        "3edf1f843a021eb5"
+      ]
+    ]
+  },
+  {
+    "id": "3edf1f843a021eb5",
+    "type": "mysql",
+    "z": "680afc8e46551b31",
+    "mydb": "8e572f554e8c44d0",
+    "name": "",
+    "x": 460,
+    "y": 420,
+    "wires": [
+      [
+        "fcc0b4bbe4a07c2f"
+      ]
+    ]
+  },
+  {
+    "id": "fcc0b4bbe4a07c2f",
+    "type": "function",
+    "z": "680afc8e46551b31",
+    "name": "send api",
+    "func": "if (msg.payload != \"\") {\n    let db_model = msg.payload[0].productNum;  // 생산 모델 번호\n    let db_count = msg.payload[0].totalCount;  // 생산량\n\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": \"0059\",\n        \"m_gubun\": \"5\",\n        \"m_adr\": db_model,\n        \"tot_cnt\": db_count\n    };\n\n    return msg;\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 620,
+    "y": 420,
+    "wires": [
+      [
+        "4f2401c20651dad1"
+      ]
+    ]
   },
   {
     "id": "24234d67e41dcab1",
