@@ -472,7 +472,7 @@
     "type": "function",
     "z": "680afc8e46551b31",
     "name": "SELECT Query",
-    "func": "msg.topic = \"SELECT product_num, tot_cnt FROM fz_shm.packing WHERE (wdate BETWEEN date_add(now(), interval -15 second) AND now()) ORDER BY wdate DESC LIMIT 1\";\n\nreturn msg;",
+    "func": "msg.topic = \"SELECT productNum, totalCount FROM fz_shm.packing WHERE (wdate BETWEEN date_add(now(), interval -15 second) AND now()) ORDER BY wdate DESC LIMIT 1\";\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
