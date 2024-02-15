@@ -1420,7 +1420,7 @@
     "type": "function",
     "z": "ea534a0bb0b5928e",
     "name": "parsing",
-    "func": "let pressure = 0;  // 에어 압력\nlet dateTime = new Date();  // 현재 시간\nlet saveDateTime = dateTime.toLocaleString();  //저장 시간\n\nif (msg.payload[0] <= 980) {\n    pressure = Math.abs((msg.payload[0] / 10000) - 0.095);\n} else {\n    pressure = (msg.payload[0] / 10000) - 0.07;  // 에어 압력\n}\n\npressure = pressure.toFixed(2);\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"equipName\" : \"에어세척기(SK팩)\",\n    \"ccode\": \"0039\",\n    \"scode\": \"83\",\n    \"pressure\" : pressure,\n    \"saveDateTime\": saveDateTime,      //저장 시간(사용자가 보기 편한 날짜/시간)\n    \"dateTime\": dateTime               // 저장 시간(DB find 활용)\n}\n\nreturn msg;",
+    "func": "let pressure = 0;  // 에어 ��력\nlet dateTime = new Date();  // 현재 시간\nlet saveDateTime = dateTime.toLocaleString();  //저장 시간\n\nif (msg.payload[0] <= 980) {\n    pressure = Math.abs((msg.payload[0] / 10000) - 0.095);\n} else {\n    pressure = (msg.payload[0] / 10000) - 0.07;  // 에어 압력\n}\n\npressure = pressure.toFixed(2);\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"equipName\" : \"에어세척기(SK팩)\",\n    \"ccode\": \"0039\",\n    \"scode\": \"83\",\n    \"pressure\" : pressure,\n    \"saveDateTime\": saveDateTime,      //저장 시간(사용자가 보기 편한 날짜/시간)\n    \"dateTime\": dateTime               // 저장 시간(DB find 활용)\n}\n\nreturn msg;",
     "outputs": 1,
     "timeout": 0,
     "noerr": 0,
@@ -1982,16 +1982,6 @@
     "wires": []
   },
   {
-    "id": "589bf29b7b64887c",
-    "type": "comment",
-    "z": "88eb231280c2e9e9",
-    "name": "2층_작업장, PLC3_중량검사기",
-    "info": "*수집 장비 : 중량검사기\n*수집 항목 : 생산품 중량\n*수집 주기 : 발생 시",
-    "x": 150,
-    "y": 680,
-    "wires": []
-  },
-  {
     "id": "2ec0cc819bb7b33a",
     "type": "inject",
     "z": "88eb231280c2e9e9",
@@ -2237,131 +2227,6 @@
     "headers": [],
     "x": 610,
     "y": 620,
-    "wires": [
-      []
-    ]
-  },
-  {
-    "id": "8c763b43829582b5",
-    "type": "inject",
-    "z": "88eb231280c2e9e9",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 100,
-    "y": 720,
-    "wires": [
-      [
-        "a5a4b681fc1d41a2"
-      ]
-    ]
-  },
-  {
-    "id": "a5a4b681fc1d41a2",
-    "type": "function",
-    "z": "88eb231280c2e9e9",
-    "name": "find query",
-    "func": "/* 설명\n  \"weight_checker\" 컬렉션에서 30초 이내에 저장된 데이터 중에 가장 최근 저장된 데이터 조회\n*/\n\nmsg.payload = {\n    \"check_date\": {\n        \"$gte\": new Date(Date.now() - 30 * 1000), // 현재 날짜 및 시간에서 30초 전의 날짜와 시간\n        \"$lte\": new Date()\n    }\n}\n\nmsg.sort = { \"check_date\": -1 }; // 내림차순 정렬\nmsg.limit = 1; // 최대 1개의 결과 반환\n\nreturn msg;",
-    "outputs": 1,
-    "timeout": 0,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 260,
-    "y": 720,
-    "wires": [
-      [
-        "23061f8d4f809cf6"
-      ]
-    ]
-  },
-  {
-    "id": "23061f8d4f809cf6",
-    "type": "mongodb in",
-    "z": "88eb231280c2e9e9",
-    "mongodb": "da28b1d93eba7f99",
-    "name": "",
-    "collection": "weight_checker",
-    "operation": "find",
-    "x": 500,
-    "y": 720,
-    "wires": [
-      [
-        "ab4f922b6a70d325"
-      ]
-    ]
-  },
-  {
-    "id": "ab4f922b6a70d325",
-    "type": "function",
-    "z": "88eb231280c2e9e9",
-    "name": "send API",
-    "func": "let device_id = msg.payload[0].payload.device_id;\nlet weight_checker = msg.payload[0].payload.weight_checker;\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0039\",\n    \"scode\": \"\",\n    \"kind\": \"\",\n    \"deviceId\": device_id,\n    \"weight_checker\": weight_checker\n}\n\nreturn msg;",
-    "outputs": 1,
-    "timeout": 0,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 420,
-    "y": 800,
-    "wires": [
-      [
-        "8ea90e17f06f9f05",
-        "75b09ac3b6249fac"
-      ]
-    ]
-  },
-  {
-    "id": "75b09ac3b6249fac",
-    "type": "debug",
-    "z": "88eb231280c2e9e9",
-    "name": "debug 122",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 610,
-    "y": 780,
-    "wires": []
-  },
-  {
-    "id": "8ea90e17f06f9f05",
-    "type": "http request",
-    "z": "88eb231280c2e9e9",
-    "d": true,
-    "name": "",
-    "method": "POST",
-    "ret": "txt",
-    "paytoqs": "ignore",
-    "url": "",
-    "tls": "",
-    "persist": false,
-    "proxy": "",
-    "insecureHTTPParser": false,
-    "authType": "",
-    "senderr": false,
-    "headers": [],
-    "x": 610,
-    "y": 820,
     "wires": [
       []
     ]
