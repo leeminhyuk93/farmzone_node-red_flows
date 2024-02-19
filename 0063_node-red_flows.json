@@ -8,6 +8,14 @@
     "env": []
   },
   {
+    "id": "50af027f8d596046",
+    "type": "tab",
+    "label": "플로우 2",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
     "id": "ec287ee065fe247c",
     "type": "modbus-client",
     "name": "",
@@ -906,6 +914,358 @@
     "statusType": "auto",
     "x": 900,
     "y": 720,
+    "wires": []
+  },
+  {
+    "id": "630a013e2443aa2f",
+    "type": "comment",
+    "z": "50af027f8d596046",
+    "name": "dtu1 테이블 - 데이터 보관 기간 7일",
+    "info": "",
+    "x": 180,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "e44afcdab98f8638",
+    "type": "inject",
+    "z": "50af027f8d596046",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 100,
+    "wires": [
+      [
+        "ea74866def31c534"
+      ]
+    ]
+  },
+  {
+    "id": "ea74866def31c534",
+    "type": "function",
+    "z": "50af027f8d596046",
+    "name": "delete",
+    "func": "msg.topic = \"DELETE FROM dtu1 WHERE date < CURDATE() - INTERVAL 7 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 290,
+    "y": 100,
+    "wires": [
+      [
+        "4293ef20048a0043"
+      ]
+    ]
+  },
+  {
+    "id": "4293ef20048a0043",
+    "type": "mysql",
+    "z": "50af027f8d596046",
+    "mydb": "5904de5649bf46eb",
+    "name": "",
+    "x": 440,
+    "y": 100,
+    "wires": [
+      [
+        "b88acf57a59e54f6"
+      ]
+    ]
+  },
+  {
+    "id": "b88acf57a59e54f6",
+    "type": "debug",
+    "z": "50af027f8d596046",
+    "name": "debug 10",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 600,
+    "y": 100,
+    "wires": []
+  },
+  {
+    "id": "6d7e09a2d90bf9fc",
+    "type": "comment",
+    "z": "50af027f8d596046",
+    "name": "dtu2 테이블 - 데이터 보관 기간 7일",
+    "info": "",
+    "x": 180,
+    "y": 180,
+    "wires": []
+  },
+  {
+    "id": "a4cf81fee303c42a",
+    "type": "inject",
+    "z": "50af027f8d596046",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 220,
+    "wires": [
+      [
+        "6a228a963499af0e"
+      ]
+    ]
+  },
+  {
+    "id": "6a228a963499af0e",
+    "type": "function",
+    "z": "50af027f8d596046",
+    "name": "delete",
+    "func": "msg.topic = \"DELETE FROM dtu2 WHERE date < CURDATE() - INTERVAL 7 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 290,
+    "y": 220,
+    "wires": [
+      [
+        "a0803fdf54efce29"
+      ]
+    ]
+  },
+  {
+    "id": "a0803fdf54efce29",
+    "type": "mysql",
+    "z": "50af027f8d596046",
+    "mydb": "5904de5649bf46eb",
+    "name": "",
+    "x": 440,
+    "y": 220,
+    "wires": [
+      [
+        "82288aa925ab3955"
+      ]
+    ]
+  },
+  {
+    "id": "82288aa925ab3955",
+    "type": "debug",
+    "z": "50af027f8d596046",
+    "name": "debug 11",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 600,
+    "y": 220,
+    "wires": []
+  },
+  {
+    "id": "eb60d3c1d8cb1eb5",
+    "type": "comment",
+    "z": "50af027f8d596046",
+    "name": "dtu3 테이블 - 데이터 보관 기간 7일",
+    "info": "",
+    "x": 180,
+    "y": 300,
+    "wires": []
+  },
+  {
+    "id": "b880b7f732dc792c",
+    "type": "inject",
+    "z": "50af027f8d596046",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 340,
+    "wires": [
+      [
+        "c9cbcec29dc8c258"
+      ]
+    ]
+  },
+  {
+    "id": "c9cbcec29dc8c258",
+    "type": "function",
+    "z": "50af027f8d596046",
+    "name": "delete",
+    "func": "msg.topic = \"DELETE FROM dtu3 WHERE date < CURDATE() - INTERVAL 7 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 290,
+    "y": 340,
+    "wires": [
+      [
+        "9a0538cd9d35a47d"
+      ]
+    ]
+  },
+  {
+    "id": "9a0538cd9d35a47d",
+    "type": "mysql",
+    "z": "50af027f8d596046",
+    "mydb": "5904de5649bf46eb",
+    "name": "",
+    "x": 440,
+    "y": 340,
+    "wires": [
+      [
+        "e5705399c7d5803d"
+      ]
+    ]
+  },
+  {
+    "id": "e5705399c7d5803d",
+    "type": "debug",
+    "z": "50af027f8d596046",
+    "name": "debug 12",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 600,
+    "y": 340,
+    "wires": []
+  },
+  {
+    "id": "56d4534d2c7c0aff",
+    "type": "comment",
+    "z": "50af027f8d596046",
+    "name": "fztable 테이블 - 데이터 보관 기간 7일",
+    "info": "",
+    "x": 190,
+    "y": 420,
+    "wires": []
+  },
+  {
+    "id": "64aecba0c266ed47",
+    "type": "inject",
+    "z": "50af027f8d596046",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 460,
+    "wires": [
+      [
+        "209af89787b8973d"
+      ]
+    ]
+  },
+  {
+    "id": "209af89787b8973d",
+    "type": "function",
+    "z": "50af027f8d596046",
+    "name": "delete",
+    "func": "msg.topic = \"DELETE FROM fztable WHERE date < CURDATE() - INTERVAL 7 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 290,
+    "y": 460,
+    "wires": [
+      [
+        "adf519dbb98c5edd"
+      ]
+    ]
+  },
+  {
+    "id": "adf519dbb98c5edd",
+    "type": "mysql",
+    "z": "50af027f8d596046",
+    "mydb": "5904de5649bf46eb",
+    "name": "",
+    "x": 440,
+    "y": 460,
+    "wires": [
+      [
+        "22355e580e6bead6"
+      ]
+    ]
+  },
+  {
+    "id": "22355e580e6bead6",
+    "type": "debug",
+    "z": "50af027f8d596046",
+    "name": "debug 13",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 600,
+    "y": 460,
     "wires": []
   }
 ]
