@@ -2,7 +2,7 @@
   {
     "id": "71aaba71cce9c427",
     "type": "tab",
-    "label": "플로우 1",
+    "label": "Data Send",
     "disabled": false,
     "info": "",
     "env": []
@@ -10,7 +10,7 @@
   {
     "id": "50af027f8d596046",
     "type": "tab",
-    "label": "플로우 2",
+    "label": "Database delete",
     "disabled": false,
     "info": "",
     "env": []
