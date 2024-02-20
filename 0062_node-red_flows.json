@@ -715,8 +715,7 @@
     "y": 820,
     "wires": [
       [
-        "38739a445bf944cb",
-        "4f585c80462dd4a3"
+        "38739a445bf944cb"
       ]
     ]
   },
@@ -804,7 +803,7 @@
     "name": "모든다해(중량선별기)",
     "info": "",
     "x": 120,
-    "y": 760,
+    "y": 780,
     "wires": []
   },
   {
@@ -991,7 +990,7 @@
     "type": "function",
     "z": "d029c8e0ac0fd4d4",
     "name": "parseData",
-    "func": "var count = parseInt(msg.payload[3] + msg.payload[4]);\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0062\",\n    \"year\": msg.payload[0],\n    \"date\": msg.payload[1],\n    \"product\": msg.payload[2],\n    \"count\": count,\n    \"bpm\": msg.payload[5],\n    \"temp1\": msg.payload[6],\n    \"temp2\": msg.payload[7]\n};\n\nreturn msg;",
+    "func": "let ccode = \"0062\";\nlet year = msg.payload[0];\nlet date = msg.payload[1];\nlet product = msg.payload[2];\nlet count = parseInt(msg.payload[3] + msg.payload[4]);\nlet bpm = msg.payload[5];\nlet temp1 = msg.payload[6];\nlet temp2 = msg.payload[7];\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": ccode,\n    \"year\": year,\n    \"date\": date,\n    \"product\": product,\n    \"count\": count,\n    \"bpm\": bpm,\n    \"temp1\": temp1,\n    \"temp2\": temp2\n};\n\nmsg.topic = \"INSERT INTO fz_shm.packing (ccode, year, date, product, count, bpm, temp1, temp2) VALUES (\" + ccode + \", \" + year + \", \" + date + \", \" + product + \", \" + count + \", \" + bpm + \", \" + temp1 + \", \" + temp2 + \")\";\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -1001,7 +1000,8 @@
     "y": 1020,
     "wires": [
       [
-        "ade86ad61a694925"
+        "ade86ad61a694925",
+        "672d2b072468372b"
       ]
     ]
   },
@@ -1018,25 +1018,8 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "msg",
-    "x": 880,
-    "y": 1020,
-    "wires": []
-  },
-  {
-    "id": "a84d9b75c493917d",
-    "type": "debug",
-    "z": "d029c8e0ac0fd4d4",
-    "name": "debug 20",
-    "active": true,
-    "tosidebar": false,
-    "console": false,
-    "tostatus": true,
-    "complete": "payload",
-    "targetType": "msg",
-    "statusVal": "payload",
-    "statusType": "msg",
-    "x": 460,
-    "y": 820,
+    "x": 860,
+    "y": 960,
     "wires": []
   },
   {
@@ -1156,11 +1139,10 @@
     "setTopic": true,
     "outputs": 1,
     "x": 290,
-    "y": 800,
+    "y": 820,
     "wires": [
       [
-        "34ae3328baa4f4e1",
-        "a84d9b75c493917d"
+        "34ae3328baa4f4e1"
       ]
     ]
   },
@@ -1169,47 +1151,18 @@
     "type": "function",
     "z": "d029c8e0ac0fd4d4",
     "name": "parseData",
-    "func": "var data = msg.payload;\nvar status = msg.payload[2];          // 상태코드\nvar product_code = msg.payload[1];    // 제품코드\nvar product_weight = msg.payload[3];  // 제품 무게\nvar count = msg.payload[4];           // 정상 수량\nvar over = msg.payload[5];            // 과량 수량\nvar fall = msg.payload[6];            // 미달 수량\nvar metal = msg.payload[7];           // 금속 수량\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0062\",\n    \"status\": status,\n    \"product_code\": product_code,\n    \"product_weight\": product_weight,\n    \"count\": count,\n    \"over\": over,\n    \"fall\": fall,\n    \"metal\": metal\n};\n\nreturn msg;",
+    "func": "let data = msg.payload;               // 중량선별기 전체 데이터\nlet status = msg.payload[2];          // 상태\nlet product_code = msg.payload[1];    // 제품코드\nlet product_weight = msg.payload[3];  // 제품 무게\nlet normal = msg.payload[4];           // 정상 수량\nlet over = msg.payload[5];            // 과량 수량\nlet fall = msg.payload[6];            // 미달 수량\nlet metal = msg.payload[7];           // 금속 수량\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0062\",\n    \"status\": status,\n    \"product_code\": product_code,\n    \"product_weight\": product_weight,\n    \"normal\": normal,\n    \"over\": over,\n    \"fall\": fall,\n    \"metal\": metal\n};\n\nmsg.topic = \"INSERT INTO fz_shm.check_weigher (status, product_code, product_weight, normal, over, fall, metal) VALUES (\" + status + \", \" + product_code + \", \" + product_weight + \", \" + normal + \", \" + over + \", \" + fall + \", \" + metal + \")\";\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
     "x": 470,
-    "y": 780,
+    "y": 820,
     "wires": [
       [
-        "417d665b7b04b282"
-      ]
-    ]
-  },
-  {
-    "id": "2d8ab539b4e1e7f1",
-    "type": "inject",
-    "z": "d029c8e0ac0fd4d4",
-    "d": true,
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "[88,48,48,49,78,44,48,49,48,51,56,46,48,44,48,48,49,49,55,57,48,48,48,49,48,48,50,52,48,48,52,57,89]",
-    "payloadType": "bin",
-    "x": 310,
-    "y": 740,
-    "wires": [
-      [
-        "38739a445bf944cb"
+        "417d665b7b04b282",
+        "0bee2a70ea96eacb"
       ]
     ]
   },
@@ -1228,23 +1181,6 @@
     "statusType": "msg",
     "x": 300,
     "y": 520,
-    "wires": []
-  },
-  {
-    "id": "4f585c80462dd4a3",
-    "type": "debug",
-    "z": "d029c8e0ac0fd4d4",
-    "name": "debug 22",
-    "active": false,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": true,
-    "complete": "payload",
-    "targetType": "msg",
-    "statusVal": "payload",
-    "statusType": "auto",
-    "x": 280,
-    "y": 840,
     "wires": []
   },
   {
@@ -1377,6 +1313,150 @@
         "28b0ef13378a3bd0"
       ]
     ]
+  },
+  {
+    "id": "672d2b072468372b",
+    "type": "mysql",
+    "z": "d029c8e0ac0fd4d4",
+    "mydb": "4f4e445c4ce2de50",
+    "name": "",
+    "x": 860,
+    "y": 1080,
+    "wires": [
+      [
+        "6cf23bfeafb3f811"
+      ]
+    ]
+  },
+  {
+    "id": "df3f58774c74bcb8",
+    "type": "http request",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 890,
+    "y": 1020,
+    "wires": [
+      [
+        "6f5352d3730b7a29"
+      ]
+    ]
+  },
+  {
+    "id": "6f5352d3730b7a29",
+    "type": "debug",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "debug 33",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 1040,
+    "y": 1020,
+    "wires": []
+  },
+  {
+    "id": "6cf23bfeafb3f811",
+    "type": "debug",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "debug 34",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 1000,
+    "y": 1080,
+    "wires": []
+  },
+  {
+    "id": "399d1faf59849284",
+    "type": "http request",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 650,
+    "y": 820,
+    "wires": [
+      [
+        "853a61f42b8bcf95"
+      ]
+    ]
+  },
+  {
+    "id": "853a61f42b8bcf95",
+    "type": "debug",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "debug 35",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 800,
+    "y": 820,
+    "wires": []
+  },
+  {
+    "id": "0bee2a70ea96eacb",
+    "type": "mysql",
+    "z": "d029c8e0ac0fd4d4",
+    "mydb": "4f4e445c4ce2de50",
+    "name": "",
+    "x": 640,
+    "y": 860,
+    "wires": [
+      [
+        "ac1c2c7767e0376c"
+      ]
+    ]
+  },
+  {
+    "id": "ac1c2c7767e0376c",
+    "type": "debug",
+    "z": "d029c8e0ac0fd4d4",
+    "name": "debug 36",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 780,
+    "y": 860,
+    "wires": []
   },
   {
     "id": "32a17f4c6674e57a",
