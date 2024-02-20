@@ -1731,10 +1731,244 @@
     "id": "ae1d6e700ebbb060",
     "type": "comment",
     "z": "d97f9b946e8fc208",
-    "name": "",
+    "name": "저장된 기간이 60일 지난 데이터 자동 삭제",
     "info": "",
-    "x": 80,
+    "x": 180,
     "y": 40,
+    "wires": []
+  },
+  {
+    "id": "08e45c3238295f55",
+    "type": "inject",
+    "z": "d97f9b946e8fc208",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 110,
+    "y": 80,
+    "wires": [
+      [
+        "232450fc84d3d65f"
+      ]
+    ]
+  },
+  {
+    "id": "232450fc84d3d65f",
+    "type": "function",
+    "z": "d97f9b946e8fc208",
+    "name": "storage1",
+    "func": "msg.topic = \"DELETE FROM storage1 WHERE wdate < CURDATE() - INTERVAL 60 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 260,
+    "y": 80,
+    "wires": [
+      [
+        "02fde4baf6d9bf76"
+      ]
+    ]
+  },
+  {
+    "id": "02fde4baf6d9bf76",
+    "type": "mysql",
+    "z": "d97f9b946e8fc208",
+    "mydb": "4f4e445c4ce2de50",
+    "name": "",
+    "x": 400,
+    "y": 80,
+    "wires": [
+      [
+        "bb59f6880e1978d1"
+      ]
+    ]
+  },
+  {
+    "id": "bb59f6880e1978d1",
+    "type": "debug",
+    "z": "d97f9b946e8fc208",
+    "name": "debug 37",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 540,
+    "y": 80,
+    "wires": []
+  },
+  {
+    "id": "b7fa961b5cc3d063",
+    "type": "inject",
+    "z": "d97f9b946e8fc208",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 110,
+    "y": 120,
+    "wires": [
+      [
+        "5670ae2de36ae3bd"
+      ]
+    ]
+  },
+  {
+    "id": "5670ae2de36ae3bd",
+    "type": "function",
+    "z": "d97f9b946e8fc208",
+    "name": "packing",
+    "func": "msg.topic = \"DELETE FROM packing WHERE wdate < CURDATE() - INTERVAL 60 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 260,
+    "y": 120,
+    "wires": [
+      [
+        "6971eaf335aaba06"
+      ]
+    ]
+  },
+  {
+    "id": "6971eaf335aaba06",
+    "type": "mysql",
+    "z": "d97f9b946e8fc208",
+    "mydb": "4f4e445c4ce2de50",
+    "name": "",
+    "x": 400,
+    "y": 120,
+    "wires": [
+      [
+        "6eb6ee0602967bb8"
+      ]
+    ]
+  },
+  {
+    "id": "6eb6ee0602967bb8",
+    "type": "debug",
+    "z": "d97f9b946e8fc208",
+    "name": "debug 38",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 540,
+    "y": 120,
+    "wires": []
+  },
+  {
+    "id": "aa68f85af29d1844",
+    "type": "inject",
+    "z": "d97f9b946e8fc208",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 110,
+    "y": 160,
+    "wires": [
+      [
+        "383107cc1bbad227"
+      ]
+    ]
+  },
+  {
+    "id": "383107cc1bbad227",
+    "type": "function",
+    "z": "d97f9b946e8fc208",
+    "name": "check_weigher",
+    "func": "msg.topic = \"DELETE FROM check_weigher WHERE wdate < CURDATE() - INTERVAL 60 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 280,
+    "y": 160,
+    "wires": [
+      [
+        "5f8c3eb0d364650e"
+      ]
+    ]
+  },
+  {
+    "id": "5f8c3eb0d364650e",
+    "type": "mysql",
+    "z": "d97f9b946e8fc208",
+    "mydb": "4f4e445c4ce2de50",
+    "name": "",
+    "x": 440,
+    "y": 160,
+    "wires": [
+      [
+        "cb73ee37f3f7d03a"
+      ]
+    ]
+  },
+  {
+    "id": "cb73ee37f3f7d03a",
+    "type": "debug",
+    "z": "d97f9b946e8fc208",
+    "name": "debug 39",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 580,
+    "y": 160,
     "wires": []
   },
   {
