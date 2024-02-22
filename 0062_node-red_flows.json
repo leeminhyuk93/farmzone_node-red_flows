@@ -844,7 +844,7 @@
     "id": "163e776ed05e78e3",
     "type": "inject",
     "z": "d029c8e0ac0fd4d4",
-    "name": "Loop 10 sec",
+    "name": "Loop 10 min",
     "props": [
       {
         "p": "payload"
@@ -854,7 +854,7 @@
         "vt": "str"
       }
     ],
-    "repeat": "10",
+    "repeat": "600",
     "crontab": "",
     "once": true,
     "onceDelay": "1",
