@@ -221,7 +221,7 @@
     "type": "function",
     "z": "d029c8e0ac0fd4d4",
     "name": "parseData",
-    "func": "var ccode = \"0062\";\nvar scode = \"91\";\nvar type = \"2\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nvar detected = false;\n\nif (type == \"1\" && (res.length % 34) == 0) {\n    // ���우시스템즈\n    if (paseData[0] == ' ' && paseData[32] == '\\r' && paseData[33] == '\\n') {\n        if ((paseData[1] + paseData[2]) == \"80\" || (paseData[1] + paseData[2]) == \"81\") {\n            detected = true;\n        }\n    }\n\n} else if (type == \"1\" && ((res.length % 23) == 0 || (res.length % 24) == 0)) {\n    if (paseData[0] == 'R' && paseData[1] == 'E' && paseData[2] == 'J') {\n        detected = true;\n    }\n\n} else if (type == \"2\" && (res.length % 6) == 0) {\n    if (paseData[0] == '\\u0002' && paseData[5] == '\\u0003') {\n        if (paseData[3] == \"1\") {\n            detected = true;\n        }\n    }\n\n} else if (type == \"3\" && (res.length % 11) == 0) {\n    for (var i = 1; i <= (res.length / 11); i++) {\n        if (paseData[(i * 11 - 1)] == \"\\u0001\" || paseData[(i * 11 - 1)] == \"\\u0002\" || paseData[(i * 11 - 1)] == \"1\" || paseData[(i * 11 - 1)] == \"2\") {\n            detected = true;\n        }\n    }\n\n}\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode\n    };\n\n    return msg;\n}",
+    "func": "var ccode = \"0062\";\nvar scode = \"91\";\nvar type = \"2\";\nvar res = msg.payload;\n\nvar paseData = new Array();\nfor (var i = 0; i < res.length; i++) {\n    paseData[i] = String.fromCharCode(res[i]);\n}\n\nvar detected = false;\n\nif (type == \"1\" && (res.length % 34) == 0) {\n    // 나우시스템즈\n    if (paseData[0] == ' ' && paseData[32] == '\\r' && paseData[33] == '\\n') {\n        if ((paseData[1] + paseData[2]) == \"80\" || (paseData[1] + paseData[2]) == \"81\") {\n            detected = true;\n        }\n    }\n\n} else if (type == \"1\" && ((res.length % 23) == 0 || (res.length % 24) == 0)) {\n    if (paseData[0] == 'R' && paseData[1] == 'E' && paseData[2] == 'J') {\n        detected = true;\n    }\n\n} else if (type == \"2\" && (res.length % 6) == 0) {\n    if (paseData[0] == '\\u0002' && paseData[5] == '\\u0003') {\n        if (paseData[3] == \"1\") {\n            detected = true;\n        }\n    }\n\n} else if (type == \"3\" && (res.length % 11) == 0) {\n    for (var i = 1; i <= (res.length / 11); i++) {\n        if (paseData[(i * 11 - 1)] == \"\\u0001\" || paseData[(i * 11 - 1)] == \"\\u0002\" || paseData[(i * 11 - 1)] == \"1\" || paseData[(i * 11 - 1)] == \"2\") {\n            detected = true;\n        }\n    }\n\n}\n\nif (detected) {\n\n    msg.headers = {};\n    msg.headers['content-type'] = \"application/json\";\n    msg.headers['Accept'] = \"application/json\";\n\n    msg.payload = {\n        \"ccode\": ccode,\n        \"scode\": scode\n    };\n\n    return msg;\n}",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -998,7 +998,7 @@
     "type": "function",
     "z": "d029c8e0ac0fd4d4",
     "name": "parseData",
-    "func": "let ccode = \"0062\";\nlet year = msg.payload[0];\nlet date = msg.payload[1];\nlet product = msg.payload[2];\nlet count = parseInt(msg.payload[3] + msg.payload[4]);\nlet bpm = msg.payload[5];\nlet temp1 = msg.payload[6] / 10;\nlet temp2 = msg.payload[7] / 10;\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": ccode,\n    \"year\": year,\n    \"date\": date,\n    \"product\": product,\n    \"count\": count,\n    \"bpm\": bpm,\n    \"temp1\": temp1,\n    \"temp2\": temp2\n};\n\nmsg.topic = \"INSERT INTO fz_shm.packing (ccode, year, date, product, count, bpm, temp1, temp2) VALUES (\" + ccode + \", \" + year + \", \" + date + \", '\" + product + \"', \" + count + \", \" + bpm + \", \" + temp1 + \", \" + temp2 + \")\";\n\nreturn msg;",
+    "func": "let ccode = \"0062\";\nlet year = msg.payload[0];\nlet date = msg.payload[1];\nlet product = msg.payload[2];\nlet count = parseInt(msg.payload[3] + msg.payload[4]);\nlet bpm = msg.payload[5];\nlet temp1 = msg.payload[6] / 10;\nlet temp2 = msg.payload[7] / 10;\n\nvar now = new Date();\nvar wdate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": ccode,\n    \"product\": product,\n    \"count\": count,\n    \"wdate\": wdate\n};\n\nmsg.topic = \"INSERT INTO fz_shm.packing (ccode, year, date, product, count, bpm, temp1, temp2) VALUES (\" + ccode + \", \" + year + \", \" + date + \", '\" + product + \"', \" + count + \", \" + bpm + \", \" + temp1 + \", \" + temp2 + \")\";\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -1009,7 +1009,8 @@
     "wires": [
       [
         "ade86ad61a694925",
-        "672d2b072468372b"
+        "672d2b072468372b",
+        "df3f58774c74bcb8"
       ]
     ]
   },
@@ -1159,7 +1160,7 @@
     "type": "function",
     "z": "d029c8e0ac0fd4d4",
     "name": "parseData",
-    "func": "let data = msg.payload;               // 중량선별기 전체 데이터\nlet status = msg.payload[2];          // 상태\nlet product_code = msg.payload[1];    // 제품코드\nlet product_weight = msg.payload[3];  // 제품 무게\nlet normal_count = msg.payload[4];           // 정상 수량\nlet over_count = msg.payload[5];            // 과량 수량\nlet fall_count = msg.payload[6];            // 미달 수량\nlet metal_count = msg.payload[7];           // 금속 수량\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0062\",\n    \"status\": status,\n    \"product_code\": product_code,\n    \"product_weight\": product_weight,\n    \"normal\": normal_count,\n    \"over\": over_count,\n    \"fall\": fall_count,\n    \"metal\": metal_count\n};\n\nmsg.topic = \"INSERT INTO fz_shm.check_weigher (status, product_code, product_weight, normal_count, over_count, fall_count, metal_count) VALUES ('\" + status + \"', '\" + product_code + \"', '\" + product_weight + \"', '\" + normal_count + \"', '\" + over_count + \"', '\" + fall_count + \"', '\" + metal_count + \"')\";\n\nreturn msg;",
+    "func": "let data = msg.payload;               // 중량선별기 전체 데이터\nlet status = msg.payload[2];          // 상태 (N:정상, U:과량, L:미달, M:금속)\nlet product_code = msg.payload[1];    // 제품코드\nlet product_weight = msg.payload[3];  // 제품 무게\nlet normal_count = msg.payload[4];           // 정상 수량\nlet over_count = msg.payload[5];            // 과량 수량\nlet fall_count = msg.payload[6];            // 미달 수량\nlet metal_count = msg.payload[7];           // 금속 수량\n\nvar now = new Date();\nvar wdate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0062\",\n    \"status\": status,\n    \"product_code\": product_code,\n    \"product_weight\": product_weight,\n    \"normal\": normal_count,\n    \"over\": over_count,\n    \"fall\": fall_count,\n    \"metal\": metal_count,\n    \"wdate\": wdate\n};\n\nmsg.topic = \"INSERT INTO fz_shm.check_weigher (status, product_code, product_weight, normal_count, over_count, fall_count, metal_count) VALUES ('\" + status + \"', '\" + product_code + \"', '\" + product_weight + \"', '\" + normal_count + \"', '\" + over_count + \"', '\" + fall_count + \"', '\" + metal_count + \"')\";\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -1170,7 +1171,8 @@
     "wires": [
       [
         "417d665b7b04b282",
-        "0bee2a70ea96eacb"
+        "0bee2a70ea96eacb",
+        "399d1faf59849284"
       ]
     ]
   },
@@ -1344,7 +1346,7 @@
     "method": "POST",
     "ret": "txt",
     "paytoqs": "ignore",
-    "url": "",
+    "url": "https://pc.smarthaccpman.com/smh-api/C0062/get_autopacking",
     "tls": "",
     "persist": false,
     "proxy": "",
@@ -1402,7 +1404,7 @@
     "method": "POST",
     "ret": "txt",
     "paytoqs": "ignore",
-    "url": "",
+    "url": "https://pc.smarthaccpman.com/smh-api/C0062/get_weightcheck",
     "tls": "",
     "persist": false,
     "proxy": "",
