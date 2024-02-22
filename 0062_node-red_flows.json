@@ -1659,6 +1659,7 @@
     "id": "f7336441e3f55dfe",
     "type": "serial request",
     "z": "e553273af07445b7",
+    "d": true,
     "name": "",
     "serial": "46c33fd38817389c",
     "x": 430,
