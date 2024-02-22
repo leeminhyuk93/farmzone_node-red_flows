@@ -761,7 +761,7 @@
     "id": "a938851ec766e156",
     "type": "comment",
     "z": "d029c8e0ac0fd4d4",
-    "name": "모든다해(금속검출기)",
+    "name": "모든다해(��속검출기)",
     "info": "",
     "x": 120,
     "y": 440,
@@ -844,7 +844,7 @@
     "id": "163e776ed05e78e3",
     "type": "inject",
     "z": "d029c8e0ac0fd4d4",
-    "name": "Loop 10 Minute",
+    "name": "Loop 10 sec",
     "props": [
       {
         "p": "payload"
@@ -854,14 +854,14 @@
         "vt": "str"
       }
     ],
-    "repeat": "600",
+    "repeat": "10",
     "crontab": "",
     "once": true,
     "onceDelay": "1",
     "topic": "",
     "payload": "",
     "payloadType": "date",
-    "x": 130,
+    "x": 120,
     "y": 960,
     "wires": [
       [
