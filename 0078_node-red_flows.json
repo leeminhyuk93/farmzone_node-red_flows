@@ -1160,15 +1160,15 @@
     "z": "87ca1b5c61536aea",
     "name": "debug 44",
     "active": true,
-    "tosidebar": false,
+    "tosidebar": true,
     "console": false,
     "tostatus": true,
     "complete": "payload",
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "msg",
-    "x": 660,
-    "y": 280,
+    "x": 520,
+    "y": 300,
     "wires": []
   },
   {
