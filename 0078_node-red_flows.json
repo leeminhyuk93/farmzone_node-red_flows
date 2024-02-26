@@ -2050,7 +2050,7 @@
     "type": "debug",
     "z": "87ca1b5c61536aea",
     "name": "debug 63",
-    "active": false,
+    "active": true,
     "tosidebar": true,
     "console": false,
     "tostatus": true,
@@ -2058,8 +2058,8 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "msg",
-    "x": 840,
-    "y": 260,
+    "x": 720,
+    "y": 300,
     "wires": []
   }
 ]
