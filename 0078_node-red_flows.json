@@ -1073,7 +1073,7 @@
     "z": "87ca1b5c61536aea",
     "name": "debug 43",
     "active": true,
-    "tosidebar": false,
+    "tosidebar": true,
     "console": false,
     "tostatus": true,
     "complete": "payload",
@@ -1934,8 +1934,8 @@
     "topic": "",
     "payload": "[\"0x02\", \"0x20\", \"0x31\", \"0x03\"]",
     "payloadType": "bin",
-    "x": 410,
-    "y": 180,
+    "x": 370,
+    "y": 140,
     "wires": [
       [
         "ce43edf87b738893",
@@ -2050,7 +2050,7 @@
     "type": "debug",
     "z": "87ca1b5c61536aea",
     "name": "debug 63",
-    "active": false,
+    "active": true,
     "tosidebar": true,
     "console": false,
     "tostatus": true,
