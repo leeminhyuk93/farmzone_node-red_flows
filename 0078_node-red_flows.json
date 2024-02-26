@@ -16,6 +16,14 @@
     "env": []
   },
   {
+    "id": "0604a6873d221d37",
+    "type": "tab",
+    "label": "db delete",
+    "disabled": false,
+    "info": "저장된 기간이 30일 이상된 데이터는 삭제",
+    "env": []
+  },
+  {
     "id": "a567e046bc940a62",
     "type": "MySQLdatabase",
     "name": "EASY-LINK",
@@ -1072,7 +1080,7 @@
     "type": "debug",
     "z": "87ca1b5c61536aea",
     "name": "debug 43",
-    "active": true,
+    "active": false,
     "tosidebar": true,
     "console": false,
     "tostatus": false,
@@ -1159,7 +1167,7 @@
     "type": "debug",
     "z": "87ca1b5c61536aea",
     "name": "debug 44",
-    "active": true,
+    "active": false,
     "tosidebar": true,
     "console": false,
     "tostatus": true,
@@ -1167,8 +1175,8 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "msg",
-    "x": 520,
-    "y": 300,
+    "x": 660,
+    "y": 280,
     "wires": []
   },
   {
@@ -1263,7 +1271,7 @@
     "type": "debug",
     "z": "87ca1b5c61536aea",
     "name": "debug 45",
-    "active": true,
+    "active": false,
     "tosidebar": true,
     "console": false,
     "tostatus": true,
@@ -1404,7 +1412,7 @@
     "type": "debug",
     "z": "87ca1b5c61536aea",
     "name": "debug 47",
-    "active": true,
+    "active": false,
     "tosidebar": true,
     "console": false,
     "tostatus": true,
@@ -1545,7 +1553,7 @@
     "type": "debug",
     "z": "87ca1b5c61536aea",
     "name": "debug 49",
-    "active": true,
+    "active": false,
     "tosidebar": true,
     "console": false,
     "tostatus": true,
@@ -1686,7 +1694,7 @@
     "type": "debug",
     "z": "87ca1b5c61536aea",
     "name": "debug 51",
-    "active": true,
+    "active": false,
     "tosidebar": true,
     "console": false,
     "tostatus": true,
@@ -1827,7 +1835,7 @@
     "type": "debug",
     "z": "87ca1b5c61536aea",
     "name": "debug 53",
-    "active": true,
+    "active": false,
     "tosidebar": true,
     "console": false,
     "tostatus": true,
@@ -2050,7 +2058,7 @@
     "type": "debug",
     "z": "87ca1b5c61536aea",
     "name": "debug 63",
-    "active": true,
+    "active": false,
     "tosidebar": true,
     "console": false,
     "tostatus": true,
@@ -2058,8 +2066,1266 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "msg",
-    "x": 720,
-    "y": 300,
+    "x": 840,
+    "y": 260,
+    "wires": []
+  },
+  {
+    "id": "25015b88f4c5a017",
+    "type": "comment",
+    "z": "0604a6873d221d37",
+    "name": "데이터 보관 기간 30일",
+    "info": "",
+    "x": 140,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "be13a93e8d79e027",
+    "type": "inject",
+    "z": "0604a6873d221d37",
+    "name": "DELETE",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 100,
+    "wires": [
+      [
+        "23c57eb2334f6c58"
+      ]
+    ]
+  },
+  {
+    "id": "23c57eb2334f6c58",
+    "type": "function",
+    "z": "0604a6873d221d37",
+    "name": "fztable_212_ch1",
+    "func": "msg.topic = \"DELETE FROM fztable_212_ch1 WHERE date < CURDATE() - INTERVAL 30 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 100,
+    "wires": [
+      [
+        "07bb3f68c01f54f4"
+      ]
+    ]
+  },
+  {
+    "id": "07bb3f68c01f54f4",
+    "type": "mysql",
+    "z": "0604a6873d221d37",
+    "mydb": "a567e046bc940a62",
+    "name": "EASY-LINK",
+    "x": 490,
+    "y": 100,
+    "wires": [
+      [
+        "67adc54dc120c6e4"
+      ]
+    ]
+  },
+  {
+    "id": "67adc54dc120c6e4",
+    "type": "debug",
+    "z": "0604a6873d221d37",
+    "name": "debug 64",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 660,
+    "y": 100,
+    "wires": []
+  },
+  {
+    "id": "f5391e313ca23b93",
+    "type": "inject",
+    "z": "0604a6873d221d37",
+    "name": "DELETE",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 160,
+    "wires": [
+      [
+        "8e590f39156211d5"
+      ]
+    ]
+  },
+  {
+    "id": "8e590f39156211d5",
+    "type": "function",
+    "z": "0604a6873d221d37",
+    "name": "fztable_212_ch2",
+    "func": "msg.topic = \"DELETE FROM fztable_212_ch2 WHERE date < CURDATE() - INTERVAL 30 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 160,
+    "wires": [
+      [
+        "a1937ffce5a29e57"
+      ]
+    ]
+  },
+  {
+    "id": "a1937ffce5a29e57",
+    "type": "mysql",
+    "z": "0604a6873d221d37",
+    "mydb": "a567e046bc940a62",
+    "name": "EASY-LINK",
+    "x": 490,
+    "y": 160,
+    "wires": [
+      [
+        "8cb90829b660f968"
+      ]
+    ]
+  },
+  {
+    "id": "8cb90829b660f968",
+    "type": "debug",
+    "z": "0604a6873d221d37",
+    "name": "debug 65",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 660,
+    "y": 160,
+    "wires": []
+  },
+  {
+    "id": "a5c36214945b3388",
+    "type": "inject",
+    "z": "0604a6873d221d37",
+    "name": "DELETE",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 220,
+    "wires": [
+      [
+        "e806fb4150c66b76"
+      ]
+    ]
+  },
+  {
+    "id": "e806fb4150c66b76",
+    "type": "function",
+    "z": "0604a6873d221d37",
+    "name": "fztable_213_ch1",
+    "func": "msg.topic = \"DELETE FROM fztable_213_ch1 WHERE date < CURDATE() - INTERVAL 30 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 220,
+    "wires": [
+      [
+        "b124b43e0394feb0"
+      ]
+    ]
+  },
+  {
+    "id": "b124b43e0394feb0",
+    "type": "mysql",
+    "z": "0604a6873d221d37",
+    "mydb": "a567e046bc940a62",
+    "name": "EASY-LINK",
+    "x": 490,
+    "y": 220,
+    "wires": [
+      [
+        "59bd8d394dd94be8"
+      ]
+    ]
+  },
+  {
+    "id": "59bd8d394dd94be8",
+    "type": "debug",
+    "z": "0604a6873d221d37",
+    "name": "debug 66",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 660,
+    "y": 220,
+    "wires": []
+  },
+  {
+    "id": "fe861286ff1d0e26",
+    "type": "inject",
+    "z": "0604a6873d221d37",
+    "name": "DELETE",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 280,
+    "wires": [
+      [
+        "4fbd980eb4297f77"
+      ]
+    ]
+  },
+  {
+    "id": "4fbd980eb4297f77",
+    "type": "function",
+    "z": "0604a6873d221d37",
+    "name": "fztable_213_ch2",
+    "func": "msg.topic = \"DELETE FROM fztable_213_ch2 WHERE date < CURDATE() - INTERVAL 30 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 280,
+    "wires": [
+      [
+        "57e7df096235c175"
+      ]
+    ]
+  },
+  {
+    "id": "57e7df096235c175",
+    "type": "mysql",
+    "z": "0604a6873d221d37",
+    "mydb": "a567e046bc940a62",
+    "name": "EASY-LINK",
+    "x": 490,
+    "y": 280,
+    "wires": [
+      [
+        "8ff386e25c457f6b"
+      ]
+    ]
+  },
+  {
+    "id": "8ff386e25c457f6b",
+    "type": "debug",
+    "z": "0604a6873d221d37",
+    "name": "debug 67",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 660,
+    "y": 280,
+    "wires": []
+  },
+  {
+    "id": "663c6c65fabc2db4",
+    "type": "inject",
+    "z": "0604a6873d221d37",
+    "name": "DELETE",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 340,
+    "wires": [
+      [
+        "773f19637e5fe540"
+      ]
+    ]
+  },
+  {
+    "id": "773f19637e5fe540",
+    "type": "function",
+    "z": "0604a6873d221d37",
+    "name": "fztable_214_ch1",
+    "func": "msg.topic = \"DELETE FROM fztable_214_ch1 WHERE date < CURDATE() - INTERVAL 30 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 340,
+    "wires": [
+      [
+        "a0b2a24d875d3477"
+      ]
+    ]
+  },
+  {
+    "id": "a0b2a24d875d3477",
+    "type": "mysql",
+    "z": "0604a6873d221d37",
+    "mydb": "a567e046bc940a62",
+    "name": "EASY-LINK",
+    "x": 490,
+    "y": 340,
+    "wires": [
+      [
+        "48d8075a191812c9"
+      ]
+    ]
+  },
+  {
+    "id": "48d8075a191812c9",
+    "type": "debug",
+    "z": "0604a6873d221d37",
+    "name": "debug 68",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 660,
+    "y": 340,
+    "wires": []
+  },
+  {
+    "id": "9b244e477781a3c3",
+    "type": "inject",
+    "z": "0604a6873d221d37",
+    "name": "DELETE",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 400,
+    "wires": [
+      [
+        "947683c7e97627ea"
+      ]
+    ]
+  },
+  {
+    "id": "947683c7e97627ea",
+    "type": "function",
+    "z": "0604a6873d221d37",
+    "name": "fztable_214_ch2",
+    "func": "msg.topic = \"DELETE FROM fztable_214_ch2 WHERE date < CURDATE() - INTERVAL 30 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 400,
+    "wires": [
+      [
+        "4b1485ac831ea7c4"
+      ]
+    ]
+  },
+  {
+    "id": "4b1485ac831ea7c4",
+    "type": "mysql",
+    "z": "0604a6873d221d37",
+    "mydb": "a567e046bc940a62",
+    "name": "EASY-LINK",
+    "x": 490,
+    "y": 400,
+    "wires": [
+      [
+        "6bf708a76886d186"
+      ]
+    ]
+  },
+  {
+    "id": "6bf708a76886d186",
+    "type": "debug",
+    "z": "0604a6873d221d37",
+    "name": "debug 69",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 660,
+    "y": 400,
+    "wires": []
+  },
+  {
+    "id": "dd1c7f3a7c60df71",
+    "type": "inject",
+    "z": "0604a6873d221d37",
+    "name": "DELETE",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 460,
+    "wires": [
+      [
+        "054b92e84299d664"
+      ]
+    ]
+  },
+  {
+    "id": "054b92e84299d664",
+    "type": "function",
+    "z": "0604a6873d221d37",
+    "name": "fztable_215_ch1",
+    "func": "msg.topic = \"DELETE FROM fztable_215_ch1 WHERE date < CURDATE() - INTERVAL 30 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 460,
+    "wires": [
+      [
+        "de3b8be771984b70"
+      ]
+    ]
+  },
+  {
+    "id": "de3b8be771984b70",
+    "type": "mysql",
+    "z": "0604a6873d221d37",
+    "mydb": "a567e046bc940a62",
+    "name": "EASY-LINK",
+    "x": 490,
+    "y": 460,
+    "wires": [
+      [
+        "9f1854186b8e16ae"
+      ]
+    ]
+  },
+  {
+    "id": "9f1854186b8e16ae",
+    "type": "debug",
+    "z": "0604a6873d221d37",
+    "name": "debug 70",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 660,
+    "y": 460,
+    "wires": []
+  },
+  {
+    "id": "7bc70dba8cf93190",
+    "type": "inject",
+    "z": "0604a6873d221d37",
+    "name": "DELETE",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 520,
+    "wires": [
+      [
+        "8e613f6c30b221e5"
+      ]
+    ]
+  },
+  {
+    "id": "8e613f6c30b221e5",
+    "type": "function",
+    "z": "0604a6873d221d37",
+    "name": "fztable_215_ch2",
+    "func": "msg.topic = \"DELETE FROM fztable_215_ch2 WHERE date < CURDATE() - INTERVAL 30 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 520,
+    "wires": [
+      [
+        "7de35e6492c1721e"
+      ]
+    ]
+  },
+  {
+    "id": "7de35e6492c1721e",
+    "type": "mysql",
+    "z": "0604a6873d221d37",
+    "mydb": "a567e046bc940a62",
+    "name": "EASY-LINK",
+    "x": 490,
+    "y": 520,
+    "wires": [
+      [
+        "de6a87757fd1398c"
+      ]
+    ]
+  },
+  {
+    "id": "de6a87757fd1398c",
+    "type": "debug",
+    "z": "0604a6873d221d37",
+    "name": "debug 71",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 660,
+    "y": 520,
+    "wires": []
+  },
+  {
+    "id": "b3fee3ac20380f8c",
+    "type": "inject",
+    "z": "0604a6873d221d37",
+    "name": "DELETE",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 580,
+    "wires": [
+      [
+        "bdcfc954f5cf727e"
+      ]
+    ]
+  },
+  {
+    "id": "bdcfc954f5cf727e",
+    "type": "function",
+    "z": "0604a6873d221d37",
+    "name": "fztable_216_ch1",
+    "func": "msg.topic = \"DELETE FROM fztable_216_ch1 WHERE date < CURDATE() - INTERVAL 30 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 580,
+    "wires": [
+      [
+        "c66961b3a440f17c"
+      ]
+    ]
+  },
+  {
+    "id": "c66961b3a440f17c",
+    "type": "mysql",
+    "z": "0604a6873d221d37",
+    "mydb": "a567e046bc940a62",
+    "name": "EASY-LINK",
+    "x": 490,
+    "y": 580,
+    "wires": [
+      [
+        "5473183a3863d552"
+      ]
+    ]
+  },
+  {
+    "id": "5473183a3863d552",
+    "type": "debug",
+    "z": "0604a6873d221d37",
+    "name": "debug 72",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 660,
+    "y": 580,
+    "wires": []
+  },
+  {
+    "id": "e1d2c11a69d30ec7",
+    "type": "inject",
+    "z": "0604a6873d221d37",
+    "name": "DELETE",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 640,
+    "wires": [
+      [
+        "dd5f56c318692510"
+      ]
+    ]
+  },
+  {
+    "id": "dd5f56c318692510",
+    "type": "function",
+    "z": "0604a6873d221d37",
+    "name": "fztable_216_ch2",
+    "func": "msg.topic = \"DELETE FROM fztable_216_ch2 WHERE date < CURDATE() - INTERVAL 30 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 640,
+    "wires": [
+      [
+        "0f9eb8d14d38e697"
+      ]
+    ]
+  },
+  {
+    "id": "0f9eb8d14d38e697",
+    "type": "mysql",
+    "z": "0604a6873d221d37",
+    "mydb": "a567e046bc940a62",
+    "name": "EASY-LINK",
+    "x": 490,
+    "y": 640,
+    "wires": [
+      [
+        "9e9d414e86ec26db"
+      ]
+    ]
+  },
+  {
+    "id": "9e9d414e86ec26db",
+    "type": "debug",
+    "z": "0604a6873d221d37",
+    "name": "debug 73",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 660,
+    "y": 640,
+    "wires": []
+  },
+  {
+    "id": "31b9586be882b41b",
+    "type": "inject",
+    "z": "0604a6873d221d37",
+    "name": "DELETE",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 700,
+    "wires": [
+      [
+        "14fe74b105b644de"
+      ]
+    ]
+  },
+  {
+    "id": "14fe74b105b644de",
+    "type": "function",
+    "z": "0604a6873d221d37",
+    "name": "fztable_217_ch1",
+    "func": "msg.topic = \"DELETE FROM fztable_217_ch1 WHERE date < CURDATE() - INTERVAL 30 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 700,
+    "wires": [
+      [
+        "1ff369eef7f25df8"
+      ]
+    ]
+  },
+  {
+    "id": "1ff369eef7f25df8",
+    "type": "mysql",
+    "z": "0604a6873d221d37",
+    "mydb": "a567e046bc940a62",
+    "name": "EASY-LINK",
+    "x": 490,
+    "y": 700,
+    "wires": [
+      [
+        "b76954d3b233e9e3"
+      ]
+    ]
+  },
+  {
+    "id": "b76954d3b233e9e3",
+    "type": "debug",
+    "z": "0604a6873d221d37",
+    "name": "debug 74",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 660,
+    "y": 700,
+    "wires": []
+  },
+  {
+    "id": "37acacb737c12d46",
+    "type": "inject",
+    "z": "0604a6873d221d37",
+    "name": "DELETE",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 760,
+    "wires": [
+      [
+        "a45260ce79961f43"
+      ]
+    ]
+  },
+  {
+    "id": "a45260ce79961f43",
+    "type": "function",
+    "z": "0604a6873d221d37",
+    "name": "fztable_217_ch2",
+    "func": "msg.topic = \"DELETE FROM fztable_217_ch2 WHERE date < CURDATE() - INTERVAL 30 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 760,
+    "wires": [
+      [
+        "e0bbbf1b6b54bab8"
+      ]
+    ]
+  },
+  {
+    "id": "e0bbbf1b6b54bab8",
+    "type": "mysql",
+    "z": "0604a6873d221d37",
+    "mydb": "a567e046bc940a62",
+    "name": "EASY-LINK",
+    "x": 490,
+    "y": 760,
+    "wires": [
+      [
+        "41f10a2fee5ebcde"
+      ]
+    ]
+  },
+  {
+    "id": "41f10a2fee5ebcde",
+    "type": "debug",
+    "z": "0604a6873d221d37",
+    "name": "debug 75",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 660,
+    "y": 760,
+    "wires": []
+  },
+  {
+    "id": "135b96f128449ad7",
+    "type": "inject",
+    "z": "0604a6873d221d37",
+    "name": "DELETE",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 820,
+    "wires": [
+      [
+        "64bff870d518b286"
+      ]
+    ]
+  },
+  {
+    "id": "64bff870d518b286",
+    "type": "function",
+    "z": "0604a6873d221d37",
+    "name": "fztable_218_ch1",
+    "func": "msg.topic = \"DELETE FROM fztable_218_ch1 WHERE date < CURDATE() - INTERVAL 30 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 820,
+    "wires": [
+      [
+        "9eddf254be2e8e60"
+      ]
+    ]
+  },
+  {
+    "id": "9eddf254be2e8e60",
+    "type": "mysql",
+    "z": "0604a6873d221d37",
+    "mydb": "a567e046bc940a62",
+    "name": "EASY-LINK",
+    "x": 490,
+    "y": 820,
+    "wires": [
+      [
+        "d5b2a25c0b4ab9c3"
+      ]
+    ]
+  },
+  {
+    "id": "d5b2a25c0b4ab9c3",
+    "type": "debug",
+    "z": "0604a6873d221d37",
+    "name": "debug 76",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 660,
+    "y": 820,
+    "wires": []
+  },
+  {
+    "id": "f81ab7a7fb90554e",
+    "type": "inject",
+    "z": "0604a6873d221d37",
+    "name": "DELETE",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 880,
+    "wires": [
+      [
+        "66277188f0a70c9f"
+      ]
+    ]
+  },
+  {
+    "id": "66277188f0a70c9f",
+    "type": "function",
+    "z": "0604a6873d221d37",
+    "name": "fztable_218_ch2",
+    "func": "msg.topic = \"DELETE FROM fztable_218_ch2 WHERE date < CURDATE() - INTERVAL 30 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 880,
+    "wires": [
+      [
+        "d1cf281881591e54"
+      ]
+    ]
+  },
+  {
+    "id": "d1cf281881591e54",
+    "type": "mysql",
+    "z": "0604a6873d221d37",
+    "mydb": "a567e046bc940a62",
+    "name": "EASY-LINK",
+    "x": 490,
+    "y": 880,
+    "wires": [
+      [
+        "39fd388234d10e64"
+      ]
+    ]
+  },
+  {
+    "id": "39fd388234d10e64",
+    "type": "debug",
+    "z": "0604a6873d221d37",
+    "name": "debug 77",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 660,
+    "y": 880,
+    "wires": []
+  },
+  {
+    "id": "9b2210f92a17446a",
+    "type": "inject",
+    "z": "0604a6873d221d37",
+    "name": "DELETE",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 940,
+    "wires": [
+      [
+        "c1b6db721cd6a26d"
+      ]
+    ]
+  },
+  {
+    "id": "c1b6db721cd6a26d",
+    "type": "function",
+    "z": "0604a6873d221d37",
+    "name": "fztable_219_ch1",
+    "func": "msg.topic = \"DELETE FROM fztable_219_ch1 WHERE date < CURDATE() - INTERVAL 30 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 940,
+    "wires": [
+      [
+        "d6e60a1d0a2acfed"
+      ]
+    ]
+  },
+  {
+    "id": "d6e60a1d0a2acfed",
+    "type": "mysql",
+    "z": "0604a6873d221d37",
+    "mydb": "a567e046bc940a62",
+    "name": "EASY-LINK",
+    "x": 490,
+    "y": 940,
+    "wires": [
+      [
+        "fa56add8a159881d"
+      ]
+    ]
+  },
+  {
+    "id": "fa56add8a159881d",
+    "type": "debug",
+    "z": "0604a6873d221d37",
+    "name": "debug 78",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 660,
+    "y": 940,
+    "wires": []
+  },
+  {
+    "id": "58cf977b8a2a89fd",
+    "type": "inject",
+    "z": "0604a6873d221d37",
+    "name": "DELETE",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 120,
+    "y": 1000,
+    "wires": [
+      [
+        "bf479dd8d059c811"
+      ]
+    ]
+  },
+  {
+    "id": "bf479dd8d059c811",
+    "type": "function",
+    "z": "0604a6873d221d37",
+    "name": "fztable_219_ch2",
+    "func": "msg.topic = \"DELETE FROM fztable_219_ch2 WHERE date < CURDATE() - INTERVAL 30 DAY\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 300,
+    "y": 1000,
+    "wires": [
+      [
+        "4f601370626c2b57"
+      ]
+    ]
+  },
+  {
+    "id": "4f601370626c2b57",
+    "type": "mysql",
+    "z": "0604a6873d221d37",
+    "mydb": "a567e046bc940a62",
+    "name": "EASY-LINK",
+    "x": 490,
+    "y": 1000,
+    "wires": [
+      [
+        "87b6768e0825e01a"
+      ]
+    ]
+  },
+  {
+    "id": "87b6768e0825e01a",
+    "type": "debug",
+    "z": "0604a6873d221d37",
+    "name": "debug 79",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 660,
+    "y": 1000,
     "wires": []
   }
 ]
