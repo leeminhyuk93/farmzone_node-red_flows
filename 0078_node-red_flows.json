@@ -982,7 +982,7 @@
     "id": "b0513aab270f327e",
     "type": "inject",
     "z": "87ca1b5c61536aea",
-    "name": "Loop 1 Minute",
+    "name": "Loop 10 sec",
     "props": [
       {
         "p": "payload"
@@ -1183,7 +1183,7 @@
     "id": "08c3d8087bfa0b7f",
     "type": "inject",
     "z": "87ca1b5c61536aea",
-    "name": "Loop 1 Minute",
+    "name": "Loop 10 sec",
     "props": [
       {
         "p": "payload"
@@ -1324,7 +1324,7 @@
     "id": "a29e880c02cc9575",
     "type": "inject",
     "z": "87ca1b5c61536aea",
-    "name": "Loop 1 Minute",
+    "name": "Loop 10 sec",
     "props": [
       {
         "p": "payload"
@@ -1465,7 +1465,7 @@
     "id": "1431b90b6dad628c",
     "type": "inject",
     "z": "87ca1b5c61536aea",
-    "name": "Loop 1 Minute",
+    "name": "Loop 10 sec",
     "props": [
       {
         "p": "payload"
@@ -1606,7 +1606,7 @@
     "id": "6c1a679d208dd598",
     "type": "inject",
     "z": "87ca1b5c61536aea",
-    "name": "Loop 1 Minute",
+    "name": "Loop 10 sec",
     "props": [
       {
         "p": "payload"
@@ -1747,7 +1747,7 @@
     "id": "e5ed926fed7e1b95",
     "type": "inject",
     "z": "87ca1b5c61536aea",
-    "name": "Loop 1 Minute",
+    "name": "Loop 10 sec",
     "props": [
       {
         "p": "payload"
