@@ -1566,13 +1566,13 @@
     "type": "function",
     "z": "ecc1ed326b3511ce",
     "name": "냉장실_query",
-    "func": "msg.payload = Buffer.from([2, 48, 49, 82, 88, 84, 80, 48, 3, 62]);\n//msg.payload = Buffer.from([2, 48, 51, 82, 88, 84, 80, 48, 3, 60]);\n\n\nnode.send(msg);",
+    "func": "msg.payload = Buffer.from([2, 48, 50, 82, 88, 84, 80, 48, 3, 61]);\n\nnode.send(msg);",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 320,
+    "x": 300,
     "y": 760,
     "wires": [
       [
@@ -1715,13 +1715,13 @@
     "type": "function",
     "z": "ecc1ed326b3511ce",
     "name": "냉동실_query",
-    "func": "msg.payload = Buffer.from([2, 48, 50, 82, 88, 84, 80, 48, 3, 61]);\nnode.send(msg);\n",
+    "func": "msg.payload = Buffer.from([2, 48, 49, 82, 88, 84, 80, 48, 3, 62]);\nnode.send(msg);\n",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 320,
+    "x": 300,
     "y": 960,
     "wires": [
       [
