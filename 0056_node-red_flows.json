@@ -195,7 +195,7 @@
     "type": "function",
     "z": "5bad3bacfa278b0c",
     "name": "냉장실 send api",
-    "func": "var adr = msg.payload[0].adr;\nvar temp = msg.payload[0].temp;\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0056\",\n    \"kind\": \"4\",\n    \"deviceId\": '2',\n    \"temperature\": temp,\n};\n\nreturn msg;",
+    "func": "var adr = msg.payload[0].adr;\nvar temp = msg.payload[0].temp;\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0056\",\n    \"kind\": \"4\",\n    \"deviceId\": '1',\n    \"temperature\": temp,\n};\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -689,7 +689,7 @@
     "type": "function",
     "z": "5bad3bacfa278b0c",
     "name": "냉동실 send api",
-    "func": "var adr = msg.payload[0].adr;\nvar temp = msg.payload[0].temp;\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0056\",\n    \"kind\": \"4\",\n    \"deviceId\": \"1\",\n    \"temperature\": temp,\n};\n\nreturn msg;",
+    "func": "var adr = msg.payload[0].adr;\nvar temp = msg.payload[0].temp;\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"ccode\": \"0056\",\n    \"kind\": \"4\",\n    \"deviceId\": \"2\",\n    \"temperature\": temp,\n};\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -1554,7 +1554,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 760,
+    "y": 980,
     "wires": [
       [
         "c38c471af3f07472"
@@ -1566,14 +1566,14 @@
     "type": "function",
     "z": "ecc1ed326b3511ce",
     "name": "냉동실_query",
-    "func": "msg.payload = Buffer.from([2, 48, 50, 82, 88, 84, 80, 48, 3, 61]);\n\nnode.send(msg);",
+    "func": "msg.payload = Buffer.from([2, 48, 49, 82, 88, 84, 80, 48, 3, 62]);\n\nnode.send(msg);",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
     "x": 300,
-    "y": 760,
+    "y": 980,
     "wires": [
       [
         "59da47a424318d2f"
@@ -1587,7 +1587,7 @@
     "name": "",
     "serial": "8ea4664f289b895d",
     "x": 470,
-    "y": 760,
+    "y": 980,
     "wires": [
       [
         "9f76a96d9d028e11"
@@ -1607,7 +1607,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 440,
-    "y": 840,
+    "y": 1060,
     "wires": []
   },
   {
@@ -1654,7 +1654,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 630,
-    "y": 760,
+    "y": 980,
     "wires": [
       [
         "8b675ee8e85b4c50"
@@ -1673,7 +1673,7 @@
     "finalize": "",
     "libs": [],
     "x": 120,
-    "y": 840,
+    "y": 1060,
     "wires": [
       [
         "1f62410bad886f49",
@@ -1703,7 +1703,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 130,
-    "y": 960,
+    "y": 760,
     "wires": [
       [
         "e7d9b51cd2212881"
@@ -1715,14 +1715,14 @@
     "type": "function",
     "z": "ecc1ed326b3511ce",
     "name": "냉장실_query",
-    "func": "msg.payload = Buffer.from([2, 48, 49, 82, 88, 84, 80, 48, 3, 62]);\nnode.send(msg);\n",
+    "func": "msg.payload = Buffer.from([2, 48, 50, 82, 88, 84, 80, 48, 3, 61]);\n\nnode.send(msg);\n",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
     "x": 300,
-    "y": 960,
+    "y": 760,
     "wires": [
       [
         "ce3f0313c471e654"
@@ -1736,7 +1736,7 @@
     "name": "",
     "serial": "8ea4664f289b895d",
     "x": 470,
-    "y": 960,
+    "y": 760,
     "wires": [
       [
         "b32856adf1fe274f"
@@ -1756,7 +1756,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 440,
-    "y": 1020,
+    "y": 820,
     "wires": []
   },
   {
@@ -1803,7 +1803,7 @@
     "setTopic": true,
     "outputs": 1,
     "x": 630,
-    "y": 960,
+    "y": 760,
     "wires": [
       [
         "acb2ebe96e2a25d7"
@@ -1817,7 +1817,7 @@
     "name": "저온창고 [냉장/냉동]",
     "info": "",
     "x": 130,
-    "y": 720,
+    "y": 940,
     "wires": []
   },
   {
@@ -1832,7 +1832,7 @@
     "finalize": "",
     "libs": [],
     "x": 120,
-    "y": 1020,
+    "y": 820,
     "wires": [
       [
         "860c65883faa370c",
@@ -1847,7 +1847,7 @@
     "mydb": "dd435157a6d5c335",
     "name": "",
     "x": 280,
-    "y": 840,
+    "y": 1060,
     "wires": [
       [
         "ac606f9689fa350d"
@@ -1861,7 +1861,7 @@
     "mydb": "dd435157a6d5c335",
     "name": "",
     "x": 280,
-    "y": 1020,
+    "y": 820,
     "wires": [
       [
         "d55dd6338a9427d6"
@@ -1881,7 +1881,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 280,
-    "y": 880,
+    "y": 1100,
     "wires": []
   },
   {
@@ -1897,7 +1897,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 280,
-    "y": 1060,
+    "y": 860,
     "wires": []
   },
   {
@@ -2156,9 +2156,9 @@
     "type": "comment",
     "z": "ecc1ed326b3511ce",
     "name": "※수정 사항(24.03.11)",
-    "info": "수정 날짜 : 24년 3월 11일\n\n수정 내용 : 현장에서 온도 컨트롤러는 그대로 두고,\n냉장창고, 냉동창고 환경을 바꿔서\n노드레드에서 냉장, 냉동 요청 쿼리 국번 변경했음\n기존 냉장 컨트롤러 역할이 냉동 저장고로 변경,\n냉동 컨트롤러 역할이 냉장 저장��� 온도 수집\n\n[ 기존 ]\n냉장 국번 : 1 (49)\n냉동 국번 : 2 (50)\n\n[ 변경 후 ]\n냉장 국번 : 2 (50)\n냉동 국번 : 1 (49)",
+    "info": "수정 날짜 : 24년 3월 11일\n\n수정 내용 : 현장에서 온도 컨트롤러는 그대로 두고,\n냉장창고, 냉동창고 환경을 바꿔서\n노드레드에서 냉장, 냉동 요청 쿼리 국번 변경했음\n기존 냉장 컨트롤러 역할이 냉동 저장고로 변경,\n냉동 컨트롤러 역할이 냉장 저��고 온도 수집\n\n[ 기존 ]\n냉장 국번 : 1 (49)\n냉동 국번 : 2 (50)\n\n[ 변경 후 ]\n냉장 국번 : 2 (50)\n냉동 국번 : 1 (49)",
     "x": 340,
-    "y": 720,
+    "y": 940,
     "wires": []
   },
   {
