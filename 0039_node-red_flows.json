@@ -2115,24 +2115,6 @@
     ]
   },
   {
-    "id": "44b894ef26d328e1",
-    "type": "function",
-    "z": "ea534a0bb0b5928e",
-    "name": "parsing",
-    "func": "let pressure = 0;  // 에어 압력\nlet dateTime = new Date();  // 현재 시간\nlet saveDateTime = dateTime.toLocaleString();  //저장 시간\n\nif (msg.payload[0] <= 980) {\n    pressure = Math.abs((msg.payload[0] / 1000) - 0.095);\n} else {\n    pressure = msg.payload[0] / 1000;  // 에어 압력\n}\n\npressure = pressure.toFixed(1);\n\nmsg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['Accept'] = 'application/json';\n\nmsg.payload = {\n    \"equipName\" : \"에어클리너(디씨팩)\",\n    \"ccode\": \"0039\",\n    \"scode\": \"84\",\n    \"pressure\" : pressure,\n    \"saveDateTime\": saveDateTime,      //저장 시간(사용자가 보기 편한 날짜/시간)\n    \"dateTime\": dateTime               // 저장 시간(DB find 활용)\n}\n\nreturn msg;",
-    "outputs": 1,
-    "timeout": 0,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 440,
-    "y": 1120,
-    "wires": [
-      []
-    ]
-  },
-  {
     "id": "62e4a209ec547825",
     "type": "mongodb in",
     "z": "88eb231280c2e9e9",
@@ -2890,7 +2872,7 @@
     "id": "5ad9b56b807180a4",
     "type": "comment",
     "z": "34cbadba494cdf22",
-    "name": "air_cleaner 컬렉션 데이터 삭제(매주 일요일 오��9시)",
+    "name": "air_cleaner 컬렉션 데이터 삭제(매주 일요일 오전9시)",
     "info": "",
     "x": 230,
     "y": 460,
