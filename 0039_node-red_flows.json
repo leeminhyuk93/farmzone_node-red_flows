@@ -2115,7 +2115,7 @@
     "type": "function",
     "z": "ea534a0bb0b5928e",
     "name": "function 1",
-    "func": "let moment = flow.get('moment');\nlet now = moment();\nnow = now.format('YYYY-MM-DD');\n\nmsg.payload = now;\nreturn msg;",
+    "func": "let fs = flow.get('fs');\nlet path = flow.get('path');\nlet moment = flow.get('moment');\nlet now = moment();\nnow = now.format('YYYY-MM-DD');\n\nlet img_path = `D:/VisionLog/ImageLog/Carmera1/2024-03-15/NG`;\n\nfs.readdir(img_path, (err, files) => {\n    if (err) {\n        node.error('Error reading directory:', err);\n    }\n\n    // 파일 목록이 비어있는지 확인\n    if (files.length === 0) {\n        node.warn('No files found in the directory.');\n    }\n\n    let last_img = files[files.length - 1];\n    let last_img_path = `D:/VisionLog/ImageLog/Carmera1/2024-03-15/NG/${last_img}`;\n\n    // 이미지 파일을 읽어서 Base64로 인코딩\n    fs.readFile(last_img_path, (err, data) => {\n        if (err) {\n            node.error('Error reading image file:', err);\n        } else {\n            // 이미지 파일을 Base64로 인코딩\n            let base64Data = data.toString('base64');\n            // Base64 인코딩된 데이터를 메시지에 추가\n            msg.payload = base64Data;\n            // 메시지를 전송\n            node.send(msg);\n        }\n    });\n});",
     "outputs": 1,
     "timeout": 0,
     "noerr": 0,
