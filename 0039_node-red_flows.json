@@ -1867,9 +1867,11 @@
     "field": "fs",
     "fieldType": "flow",
     "x": 130,
-    "y": 1460,
+    "y": 1540,
     "wires": [
-      []
+      [
+        "eb4b3055d5942860"
+      ]
     ]
   },
   {
@@ -1880,10 +1882,12 @@
     "module": "path",
     "field": "path",
     "fieldType": "flow",
-    "x": 130,
-    "y": 1500,
+    "x": 250,
+    "y": 1540,
     "wires": [
-      []
+      [
+        "5e56275ba64b6be3"
+      ]
     ]
   },
   {
@@ -1894,7 +1898,7 @@
     "module": "moment",
     "field": "moment",
     "fieldType": "flow",
-    "x": 140,
+    "x": 380,
     "y": 1540,
     "wires": [
       []
@@ -2107,10 +2111,8 @@
     "wires": [
       [
         "71f80e2cbc6a2fac",
-        "9d0b358f8c7578fa",
-        "eb4b3055d5942860",
-        "5e56275ba64b6be3",
-        "8dab77f0a287d274"
+        "8dab77f0a287d274",
+        "9d0b358f8c7578fa"
       ]
     ]
   },
