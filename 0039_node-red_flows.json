@@ -2106,7 +2106,8 @@
     "y": 1580,
     "wires": [
       [
-        "f9943e67fb872ffa"
+        "f9943e67fb872ffa",
+        "a65df924d55418b9"
       ]
     ]
   },
@@ -2174,6 +2175,42 @@
         "9d0b358f8c7578fa"
       ]
     ]
+  },
+  {
+    "id": "a65df924d55418b9",
+    "type": "file in",
+    "z": "ea534a0bb0b5928e",
+    "name": "read img",
+    "filename": "D:/VisionLog/ImageLog/Carmera1/2024-03-15/NG/NG_08시37분31초-319.jpg",
+    "filenameType": "str",
+    "format": "utf8",
+    "chunk": false,
+    "sendError": false,
+    "encoding": "none",
+    "allProps": false,
+    "x": 620,
+    "y": 1540,
+    "wires": [
+      [
+        "f2a6a98ebb76f6cf"
+      ]
+    ]
+  },
+  {
+    "id": "f2a6a98ebb76f6cf",
+    "type": "debug",
+    "z": "ea534a0bb0b5928e",
+    "name": "debug 194",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 770,
+    "y": 1540,
+    "wires": []
   },
   {
     "id": "62e4a209ec547825",
@@ -3230,7 +3267,7 @@
     "id": "32bd48ba603bea72",
     "type": "comment",
     "z": "34cbadba494cdf22",
-    "name": "weight_checker 컬렉션 데이터 삭제(매주 일요일 오전9시)",
+    "name": "weight_checker 컬렉�� 데이터 삭제(매주 일요일 오전9시)",
     "info": "",
     "x": 250,
     "y": 860,
