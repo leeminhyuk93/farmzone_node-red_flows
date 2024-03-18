@@ -2135,6 +2135,71 @@
     ]
   },
   {
+    "id": "1e1e0e8b6871360f",
+    "type": "inject",
+    "z": "ea534a0bb0b5928e",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 440,
+    "y": 1580,
+    "wires": [
+      [
+        "f9943e67fb872ffa"
+      ]
+    ]
+  },
+  {
+    "id": "f9943e67fb872ffa",
+    "type": "function",
+    "z": "ea534a0bb0b5928e",
+    "name": "function 1",
+    "func": "let moment = flow.get('moment');\nlet now = moment();\nnow = now.format('YYYY-MM-DD');\n\nmsg.payload = now;\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 600,
+    "y": 1580,
+    "wires": [
+      [
+        "26c74d84b8e92c9b"
+      ]
+    ]
+  },
+  {
+    "id": "26c74d84b8e92c9b",
+    "type": "debug",
+    "z": "ea534a0bb0b5928e",
+    "name": "debug 193",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 750,
+    "y": 1580,
+    "wires": []
+  },
+  {
     "id": "62e4a209ec547825",
     "type": "mongodb in",
     "z": "88eb231280c2e9e9",
