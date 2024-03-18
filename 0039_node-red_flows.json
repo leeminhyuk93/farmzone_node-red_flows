@@ -2104,7 +2104,9 @@
     "x": 440,
     "y": 1580,
     "wires": [
-      []
+      [
+        "a65df924d55418b9"
+      ]
     ]
   },
   {
@@ -3263,7 +3265,7 @@
     "id": "32bd48ba603bea72",
     "type": "comment",
     "z": "34cbadba494cdf22",
-    "name": "weight_checker 컬렉션 데이터 삭제(매주 일요일 오전9시)",
+    "name": "weight_checker 컬렉션 데이터 삭제(매주 일요일 ���전9시)",
     "info": "",
     "x": 250,
     "y": 860,
