@@ -1905,7 +1905,7 @@
     "type": "function",
     "z": "ea534a0bb0b5928e",
     "name": "Carmera1",
-    "func": "let fs = flow.get('fs');\nlet path = flow.get('path');\nlet moment = flow.get('moment');\nlet now = moment();\nnow = now.format('YYYY-MM-DD');\n\n\nlet img_path = `D:/VisionLog/ImageLog/Carmera1/2024-03-15/NG`;\n\nfs.readdir(img_path, (err, files) => {\n    if (err) {\n        node.error('Error reading directory:', err);\n        //return;\n    }\n\n    // 파일 목록이 비어있는지 확인\n    if (files.length === 0) {\n        node.warn('No files found in the directory.');\n        //return;\n    }\n\n    let last_img = files[files.length -1];\n    msg.payload = last_img;\n    //msg.topic = 1;\n    node.send(msg);\n\n    let img_path2 = `D:/VisionLog/ImageLog/Carmera1/2024-03-15/NG/${last_img}`;\n    msg.payload = img_path2;\n    //msg.topic = 2;\n    node.send(msg);\n});\n\n//return msg;",
+    "func": "let fs = flow.get('fs');\nlet path = flow.get('path');\n// let moment = flow.get('moment');\n// let now = moment();\n// now = now.format('YYYY-MM-DD');\n\n\nlet img_path = `D:/VisionLog/ImageLog/Carmera1/2024-03-15/NG`;\n\nfs.readdir(img_path, (err, files) => {\n    if (err) {\n        node.error('Error reading directory:', err);\n        //return;\n    }\n\n    // 파일 목록이 비어있는지 확인\n    if (files.length === 0) {\n        node.warn('No files found in the directory.');\n        //return;\n    }\n\n    let last_img = files[files.length -1];\n    msg.payload = last_img;\n    //msg.topic = 1;\n    node.send(msg);\n\n    let img_path2 = `D:/VisionLog/ImageLog/Carmera1/2024-03-15/NG/${last_img}`;\n    msg.payload = img_path2;\n    //msg.topic = 2;\n    node.send(msg);\n});\n\n//return msg;",
     "outputs": 1,
     "timeout": "",
     "noerr": 0,
