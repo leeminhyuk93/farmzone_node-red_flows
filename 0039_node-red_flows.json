@@ -1029,8 +1029,8 @@
     "upsert": false,
     "multi": false,
     "operation": "store",
-    "x": 700,
-    "y": 1480,
+    "x": 520,
+    "y": 1440,
     "wires": []
   },
   {
@@ -1859,77 +1859,6 @@
     ]
   },
   {
-    "id": "9d0b358f8c7578fa",
-    "type": "require",
-    "z": "ea534a0bb0b5928e",
-    "d": true,
-    "name": "fs",
-    "module": "fs",
-    "field": "fs",
-    "fieldType": "flow",
-    "x": 130,
-    "y": 1540,
-    "wires": [
-      [
-        "eb4b3055d5942860"
-      ]
-    ]
-  },
-  {
-    "id": "eb4b3055d5942860",
-    "type": "require",
-    "z": "ea534a0bb0b5928e",
-    "d": true,
-    "name": "path",
-    "module": "path",
-    "field": "path",
-    "fieldType": "flow",
-    "x": 250,
-    "y": 1540,
-    "wires": [
-      [
-        "5e56275ba64b6be3"
-      ]
-    ]
-  },
-  {
-    "id": "5e56275ba64b6be3",
-    "type": "require",
-    "z": "ea534a0bb0b5928e",
-    "d": true,
-    "name": "moment",
-    "module": "moment",
-    "field": "moment",
-    "fieldType": "flow",
-    "x": 380,
-    "y": 1540,
-    "wires": [
-      []
-    ]
-  },
-  {
-    "id": "71f80e2cbc6a2fac",
-    "type": "function",
-    "z": "ea534a0bb0b5928e",
-    "name": "Carmera1",
-    "func": "let fs = flow.get('fs');\nlet path = flow.get('path');\nlet moment = flow.get('moment');\nlet now = moment();\nnow = now.format('YYYY-MM-DD');\n\nlet img_path = `D:/VisionLog/ImageLog/Carmera1/2024-03-15/NG`;\n\nfs.readdir(img_path, (err, files) => {\n    if (err) {\n        node.error('Error reading directory:', err);\n    }\n\n    // 파일 목록이 비어있는지 확인\n    if (files.length === 0) {\n        node.warn('No files found in the directory.');\n    }\n\n    let last_img = files[files.length - 1];\n    let last_img_path = `D:/VisionLog/ImageLog/Carmera1/2024-03-15/NG/${last_img}`;\n    \n    // 이미지 파일을 읽어서 Base64로 인코딩\n    fs.readFile(last_img_path, (err, data) => {\n        if (err) {\n            node.error('Error reading image file:', err);\n        } else {\n            // 이미지 파일을 Base64로 인코딩\n            let base64Data = data.toString('base64');\n            // Base64 인코딩된 데이터를 메시지에 추가\n            msg.payload = base64Data;\n            // 메시지를 전송\n            node.send(msg);\n        }\n    });\n});",
-    "outputs": 1,
-    "timeout": "",
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 300,
-    "y": 1400,
-    "wires": [
-      [
-        "8dab77f0a287d274",
-        "17c8e0ed153129b3",
-        "7c3cac259266c8c0"
-      ]
-    ]
-  },
-  {
     "id": "17c8e0ed153129b3",
     "type": "function",
     "z": "ea534a0bb0b5928e",
@@ -1940,8 +1869,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 600,
-    "y": 1360,
+    "x": 440,
+    "y": 1400,
     "wires": [
       [
         "032dc4736abd545f"
@@ -1960,24 +1889,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 770,
-    "y": 1320,
-    "wires": []
-  },
-  {
-    "id": "7c3cac259266c8c0",
-    "type": "image",
-    "z": "ea534a0bb0b5928e",
-    "name": "",
-    "width": 160,
-    "data": "payload",
-    "dataType": "msg",
-    "thumbnail": false,
-    "active": true,
-    "pass": false,
-    "outputs": 0,
-    "x": 640,
-    "y": 1420,
+    "x": 610,
+    "y": 1360,
     "wires": []
   },
   {
@@ -1996,8 +1909,8 @@
     "authType": "",
     "senderr": false,
     "headers": [],
-    "x": 770,
-    "y": 1360,
+    "x": 610,
+    "y": 1400,
     "wires": [
       [
         "4dfed0101d83d385"
@@ -2016,24 +1929,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 930,
-    "y": 1360,
-    "wires": []
-  },
-  {
-    "id": "8dab77f0a287d274",
-    "type": "debug",
-    "z": "ea534a0bb0b5928e",
-    "name": "debug 192",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 390,
-    "y": 1460,
+    "x": 770,
+    "y": 1400,
     "wires": []
   },
   {
@@ -2061,53 +1958,6 @@
     "y": 1400,
     "wires": [
       [
-        "71f80e2cbc6a2fac"
-      ]
-    ]
-  },
-  {
-    "id": "79de89c599a30161",
-    "type": "function",
-    "z": "ea534a0bb0b5928e",
-    "name": "Carmera1",
-    "func": "let fs = flow.get('fs');\nlet path = flow.get('path');\nlet moment = flow.get('moment');\nlet now = moment();\nnow = now.format('YYYY-MM-DD');\n\nlet img_path = `D:/VisionLog/ImageLog/Carmera1/${now}/NG`;\n\nfs.readdir(img_path, (err, files) => {\n    if (err) {\n        node.error('Error reading directory:', err);\n    }\n\n    // 파일 목록이 비어있는지 확인\n    if (files.length === 0) {\n        node.warn('No files found in the directory.');\n    }\n\n    let last_img = files[files.length - 1];\n    let last_img_path = `D:/VisionLog/ImageLog/Carmera1/${now}/NG/${last_img}`;\n\n    // 이미지 파일을 읽어서 Base64로 인코딩\n    fs.readFile(last_img_path, (err, data) => {\n        if (err) {\n            node.error('Error reading image file:', err);\n        } else {\n            // 이미지 파일을 Base64로 인코딩\n            let base64Data = data.toString('base64');\n            // Base64 인코딩된 데이터를 메시지에 추가\n            msg.payload = base64Data;\n            // 메시지를 전송\n            node.send(msg);\n        }\n    });\n});",
-    "outputs": 1,
-    "timeout": "",
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 380,
-    "y": 1360,
-    "wires": [
-      []
-    ]
-  },
-  {
-    "id": "1e1e0e8b6871360f",
-    "type": "inject",
-    "z": "ea534a0bb0b5928e",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 440,
-    "y": 1580,
-    "wires": [
-      [
         "f9943e67fb872ffa"
       ]
     ]
@@ -2116,7 +1966,7 @@
     "id": "f9943e67fb872ffa",
     "type": "function",
     "z": "ea534a0bb0b5928e",
-    "name": "function 1",
+    "name": "read img",
     "func": "let fs = global.get('fs');\nlet path = global.get('path');\nlet moment = global.get('moment');\nlet now = moment();\nnow = now.format('YYYY-MM-DD');\n\nlet img_path = `D:/VisionLog/ImageLog/Camera1/2024-03-15/NG`;\n\nfs.readdir(img_path, (err, files) => {\n    if (err) {\n        node.error('Error reading directory:', err);\n    }\n\n    // 파일 목록이 비어있는지 확인\n    if (files.length === 0) {\n        node.warn('No files found in the directory.');\n    }\n\n    let last_img = files[files.length - 1];\n    let last_img_path = `D:/VisionLog/ImageLog/Camera1/2024-03-15/NG/${last_img}`;\n\n    // 이미지 파일을 읽어서 Base64로 인코딩\n    fs.readFile(last_img_path, (err, data) => {\n        if (err) {\n            node.error('Error reading image file:', err);\n        } else {\n            // 이미지 파일을 Base64로 인코딩\n            let base64Data = data.toString('base64');\n            // Base64 인코딩된 데이터를 메시지에 추가\n            // msg.payload = base64Data;\n            msg.payload = {\n                \"file_name\" : last_img,\n                \"img_base64\" : base64Data\n            }\n            // 메시지를 전송\n            node.send(msg);\n        }\n    });\n});",
     "outputs": 1,
     "timeout": 0,
@@ -2124,95 +1974,11 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 600,
-    "y": 1580,
+    "x": 280,
+    "y": 1400,
     "wires": [
-      [
-        "26c74d84b8e92c9b"
-      ]
+      []
     ]
-  },
-  {
-    "id": "26c74d84b8e92c9b",
-    "type": "debug",
-    "z": "ea534a0bb0b5928e",
-    "name": "debug 193",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 750,
-    "y": 1580,
-    "wires": []
-  },
-  {
-    "id": "808239641475f189",
-    "type": "inject",
-    "z": "ea534a0bb0b5928e",
-    "d": true,
-    "name": "1 sec",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "1",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 110,
-    "y": 1500,
-    "wires": [
-      [
-        "9d0b358f8c7578fa"
-      ]
-    ]
-  },
-  {
-    "id": "a65df924d55418b9",
-    "type": "file in",
-    "z": "ea534a0bb0b5928e",
-    "name": "read img",
-    "filename": "D:/VisionLog/ImageLog/Camera1/2024-03-15/NG/NG_08시37분31초-319.jpg",
-    "filenameType": "str",
-    "format": "utf8",
-    "chunk": false,
-    "sendError": false,
-    "encoding": "base64",
-    "allProps": false,
-    "x": 620,
-    "y": 1540,
-    "wires": [
-      [
-        "f2a6a98ebb76f6cf"
-      ]
-    ]
-  },
-  {
-    "id": "f2a6a98ebb76f6cf",
-    "type": "debug",
-    "z": "ea534a0bb0b5928e",
-    "name": "debug 194",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 770,
-    "y": 1540,
-    "wires": []
   },
   {
     "id": "62e4a209ec547825",
