@@ -1186,7 +1186,7 @@
     "width": 5,
     "height": 4,
     "gtype": "gage",
-    "title": "PT온도계",
+    "title": "PT온도계1",
     "label": "",
     "format": "{{value}}",
     "min": "-50",
@@ -1199,7 +1199,7 @@
     "seg1": "30",
     "seg2": "60",
     "className": "",
-    "x": 720,
+    "x": 730,
     "y": 1160,
     "wires": []
   },
