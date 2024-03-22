@@ -1165,7 +1165,7 @@
     "width": 5,
     "height": 4,
     "gtype": "gage",
-    "title": "PT온도계1",
+    "title": "PT온도계2",
     "label": "",
     "format": "{{value}}",
     "min": "-50",
