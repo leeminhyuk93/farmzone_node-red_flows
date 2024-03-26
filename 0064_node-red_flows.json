@@ -218,7 +218,7 @@
     "stateLogEnabled": false,
     "queueLogEnabled": false,
     "failureLogEnabled": true,
-    "tcpHost": "192.168.0.193",
+    "tcpHost": "192.168.0.153",
     "tcpPort": "1503",
     "tcpType": "DEFAULT",
     "serialPort": "/dev/ttyUSB",
@@ -1006,10 +1006,7 @@
     "x": 580,
     "y": 640,
     "wires": [
-      [
-        "c5e072e84b7cddbb",
-        "33b18a3dae59721f"
-      ]
+      []
     ]
   },
   {
@@ -1162,7 +1159,6 @@
     "id": "496f93c0acdfbca6",
     "type": "modbus-getter",
     "z": "71aaba71cce9c427",
-    "d": true,
     "name": "smg5400",
     "showStatusActivities": true,
     "showErrors": true,
@@ -1183,7 +1179,9 @@
     "x": 260,
     "y": 680,
     "wires": [
-      [],
+      [
+        "d13f426d2c01263f"
+      ],
       []
     ]
   },
@@ -1235,7 +1233,38 @@
     "x": 580,
     "y": 680,
     "wires": [
-      []
+      [
+        "c5e072e84b7cddbb"
+      ]
+    ]
+  },
+  {
+    "id": "1f3a7986f466ba9f",
+    "type": "inject",
+    "z": "71aaba71cce9c427",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 80,
+    "y": 680,
+    "wires": [
+      [
+        "496f93c0acdfbca6"
+      ]
     ]
   },
   {
