@@ -895,7 +895,7 @@
     "y": 640,
     "wires": [
       [
-        "d026f62d4f84f934"
+        "496f93c0acdfbca6"
       ]
     ]
   },
@@ -1235,37 +1235,21 @@
     "wires": [
       [
         "c5e072e84b7cddbb",
-        "33b18a3dae59721f"
+        "33b18a3dae59721f",
+        "9b52e393c6e70daa"
       ]
     ]
   },
   {
-    "id": "1f3a7986f466ba9f",
-    "type": "inject",
+    "id": "9b52e393c6e70daa",
+    "type": "mysql",
     "z": "71aaba71cce9c427",
+    "mydb": "6b5903cef06c0040",
     "name": "",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 80,
-    "y": 680,
+    "x": 740,
+    "y": 700,
     "wires": [
-      [
-        "496f93c0acdfbca6"
-      ]
+      []
     ]
   },
   {
