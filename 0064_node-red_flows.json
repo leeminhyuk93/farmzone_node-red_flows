@@ -817,9 +817,7 @@
     "x": 90,
     "y": 500,
     "wires": [
-      [
-        "2c48d3cd6d237d5f"
-      ]
+      []
     ]
   },
   {
@@ -941,10 +939,7 @@
     "x": 580,
     "y": 500,
     "wires": [
-      [
-        "0f9e9804a9acddd4",
-        "7c868d6d013f1961"
-      ]
+      []
     ]
   },
   {
@@ -1096,12 +1091,13 @@
     "id": "080db39e447b795d",
     "type": "modbus-getter",
     "z": "71aaba71cce9c427",
+    "d": true,
     "name": "smg5400",
     "showStatusActivities": true,
     "showErrors": true,
     "showWarnings": true,
     "logIOActivities": false,
-    "unitid": "2",
+    "unitid": "1",
     "dataType": "HoldingRegister",
     "adr": "0",
     "quantity": "5",
@@ -1127,7 +1123,6 @@
     "id": "107ca1ef8072af5f",
     "type": "modbus-getter",
     "z": "71aaba71cce9c427",
-    "d": true,
     "name": "smg5400",
     "showStatusActivities": true,
     "showErrors": true,
@@ -1148,7 +1143,9 @@
     "x": 260,
     "y": 540,
     "wires": [
-      [],
+      [
+        "27770cca3bc3741c"
+      ],
       []
     ]
   },
@@ -1217,7 +1214,11 @@
     "x": 580,
     "y": 540,
     "wires": [
-      []
+      [
+        "0f9e9804a9acddd4",
+        "7c868d6d013f1961",
+        "9f920c3dcfc3c6da"
+      ]
     ]
   },
   {
@@ -1309,6 +1310,47 @@
     "x": 420,
     "y": 420,
     "wires": []
+  },
+  {
+    "id": "f4207c0e0904e5df",
+    "type": "inject",
+    "z": "71aaba71cce9c427",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 80,
+    "y": 540,
+    "wires": [
+      [
+        "107ca1ef8072af5f"
+      ]
+    ]
+  },
+  {
+    "id": "9f920c3dcfc3c6da",
+    "type": "mysql",
+    "z": "71aaba71cce9c427",
+    "mydb": "6b5903cef06c0040",
+    "name": "",
+    "x": 740,
+    "y": 560,
+    "wires": [
+      []
+    ]
   },
   {
     "id": "55ca49778522607e",
