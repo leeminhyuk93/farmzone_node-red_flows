@@ -696,56 +696,6 @@
     ]
   },
   {
-    "id": "bcabae7b2e30c513",
-    "type": "function",
-    "z": "71aaba71cce9c427",
-    "name": "select query",
-    "func": "msg.topic = 'SELECT * FROM dtu1 WHERE (date BETWEEN date_add(now(), interval -60 second) AND now()) ORDER BY date DESC LIMIT 1';\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 250,
-    "y": 360,
-    "wires": [
-      [
-        "b7e848e7ea051546"
-      ]
-    ]
-  },
-  {
-    "id": "b7e848e7ea051546",
-    "type": "mysql",
-    "z": "71aaba71cce9c427",
-    "mydb": "6b5903cef06c0040",
-    "name": "",
-    "x": 420,
-    "y": 360,
-    "wires": [
-      [
-        "352f024124dc3091"
-      ]
-    ]
-  },
-  {
-    "id": "352f024124dc3091",
-    "type": "function",
-    "z": "71aaba71cce9c427",
-    "name": "send api",
-    "func": "let temp = msg.payload[0].value3;   // 온도\nlet humid = msg.payload[0].value4;  // 습도\nlet co2 = msg.payload[0].value2;    // 이산화탄소\nlet lux = msg.payload[0].value5;    // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0064\",\n    \"scode\": \"73\",\n    \"kind\": \"5\",\n    \"deviceId\": \"3\",\n    \"co2\": co2,\n    \"temperature\": temp,\n    \"humidity\": humid,\n    \"lux\": lux\n};\n\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 580,
-    "y": 360,
-    "wires": [
-      []
-    ]
-  },
-  {
     "id": "8c466ae59bd64c7a",
     "type": "debug",
     "z": "71aaba71cce9c427",
@@ -757,8 +707,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 740,
-    "y": 340,
+    "x": 560,
+    "y": 320,
     "wires": []
   },
   {
@@ -777,8 +727,8 @@
     "authType": "",
     "senderr": false,
     "headers": [],
-    "x": 750,
-    "y": 380,
+    "x": 570,
+    "y": 360,
     "wires": [
       [
         "5c05ee48d11bb486"
@@ -825,39 +775,6 @@
     ]
   },
   {
-    "id": "2c48d3cd6d237d5f",
-    "type": "function",
-    "z": "71aaba71cce9c427",
-    "name": "select query",
-    "func": "msg.topic = 'SELECT * FROM dtu2 WHERE (date BETWEEN date_add(now(), interval -60 second) AND now()) ORDER BY date DESC LIMIT 1';\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 250,
-    "y": 500,
-    "wires": [
-      [
-        "e69b9e22d80f696b"
-      ]
-    ]
-  },
-  {
-    "id": "e69b9e22d80f696b",
-    "type": "mysql",
-    "z": "71aaba71cce9c427",
-    "mydb": "6b5903cef06c0040",
-    "name": "",
-    "x": 420,
-    "y": 500,
-    "wires": [
-      [
-        "dbc02993d0fccd85"
-      ]
-    ]
-  },
-  {
     "id": "4f5cd9bc39df7fd2",
     "type": "comment",
     "z": "71aaba71cce9c427",
@@ -897,56 +814,6 @@
     ]
   },
   {
-    "id": "d026f62d4f84f934",
-    "type": "function",
-    "z": "71aaba71cce9c427",
-    "name": "select query",
-    "func": "msg.topic = 'SELECT * FROM dtu3 WHERE (date BETWEEN date_add(now(), interval -60 second) AND now()) ORDER BY date DESC LIMIT 1';\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 250,
-    "y": 640,
-    "wires": [
-      [
-        "55854614ec8ea77f"
-      ]
-    ]
-  },
-  {
-    "id": "55854614ec8ea77f",
-    "type": "mysql",
-    "z": "71aaba71cce9c427",
-    "mydb": "6b5903cef06c0040",
-    "name": "",
-    "x": 420,
-    "y": 640,
-    "wires": [
-      [
-        "5405ccd2533f3ade"
-      ]
-    ]
-  },
-  {
-    "id": "dbc02993d0fccd85",
-    "type": "function",
-    "z": "71aaba71cce9c427",
-    "name": "send api",
-    "func": "let temp = msg.payload[0].value3;   // 온도\nlet humid = msg.payload[0].value4;  // 습도\nlet co2 = msg.payload[0].value2;    // 이산화탄소\nlet lux = msg.payload[0].value5;    // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0064\",\n    \"scode\": \"74\",\n    \"kind\": \"5\",\n    \"deviceId\": \"4\",\n    \"co2\": co2,\n    \"temperature\": temp,\n    \"humidity\": humid,\n    \"lux\": lux\n};\n\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 580,
-    "y": 500,
-    "wires": [
-      []
-    ]
-  },
-  {
     "id": "0f9e9804a9acddd4",
     "type": "debug",
     "z": "71aaba71cce9c427",
@@ -958,8 +825,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 740,
-    "y": 480,
+    "x": 560,
+    "y": 460,
     "wires": []
   },
   {
@@ -978,29 +845,12 @@
     "authType": "",
     "senderr": false,
     "headers": [],
-    "x": 750,
-    "y": 520,
+    "x": 570,
+    "y": 500,
     "wires": [
       [
         "c5ee18c9a7622d20"
       ]
-    ]
-  },
-  {
-    "id": "5405ccd2533f3ade",
-    "type": "function",
-    "z": "71aaba71cce9c427",
-    "name": "send api",
-    "func": "let temp = msg.payload[0].value3;   // 온도\nlet humid = msg.payload[0].value4;  // 습도\nlet co2 = msg.payload[0].value2;    // 이산화탄소\nlet lux = msg.payload[0].value5;    // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0064\",\n    \"scode\": \"75\",\n    \"kind\": \"5\",\n    \"deviceId\": \"5\",\n    \"co2\": co2,\n    \"temperature\": temp,\n    \"humidity\": humid,\n    \"lux\": lux\n};\n\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 580,
-    "y": 640,
-    "wires": [
-      []
     ]
   },
   {
@@ -1015,8 +865,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 740,
-    "y": 620,
+    "x": 560,
+    "y": 600,
     "wires": []
   },
   {
@@ -1035,8 +885,8 @@
     "authType": "",
     "senderr": false,
     "headers": [],
-    "x": 750,
-    "y": 660,
+    "x": 570,
+    "y": 640,
     "wires": [
       [
         "62be689dc477249b"
@@ -1055,8 +905,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 900,
-    "y": 380,
+    "x": 720,
+    "y": 360,
     "wires": []
   },
   {
@@ -1071,8 +921,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 900,
-    "y": 520,
+    "x": 720,
+    "y": 500,
     "wires": []
   },
   {
@@ -1087,8 +937,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 900,
-    "y": 660,
+    "x": 720,
+    "y": 640,
     "wires": []
   },
   {
@@ -1112,8 +962,8 @@
     "keepMsgProperties": false,
     "delayOnStart": false,
     "startDelayTime": "",
-    "x": 260,
-    "y": 400,
+    "x": 240,
+    "y": 360,
     "wires": [
       [
         "d5cba55b99ca49a7"
@@ -1142,8 +992,8 @@
     "keepMsgProperties": false,
     "delayOnStart": false,
     "startDelayTime": "",
-    "x": 260,
-    "y": 540,
+    "x": 240,
+    "y": 500,
     "wires": [
       [
         "27770cca3bc3741c"
@@ -1172,8 +1022,8 @@
     "keepMsgProperties": false,
     "delayOnStart": false,
     "startDelayTime": "",
-    "x": 260,
-    "y": 680,
+    "x": 240,
+    "y": 640,
     "wires": [
       [
         "d13f426d2c01263f"
@@ -1192,8 +1042,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 580,
-    "y": 400,
+    "x": 400,
+    "y": 360,
     "wires": [
       [
         "8c466ae59bd64c7a",
@@ -1213,8 +1063,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 580,
-    "y": 540,
+    "x": 400,
+    "y": 500,
     "wires": [
       [
         "0f9e9804a9acddd4",
@@ -1234,8 +1084,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 580,
-    "y": 680,
+    "x": 400,
+    "y": 640,
     "wires": [
       [
         "c5e072e84b7cddbb",
@@ -1250,8 +1100,8 @@
     "z": "71aaba71cce9c427",
     "mydb": "6b5903cef06c0040",
     "name": "",
-    "x": 740,
-    "y": 700,
+    "x": 560,
+    "y": 680,
     "wires": [
       []
     ]
@@ -1262,8 +1112,8 @@
     "z": "71aaba71cce9c427",
     "mydb": "6b5903cef06c0040",
     "name": "",
-    "x": 740,
-    "y": 420,
+    "x": 560,
+    "y": 400,
     "wires": [
       []
     ]
@@ -1274,8 +1124,8 @@
     "z": "71aaba71cce9c427",
     "mydb": "6b5903cef06c0040",
     "name": "",
-    "x": 740,
-    "y": 560,
+    "x": 560,
+    "y": 540,
     "wires": [
       []
     ]
