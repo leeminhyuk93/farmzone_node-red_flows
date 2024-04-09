@@ -2418,7 +2418,7 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 300,
+    "x": 260,
     "y": 760,
     "wires": [
       [
@@ -2432,7 +2432,7 @@
     "z": "f4068ba36acb7833",
     "mydb": "8b88fe9a19eda841",
     "name": "",
-    "x": 460,
+    "x": 400,
     "y": 760,
     "wires": [
       [
@@ -2444,7 +2444,7 @@
     "id": "d785678ad097fefa",
     "type": "inject",
     "z": "f4068ba36acb7833",
-    "name": "DELETE ",
+    "name": "SELECT",
     "props": [
       {
         "p": "payload"
@@ -2480,8 +2480,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 520,
-    "y": 880,
+    "x": 540,
+    "y": 760,
     "wires": [
       [
         "244521fe8d82a1df"
@@ -2494,15 +2494,15 @@
     "z": "f4068ba36acb7833",
     "name": "",
     "active": true,
-    "tosidebar": false,
+    "tosidebar": true,
     "console": false,
     "tostatus": false,
     "complete": "payload",
     "targetType": "msg",
     "statusVal": "",
     "statusType": "auto",
-    "x": 970,
-    "y": 860,
+    "x": 630,
+    "y": 840,
     "wires": []
   },
   {
@@ -2521,8 +2521,8 @@
     "authType": "",
     "senderr": false,
     "headers": [],
-    "x": 730,
-    "y": 880,
+    "x": 470,
+    "y": 840,
     "wires": [
       [
         "e49333556a3bec80"
