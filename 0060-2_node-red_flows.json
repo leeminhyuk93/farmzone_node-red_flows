@@ -2369,7 +2369,7 @@
     "type": "function",
     "z": "f4068ba36acb7833",
     "name": "fztable_1ITEM",
-    "func": "var newMsg = {\n\"topic\" : \"DELETE FROM `fz_shm`.`fztable` ORDER BY fz_idx DESC LIMIT 1\"\n}\nreturn newMsg;\n",
+    "func": "var newMsg = {\n\"topic\" : \"DELETE FROM `fz_shm`.`fztable` WHERE fz_idx < 1000000\"\n}\nreturn newMsg;\n",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
