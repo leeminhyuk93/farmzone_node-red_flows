@@ -2013,7 +2013,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 120,
-    "y": 300,
+    "y": 640,
     "wires": [
       [
         "b0413119dab42307"
@@ -2034,7 +2034,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 650,
-    "y": 300,
+    "y": 640,
     "wires": []
   },
   {
@@ -2050,7 +2050,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 120,
-    "y": 420,
+    "y": 760,
     "wires": [
       [
         "8db58e3cede20d47"
@@ -2069,7 +2069,7 @@
     "finalize": "",
     "libs": [],
     "x": 300,
-    "y": 420,
+    "y": 760,
     "wires": [
       [
         "b6117ea3b7a5db48"
@@ -2087,7 +2087,7 @@
     "tostatus": false,
     "complete": "false",
     "x": 650,
-    "y": 420,
+    "y": 760,
     "wires": []
   },
   {
@@ -2103,7 +2103,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 120,
-    "y": 540,
+    "y": 880,
     "wires": [
       [
         "58fe98fdff3988fb"
@@ -2121,7 +2121,7 @@
     "tostatus": false,
     "complete": "false",
     "x": 650,
-    "y": 540,
+    "y": 880,
     "wires": []
   },
   {
@@ -2146,7 +2146,7 @@
     "finalize": "",
     "libs": [],
     "x": 290,
-    "y": 300,
+    "y": 640,
     "wires": [
       [
         "95dcb57dd47a2ea0"
@@ -2175,7 +2175,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 120,
-    "y": 180,
+    "y": 520,
     "wires": [
       [
         "0b670044c142480d"
@@ -2193,7 +2193,7 @@
     "tostatus": false,
     "complete": "false",
     "x": 650,
-    "y": 180,
+    "y": 520,
     "wires": []
   },
   {
@@ -2208,7 +2208,7 @@
     "finalize": "",
     "libs": [],
     "x": 310,
-    "y": 180,
+    "y": 520,
     "wires": [
       [
         "a61a91f5cbc0f514"
@@ -2227,7 +2227,7 @@
     "finalize": "",
     "libs": [],
     "x": 300,
-    "y": 540,
+    "y": 880,
     "wires": [
       [
         "8c8ac35027501eca"
@@ -2241,7 +2241,7 @@
     "mydb": "8b88fe9a19eda841",
     "name": "",
     "x": 480,
-    "y": 420,
+    "y": 760,
     "wires": [
       [
         "05d79ea6aa1d259c"
@@ -2255,7 +2255,7 @@
     "mydb": "8b88fe9a19eda841",
     "name": "",
     "x": 480,
-    "y": 300,
+    "y": 640,
     "wires": [
       [
         "6034cafa01d35ab3"
@@ -2269,7 +2269,7 @@
     "mydb": "8b88fe9a19eda841",
     "name": "",
     "x": 480,
-    "y": 180,
+    "y": 520,
     "wires": [
       [
         "ffdf14c8e4fbf6b4"
@@ -2283,7 +2283,7 @@
     "mydb": "8b88fe9a19eda841",
     "name": "",
     "x": 480,
-    "y": 540,
+    "y": 880,
     "wires": [
       [
         "6619401705e155a1"
@@ -2297,7 +2297,7 @@
     "name": "DB CREATE(fz_shm)",
     "info": "DB CREATE(fz_shm)",
     "x": 140,
-    "y": 120,
+    "y": 460,
     "wires": []
   },
   {
@@ -2307,7 +2307,7 @@
     "name": "TABLE CREATE(fztable)",
     "info": "TABLE CREATE(fztable)",
     "x": 150,
-    "y": 240,
+    "y": 580,
     "wires": []
   },
   {
@@ -2317,7 +2317,7 @@
     "name": "TABLE CREATE(fztable)",
     "info": "TABLE INSERT(fztable)",
     "x": 150,
-    "y": 360,
+    "y": 700,
     "wires": []
   },
   {
@@ -2327,7 +2327,7 @@
     "name": "TABLE DELETE_ALL(fztable)",
     "info": "TABLE DELETE_ALL(fztable)",
     "x": 160,
-    "y": 480,
+    "y": 820,
     "wires": []
   },
   {
@@ -2343,7 +2343,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 120,
-    "y": 660,
+    "y": 1000,
     "wires": [
       [
         "1569471e5eddbebc"
@@ -2361,7 +2361,7 @@
     "tostatus": false,
     "complete": "false",
     "x": 650,
-    "y": 660,
+    "y": 1000,
     "wires": []
   },
   {
@@ -2376,7 +2376,7 @@
     "finalize": "",
     "libs": [],
     "x": 320,
-    "y": 660,
+    "y": 1000,
     "wires": [
       [
         "c286e1c037f567ce"
@@ -2390,7 +2390,7 @@
     "mydb": "8b88fe9a19eda841",
     "name": "",
     "x": 480,
-    "y": 660,
+    "y": 1000,
     "wires": [
       [
         "269d18f6b2cec02b"
@@ -2404,7 +2404,7 @@
     "name": "TABLE DELETE_1ITEM(fztable)",
     "info": "TABLE DELETE_1ITEM(fztable)",
     "x": 170,
-    "y": 600,
+    "y": 940,
     "wires": []
   },
   {
@@ -2419,7 +2419,7 @@
     "finalize": "",
     "libs": [],
     "x": 260,
-    "y": 760,
+    "y": 160,
     "wires": [
       [
         "b77c3c0361295b78"
@@ -2433,7 +2433,7 @@
     "mydb": "8b88fe9a19eda841",
     "name": "",
     "x": 400,
-    "y": 760,
+    "y": 160,
     "wires": [
       [
         "f3a322a0ab297b86"
@@ -2462,7 +2462,7 @@
     "payload": "",
     "payloadType": "date",
     "x": 120,
-    "y": 760,
+    "y": 160,
     "wires": [
       [
         "a0e1442a2f76b649"
@@ -2473,7 +2473,7 @@
     "id": "f3a322a0ab297b86",
     "type": "function",
     "z": "f4068ba36acb7833",
-    "name": "function 1",
+    "name": "send api",
     "func": "var temp1 = msg.payload[0]['temp1'];\nvar hz = msg.payload[0]['HZ'];\nvar rpm = msg.payload[0]['RPM'];\nvar power = msg.payload[0]['power'];\nvar date = msg.payload[0]['date'];\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\nmsg.payload = {\n    \"ccode\": \"0060\",\n    \"scode\" : \"140\",\n    \"temp1\": temp1,\n    \"temp2\": hz,\n    \"rpm\": rpm,\n};\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
@@ -2481,7 +2481,7 @@
     "finalize": "",
     "libs": [],
     "x": 540,
-    "y": 760,
+    "y": 160,
     "wires": [
       [
         "244521fe8d82a1df"
@@ -2502,7 +2502,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 630,
-    "y": 840,
+    "y": 240,
     "wires": []
   },
   {
@@ -2522,12 +2522,111 @@
     "senderr": false,
     "headers": [],
     "x": 470,
-    "y": 840,
+    "y": 240,
     "wires": [
       [
         "e49333556a3bec80"
       ]
     ]
+  },
+  {
+    "id": "3f241d921271d593",
+    "type": "comment",
+    "z": "f4068ba36acb7833",
+    "name": "Send API",
+    "info": "",
+    "x": 100,
+    "y": 120,
+    "wires": []
+  },
+  {
+    "id": "4403c5d116ef3209",
+    "type": "comment",
+    "z": "f4068ba36acb7833",
+    "name": "저장기간 30일(30일 지난 데이터는 삭제)",
+    "info": "",
+    "x": 190,
+    "y": 320,
+    "wires": []
+  },
+  {
+    "id": "aef03824f8474af9",
+    "type": "inject",
+    "z": "f4068ba36acb7833",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "01 00 * * *",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 360,
+    "wires": [
+      [
+        "2675e3bb4881e39e"
+      ]
+    ]
+  },
+  {
+    "id": "2675e3bb4881e39e",
+    "type": "function",
+    "z": "f4068ba36acb7833",
+    "name": "delete",
+    "func": "msg.topic = \"DELETE FROM fz_shm.fztable WHERE date <= DATE_SUB(NOW(), INTERVAL 30 DAY);\"\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 290,
+    "y": 360,
+    "wires": [
+      [
+        "698e6b255d68229b"
+      ]
+    ]
+  },
+  {
+    "id": "698e6b255d68229b",
+    "type": "mysql",
+    "z": "f4068ba36acb7833",
+    "mydb": "8b88fe9a19eda841",
+    "name": "",
+    "x": 440,
+    "y": 360,
+    "wires": [
+      [
+        "8656566b3a47fc99"
+      ]
+    ]
+  },
+  {
+    "id": "8656566b3a47fc99",
+    "type": "debug",
+    "z": "f4068ba36acb7833",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 610,
+    "y": 360,
+    "wires": []
   },
   {
     "id": "0b0cbe357c893e31",
