@@ -2564,13 +2564,13 @@
       }
     ],
     "repeat": "",
-    "crontab": "",
+    "crontab": "01 00 * * *",
     "once": false,
     "onceDelay": 0.1,
     "topic": "",
     "payload": "",
     "payloadType": "date",
-    "x": 120,
+    "x": 130,
     "y": 360,
     "wires": [
       [
