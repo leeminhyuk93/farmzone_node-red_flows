@@ -2474,7 +2474,7 @@
     "type": "function",
     "z": "f4068ba36acb7833",
     "name": "send api",
-    "func": "var temp1 = msg.payload[0]['temp1'];\nvar hz = msg.payload[0]['HZ'];\nvar rpm = msg.payload[0]['RPM'];\nvar power = msg.payload[0]['power'];\nvar date = msg.payload[0]['date'];\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\nmsg.payload = {\n    \"ccode\": \"0060\",\n    \"scode\" : \"140\",\n    \"temp1\": temp1,\n    \"temp2\": hz,\n    \"rpm\": rpm,\n};\n\nreturn msg;",
+    "func": "var temp1 = msg.payload[0]['temp1'];\nvar hz = msg.payload[0]['HZ'];\nvar rpm = msg.payload[0]['RPM'];\nvar power = msg.payload[0]['power'];\nvar date = msg.payload[0]['date'];\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\nmsg.payload = {\n    \"ccode\": \"0060\",\n    \"scode\" : \"139\",\n    \"temp1\": temp1,\n    \"temp2\": hz,\n    \"rpm\": rpm,\n};\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
