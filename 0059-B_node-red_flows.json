@@ -132,7 +132,7 @@
   {
     "id": "8a6be5f92a965aa6",
     "type": "ui_group",
-    "name": "B동 세척수 온도",
+    "name": "Temp Monitor",
     "tab": "cc644fd7db266711",
     "order": 1,
     "disp": true,
@@ -562,7 +562,7 @@
     "z": "26d85896bb27b9f5",
     "d": true,
     "name": "온도1 Array처리",
-    "func": "//소수점 한자리 반올림해서 정수로 반환 후 10나누면 소수점 1자리\nmsg.payload = (Math.round(msg.payload * 10)) / 10;\n//msg.payload = msg.payload.toFixed(2);\n//-> Fixed처리하면 데이터 형식이 String으로 바뀜\n\nvar temp1 = global.get('temp1') || 0;\n\ntemp1 = msg.payload;\nglobal.set([\"temp1\"], temp1);\nmsg.payload = temp1;\n\nreturn msg;",
+    "func": "//소수점 한자리 반올림해서 정수로 반환 후 10나누면 소��점 1자리\nmsg.payload = (Math.round(msg.payload * 10)) / 10;\n//msg.payload = msg.payload.toFixed(2);\n//-> Fixed처리하면 데이터 형식이 String으로 바뀜\n\nvar temp1 = global.get('temp1') || 0;\n\ntemp1 = msg.payload;\nglobal.set([\"temp1\"], temp1);\nmsg.payload = temp1;\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
