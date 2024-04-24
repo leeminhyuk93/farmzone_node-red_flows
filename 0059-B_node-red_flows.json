@@ -675,7 +675,7 @@
     "group": "98d7cf85ddd4043d",
     "order": 1,
     "width": 9,
-    "height": 6,
+    "height": 8,
     "gtype": "donut",
     "title": "모터 회전속도",
     "label": "RPM",
