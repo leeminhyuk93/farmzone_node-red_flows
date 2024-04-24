@@ -676,7 +676,7 @@
     "order": 1,
     "width": 9,
     "height": 8,
-    "gtype": "donut",
+    "gtype": "gage",
     "title": "모터 회전속도",
     "label": "RPM",
     "format": "{{value}}",
