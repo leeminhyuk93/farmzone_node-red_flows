@@ -417,7 +417,7 @@
     "gtype": "gage",
     "title": "세척수 온도",
     "label": "",
-    "format": "{{value}}",
+    "format": "{{value}} ℃",
     "min": 0,
     "max": "200",
     "colors": [
