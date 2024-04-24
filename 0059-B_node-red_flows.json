@@ -25,7 +25,7 @@
   {
     "id": "cc644fd7db266711",
     "type": "ui_tab",
-    "name": "산란계농장 Main DashBord",
+    "name": "세척기 모니터링 시스템 B동",
     "icon": "dashboard",
     "order": 1,
     "disabled": false,
@@ -136,7 +136,7 @@
     "tab": "cc644fd7db266711",
     "order": 1,
     "disp": true,
-    "width": "7",
+    "width": 10,
     "collapse": false,
     "className": "round"
   },
@@ -186,7 +186,7 @@
     "tab": "cc644fd7db266711",
     "order": 2,
     "disp": true,
-    "width": "7",
+    "width": 10,
     "collapse": false,
     "className": ""
   },
@@ -262,196 +262,6 @@
     "out": "char",
     "addchar": "",
     "responsetimeout": "10000"
-  },
-  {
-    "id": "bc130e5f8b04683c",
-    "type": "ui_spacer",
-    "z": "26d85896bb27b9f5",
-    "name": "spacer",
-    "group": "8a6be5f92a965aa6",
-    "order": 1,
-    "width": 1,
-    "height": 1
-  },
-  {
-    "id": "2c8bbe6522e5b1b0",
-    "type": "ui_spacer",
-    "z": "26d85896bb27b9f5",
-    "name": "spacer",
-    "group": "8a6be5f92a965aa6",
-    "order": 3,
-    "width": 1,
-    "height": 1
-  },
-  {
-    "id": "3f5d63fc9ca026be",
-    "type": "ui_spacer",
-    "z": "26d85896bb27b9f5",
-    "name": "spacer",
-    "group": "8a6be5f92a965aa6",
-    "order": 4,
-    "width": 1,
-    "height": 1
-  },
-  {
-    "id": "31e78f2c341e3154",
-    "type": "ui_spacer",
-    "z": "26d85896bb27b9f5",
-    "name": "spacer",
-    "group": "8a6be5f92a965aa6",
-    "order": 5,
-    "width": 1,
-    "height": 1
-  },
-  {
-    "id": "79f1261a1f340de1",
-    "type": "ui_spacer",
-    "z": "26d85896bb27b9f5",
-    "name": "spacer",
-    "group": "8a6be5f92a965aa6",
-    "order": 6,
-    "width": 1,
-    "height": 1
-  },
-  {
-    "id": "f94bd6c92ad32199",
-    "type": "ui_spacer",
-    "z": "26d85896bb27b9f5",
-    "name": "spacer",
-    "group": "8a6be5f92a965aa6",
-    "order": 7,
-    "width": 1,
-    "height": 1
-  },
-  {
-    "id": "916d2dc13051a71c",
-    "type": "ui_spacer",
-    "z": "26d85896bb27b9f5",
-    "name": "spacer",
-    "group": "8a6be5f92a965aa6",
-    "order": 8,
-    "width": 1,
-    "height": 1
-  },
-  {
-    "id": "a4789cd450ea12a4",
-    "type": "ui_spacer",
-    "z": "26d85896bb27b9f5",
-    "name": "spacer",
-    "group": "8a6be5f92a965aa6",
-    "order": 10,
-    "width": 1,
-    "height": 1
-  },
-  {
-    "id": "152f18cf51bb1620",
-    "type": "ui_spacer",
-    "z": "26d85896bb27b9f5",
-    "name": "spacer",
-    "group": "8a6be5f92a965aa6",
-    "order": 11,
-    "width": 1,
-    "height": 1
-  },
-  {
-    "id": "7f8877e9630e3e8c",
-    "type": "ui_spacer",
-    "z": "26d85896bb27b9f5",
-    "name": "spacer",
-    "group": "8a6be5f92a965aa6",
-    "order": 12,
-    "width": 1,
-    "height": 1
-  },
-  {
-    "id": "c7ee97849fb87af7",
-    "type": "ui_spacer",
-    "z": "26d85896bb27b9f5",
-    "name": "spacer",
-    "group": "8a6be5f92a965aa6",
-    "order": 13,
-    "width": 1,
-    "height": 1
-  },
-  {
-    "id": "8180c3d9f2beb786",
-    "type": "ui_spacer",
-    "z": "26d85896bb27b9f5",
-    "name": "spacer",
-    "group": "8a6be5f92a965aa6",
-    "order": 14,
-    "width": 1,
-    "height": 1
-  },
-  {
-    "id": "fe896f4b8000940b",
-    "type": "ui_spacer",
-    "z": "26d85896bb27b9f5",
-    "name": "spacer",
-    "group": "98d7cf85ddd4043d",
-    "order": 1,
-    "width": 1,
-    "height": 1
-  },
-  {
-    "id": "7fe85ab03a0b1006",
-    "type": "ui_spacer",
-    "z": "26d85896bb27b9f5",
-    "name": "spacer",
-    "group": "98d7cf85ddd4043d",
-    "order": 3,
-    "width": 1,
-    "height": 1
-  },
-  {
-    "id": "2e46cd3f2d5f4052",
-    "type": "ui_spacer",
-    "z": "26d85896bb27b9f5",
-    "name": "spacer",
-    "group": "98d7cf85ddd4043d",
-    "order": 4,
-    "width": 1,
-    "height": 1
-  },
-  {
-    "id": "e8b722585423a51c",
-    "type": "ui_spacer",
-    "z": "26d85896bb27b9f5",
-    "name": "spacer",
-    "group": "98d7cf85ddd4043d",
-    "order": 5,
-    "width": 1,
-    "height": 1
-  },
-  {
-    "id": "4abaa65c7a101d64",
-    "type": "ui_spacer",
-    "z": "26d85896bb27b9f5",
-    "name": "spacer",
-    "group": "98d7cf85ddd4043d",
-    "order": 6,
-    "width": 1,
-    "height": 1
-  },
-  {
-    "id": "0bd23f76fbe7b906",
-    "type": "ui_spacer",
-    "z": "26d85896bb27b9f5",
-    "name": "spacer",
-    "group": "98d7cf85ddd4043d",
-    "order": 7,
-    "width": 1,
-    "height": 1
-  },
-  {
-    "id": "ec3d0e7d0b99a922",
-    "type": "ui_spacer",
-    "z": "26d85896bb27b9f5",
-    "name": "spacer",
-    "group": "98d7cf85ddd4043d",
-    "order": 8,
-    "width": 7,
-    "height": 1
   },
   {
     "id": "10be69289dc55c23",
@@ -562,7 +372,7 @@
     "z": "26d85896bb27b9f5",
     "d": true,
     "name": "온도1 Array처리",
-    "func": "//소수점 한자리 반올림해서 정수로 반환 후 10나누면 소��점 1자리\nmsg.payload = (Math.round(msg.payload * 10)) / 10;\n//msg.payload = msg.payload.toFixed(2);\n//-> Fixed처리하면 데이터 형식이 String으로 바뀜\n\nvar temp1 = global.get('temp1') || 0;\n\ntemp1 = msg.payload;\nglobal.set([\"temp1\"], temp1);\nmsg.payload = temp1;\n\nreturn msg;",
+    "func": "//소수점 한자리 반올림해서 정수로 반환 후 10나누면 소수점 1자리\nmsg.payload = (Math.round(msg.payload * 10)) / 10;\n//msg.payload = msg.payload.toFixed(2);\n//-> Fixed처리하면 데이터 형식이 String으로 바뀜\n\nvar temp1 = global.get('temp1') || 0;\n\ntemp1 = msg.payload;\nglobal.set([\"temp1\"], temp1);\nmsg.payload = temp1;\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -601,11 +411,11 @@
     "z": "26d85896bb27b9f5",
     "name": "",
     "group": "8a6be5f92a965aa6",
-    "order": 2,
-    "width": 5,
-    "height": 3,
+    "order": 1,
+    "width": 10,
+    "height": 8,
     "gtype": "gage",
-    "title": "B동 세척수 온도",
+    "title": "세척수 온도",
     "label": "",
     "format": "{{value}}",
     "min": 0,
@@ -618,36 +428,8 @@
     "seg1": "100",
     "seg2": "150",
     "className": "",
-    "x": 1780,
-    "y": 240,
-    "wires": []
-  },
-  {
-    "id": "1743ba5f6f25709f",
-    "type": "ui_gauge",
-    "z": "26d85896bb27b9f5",
-    "d": true,
-    "name": "",
-    "group": "8a6be5f92a965aa6",
-    "order": 9,
-    "width": 5,
-    "height": 3,
-    "gtype": "gage",
-    "title": "PT온도계2",
-    "label": "도",
-    "format": "{{value}}",
-    "min": 0,
-    "max": "200",
-    "colors": [
-      "#00b500",
-      "#e6e600",
-      "#ca3838"
-    ],
-    "seg1": "100",
-    "seg2": "150",
-    "className": "",
     "x": 1770,
-    "y": 280,
+    "y": 240,
     "wires": []
   },
   {
@@ -881,8 +663,7 @@
     "y": 100,
     "wires": [
       [
-        "2287ae58098fd94c",
-        "3daced66ce0869a2"
+        "2287ae58098fd94c"
       ]
     ]
   },
@@ -892,9 +673,9 @@
     "z": "26d85896bb27b9f5",
     "name": "",
     "group": "98d7cf85ddd4043d",
-    "order": 2,
-    "width": 5,
-    "height": 3,
+    "order": 1,
+    "width": 10,
+    "height": 4,
     "gtype": "donut",
     "title": "모터 회전속도",
     "label": "RPM",
@@ -1295,9 +1076,9 @@
     "type": "ui_valuetrail",
     "z": "26d85896bb27b9f5",
     "group": "98d7cf85ddd4043d",
-    "order": 9,
-    "width": 7,
-    "height": 2,
+    "order": 2,
+    "width": 10,
+    "height": 4,
     "name": "Volt1",
     "label": "",
     "unit": "",
@@ -1314,25 +1095,6 @@
     "x": 1130,
     "y": 500,
     "wires": []
-  },
-  {
-    "id": "3daced66ce0869a2",
-    "type": "function",
-    "z": "26d85896bb27b9f5",
-    "name": "온도2 Array처리",
-    "func": "//Disable\nmsg.payload = 0;\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 1400,
-    "y": 280,
-    "wires": [
-      [
-        "1743ba5f6f25709f"
-      ]
-    ]
   },
   {
     "id": "92b4b46a766ab82f",
