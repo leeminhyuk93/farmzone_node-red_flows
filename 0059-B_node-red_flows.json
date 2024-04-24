@@ -413,7 +413,7 @@
     "group": "8a6be5f92a965aa6",
     "order": 1,
     "width": 9,
-    "height": 8,
+    "height": 6,
     "gtype": "gage",
     "title": "세척수 온도",
     "label": "",
@@ -675,7 +675,7 @@
     "group": "98d7cf85ddd4043d",
     "order": 1,
     "width": 9,
-    "height": 8,
+    "height": 6,
     "gtype": "gage",
     "title": "모터 회전속도",
     "label": "RPM",
@@ -1018,7 +1018,8 @@
     "wires": [
       [
         "619dcc2b419dc729",
-        "c82443eb256ca876"
+        "c82443eb256ca876",
+        "7c9a1c398304880d"
       ]
     ]
   },
@@ -1075,12 +1076,11 @@
     "id": "2ee241f1457e0483",
     "type": "ui_valuetrail",
     "z": "26d85896bb27b9f5",
-    "d": true,
     "group": "98d7cf85ddd4043d",
     "order": 2,
     "width": 9,
     "height": 2,
-    "name": "Volt1",
+    "name": "rpm",
     "label": "",
     "unit": "",
     "blur": true,
@@ -1266,6 +1266,31 @@
         "0696e85df7970c6b"
       ]
     ]
+  },
+  {
+    "id": "7c9a1c398304880d",
+    "type": "ui_valuetrail",
+    "z": "26d85896bb27b9f5",
+    "group": "8a6be5f92a965aa6",
+    "order": 2,
+    "width": 9,
+    "height": 2,
+    "name": "temperature",
+    "label": "",
+    "unit": "",
+    "blur": true,
+    "minmax": true,
+    "allowtoggle": false,
+    "showvalue": false,
+    "decimals": "4",
+    "colorLine": "#ff9900",
+    "colorFromTheme": false,
+    "stroke": 2,
+    "property": "payload",
+    "pointcount": "7",
+    "x": 930,
+    "y": 580,
+    "wires": []
   },
   {
     "id": "8f85a49ff98c07b6",
