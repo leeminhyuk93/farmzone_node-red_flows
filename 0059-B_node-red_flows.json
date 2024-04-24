@@ -1075,6 +1075,7 @@
     "id": "2ee241f1457e0483",
     "type": "ui_valuetrail",
     "z": "26d85896bb27b9f5",
+    "d": true,
     "group": "98d7cf85ddd4043d",
     "order": 2,
     "width": 9,
