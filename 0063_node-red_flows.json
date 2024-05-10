@@ -8,6 +8,14 @@
     "env": []
   },
   {
+    "id": "dacccb3c983e693c",
+    "type": "tab",
+    "label": "세척기",
+    "disabled": false,
+    "info": "1. 세척수 온도\r\n2. 행굼수 온도\r\n3. 모터 회전속도",
+    "env": []
+  },
+  {
     "id": "50af027f8d596046",
     "type": "tab",
     "label": "Database delete",
@@ -1023,7 +1031,7 @@
     "type": "comment",
     "z": "71aaba71cce9c427",
     "name": "조도센서_3",
-    "info": "장치 : 스테인레스 스틸 광 센서(XIN NUO QI)\n수집 데이터 : 조도\n\n*Function Code\n - Func 3\n\n2) address\n0 : 조도센서값 (0 ~ 65535 Lux)",
+    "info": "장치 : 스테인��스 스틸 광 센서(XIN NUO QI)\n수집 데이터 : 조도\n\n*Function Code\n - Func 3\n\n2) address\n0 : 조도센서값 (0 ~ 65535 Lux)",
     "x": 90,
     "y": 660,
     "wires": []
@@ -1385,6 +1393,16 @@
       ],
       []
     ]
+  },
+  {
+    "id": "d26ecbc310c5e946",
+    "type": "comment",
+    "z": "dacccb3c983e693c",
+    "name": "덕연_세척기 데이터 수집",
+    "info": "1) 국번1 : 세척수 온도\n - 제조사 : 코노텍\n - 모델명 : TP10\n - 통신프로토콜 : Modbus\n\n2) 국번2 : 헹굼수 온도\n - 제조사 : 코노텍\n - 모델명 : TP10\n - 통신프로토콜 : Modbus\n\n3) 국번3 : 모터회전속도(브러쉬속도)\n - 제조사 : MK electronics\n - 모델명 : DF-132A54\n - 통신프로토콜 : Mk사용자 정의 프로토콜",
+    "x": 130,
+    "y": 40,
+    "wires": []
   },
   {
     "id": "630a013e2443aa2f",
@@ -2042,7 +2060,7 @@
     "type": "function",
     "z": "bb37ce8039ee6056",
     "name": "send api",
-    "func": "let temp = msg.payload[0].value3;   // 온도\nlet humid = msg.payload[0].value4;  // 습도\nlet co2 = msg.payload[0].value2;    // 이산화탄소\nlet lux = msg.payload[0].value5;    // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0063\",\n    \"scode\": \"74\",\n    \"kind\": \"5\",\n    \"deviceId\": \"4\",\n    \"co2\": co2,\n    \"temperature\": temp,\n    \"humidity\": humid,\n    \"lux\": lux\n};\n\n\nreturn msg;",
+    "func": "let temp = msg.payload[0].value3;   // 온도\nlet humid = msg.payload[0].value4;  // ��도\nlet co2 = msg.payload[0].value2;    // 이산화탄소\nlet lux = msg.payload[0].value5;    // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0063\",\n    \"scode\": \"74\",\n    \"kind\": \"5\",\n    \"deviceId\": \"4\",\n    \"co2\": co2,\n    \"temperature\": temp,\n    \"humidity\": humid,\n    \"lux\": lux\n};\n\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -2896,7 +2914,7 @@
     "type": "function",
     "z": "8e6679f805bb8a8b",
     "name": "send api",
-    "func": "let sensor_error = msg.payload[0];   // [1:��서에러, 0:에러아님]\nlet co2 = msg.payload[1];            // 이산화탄소\nlet temp = msg.payload[2];           // 온도\nlet humid = msg.payload[3];          // 습도\nlet lux = msg.payload[4];            // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0064\",\n    \"scode\": \"75\",\n    \"kind\": \"5\",\n    \"deviceId\": \"5\",\n    \"co2\": co2,\n    \"temperature\": temp,\n    \"humidity\": humid,\n    \"lux\": lux\n};\n\nmsg.topic = \"INSERT INTO fz_shm.smg3 (co2, temp, humid, lux) VALUES (\" + co2 + \", \" + temp + \", \" + humid + \", \" + lux + \")\";\n\nreturn msg;",
+    "func": "let sensor_error = msg.payload[0];   // [1:센서에러, 0:에러아님]\nlet co2 = msg.payload[1];            // 이산화탄소\nlet temp = msg.payload[2];           // 온도\nlet humid = msg.payload[3];          // 습도\nlet lux = msg.payload[4];            // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0064\",\n    \"scode\": \"75\",\n    \"kind\": \"5\",\n    \"deviceId\": \"5\",\n    \"co2\": co2,\n    \"temperature\": temp,\n    \"humidity\": humid,\n    \"lux\": lux\n};\n\nmsg.topic = \"INSERT INTO fz_shm.smg3 (co2, temp, humid, lux) VALUES (\" + co2 + \", \" + temp + \", \" + humid + \", \" + lux + \")\";\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
