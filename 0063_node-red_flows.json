@@ -1993,7 +1993,8 @@
     "wires": [
       [
         "e1e2a084bd47f80f",
-        "1db41c09c3baa541"
+        "1db41c09c3baa541",
+        "9226cca3e609bd72"
       ]
     ]
   },
@@ -2010,7 +2011,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 450,
-    "y": 320,
+    "y": 300,
     "wires": []
   },
   {
@@ -2067,11 +2068,12 @@
     "finalize": "",
     "libs": [],
     "x": 270,
-    "y": 420,
+    "y": 480,
     "wires": [
       [
         "8333fe9a8f44e97c",
-        "1b8b576e3b316c6a"
+        "1b8b576e3b316c6a",
+        "d6bb8d75808b864c"
       ]
     ]
   },
@@ -2088,7 +2090,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 450,
-    "y": 400,
+    "y": 440,
     "wires": []
   },
   {
@@ -2102,8 +2104,8 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 250,
-    "y": 500,
+    "x": 270,
+    "y": 580,
     "wires": [
       [
         "ee8066e54550f3a1"
@@ -2122,8 +2124,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 410,
-    "y": 500,
+    "x": 430,
+    "y": 580,
     "wires": []
   },
   {
@@ -2139,7 +2141,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 410,
-    "y": 560,
+    "y": 660,
     "wires": []
   },
   {
@@ -2154,11 +2156,12 @@
     "finalize": "",
     "libs": [],
     "x": 250,
-    "y": 580,
+    "y": 700,
     "wires": [
       [
         "cbb02f34bf668b45",
-        "f966248a04ae1dce"
+        "f966248a04ae1dce",
+        "f61895bc69ff24f8"
       ]
     ]
   },
@@ -2187,7 +2190,7 @@
     "diff": false,
     "className": "",
     "x": 450,
-    "y": 440,
+    "y": 480,
     "wires": []
   },
   {
@@ -2215,7 +2218,7 @@
     "diff": false,
     "className": "",
     "x": 420,
-    "y": 600,
+    "y": 700,
     "wires": []
   },
   {
@@ -2334,7 +2337,7 @@
     "diff": false,
     "className": "",
     "x": 450,
-    "y": 360,
+    "y": 340,
     "wires": []
   },
   {
@@ -2367,6 +2370,81 @@
         "814643cf705a886d"
       ]
     ]
+  },
+  {
+    "id": "9226cca3e609bd72",
+    "type": "ui_valuetrail",
+    "z": "dacccb3c983e693c",
+    "group": "938673c4a764e916",
+    "order": 2,
+    "width": 0,
+    "height": 0,
+    "name": "세척수 온도 그래프",
+    "label": "",
+    "unit": "",
+    "blur": true,
+    "minmax": true,
+    "allowtoggle": false,
+    "showvalue": false,
+    "decimals": "1",
+    "colorLine": "#ff9900",
+    "colorFromTheme": false,
+    "stroke": 2,
+    "property": "payload",
+    "pointcount": "7",
+    "x": 470,
+    "y": 380,
+    "wires": []
+  },
+  {
+    "id": "d6bb8d75808b864c",
+    "type": "ui_valuetrail",
+    "z": "dacccb3c983e693c",
+    "group": "938673c4a764e916",
+    "order": 2,
+    "width": 0,
+    "height": 0,
+    "name": "헹굼수 온도 그래프",
+    "label": "",
+    "unit": "",
+    "blur": true,
+    "minmax": true,
+    "allowtoggle": false,
+    "showvalue": false,
+    "decimals": "1",
+    "colorLine": "#ff9900",
+    "colorFromTheme": false,
+    "stroke": 2,
+    "property": "payload",
+    "pointcount": "7",
+    "x": 470,
+    "y": 520,
+    "wires": []
+  },
+  {
+    "id": "f61895bc69ff24f8",
+    "type": "ui_valuetrail",
+    "z": "dacccb3c983e693c",
+    "group": "80424e03a4e68f78",
+    "order": 1,
+    "width": 0,
+    "height": 0,
+    "name": "인버터 그래프",
+    "label": "",
+    "unit": "",
+    "blur": true,
+    "minmax": true,
+    "allowtoggle": false,
+    "showvalue": false,
+    "decimals": 0,
+    "colorLine": "#ff9900",
+    "colorFromTheme": false,
+    "stroke": 2,
+    "property": "payload",
+    "pointcount": "7",
+    "x": 420,
+    "y": 740,
+    "wires": []
   },
   {
     "id": "3b0762dcc30d6de9",
@@ -3154,7 +3232,7 @@
     "id": "e70bc9bce3ea0516",
     "type": "comment",
     "z": "bb37ce8039ee6056",
-    "name": "조도��서_2",
+    "name": "조도센서_2",
     "info": "",
     "x": 110,
     "y": 220,
@@ -4136,7 +4214,7 @@
     "type": "function",
     "z": "8e6679f805bb8a8b",
     "name": "send api",
-    "func": "let sensor_error = msg.payload[0];   // [1:센서에러, 0:에러아님]\nlet co2 = msg.payload[1];            // 이산화탄소\nlet temp = msg.payload[2];           // 온도\nlet humid = msg.payload[3];          // 습도\nlet lux = msg.payload[4];            // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0064\",\n    \"scode\": \"74\",\n    \"kind\": \"5\",\n    \"deviceId\": \"4\",\n    \"co2\": co2,\n    \"temperature\": temp,\n    \"humidity\": humid,\n    \"lux\": lux\n};\n\nmsg.topic = \"INSERT INTO fz_shm.smg2 (co2, temp, humid, lux) VALUES (\" + co2 + \", \" + temp + \", \" + humid + \", \" + lux + \")\";\n\nreturn msg;",
+    "func": "let sensor_error = msg.payload[0];   // [1:센서에러, 0:에러아님]\nlet co2 = msg.payload[1];            // 이산화탄���\nlet temp = msg.payload[2];           // 온도\nlet humid = msg.payload[3];          // 습도\nlet lux = msg.payload[4];            // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0064\",\n    \"scode\": \"74\",\n    \"kind\": \"5\",\n    \"deviceId\": \"4\",\n    \"co2\": co2,\n    \"temperature\": temp,\n    \"humidity\": humid,\n    \"lux\": lux\n};\n\nmsg.topic = \"INSERT INTO fz_shm.smg2 (co2, temp, humid, lux) VALUES (\" + co2 + \", \" + temp + \", \" + humid + \", \" + lux + \")\";\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
