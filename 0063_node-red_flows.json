@@ -16,6 +16,14 @@
     "env": []
   },
   {
+    "id": "6cfb4e61667234ed",
+    "type": "tab",
+    "label": "세척기_DB조회",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
     "id": "50af027f8d596046",
     "type": "tab",
     "label": "Database delete",
@@ -387,6 +395,194 @@
     "parallelUnitIdsAllowed": true,
     "showWarnings": true,
     "showLogs": true
+  },
+  {
+    "id": "8b88fe9a19eda841",
+    "type": "MySQLdatabase",
+    "name": "",
+    "host": "localhost",
+    "port": "3306",
+    "db": "fz_shm",
+    "tz": "",
+    "charset": "UTF8"
+  },
+  {
+    "id": "9c2e069e46becdfc",
+    "type": "ui_base",
+    "theme": {
+      "name": "theme-light",
+      "lightTheme": {
+        "default": "#0094CE",
+        "baseColor": "#0094CE",
+        "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+        "edited": true,
+        "reset": false
+      },
+      "darkTheme": {
+        "default": "#097479",
+        "baseColor": "#097479",
+        "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+        "edited": false
+      },
+      "customTheme": {
+        "name": "Untitled Theme 1",
+        "default": "#4B7930",
+        "baseColor": "#4B7930",
+        "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+      },
+      "themeState": {
+        "base-color": {
+          "default": "#0094CE",
+          "value": "#0094CE",
+          "edited": false
+        },
+        "page-titlebar-backgroundColor": {
+          "value": "#0094CE",
+          "edited": false
+        },
+        "page-backgroundColor": {
+          "value": "#fafafa",
+          "edited": false
+        },
+        "page-sidebar-backgroundColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "group-textColor": {
+          "value": "#1bbfff",
+          "edited": false
+        },
+        "group-borderColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "group-backgroundColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "widget-textColor": {
+          "value": "#111111",
+          "edited": false
+        },
+        "widget-backgroundColor": {
+          "value": "#0094ce",
+          "edited": false
+        },
+        "widget-borderColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "base-font": {
+          "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+        }
+      },
+      "angularTheme": {
+        "primary": "indigo",
+        "accents": "blue",
+        "warn": "red",
+        "background": "grey",
+        "palette": "light"
+      }
+    },
+    "site": {
+      "name": "Node-RED Dashboard",
+      "hideToolbar": "false",
+      "allowSwipe": "false",
+      "lockMenu": "false",
+      "allowTempTheme": "true",
+      "dateFormat": "DD/MM/YYYY",
+      "sizes": {
+        "sx": 48,
+        "sy": 48,
+        "gx": 6,
+        "gy": 6,
+        "cx": 6,
+        "cy": 6,
+        "px": 0,
+        "py": 0
+      }
+    }
+  },
+  {
+    "id": "9862036d7a4f400d",
+    "type": "ui_tab",
+    "name": "세척기 모니터링 시스템",
+    "icon": "dashboard",
+    "order": 1,
+    "disabled": false,
+    "hidden": false
+  },
+  {
+    "id": "b1bdee389aeb605c",
+    "type": "ui_tab",
+    "name": "모터RPM설정",
+    "icon": "dashboard",
+    "order": 2,
+    "disabled": false,
+    "hidden": false
+  },
+  {
+    "id": "781800f3c2896560",
+    "type": "ui_tab",
+    "name": "MySQL Table",
+    "icon": "dashboard",
+    "order": 3,
+    "disabled": false,
+    "hidden": false
+  },
+  {
+    "id": "938673c4a764e916",
+    "type": "ui_group",
+    "name": "Temp Monitor",
+    "tab": "9862036d7a4f400d",
+    "order": 1,
+    "disp": true,
+    "width": "7",
+    "collapse": false,
+    "className": "round"
+  },
+  {
+    "id": "80424e03a4e68f78",
+    "type": "ui_group",
+    "name": "Inverter Monitor",
+    "tab": "9862036d7a4f400d",
+    "order": 2,
+    "disp": true,
+    "width": "7",
+    "collapse": false,
+    "className": ""
+  },
+  {
+    "id": "3bc6e2e6badb9d1e",
+    "type": "ui_group",
+    "name": "모터정격RPM",
+    "tab": "b1bdee389aeb605c",
+    "order": 1,
+    "disp": true,
+    "width": "7",
+    "collapse": false,
+    "className": ""
+  },
+  {
+    "id": "7077a3222aa2fa2f",
+    "type": "ui_group",
+    "name": "센서 동작 상황 DB REPORT",
+    "tab": "781800f3c2896560",
+    "order": 1,
+    "disp": true,
+    "width": "14",
+    "collapse": false,
+    "className": ""
+  },
+  {
+    "id": "6ad797f821bcbaf1",
+    "type": "ui_spacer",
+    "z": "6cfb4e61667234ed",
+    "name": "spacer",
+    "group": "7077a3222aa2fa2f",
+    "order": 4,
+    "width": 4,
+    "height": 1
   },
   {
     "id": "a4e408c03b2c2e8f",
@@ -1031,7 +1227,7 @@
     "type": "comment",
     "z": "71aaba71cce9c427",
     "name": "조도센서_3",
-    "info": "장치 : 스테인��스 스틸 광 센서(XIN NUO QI)\n수집 데이터 : 조도\n\n*Function Code\n - Func 3\n\n2) address\n0 : 조도센서값 (0 ~ 65535 Lux)",
+    "info": "장치 : 스테인레스 스틸 광 센서(XIN NUO QI)\n수집 데이터 : 조도\n\n*Function Code\n - Func 3\n\n2) address\n0 : 조도센서값 (0 ~ 65535 Lux)",
     "x": 90,
     "y": 660,
     "wires": []
@@ -1399,10 +1595,289 @@
     "type": "comment",
     "z": "dacccb3c983e693c",
     "name": "덕연_세척기 데이터 수집",
-    "info": "1) 국번1 : 세척수 온도\n - 제조사 : 코노텍\n - 모델명 : TP10\n - 통신프로토콜 : Modbus\n\n2) 국번2 : 헹굼수 온도\n - 제조사 : 코노텍\n - 모델명 : TP10\n - 통신프로토콜 : Modbus\n\n3) 국번3 : 모터회전속도(브러쉬속도)\n - 제조사 : MK electronics\n - 모델명 : DF-132A54\n - 통신프로토콜 : Mk사용자 정의 프로토콜",
+    "info": "1) 국번1 : 세척수 온도\n - 제조사 : 코노텍\n - 모델명 : TP10\n - 통신프로토콜 : Modbus\n\n2) 국번2 : 헹굼수 온도\n - 제조사 : 코노텍\n - 모델명 : TP10\n - 통신프로토콜 : Modbus\n\n3) 국번3 : 모터회전속도(브러쉬속도)\n - 제조사 : MK electronics\n - 모델명 : DF-132A54\n - 통신프로토콜 : Mk사���자 정의 프로토콜",
     "x": 130,
     "y": 40,
     "wires": []
+  },
+  {
+    "id": "3b0762dcc30d6de9",
+    "type": "inject",
+    "z": "6cfb4e61667234ed",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "str",
+    "x": 90,
+    "y": 120,
+    "wires": [
+      [
+        "4104cd0af3781122"
+      ]
+    ]
+  },
+  {
+    "id": "4104cd0af3781122",
+    "type": "function",
+    "z": "6cfb4e61667234ed",
+    "name": "select an item from DB",
+    "func": "msg.topic = \"SELECT * FROM fztable WHERE DATE(date) BETWEEN :sdate AND :edate order by fz_idx desc limit 100;\";\n\nvar vs = global.get('start_date');\nvar ve = global.get('end_date');\n\nvar vsdate = new Date(vs);\nvar vedate = new Date(ve);\n\nvar vsdd = vsdate.getDate();\nif(vsdd < 10) vsdd = '0' + vsdd;\nvar vsmm = vsdate.getMonth()+1;\nvar vsyy = vsdate.getFullYear();\n\nvar vedd = vedate.getDate();\nif(vedd < 10) vedd = '0' + vedd;\nvar vemm = vedate.getMonth()+1;\nvar veyy = vedate.getFullYear();\n\nvar vsday = vsyy + '-' + vsmm + '-' + vsdd;\nvar veday = veyy + '-' + vemm + '-' + vedd;\n\n\n// msg.payload = { sdate: '2021-01-15', edate: '2021-01-15' };\nmsg.payload = { sdate: vsday, edate: veday };\nreturn msg;\n\n\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 320,
+    "y": 120,
+    "wires": [
+      [
+        "4e97e19ce1f5b9bd"
+      ]
+    ]
+  },
+  {
+    "id": "2a7c35b443dcc1a2",
+    "type": "function",
+    "z": "6cfb4e61667234ed",
+    "name": "data parse",
+    "func": "var aJsonArray = new Array();\n\nvar j = 0; \nfor(var i = 0; i < msg.payload.length; i++)\n{\n    msg.payload[i].date = msg.payload[i].date.toLocaleString(\"en-US\", {timeZone: \"Asia/Seoul\"});\n    aJsonArray.push(msg.payload[i]);\n    j += 1;\n    if(j == 100) break;\n    \n}\n\nvar text = JSON.stringify(aJsonArray);\nvar obj = JSON.parse(text);\nmsg.payload = obj;\n\nreturn msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 690,
+    "y": 120,
+    "wires": [
+      [
+        "8a4d01cbe983d9b0",
+        "395ce7ab0663954c"
+      ]
+    ]
+  },
+  {
+    "id": "53e0b13175f0b340",
+    "type": "ui_date_picker",
+    "z": "6cfb4e61667234ed",
+    "name": "",
+    "label": "From",
+    "group": "7077a3222aa2fa2f",
+    "order": 2,
+    "width": 4,
+    "height": 1,
+    "passthru": true,
+    "topic": "",
+    "topicType": "str",
+    "className": "",
+    "x": 250,
+    "y": 220,
+    "wires": [
+      [
+        "8934888ed7638a4b"
+      ]
+    ]
+  },
+  {
+    "id": "2833ba73b57d7779",
+    "type": "ui_date_picker",
+    "z": "6cfb4e61667234ed",
+    "name": "",
+    "label": "To",
+    "group": "7077a3222aa2fa2f",
+    "order": 3,
+    "width": 4,
+    "height": 1,
+    "passthru": true,
+    "topic": "",
+    "topicType": "str",
+    "className": "",
+    "x": 250,
+    "y": 280,
+    "wires": [
+      [
+        "70f4e436baa75f4e"
+      ]
+    ]
+  },
+  {
+    "id": "8934888ed7638a4b",
+    "type": "function",
+    "z": "6cfb4e61667234ed",
+    "name": "store start_date",
+    "func": "global.set('start_date', msg.payload);\n\nmsg.payload = new Date(msg.payload);\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 410,
+    "y": 220,
+    "wires": [
+      [
+        "4104cd0af3781122"
+      ]
+    ]
+  },
+  {
+    "id": "70f4e436baa75f4e",
+    "type": "function",
+    "z": "6cfb4e61667234ed",
+    "name": "store end_date",
+    "func": "global.set('end_date', msg.payload);\n\nmsg.payload = new Date(msg.payload);\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 410,
+    "y": 280,
+    "wires": [
+      [
+        "4104cd0af3781122"
+      ]
+    ]
+  },
+  {
+    "id": "c43ddcd2f1324e46",
+    "type": "ui_button",
+    "z": "6cfb4e61667234ed",
+    "name": "",
+    "group": "7077a3222aa2fa2f",
+    "order": 1,
+    "width": 2,
+    "height": 1,
+    "passthru": false,
+    "label": "Today",
+    "tooltip": "",
+    "color": "",
+    "bgcolor": "",
+    "className": "",
+    "icon": "",
+    "payload": "",
+    "payloadType": "date",
+    "topic": "",
+    "topicType": "str",
+    "x": 80,
+    "y": 220,
+    "wires": [
+      [
+        "53e0b13175f0b340",
+        "2833ba73b57d7779"
+      ]
+    ]
+  },
+  {
+    "id": "395ce7ab0663954c",
+    "type": "debug",
+    "z": "6cfb4e61667234ed",
+    "name": "debug 22",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 880,
+    "y": 100,
+    "wires": []
+  },
+  {
+    "id": "4e97e19ce1f5b9bd",
+    "type": "mysql",
+    "z": "6cfb4e61667234ed",
+    "mydb": "5904de5649bf46eb",
+    "name": "",
+    "x": 520,
+    "y": 120,
+    "wires": [
+      [
+        "2a7c35b443dcc1a2"
+      ]
+    ]
+  },
+  {
+    "id": "8254a388f2672ee5",
+    "type": "comment",
+    "z": "6cfb4e61667234ed",
+    "name": "세척기 데이터 DB 데이터 모니터링",
+    "info": "1. temp1 : 세척수 온도\n2. temp2 : 헹굼수 온도\n3. Hz : Hz\n4. rpm : rpm",
+    "x": 160,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "8a4d01cbe983d9b0",
+    "type": "ui_table",
+    "z": "6cfb4e61667234ed",
+    "group": "7077a3222aa2fa2f",
+    "name": "",
+    "order": 5,
+    "width": 14,
+    "height": 6,
+    "columns": [
+      {
+        "field": "temp1",
+        "title": "PT온도계1",
+        "width": "18px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "HZ",
+        "title": "인버터HZ",
+        "width": "18px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "RPM",
+        "title": "인버터RPM",
+        "width": "18px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "date",
+        "title": "DATE",
+        "width": "24px",
+        "align": "center",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      }
+    ],
+    "outputs": 1,
+    "cts": true,
+    "x": 870,
+    "y": 140,
+    "wires": [
+      []
+    ]
   },
   {
     "id": "630a013e2443aa2f",
@@ -2060,7 +2535,7 @@
     "type": "function",
     "z": "bb37ce8039ee6056",
     "name": "send api",
-    "func": "let temp = msg.payload[0].value3;   // 온도\nlet humid = msg.payload[0].value4;  // ��도\nlet co2 = msg.payload[0].value2;    // 이산화탄소\nlet lux = msg.payload[0].value5;    // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0063\",\n    \"scode\": \"74\",\n    \"kind\": \"5\",\n    \"deviceId\": \"4\",\n    \"co2\": co2,\n    \"temperature\": temp,\n    \"humidity\": humid,\n    \"lux\": lux\n};\n\n\nreturn msg;",
+    "func": "let temp = msg.payload[0].value3;   // 온도\nlet humid = msg.payload[0].value4;  // 습도\nlet co2 = msg.payload[0].value2;    // 이산화탄소\nlet lux = msg.payload[0].value5;    // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0063\",\n    \"scode\": \"74\",\n    \"kind\": \"5\",\n    \"deviceId\": \"4\",\n    \"co2\": co2,\n    \"temperature\": temp,\n    \"humidity\": humid,\n    \"lux\": lux\n};\n\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -2619,7 +3094,7 @@
     "type": "inject",
     "z": "8e6679f805bb8a8b",
     "d": true,
-    "name": "9분",
+    "name": "9���",
     "props": [
       {
         "p": "payload"
