@@ -410,7 +410,7 @@
     "id": "9c2e069e46becdfc",
     "type": "ui_base",
     "theme": {
-      "name": "theme-custom",
+      "name": "theme-dark",
       "lightTheme": {
         "default": "#0094CE",
         "baseColor": "#0094CE",
@@ -434,12 +434,12 @@
       },
       "themeState": {
         "base-color": {
-          "default": "#4B7930",
-          "value": "#4B7930",
+          "default": "#097479",
+          "value": "#097479",
           "edited": false
         },
         "page-titlebar-backgroundColor": {
-          "value": "#4B7930",
+          "value": "#097479",
           "edited": false
         },
         "page-backgroundColor": {
@@ -451,7 +451,7 @@
           "edited": false
         },
         "group-textColor": {
-          "value": "#6db046",
+          "value": "#0eb8c0",
           "edited": false
         },
         "group-borderColor": {
@@ -467,7 +467,7 @@
           "edited": false
         },
         "widget-backgroundColor": {
-          "value": "#4b7930",
+          "value": "#097479",
           "edited": false
         },
         "widget-borderColor": {
