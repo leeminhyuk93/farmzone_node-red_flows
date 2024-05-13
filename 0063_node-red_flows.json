@@ -2448,6 +2448,34 @@
     "wires": []
   },
   {
+    "id": "8ad89dd3c72c19ee",
+    "type": "ui_gauge",
+    "z": "dacccb3c983e693c",
+    "name": "test",
+    "group": "938673c4a764e916",
+    "order": 4,
+    "width": 0,
+    "height": 0,
+    "gtype": "gage",
+    "title": "test",
+    "label": "units",
+    "format": "{{value}}",
+    "min": 0,
+    "max": 10,
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "",
+    "seg2": "",
+    "diff": false,
+    "className": "",
+    "x": 690,
+    "y": 500,
+    "wires": []
+  },
+  {
     "id": "3b0762dcc30d6de9",
     "type": "inject",
     "z": "6cfb4e61667234ed",
