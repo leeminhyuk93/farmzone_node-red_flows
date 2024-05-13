@@ -587,15 +587,6 @@
     "height": 1
   },
   {
-    "id": "e40e1b82267b49c7",
-    "type": "ui_tab",
-    "name": "덕연_세척기_RPM키패드",
-    "icon": "dashboard",
-    "order": 4,
-    "disabled": false,
-    "hidden": false
-  },
-  {
     "id": "03877c306bf843ed",
     "type": "serial-port",
     "name": "",
@@ -614,26 +605,6 @@
     "out": "time",
     "addchar": "",
     "responsetimeout": "3000"
-  },
-  {
-    "id": "a1eee1d124b99705",
-    "type": "ui_tab",
-    "name": "Test Tab",
-    "icon": "dashboard",
-    "order": 5,
-    "disabled": false,
-    "hidden": false
-  },
-  {
-    "id": "830c13e47ed0ee52",
-    "type": "ui_group",
-    "name": "Test_Monitor1",
-    "tab": "a1eee1d124b99705",
-    "order": 1,
-    "disp": true,
-    "width": 7,
-    "collapse": false,
-    "className": ""
   },
   {
     "id": "429abb13b5f03807",
@@ -2488,109 +2459,6 @@
     "wires": []
   },
   {
-    "id": "79e4fa46e7567ac3",
-    "type": "ui_button",
-    "z": "dacccb3c983e693c",
-    "name": "",
-    "group": "830c13e47ed0ee52",
-    "order": 1,
-    "width": 0,
-    "height": 0,
-    "passthru": false,
-    "label": "button",
-    "tooltip": "",
-    "color": "",
-    "bgcolor": "",
-    "className": "",
-    "icon": "",
-    "payload": "",
-    "payloadType": "str",
-    "topic": "topic",
-    "topicType": "msg",
-    "x": 310,
-    "y": 860,
-    "wires": [
-      []
-    ]
-  },
-  {
-    "id": "ab6cd31997bc2ad4",
-    "type": "ui_gauge",
-    "z": "dacccb3c983e693c",
-    "name": "",
-    "group": "830c13e47ed0ee52",
-    "order": 5,
-    "width": 0,
-    "height": 0,
-    "gtype": "gage",
-    "title": "gauge",
-    "label": "units",
-    "format": "{{value}}",
-    "min": 0,
-    "max": 10,
-    "colors": [
-      "#00b500",
-      "#e6e600",
-      "#ca3838"
-    ],
-    "seg1": "",
-    "seg2": "",
-    "diff": false,
-    "className": "",
-    "x": 470,
-    "y": 860,
-    "wires": []
-  },
-  {
-    "id": "8932a7f7371eda3b",
-    "type": "ui_table",
-    "z": "dacccb3c983e693c",
-    "group": "830c13e47ed0ee52",
-    "name": "",
-    "order": 7,
-    "width": 0,
-    "height": 0,
-    "columns": [
-      {
-        "field": "aaaa",
-        "title": "aaaaa",
-        "width": "",
-        "align": "left",
-        "formatter": "plaintext",
-        "formatterParams": {
-          "target": "_blank"
-        }
-      },
-      {
-        "field": "bbbb",
-        "title": "bbbb",
-        "width": "",
-        "align": "left",
-        "formatter": "plaintext",
-        "formatterParams": {
-          "target": "_blank"
-        }
-      },
-      {
-        "field": "ccccc",
-        "title": "ccccc",
-        "width": "",
-        "align": "left",
-        "formatter": "plaintext",
-        "formatterParams": {
-          "target": "_blank"
-        }
-      }
-    ],
-    "outputs": 1,
-    "cts": true,
-    "x": 610,
-    "y": 860,
-    "wires": [
-      []
-    ]
-  },
-  {
     "id": "3b0762dcc30d6de9",
     "type": "inject",
     "z": "6cfb4e61667234ed",
@@ -2961,7 +2829,7 @@
     "id": "6d7e09a2d90bf9fc",
     "type": "comment",
     "z": "50af027f8d596046",
-    "name": "dtu2 테이블 - 데이터 보관 기간 7일",
+    "name": "dtu2 테이블 - 데이터 보관 기간 7��",
     "info": "",
     "x": 180,
     "y": 180,
