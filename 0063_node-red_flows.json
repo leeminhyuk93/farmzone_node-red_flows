@@ -1157,7 +1157,7 @@
     "type": "comment",
     "z": "71aaba71cce9c427",
     "name": "조도센서_2",
-    "info": "장치 : BCON-TRM200\n수집 데이터 : 온도, 습도, CO2, 조���\n\n*Function Code\n - Func 3, 4\n\n2) address\n0 : 센서에러 (1:센서에러, 0:에러아님)\n1 : CO2센서값 (0 ~ 5000ppm)\n2 : 온도센서값 (-20.0 ~ 65.0℃)\n3 : 습도센서값 (0 ~ 100.0%Rh)\n4 : 조도센서값 (0 ~ 54600 Lux)",
+    "info": "장치 : BCON-TRM200\n수집 데이터 : 온도, 습도, CO2, 조도\n\n*Function Code\n - Func 3, 4\n\n2) address\n0 : 센서에러 (1:센서에러, 0:에러아님)\n1 : CO2센서값 (0 ~ 5000ppm)\n2 : 온도센서값 (-20.0 ~ 65.0℃)\n3 : 습도센서값 (0 ~ 100.0%Rh)\n4 : 조도센서값 (0 ~ 54600 Lux)",
     "x": 90,
     "y": 560,
     "wires": []
@@ -1473,7 +1473,7 @@
     "type": "function",
     "z": "71aaba71cce9c427",
     "name": "send api",
-    "func": "let lux = msg.payload[0];   // 조도\nlux = lux * 0.13;           // 조도 데이터 가공\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0063\",\n    \"scode\": \"75\",\n    \"kind\": \"5\",\n    \"deviceId\": \"5\",\n    \"co2\": '',\n    \"temperature\": '',\n    \"humidity\": '',\n    \"lux\": lux\n};\n\nmsg.topic = \"INSERT INTO fz_shm.smg3 (lux) VALUES (\" + lux + \")\";\n\nreturn msg;",
+    "func": "let lux = msg.payload[0];   // 조도\nlux = lux * 0.13;           // 조도 데이터 전처리\nlux = Math.ceil(lux);\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0063\",\n    \"scode\": \"75\",\n    \"kind\": \"5\",\n    \"deviceId\": \"5\",\n    \"co2\": '',\n    \"temperature\": '',\n    \"humidity\": '',\n    \"lux\": lux\n};\n\nmsg.topic = \"INSERT INTO fz_shm.smg3 (lux) VALUES (\" + lux + \")\";\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
