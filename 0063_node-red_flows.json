@@ -900,7 +900,6 @@
     "id": "ac59dfb48a32729f",
     "type": "inject",
     "z": "71aaba71cce9c427",
-    "d": true,
     "name": "10초",
     "props": [
       {
@@ -1699,7 +1698,7 @@
     "type": "function",
     "z": "dacccb3c983e693c",
     "name": "MK query",
-    "func": "// 디지털 회전계(인버터 RPM) 센서 장치 요청 프로토콜\n\n// Modbus 방식 : 국번, 펑션코드, 시작주소(상위), 시작주소(하위), 데이터 개수(상위), 데이터 개수(하위), CRC16(하위), CRC16(상위)\n//msg.payload = Buffer.from([0x01, 0x03, 0x00, 0x00, 0x00, 0x01, 0x84, 0x0A]);\n\n// MK 통신프로토콜 방식 : 헤더, CODE, ID, DOT와 부���를 포함한 7Byte의 ASCII, CHECK SUM,   제어코드\n//                       STX,   8,   1,    SP, SP, SP, SP, SP, SP, SP,       EB,     CR, LF, ETX\n//                       STX,   8,   2,    SP, SP, SP, SP, SP, SP, SP,       EC,     CR, LF, ETX\n//                       STX,   8,   3,    SP, SP, SP, SP, SP, SP, SP,       ED,     CR, LF, ETX\n\n// msg.payload = Buffer.from([0x02, 0x08, 0x03, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0xED, 0x0D, 0x0A, 0x03]);\nvar hexValues = [\"0x02\", \"0x08\", \"0x03\", \"0x20\", \"0x20\", \"0x20\", \"0x20\", \"0x20\", \"0x20\", \"0x20\", \"0xED\", \"0x0D\", \"0x0A\", \"0x03\"];\nmsg.payload = Buffer.from(hexValues.map(hex => parseInt(hex, 16)));\nnode.send(msg);\n// return msg;",
+    "func": "// 디지털 회전계(인버터 RPM) 센서 장치 요청 프로토콜\n\n// Modbus 방식 : 국번, 펑션코드, 시작주소(상위), 시작주소(하위), 데이터 개수(상위), 데이터 개수(하위), CRC16(하위), CRC16(상위)\n//msg.payload = Buffer.from([0x01, 0x03, 0x00, 0x00, 0x00, 0x01, 0x84, 0x0A]);\n\n// MK 통신프로토콜 방식 : 헤더, CODE, ID, DOT와 부호를 포함한 7Byte의 ASCII, CHECK SUM,   제어코드\n//                       STX,   8,   1,    SP, SP, SP, SP, SP, SP, SP,       EB,     CR, LF, ETX\n//                       STX,   8,   2,    SP, SP, SP, SP, SP, SP, SP,       EC,     CR, LF, ETX\n//                       STX,   8,   3,    SP, SP, SP, SP, SP, SP, SP,       ED,     CR, LF, ETX\n\n// msg.payload = Buffer.from([0x02, 0x08, 0x03, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0xED, 0x0D, 0x0A, 0x03]);\nvar hexValues = [\"0x02\", \"0x08\", \"0x03\", \"0x20\", \"0x20\", \"0x20\", \"0x20\", \"0x20\", \"0x20\", \"0x20\", \"0xED\", \"0x0D\", \"0x0A\", \"0x03\"];\nmsg.payload = Buffer.from(hexValues.map(hex => parseInt(hex, 16)));\nnode.send(msg);\n// return msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
@@ -4400,7 +4399,7 @@
     "type": "function",
     "z": "8e6679f805bb8a8b",
     "name": "send api",
-    "func": "let sensor_error = msg.payload[0];   // [1:센서에러, 0:에러아님]\nlet co2 = msg.payload[1];            // 이산화탄소\nlet temp = msg.payload[2];           // 온도\nlet humid = msg.payload[3];          // 습도\nlet lux = msg.payload[4];            // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0064\",\n    \"scode\": \"75\",\n    \"kind\": \"5\",\n    \"deviceId\": \"5\",\n    \"co2\": co2,\n    \"temperature\": temp,\n    \"humidity\": humid,\n    \"lux\": lux\n};\n\nmsg.topic = \"INSERT INTO fz_shm.smg3 (co2, temp, humid, lux) VALUES (\" + co2 + \", \" + temp + \", \" + humid + \", \" + lux + \")\";\n\nreturn msg;",
+    "func": "let sensor_error = msg.payload[0];   // [1:센서에러, 0:에러아님]\nlet co2 = msg.payload[1];            // 이��화탄소\nlet temp = msg.payload[2];           // 온도\nlet humid = msg.payload[3];          // 습도\nlet lux = msg.payload[4];            // 조도\n\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\n\nmsg.payload = {\n    \"ccode\": \"0064\",\n    \"scode\": \"75\",\n    \"kind\": \"5\",\n    \"deviceId\": \"5\",\n    \"co2\": co2,\n    \"temperature\": temp,\n    \"humidity\": humid,\n    \"lux\": lux\n};\n\nmsg.topic = \"INSERT INTO fz_shm.smg3 (co2, temp, humid, lux) VALUES (\" + co2 + \", \" + temp + \", \" + humid + \", \" + lux + \")\";\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
