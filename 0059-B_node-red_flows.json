@@ -182,11 +182,11 @@
   {
     "id": "98d7cf85ddd4043d",
     "type": "ui_group",
-    "name": "Motor Monitor",
+    "name": "RPM Monitor",
     "tab": "cc644fd7db266711",
     "order": 2,
     "disp": true,
-    "width": 9,
+    "width": "9",
     "collapse": false,
     "className": ""
   },
