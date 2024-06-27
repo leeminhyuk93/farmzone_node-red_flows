@@ -1,8 +1,8 @@
 [
   {
-    "id": "4341e86ae8c8b101",
+    "id": "5ce5cbb86562149d",
     "type": "tab",
-    "label": "플로우 1",
+    "label": "세병기",
     "disabled": false,
     "info": "",
     "env": []
@@ -27,6 +27,14 @@
     "id": "f6262b236a582495",
     "type": "tab",
     "label": "RS232 to WIFI Protocol",
+    "disabled": true,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "4341e86ae8c8b101",
+    "type": "tab",
+    "label": "세병기_백업",
     "disabled": true,
     "info": "",
     "env": []
@@ -201,7 +209,7 @@
     "serialAsciiResponseStartDelimiter": "0x3A",
     "unit_id": 1,
     "commandDelay": 10,
-    "clientTimeout": 5000,
+    "clientTimeout": 1000,
     "reconnectOnTimeout": true,
     "reconnectTimeout": 1000,
     "parallelUnitIdsAllowed": true
@@ -658,52 +666,9 @@
     "height": 1
   },
   {
-    "id": "68ccc90bdeccf2db",
-    "type": "buffer-parser",
-    "z": "4341e86ae8c8b101",
-    "name": "Modbus Holding Register Funtion1",
-    "data": "payload",
-    "dataType": "msg",
-    "specification": "spec",
-    "specificationType": "ui",
-    "items": [
-      {
-        "type": "int16be",
-        "name": "Unit3Pressure1",
-        "offset": 20,
-        "length": 1,
-        "offsetbit": 0,
-        "scale": "1",
-        "mask": ""
-      }
-    ],
-    "swap1": "",
-    "swap2": "",
-    "swap3": "",
-    "swap1Type": "swap",
-    "swap2Type": "swap",
-    "swap3Type": "swap",
-    "msgProperty": "payload",
-    "msgPropertyType": "str",
-    "resultType": "value",
-    "resultTypeType": "return",
-    "multipleResult": false,
-    "fanOutMultipleResult": false,
-    "setTopic": true,
-    "outputs": 1,
-    "x": 520,
-    "y": 300,
-    "wires": [
-      [
-        "edb20678acb8d2ed",
-        "340fd9bb9485851d"
-      ]
-    ]
-  },
-  {
-    "id": "9431b47b06c3c8e6",
+    "id": "9b6fff129415fcc7",
     "type": "inject",
-    "z": "4341e86ae8c8b101",
+    "z": "5ce5cbb86562149d",
     "name": "",
     "props": [
       {
@@ -721,96 +686,26 @@
     "topic": "",
     "payload": "",
     "payloadType": "date",
-    "x": 130,
-    "y": 320,
+    "x": 110,
+    "y": 120,
     "wires": [
       [
-        "b548fffe2800aac2",
-        "2328f8fa65205649"
+        "69c5ec6522f9613e"
       ]
     ]
   },
   {
-    "id": "b6b0fb1c34314371",
-    "type": "buffer-parser",
-    "z": "4341e86ae8c8b101",
-    "name": "Modbus Holding Register Funtion2",
-    "data": "payload",
-    "dataType": "msg",
-    "specification": "spec",
-    "specificationType": "ui",
-    "items": [
-      {
-        "type": "int16be",
-        "name": "Unit3Power",
-        "offset": 8,
-        "length": 1,
-        "offsetbit": 0,
-        "scale": "1",
-        "mask": ""
-      }
-    ],
-    "swap1": "",
-    "swap2": "",
-    "swap3": "",
-    "swap1Type": "swap",
-    "swap2Type": "swap",
-    "swap3Type": "swap",
-    "msgProperty": "payload",
-    "msgPropertyType": "str",
-    "resultType": "value",
-    "resultTypeType": "return",
-    "multipleResult": false,
-    "fanOutMultipleResult": false,
-    "setTopic": true,
-    "outputs": 1,
-    "x": 520,
-    "y": 360,
-    "wires": [
-      [
-        "c7dc4d62ec013668"
-      ]
-    ]
-  },
-  {
-    "id": "b548fffe2800aac2",
+    "id": "25783a979f3cea4f",
     "type": "modbus-getter",
-    "z": "4341e86ae8c8b101",
+    "z": "5ce5cbb86562149d",
     "name": "Press",
     "showStatusActivities": true,
     "showErrors": true,
     "logIOActivities": false,
     "unitid": "1",
     "dataType": "InputRegister",
-    "adr": "0",
-    "quantity": "100",
-    "server": "1b6d45ce65e28311",
-    "useIOFile": false,
-    "ioFile": "",
-    "useIOForPayload": false,
-    "emptyMsgOnFail": false,
-    "keepMsgProperties": false,
-    "x": 290,
-    "y": 300,
-    "wires": [
-      [
-        "68ccc90bdeccf2db"
-      ],
-      []
-    ]
-  },
-  {
-    "id": "2328f8fa65205649",
-    "type": "modbus-getter",
-    "z": "4341e86ae8c8b101",
-    "name": "Power",
-    "showStatusActivities": true,
-    "showErrors": true,
-    "logIOActivities": false,
-    "unitid": "1",
-    "dataType": "InputRegister",
-    "adr": "20",
-    "quantity": "20",
+    "adr": "10",
+    "quantity": "1",
     "server": "f450a594a7c1ebad",
     "useIOFile": false,
     "ioFile": "",
@@ -818,19 +713,47 @@
     "emptyMsgOnFail": false,
     "keepMsgProperties": false,
     "x": 290,
-    "y": 360,
+    "y": 180,
     "wires": [
       [
-        "b6b0fb1c34314371"
+        "6cee6532eebf3e0f"
       ],
       []
     ]
   },
   {
-    "id": "5abc31975d85f7d9",
+    "id": "69c5ec6522f9613e",
+    "type": "modbus-getter",
+    "z": "5ce5cbb86562149d",
+    "name": "Power",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "logIOActivities": false,
+    "unitid": "1",
+    "dataType": "InputRegister",
+    "adr": "24",
+    "quantity": "1",
+    "server": "f450a594a7c1ebad",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "x": 270,
+    "y": 120,
+    "wires": [
+      [
+        "450e823b5b7c8852",
+        "76fd9e71c7624c8d"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "3728cb8a3a55c71d",
     "type": "debug",
-    "z": "4341e86ae8c8b101",
-    "name": "debug 35",
+    "z": "5ce5cbb86562149d",
+    "name": "debug 42",
     "active": true,
     "tosidebar": true,
     "console": false,
@@ -839,81 +762,51 @@
     "targetType": "msg",
     "statusVal": "payload",
     "statusType": "auto",
-    "x": 860,
-    "y": 560,
+    "x": 660,
+    "y": 400,
     "wires": []
   },
   {
-    "id": "a7915073a747b02d",
-    "type": "join",
-    "z": "4341e86ae8c8b101",
-    "name": "",
-    "mode": "custom",
-    "build": "array",
-    "property": "payload",
-    "propertyType": "msg",
-    "key": "payload",
-    "joiner": "\\n",
-    "joinerType": "str",
-    "accumulate": false,
-    "timeout": "",
-    "count": "2",
-    "reduceRight": false,
-    "reduceExp": "",
-    "reduceInit": "",
-    "reduceInitType": "",
-    "reduceFixup": "",
-    "x": 1010,
-    "y": 320,
-    "wires": [
-      [
-        "4d8dd56e50abd921",
-        "2efa09b54d63b757"
-      ]
-    ]
-  },
-  {
-    "id": "edb20678acb8d2ed",
+    "id": "29bce84d6fbfd8da",
     "type": "function",
-    "z": "4341e86ae8c8b101",
-    "name": "function 1",
-    "func": "// (msg && msg.payload[0] && msg.payload[0] != \"\") ? global.set('pre_press', msg.payload[0]) : \"\";\n\nreturn msg;",
+    "z": "5ce5cbb86562149d",
+    "name": "send api",
+    "func": "var power = msg.payload[0];              // 전원값(0:off / 1:on)\nvar pre_press = global.get(\"pre_press\")  // 이전 압력값\nvar press = parseFloat(msg.payload[1])   // 현재 받은 압력값\nvar ccode = '0053'\nvar scode = '72'\nvar count = 0\n\nvar now = new Date();\nvar nowDateTime = now.toISOString().replace(/T/, ' ').replace(/\\..+/, '');\nvar pre_datetime = global.get(\"pre_datetime\");\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\nif(pre_datetime != nowDateTime) {\n\n    if ((parseFloat(pre_press) * 1000) >= (((press) * 1000) + 300)) {\n        count = 1\n\n        msg.payload = {\n            \"ccode\": ccode,\n            \"scode\": scode,\n            \"power\": power,\n            \"press\": press,\n            \"count\": count\n        };\n\n        console.log(msg.payload);\n\n    } else {\n        msg.payload = {};\n    }\n\n} else {\n    msg.payload = {};\n}\n\nglobal.set('pre_datetime', nowDateTime);\nglobal.set('pre_press', press);\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 760,
-    "y": 300,
-    "wires": [
-      [
-        "a7915073a747b02d"
-      ]
-    ]
-  },
-  {
-    "id": "c7dc4d62ec013668",
-    "type": "function",
-    "z": "4341e86ae8c8b101",
-    "name": "function 2",
-    "func": "\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 760,
+    "x": 340,
     "y": 360,
     "wires": [
       [
-        "a7915073a747b02d"
+        "a12d5aa072bd3d25",
+        "9946d978309c6b67"
       ]
     ]
   },
   {
-    "id": "59a9bf45ba5a6b3e",
+    "id": "a12d5aa072bd3d25",
+    "type": "debug",
+    "z": "5ce5cbb86562149d",
+    "name": "debug 44",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 500,
+    "y": 340,
+    "wires": []
+  },
+  {
+    "id": "9946d978309c6b67",
     "type": "http request",
-    "z": "4341e86ae8c8b101",
+    "z": "5ce5cbb86562149d",
     "name": "",
     "method": "POST",
     "ret": "txt",
@@ -926,83 +819,149 @@
     "authType": "",
     "senderr": false,
     "headers": [],
-    "x": 690,
-    "y": 560,
+    "x": 510,
+    "y": 400,
     "wires": [
       [
-        "5abc31975d85f7d9"
+        "3728cb8a3a55c71d"
       ]
     ]
   },
   {
-    "id": "4d8dd56e50abd921",
-    "type": "debug",
-    "z": "4341e86ae8c8b101",
-    "name": "debug 37",
-    "active": false,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": true,
-    "complete": "payload",
-    "targetType": "msg",
-    "statusVal": "payload",
-    "statusType": "auto",
-    "x": 920,
-    "y": 460,
-    "wires": []
-  },
-  {
-    "id": "2efa09b54d63b757",
+    "id": "5a20db7ccd376128",
     "type": "function",
-    "z": "4341e86ae8c8b101",
-    "name": "function 4",
-    "func": "var pre_press = global.get(\"pre_press\")\nvar press = parseFloat(msg.payload[1][0])\nvar power = msg.payload[0][0]\nvar ccode = '0053'\nvar scode = '72'\nvar count = 0\n\nvar now = new Date();\nvar nowDateTime = now.toISOString().replace(/T/, ' ').replace(/\\..+/, '');\nvar pre_datetime = global.get(\"pre_datetime\");\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\nif(pre_datetime != nowDateTime) {\n\n    if ((parseFloat(pre_press) * 1000) >= (((press) * 1000) + 300)) {\n        count = 1\n\n        msg.payload = {\n            \"ccode\": ccode,\n            \"scode\": scode,\n            \"power\": power,\n            \"press\": press,\n            \"count\": count\n        };\n\n        console.log(msg.payload);\n\n    } else {\n        msg.payload = {};\n    }\n\n} else {\n    msg.payload = {};\n}\n\nglobal.set('pre_datetime', nowDateTime);\nglobal.set('pre_press', press);\n\nreturn msg;\n\n\n\n\n\n",
+    "z": "5ce5cbb86562149d",
+    "name": "parsing",
+    "func": "let plc_data = msg.payload;  // 전원, 압력 PLC 데이터\nlet power = '';              // 전원값을 할당 받는 전역변수\nlet press = '';              // 압력값을 할당 받는 전역변수\n\nfor (let i = 0; i < 2; i++) {         // 받을 값이 2개이므로 2번 반복\n    const id = msg.payload[i][0];     // 구분을 위한 id값\n    const value = msg.payload[i][1];  // 현재 PLC 데이터(전원, 압력)\n\n    switch (id) {\n        case 1:              // id값이 1인 경우 power(전원)\n            power = value;\n            break;\n        case 2:              // id값이 2인 경우 press(압력)\n            press = value;\n            break;\n    }\n}\n\nmsg.payload = [power, press];\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 460,
-    "y": 540,
+    "x": 180,
+    "y": 340,
     "wires": [
       [
-        "55b9edf733a89766",
-        "59a9bf45ba5a6b3e"
+        "d40cacc55b01f94e",
+        "29bce84d6fbfd8da"
       ]
     ]
   },
   {
-    "id": "55b9edf733a89766",
+    "id": "d40cacc55b01f94e",
     "type": "debug",
-    "z": "4341e86ae8c8b101",
-    "name": "debug 38",
+    "z": "5ce5cbb86562149d",
+    "name": "debug 48",
     "active": false,
     "tosidebar": true,
     "console": false,
-    "tostatus": true,
-    "complete": "payload",
-    "targetType": "msg",
-    "statusVal": "payload",
-    "statusType": "msg",
-    "x": 560,
-    "y": 680,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 340,
+    "y": 300,
     "wires": []
   },
   {
-    "id": "340fd9bb9485851d",
-    "type": "debug",
-    "z": "4341e86ae8c8b101",
-    "name": "debug 39",
-    "active": false,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": true,
-    "complete": "payload",
-    "targetType": "msg",
-    "statusVal": "payload",
-    "statusType": "msg",
-    "x": 740,
-    "y": 220,
+    "id": "450e823b5b7c8852",
+    "type": "delay",
+    "z": "5ce5cbb86562149d",
+    "name": "0.5s",
+    "pauseType": "delay",
+    "timeout": "500",
+    "timeoutUnits": "milliseconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "outputs": 1,
+    "x": 170,
+    "y": 180,
+    "wires": [
+      [
+        "25783a979f3cea4f"
+      ]
+    ]
+  },
+  {
+    "id": "19e76b0a61128598",
+    "type": "join",
+    "z": "5ce5cbb86562149d",
+    "name": "",
+    "mode": "custom",
+    "build": "array",
+    "property": "payload",
+    "propertyType": "msg",
+    "key": "topic",
+    "joiner": "\\n",
+    "joinerType": "str",
+    "accumulate": false,
+    "timeout": "",
+    "count": "2",
+    "reduceRight": false,
+    "reduceExp": "",
+    "reduceInit": "",
+    "reduceInitType": "",
+    "reduceFixup": "",
+    "x": 570,
+    "y": 140,
+    "wires": [
+      [
+        "5a20db7ccd376128"
+      ]
+    ]
+  },
+  {
+    "id": "76fd9e71c7624c8d",
+    "type": "function",
+    "z": "5ce5cbb86562149d",
+    "name": "power",
+    "func": "let id = 1;\nlet power = msg.payload[0];\n\nmsg.payload = [id, power];\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 430,
+    "y": 120,
+    "wires": [
+      [
+        "19e76b0a61128598"
+      ]
+    ]
+  },
+  {
+    "id": "6cee6532eebf3e0f",
+    "type": "function",
+    "z": "5ce5cbb86562149d",
+    "name": "press",
+    "func": "let id = 2;\nlet press = msg.payload[0];\n\nmsg.payload = [id, press];\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 430,
+    "y": 180,
+    "wires": [
+      [
+        "19e76b0a61128598"
+      ]
+    ]
+  },
+  {
+    "id": "bd73322376ea8f56",
+    "type": "comment",
+    "z": "5ce5cbb86562149d",
+    "name": "PLC에서 받아오는 세병기 데이터",
+    "info": "",
+    "x": 150,
+    "y": 60,
     "wires": []
   },
   {
@@ -3200,7 +3159,7 @@
     "id": "4da598afea71bbe6",
     "type": "comment",
     "z": "f6262b236a582495",
-    "name": "카스전자저울 Protocol",
+    "name": "카스전자���울 Protocol",
     "info": "Read Data->PLC Modbus 변환 후 송신\n29Byte",
     "x": 140,
     "y": 60,
@@ -3585,6 +3544,392 @@
     "statusType": "auto",
     "x": 1560,
     "y": 1120,
+    "wires": []
+  },
+  {
+    "id": "68ccc90bdeccf2db",
+    "type": "buffer-parser",
+    "z": "4341e86ae8c8b101",
+    "name": "Modbus Holding Register Funtion1",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "int16be",
+        "name": "Unit3Pressure1",
+        "offset": 20,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 520,
+    "y": 300,
+    "wires": [
+      [
+        "edb20678acb8d2ed",
+        "340fd9bb9485851d"
+      ]
+    ]
+  },
+  {
+    "id": "9431b47b06c3c8e6",
+    "type": "inject",
+    "z": "4341e86ae8c8b101",
+    "d": true,
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "2",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 320,
+    "wires": [
+      [
+        "b548fffe2800aac2",
+        "2328f8fa65205649"
+      ]
+    ]
+  },
+  {
+    "id": "b6b0fb1c34314371",
+    "type": "buffer-parser",
+    "z": "4341e86ae8c8b101",
+    "name": "Modbus Holding Register Funtion2",
+    "data": "payload",
+    "dataType": "msg",
+    "specification": "spec",
+    "specificationType": "ui",
+    "items": [
+      {
+        "type": "int16be",
+        "name": "Unit3Power",
+        "offset": 8,
+        "length": 1,
+        "offsetbit": 0,
+        "scale": "1",
+        "mask": ""
+      }
+    ],
+    "swap1": "",
+    "swap2": "",
+    "swap3": "",
+    "swap1Type": "swap",
+    "swap2Type": "swap",
+    "swap3Type": "swap",
+    "msgProperty": "payload",
+    "msgPropertyType": "str",
+    "resultType": "value",
+    "resultTypeType": "return",
+    "multipleResult": false,
+    "fanOutMultipleResult": false,
+    "setTopic": true,
+    "outputs": 1,
+    "x": 520,
+    "y": 360,
+    "wires": [
+      [
+        "c7dc4d62ec013668"
+      ]
+    ]
+  },
+  {
+    "id": "b548fffe2800aac2",
+    "type": "modbus-getter",
+    "z": "4341e86ae8c8b101",
+    "d": true,
+    "name": "Press",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "logIOActivities": false,
+    "unitid": "1",
+    "dataType": "InputRegister",
+    "adr": "0",
+    "quantity": "100",
+    "server": "1b6d45ce65e28311",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "x": 290,
+    "y": 300,
+    "wires": [
+      [
+        "68ccc90bdeccf2db",
+        "e37bb65a034c9122"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "2328f8fa65205649",
+    "type": "modbus-getter",
+    "z": "4341e86ae8c8b101",
+    "d": true,
+    "name": "Power",
+    "showStatusActivities": true,
+    "showErrors": true,
+    "logIOActivities": false,
+    "unitid": "1",
+    "dataType": "InputRegister",
+    "adr": "20",
+    "quantity": "20",
+    "server": "f450a594a7c1ebad",
+    "useIOFile": false,
+    "ioFile": "",
+    "useIOForPayload": false,
+    "emptyMsgOnFail": false,
+    "keepMsgProperties": false,
+    "x": 290,
+    "y": 360,
+    "wires": [
+      [
+        "b6b0fb1c34314371",
+        "682a38f4db6b1004"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "5abc31975d85f7d9",
+    "type": "debug",
+    "z": "4341e86ae8c8b101",
+    "name": "debug 35",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 860,
+    "y": 560,
+    "wires": []
+  },
+  {
+    "id": "a7915073a747b02d",
+    "type": "join",
+    "z": "4341e86ae8c8b101",
+    "name": "",
+    "mode": "custom",
+    "build": "array",
+    "property": "payload",
+    "propertyType": "msg",
+    "key": "payload",
+    "joiner": "\\n",
+    "joinerType": "str",
+    "accumulate": false,
+    "timeout": "",
+    "count": "2",
+    "reduceRight": false,
+    "reduceExp": "",
+    "reduceInit": "",
+    "reduceInitType": "",
+    "reduceFixup": "",
+    "x": 1010,
+    "y": 320,
+    "wires": [
+      [
+        "4d8dd56e50abd921",
+        "2efa09b54d63b757"
+      ]
+    ]
+  },
+  {
+    "id": "edb20678acb8d2ed",
+    "type": "function",
+    "z": "4341e86ae8c8b101",
+    "name": "function 1",
+    "func": "// (msg && msg.payload[0] && msg.payload[0] != \"\") ? global.set('pre_press', msg.payload[0]) : \"\";\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 760,
+    "y": 300,
+    "wires": [
+      [
+        "a7915073a747b02d"
+      ]
+    ]
+  },
+  {
+    "id": "c7dc4d62ec013668",
+    "type": "function",
+    "z": "4341e86ae8c8b101",
+    "name": "function 2",
+    "func": "\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 760,
+    "y": 360,
+    "wires": [
+      [
+        "a7915073a747b02d"
+      ]
+    ]
+  },
+  {
+    "id": "4d8dd56e50abd921",
+    "type": "debug",
+    "z": "4341e86ae8c8b101",
+    "name": "debug 37",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "auto",
+    "x": 920,
+    "y": 460,
+    "wires": []
+  },
+  {
+    "id": "2efa09b54d63b757",
+    "type": "function",
+    "z": "4341e86ae8c8b101",
+    "name": "function 4",
+    "func": "var pre_press = global.get(\"pre_press\")\nvar press = parseFloat(msg.payload[1][0])\nvar power = msg.payload[0][0]\nvar ccode = '0053'\nvar scode = '72'\nvar count = 0\n\nvar now = new Date();\nvar nowDateTime = now.toISOString().replace(/T/, ' ').replace(/\\..+/, '');\nvar pre_datetime = global.get(\"pre_datetime\");\n\nmsg.headers = {};\nmsg.headers['content-type'] = \"application/json\";\nmsg.headers['Accept'] = \"application/json\";\n\nif(pre_datetime != nowDateTime) {\n\n    if ((parseFloat(pre_press) * 1000) >= (((press) * 1000) + 300)) {\n        count = 1\n\n        msg.payload = {\n            \"ccode\": ccode,\n            \"scode\": scode,\n            \"power\": power,\n            \"press\": press,\n            \"count\": count\n        };\n\n        console.log(msg.payload);\n\n    } else {\n        msg.payload = {};\n    }\n\n} else {\n    msg.payload = {};\n}\n\nglobal.set('pre_datetime', nowDateTime);\nglobal.set('pre_press', press);\n\nreturn msg;\n\n\n\n\n\n",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 460,
+    "y": 540,
+    "wires": [
+      [
+        "55b9edf733a89766",
+        "59a9bf45ba5a6b3e"
+      ]
+    ]
+  },
+  {
+    "id": "55b9edf733a89766",
+    "type": "debug",
+    "z": "4341e86ae8c8b101",
+    "name": "debug 38",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 560,
+    "y": 680,
+    "wires": []
+  },
+  {
+    "id": "340fd9bb9485851d",
+    "type": "debug",
+    "z": "4341e86ae8c8b101",
+    "name": "debug 39",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": true,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "payload",
+    "statusType": "msg",
+    "x": 740,
+    "y": 220,
+    "wires": []
+  },
+  {
+    "id": "59a9bf45ba5a6b3e",
+    "type": "http request",
+    "z": "4341e86ae8c8b101",
+    "d": true,
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://localhost/smh-api/c0053/get_bottle_sync",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 690,
+    "y": 560,
+    "wires": [
+      [
+        "5abc31975d85f7d9"
+      ]
+    ]
+  },
+  {
+    "id": "682a38f4db6b1004",
+    "type": "debug",
+    "z": "4341e86ae8c8b101",
+    "name": "debug 40",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 480,
+    "y": 420,
+    "wires": []
+  },
+  {
+    "id": "e37bb65a034c9122",
+    "type": "debug",
+    "z": "4341e86ae8c8b101",
+    "name": "debug 41",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 440,
+    "y": 260,
     "wires": []
   },
   {
@@ -5204,7 +5549,7 @@
       },
       {
         "field": "Door1",
-        "title": "도어1오픈",
+        "title": "도어1오���",
         "width": "10px",
         "align": "center",
         "formatter": "plaintext",
