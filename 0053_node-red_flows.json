@@ -679,7 +679,7 @@
         "vt": "str"
       }
     ],
-    "repeat": "1",
+    "repeat": "3",
     "crontab": "",
     "once": false,
     "onceDelay": 0.1,
@@ -3159,7 +3159,7 @@
     "id": "4da598afea71bbe6",
     "type": "comment",
     "z": "f6262b236a582495",
-    "name": "카스전자저울 Protocol",
+    "name": "카스전자���울 Protocol",
     "info": "Read Data->PLC Modbus 변환 후 송신\n29Byte",
     "x": 140,
     "y": 60,
