@@ -1253,7 +1253,7 @@
     "type": "function",
     "z": "ea534a0bb0b5928e",
     "name": "parsing",
-    "func": "let totalCount = msg.payload[0];   // 총 생산량\nlet status = msg.payload[2];       // 가동 상태\n\nlet prev_status = status;    // 이전 가동 상태 (현재 가동 상태와 비교하여 다를 때마다 체크)\nlet check = (prev_status != status) ? 1 : 0;  // 비교하여 다르면 1 같으면 0\nlet start_check = \"\";  // 가동 시작 체크\nlet end_check = \"\";    // 가동 종료 체크\nvar start_time = 0;   // 가동 시작 시간\nvar end_time = 0;    // 가동 종료 시간\nlet operatingTime = 0;  // 총 가동 시간\nlet dateTime = new Date();  // 현재 시간\nlet saveTimeUser = dateTime.toLocaleString();  //저장된 시간(사용자용)\n\nif (check == 1 && status == 1) { // 가동 시작 체크 : check 값이 1이면서 status 값이 1일때 시간 확인\n    start_check = \"시작\";   // 가동 상태 체크\n    start_time = dateTime.getTime();  // 가동 시작 시간 체크\n} else if (check == 1 && status == 0) { // 가동 종료 시간 : check 값이 1이면서 status 값이 0일때 시간 확인\n    end_check = \"종료\";   // 가동 상태 체크\n    end_time = dateTime.getTime();  // 가동 종료 시간 체크\n}\n\nif (start_check == \"시작\" && end_check == \"종료\") {\n    start_check = \"\"; // 변수값 초기화\n    end_check = \"\";   // 변수값 초기화\n\n    operatingTime = end_time - start_time;\n\n    let hours = Math.floor(operatingTime / 3600000);\n    let minutes = Math.floor((operatingTime % 3600000) / 60000);\n    let seconds = Math.floor((operatingTime % 60000) / 1000);\n\n    operatingTime = `${hours}시 ${minutes}분 ${seconds}초`;\n}\n\nmsg.payload = {\n    \"equipName\" : \"모노블럭 시스템\",   //장비명\n    \"totalCount\" : totalCount,        //총 생산량\n    \"status\" : status,                //가동상태\n    \"startTime\" : start_time,         //가동 시작시간\n    \"endTime\": end_time,              //가동 종료시간\n    \"operatingTime\" : operatingTime,  //가동시간\n    \"saveTimeUser\" : saveTimeUser,    //저장시간\n    \"saveTimeDB\" : dateTime           //저장시간(find용)\n}\n\nreturn msg;",
+    "func": "let totalCount = msg.payload[0];   // 총 생산량\nlet status = msg.payload[2];       // 가동 상태\n\nlet prev_status = status;    // 이전 가동 상태 (현재 가동 상태와 비교하여 다를 때마다 체크)\nlet check = (prev_status != status) ? 1 : 0;  // 비교하여 다르면 1 같으면 0\nlet start_check = \"\";  // 가동 시작 체크\nlet end_check = \"\";    // 가동 종료 체크\nvar start_time = 0;   // 가동 시작 시간\nvar end_time = 0;    // 가동 종료 시간\nlet operatingTime = 0;  // 총 가동 시간\nlet dateTime = new Date();  // 현재 시간\nlet saveTimeUser = dateTime.toLocaleString();  //저장된 시간(사용자용)\n\nif (check == 1 && status == 1) { // 가동 시작 체크 : check 값이 1이면서 status 값이 1일때 시간 확인\n    start_check = \"시작\";   // 가동 상태 체크\n    start_time = dateTime.getTime();  // 가동 시작 시간 체크\n} else if (check == 1 && status == 0) { // 가동 종료 시간 : check 값이 1이면서 status 값이 0일때 시간 확인\n    end_check = \"종료\";   // 가동 상태 체크\n    end_time = dateTime.getTime();  // 가동 종료 시간 체크\n}\n\nif (start_check == \"시작\" && end_check == \"종료\") {\n    start_check = \"\"; // 변수값 초기화\n    end_check = \"\";   // 변수값 초기화\n\n    operatingTime = end_time - start_time;\n\n    let hours = Math.floor(operatingTime / 3600000);\n    let minutes = Math.floor((operatingTime % 3600000) / 60000);\n    let seconds = Math.floor((operatingTime % 60000) / 1000);\n\n    operatingTime = `${hours}시 ${minutes}분 ${seconds}초`;\n}\n\nmsg.payload = {\n    \"equipName\" : \"모노블럭 시스템\",   //장��명\n    \"totalCount\" : totalCount,        //총 생산량\n    \"status\" : status,                //가동상태\n    \"startTime\" : start_time,         //가동 시작시간\n    \"endTime\": end_time,              //가동 종료시간\n    \"operatingTime\" : operatingTime,  //가동시간\n    \"saveTimeUser\" : saveTimeUser,    //저장시간\n    \"saveTimeDB\" : dateTime           //저장시간(find용)\n}\n\nreturn msg;",
     "outputs": 1,
     "timeout": 0,
     "noerr": 0,
@@ -1957,92 +1957,6 @@
         "5cd5f49bd3cdbf60"
       ]
     ]
-  },
-  {
-    "id": "6792bbd0f05396a6",
-    "type": "inject",
-    "z": "ea534a0bb0b5928e",
-    "name": "TEST",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 70,
-    "y": 180,
-    "wires": [
-      [
-        "06df6f6266bae3e0"
-      ]
-    ]
-  },
-  {
-    "id": "8ea4e7cdc64b1af0",
-    "type": "tcp request",
-    "z": "ea534a0bb0b5928e",
-    "name": "",
-    "server": "192.168.222.201",
-    "port": "5001",
-    "out": "time",
-    "ret": "buffer",
-    "splitc": "1000",
-    "newline": "",
-    "trim": false,
-    "tls": "",
-    "x": 390,
-    "y": 180,
-    "wires": [
-      [
-        "53720944fe659b63"
-      ]
-    ]
-  },
-  {
-    "id": "06df6f6266bae3e0",
-    "type": "function",
-    "z": "ea534a0bb0b5928e",
-    "name": "function 1",
-    "func": "const sendData = \"01040000000131CA\";\nmsg.payload = Buffer.from(sendData, 'hex');\nreturn msg;",
-    "outputs": 1,
-    "timeout": 0,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 200,
-    "y": 180,
-    "wires": [
-      [
-        "8ea4e7cdc64b1af0"
-      ]
-    ]
-  },
-  {
-    "id": "53720944fe659b63",
-    "type": "debug",
-    "z": "ea534a0bb0b5928e",
-    "name": "debug 192",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 630,
-    "y": 200,
-    "wires": []
   },
   {
     "id": "62e4a209ec547825",
